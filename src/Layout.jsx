@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, MessageCircle } from 'lucide-react';
 import DarkModeToggle from './components/DarkModeToggle';
 import DonateDropdown from './components/DonateDropdown';
 import AIAgentChat from './components/AIAgentChat';
+import { base44 } from '@/api/base44Client';
 
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -191,7 +192,16 @@ export default function Layout({ children, currentPageName }) {
                 Phone: (555) 123-4567<br />
                 Email: info@mercyhouse.org
               </p>
-              <div className="mt-4">
+              <div className="mt-4 space-y-2">
+                <a
+                  href={base44.agents.getWhatsAppConnectURL('intake_support')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors font-semibold"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Chat on WhatsApp
+                </a>
                 <DonateDropdown className="w-full" />
               </div>
             </div>

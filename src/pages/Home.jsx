@@ -30,12 +30,12 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to={createPageUrl('IntakeForm')}>
-                <Button className="bg-gold hover:bg-gold/90 text-navy font-semibold px-8 py-6 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                   Start Your Journey
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <DonateButton className="px-8 py-6 text-lg" />
+              <DonateButton className="px-8 py-6 text-lg font-semibold" />
             </div>
           </div>
         </div>
@@ -170,15 +170,15 @@ export default function Home() {
             Take the first step towards freedom and transformation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to={createPageUrl('IntakeForm')}>
-              <Button className="bg-gold hover:bg-gold/90 text-navy font-semibold px-8 py-6 text-lg shadow-xl">
-                Apply Now
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg">
-              Contact Us
+          <Link to={createPageUrl('IntakeForm')}>
+            <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
+              Apply Now
+              <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+          </Link>
+          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+            Contact Us
+          </Button>
           </div>
         </div>
       </section>

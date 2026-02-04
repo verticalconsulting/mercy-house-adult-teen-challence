@@ -58,7 +58,7 @@ import MercyAutoAcademy from './pages/MercyAutoAcademy';
 import ProductsPurpose from './pages/ProductsPurpose';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
-import AdminBedCount from './pages/AdminBedCount';
+import EmployeePortal from './pages/EmployeePortal';
 import __Layout from './Layout.jsx';
 
 
@@ -74,7 +74,7 @@ export const PAGES = {
     "ProductsPurpose": ProductsPurpose,
     "Blog": Blog,
     "BlogPost": BlogPost,
-    "AdminBedCount": AdminBedCount,
+    "EmployeePortal": EmployeePortal,
 }
 
 export const pagesConfig = {

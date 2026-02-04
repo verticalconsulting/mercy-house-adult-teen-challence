@@ -24,7 +24,8 @@ export default function Layout({ children, currentPageName }) {
         { name: 'Products & Purpose', path: 'ProductsPurpose' }
       ]
     },
-    { name: 'News & Events', path: 'Blog' }
+    { name: 'News & Events', path: 'Blog' },
+    { name: 'Employees', path: 'EmployeePortal' }
   ];
 
   return (

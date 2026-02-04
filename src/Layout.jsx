@@ -4,6 +4,7 @@ import { createPageUrl } from './utils';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import DarkModeToggle from './components/DarkModeToggle';
 import DonateButton from './components/DonateButton';
+import AIAgentChat from './components/AIAgentChat';
 
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -159,6 +160,9 @@ export default function Layout({ children, currentPageName }) {
 
       {/* Main Content */}
       <main>{children}</main>
+
+      {/* AI Agent Chat */}
+      <AIAgentChat />
 
       {/* Footer */}
       <footer className="bg-navy dark:bg-slate-900 text-white mt-20">

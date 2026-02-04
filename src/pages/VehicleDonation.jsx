@@ -1,0 +1,83 @@
+import React from 'react';
+import { Car, CheckCircle, Phone } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+export default function VehicleDonation() {
+  return (
+    <div className="w-full">
+      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="text-6xl mb-4">🚗</div>
+            <h1 className="text-5xl font-bold text-navy dark:text-gold mb-6">
+              Vehicle Donation Program
+            </h1>
+            <p className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto">
+              Donate your car, truck, RV, boat, or motorcycle to support life transformation. Get a tax deduction while making a difference!
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 mb-16">
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg">
+              <h2 className="text-3xl font-bold text-navy dark:text-gold mb-6">Why Donate?</h2>
+              <ul className="space-y-4">
+                {[
+                  'Tax deductible donation',
+                  'Free towing service',
+                  'Support recovery programs',
+                  'Quick and easy process',
+                  'Accepts most vehicles',
+                  'Running or not running'
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-slate-700 dark:text-slate-300">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg">
+              <h2 className="text-3xl font-bold text-navy dark:text-gold mb-6">How It Works</h2>
+              <div className="space-y-6">
+                {[
+                  { step: '1', title: 'Call or Submit Form', desc: 'Provide basic vehicle information' },
+                  { step: '2', title: 'Schedule Pickup', desc: 'We arrange free towing at your convenience' },
+                  { step: '3', title: 'Get Receipt', desc: 'Receive documentation for tax purposes' },
+                  { step: '4', title: 'Make Impact', desc: 'Your donation funds recovery programs' }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gold text-navy font-bold flex items-center justify-center flex-shrink-0">
+                      {item.step}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-navy dark:text-gold mb-1">{item.title}</h3>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white p-12 rounded-xl text-center">
+            <h2 className="text-4xl font-bold mb-4">Ready to Donate?</h2>
+            <p className="text-xl mb-8 text-slate-200">
+              Call us today to get started. The process is simple and your impact is profound.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="bg-gold hover:bg-gold/90 text-navy font-semibold px-8 py-6 text-lg">
+                <Phone className="w-5 h-5 mr-2" />
+                Call (555) 123-4567
+              </Button>
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg">
+                <Car className="w-5 h-5 mr-2" />
+                Submit Online Form
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

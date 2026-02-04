@@ -51,6 +51,11 @@ import Home from './pages/Home';
 import WomensCampus from './pages/WomensCampus';
 import MensCampus from './pages/MensCampus';
 import IntakeForm from './pages/IntakeForm';
+import MicroBusinesses from './pages/MicroBusinesses';
+import ThriftStore from './pages/ThriftStore';
+import VehicleDonation from './pages/VehicleDonation';
+import MercyAutoAcademy from './pages/MercyAutoAcademy';
+import ProductsPurpose from './pages/ProductsPurpose';
 import __Layout from './Layout.jsx';
 
 
@@ -59,6 +64,11 @@ export const PAGES = {
     "WomensCampus": WomensCampus,
     "MensCampus": MensCampus,
     "IntakeForm": IntakeForm,
+    "MicroBusinesses": MicroBusinesses,
+    "ThriftStore": ThriftStore,
+    "VehicleDonation": VehicleDonation,
+    "MercyAutoAcademy": MercyAutoAcademy,
+    "ProductsPurpose": ProductsPurpose,
 }
 
 export const pagesConfig = {

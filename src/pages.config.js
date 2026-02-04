@@ -59,6 +59,7 @@ import ProductsPurpose from './pages/ProductsPurpose';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import EmployeePortal from './pages/EmployeePortal';
+import Support from './pages/Support';
 import __Layout from './Layout.jsx';
 
 
@@ -75,6 +76,7 @@ export const PAGES = {
     "Blog": Blog,
     "BlogPost": BlogPost,
     "EmployeePortal": EmployeePortal,
+    "Support": Support,
 }
 
 export const pagesConfig = {

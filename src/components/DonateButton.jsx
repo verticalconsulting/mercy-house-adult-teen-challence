@@ -2,10 +2,14 @@ import React from 'react';
 import { Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export default function DonateButton({ className = "", size = "default" }) {
+export default function DonateButton({ className = "", size = "default", monthly = false }) {
   const handleDonate = () => {
-    // Will be configured with actual donation link
-    window.open('https://donate.mercyhouse.org', '_blank');
+    if (monthly) {
+      window.location.href = '/Support';
+    } else {
+      // Will be configured with actual donation link
+      window.open('https://donate.mercyhouse.org', '_blank');
+    }
   };
 
   return (

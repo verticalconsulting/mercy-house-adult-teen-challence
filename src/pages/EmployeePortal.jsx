@@ -14,13 +14,18 @@ import { format } from 'date-fns';
 
 export default function EmployeePortal() {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [selectedApp, setSelectedApp] = useState(null);
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    base44.auth.me().then(setUser).catch(() => {
-      toast.error('Please log in to access the employee portal');
-    });
+    base44.auth.me()
+      .then(setUser)
+      .catch(() => {
+        toast.error('Please log in to access the employee portal');
+        base44.auth.redirectToLogin();
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   const { data: applications } = useQuery({
@@ -159,7 +164,7 @@ export default function EmployeePortal() {
     waitlist: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
   };
 
-  if (!user) {
+  if (loading || !user) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-navy dark:border-gold"></div>

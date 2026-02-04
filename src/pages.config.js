@@ -60,6 +60,7 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import EmployeePortal from './pages/EmployeePortal';
 import Support from './pages/Support';
+import SponsorStudent from './pages/SponsorStudent';
 import __Layout from './Layout.jsx';
 
 
@@ -77,6 +78,7 @@ export const PAGES = {
     "BlogPost": BlogPost,
     "EmployeePortal": EmployeePortal,
     "Support": Support,
+    "SponsorStudent": SponsorStudent,
 }
 
 export const pagesConfig = {

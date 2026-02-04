@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import DarkModeToggle from './components/DarkModeToggle';
-import DonateButton from './components/DonateButton';
+import DonateDropdown from './components/DonateDropdown';
 import AIAgentChat from './components/AIAgentChat';
 
 export default function Layout({ children, currentPageName }) {
@@ -25,8 +25,7 @@ export default function Layout({ children, currentPageName }) {
       ]
     },
     { name: 'News & Events', path: 'Blog' },
-    { name: 'Monthly Support', path: 'Support' },
-    { name: 'Employees', path: 'EmployeePortal' }
+    { name: 'Monthly Support', path: 'Support' }
   ];
 
   return (
@@ -91,7 +90,7 @@ export default function Layout({ children, currentPageName }) {
             {/* Right side buttons */}
             <div className="hidden lg:flex items-center space-x-4">
               <DarkModeToggle />
-              <DonateButton size="sm" />
+              <DonateDropdown size="sm" />
             </div>
 
             {/* Mobile menu button */}
@@ -153,7 +152,7 @@ export default function Layout({ children, currentPageName }) {
                 </div>
               ))}
               <div className="pt-4">
-                <DonateButton className="w-full" />
+                <DonateDropdown className="w-full" />
               </div>
             </div>
           </div>
@@ -183,6 +182,7 @@ export default function Layout({ children, currentPageName }) {
                 <li><Link to={createPageUrl('MensCampus')} className="text-slate-300 hover:text-gold transition-colors">Men's Campus</Link></li>
                 <li><Link to={createPageUrl('MicroBusinesses')} className="text-slate-300 hover:text-gold transition-colors">Micro Businesses</Link></li>
                 <li><Link to={createPageUrl('Blog')} className="text-slate-300 hover:text-gold transition-colors">News & Events</Link></li>
+                <li><Link to={createPageUrl('EmployeePortal')} className="text-slate-300 hover:text-gold transition-colors">Employee Portal</Link></li>
               </ul>
             </div>
             <div>
@@ -192,7 +192,7 @@ export default function Layout({ children, currentPageName }) {
                 Email: info@mercyhouse.org
               </p>
               <div className="mt-4">
-                <DonateButton className="w-full" />
+                <DonateDropdown className="w-full" />
               </div>
             </div>
           </div>

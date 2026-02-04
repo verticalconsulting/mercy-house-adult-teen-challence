@@ -19,13 +19,23 @@ export default function EmployeePortal() {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    base44.auth.me()
-      .then(setUser)
-      .catch(() => {
-        toast.error('Please log in to access the employee portal');
+    const checkAuth = async () => {
+      try {
+        const isAuth = await base44.auth.isAuthenticated();
+        if (!isAuth) {
+          base44.auth.redirectToLogin();
+          return;
+        }
+        const userData = await base44.auth.me();
+        setUser(userData);
+      } catch (error) {
+        console.error('Auth error:', error);
         base44.auth.redirectToLogin();
-      })
-      .finally(() => setLoading(false));
+      } finally {
+        setLoading(false);
+      }
+    };
+    checkAuth();
   }, []);
 
   const { data: applications } = useQuery({

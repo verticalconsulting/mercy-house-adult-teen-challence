@@ -22,33 +22,39 @@ export default function AIAgentChat() {
   }, [messages]);
 
   useEffect(() => {
-    if (isOpen && !conversation) {
-      initConversation();
-    }
-  }, [isOpen]);
+    if (!isOpen || conversation) return;
 
-  const initConversation = async () => {
-    try {
-      const conv = await base44.agents.createConversation({
-        agent_name: 'intake_support',
-        metadata: {
-          name: 'Website Chat',
-          source: 'website'
-        }
-      });
-      setConversation(conv);
-      setMessages(conv.messages || []);
+    let unsubscribe;
 
-      // Subscribe to updates
-      const unsubscribe = base44.agents.subscribeToConversation(conv.id, (data) => {
-        setMessages(data.messages);
-      });
+    const initConversation = async () => {
+      try {
+        const conv = await base44.agents.createConversation({
+          agent_name: 'intake_support',
+          metadata: {
+            name: 'Website Chat',
+            source: 'website'
+          }
+        });
+        setConversation(conv);
+        setMessages(conv.messages || []);
 
-      return () => unsubscribe();
-    } catch (error) {
-      console.error('Failed to initialize conversation:', error);
-    }
-  };
+        // Subscribe to updates
+        unsubscribe = base44.agents.subscribeToConversation(conv.id, (data) => {
+          setMessages(data.messages);
+          setLoading(false);
+        });
+      } catch (error) {
+        console.error('Failed to initialize conversation:', error);
+        setLoading(false);
+      }
+    };
+
+    initConversation();
+
+    return () => {
+      if (unsubscribe) unsubscribe();
+    };
+  }, [isOpen, conversation]);
 
   const sendMessage = async () => {
     if (!input.trim() || !conversation) return;

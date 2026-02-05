@@ -23,7 +23,7 @@ export default function WomensCampus() {
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983b4b00291b5dfd8507106/72b581b65_women_celebrating.png"
+            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80"
             alt="Women's Campus"
             className="w-full h-full object-cover"
             loading="lazy"

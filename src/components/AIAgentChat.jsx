@@ -132,13 +132,13 @@ export default function AIAgentChat() {
                   className={`max-w-[80%] rounded-2xl px-4 py-2 ${
                     msg.role === 'user'
                       ? 'bg-navy dark:bg-gold text-white dark:text-navy'
-                      : 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700'
+                      : 'bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-600'
                   }`}
                 >
                   {msg.role === 'user' ? (
                     <p className="text-sm">{msg.content}</p>
                   ) : (
-                    <ReactMarkdown className="text-sm prose prose-sm dark:prose-invert max-w-none">
+                    <ReactMarkdown className="text-sm prose prose-sm prose-slate dark:prose-invert max-w-none [&>*]:text-slate-900 dark:[&>*]:text-slate-100">
                       {msg.content}
                     </ReactMarkdown>
                   )}

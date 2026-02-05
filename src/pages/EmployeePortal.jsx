@@ -14,6 +14,7 @@ import { format } from 'date-fns';
 import ApplicationViewer from '../components/employee/ApplicationViewer';
 import IntegrationsManager from '../components/employee/IntegrationsManager';
 import AgentManager from '../components/employee/AgentManager';
+import TestimonialManager from '../components/employee/TestimonialManager';
 
 export default function EmployeePortal() {
   const [user, setUser] = useState(null);

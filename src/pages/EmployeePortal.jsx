@@ -8,9 +8,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Save, Users, FileText, Eye, CheckCircle, XCircle } from 'lucide-react';
+import { Save, Users, FileText, Eye, CheckCircle, XCircle, Settings, Bot } from 'lucide-react';
 import { toast } from 'sonner';
 import { format } from 'date-fns';
+import ApplicationViewer from '../components/employee/ApplicationViewer';
+import IntegrationsManager from '../components/employee/IntegrationsManager';
+import AgentManager from '../components/employee/AgentManager';
 
 export default function EmployeePortal() {
   const [user, setUser] = useState(null);
@@ -188,7 +191,7 @@ export default function EmployeePortal() {
         <h1 className="text-4xl font-bold text-navy dark:text-gold mb-8">Employee Portal</h1>
 
         <Tabs defaultValue="applications">
-          <TabsList>
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="applications">
               <FileText className="w-4 h-4 mr-2" />
               Applications
@@ -196,6 +199,14 @@ export default function EmployeePortal() {
             <TabsTrigger value="beds">
               <Users className="w-4 h-4 mr-2" />
               Bed Management
+            </TabsTrigger>
+            <TabsTrigger value="integrations">
+              <Settings className="w-4 h-4 mr-2" />
+              Integrations
+            </TabsTrigger>
+            <TabsTrigger value="agent">
+              <Bot className="w-4 h-4 mr-2" />
+              AI Agent
             </TabsTrigger>
           </TabsList>
 
@@ -228,25 +239,14 @@ export default function EmployeePortal() {
 
               <div>
                 {selectedApp ? (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="text-navy dark:text-gold">Application Details</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="max-h-[600px] overflow-y-auto space-y-3">
-                        <div><strong>Name:</strong> {selectedApp.full_legal_name}</div>
-                        <div><strong>DOB:</strong> {selectedApp.date_of_birth}</div>
-                        <div><strong>Phone:</strong> {selectedApp.cell_phone}</div>
-                        <div><strong>Email:</strong> {selectedApp.email}</div>
-                        <div><strong>Address:</strong> {selectedApp.address}, {selectedApp.city}, {selectedApp.state} {selectedApp.zip}</div>
-                        <div><strong>Emergency Contact:</strong> {selectedApp.emergency_contact_name} ({selectedApp.emergency_contact_phone})</div>
-                        <div><strong>Legal Supervision:</strong> {selectedApp.under_legal_supervision ? 'Yes' : 'No'}</div>
-                        <div><strong>Health Insurance:</strong> {selectedApp.has_health_insurance ? 'Yes' : 'No'}</div>
-                        <div><strong>Current Medications:</strong> {selectedApp.current_medications || 'None'}</div>
-                        <div><strong>Addiction Details:</strong> {selectedApp.addiction_details}</div>
-                      </div>
-
-                      <div className="border-t pt-4 space-y-2">
+                  <div className="space-y-4">
+                    <ApplicationViewer application={selectedApp} onClose={() => setSelectedApp(null)} />
+                    
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-navy dark:text-gold">Actions</CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
                         <div>
                           <Label>Assign To</Label>
                           <Select value={selectedApp.assigned_to || ''} onValueChange={(value) => updateAppMutation.mutate({ id: selectedApp.id, data: { ...selectedApp, assigned_to: value, status: 'under_review' } })}>
@@ -279,9 +279,9 @@ export default function EmployeePortal() {
                             Decline
                           </Button>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  </div>
                 ) : (
                   <div className="text-center text-slate-500 dark:text-slate-400 py-20">
                     Select an application to view details
@@ -357,6 +357,14 @@ export default function EmployeePortal() {
                 </CardContent>
               </Card>
             </div>
+          </TabsContent>
+
+          <TabsContent value="integrations" className="mt-6">
+            <IntegrationsManager />
+          </TabsContent>
+
+          <TabsContent value="agent" className="mt-6">
+            <AgentManager />
           </TabsContent>
         </Tabs>
       </div>

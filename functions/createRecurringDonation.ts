@@ -11,40 +11,43 @@ Deno.serve(async (req) => {
         const { amount, email, campaignId } = await req.json();
 
         if (!amount || amount < 500) {
-            return Response.json({ error: 'Minimum donation is $5' }, { status: 400 });
+            return Response.json({ error: 'Minimum monthly donation is $5' }, { status: 400 });
         }
 
         const appUrl = req.headers.get('origin') || 'https://your-app.base44.com';
 
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
+            mode: 'subscription',
             line_items: [
                 {
                     price_data: {
                         currency: 'usd',
                         product_data: {
-                            name: 'General Program Support',
-                            description: 'One-time donation to Mercy House Adult & Teen Challenge',
+                            name: 'Monthly Program Support',
+                            description: 'Recurring monthly donation to Mercy House Adult & Teen Challenge',
                         },
                         unit_amount: amount,
+                        recurring: {
+                            interval: 'month'
+                        }
                     },
                     quantity: 1,
                 },
             ],
-            mode: 'payment',
             customer_email: email || undefined,
-            success_url: `${appUrl}/?donation=success`,
-            cancel_url: `${appUrl}/?donation=cancelled`,
+            success_url: `${appUrl}/?subscription=success`,
+            cancel_url: `${appUrl}/?subscription=cancelled`,
             metadata: {
                 base44_app_id: Deno.env.get("BASE44_APP_ID"),
-                donation_type: 'general_program_support',
+                donation_type: 'monthly_support',
                 campaign_id: campaignId || ''
             }
         });
 
         return Response.json({ url: session.url });
     } catch (error) {
-        console.error('Donation checkout error:', error);
+        console.error('Recurring donation checkout error:', error);
         return Response.json({ error: error.message }, { status: 500 });
     }
 });

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Menu, X, ChevronDown, MessageCircle } from 'lucide-react';
+import { Menu, X, ChevronDown, MessageCircle, Facebook } from 'lucide-react';
 import DarkModeToggle from './components/DarkModeToggle';
 import DonateDropdown from './components/DonateDropdown';
 import AIAgentChat from './components/AIAgentChat';
@@ -93,12 +93,30 @@ export default function Layout({ children, currentPageName }) {
 
             {/* Right side buttons */}
             <div className="hidden lg:flex items-center space-x-4">
+              <a
+                href="https://www.facebook.com/MercyHouseMS"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors"
+                aria-label="Visit our Facebook page"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
               <DarkModeToggle />
               <DonateDropdown size="sm" />
             </div>
 
             {/* Mobile menu button */}
             <div className="lg:hidden flex items-center space-x-3">
+              <a
+                href="https://www.facebook.com/MercyHouseMS"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors"
+                aria-label="Visit our Facebook page"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
               <DarkModeToggle />
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

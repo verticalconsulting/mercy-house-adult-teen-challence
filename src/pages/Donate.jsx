@@ -2,22 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Heart, DollarSign, Loader2 } from 'lucide-react';
+import { Heart, DollarSign, Loader2, RefreshCw } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { toast } from 'sonner';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import CampaignProgress from '../components/CampaignProgress';
 
 export default function Donate() {
   const [customAmount, setCustomAmount] = useState('');
   const [selectedAmount, setSelectedAmount] = useState(50);
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
+  const [donationType, setDonationType] = useState('one-time');
+  const [campaignId, setCampaignId] = useState(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('donation') === 'success') {
+    const campaignParam = urlParams.get('campaign');
+    if (campaignParam) {
+      setCampaignId(campaignParam);
+    }
+    if (urlParams.get('donation') === 'success' || urlParams.get('subscription') === 'success') {
       toast.success('Thank you for your generous donation! 🙏');
       window.history.replaceState({}, '', window.location.pathname);
-    } else if (urlParams.get('donation') === 'cancelled') {
+    } else if (urlParams.get('donation') === 'cancelled' || urlParams.get('subscription') === 'cancelled') {
       toast.info('Donation cancelled');
       window.history.replaceState({}, '', window.location.pathname);
     }
@@ -40,16 +48,32 @@ export default function Donate() {
 
     setLoading(true);
     try {
-      const response = await base44.functions.invoke('createDonationCheckout', {
-        amount: Math.round(amount * 100),
-        email: email || undefined
-      });
-      
-      if (response.data?.url) {
-        window.location.href = response.data.url;
+      if (donationType === 'recurring') {
+        const response = await base44.functions.invoke('createRecurringDonation', {
+          amount: Math.round(amount * 100),
+          email: email || undefined,
+          campaignId: campaignId || undefined
+        });
+        
+        if (response.data?.url) {
+          window.location.href = response.data.url;
+        } else {
+          toast.error('Failed to create checkout session');
+          setLoading(false);
+        }
       } else {
-        toast.error('Failed to create checkout session');
-        setLoading(false);
+        const response = await base44.functions.invoke('createDonationCheckout', {
+          amount: Math.round(amount * 100),
+          email: email || undefined,
+          campaignId: campaignId || undefined
+        });
+        
+        if (response.data?.url) {
+          window.location.href = response.data.url;
+        } else {
+          toast.error('Failed to create checkout session');
+          setLoading(false);
+        }
       }
     } catch (error) {
       console.error('Donation error:', error);
@@ -70,12 +94,30 @@ export default function Donate() {
           </p>
         </div>
 
+        {/* Active Campaigns */}
+        {!campaignId && (
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-navy dark:text-gold mb-6 text-center">Active Campaigns</h2>
+            <CampaignProgress />
+          </div>
+        )}
+
         {/* Donation Form */}
         <Card className="mb-12">
           <CardHeader>
             <CardTitle className="text-2xl md:text-3xl text-navy dark:text-gold text-center">Choose Your Donation Amount</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
+            {/* Donation Type Tabs */}
+            <Tabs value={donationType} onValueChange={setDonationType} className="w-full">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="one-time">One-Time Gift</TabsTrigger>
+                <TabsTrigger value="recurring">
+                  <RefreshCw className="w-4 h-4 mr-2" />
+                  Monthly Support
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
             {/* Preset Amounts */}
             <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
               {presetAmounts.map(amount => (
@@ -145,10 +187,15 @@ export default function Donate() {
               ) : (
                 <>
                   <Heart className="w-5 h-5 mr-2" />
-                  Donate ${customAmount || selectedAmount}
+                  {donationType === 'recurring' ? 'Give' : 'Donate'} ${customAmount || selectedAmount}{donationType === 'recurring' ? '/month' : ''}
                 </>
               )}
             </Button>
+            {donationType === 'recurring' && (
+              <p className="text-xs text-center text-slate-500 dark:text-slate-400">
+                Cancel anytime. You'll receive monthly receipts and impact updates.
+              </p>
+            )}
           </CardContent>
         </Card>
 

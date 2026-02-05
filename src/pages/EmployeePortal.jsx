@@ -377,6 +377,10 @@ export default function EmployeePortal() {
             <TestimonialManager />
           </TabsContent>
 
+          <TabsContent value="blog" className="mt-6">
+            <BlogGenerator />
+          </TabsContent>
+
           <TabsContent value="integrations" className="mt-6">
             <IntegrationsManager />
           </TabsContent>

@@ -26,7 +26,7 @@ export default function Layout({ children, currentPageName }) {
       ]
     },
     { name: 'News & Events', path: 'Blog' },
-    { name: 'Monthly Support', path: 'Support' }
+    { name: 'Contact', path: 'Contact' }
   ];
 
   return (
@@ -189,8 +189,12 @@ export default function Layout({ children, currentPageName }) {
             <div>
               <h4 className="font-semibold text-gold mb-4">Contact</h4>
               <p className="text-slate-300 text-sm">
-                Phone: (555) 123-4567<br />
+                Office: 855-893-7333<br />
+                Intake: (601) 720-3718<br />
                 Email: info@mercyhouse.org
+              </p>
+              <p className="text-slate-300 text-xs mt-2">
+                Monday – Friday: 8am - 5pm
               </p>
               <div className="mt-4 space-y-2">
                 <a

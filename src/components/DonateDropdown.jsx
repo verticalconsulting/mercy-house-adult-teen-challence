@@ -32,6 +32,12 @@ export default function DonateDropdown({ className = "", size = "default" }) {
           <span className="font-semibold">General Donation</span>
         </DropdownMenuItem>
         <DropdownMenuItem asChild className="cursor-pointer">
+          <Link to={createPageUrl('Support')}>
+            <Heart className="w-4 h-4 mr-2 text-navy dark:text-gold" />
+            <span className="font-semibold">Monthly Support</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild className="cursor-pointer">
           <Link to={createPageUrl('SponsorStudent')}>
             <Users className="w-4 h-4 mr-2 text-navy dark:text-gold" />
             <span className="font-semibold">Sponsor a Student</span>

@@ -174,7 +174,7 @@ export default function Layout({ children, currentPageName }) {
                 </div>
               ))}
               <div className="pt-4">
-                <DonateDropdown className="w-full" />
+                <DonateDropdown className="w-full" onItemClick={() => setMobileMenuOpen(false)} />
               </div>
             </div>
           </div>

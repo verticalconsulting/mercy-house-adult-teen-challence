@@ -65,7 +65,7 @@ export default function Home() {
                 <img
                   src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
                   alt="Women's Campus"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-[center_30%]"
                 />
               </div>
               <div className="p-8">

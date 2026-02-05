@@ -112,7 +112,7 @@ export default function TestimonialManager() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold text-navy dark:text-gold">Testimonials</h2>
-        <Button onClick={() => setShowForm(!showForm)} className="bg-navy dark:bg-gold text-white dark:text-navy">
+        <Button onClick={() => setShowForm(!showForm)} className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
           <Plus className="w-4 h-4 mr-2" />
           Add Testimonial
         </Button>

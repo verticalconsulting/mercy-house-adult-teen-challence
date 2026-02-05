@@ -11,8 +11,10 @@ import { toast } from 'react-hot-toast';
 export default function BlogGenerator() {
   const [generating, setGenerating] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [posting, setPosting] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [generatedContent, setGeneratedContent] = useState(null);
+  const [postToFacebook, setPostToFacebook] = useState(false);
 
   const promptTemplates = [
     {

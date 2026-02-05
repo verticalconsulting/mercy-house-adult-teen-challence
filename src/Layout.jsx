@@ -219,6 +219,17 @@ export default function Layout({ children, currentPageName }) {
                 Monday – Friday: 8am - 5pm
               </p>
               <div className="mt-4 space-y-2">
+                <div className="flex gap-2">
+                  <a
+                    href="https://www.facebook.com/mercyhouseteenchallenge"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-gold transition-colors"
+                    aria-label="Visit our Facebook page"
+                  >
+                    <Facebook className="w-6 h-6" />
+                  </a>
+                </div>
                 <a
                   href={base44.agents.getWhatsAppConnectURL('intake_support')}
                   target="_blank"

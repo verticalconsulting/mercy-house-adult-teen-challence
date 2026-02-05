@@ -63,12 +63,20 @@
   
   /* Mobile-first base font size - larger for better readability */
   html {
-    font-size: 16px;
+    font-size: 18px;
   }
   
   @media (min-width: 768px) {
     html {
       font-size: 16px;
+    }
+  }
+  
+  /* Ensure minimum touch target sizes on mobile */
+  @media (max-width: 767px) {
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
     }
   }
 }

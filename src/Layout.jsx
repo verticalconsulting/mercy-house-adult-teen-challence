@@ -41,10 +41,10 @@ export default function Layout({ children, currentPageName }) {
             {/* Logo */}
             <Link to={createPageUrl('Home')} className="flex items-center space-x-3 group">
               <div className="flex flex-col">
-                <span className="text-xl md:text-2xl font-bold text-navy dark:text-gold transition-colors duration-300">
+                <span className="text-2xl md:text-2xl font-bold text-navy dark:text-gold transition-colors duration-300">
                   Mercy House
                 </span>
-                <span className="text-xs md:text-xs text-slate-600 dark:text-slate-400 tracking-wider">
+                <span className="text-sm md:text-xs text-slate-600 dark:text-slate-400 tracking-wider">
                   ADULT & TEEN CHALLENGE
                 </span>
               </div>
@@ -58,17 +58,17 @@ export default function Layout({ children, currentPageName }) {
                     <div>
                       <Link
                         to={createPageUrl(item.path)}
-                        className="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors duration-200 flex items-center"
+                        className="px-4 py-2 text-base md:text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors duration-200 flex items-center"
                       >
                         {item.name}
-                        <ChevronDown className="ml-1 w-4 h-4" />
+                        <ChevronDown className="ml-1 w-5 h-5 md:w-4 md:h-4" />
                       </Link>
                       <div className="absolute left-0 mt-0 w-56 bg-white dark:bg-slate-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-slate-200 dark:border-slate-700">
                         {item.submenu.map((subItem) => (
                           <Link
                             key={subItem.name}
                             to={createPageUrl(subItem.path)}
-                            className="block px-4 py-3 text-base md:text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
+                            className="block px-4 py-3 text-lg md:text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
                           >
                             {subItem.name}
                           </Link>
@@ -78,7 +78,7 @@ export default function Layout({ children, currentPageName }) {
                   ) : (
                     <Link
                       to={createPageUrl(item.path)}
-                      className={`px-4 py-2 text-base md:text-sm font-medium transition-colors duration-200 ${
+                      className={`px-4 py-2 text-lg md:text-sm font-medium transition-colors duration-200 ${
                         currentPageName === item.path
                           ? 'text-navy dark:text-gold border-b-2 border-navy dark:border-gold'
                           : 'text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold'
@@ -97,32 +97,32 @@ export default function Layout({ children, currentPageName }) {
                 href="https://www.facebook.com/mercyhouseteenchallenge"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors"
+                className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors p-2"
                 aria-label="Visit our Facebook page"
               >
-                <Facebook className="w-5 h-5" />
+                <Facebook className="w-6 h-6" />
               </a>
               <DarkModeToggle />
               <DonateDropdown size="sm" />
             </div>
 
             {/* Mobile menu button */}
-            <div className="lg:hidden flex items-center space-x-3">
+            <div className="lg:hidden flex items-center space-x-2">
               <a
                 href="https://www.facebook.com/mercyhouseteenchallenge"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors"
+                className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors p-2"
                 aria-label="Visit our Facebook page"
               >
-                <Facebook className="w-5 h-5" />
+                <Facebook className="w-7 h-7" />
               </a>
               <DarkModeToggle />
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors"
+                className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors p-2"
               >
-                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {mobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
               </button>
             </div>
           </div>
@@ -138,10 +138,10 @@ export default function Layout({ children, currentPageName }) {
                     <div>
                       <button
                         onClick={() => setMicroBusinessOpen(!microBusinessOpen)}
-                        className="w-full flex items-center justify-between px-4 py-3 text-base md:text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors"
+                        className="w-full flex items-center justify-between px-4 py-4 text-lg md:text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors"
                         >
                         {item.name}
-                        <ChevronDown className={`w-4 h-4 transition-transform ${microBusinessOpen ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`w-6 h-6 md:w-4 md:h-4 transition-transform ${microBusinessOpen ? 'rotate-180' : ''}`} />
                       </button>
                       {microBusinessOpen && (
                         <div className="ml-4 mt-2 space-y-1">
@@ -150,7 +150,7 @@ export default function Layout({ children, currentPageName }) {
                               key={subItem.name}
                               to={createPageUrl(subItem.path)}
                               onClick={() => setMobileMenuOpen(false)}
-                              className="block px-4 py-2 text-base md:text-sm text-slate-600 dark:text-slate-300 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors"
+                              className="block px-4 py-3 text-lg md:text-sm text-slate-600 dark:text-slate-300 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors"
                             >
                               {subItem.name}
                             </Link>
@@ -162,7 +162,7 @@ export default function Layout({ children, currentPageName }) {
                     <Link
                       to={createPageUrl(item.path)}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block px-4 py-3 text-base md:text-sm font-medium rounded-lg transition-colors ${
+                      className={`block px-4 py-4 text-lg md:text-sm font-medium rounded-lg transition-colors ${
                         currentPageName === item.path
                           ? 'bg-navy/10 dark:bg-gold/10 text-navy dark:text-gold'
                           : 'text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10'
@@ -192,14 +192,14 @@ export default function Layout({ children, currentPageName }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-lg md:text-xl font-bold text-gold mb-4">Mercy House</h3>
-              <p className="text-slate-300 text-base md:text-sm leading-relaxed">
+              <h3 className="text-xl md:text-xl font-bold text-gold mb-4">Mercy House</h3>
+              <p className="text-slate-300 text-lg md:text-sm leading-relaxed">
                 Providing an effective and comprehensive Christian faith-based solution to life-controlling problems for over 15 years.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold text-lg md:text-base text-gold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-lg md:text-base">
+              <h4 className="font-semibold text-xl md:text-base text-gold mb-4">Quick Links</h4>
+              <ul className="space-y-3 text-lg md:text-base">
                 <li><Link to={createPageUrl('WomensCampus')} className="text-slate-300 hover:text-gold transition-colors">Women's Campus</Link></li>
                 <li><Link to={createPageUrl('MensCampus')} className="text-slate-300 hover:text-gold transition-colors">Men's Campus</Link></li>
                 <li><Link to={createPageUrl('MicroBusinesses')} className="text-slate-300 hover:text-gold transition-colors">Micro Businesses</Link></li>
@@ -209,34 +209,34 @@ export default function Layout({ children, currentPageName }) {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-lg md:text-base text-gold mb-4">Contact</h4>
+              <h4 className="font-semibold text-xl md:text-base text-gold mb-4">Contact</h4>
               <p className="text-slate-300 text-lg md:text-base leading-relaxed">
                 Office: 855-893-7333<br />
                 Intake: (601) 720-3718<br />
                 Email: info@mercyhouse.org
               </p>
-              <p className="text-slate-300 text-base md:text-sm mt-2">
+              <p className="text-slate-300 text-lg md:text-sm mt-2">
                 Monday – Friday: 8am - 5pm
               </p>
-              <div className="mt-4 space-y-2">
+              <div className="mt-4 space-y-3">
                 <div className="flex gap-2">
                   <a
                     href="https://www.facebook.com/mercyhouseteenchallenge"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-gold transition-colors"
+                    className="text-white hover:text-gold transition-colors p-2"
                     aria-label="Visit our Facebook page"
                   >
-                    <Facebook className="w-6 h-6" />
+                    <Facebook className="w-8 h-8 md:w-6 md:h-6" />
                   </a>
                 </div>
                 <a
                   href={base44.agents.getWhatsAppConnectURL('intake_support')}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors font-semibold"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors font-semibold text-lg md:text-base"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <MessageCircle className="w-5 h-5 md:w-4 md:h-4" />
                   Chat on WhatsApp
                 </a>
                 <DonateDropdown className="w-full" />

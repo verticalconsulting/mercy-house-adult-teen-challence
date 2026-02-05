@@ -4,6 +4,7 @@ import { createPageUrl } from '../utils';
 import { ArrowRight, Heart, Users, TrendingUp, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DonateButton from '../components/DonateButton';
+import FeaturedTestimonials from '../components/FeaturedTestimonials';
 
 export default function Home() {
   return (

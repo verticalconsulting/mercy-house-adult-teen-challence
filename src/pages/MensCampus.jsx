@@ -23,7 +23,7 @@ export default function MensCampus() {
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=1920&q=80"
+            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80"
             alt="Men's Campus"
             className="w-full h-full object-cover"
           />

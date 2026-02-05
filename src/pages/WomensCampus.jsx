@@ -25,7 +25,7 @@ export default function WomensCampus() {
           <img
             src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1920&q=80"
             alt="Women's Campus"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-navy/90 to-navy/60 dark:from-slate-900/95 dark:to-slate-900/70" />
         </div>

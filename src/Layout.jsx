@@ -174,13 +174,15 @@ export default function Layout({ children, currentPageName }) {
                   )}
                 </div>
               ))}
-              <div className="pt-4">
-                <DonateDropdown className="w-full" onItemClick={() => setMobileMenuOpen(false)} />
-              </div>
             </div>
           </div>
         )}
       </header>
+
+      {/* Floating Donate Button - Mobile Only */}
+      <div className="lg:hidden fixed top-24 right-4 z-40">
+        <DonateDropdown onItemClick={() => setMobileMenuOpen(false)} />
+      </div>
 
       {/* Main Content */}
       <main>{children}</main>

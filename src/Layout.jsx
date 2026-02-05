@@ -38,10 +38,10 @@ export default function Layout({ children, currentPageName }) {
             {/* Logo */}
             <Link to={createPageUrl('Home')} className="flex items-center space-x-3 group">
               <div className="flex flex-col">
-                <span className="text-2xl font-bold text-navy dark:text-gold transition-colors duration-300">
+                <span className="text-xl md:text-2xl font-bold text-navy dark:text-gold transition-colors duration-300">
                   Mercy House
                 </span>
-                <span className="text-xs text-slate-600 dark:text-slate-400 tracking-wider">
+                <span className="text-xs md:text-xs text-slate-600 dark:text-slate-400 tracking-wider">
                   ADULT & TEEN CHALLENGE
                 </span>
               </div>
@@ -65,7 +65,7 @@ export default function Layout({ children, currentPageName }) {
                           <Link
                             key={subItem.name}
                             to={createPageUrl(subItem.path)}
-                            className="block px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
+                            className="block px-4 py-3 text-base md:text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
                           >
                             {subItem.name}
                           </Link>
@@ -75,7 +75,7 @@ export default function Layout({ children, currentPageName }) {
                   ) : (
                     <Link
                       to={createPageUrl(item.path)}
-                      className={`px-4 py-2 text-sm font-medium transition-colors duration-200 ${
+                      className={`px-4 py-2 text-base md:text-sm font-medium transition-colors duration-200 ${
                         currentPageName === item.path
                           ? 'text-navy dark:text-gold border-b-2 border-navy dark:border-gold'
                           : 'text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold'
@@ -117,8 +117,8 @@ export default function Layout({ children, currentPageName }) {
                     <div>
                       <button
                         onClick={() => setMicroBusinessOpen(!microBusinessOpen)}
-                        className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors"
-                      >
+                        className="w-full flex items-center justify-between px-4 py-3 text-base md:text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors"
+                        >
                         {item.name}
                         <ChevronDown className={`w-4 h-4 transition-transform ${microBusinessOpen ? 'rotate-180' : ''}`} />
                       </button>
@@ -129,7 +129,7 @@ export default function Layout({ children, currentPageName }) {
                               key={subItem.name}
                               to={createPageUrl(subItem.path)}
                               onClick={() => setMobileMenuOpen(false)}
-                              className="block px-4 py-2 text-sm text-slate-600 dark:text-slate-300 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors"
+                              className="block px-4 py-2 text-base md:text-sm text-slate-600 dark:text-slate-300 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors"
                             >
                               {subItem.name}
                             </Link>
@@ -141,7 +141,7 @@ export default function Layout({ children, currentPageName }) {
                     <Link
                       to={createPageUrl(item.path)}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                      className={`block px-4 py-3 text-base md:text-sm font-medium rounded-lg transition-colors ${
                         currentPageName === item.path
                           ? 'bg-navy/10 dark:bg-gold/10 text-navy dark:text-gold'
                           : 'text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10'
@@ -171,14 +171,14 @@ export default function Layout({ children, currentPageName }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-xl font-bold text-gold mb-4">Mercy House</h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
+              <h3 className="text-lg md:text-xl font-bold text-gold mb-4">Mercy House</h3>
+              <p className="text-slate-300 text-base md:text-sm leading-relaxed">
                 Providing an effective and comprehensive Christian faith-based solution to life-controlling problems for over 15 years.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold text-gold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm">
+              <h4 className="font-semibold text-base md:text-base text-gold mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-base md:text-sm">
                 <li><Link to={createPageUrl('WomensCampus')} className="text-slate-300 hover:text-gold transition-colors">Women's Campus</Link></li>
                 <li><Link to={createPageUrl('MensCampus')} className="text-slate-300 hover:text-gold transition-colors">Men's Campus</Link></li>
                 <li><Link to={createPageUrl('MicroBusinesses')} className="text-slate-300 hover:text-gold transition-colors">Micro Businesses</Link></li>
@@ -187,13 +187,13 @@ export default function Layout({ children, currentPageName }) {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gold mb-4">Contact</h4>
-              <p className="text-slate-300 text-sm">
+              <h4 className="font-semibold text-base md:text-base text-gold mb-4">Contact</h4>
+              <p className="text-slate-300 text-base md:text-sm">
                 Office: 855-893-7333<br />
                 Intake: (601) 720-3718<br />
                 Email: info@mercyhouse.org
               </p>
-              <p className="text-slate-300 text-xs mt-2">
+              <p className="text-slate-300 text-sm md:text-xs mt-2">
                 Monday – Friday: 8am - 5pm
               </p>
               <div className="mt-4 space-y-2">
@@ -210,7 +210,7 @@ export default function Layout({ children, currentPageName }) {
               </div>
             </div>
           </div>
-          <div className="border-t border-slate-700 mt-8 pt-8 text-center text-sm text-slate-400">
+          <div className="border-t border-slate-700 mt-8 pt-8 text-center text-base md:text-sm text-slate-400">
             <p>&copy; {new Date().getFullYear()} Mercy House Adult & Teen Challenge. All rights reserved.</p>
             <p className="mt-2">110% of individual donor proceeds go directly to our mission.</p>
           </div>

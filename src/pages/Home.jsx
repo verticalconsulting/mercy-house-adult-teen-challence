@@ -261,6 +261,31 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials */}
+      <section className="py-20 bg-white dark:bg-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy dark:text-gold mb-4">
+              Stories of Transformation
+            </h2>
+            <p className="text-base md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+              Real stories from graduates who found hope, healing, and a new life.
+            </p>
+          </div>
+
+          <FeaturedTestimonials />
+
+          <div className="text-center mt-8">
+            <Link to={createPageUrl('Testimonials')}>
+              <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
+                Read More Stories
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Additional Programs */}
       <section className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

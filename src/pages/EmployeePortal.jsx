@@ -192,7 +192,7 @@ export default function EmployeePortal() {
         <h1 className="text-4xl font-bold text-navy dark:text-gold mb-8">Employee Portal</h1>
 
         <Tabs defaultValue="applications">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="applications">
               <FileText className="w-4 h-4 mr-2" />
               Applications
@@ -200,6 +200,10 @@ export default function EmployeePortal() {
             <TabsTrigger value="beds">
               <Users className="w-4 h-4 mr-2" />
               Bed Management
+            </TabsTrigger>
+            <TabsTrigger value="testimonials">
+              <Users className="w-4 h-4 mr-2" />
+              Testimonials
             </TabsTrigger>
             <TabsTrigger value="integrations">
               <Settings className="w-4 h-4 mr-2" />
@@ -358,6 +362,10 @@ export default function EmployeePortal() {
                 </CardContent>
               </Card>
             </div>
+          </TabsContent>
+
+          <TabsContent value="testimonials" className="mt-6">
+            <TestimonialManager />
           </TabsContent>
 
           <TabsContent value="integrations" className="mt-6">

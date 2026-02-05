@@ -5,17 +5,32 @@ import { Button } from '@/components/ui/button';
 export default function VehicleDonation() {
   return (
     <div className="w-full">
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="text-6xl mb-4">🚗</div>
-            <h1 className="text-5xl font-bold text-navy dark:text-gold mb-6">
+      {/* Hero Section */}
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983b4b00291b5dfd8507106/6b9354c99_vette.png"
+            alt="Vehicle Donation"
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/70 to-transparent dark:from-slate-900/90 dark:via-slate-900/75" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+          <div className="max-w-3xl">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
               Vehicle Donation Program
             </h1>
-            <p className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-slate-100 leading-relaxed">
               Donate your car, truck, RV, boat, or motorcycle to support life transformation. Get a tax deduction while making a difference!
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg">

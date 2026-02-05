@@ -47,38 +47,40 @@
  *
  * The mainPage value must match a key in the PAGES object exactly.
  */
-import Home from './pages/Home';
-import WomensCampus from './pages/WomensCampus';
-import MensCampus from './pages/MensCampus';
-import IntakeForm from './pages/IntakeForm';
-import MicroBusinesses from './pages/MicroBusinesses';
-import ThriftStore from './pages/ThriftStore';
-import VehicleDonation from './pages/VehicleDonation';
-import MercyAutoAcademy from './pages/MercyAutoAcademy';
-import ProductsPurpose from './pages/ProductsPurpose';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import EmployeePortal from './pages/EmployeePortal';
-import Support from './pages/Support';
+import Home from './pages/Home';
+import IntakeForm from './pages/IntakeForm';
+import MensCampus from './pages/MensCampus';
+import MercyAutoAcademy from './pages/MercyAutoAcademy';
+import MicroBusinesses from './pages/MicroBusinesses';
+import ProductsPurpose from './pages/ProductsPurpose';
 import SponsorStudent from './pages/SponsorStudent';
+import Support from './pages/Support';
+import ThriftStore from './pages/ThriftStore';
+import VehicleDonation from './pages/VehicleDonation';
+import WomensCampus from './pages/WomensCampus';
+import Contact from './pages/Contact';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
-    "Home": Home,
-    "WomensCampus": WomensCampus,
-    "MensCampus": MensCampus,
-    "IntakeForm": IntakeForm,
-    "MicroBusinesses": MicroBusinesses,
-    "ThriftStore": ThriftStore,
-    "VehicleDonation": VehicleDonation,
-    "MercyAutoAcademy": MercyAutoAcademy,
-    "ProductsPurpose": ProductsPurpose,
     "Blog": Blog,
     "BlogPost": BlogPost,
     "EmployeePortal": EmployeePortal,
-    "Support": Support,
+    "Home": Home,
+    "IntakeForm": IntakeForm,
+    "MensCampus": MensCampus,
+    "MercyAutoAcademy": MercyAutoAcademy,
+    "MicroBusinesses": MicroBusinesses,
+    "ProductsPurpose": ProductsPurpose,
     "SponsorStudent": SponsorStudent,
+    "Support": Support,
+    "ThriftStore": ThriftStore,
+    "VehicleDonation": VehicleDonation,
+    "WomensCampus": WomensCampus,
+    "Contact": Contact,
 }
 
 export const pagesConfig = {

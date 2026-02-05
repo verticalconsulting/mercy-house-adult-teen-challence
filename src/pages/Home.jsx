@@ -162,6 +162,142 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Origin Story */}
+      <section className="py-20 bg-white dark:bg-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">Our Story</h2>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+              Mercy House Adult and Teen Challenge was founded in 1960 by David Wilkerson, an Assemblies of God pastor who left a rural Pennsylvania church to work on the street among teenage gang members and socially marginalized people in New York City. David Wilkerson is perhaps best known for authoring The Cross and the Switchblade and founding Times Square Church.
+            </p>
+            <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+              Teen Challenge started its first residential program in December 1960, in a house in Brooklyn. Since then, the program has grown to help thousands of individuals find freedom from life-controlling problems through the power of Jesus Christ.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 4 Phases */}
+      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-4">Our 4 Phase Program</h2>
+          <p className="text-center text-lg text-slate-600 dark:text-slate-300 mb-12 max-w-3xl mx-auto">
+            Life transformation through a structured, progressive approach
+          </p>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                phase: 'Phase 1',
+                title: 'Why was I created?',
+                description: 'Dealing with past wounds. How to move forward from life altering dependency.'
+              },
+              {
+                phase: 'Phase 2',
+                title: 'Conflict resolution',
+                description: 'Building healthy relationships. Dealing with triggers. Continued in-depth Bible studies.'
+              },
+              {
+                phase: 'Phase 3',
+                title: 'Move into our transition home',
+                description: 'Get a job. Pay fines. Get a driver\'s license. Marriage counseling. Improved life skills.'
+              },
+              {
+                phase: 'Phase 4',
+                title: 'Transition to alumni home',
+                description: 'Have accountability. Live freely. Develop a new life.'
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg border-l-4 border-gold">
+                <div className="text-gold font-bold text-sm mb-2">{item.phase}</div>
+                <h3 className="text-2xl font-bold text-navy dark:text-gold mb-3">{item.title}</h3>
+                <p className="text-slate-600 dark:text-slate-300">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Values & Beliefs */}
+      <section className="py-20 bg-white dark:bg-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">Our Values & Beliefs</h2>
+          
+          <div className="space-y-12">
+            {/* Studies Centered In Christ */}
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Studies Centered In Christ</h3>
+              <p className="text-lg text-slate-700 dark:text-slate-300 mb-4">
+                Our studies are designed to teach about Christ, the Word of God, and how to live a godly life once graduating the program. This curriculum is based on the nationally accredited Teen Challenge Group Studies, Personal Studies, and Advanced Studies for New Life In Christ.
+              </p>
+              <ul className="space-y-2 text-slate-700 dark:text-slate-300">
+                <li><strong>Personal Studies</strong> – Focuses on contract-work based on individual needs for recovery and capabilities</li>
+                <li><strong>Group Studies</strong> – Focuses on successful Christian living and 14 core classes developed by Adult & Teen Challenge</li>
+                <li><strong>Advanced Studies</strong> – Focuses on deeper spiritual principles and an in-depth look at Scripture</li>
+              </ul>
+            </div>
+
+            {/* Work Centered In Christ */}
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Work Centered In Christ</h3>
+              <p className="text-lg text-slate-700 dark:text-slate-300 mb-4">
+                We believe hardwork and dedication are critical to recovery. Our program has a variety of skilled labor positions that students will train in:
+              </p>
+              <ul className="space-y-2 text-slate-700 dark:text-slate-300">
+                <li>• Mercy House Thrift Store</li>
+                <li>• Mercy House Auto Center</li>
+                <li>• Woodshop/Craft Center</li>
+              </ul>
+            </div>
+
+            {/* Worship Centered In Christ */}
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Worship Centered In Christ</h3>
+              <p className="text-lg text-slate-700 dark:text-slate-300">
+                We believe in passionate and loving fellowship with God. We have set times daily for praise and worship. Students will attend Sunday church services and also have the opportunity to visit various churches and ministries in Mississippi.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Programs */}
+      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">More Than Recovery</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg">
+              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Life Transformation</h3>
+              <p className="text-slate-700 dark:text-slate-300">
+                Our program is not just to help someone overcome a life debilitating problem, but also to find their life in Christ.
+              </p>
+            </div>
+
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg">
+              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">GED Program</h3>
+              <p className="text-slate-700 dark:text-slate-300">
+                We believe that everyone has the ability to succeed. We can assist those who have not had the chance to move forward in their journey of receiving their diploma.
+              </p>
+            </div>
+
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg">
+              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Discipleship Training</h3>
+              <p className="text-slate-700 dark:text-slate-300">
+                We focus on learning how to process and overcome the stress and pressure of addiction through spiritual teachings.
+              </p>
+            </div>
+
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg">
+              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Family Restoration</h3>
+              <p className="text-slate-700 dark:text-slate-300">
+                Our goal is to help broken families be restored and to help give them a path forward.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -176,9 +312,11 @@ export default function Home() {
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
-          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
-            Contact Us
-          </Button>
+          <Link to={createPageUrl('Contact')}>
+            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+              Contact Us
+            </Button>
+          </Link>
           </div>
         </div>
       </section>

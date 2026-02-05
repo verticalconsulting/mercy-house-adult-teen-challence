@@ -138,7 +138,7 @@ export default function AIAgentChat() {
                   {msg.role === 'user' ? (
                     <p className="text-sm">{msg.content}</p>
                   ) : (
-                    <ReactMarkdown className="text-sm prose prose-sm prose-slate dark:prose-invert max-w-none [&>*]:text-slate-900 dark:[&>*]:text-slate-100">
+                    <ReactMarkdown className="text-sm prose prose-sm max-w-none text-slate-900 dark:text-slate-100 prose-p:text-slate-900 dark:prose-p:text-slate-100 prose-li:text-slate-900 dark:prose-li:text-slate-100 prose-strong:text-slate-900 dark:prose-strong:text-slate-100 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-code:text-slate-800 dark:prose-code:text-slate-200">
                       {msg.content}
                     </ReactMarkdown>
                   )}

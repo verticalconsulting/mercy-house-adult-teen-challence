@@ -18,6 +18,7 @@ import TestimonialManager from '../components/employee/TestimonialManager';
 import VolunteerManager from '../components/employee/VolunteerManager';
 import BlogGenerator from '../components/employee/BlogGenerator';
 import CampaignManager from '../components/employee/CampaignManager';
+import EventManager from '../components/employee/EventManager';
 
 export default function EmployeePortal() {
   const [user, setUser] = useState(null);
@@ -195,7 +196,7 @@ export default function EmployeePortal() {
         <h1 className="text-4xl font-bold text-navy dark:text-gold mb-8">Employee Portal</h1>
 
         <Tabs defaultValue="applications">
-          <TabsList className="grid w-full grid-cols-8">
+          <TabsList className="grid w-full grid-cols-9">
             <TabsTrigger value="applications" className="text-base md:text-sm">
               Applications
             </TabsTrigger>
@@ -207,6 +208,9 @@ export default function EmployeePortal() {
             </TabsTrigger>
             <TabsTrigger value="testimonials" className="text-base md:text-sm">
               Testimonials
+            </TabsTrigger>
+            <TabsTrigger value="events" className="text-base md:text-sm">
+              Events
             </TabsTrigger>
             <TabsTrigger value="blog" className="text-base md:text-sm">
               Blog AI
@@ -377,6 +381,10 @@ export default function EmployeePortal() {
 
           <TabsContent value="testimonials" className="mt-6">
             <TestimonialManager />
+          </TabsContent>
+
+          <TabsContent value="events" className="mt-6">
+            <EventManager />
           </TabsContent>
 
           <TabsContent value="blog" className="mt-6">

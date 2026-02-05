@@ -16,6 +16,7 @@ export default function Layout({ children, currentPageName }) {
     { name: 'Home', path: 'Home' },
     { name: "Women's Campus", path: 'WomensCampus' },
     { name: "Men's Campus", path: 'MensCampus' },
+    { name: 'Events', path: 'Events' },
     {
       name: 'Micro Businesses',
       path: 'MicroBusinesses',
@@ -202,6 +203,7 @@ export default function Layout({ children, currentPageName }) {
               <ul className="space-y-3 text-lg md:text-base">
                 <li><Link to={createPageUrl('WomensCampus')} className="text-slate-300 hover:text-gold transition-colors">Women's Campus</Link></li>
                 <li><Link to={createPageUrl('MensCampus')} className="text-slate-300 hover:text-gold transition-colors">Men's Campus</Link></li>
+                <li><Link to={createPageUrl('Events')} className="text-slate-300 hover:text-gold transition-colors">Events</Link></li>
                 <li><Link to={createPageUrl('MicroBusinesses')} className="text-slate-300 hover:text-gold transition-colors">Micro Businesses</Link></li>
                 <li><Link to={createPageUrl('Blog')} className="text-slate-300 hover:text-gold transition-colors">News & Events</Link></li>
                 <li><Link to={createPageUrl('Volunteer')} className="text-slate-300 hover:text-gold transition-colors">Volunteer</Link></li>

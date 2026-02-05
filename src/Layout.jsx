@@ -94,7 +94,7 @@ export default function Layout({ children, currentPageName }) {
             {/* Right side buttons */}
             <div className="hidden lg:flex items-center space-x-4">
               <a
-                href="https://www.facebook.com/MercyHouseMS"
+                href="https://www.facebook.com/mercyhouseteenchallenge"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors"
@@ -109,7 +109,7 @@ export default function Layout({ children, currentPageName }) {
             {/* Mobile menu button */}
             <div className="lg:hidden flex items-center space-x-3">
               <a
-                href="https://www.facebook.com/MercyHouseMS"
+                href="https://www.facebook.com/mercyhouseteenchallenge"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors"

@@ -5,6 +5,7 @@ import { Menu, X, ChevronDown, MessageCircle } from 'lucide-react';
 import DarkModeToggle from './components/DarkModeToggle';
 import DonateDropdown from './components/DonateDropdown';
 import AIAgentChat from './components/AIAgentChat';
+import ScrollToTop from './components/ScrollToTop';
 import { base44 } from '@/api/base44Client';
 
 export default function Layout({ children, currentPageName }) {
@@ -32,6 +33,7 @@ export default function Layout({ children, currentPageName }) {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+      <ScrollToTop />
       {/* Header */}
       <header className="bg-white dark:bg-slate-800 shadow-md sticky top-0 z-50 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

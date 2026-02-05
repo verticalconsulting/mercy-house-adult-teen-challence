@@ -180,23 +180,24 @@ export default function Layout({ children, currentPageName }) {
               </p>
             </div>
             <div>
-              <h4 className="font-semibold text-base md:text-base text-gold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-base md:text-sm">
+              <h4 className="font-semibold text-lg md:text-base text-gold mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-lg md:text-base">
                 <li><Link to={createPageUrl('WomensCampus')} className="text-slate-300 hover:text-gold transition-colors">Women's Campus</Link></li>
                 <li><Link to={createPageUrl('MensCampus')} className="text-slate-300 hover:text-gold transition-colors">Men's Campus</Link></li>
                 <li><Link to={createPageUrl('MicroBusinesses')} className="text-slate-300 hover:text-gold transition-colors">Micro Businesses</Link></li>
                 <li><Link to={createPageUrl('Blog')} className="text-slate-300 hover:text-gold transition-colors">News & Events</Link></li>
+                <li><Link to={createPageUrl('Volunteer')} className="text-slate-300 hover:text-gold transition-colors">Volunteer</Link></li>
                 <li><Link to={createPageUrl('EmployeePortal')} className="text-slate-300 hover:text-gold transition-colors">Employee Portal</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-base md:text-base text-gold mb-4">Contact</h4>
-              <p className="text-slate-300 text-base md:text-sm">
+              <h4 className="font-semibold text-lg md:text-base text-gold mb-4">Contact</h4>
+              <p className="text-slate-300 text-lg md:text-base leading-relaxed">
                 Office: 855-893-7333<br />
                 Intake: (601) 720-3718<br />
                 Email: info@mercyhouse.org
               </p>
-              <p className="text-slate-300 text-sm md:text-xs mt-2">
+              <p className="text-slate-300 text-base md:text-sm mt-2">
                 Monday – Friday: 8am - 5pm
               </p>
               <div className="mt-4 space-y-2">
@@ -213,7 +214,7 @@ export default function Layout({ children, currentPageName }) {
               </div>
             </div>
           </div>
-          <div className="border-t border-slate-700 mt-8 pt-8 text-center text-base md:text-sm text-slate-400">
+          <div className="border-t border-slate-700 mt-8 pt-8 text-center text-lg md:text-base text-slate-400">
             <p>&copy; {new Date().getFullYear()} Mercy House Adult & Teen Challenge. All rights reserved.</p>
             <p className="mt-2">110% of individual donor proceeds go directly to our mission.</p>
           </div>

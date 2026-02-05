@@ -278,9 +278,9 @@ export default function Home() {
 
           <div className="text-center mt-8">
             <Link to={createPageUrl('Testimonials')}>
-              <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
+              <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy text-xl px-8 py-6 font-bold">
                 Read More Stories
-                <ArrowRight className="ml-2 w-4 h-4" />
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
           </div>
@@ -333,13 +333,13 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to={createPageUrl('IntakeForm')}>
-            <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
+            <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-xl shadow-xl">
               Apply Now
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
           <Link to={createPageUrl('Contact')}>
-            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+            <Button variant="outline" className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-navy px-8 py-6 text-xl font-bold">
               Contact Us
             </Button>
           </Link>

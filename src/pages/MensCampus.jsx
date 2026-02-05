@@ -31,10 +31,10 @@ export default function MensCampus() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Men's Campus
           </h1>
-          <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto">
+          <p className="text-lg md:text-2xl text-slate-200 max-w-3xl mx-auto">
             Building men of character, purpose, and strength
           </p>
         </div>
@@ -59,13 +59,13 @@ export default function MensCampus() {
               />
             </div>
             <div>
-              <h2 className="text-4xl font-bold text-navy dark:text-gold mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy dark:text-gold mb-6">
                 Reclaim Your Purpose
               </h2>
-              <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
+              <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
                 Our Men's Campus offers a structured, disciplined environment where men can break the chains of addiction and destructive behaviors through faith-based recovery.
               </p>
-              <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
+              <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
                 We equip men with practical skills, biblical principles, and the accountability needed to become productive members of society and leaders in their communities.
               </p>
               <div className="flex gap-4">
@@ -85,11 +85,11 @@ export default function MensCampus() {
       {/* Program Features */}
       <section className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-navy dark:text-gold mb-12">
             Program Components
           </h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {[
               {
                 icon: Shield,
@@ -114,13 +114,13 @@ export default function MensCampus() {
             ].map((feature, idx) => (
               <div
                 key={idx}
-                className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
               >
-                <feature.icon className="w-12 h-12 text-gold mb-4" />
-                <h3 className="text-xl font-bold text-navy dark:text-gold mb-3">
+                <feature.icon className="w-10 h-10 md:w-12 md:h-12 text-gold mb-4" />
+                <h3 className="text-lg md:text-xl font-bold text-navy dark:text-gold mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300">
+                <p className="text-base md:text-base text-slate-600 dark:text-slate-300">
                   {feature.description}
                 </p>
               </div>
@@ -132,11 +132,11 @@ export default function MensCampus() {
       {/* Daily Schedule */}
       <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-navy dark:text-gold mb-12">
             Daily Structure
           </h2>
           
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             {[
               { time: '6:00 AM', activity: 'Wake Up & Morning Devotions' },
               { time: '7:00 AM', activity: 'Breakfast & Campus Responsibilities' },
@@ -151,12 +151,12 @@ export default function MensCampus() {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-6 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg"
+                className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-6 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg"
               >
-                <div className="text-gold font-bold text-lg min-w-[100px]">
+                <div className="text-gold font-bold text-base md:text-lg md:min-w-[100px]">
                   {item.time}
                 </div>
-                <div className="text-slate-700 dark:text-slate-300">
+                <div className="text-base md:text-base text-slate-700 dark:text-slate-300">
                   {item.activity}
                 </div>
               </div>
@@ -168,9 +168,9 @@ export default function MensCampus() {
       {/* 4 Phases */}
       <section className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">Our 4 Phase Program</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-navy dark:text-gold mb-12">Our 4 Phase Program</h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {[
               {
                 phase: 'Phase 1',
@@ -193,10 +193,10 @@ export default function MensCampus() {
                 description: 'Have accountability. Live freely. Develop a new life.'
               }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg border-l-4 border-gold">
-                <div className="text-gold font-bold text-sm mb-2">{item.phase}</div>
-                <h3 className="text-2xl font-bold text-navy dark:text-gold mb-3">{item.title}</h3>
-                <p className="text-slate-600 dark:text-slate-300">{item.description}</p>
+              <div key={idx} className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl shadow-lg border-l-4 border-gold">
+                <div className="text-gold font-bold text-base md:text-sm mb-2">{item.phase}</div>
+                <h3 className="text-xl md:text-2xl font-bold text-navy dark:text-gold mb-3">{item.title}</h3>
+                <p className="text-base md:text-base text-slate-600 dark:text-slate-300">{item.description}</p>
               </div>
             ))}
           </div>
@@ -206,33 +206,33 @@ export default function MensCampus() {
       {/* Values & Additional Programs */}
       <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">More Than Recovery</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-navy dark:text-gold mb-12">More Than Recovery</h2>
           
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl">
-              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Life Transformation</h3>
-              <p className="text-slate-700 dark:text-slate-300">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12">
+            <div className="bg-slate-50 dark:bg-slate-900 p-6 md:p-8 rounded-xl">
+              <h3 className="text-xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Life Transformation</h3>
+              <p className="text-base md:text-base text-slate-700 dark:text-slate-300">
                 Our program is not just to help someone overcome a life debilitating problem, but also to find their life in Christ.
               </p>
             </div>
 
-            <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl">
-              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">GED Program</h3>
-              <p className="text-slate-700 dark:text-slate-300">
+            <div className="bg-slate-50 dark:bg-slate-900 p-6 md:p-8 rounded-xl">
+              <h3 className="text-xl md:text-2xl font-bold text-navy dark:text-gold mb-4">GED Program</h3>
+              <p className="text-base md:text-base text-slate-700 dark:text-slate-300">
                 We believe that everyone has the ability to succeed. We can assist those who have not had the chance to move forward in their journey of receiving their diploma.
               </p>
             </div>
 
-            <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl">
-              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Discipleship Training</h3>
-              <p className="text-slate-700 dark:text-slate-300">
+            <div className="bg-slate-50 dark:bg-slate-900 p-6 md:p-8 rounded-xl">
+              <h3 className="text-xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Discipleship Training</h3>
+              <p className="text-base md:text-base text-slate-700 dark:text-slate-300">
                 We focus on learning how to process and overcome the stress and pressure of addiction through spiritual teachings.
               </p>
             </div>
 
-            <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl">
-              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Family Restoration</h3>
-              <p className="text-slate-700 dark:text-slate-300">
+            <div className="bg-slate-50 dark:bg-slate-900 p-6 md:p-8 rounded-xl">
+              <h3 className="text-xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Family Restoration</h3>
+              <p className="text-base md:text-base text-slate-700 dark:text-slate-300">
                 Our goal is to help broken families be restored and to help give them a path forward.
               </p>
             </div>
@@ -243,8 +243,8 @@ export default function MensCampus() {
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Take the First Step</h2>
-          <p className="text-xl mb-8 text-slate-200">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Take the First Step</h2>
+          <p className="text-lg md:text-xl mb-8 text-slate-200">
             Your journey to freedom and purpose begins with a single decision.
           </p>
           <Link to={createPageUrl('IntakeForm')}>

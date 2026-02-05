@@ -49,6 +49,7 @@
  */
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import Contact from './pages/Contact';
 import EmployeePortal from './pages/EmployeePortal';
 import Home from './pages/Home';
 import IntakeForm from './pages/IntakeForm';
@@ -61,13 +62,13 @@ import Support from './pages/Support';
 import ThriftStore from './pages/ThriftStore';
 import VehicleDonation from './pages/VehicleDonation';
 import WomensCampus from './pages/WomensCampus';
-import Contact from './pages/Contact';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
     "Blog": Blog,
     "BlogPost": BlogPost,
+    "Contact": Contact,
     "EmployeePortal": EmployeePortal,
     "Home": Home,
     "IntakeForm": IntakeForm,
@@ -80,7 +81,6 @@ export const PAGES = {
     "ThriftStore": ThriftStore,
     "VehicleDonation": VehicleDonation,
     "WomensCampus": WomensCampus,
-    "Contact": Contact,
 }
 
 export const pagesConfig = {

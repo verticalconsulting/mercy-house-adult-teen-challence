@@ -4,6 +4,7 @@ import { createPageUrl } from '../utils';
 import { ArrowRight, Heart, Users, TrendingUp, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DonateButton from '../components/DonateButton';
+import FeaturedTestimonials from '../components/FeaturedTestimonials';
 
 export default function Home() {
   return (
@@ -132,6 +133,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <FeaturedTestimonials />
+
       {/* Micro Businesses Section */}
       <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -176,11 +180,9 @@ export default function Home() {
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
-          <Link to={createPageUrl('Contact')}>
-            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
-              Contact Us
-            </Button>
-          </Link>
+          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+            Contact Us
+          </Button>
           </div>
         </div>
       </section>

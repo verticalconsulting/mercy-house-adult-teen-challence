@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Wand2, Loader2, Save, Sparkles } from 'lucide-react';
+import { Wand2, Loader2, Save, Sparkles, Globe } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
 export default function BlogGenerator() {
@@ -74,7 +74,7 @@ Make the content engaging, SEO-optimized, and aligned with Christian faith-based
     }
   };
 
-  const saveAsDraft = async () => {
+  const saveBlogPost = async (publish = false) => {
     if (!generatedContent) return;
 
     setSaving(true);
@@ -90,12 +90,12 @@ Make the content engaging, SEO-optimized, and aligned with Christian faith-based
         content: generatedContent.content,
         excerpt: generatedContent.excerpt,
         category: 'success_story',
-        published: false,
+        published: publish,
         tags: generatedContent.tags || [],
         publish_date: new Date().toISOString().split('T')[0]
       });
 
-      toast.success('Blog post saved as draft!');
+      toast.success(publish ? 'Blog post published!' : 'Blog post saved as draft!');
       setGeneratedContent(null);
       setPrompt('');
     } catch (error) {
@@ -183,23 +183,43 @@ Make the content engaging, SEO-optimized, and aligned with Christian faith-based
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
               <span>Generated Content</span>
-              <Button
-                onClick={saveAsDraft}
-                disabled={saving}
-                className="bg-green-600 hover:bg-green-700"
-              >
-                {saving ? (
-                  <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Saving...
-                  </>
-                ) : (
-                  <>
-                    <Save className="w-4 h-4 mr-2" />
-                    Save as Draft
-                  </>
-                )}
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  onClick={() => saveBlogPost(false)}
+                  disabled={saving}
+                  variant="outline"
+                  className="border-slate-300 dark:border-slate-600"
+                >
+                  {saving ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Saving...
+                    </>
+                  ) : (
+                    <>
+                      <Save className="w-4 h-4 mr-2" />
+                      Save as Draft
+                    </>
+                  )}
+                </Button>
+                <Button
+                  onClick={() => saveBlogPost(true)}
+                  disabled={saving}
+                  className="bg-green-600 hover:bg-green-700"
+                >
+                  {saving ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Publishing...
+                    </>
+                  ) : (
+                    <>
+                      <Globe className="w-4 h-4 mr-2" />
+                      Publish Now
+                    </>
+                  )}
+                </Button>
+              </div>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">

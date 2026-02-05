@@ -165,6 +165,81 @@ export default function MensCampus() {
         </div>
       </section>
 
+      {/* 4 Phases */}
+      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">Our 4 Phase Program</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                phase: 'Phase 1',
+                title: 'Why was I created?',
+                description: 'Dealing with past wounds. How to move forward from life altering dependency.'
+              },
+              {
+                phase: 'Phase 2',
+                title: 'Conflict resolution',
+                description: 'Building healthy relationships. Dealing with triggers. Continued in-depth Bible studies.'
+              },
+              {
+                phase: 'Phase 3',
+                title: 'Move into our transition home',
+                description: 'Get a job. Pay fines. Get a driver\'s license. Marriage counseling. Improved life skills.'
+              },
+              {
+                phase: 'Phase 4',
+                title: 'Transition to alumni home',
+                description: 'Have accountability. Live freely. Develop a new life.'
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg border-l-4 border-gold">
+                <div className="text-gold font-bold text-sm mb-2">{item.phase}</div>
+                <h3 className="text-2xl font-bold text-navy dark:text-gold mb-3">{item.title}</h3>
+                <p className="text-slate-600 dark:text-slate-300">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Values & Additional Programs */}
+      <section className="py-20 bg-white dark:bg-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">More Than Recovery</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl">
+              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Life Transformation</h3>
+              <p className="text-slate-700 dark:text-slate-300">
+                Our program is not just to help someone overcome a life debilitating problem, but also to find their life in Christ.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl">
+              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">GED Program</h3>
+              <p className="text-slate-700 dark:text-slate-300">
+                We believe that everyone has the ability to succeed. We can assist those who have not had the chance to move forward in their journey of receiving their diploma.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl">
+              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Discipleship Training</h3>
+              <p className="text-slate-700 dark:text-slate-300">
+                We focus on learning how to process and overcome the stress and pressure of addiction through spiritual teachings.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl">
+              <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Family Restoration</h3>
+              <p className="text-slate-700 dark:text-slate-300">
+                Our goal is to help broken families be restored and to help give them a path forward.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

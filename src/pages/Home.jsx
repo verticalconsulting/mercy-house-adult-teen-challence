@@ -63,9 +63,9 @@ export default function Home() {
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
               <div className="h-64 overflow-hidden">
                 <img
-                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983b4b00291b5dfd8507106/9c81eddc8_women_celebrating.png"
-                  alt="Women's Campus - Celebrating Life Sober"
-                  className="w-full h-full object-cover object-center"
+                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
+                  alt="Women's Campus"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="p-8">
@@ -176,9 +176,11 @@ export default function Home() {
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
-          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
-            Contact Us
-          </Button>
+          <Link to={createPageUrl('Contact')}>
+            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+              Contact Us
+            </Button>
+          </Link>
           </div>
         </div>
       </section>

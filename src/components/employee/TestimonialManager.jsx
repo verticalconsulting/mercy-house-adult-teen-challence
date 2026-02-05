@@ -221,7 +221,7 @@ export default function TestimonialManager() {
               </div>
 
               <div className="flex gap-3">
-                <Button type="submit" className="bg-navy dark:bg-gold text-white dark:text-navy">
+                <Button type="submit" className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
                   {editingTestimonial ? 'Update' : 'Create'} Testimonial
                 </Button>
                 <Button type="button" variant="outline" onClick={resetForm}>

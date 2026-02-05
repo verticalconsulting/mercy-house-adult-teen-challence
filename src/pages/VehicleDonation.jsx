@@ -5,50 +5,35 @@ import { Button } from '@/components/ui/button';
 export default function VehicleDonation() {
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983b4b00291b5dfd8507106/6b9354c99_vette.png"
-            alt="Vehicle Donation"
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/70 to-transparent dark:from-slate-900/90 dark:via-slate-900/75" />
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="text-6xl mb-4">🚗</div>
+            <h1 className="text-5xl font-bold text-navy dark:text-gold mb-6">
               Vehicle Donation Program
             </h1>
-            <p className="text-xl md:text-2xl text-slate-100 leading-relaxed">
+            <p className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto">
               Donate your car, truck, RV, boat, or motorcycle to support life transformation. Get a tax deduction while making a difference!
             </p>
           </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg">
               <h2 className="text-3xl font-bold text-navy dark:text-gold mb-6">Why Donate?</h2>
               <ul className="space-y-4">
                 {[
-                  'Tax deductible donation',
-                  'Free towing service',
-                  'Support recovery programs',
-                  'Quick and easy process',
-                  'Accepts most vehicles',
-                  'Running or not running'
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
+                'Tax deductible donation',
+                'Free towing service',
+                'Support recovery programs',
+                'Quick and easy process',
+                'Accepts most vehicles',
+                'Running or not running'].
+                map((item, idx) =>
+                <li key={idx} className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700 dark:text-slate-300">{item}</span>
                   </li>
-                ))}
+                )}
               </ul>
             </div>
 
@@ -56,12 +41,12 @@ export default function VehicleDonation() {
               <h2 className="text-3xl font-bold text-navy dark:text-gold mb-6">How It Works</h2>
               <div className="space-y-6">
                 {[
-                  { step: '1', title: 'Call or Submit Form', desc: 'Provide basic vehicle information' },
-                  { step: '2', title: 'Schedule Pickup', desc: 'We arrange free towing at your convenience' },
-                  { step: '3', title: 'Get Receipt', desc: 'Receive documentation for tax purposes' },
-                  { step: '4', title: 'Make Impact', desc: 'Your donation funds recovery programs' }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex gap-4">
+                { step: '1', title: 'Call or Submit Form', desc: 'Provide basic vehicle information' },
+                { step: '2', title: 'Schedule Pickup', desc: 'We arrange free towing at your convenience' },
+                { step: '3', title: 'Get Receipt', desc: 'Receive documentation for tax purposes' },
+                { step: '4', title: 'Make Impact', desc: 'Your donation funds recovery programs' }].
+                map((item, idx) =>
+                <div key={idx} className="flex gap-4">
                     <div className="w-12 h-12 rounded-full bg-gold text-navy font-bold flex items-center justify-center flex-shrink-0">
                       {item.step}
                     </div>
@@ -70,7 +55,7 @@ export default function VehicleDonation() {
                       <p className="text-slate-600 dark:text-slate-400 text-sm">{item.desc}</p>
                     </div>
                   </div>
-                ))}
+                )}
               </div>
             </div>
           </div>
@@ -85,7 +70,7 @@ export default function VehicleDonation() {
                 <Phone className="w-5 h-5 mr-2" />
                 Call (555) 123-4567
               </Button>
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg">
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
                 <Car className="w-5 h-5 mr-2" />
                 Submit Online Form
               </Button>
@@ -93,6 +78,6 @@ export default function VehicleDonation() {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>);
+
 }

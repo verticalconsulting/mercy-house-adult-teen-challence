@@ -15,6 +15,7 @@ import ApplicationViewer from '../components/employee/ApplicationViewer';
 import IntegrationsManager from '../components/employee/IntegrationsManager';
 import AgentManager from '../components/employee/AgentManager';
 import TestimonialManager from '../components/employee/TestimonialManager';
+import VolunteerManager from '../components/employee/VolunteerManager';
 
 export default function EmployeePortal() {
   const [user, setUser] = useState(null);
@@ -192,7 +193,7 @@ export default function EmployeePortal() {
         <h1 className="text-4xl font-bold text-navy dark:text-gold mb-8">Employee Portal</h1>
 
         <Tabs defaultValue="applications">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="applications">
               <FileText className="w-4 h-4 mr-2" />
               Applications
@@ -200,6 +201,10 @@ export default function EmployeePortal() {
             <TabsTrigger value="beds">
               <Users className="w-4 h-4 mr-2" />
               Bed Management
+            </TabsTrigger>
+            <TabsTrigger value="volunteers">
+              <Users className="w-4 h-4 mr-2" />
+              Volunteers
             </TabsTrigger>
             <TabsTrigger value="testimonials">
               <Users className="w-4 h-4 mr-2" />
@@ -362,6 +367,10 @@ export default function EmployeePortal() {
                 </CardContent>
               </Card>
             </div>
+          </TabsContent>
+
+          <TabsContent value="volunteers" className="mt-6">
+            <VolunteerManager />
           </TabsContent>
 
           <TabsContent value="testimonials" className="mt-6">

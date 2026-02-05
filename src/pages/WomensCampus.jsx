@@ -15,7 +15,7 @@ export default function WomensCampus() {
     initialData: []
   });
 
-  const womensBedData = bedCounts.find(bc => bc.program_type === 'womens');
+  const womensBedData = bedCounts.find((bc) => bc.program_type === 'womens');
 
   return (
     <div className="w-full">
@@ -23,18 +23,19 @@ export default function WomensCampus() {
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80"
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983b4b00291b5dfd8507106/e7f510047_mississippi-city.png"
             alt="Women's Campus"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-navy/90 to-navy/60 dark:from-slate-900/95 dark:to-slate-900/70" />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Women's Campus
           </h1>
-          <p className="text-lg md:text-2xl text-slate-200 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto">
             A sanctuary for healing, growth, and transformation
           </p>
         </div>
@@ -52,18 +53,18 @@ export default function WomensCampus() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy dark:text-gold mb-6">
+              <h2 className="text-4xl font-bold text-navy dark:text-gold mb-6">
                 A Safe Place to Heal
               </h2>
-              <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
+              <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
                 Our Women's Campus provides a nurturing environment where women can break free from life-controlling problems and rebuild their lives on a foundation of faith, hope, and practical skills.
               </p>
-              <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
+              <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
                 Through comprehensive programming that addresses spiritual, emotional, mental, and physical needs, women gain the tools necessary to become productive members of society.
               </p>
               <div className="flex gap-4">
                 <Link to={createPageUrl('IntakeForm')}>
-                  <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy font-semibold">
+                  <Button className="bg-slate-500 text-white px-4 py-2 text-sm font-semibold rounded-md inline-flex items-center justify-center gap-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow h-9 dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 dark:text-navy">
                     Apply Now
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -75,8 +76,8 @@ export default function WomensCampus() {
               <img
                 src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=800&q=80"
                 alt="Women supporting each other"
-                className="w-full h-full object-cover"
-              />
+                className="w-full h-full object-cover" />
+
             </div>
           </div>
         </div>
@@ -85,46 +86,46 @@ export default function WomensCampus() {
       {/* Program Features */}
       <section className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-navy dark:text-gold mb-12">
+          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">
             Program Components
           </h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              {
-                icon: Heart,
-                title: 'Spiritual Development',
-                description: 'Biblical principles and faith-based counseling to address root causes'
-              },
-              {
-                icon: Users,
-                title: 'Group Support',
-                description: 'Peer support groups and mentorship from women who understand your journey'
-              },
-              {
-                icon: BookOpen,
-                title: 'Education',
-                description: 'GED preparation, life skills training, and personal development courses'
-              },
-              {
-                icon: Briefcase,
-                title: 'Job Training',
-                description: 'Vocational skills through our micro businesses and career development'
-              }
-            ].map((feature, idx) => (
-              <div
-                key={idx}
-                className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-              >
-                <feature.icon className="w-10 h-10 md:w-12 md:h-12 text-gold mb-4" />
-                <h3 className="text-lg md:text-xl font-bold text-navy dark:text-gold mb-3">
+            {
+              icon: Heart,
+              title: 'Spiritual Development',
+              description: 'Biblical principles and faith-based counseling to address root causes'
+            },
+            {
+              icon: Users,
+              title: 'Group Support',
+              description: 'Peer support groups and mentorship from women who understand your journey'
+            },
+            {
+              icon: BookOpen,
+              title: 'Education',
+              description: 'GED preparation, life skills training, and personal development courses'
+            },
+            {
+              icon: Briefcase,
+              title: 'Job Training',
+              description: 'Vocational skills through our micro businesses and career development'
+            }].
+            map((feature, idx) =>
+            <div
+              key={idx}
+              className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+
+                <feature.icon className="w-12 h-12 text-gold mb-4" />
+                <h3 className="text-xl font-bold text-navy dark:text-gold mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-base md:text-base text-slate-600 dark:text-slate-300">
+                <p className="text-slate-600 dark:text-slate-300">
                   {feature.description}
                 </p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -132,116 +133,41 @@ export default function WomensCampus() {
       {/* What to Expect */}
       <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-navy dark:text-gold mb-12">
+          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">
             What to Expect
           </h2>
           
-          <div className="space-y-4 md:space-y-6">
+          <div className="space-y-6">
             {[
-              {
-                phase: 'Phase 1: Foundation (Months 1-3)',
-                description: 'Detox support, orientation to program structure, establishing healthy routines, and beginning spiritual development'
-              },
-              {
-                phase: 'Phase 2: Growth (Months 4-6)',
-                description: 'Deep dive into biblical teaching, life skills classes, trauma counseling, and beginning work therapy'
-              },
-              {
-                phase: 'Phase 3: Development (Months 7-9)',
-                description: 'Advanced job training, leadership opportunities, financial literacy, and independent living preparation'
-              },
-              {
-                phase: 'Phase 4: Transition (Months 10-12)',
-                description: 'Job placement assistance, housing support, aftercare planning, and continued mentorship'
-              }
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="bg-slate-50 dark:bg-slate-900 p-5 md:p-6 rounded-lg border-l-4 border-gold"
-              >
-                <h3 className="text-lg md:text-xl font-bold text-navy dark:text-gold mb-2">
+            {
+              phase: 'Phase 1: Foundation (Months 1-3)',
+              description: 'Detox support, orientation to program structure, establishing healthy routines, and beginning spiritual development'
+            },
+            {
+              phase: 'Phase 2: Growth (Months 4-6)',
+              description: 'Deep dive into biblical teaching, life skills classes, trauma counseling, and beginning work therapy'
+            },
+            {
+              phase: 'Phase 3: Development (Months 7-9)',
+              description: 'Advanced job training, leadership opportunities, financial literacy, and independent living preparation'
+            },
+            {
+              phase: 'Phase 4: Transition (Months 10-12)',
+              description: 'Job placement assistance, housing support, aftercare planning, and continued mentorship'
+            }].
+            map((item, idx) =>
+            <div
+              key={idx}
+              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg border-l-4 border-gold">
+
+                <h3 className="text-xl font-bold text-navy dark:text-gold mb-2">
                   {item.phase}
                 </h3>
-                <p className="text-base md:text-base text-slate-700 dark:text-slate-300">
+                <p className="text-slate-700 dark:text-slate-300">
                   {item.description}
                 </p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4 Phases */}
-      <section className="py-20 bg-white dark:bg-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-navy dark:text-gold mb-12">Our 4 Phase Program</h2>
-          
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-            {[
-              {
-                phase: 'Phase 1',
-                title: 'Why was I created?',
-                description: 'Dealing with past wounds. How to move forward from life altering dependency.'
-              },
-              {
-                phase: 'Phase 2',
-                title: 'Conflict resolution',
-                description: 'Building healthy relationships. Dealing with triggers. Continued in-depth Bible studies.'
-              },
-              {
-                phase: 'Phase 3',
-                title: 'Move into our transition home',
-                description: 'Get a job. Pay fines. Get a driver\'s license. Marriage counseling. Improved life skills.'
-              },
-              {
-                phase: 'Phase 4',
-                title: 'Transition to alumni home',
-                description: 'Have accountability. Live freely. Develop a new life.'
-              }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-slate-50 dark:bg-slate-900 p-6 md:p-8 rounded-xl shadow-lg border-l-4 border-gold">
-                <div className="text-gold font-bold text-base md:text-sm mb-2">{item.phase}</div>
-                <h3 className="text-xl md:text-2xl font-bold text-navy dark:text-gold mb-3">{item.title}</h3>
-                <p className="text-base md:text-base text-slate-600 dark:text-slate-300">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Values & Additional Programs */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-navy dark:text-gold mb-12">More Than Recovery</h2>
-          
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12">
-            <div className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl">
-              <h3 className="text-xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Life Transformation</h3>
-              <p className="text-base md:text-base text-slate-700 dark:text-slate-300">
-                Our program is not just to help someone overcome a life debilitating problem, but also to find their life in Christ.
-              </p>
-            </div>
-
-            <div className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl">
-              <h3 className="text-xl md:text-2xl font-bold text-navy dark:text-gold mb-4">GED Program</h3>
-              <p className="text-base md:text-base text-slate-700 dark:text-slate-300">
-                We believe that everyone has the ability to succeed. We can assist those who have not had the chance to move forward in their journey of receiving their diploma.
-              </p>
-            </div>
-
-            <div className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl">
-              <h3 className="text-xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Discipleship Training</h3>
-              <p className="text-base md:text-base text-slate-700 dark:text-slate-300">
-                We focus on learning how to process and overcome the stress and pressure of addiction through spiritual teachings.
-              </p>
-            </div>
-
-            <div className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl">
-              <h3 className="text-xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Family Restoration</h3>
-              <p className="text-base md:text-base text-slate-700 dark:text-slate-300">
-                Our goal is to help broken families be restored and to help give them a path forward.
-              </p>
-            </div>
+            )}
           </div>
         </div>
       </section>
@@ -249,8 +175,8 @@ export default function WomensCampus() {
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Begin Your Journey?</h2>
-          <p className="text-lg md:text-xl mb-8 text-slate-200">
+          <h2 className="text-4xl font-bold mb-6">Ready to Begin Your Journey?</h2>
+          <p className="text-xl mb-8 text-slate-200">
             Take the first step toward healing and transformation today.
           </p>
           <Link to={createPageUrl('IntakeForm')}>
@@ -261,6 +187,6 @@ export default function WomensCampus() {
           </Link>
         </div>
       </section>
-    </div>
-  );
+    </div>);
+
 }

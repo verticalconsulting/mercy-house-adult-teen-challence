@@ -196,32 +196,32 @@ export default function EmployeePortal() {
         <h1 className="text-4xl font-bold text-navy dark:text-gold mb-8">Employee Portal</h1>
 
         <Tabs defaultValue="applications">
-          <TabsList className="grid w-full grid-cols-9">
-            <TabsTrigger value="applications" className="text-base md:text-sm">
+          <TabsList className="w-full overflow-x-auto flex lg:grid lg:grid-cols-9 justify-start">
+            <TabsTrigger value="applications" className="text-sm flex-shrink-0">
               Applications
             </TabsTrigger>
-            <TabsTrigger value="beds" className="text-base md:text-sm">
+            <TabsTrigger value="beds" className="text-sm flex-shrink-0">
               Beds
             </TabsTrigger>
-            <TabsTrigger value="volunteers" className="text-base md:text-sm">
+            <TabsTrigger value="volunteers" className="text-sm flex-shrink-0">
               Volunteers
             </TabsTrigger>
-            <TabsTrigger value="testimonials" className="text-base md:text-sm">
+            <TabsTrigger value="testimonials" className="text-sm flex-shrink-0">
               Testimonials
             </TabsTrigger>
-            <TabsTrigger value="events" className="text-base md:text-sm">
+            <TabsTrigger value="events" className="text-sm flex-shrink-0">
               Events
             </TabsTrigger>
-            <TabsTrigger value="blog" className="text-base md:text-sm">
+            <TabsTrigger value="blog" className="text-sm flex-shrink-0">
               Blog AI
             </TabsTrigger>
-            <TabsTrigger value="campaigns" className="text-base md:text-sm">
+            <TabsTrigger value="campaigns" className="text-sm flex-shrink-0">
               Campaigns
             </TabsTrigger>
-            <TabsTrigger value="integrations" className="text-base md:text-sm">
+            <TabsTrigger value="integrations" className="text-sm flex-shrink-0">
               Integrations
             </TabsTrigger>
-            <TabsTrigger value="agent" className="text-base md:text-sm">
+            <TabsTrigger value="agent" className="text-sm flex-shrink-0">
               AI Agent
             </TabsTrigger>
           </TabsList>

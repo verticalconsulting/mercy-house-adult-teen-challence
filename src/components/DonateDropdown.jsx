@@ -11,10 +11,6 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 
 export default function DonateDropdown({ className = "", size = "default" }) {
-  const handleGeneralDonate = () => {
-    window.open('https://donate.mercyhouse.org', '_blank');
-  };
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -27,9 +23,11 @@ export default function DonateDropdown({ className = "", size = "default" }) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
-        <DropdownMenuItem onClick={handleGeneralDonate} className="cursor-pointer">
-          <Heart className="w-4 h-4 mr-2 text-navy dark:text-gold" />
-          <span className="font-semibold">General Donation</span>
+        <DropdownMenuItem asChild className="cursor-pointer">
+          <Link to={createPageUrl('Donate')}>
+            <Heart className="w-4 h-4 mr-2 text-navy dark:text-gold" />
+            <span className="font-semibold">General Donation</span>
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild className="cursor-pointer">
           <Link to={createPageUrl('Support')}>

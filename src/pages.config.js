@@ -62,6 +62,7 @@ import Support from './pages/Support';
 import ThriftStore from './pages/ThriftStore';
 import VehicleDonation from './pages/VehicleDonation';
 import WomensCampus from './pages/WomensCampus';
+import Donate from './pages/Donate';
 import __Layout from './Layout.jsx';
 
 
@@ -81,6 +82,7 @@ export const PAGES = {
     "ThriftStore": ThriftStore,
     "VehicleDonation": VehicleDonation,
     "WomensCampus": WomensCampus,
+    "Donate": Donate,
 }
 
 export const pagesConfig = {

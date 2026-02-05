@@ -154,7 +154,7 @@ export default function AIAgentChat() {
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyPress={handleKeyPress}
+                onKeyDown={handleKeyPress}
                 placeholder="Type your message..."
                 disabled={loading}
                 className="flex-1"

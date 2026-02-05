@@ -50,6 +50,7 @@
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
+import Donate from './pages/Donate';
 import EmployeePortal from './pages/EmployeePortal';
 import Home from './pages/Home';
 import IntakeForm from './pages/IntakeForm';
@@ -59,11 +60,10 @@ import MicroBusinesses from './pages/MicroBusinesses';
 import ProductsPurpose from './pages/ProductsPurpose';
 import SponsorStudent from './pages/SponsorStudent';
 import Support from './pages/Support';
+import Testimonials from './pages/Testimonials';
 import ThriftStore from './pages/ThriftStore';
 import VehicleDonation from './pages/VehicleDonation';
 import WomensCampus from './pages/WomensCampus';
-import Donate from './pages/Donate';
-import Testimonials from './pages/Testimonials';
 import __Layout from './Layout.jsx';
 
 
@@ -71,6 +71,7 @@ export const PAGES = {
     "Blog": Blog,
     "BlogPost": BlogPost,
     "Contact": Contact,
+    "Donate": Donate,
     "EmployeePortal": EmployeePortal,
     "Home": Home,
     "IntakeForm": IntakeForm,
@@ -80,11 +81,10 @@ export const PAGES = {
     "ProductsPurpose": ProductsPurpose,
     "SponsorStudent": SponsorStudent,
     "Support": Support,
+    "Testimonials": Testimonials,
     "ThriftStore": ThriftStore,
     "VehicleDonation": VehicleDonation,
     "WomensCampus": WomensCampus,
-    "Donate": Donate,
-    "Testimonials": Testimonials,
 }
 
 export const pagesConfig = {

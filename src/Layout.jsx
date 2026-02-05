@@ -26,6 +26,7 @@ export default function Layout({ children, currentPageName }) {
       ]
     },
     { name: 'News & Events', path: 'Blog' },
+    { name: 'Volunteer', path: 'Volunteer' },
     { name: 'Contact', path: 'Contact' }
   ];
 

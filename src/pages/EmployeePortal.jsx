@@ -17,6 +17,7 @@ import AgentManager from '../components/employee/AgentManager';
 import TestimonialManager from '../components/employee/TestimonialManager';
 import VolunteerManager from '../components/employee/VolunteerManager';
 import BlogGenerator from '../components/employee/BlogGenerator';
+import CampaignManager from '../components/employee/CampaignManager';
 
 export default function EmployeePortal() {
   const [user, setUser] = useState(null);
@@ -194,33 +195,29 @@ export default function EmployeePortal() {
         <h1 className="text-4xl font-bold text-navy dark:text-gold mb-8">Employee Portal</h1>
 
         <Tabs defaultValue="applications">
-          <TabsList className="grid w-full grid-cols-7">
-            <TabsTrigger value="applications">
-              <FileText className="w-4 h-4 mr-2" />
+          <TabsList className="grid w-full grid-cols-8">
+            <TabsTrigger value="applications" className="text-base md:text-sm">
               Applications
             </TabsTrigger>
-            <TabsTrigger value="beds">
-              <Users className="w-4 h-4 mr-2" />
-              Bed Management
+            <TabsTrigger value="beds" className="text-base md:text-sm">
+              Beds
             </TabsTrigger>
-            <TabsTrigger value="volunteers">
-              <Users className="w-4 h-4 mr-2" />
+            <TabsTrigger value="volunteers" className="text-base md:text-sm">
               Volunteers
             </TabsTrigger>
-            <TabsTrigger value="testimonials">
-              <Users className="w-4 h-4 mr-2" />
+            <TabsTrigger value="testimonials" className="text-base md:text-sm">
               Testimonials
             </TabsTrigger>
-            <TabsTrigger value="blog">
-              <FileText className="w-4 h-4 mr-2" />
+            <TabsTrigger value="blog" className="text-base md:text-sm">
               Blog AI
             </TabsTrigger>
-            <TabsTrigger value="integrations">
-              <Settings className="w-4 h-4 mr-2" />
+            <TabsTrigger value="campaigns" className="text-base md:text-sm">
+              Campaigns
+            </TabsTrigger>
+            <TabsTrigger value="integrations" className="text-base md:text-sm">
               Integrations
             </TabsTrigger>
-            <TabsTrigger value="agent">
-              <Bot className="w-4 h-4 mr-2" />
+            <TabsTrigger value="agent" className="text-base md:text-sm">
               AI Agent
             </TabsTrigger>
           </TabsList>
@@ -384,6 +381,10 @@ export default function EmployeePortal() {
 
           <TabsContent value="blog" className="mt-6">
             <BlogGenerator />
+          </TabsContent>
+
+          <TabsContent value="campaigns" className="mt-6">
+            <CampaignManager />
           </TabsContent>
 
           <TabsContent value="integrations" className="mt-6">

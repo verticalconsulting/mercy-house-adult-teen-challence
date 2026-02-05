@@ -5,6 +5,7 @@ import { ArrowRight, Heart, Users, TrendingUp, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button';
 import DonateButton from '../components/DonateButton';
 import FeaturedTestimonials from '../components/FeaturedTestimonials';
+import CampaignProgress from '../components/CampaignProgress';
 
 export default function Home() {
   return (
@@ -109,6 +110,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <FeaturedTestimonials />
+
+      {/* Featured Campaigns */}
+      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">Active Fundraising Campaigns</h2>
+          <CampaignProgress />
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="py-20 bg-navy dark:bg-slate-950 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -132,9 +144,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Testimonials Section */}
-      <FeaturedTestimonials />
 
       {/* Micro Businesses Section */}
       <section className="py-20 bg-white dark:bg-slate-800">

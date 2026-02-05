@@ -5,13 +5,13 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Wand2, Loader2, Save, Sparkles, Globe } from 'lucide-react';
+import { Wand2, Loader2, Save, Sparkles, Globe, Facebook } from 'lucide-react';
 import { toast } from 'react-hot-toast';
+import { Checkbox } from '@/components/ui/checkbox';
 
 export default function BlogGenerator() {
   const [generating, setGenerating] = useState(false);
   const [saving, setSaving] = useState(false);
-  const [posting, setPosting] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [generatedContent, setGeneratedContent] = useState(null);
   const [postToFacebook, setPostToFacebook] = useState(false);
@@ -86,7 +86,7 @@ Make the content engaging, SEO-optimized, and aligned with Christian faith-based
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)/g, '');
 
-      await base44.entities.BlogPost.create({
+      const blogPost = await base44.entities.BlogPost.create({
         title: generatedContent.title,
         slug: slug,
         content: generatedContent.content,
@@ -98,8 +98,30 @@ Make the content engaging, SEO-optimized, and aligned with Christian faith-based
       });
 
       toast.success(publish ? 'Blog post published!' : 'Blog post saved as draft!');
+
+      // Post to Facebook if checkbox is checked and publishing
+      if (postToFacebook && publish) {
+        try {
+          const appUrl = window.location.origin;
+          const blogUrl = `${appUrl}${window.location.pathname}#/BlogPost?id=${blogPost.id}`;
+          
+          const fbResponse = await base44.functions.invoke('postToFacebook', {
+            message: `${generatedContent.title}\n\n${generatedContent.excerpt}\n\nRead more:`,
+            link: blogUrl
+          });
+
+          if (fbResponse.data?.success) {
+            toast.success('Also posted to Facebook! 📘');
+          }
+        } catch (fbError) {
+          console.error('Facebook posting error:', fbError);
+          toast.error('Blog saved but failed to post to Facebook');
+        }
+      }
+
       setGeneratedContent(null);
       setPrompt('');
+      setPostToFacebook(false);
     } catch (error) {
       toast.error('Failed to save: ' + error.message);
     } finally {
@@ -185,42 +207,47 @@ Make the content engaging, SEO-optimized, and aligned with Christian faith-based
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
               <span>Generated Content</span>
-              <div className="flex gap-2">
-                <Button
-                  onClick={() => saveBlogPost(false)}
-                  disabled={saving}
-                  variant="outline"
-                  className="border-slate-300 dark:border-slate-600"
-                >
-                  {saving ? (
-                    <>
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-2">
+                  <Checkbox
+                    id="postToFacebook"
+                    checked={postToFacebook}
+                    onCheckedChange={setPostToFacebook}
+                  />
+                  <Label htmlFor="postToFacebook" className="text-sm font-normal cursor-pointer">
+                    Also post to Facebook when publishing
+                  </Label>
+                </div>
+                <div className="flex gap-2">
+                  <Button
+                    onClick={() => saveBlogPost(false)}
+                    disabled={saving}
+                    variant="outline"
+                    className="border-slate-300 dark:border-slate-600"
+                  >
+                    {saving ? (
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Saving...
-                    </>
-                  ) : (
-                    <>
+                    ) : (
                       <Save className="w-4 h-4 mr-2" />
-                      Save as Draft
-                    </>
-                  )}
-                </Button>
-                <Button
-                  onClick={() => saveBlogPost(true)}
-                  disabled={saving}
-                  className="bg-green-600 hover:bg-green-700"
-                >
-                  {saving ? (
-                    <>
+                    )}
+                    Save as Draft
+                  </Button>
+                  <Button
+                    onClick={() => saveBlogPost(true)}
+                    disabled={saving}
+                    className="bg-green-600 hover:bg-green-700"
+                  >
+                    {saving ? (
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Publishing...
-                    </>
-                  ) : (
-                    <>
-                      <Globe className="w-4 h-4 mr-2" />
-                      Publish Now
-                    </>
-                  )}
-                </Button>
+                    ) : (
+                      <>
+                        <Globe className="w-4 h-4 mr-2" />
+                        {postToFacebook && <Facebook className="w-4 h-4 mr-1" />}
+                      </>
+                    )}
+                    {postToFacebook ? 'Publish & Post to FB' : 'Publish Now'}
+                  </Button>
+                </div>
               </div>
             </CardTitle>
           </CardHeader>

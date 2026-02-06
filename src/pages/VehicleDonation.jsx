@@ -70,9 +70,17 @@ export default function VehicleDonation() {
                 <Phone className="w-5 h-5 mr-2" />
                 Call (555) 123-4567
               </Button>
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+              <Button variant="outline" className="bg-zinc-300 text-white px-8 py-6 text-lg font-medium rounded-md inline-flex items-center justify-center gap-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow-sm h-9 border-2 border-white hover:bg-white hover:text-navy">
                 <Car className="w-5 h-5 mr-2" />
                 Submit Online Form
+              </Button>
+              <Button
+                onClick={() => window.open('https://wheels-give-pros.base44.app', '_blank')}
+                variant="outline"
+                className="bg-zinc-300 text-white px-8 py-6 text-lg font-medium rounded-md inline-flex items-center justify-center gap-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow-sm h-9 border-2 border-white hover:bg-white hover:text-navy"
+              >
+                <Car className="w-5 h-5 mr-2" />
+                Employee VDP
               </Button>
             </div>
           </div>

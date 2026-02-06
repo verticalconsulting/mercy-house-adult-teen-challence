@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
-import { Save, Users, FileText, Eye, CheckCircle, XCircle, Settings, Bot, Trash2, AlertTriangle } from 'lucide-react';
+import { Save, Users, FileText, Eye, CheckCircle, XCircle, Settings, Bot, Trash2, AlertTriangle, RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
 import { format } from 'date-fns';
 import ApplicationViewer from '../components/employee/ApplicationViewer';
@@ -27,7 +27,10 @@ export default function EmployeePortal() {
   const [selectedApp, setSelectedApp] = useState(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const queryClient = useQueryClient();
+  const pullStartY = useRef(0);
+  const isPulling = useRef(false);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -48,6 +51,48 @@ export default function EmployeePortal() {
     };
     checkAuth();
   }, []);
+
+  useEffect(() => {
+    const handleTouchStart = (e) => {
+      if (window.scrollY === 0) {
+        pullStartY.current = e.touches[0].clientY;
+        isPulling.current = true;
+      }
+    };
+
+    const handleTouchMove = (e) => {
+      if (isPulling.current && window.scrollY === 0) {
+        const pullDistance = e.touches[0].clientY - pullStartY.current;
+        if (pullDistance > 80) {
+          isPulling.current = false;
+          handleRefresh();
+        }
+      }
+    };
+
+    const handleTouchEnd = () => {
+      isPulling.current = false;
+    };
+
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, []);
+
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    await Promise.all([
+      queryClient.invalidateQueries({ queryKey: ['applications'] }),
+      queryClient.invalidateQueries({ queryKey: ['bedCounts'] })
+    ]);
+    setTimeout(() => setIsRefreshing(false), 500);
+  };
 
   const { data: applications } = useQuery({
     queryKey: ['applications'],
@@ -208,6 +253,14 @@ export default function EmployeePortal() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12">
+      {/* Refresh indicator */}
+      {isRefreshing && (
+        <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-navy dark:bg-gold text-white dark:text-navy px-4 py-2 rounded-full shadow-lg z-50 flex items-center gap-2">
+          <RefreshCw className="w-4 h-4 animate-spin" />
+          <span className="text-sm font-medium">Refreshing...</span>
+        </div>
+      )}
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-navy dark:text-gold mb-8">Employee Portal</h1>
 

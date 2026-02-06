@@ -6,6 +6,7 @@ import DarkModeToggle from './components/DarkModeToggle';
 import DonateDropdown from './components/DonateDropdown';
 import AIAgentChat from './components/AIAgentChat';
 import ScrollToTop from './components/ScrollToTop';
+import MobileBottomNav from './components/MobileBottomNav';
 import { base44 } from '@/api/base44Client';
 
 export default function Layout({ children, currentPageName }) {
@@ -203,7 +204,10 @@ export default function Layout({ children, currentPageName }) {
       </div>
 
       {/* Main Content */}
-      <main>{children}</main>
+      <main className="pb-20 lg:pb-0">{children}</main>
+
+      {/* Mobile Bottom Navigation */}
+      <MobileBottomNav />
 
       {/* AI Agent Chat */}
       <AIAgentChat />

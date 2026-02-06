@@ -55,6 +55,7 @@ import EmployeePortal from './pages/EmployeePortal';
 import Events from './pages/Events';
 import Home from './pages/Home';
 import IntakeForm from './pages/IntakeForm';
+import MensCampus from './pages/MensCampus';
 import MercyAutoAcademy from './pages/MercyAutoAcademy';
 import MicroBusinesses from './pages/MicroBusinesses';
 import ProductsPurpose from './pages/ProductsPurpose';
@@ -66,7 +67,6 @@ import VehicleDonation from './pages/VehicleDonation';
 import VehicleDonationForm from './pages/VehicleDonationForm';
 import Volunteer from './pages/Volunteer';
 import WomensCampus from './pages/WomensCampus';
-import MensCampus from './pages/MensCampus';
 import __Layout from './Layout.jsx';
 
 
@@ -79,6 +79,7 @@ export const PAGES = {
     "Events": Events,
     "Home": Home,
     "IntakeForm": IntakeForm,
+    "MensCampus": MensCampus,
     "MercyAutoAcademy": MercyAutoAcademy,
     "MicroBusinesses": MicroBusinesses,
     "ProductsPurpose": ProductsPurpose,
@@ -90,7 +91,6 @@ export const PAGES = {
     "VehicleDonationForm": VehicleDonationForm,
     "Volunteer": Volunteer,
     "WomensCampus": WomensCampus,
-    "MensCampus": MensCampus,
 }
 
 export const pagesConfig = {

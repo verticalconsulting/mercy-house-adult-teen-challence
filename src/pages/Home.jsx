@@ -142,46 +142,36 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Link
-              to={createPageUrl('ThriftStore')}
-              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
-            >
-              <div className="text-5xl mb-4">🏪</div>
-              <h3 className="font-semibold text-navy dark:text-gold">Thrift Store</h3>
-            </Link>
-            <Link
-              to={createPageUrl('VehicleDonation')}
-              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
-            >
-              <div className="text-5xl mb-4">🚗</div>
-              <h3 className="font-semibold text-navy dark:text-gold">Vehicle Donation</h3>
-            </Link>
-            <Link
-              to={createPageUrl('MercyAutoAcademy')}
-              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
-            >
-              <div className="text-5xl mb-4">🔧</div>
-              <h3 className="font-semibold text-navy dark:text-gold">Mercy Auto Academy</h3>
-            </Link>
-            <a
-              href="https://mercyhouseworks.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
-            >
-              <div className="text-5xl mb-4">📦</div>
-              <h3 className="font-semibold text-navy dark:text-gold">Products & Purpose</h3>
-            </a>
-            <a
-              href="https://wheels-give-pros.base44.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
-            >
-              <div className="text-5xl mb-4">🚙</div>
-              <h3 className="font-semibold text-navy dark:text-gold">Vehicle Donation Management</h3>
-            </a>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: 'Thrift Store', icon: '🏪', path: 'ThriftStore', internal: true },
+              { name: 'Vehicle Donation', icon: '🚗', path: 'VehicleDonation', internal: true },
+              { name: 'Mercy Auto Academy', icon: '🔧', path: 'MercyAutoAcademy', internal: true },
+              { name: 'Products & Purpose', icon: '📦', path: 'https://mercyhouseworks.org/', internal: false },
+              { name: 'Vehicle Donation Management', icon: '🚙', path: 'https://wheels-give-pros.base44.app', internal: false }
+            ].map((business) => (
+              business.internal ? (
+                <Link
+                  key={business.name}
+                  to={createPageUrl(business.path)}
+                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
+                >
+                  <div className="text-5xl mb-4">{business.icon}</div>
+                  <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
+                </Link>
+              ) : (
+                <a
+                  key={business.name}
+                  href={business.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
+                >
+                  <div className="text-5xl mb-4">{business.icon}</div>
+                  <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
+                </a>
+              )
+            ))}
           </div>
         </div>
       </section>
@@ -200,9 +190,11 @@ export default function Home() {
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
-          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
-            Contact Us
-          </Button>
+          <Link to={createPageUrl('Contact')}>
+            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+              Contact Us
+            </Button>
+          </Link>
           </div>
         </div>
       </section>

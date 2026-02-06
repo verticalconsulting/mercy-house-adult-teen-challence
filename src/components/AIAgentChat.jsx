@@ -85,6 +85,11 @@ export default function AIAgentChat() {
         content: userMessage
       });
       console.log('Message sent successfully');
+      
+      // Set a timeout to stop loading if no response after 60 seconds
+      setTimeout(() => {
+        setLoading(false);
+      }, 60000);
     } catch (error) {
       console.error('Failed to send message:', error);
       alert('Failed to send message. Please try again.');

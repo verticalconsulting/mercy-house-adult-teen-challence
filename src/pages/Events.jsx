@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Calendar, MapPin, Users, ExternalLink, Clock } from 'lucide-react';
+import { Calendar, Users, ExternalLink, Clock, MapPin } from 'lucide-react';
 import { format, isAfter, isBefore, startOfDay } from 'date-fns';
 
 export default function Events() {

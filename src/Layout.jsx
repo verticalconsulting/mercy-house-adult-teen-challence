@@ -6,6 +6,7 @@ import DarkModeToggle from './components/DarkModeToggle';
 import DonateDropdown from './components/DonateDropdown';
 import AIAgentChat from './components/AIAgentChat';
 import ScrollToTop from './components/ScrollToTop';
+import ScrollRestoration from './components/ScrollRestoration';
 import MobileBottomNav from './components/MobileBottomNav';
 import { base44 } from '@/api/base44Client';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -44,6 +45,7 @@ export default function Layout({ children, currentPageName }) {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
       <ScrollToTop />
+      <ScrollRestoration />
       {/* Header */}
       <header className="bg-white dark:bg-slate-800 shadow-md sticky top-0 z-50 transition-colors duration-300" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

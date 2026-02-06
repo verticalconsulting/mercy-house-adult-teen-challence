@@ -53,8 +53,8 @@ export default function MensCampus() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1552581234-26160f608093?w=800&q=80"
-                alt="Men working together"
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
+                alt="Men reading the bible together"
                 className="w-full h-full object-cover"
               />
             </div>

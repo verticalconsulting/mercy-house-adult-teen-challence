@@ -142,22 +142,46 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { name: 'Thrift Store', icon: '🏪', path: 'ThriftStore' },
-              { name: 'Vehicle Donation', icon: '🚗', path: 'VehicleDonation' },
-              { name: 'Mercy Auto Academy', icon: '🔧', path: 'MercyAutoAcademy' },
-              { name: 'Products & Purpose', icon: '📦', path: 'ProductsPurpose' }
-            ].map((business) => (
-              <Link
-                key={business.name}
-                to={createPageUrl(business.path)}
-                className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
-              >
-                <div className="text-5xl mb-4">{business.icon}</div>
-                <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
-              </Link>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link
+              to={createPageUrl('ThriftStore')}
+              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
+            >
+              <div className="text-5xl mb-4">🏪</div>
+              <h3 className="font-semibold text-navy dark:text-gold">Thrift Store</h3>
+            </Link>
+            <Link
+              to={createPageUrl('VehicleDonation')}
+              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
+            >
+              <div className="text-5xl mb-4">🚗</div>
+              <h3 className="font-semibold text-navy dark:text-gold">Vehicle Donation</h3>
+            </Link>
+            <Link
+              to={createPageUrl('MercyAutoAcademy')}
+              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
+            >
+              <div className="text-5xl mb-4">🔧</div>
+              <h3 className="font-semibold text-navy dark:text-gold">Mercy Auto Academy</h3>
+            </Link>
+            <a
+              href="https://mercyhouseworks.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
+            >
+              <div className="text-5xl mb-4">📦</div>
+              <h3 className="font-semibold text-navy dark:text-gold">Products & Purpose</h3>
+            </a>
+            <a
+              href="https://wheels-give-pros.base44.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
+            >
+              <div className="text-5xl mb-4">🚙</div>
+              <h3 className="font-semibold text-navy dark:text-gold">Vehicle Donation Management</h3>
+            </a>
           </div>
         </div>
       </section>
@@ -165,22 +189,20 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-5xl md:text-4xl font-bold mb-6 text-white">Ready to Start Your Journey?</h2>
-          <p className="text-2xl md:text-xl mb-8 text-white font-medium">
+          <h2 className="text-4xl font-bold mb-6">Ready to Start Your Journey?</h2>
+          <p className="text-xl mb-8 text-slate-200">
             Take the first step towards freedom and transformation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to={createPageUrl('IntakeForm')}>
-            <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-10 py-7 text-xl md:text-lg shadow-xl">
+            <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
               Apply Now
-              <ArrowRight className="ml-2 w-6 h-6 md:w-5 md:h-5" />
+              <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
-          <Link to={createPageUrl('Contact')}>
-            <Button variant="outline" className="border-2 border-white text-white bg-white/10 hover:bg-white hover:text-navy px-10 py-7 text-xl md:text-lg font-semibold">
-              Contact Us
-            </Button>
-          </Link>
+          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+            Contact Us
+          </Button>
           </div>
         </div>
       </section>

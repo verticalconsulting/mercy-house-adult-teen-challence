@@ -1,22 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { base44 } from '@/api/base44Client';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Calendar, Users, ExternalLink, Clock, MapPin } from 'lucide-react';
+import { Calendar, Users, ExternalLink, Clock, MapPin, RefreshCw } from 'lucide-react';
 import { format, isAfter, isBefore, startOfDay } from 'date-fns';
 
 export default function Events() {
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [dateFilter, setDateFilter] = useState('upcoming');
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const queryClient = useQueryClient();
+  const pullStartY = useRef(0);
+  const isPulling = useRef(false);
 
   const { data: events, isLoading } = useQuery({
     queryKey: ['events'],
     queryFn: () => base44.entities.Event.filter({ published: true }, 'event_date'),
     initialData: []
   });
+
+  useEffect(() => {
+    const handleTouchStart = (e) => {
+      if (window.scrollY === 0) {
+        pullStartY.current = e.touches[0].clientY;
+        isPulling.current = true;
+      }
+    };
+
+    const handleTouchMove = (e) => {
+      if (isPulling.current && window.scrollY === 0) {
+        const pullDistance = e.touches[0].clientY - pullStartY.current;
+        if (pullDistance > 80) {
+          isPulling.current = false;
+          handleRefresh();
+        }
+      }
+    };
+
+    const handleTouchEnd = () => {
+      isPulling.current = false;
+    };
+
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, []);
+
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    await queryClient.invalidateQueries({ queryKey: ['events'] });
+    setTimeout(() => setIsRefreshing(false), 500);
+  };
 
   const categoryColors = {
     workshop: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
@@ -46,6 +89,14 @@ export default function Events() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Refresh indicator */}
+        {isRefreshing && (
+          <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-navy dark:bg-gold text-white dark:text-navy px-4 py-2 rounded-full shadow-lg z-50 flex items-center gap-2">
+            <RefreshCw className="w-4 h-4 animate-spin" />
+            <span className="text-sm font-medium">Refreshing...</span>
+          </div>
+        )}
+
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl md:text-4xl font-bold text-navy dark:text-gold mb-4">

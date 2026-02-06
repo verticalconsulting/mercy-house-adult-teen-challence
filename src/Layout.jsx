@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Menu, X, ChevronDown, MessageCircle, Facebook } from 'lucide-react';
+import { Menu, X, ChevronDown, MessageCircle, Facebook, ArrowLeft } from 'lucide-react';
 import DarkModeToggle from './components/DarkModeToggle';
 import DonateDropdown from './components/DonateDropdown';
 import AIAgentChat from './components/AIAgentChat';
@@ -11,6 +11,14 @@ import { base44 } from '@/api/base44Client';
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [microBusinessOpen, setMicroBusinessOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const [canGoBack, setCanGoBack] = useState(false);
+
+  useEffect(() => {
+    setCanGoBack(window.history.length > 1 && currentPageName !== 'Home');
+  }, [currentPageName, location]);
 
   const menuItems = [
     { name: 'Home', path: 'Home' },
@@ -36,9 +44,20 @@ export default function Layout({ children, currentPageName }) {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
       <ScrollToTop />
       {/* Header */}
-      <header className="bg-white dark:bg-slate-800 shadow-md sticky top-0 z-50 transition-colors duration-300">
+      <header className="bg-white dark:bg-slate-800 shadow-md sticky top-0 z-50 transition-colors duration-300" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
+            {/* Back Button (Mobile) */}
+            {canGoBack && (
+              <button
+                onClick={() => navigate(-1)}
+                className="lg:hidden text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors p-2 -ml-2"
+                aria-label="Go back"
+              >
+                <ArrowLeft className="w-7 h-7" />
+              </button>
+            )}
+            
             {/* Logo */}
             <Link to={createPageUrl('Home')} className="flex items-center space-x-3 group">
               <div className="flex flex-col">
@@ -180,7 +199,7 @@ export default function Layout({ children, currentPageName }) {
       </header>
 
       {/* Floating Donate Button - Mobile Only */}
-      <div className="lg:hidden fixed top-24 right-4 z-40">
+      <div className="lg:hidden fixed top-24 right-4 z-40" style={{ top: 'calc(6rem + env(safe-area-inset-top))' }}>
         <DonateDropdown onItemClick={() => setMobileMenuOpen(false)} />
       </div>
 

@@ -28,7 +28,10 @@ export default function ProductsPurpose() {
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
                 Through these creative enterprises, residents develop marketable skills in production, quality control, customer service, and entrepreneurship.
               </p>
-              <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
+              <Button
+                onClick={() => window.open('https://mercyhouseworks.org', '_blank')}
+                className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy"
+              >
                 <ShoppingCart className="w-4 h-4 mr-2" />
                 Shop Our Products
               </Button>
@@ -83,10 +86,17 @@ export default function ProductsPurpose() {
               Need products for your business, church, or event? We offer custom orders and bulk pricing. Contact us to discuss your needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-gold hover:bg-gold/90 text-navy font-semibold px-8 py-6 text-lg">
+              <Button
+                onClick={() => window.open('https://mercyhouseworks.org', '_blank')}
+                className="bg-gold hover:bg-gold/90 text-navy font-semibold px-8 py-6 text-lg"
+              >
                 Request a Quote
               </Button>
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg">
+              <Button
+                onClick={() => window.open('https://mercyhouseworks.org', '_blank')}
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg"
+              >
                 View Product Catalog
               </Button>
             </div>

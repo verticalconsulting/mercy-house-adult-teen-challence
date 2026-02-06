@@ -8,7 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Save, Users, FileText, Eye, CheckCircle, XCircle, Settings, Bot } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
+import { Save, Users, FileText, Eye, CheckCircle, XCircle, Settings, Bot, Trash2, AlertTriangle } from 'lucide-react';
 import { toast } from 'sonner';
 import { format } from 'date-fns';
 import ApplicationViewer from '../components/employee/ApplicationViewer';
@@ -24,6 +25,8 @@ export default function EmployeePortal() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedApp, setSelectedApp] = useState(null);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -174,6 +177,19 @@ export default function EmployeePortal() {
     }
   };
 
+  const handleDeleteAccount = async () => {
+    setDeleteLoading(true);
+    try {
+      await base44.entities.User.delete(user.id);
+      toast.success('Account deleted successfully');
+      base44.auth.logout();
+    } catch (error) {
+      console.error('Delete account error:', error);
+      toast.error('Failed to delete account. Please try again.');
+      setDeleteLoading(false);
+    }
+  };
+
   const statusColors = {
     pending: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
     under_review: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
@@ -196,7 +212,7 @@ export default function EmployeePortal() {
         <h1 className="text-4xl font-bold text-navy dark:text-gold mb-8">Employee Portal</h1>
 
         <Tabs defaultValue="applications">
-          <TabsList className="w-full overflow-x-auto flex lg:grid lg:grid-cols-9 justify-start">
+          <TabsList className="w-full overflow-x-auto flex lg:grid lg:grid-cols-10 justify-start">
             <TabsTrigger value="applications" className="text-sm flex-shrink-0">
               Applications
             </TabsTrigger>
@@ -223,6 +239,9 @@ export default function EmployeePortal() {
             </TabsTrigger>
             <TabsTrigger value="agent" className="text-sm flex-shrink-0">
               AI Agent
+            </TabsTrigger>
+            <TabsTrigger value="settings" className="text-sm flex-shrink-0">
+              Settings
             </TabsTrigger>
           </TabsList>
 
@@ -402,8 +421,79 @@ export default function EmployeePortal() {
           <TabsContent value="agent" className="mt-6">
             <AgentManager />
           </TabsContent>
+
+          <TabsContent value="settings" className="mt-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-navy dark:text-gold">Account Settings</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                    Account Information
+                  </h3>
+                  <div className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                    <p><strong>Name:</strong> {user?.full_name}</p>
+                    <p><strong>Email:</strong> {user?.email}</p>
+                    <p><strong>Role:</strong> {user?.role}</p>
+                  </div>
+                </div>
+
+                <div className="border-t pt-6">
+                  <h3 className="text-lg font-semibold text-red-600 dark:text-red-400 mb-2 flex items-center">
+                    <AlertTriangle className="w-5 h-5 mr-2" />
+                    Danger Zone
+                  </h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    Once you delete your account, there is no going back. Please be certain.
+                  </p>
+                  <Button
+                    onClick={() => setShowDeleteDialog(true)}
+                    variant="destructive"
+                    className="bg-red-600 hover:bg-red-700 text-white"
+                  >
+                    <Trash2 className="w-4 h-4 mr-2" />
+                    Delete My Account
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
         </Tabs>
       </div>
+
+      {/* Delete Account Confirmation Dialog */}
+      <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="text-red-600 dark:text-red-400 flex items-center">
+              <AlertTriangle className="w-5 h-5 mr-2" />
+              Delete Account
+            </DialogTitle>
+            <DialogDescription>
+              This action cannot be undone. This will permanently delete your account
+              and remove all your data from our servers.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="flex gap-2">
+            <Button
+              variant="outline"
+              onClick={() => setShowDeleteDialog(false)}
+              disabled={deleteLoading}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={handleDeleteAccount}
+              disabled={deleteLoading}
+              className="bg-red-600 hover:bg-red-700"
+            >
+              {deleteLoading ? 'Deleting...' : 'Yes, Delete My Account'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

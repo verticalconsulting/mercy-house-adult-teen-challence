@@ -11,6 +11,7 @@ export default function AIAgentChat() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [initializing, setInitializing] = useState(false);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -27,6 +28,7 @@ export default function AIAgentChat() {
     let unsubscribe;
 
     const initConversation = async () => {
+      setInitializing(true);
       try {
         const conv = await base44.agents.createConversation({
           agent_name: 'intake_support',
@@ -43,9 +45,12 @@ export default function AIAgentChat() {
           setMessages(data.messages);
           setLoading(false);
         });
+        
+        setInitializing(false);
       } catch (error) {
         console.error('Failed to initialize conversation:', error);
         setLoading(false);
+        setInitializing(false);
       }
     };
 
@@ -70,7 +75,6 @@ export default function AIAgentChat() {
       });
     } catch (error) {
       console.error('Failed to send message:', error);
-    } finally {
       setLoading(false);
     }
   };
@@ -123,7 +127,25 @@ export default function AIAgentChat() {
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50 dark:bg-slate-900">
-            {messages.map((msg, idx) => (
+            {initializing && (
+              <div className="flex justify-center items-center h-full">
+                <div className="text-center">
+                  <Loader2 className="w-8 h-8 animate-spin text-navy dark:text-gold mx-auto mb-2" />
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Connecting...</p>
+                </div>
+              </div>
+            )}
+            
+            {!initializing && messages.length === 0 && (
+              <div className="flex justify-center items-center h-full">
+                <div className="text-center text-slate-500 dark:text-slate-400">
+                  <MessageCircle className="w-12 h-12 mx-auto mb-3 text-slate-300 dark:text-slate-600" />
+                  <p className="text-sm">Send a message to get started!</p>
+                </div>
+              </div>
+            )}
+            
+            {!initializing && messages.map((msg, idx) => (
               <div
                 key={idx}
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
@@ -145,6 +167,19 @@ export default function AIAgentChat() {
                 </div>
               </div>
             ))}
+            
+            {loading && (
+              <div className="flex justify-start">
+                <div className="bg-white dark:bg-slate-700 rounded-2xl px-4 py-3 border border-slate-200 dark:border-slate-600">
+                  <div className="flex gap-2">
+                    <div className="w-2 h-2 bg-navy dark:bg-gold rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <div className="w-2 h-2 bg-navy dark:bg-gold rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <div className="w-2 h-2 bg-navy dark:bg-gold rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  </div>
+                </div>
+              </div>
+            )}
+            
             <div ref={messagesEndRef} />
           </div>
 

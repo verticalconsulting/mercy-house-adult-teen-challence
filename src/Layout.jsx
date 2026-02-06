@@ -8,6 +8,7 @@ import AIAgentChat from './components/AIAgentChat';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollRestoration from './components/ScrollRestoration';
 import MobileBottomNav from './components/MobileBottomNav';
+import FloatingWhatsAppButton from './components/FloatingWhatsAppButton';
 import { base44 } from '@/api/base44Client';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -251,6 +252,9 @@ export default function Layout({ children, currentPageName }) {
 
       {/* AI Agent Chat */}
       <AIAgentChat />
+
+      {/* Floating WhatsApp Button */}
+      <FloatingWhatsAppButton />
 
       {/* Footer */}
       <footer className="bg-navy dark:bg-slate-900 text-white mt-20">

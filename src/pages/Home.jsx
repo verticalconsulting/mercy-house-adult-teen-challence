@@ -4,8 +4,6 @@ import { createPageUrl } from '../utils';
 import { ArrowRight, Heart, Users, TrendingUp, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DonateButton from '../components/DonateButton';
-import FeaturedTestimonials from '../components/FeaturedTestimonials';
-import CampaignProgress from '../components/CampaignProgress';
 
 export default function Home() {
   return (
@@ -110,17 +108,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <FeaturedTestimonials />
-
-      {/* Featured Campaigns */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">Active Fundraising Campaigns</h2>
-          <CampaignProgress />
-        </div>
-      </section>
-
       {/* Stats Section */}
       <section className="py-20 bg-navy dark:bg-slate-950 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -178,20 +165,22 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Start Your Journey?</h2>
-          <p className="text-xl mb-8 text-slate-200">
+          <h2 className="text-5xl md:text-4xl font-bold mb-6 text-white">Ready to Start Your Journey?</h2>
+          <p className="text-2xl md:text-xl mb-8 text-white font-medium">
             Take the first step towards freedom and transformation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to={createPageUrl('IntakeForm')}>
-            <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
+            <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-10 py-7 text-xl md:text-lg shadow-xl">
               Apply Now
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="ml-2 w-6 h-6 md:w-5 md:h-5" />
             </Button>
           </Link>
-          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
-            Contact Us
-          </Button>
+          <Link to={createPageUrl('Contact')}>
+            <Button variant="outline" className="border-2 border-white text-white bg-white/10 hover:bg-white hover:text-navy px-10 py-7 text-xl md:text-lg font-semibold">
+              Contact Us
+            </Button>
+          </Link>
           </div>
         </div>
       </section>

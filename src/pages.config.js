@@ -52,6 +52,7 @@ import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 import Donate from './pages/Donate';
 import EmployeePortal from './pages/EmployeePortal';
+import Events from './pages/Events';
 import Home from './pages/Home';
 import IntakeForm from './pages/IntakeForm';
 import MensCampus from './pages/MensCampus';
@@ -65,7 +66,6 @@ import ThriftStore from './pages/ThriftStore';
 import VehicleDonation from './pages/VehicleDonation';
 import Volunteer from './pages/Volunteer';
 import WomensCampus from './pages/WomensCampus';
-import Events from './pages/Events';
 import __Layout from './Layout.jsx';
 
 
@@ -75,6 +75,7 @@ export const PAGES = {
     "Contact": Contact,
     "Donate": Donate,
     "EmployeePortal": EmployeePortal,
+    "Events": Events,
     "Home": Home,
     "IntakeForm": IntakeForm,
     "MensCampus": MensCampus,
@@ -88,7 +89,6 @@ export const PAGES = {
     "VehicleDonation": VehicleDonation,
     "Volunteer": Volunteer,
     "WomensCampus": WomensCampus,
-    "Events": Events,
 }
 
 export const pagesConfig = {

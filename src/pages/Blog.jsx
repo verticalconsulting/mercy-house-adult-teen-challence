@@ -2,18 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { base44 } from '@/api/base44Client';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Calendar, Tag, ArrowRight } from 'lucide-react';
 import { format } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import PullToRefresh from '../components/PullToRefresh';
 
 export default function Blog() {
+  const queryClient = useQueryClient();
+  
   const { data: posts, isLoading } = useQuery({
     queryKey: ['blogPosts'],
     queryFn: () => base44.entities.BlogPost.filter({ published: true }, '-publish_date', 50),
     initialData: []
   });
+
+  const handleRefresh = async () => {
+    await queryClient.invalidateQueries({ queryKey: ['blogPosts'] });
+  };
 
   const categoryColors = {
     news: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
@@ -23,7 +30,8 @@ export default function Blog() {
   };
 
   return (
-    <div className="w-full">
+    <PullToRefresh onRefresh={handleRefresh}>
+      <div className="w-full">
       {/* Hero */}
       <section className="bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -98,6 +106,7 @@ export default function Blog() {
           )}
         </div>
       </section>
-    </div>
+      </div>
+    </PullToRefresh>
   );
 }

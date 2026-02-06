@@ -10,6 +10,13 @@ export default function MobileBottomNav() {
 
   const isActive = (path) => location.pathname === createPageUrl(path);
 
+  const handleNavClick = (path, e) => {
+    if (isActive(path)) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const navItems = [
     { name: 'Home', path: 'Home', icon: Home },
     { name: 'Campus', icon: Users, isMenu: true },
@@ -87,6 +94,7 @@ export default function MobileBottomNav() {
               <Link
                 key={item.name}
                 to={createPageUrl(item.path)}
+                onClick={(e) => handleNavClick(item.path, e)}
                 className={cn(
                   "flex flex-col items-center justify-center py-2 px-4 rounded-lg transition-colors",
                   active 

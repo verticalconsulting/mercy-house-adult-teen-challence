@@ -1,17 +1,25 @@
 import React from 'react';
 import { base44 } from '@/api/base44Client';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Quote } from 'lucide-react';
+import PullToRefresh from '../components/PullToRefresh';
 
 export default function Testimonials() {
+  const queryClient = useQueryClient();
+  
   const { data: testimonials = [], isLoading } = useQuery({
     queryKey: ['testimonials'],
     queryFn: () => base44.entities.Testimonial.filter({ published: true }, '-created_date'),
     initialData: []
   });
 
+  const handleRefresh = async () => {
+    await queryClient.invalidateQueries({ queryKey: ['testimonials'] });
+  };
+
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12">
+    <PullToRefresh onRefresh={handleRefresh}>
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero */}
         <div className="text-center mb-16">
@@ -66,6 +74,7 @@ export default function Testimonials() {
           </div>
         )}
       </div>
-    </div>
+      </div>
+    </PullToRefresh>
   );
 }

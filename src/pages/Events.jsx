@@ -1,20 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Calendar, Users, ExternalLink, Clock, MapPin, RefreshCw } from 'lucide-react';
+import { MobileSelect } from '@/components/ui/mobile-select';
+import { Calendar, Users, ExternalLink, Clock, MapPin } from 'lucide-react';
 import { format, isAfter, isBefore, startOfDay } from 'date-fns';
+import { SelectItem } from '@/components/ui/select';
+import PullToRefresh from '../components/PullToRefresh';
 
 export default function Events() {
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [dateFilter, setDateFilter] = useState('upcoming');
-  const [isRefreshing, setIsRefreshing] = useState(false);
   const queryClient = useQueryClient();
-  const pullStartY = useRef(0);
-  const isPulling = useRef(false);
 
   const { data: events, isLoading } = useQuery({
     queryKey: ['events'],
@@ -22,43 +21,8 @@ export default function Events() {
     initialData: []
   });
 
-  useEffect(() => {
-    const handleTouchStart = (e) => {
-      if (window.scrollY === 0) {
-        pullStartY.current = e.touches[0].clientY;
-        isPulling.current = true;
-      }
-    };
-
-    const handleTouchMove = (e) => {
-      if (isPulling.current && window.scrollY === 0) {
-        const pullDistance = e.touches[0].clientY - pullStartY.current;
-        if (pullDistance > 80) {
-          isPulling.current = false;
-          handleRefresh();
-        }
-      }
-    };
-
-    const handleTouchEnd = () => {
-      isPulling.current = false;
-    };
-
-    document.addEventListener('touchstart', handleTouchStart);
-    document.addEventListener('touchmove', handleTouchMove);
-    document.addEventListener('touchend', handleTouchEnd);
-
-    return () => {
-      document.removeEventListener('touchstart', handleTouchStart);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, []);
-
   const handleRefresh = async () => {
-    setIsRefreshing(true);
     await queryClient.invalidateQueries({ queryKey: ['events'] });
-    setTimeout(() => setIsRefreshing(false), 500);
   };
 
   const categoryColors = {
@@ -87,15 +51,9 @@ export default function Events() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Refresh indicator */}
-        {isRefreshing && (
-          <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-navy dark:bg-gold text-white dark:text-navy px-4 py-2 rounded-full shadow-lg z-50 flex items-center gap-2">
-            <RefreshCw className="w-4 h-4 animate-spin" />
-            <span className="text-sm font-medium">Refreshing...</span>
-          </div>
-        )}
+    <PullToRefresh onRefresh={handleRefresh}>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="text-center mb-12">
@@ -109,31 +67,31 @@ export default function Events() {
 
         {/* Filters */}
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
-          <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-            <SelectTrigger className="w-full sm:w-64">
-              <SelectValue placeholder="All Categories" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Categories</SelectItem>
-              <SelectItem value="workshop">Workshops</SelectItem>
-              <SelectItem value="outreach">Outreach Programs</SelectItem>
-              <SelectItem value="community_event">Community Events</SelectItem>
-              <SelectItem value="fundraiser">Fundraisers</SelectItem>
-              <SelectItem value="service">Services</SelectItem>
-              <SelectItem value="other">Other</SelectItem>
-            </SelectContent>
-          </Select>
+          <MobileSelect 
+            value={categoryFilter} 
+            onValueChange={setCategoryFilter}
+            placeholder="All Categories"
+            triggerClassName="w-full sm:w-64"
+          >
+            <SelectItem value="all">All Categories</SelectItem>
+            <SelectItem value="workshop">Workshops</SelectItem>
+            <SelectItem value="outreach">Outreach Programs</SelectItem>
+            <SelectItem value="community_event">Community Events</SelectItem>
+            <SelectItem value="fundraiser">Fundraisers</SelectItem>
+            <SelectItem value="service">Services</SelectItem>
+            <SelectItem value="other">Other</SelectItem>
+          </MobileSelect>
 
-          <Select value={dateFilter} onValueChange={setDateFilter}>
-            <SelectTrigger className="w-full sm:w-64">
-              <SelectValue placeholder="Upcoming Events" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="upcoming">Upcoming Events</SelectItem>
-              <SelectItem value="past">Past Events</SelectItem>
-              <SelectItem value="all">All Events</SelectItem>
-            </SelectContent>
-          </Select>
+          <MobileSelect 
+            value={dateFilter} 
+            onValueChange={setDateFilter}
+            placeholder="Upcoming Events"
+            triggerClassName="w-full sm:w-64"
+          >
+            <SelectItem value="upcoming">Upcoming Events</SelectItem>
+            <SelectItem value="past">Past Events</SelectItem>
+            <SelectItem value="all">All Events</SelectItem>
+          </MobileSelect>
         </div>
 
         {/* Events Grid */}
@@ -208,7 +166,8 @@ export default function Events() {
             ))}
           </div>
         )}
+        </div>
       </div>
-    </div>
+    </PullToRefresh>
   );
 }

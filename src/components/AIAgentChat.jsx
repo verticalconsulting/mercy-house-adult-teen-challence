@@ -30,6 +30,7 @@ export default function AIAgentChat() {
     const initConversation = async () => {
       setInitializing(true);
       try {
+        console.log('Creating conversation with agent: intake_support');
         const conv = await base44.agents.createConversation({
           agent_name: 'intake_support',
           metadata: {
@@ -37,11 +38,14 @@ export default function AIAgentChat() {
             source: 'website'
           }
         });
+        console.log('Conversation created:', conv.id);
         setConversation(conv);
         setMessages(conv.messages || []);
 
         // Subscribe to updates
+        console.log('Subscribing to conversation updates');
         unsubscribe = base44.agents.subscribeToConversation(conv.id, (data) => {
+          console.log('Received update, messages:', data.messages.length);
           setMessages(data.messages);
           setLoading(false);
         });
@@ -49,6 +53,7 @@ export default function AIAgentChat() {
         setInitializing(false);
       } catch (error) {
         console.error('Failed to initialize conversation:', error);
+        alert('Failed to initialize chat. Please refresh and try again.');
         setLoading(false);
         setInitializing(false);
       }
@@ -62,19 +67,29 @@ export default function AIAgentChat() {
   }, [isOpen, conversation]);
 
   const sendMessage = async () => {
-    if (!input.trim() || !conversation) return;
+    if (!input.trim() || !conversation) {
+      console.log('Cannot send: input or conversation missing', { input, conversation });
+      return;
+    }
 
-    setLoading(true);
     const userMessage = input;
     setInput('');
+    
+    // Optimistically add user message to UI
+    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setLoading(true);
 
     try {
       await base44.agents.addMessage(conversation, {
         role: 'user',
         content: userMessage
       });
+      console.log('Message sent successfully');
     } catch (error) {
       console.error('Failed to send message:', error);
+      alert('Failed to send message. Please try again.');
+      // Remove the optimistic message on error
+      setMessages(prev => prev.filter(m => m.content !== userMessage));
       setLoading(false);
     }
   };

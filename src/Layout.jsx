@@ -8,6 +8,7 @@ import AIAgentChat from './components/AIAgentChat';
 import ScrollToTop from './components/ScrollToTop';
 import MobileBottomNav from './components/MobileBottomNav';
 import { base44 } from '@/api/base44Client';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -229,7 +230,19 @@ export default function Layout({ children, currentPageName }) {
       </div>
 
       {/* Main Content */}
-      <main className="pb-20 lg:pb-0">{children}</main>
+      <main className="pb-20 lg:pb-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentPageName}
+            initial={{ x: 300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -300, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+          >
+            {children}
+          </motion.div>
+        </AnimatePresence>
+      </main>
 
       {/* Mobile Bottom Navigation */}
       <MobileBottomNav />

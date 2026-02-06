@@ -129,6 +129,20 @@ export default function EmployeePortal() {
         return await base44.entities.BedCount.create(data);
       }
     },
+    onMutate: async ({ id, data }) => {
+      await queryClient.cancelQueries({ queryKey: ['bedCounts'] });
+      const previousBedCounts = queryClient.getQueryData(['bedCounts']);
+      
+      queryClient.setQueryData(['bedCounts'], (old) => 
+        old?.map((bed) => bed.id === id ? { ...bed, ...data } : bed)
+      );
+      
+      return { previousBedCounts };
+    },
+    onError: (error, variables, context) => {
+      queryClient.setQueryData(['bedCounts'], context.previousBedCounts);
+      toast.error(`Failed to update bed count: ${error.message}`);
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['bedCounts'] });
       toast.success('Bed count updated successfully');
@@ -137,6 +151,20 @@ export default function EmployeePortal() {
 
   const updateAppMutation = useMutation({
     mutationFn: ({ id, data }) => base44.entities.Application.update(id, data),
+    onMutate: async ({ id, data }) => {
+      await queryClient.cancelQueries({ queryKey: ['applications'] });
+      const previousApplications = queryClient.getQueryData(['applications']);
+      
+      queryClient.setQueryData(['applications'], (old) => 
+        old?.map((app) => app.id === id ? { ...app, ...data } : app)
+      );
+      
+      return { previousApplications };
+    },
+    onError: (error, variables, context) => {
+      queryClient.setQueryData(['applications'], context.previousApplications);
+      toast.error(`Failed to update application: ${error.message}`);
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['applications'] });
       setSelectedApp(null);

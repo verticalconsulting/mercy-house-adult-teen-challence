@@ -4,7 +4,7 @@ import { createPageUrl } from './utils';
 import { Menu, X, ChevronDown, MessageCircle, Facebook, ArrowLeft } from 'lucide-react';
 import DarkModeToggle from './components/DarkModeToggle';
 import DonateDropdown from './components/DonateDropdown';
-import AIAgentChat from './components/AIAgentChat';
+
 import ScrollToTop from './components/ScrollToTop';
 import ScrollRestoration from './components/ScrollRestoration';
 import MobileBottomNav from './components/MobileBottomNav';
@@ -250,8 +250,7 @@ export default function Layout({ children, currentPageName }) {
       {/* Mobile Bottom Navigation */}
       <MobileBottomNav />
 
-      {/* AI Agent Chat */}
-      <AIAgentChat />
+
 
       {/* Floating WhatsApp Button */}
       <FloatingWhatsAppButton />

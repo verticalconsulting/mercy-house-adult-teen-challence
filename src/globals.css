@@ -129,6 +129,33 @@
   transition-duration: 200ms;
 }
 
+/* Mobile touch improvements */
+@media (max-width: 767px) {
+  /* Prevent zoom on input focus (iOS) */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+
+  /* Better tap targets */
+  button, a, [role="button"] {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  /* Prevent horizontal overflow */
+  .overflow-x-hidden {
+    overflow-x: hidden;
+  }
+}
+
+/* Safe area padding utility */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;

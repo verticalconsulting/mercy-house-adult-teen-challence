@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-export function MobileSelect({ value, onValueChange, placeholder, children, triggerClassName, ...props }) {
+export function MobileSelect({ id, value, onValueChange, placeholder, children, triggerClassName, ...props }) {
   const [open, setOpen] = useState(false);
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 

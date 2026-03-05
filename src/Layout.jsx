@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import { Menu, X, ChevronDown, MessageCircle, Facebook, ArrowLeft } from 'lucide-react';
@@ -46,6 +46,13 @@ export default function Layout({ children, currentPageName }) {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+      {/* Skip to main content — accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[200] focus:bg-navy focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:font-semibold focus:outline-none"
+      >
+        Skip to main content
+      </a>
       <ScrollToTop />
       <ScrollRestoration />
       {/* Header */}
@@ -234,7 +241,7 @@ export default function Layout({ children, currentPageName }) {
       </div>
 
       {/* Main Content */}
-      <main className="pb-20 lg:pb-0">
+      <main id="main-content" className="pb-20 lg:pb-0" tabIndex={-1}>
         <AnimatePresence mode="wait">
           <motion.div
             key={currentPageName}

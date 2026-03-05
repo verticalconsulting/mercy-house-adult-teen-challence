@@ -135,17 +135,31 @@ export default function IntakeForm() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-navy dark:text-gold mb-4">
+          <h1 className="text-4xl font-bold text-navy dark:text-gold mb-2">
             Confidential Intake Application
           </h1>
-          <p className="text-lg text-slate-600 dark:text-slate-300">
+          <p className="text-lg text-slate-600 dark:text-slate-300 mb-1">
             Mercy House Adult & Teen Challenge of Mississippi
           </p>
-          <div className="mt-4 flex justify-center gap-2">
+          {/* Commitment & Consistency: show progress to build momentum */}
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">Step {step} of 4 — {Math.round((step / 4) * 100)}% complete</p>
+          <div
+            className="mt-2 flex justify-center gap-2"
+            role="progressbar"
+            aria-valuenow={step}
+            aria-valuemin={1}
+            aria-valuemax={4}
+            aria-label={`Step ${step} of 4`}
+          >
             {[1, 2, 3, 4].map(s => (
-              <div key={s} className={`h-2 w-20 rounded-full ${s <= step ? 'bg-gold' : 'bg-slate-300 dark:bg-slate-700'}`} />
+              <div
+                key={s}
+                className={`h-2 w-16 sm:w-20 rounded-full transition-colors ${s <= step ? 'bg-gold' : 'bg-slate-300 dark:bg-slate-700'}`}
+              />
             ))}
           </div>
+          {/* Regret aversion: this is free */}
+          <p className="mt-3 text-sm text-green-700 dark:text-green-400 font-medium">✓ Free program — No cost to apply</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-8">

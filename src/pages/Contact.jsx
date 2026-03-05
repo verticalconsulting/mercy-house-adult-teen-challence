@@ -5,14 +5,22 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 export default function Contact() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <div className="bg-navy dark:bg-slate-950 text-white py-20">
+      <header className="bg-navy dark:bg-slate-950 text-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mb-6">Contact Us</h1>
-          <p className="text-lg md:text-xl text-slate-300">
-            We're here to help. Reach out to us anytime.
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">We're Here for You</h1>
+          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
+            Taking the first step is the hardest part — we make it easy. Call or write anytime.
           </p>
+          {/* Social proof + urgency nudge */}
+          <a
+            href="tel:6017203718"
+            className="inline-flex items-center gap-2 mt-6 bg-gold hover:bg-gold/90 text-navy font-bold px-6 py-3 rounded-lg text-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            <Phone className="w-5 h-5" aria-hidden="true" />
+            Call Intake Now: (601) 720-3718
+          </a>
         </div>
-      </div>
+      </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-2 gap-8 mb-12">

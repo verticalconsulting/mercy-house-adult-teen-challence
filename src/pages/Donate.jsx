@@ -32,6 +32,13 @@ export default function Donate() {
   }, []);
 
   const presetAmounts = [25, 50, 100, 250, 500];
+  const impactLabels = {
+    25: 'Feed a resident for 3 days',
+    50: 'Feed a resident for a week',
+    100: 'Cover educational supplies',
+    250: 'Support one resident for a month',
+    500: 'Fund 2 months of transformation'
+  };
 
   const handleDonate = async () => {
     const amount = customAmount ? parseFloat(customAmount) : selectedAmount;
@@ -85,13 +92,15 @@ export default function Donate() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero */}
+        {/* Hero — Framing + Loss Aversion */}
         <div className="text-center mb-12">
-          <Heart className="w-16 h-16 md:w-20 md:h-20 text-gold mx-auto mb-6" />
-          <h1 className="text-4xl md:text-5xl font-bold text-navy dark:text-gold mb-4">Make a Donation</h1>
+          <Heart className="w-16 h-16 md:w-20 md:h-20 text-gold mx-auto mb-6" aria-hidden="true" />
+          <h1 className="text-4xl md:text-5xl font-bold text-navy dark:text-gold mb-4">Your Gift Changes Lives</h1>
           <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            Your generous gift helps us provide life-changing programs and support to those in need. 110% of individual donations go directly to our mission.
+            Every day without help is another day someone struggles alone. <strong>110% of individual donations</strong> go directly to our mission — your dollar works harder here than anywhere else.
           </p>
+          {/* Social proof nudge */}
+          <p className="mt-4 text-sm text-gold font-semibold">❤️ Join 1,000+ supporters who've already made a difference</p>
         </div>
 
         {/* Active Campaigns */}
@@ -105,7 +114,7 @@ export default function Donate() {
         {/* Donation Form */}
         <Card className="mb-12">
           <CardHeader>
-            <CardTitle className="text-2xl md:text-3xl text-navy dark:text-gold text-center">Choose Your Donation Amount</CardTitle>
+            <CardTitle className="text-2xl md:text-3xl text-navy dark:text-gold text-center" id="donation-form-title">Choose Your Impact</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Donation Type Tabs */}
@@ -118,57 +127,70 @@ export default function Donate() {
                 </TabsTrigger>
               </TabsList>
             </Tabs>
-            {/* Preset Amounts */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
-              {presetAmounts.map(amount => (
-                <button
-                  key={amount}
-                  onClick={() => {
-                    setSelectedAmount(amount);
-                    setCustomAmount('');
-                  }}
-                  className={`p-4 md:p-6 rounded-lg border-2 transition-all ${
-                    selectedAmount === amount && !customAmount
-                      ? 'border-gold bg-gold/10 dark:bg-gold/20'
-                      : 'border-slate-200 dark:border-slate-700 hover:border-gold'
-                  }`}
-                >
-                  <div className="text-2xl md:text-3xl font-bold text-navy dark:text-gold">
-                    ${amount}
-                  </div>
-                </button>
-              ))}
-            </div>
+            {/* Preset Amounts — Goal-Gradient + Impact Framing */}
+            <fieldset>
+              <legend className="sr-only">Select a donation amount</legend>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+                {presetAmounts.map(amount => {
+                  const isSelected = selectedAmount === amount && !customAmount;
+                  return (
+                    <button
+                      key={amount}
+                      type="button"
+                      onClick={() => { setSelectedAmount(amount); setCustomAmount(''); }}
+                      aria-pressed={isSelected}
+                      aria-label={`$${amount} — ${impactLabels[amount]}`}
+                      className={`p-4 md:p-5 rounded-lg border-2 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${
+                        isSelected
+                          ? 'border-gold bg-gold/10 dark:bg-gold/20 ring-2 ring-gold'
+                          : 'border-slate-200 dark:border-slate-700 hover:border-gold'
+                      }`}
+                    >
+                      <div className="text-2xl md:text-3xl font-bold text-navy dark:text-gold">${amount}</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-tight hidden md:block">{impactLabels[amount]}</div>
+                    </button>
+                  );
+                })}
+              </div>
+              {/* Show selected impact on mobile */}
+              {selectedAmount && !customAmount && (
+                <p className="mt-2 text-sm text-center text-gold font-medium md:hidden" aria-live="polite">
+                  Your ${selectedAmount} will: {impactLabels[selectedAmount]}
+                </p>
+              )}
+            </fieldset>
 
             {/* Custom Amount */}
             <div>
-              <label className="block text-base md:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
-                Or enter custom amount
+              <label htmlFor="custom-amount" className="block text-base md:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                Or enter a custom amount
               </label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" aria-hidden="true" />
                 <Input
+                  id="custom-amount"
                   type="number"
                   min="5"
                   step="1"
-                  placeholder="Enter amount"
+                  placeholder="Enter amount (min $5)"
                   value={customAmount}
-                  onChange={(e) => {
-                    setCustomAmount(e.target.value);
-                    setSelectedAmount(0);
-                  }}
+                  onChange={(e) => { setCustomAmount(e.target.value); setSelectedAmount(0); }}
                   className="pl-10 text-lg md:text-base"
+                  aria-describedby="custom-amount-hint"
                 />
               </div>
+              <p id="custom-amount-hint" className="text-xs text-slate-500 mt-1">Minimum donation is $5</p>
             </div>
 
             {/* Email (optional) */}
             <div>
-              <label className="block text-base md:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
-                Email (optional - for receipt)
+              <label htmlFor="donor-email" className="block text-base md:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                Email <span className="font-normal text-slate-500">(optional — for tax receipt)</span>
               </label>
               <Input
+                id="donor-email"
                 type="email"
+                autoComplete="email"
                 placeholder="your@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -176,26 +198,32 @@ export default function Donate() {
               />
             </div>
 
-            {/* Donate Button */}
+            {/* Donate Button — Loss Aversion + Regret Aversion */}
             <Button
               onClick={handleDonate}
               disabled={loading || (!customAmount && !selectedAmount)}
-              className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy py-6 md:py-4 text-lg md:text-base font-bold"
+              className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy py-6 md:py-4 text-lg md:text-base font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+              aria-busy={loading}
+              aria-live="polite"
             >
               {loading ? (
-                <Loader2 className="w-5 h-5 animate-spin" />
+                <><Loader2 className="w-5 h-5 animate-spin mr-2" aria-hidden="true" /><span>Processing…</span></>
               ) : (
                 <>
-                  <Heart className="w-5 h-5 mr-2" />
-                  {donationType === 'recurring' ? 'Give' : 'Donate'} ${customAmount || selectedAmount}{donationType === 'recurring' ? '/month' : ''}
+                  <Heart className="w-5 h-5 mr-2" aria-hidden="true" />
+                  {donationType === 'recurring'
+                    ? `Give $${customAmount || selectedAmount}/month — Transform a Life`
+                    : `Donate $${customAmount || selectedAmount} — Make an Impact Today`}
                 </>
               )}
             </Button>
-            {donationType === 'recurring' && (
-              <p className="text-xs text-center text-slate-500 dark:text-slate-400">
-                Cancel anytime. You'll receive monthly receipts and impact updates.
-              </p>
-            )}
+            {/* Regret aversion + trust signals */}
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400 text-center">
+              <span>🔒 Secure checkout via Stripe</span>
+              <span>·</span>
+              <span>110% goes to mission</span>
+              {donationType === 'recurring' && <><span>·</span><span>Cancel anytime, no questions asked</span></>}
+            </div>
           </CardContent>
         </Card>
 

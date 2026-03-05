@@ -17,6 +17,7 @@ export default function Layout({ children, currentPageName }) {
   const [microBusinessOpen, setMicroBusinessOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const mainRef = React.useRef(null);
   
   const [canGoBack, setCanGoBack] = useState(false);
 

@@ -20,23 +20,40 @@ export default function MensCampus() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section
+        aria-label="Men's Campus overview"
+        className="relative h-[65vh] flex items-center justify-center overflow-hidden"
+      >
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80"
-            alt="Men's Campus"
+            alt="Men working together in community at Mercy House Men's Campus in Georgetown, Mississippi"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 to-navy/60 dark:from-slate-900/95 dark:to-slate-900/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/92 to-navy/60 dark:from-slate-900/97 dark:to-slate-900/75" aria-hidden="true" />
         </div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Men's Campus
+          <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Georgetown, Mississippi</p>
+          <h1 className="text-5xl md:text-6xl font-bold mb-5">
+            Men's Recovery Campus
           </h1>
-          <p className="text-lg md:text-2xl text-slate-200 max-w-3xl mx-auto">
-            Building men of character, purpose, and strength
+          <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto mb-8">
+            A structured, faith-based program where men break the cycle of addiction and build lives of purpose, character, and lasting freedom.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to={createPageUrl('IntakeForm')}>
+              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-5 text-base shadow-xl transform hover:scale-105 transition-all">
+                Apply for the Program
+                <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
+              </Button>
+            </Link>
+            <a href="tel:6017203718">
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-5 text-base font-semibold">
+                Call Intake: (601) 720-3718
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
 

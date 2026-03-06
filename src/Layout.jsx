@@ -320,8 +320,17 @@ export default function Layout({ children, currentPageName }) {
             </div>
           </div>
           <div className="border-t border-slate-700 mt-8 pt-8 text-center text-lg md:text-base text-slate-400">
-            <p>&copy; {new Date().getFullYear()} Mercy House Adult & Teen Challenge. All rights reserved.</p>
-            <p className="mt-2">110% of individual donor proceeds go directly to our mission.</p>
+            <p>&copy; {new Date().getFullYear()} Mercy House Adult &amp; Teen Challenge. All rights reserved.</p>
+            <p className="mt-2">
+              501(c)(3) Nonprofit &middot; Georgetown &amp; Learned, Mississippi &middot; 110% of individual donor proceeds go directly to our mission.
+            </p>
+            <nav aria-label="Footer utility links" className="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-3 text-sm text-slate-500">
+              <Link to={createPageUrl('Contact')} className="hover:text-gold transition-colors">Contact</Link>
+              <Link to={createPageUrl('Volunteer')} className="hover:text-gold transition-colors">Volunteer</Link>
+              <Link to={createPageUrl('Events')} className="hover:text-gold transition-colors">Events &amp; News</Link>
+              <Link to={createPageUrl('Donate')} className="hover:text-gold transition-colors">Donate</Link>
+              <Link to={createPageUrl('IntakeForm')} className="hover:text-gold transition-colors">Apply for Program</Link>
+            </nav>
           </div>
         </div>
       </footer>

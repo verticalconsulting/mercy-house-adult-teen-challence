@@ -8,7 +8,7 @@ import DonateDropdown from './components/DonateDropdown';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollRestoration from './components/ScrollRestoration';
 import MobileBottomNav from './components/MobileBottomNav';
-import FloatingWhatsAppButton from './components/FloatingWhatsAppButton';
+import FloatingAIChat from './components/FloatingAIChat';
 import { base44 } from '@/api/base44Client';
 import { motion, AnimatePresence } from 'framer-motion';
 

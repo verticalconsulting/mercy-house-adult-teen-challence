@@ -26,7 +26,7 @@ const features = [
   {
     icon: Users,
     title: 'Real Community',
-    desc: 'You won't do this alone. Brotherhood, sisterhood, and mentors who've walked the same road surround every resident.',
+    desc: "You won't do this alone. Brotherhood, sisterhood, and mentors who've walked the same road surround every resident.",
   },
   {
     icon: TrendingUp,

@@ -29,6 +29,10 @@ export default function FloatingAIChat() {
   }, [open]);
 
   const initConversation = async () => {
+    base44.analytics.track({
+      eventName: 'ai_chat_initiated',
+      properties: { source: 'floating_chat_button', page: window.location.pathname }
+    });
     const conv = await base44.agents.createConversation({
       agent_name: 'mercy_house_assistant',
       metadata: { name: 'Mercy House Chat' }

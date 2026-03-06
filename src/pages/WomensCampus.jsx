@@ -20,25 +20,40 @@ export default function WomensCampus() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section
+        aria-label="Women's Campus overview"
+        className="relative h-[65vh] flex items-center justify-center overflow-hidden"
+      >
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80"
-            alt="Women's Campus"
+            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1920&q=80"
+            alt="Women supporting one another through faith-based recovery at Mercy House Women's Campus in Learned, Mississippi"
             className="w-full h-full object-cover"
-            loading="lazy"
           />
-
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 to-navy/60 dark:from-slate-900/95 dark:to-slate-900/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/92 to-navy/60 dark:from-slate-900/97 dark:to-slate-900/75" aria-hidden="true" />
         </div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Women's Campus
+          <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Learned, Mississippi</p>
+          <h1 className="text-5xl md:text-6xl font-bold mb-5">
+            Women's Recovery Campus
           </h1>
-          <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto">
-            A sanctuary for healing, growth, and transformation
+          <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto mb-8">
+            A safe, trauma-informed sanctuary where women break free from addiction, rediscover their identity, and build a life grounded in faith and purpose.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to={createPageUrl('IntakeForm')}>
+              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-5 text-base shadow-xl transform hover:scale-105 transition-all">
+                Apply for the Program
+                <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
+              </Button>
+            </Link>
+            <a href="tel:8558937333">
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-5 text-base font-semibold">
+                Call Us: 855-893-7333
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
 

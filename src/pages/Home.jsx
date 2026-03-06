@@ -152,9 +152,10 @@ export default function Home() {
       <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Micro Businesses</h2>
+            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Shop, Donate & Support</p>
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Every Purchase Funds Recovery</h2>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Our micro businesses provide job training, develop work skills, and fund our operations—ensuring 110% of individual donations go directly to our mission.
+              Our social enterprises train residents with real-world job skills — and every dollar raised goes straight back into the program. When you shop or donate, lives change.
             </p>
           </div>
 

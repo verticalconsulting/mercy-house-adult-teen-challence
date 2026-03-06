@@ -15,6 +15,8 @@ import ReactMarkdown from 'react-markdown';
 export default function Events() {
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [dateFilter, setDateFilter] = useState('upcoming');
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [activeTab, setActiveTab] = useState('events'); // 'events' | 'blog'
   const queryClient = useQueryClient();
 
   const { data: events, isLoading } = useQuery({
@@ -23,8 +25,15 @@ export default function Events() {
     initialData: []
   });
 
+  const { data: blogPosts, isLoading: blogLoading } = useQuery({
+    queryKey: ['blogPosts'],
+    queryFn: () => base44.entities.BlogPost.filter({ published: true }, '-publish_date'),
+    initialData: []
+  });
+
   const handleRefresh = async () => {
     await queryClient.invalidateQueries({ queryKey: ['events'] });
+    await queryClient.invalidateQueries({ queryKey: ['blogPosts'] });
   };
 
   const categoryColors = {

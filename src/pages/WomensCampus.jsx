@@ -151,11 +151,15 @@ export default function WomensCampus() {
       </section>
 
       {/* What to Expect */}
-      <section className="py-20 bg-white dark:bg-slate-800">
+      <section aria-labelledby="womens-phases-heading" className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">
-            What to Expect
-          </h2>
+          <div className="text-center mb-12">
+            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Your Roadmap</p>
+            <h2 id="womens-phases-heading" className="text-4xl font-bold text-navy dark:text-gold">
+              What to Expect — Month by Month
+            </h2>
+            <p className="text-slate-600 dark:text-slate-300 mt-4">Each phase takes you further from where you were — and closer to who you're meant to be.</p>
+          </div>
           
           <div className="space-y-6">
             {[

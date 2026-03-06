@@ -270,18 +270,33 @@ export default function MensCampus() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
+      <section
+        aria-labelledby="mens-cta-heading"
+        className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Take the First Step</h2>
-          <p className="text-lg md:text-xl mb-8 text-slate-200">
-            Your journey to freedom and purpose begins with a single decision.
+          <h2 id="mens-cta-heading" className="text-3xl md:text-4xl font-bold mb-5">Your New Life Starts With One Decision</h2>
+          <p className="text-lg md:text-xl mb-4 text-slate-200 max-w-2xl mx-auto">
+            You've tried white-knuckling it alone. Let us walk with you through something that actually works.
           </p>
-          <Link to={createPageUrl('IntakeForm')}>
-            <Button className="bg-gold hover:bg-gold/90 text-navy font-semibold px-8 py-6 text-lg shadow-xl">
-              Complete Intake Form
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </Link>
+          <p className="text-slate-300 mb-10">
+            Call intake:{' '}
+            <a href="tel:6017203718" className="text-gold font-bold hover:underline">(601) 720-3718</a>
+            {' '}· Mon–Fri 8am–5pm
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to={createPageUrl('IntakeForm')}>
+              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-10 py-6 text-lg shadow-xl transform hover:scale-105 transition-all">
+                Apply Now — It's Free
+                <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
+              </Button>
+            </Link>
+            <Link to={createPageUrl('Contact')}>
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-10 py-6 text-lg font-semibold">
+                Ask Us a Question
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

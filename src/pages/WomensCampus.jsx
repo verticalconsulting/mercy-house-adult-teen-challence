@@ -197,18 +197,33 @@ export default function WomensCampus() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
+      <section
+        aria-labelledby="womens-cta-heading"
+        className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Begin Your Journey?</h2>
-          <p className="text-xl mb-8 text-slate-200">
-            Take the first step toward healing and transformation today.
+          <h2 id="womens-cta-heading" className="text-4xl font-bold mb-5">You Deserve More Than to Just Survive</h2>
+          <p className="text-xl mb-4 text-slate-200 max-w-2xl mx-auto leading-relaxed">
+            The next chapter of your life can be different. Our team is ready to welcome you — just as you are.
           </p>
-          <Link to={createPageUrl('IntakeForm')}>
-            <Button className="bg-gold hover:bg-gold/90 text-navy font-semibold px-8 py-6 text-lg shadow-xl">
-              Complete Intake Form
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </Link>
+          <p className="text-slate-300 mb-10">
+            Call us:{' '}
+            <a href="tel:8558937333" className="text-gold font-bold hover:underline">855-893-7333</a>
+            {' '}· Mon–Fri 8am–5pm
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to={createPageUrl('IntakeForm')}>
+              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-10 py-6 text-lg shadow-xl transform hover:scale-105 transition-all">
+                Apply Now — It's Free
+                <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
+              </Button>
+            </Link>
+            <Link to={createPageUrl('Contact')}>
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-10 py-6 text-lg font-semibold">
+                Ask Us a Question
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>);

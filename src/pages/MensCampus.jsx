@@ -188,9 +188,13 @@ export default function MensCampus() {
       </section>
 
       {/* 4 Phases */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+      <section aria-labelledby="mens-phases-heading" className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-navy dark:text-gold mb-12">Our 4 Phase Program</h2>
+          <div className="text-center mb-12">
+            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Your Roadmap to Freedom</p>
+            <h2 id="mens-phases-heading" className="text-3xl md:text-4xl font-bold text-navy dark:text-gold">Our 4-Phase Recovery Program</h2>
+            <p className="text-slate-600 dark:text-slate-300 mt-4 max-w-2xl mx-auto">Each phase builds on the last — moving you from crisis to independence with clear milestones and real support.</p>
+          </div>
           
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {[

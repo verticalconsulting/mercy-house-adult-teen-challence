@@ -67,6 +67,7 @@ import VehicleDonation from './pages/VehicleDonation';
 import VehicleDonationForm from './pages/VehicleDonationForm';
 import Volunteer from './pages/Volunteer';
 import WomensCampus from './pages/WomensCampus';
+import DonationFunnel from './pages/DonationFunnel';
 import __Layout from './Layout.jsx';
 
 
@@ -91,6 +92,7 @@ export const PAGES = {
     "VehicleDonationForm": VehicleDonationForm,
     "Volunteer": Volunteer,
     "WomensCampus": WomensCampus,
+    "DonationFunnel": DonationFunnel,
 }
 
 export const pagesConfig = {

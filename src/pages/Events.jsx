@@ -5,10 +5,12 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MobileSelect } from '@/components/ui/mobile-select';
-import { Calendar, Users, ExternalLink, Clock, MapPin } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Calendar, Users, ExternalLink, Clock, MapPin, ArrowLeft, Newspaper } from 'lucide-react';
 import { format, isAfter, isBefore, startOfDay } from 'date-fns';
 import { SelectItem } from '@/components/ui/select';
 import PullToRefresh from '../components/PullToRefresh';
+import ReactMarkdown from 'react-markdown';
 
 export default function Events() {
   const [categoryFilter, setCategoryFilter] = useState('all');

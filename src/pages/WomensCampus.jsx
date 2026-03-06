@@ -101,11 +101,14 @@ export default function WomensCampus() {
       </section>
 
       {/* Program Features */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+      <section aria-labelledby="womens-features-heading" className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">
-            Program Components
-          </h2>
+          <div className="text-center mb-12">
+            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">What's Included</p>
+            <h2 id="womens-features-heading" className="text-4xl font-bold text-navy dark:text-gold">
+              What the Program Includes
+            </h2>
+          </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[

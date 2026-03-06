@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Loader2, ChevronLeft, ChevronRight, Info, AlertCircle } from 'lucide-react';
 import { toast } from 'sonner';
+import IntakeFeePayment from '../components/IntakeFeePayment';
 
 // Validation helpers
 const validatePhone = (phone) => {
@@ -234,7 +235,7 @@ export default function IntakeForm() {
   if (submitted) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-20">
-        <div className="max-w-2xl mx-auto px-4">
+        <div className="max-w-2xl mx-auto px-4 space-y-8">
           <Card className="text-center p-12">
             <CheckCircle className="w-20 h-20 text-green-600 mx-auto mb-6" aria-hidden="true" />
             <h1 className="text-3xl font-bold text-navy dark:text-gold mb-4">
@@ -250,6 +251,17 @@ export default function IntakeForm() {
               Intake Coordinator: (601) 720-3718
             </p>
           </Card>
+
+          {/* Intake Fee Payment */}
+          <div>
+            <p className="text-center text-slate-600 dark:text-slate-400 mb-4 text-sm font-medium">
+              Optional: Pay your $1,000 intake fee now to secure your spot — or wait until you hear from our team.
+            </p>
+            <IntakeFeePayment
+              applicantName={formData.full_legal_name}
+              applicantEmail={formData.email}
+            />
+          </div>
         </div>
       </div>
     );

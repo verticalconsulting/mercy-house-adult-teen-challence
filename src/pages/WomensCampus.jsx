@@ -65,24 +65,25 @@ export default function WomensCampus() {
       </section>
 
       {/* Program Overview */}
-      <section className="py-20 bg-white dark:bg-slate-800">
+      <section aria-labelledby="womens-overview-heading" className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-navy dark:text-gold mb-6">
-                A Safe Place to Heal
+              <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">12-Month Program</p>
+              <h2 id="womens-overview-heading" className="text-4xl font-bold text-navy dark:text-gold mb-6">
+                A Safe Place to Heal — and Become
               </h2>
-              <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
-                Our Women's Campus provides a nurturing environment where women can break free from life-controlling problems and rebuild their lives on a foundation of faith, hope, and practical skills.
+              <p className="text-lg text-slate-700 dark:text-slate-300 mb-5 leading-relaxed">
+                Our Women's Campus is more than a recovery program. It's a place where women can stop surviving and start truly living — with a community that sees them, supports them, and walks beside them every step.
               </p>
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
-                Through comprehensive programming that addresses spiritual, emotional, mental, and physical needs, women gain the tools necessary to become productive members of society.
+                We address the spiritual, emotional, mental, and practical dimensions of healing — so women leave equipped, not just sober.
               </p>
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Link to={createPageUrl('IntakeForm')}>
-                  <Button className="bg-slate-500 text-white px-4 py-2 text-sm font-semibold rounded-md inline-flex items-center justify-center gap-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow h-9 dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 dark:text-navy">
-                    Apply Now
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                  <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy font-semibold">
+                    Apply Now — It's Free
+                    <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
                   </Button>
                 </Link>
                 <DonateButton />

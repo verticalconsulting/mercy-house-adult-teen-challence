@@ -126,22 +126,23 @@ export default function Home() {
       {/* Stats Section */}
       <section className="py-20 bg-navy dark:bg-slate-950 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-slate-300 text-lg mb-10 font-medium">Over 15 years of proof that lasting recovery is possible.</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-5xl font-bold text-gold mb-2">15+</div>
-              <div className="text-slate-300">Years of Service</div>
+              <div className="text-slate-300">Years Changing Lives</div>
             </div>
             <div className="text-center">
               <div className="text-5xl font-bold text-gold mb-2">110%</div>
-              <div className="text-slate-300">Donations to Mission</div>
+              <div className="text-slate-300">Of Your Donation Funds the Mission</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-gold mb-2">1000+</div>
-              <div className="text-slate-300">Lives Changed</div>
+              <div className="text-5xl font-bold text-gold mb-2">1,000+</div>
+              <div className="text-slate-300">Graduates Transformed</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-gold mb-2">24/7</div>
-              <div className="text-slate-300">Support Available</div>
+              <div className="text-5xl font-bold text-gold mb-2">$0</div>
+              <div className="text-slate-300">Cost to Residents — Always Free</div>
             </div>
           </div>
         </div>

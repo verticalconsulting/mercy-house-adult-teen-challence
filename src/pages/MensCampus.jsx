@@ -58,38 +58,39 @@ export default function MensCampus() {
       </section>
 
       {/* Bed Count */}
-      <section className="py-12 bg-slate-50 dark:bg-slate-900">
+      <section aria-label="Current bed availability" className="py-12 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <BedCountDisplay bedData={mensBedData} programName="Men's Campus" />
         </div>
       </section>
 
       {/* Program Overview */}
-      <section className="py-20 bg-white dark:bg-slate-800">
+      <section aria-labelledby="mens-overview-heading" className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="rounded-2xl overflow-hidden shadow-2xl">
               <img
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983b4b00291b5dfd8507106/05a4f88f2_bible.png"
-                alt="Men studying together"
+                alt="Resident studying the Bible during structured program time at Mercy House Men's Campus"
                 className="w-full h-full object-cover"
               />
             </div>
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy dark:text-gold mb-6">
+              <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">12-Month Program</p>
+              <h2 id="mens-overview-heading" className="text-3xl md:text-4xl font-bold text-navy dark:text-gold mb-6">
                 Reclaim Your Purpose
               </h2>
-              <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
-                Our Men's Campus offers a structured, disciplined environment where men can break the chains of addiction and destructive behaviors through faith-based recovery.
+              <p className="text-lg text-slate-700 dark:text-slate-300 mb-5 leading-relaxed">
+                Our Men's Campus provides a structured environment — not a short-term detox, but a full year of transformation. Men work through root causes of addiction, rebuild their identity in Christ, and graduate with marketable skills.
               </p>
-              <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
-                We equip men with practical skills, biblical principles, and the accountability needed to become productive members of society and leaders in their communities.
+              <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
+                We equip men with biblical principles, vocational training, and the brotherhood needed to sustain a new life — long after the program ends.
               </p>
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Link to={createPageUrl('IntakeForm')}>
                   <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy font-semibold">
-                    Apply Now
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                    Apply Now — It's Free
+                    <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
                   </Button>
                 </Link>
                 <DonateButton />

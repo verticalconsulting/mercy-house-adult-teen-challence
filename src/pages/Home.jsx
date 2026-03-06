@@ -106,13 +106,14 @@ export default function Home() {
                 />
               </div>
               <div className="p-8">
-                <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Men's Campus</h3>
+                <h3 className="text-2xl font-bold text-navy dark:text-gold mb-2">Men's Campus</h3>
+                <p className="text-sm text-gold font-medium mb-3">Georgetown, MS · 12–18 Month Residential Program</p>
                 <p className="text-slate-600 dark:text-slate-300 mb-6">
-                  Empowering men to overcome addiction and life-controlling issues through structured programming, spiritual development, and vocational training.
+                  Men find brotherhood, structure, and purpose here. From spiritual growth to hands-on vocational training, graduates leave equipped to lead productive lives.
                 </p>
                 <Link to={createPageUrl('MensCampus')}>
                   <Button className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
-                    Learn More
+                    See the Men's Program
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>

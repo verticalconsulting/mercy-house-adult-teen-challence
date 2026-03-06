@@ -31,6 +31,9 @@ export default function Donate() {
     }
   }, []);
 
+  const [intakeDonorEmail, setIntakeDonorEmail] = useState('');
+  const [intakeDonorLoading, setIntakeDonorLoading] = useState(false);
+
   const presetAmounts = [25, 50, 100, 250, 500];
   const impactLabels = {
     25: 'Feed a resident for 3 days',
@@ -38,6 +41,33 @@ export default function Donate() {
     100: 'Cover educational supplies',
     250: 'Support one resident for a month',
     500: 'Fund 2 months of transformation'
+  };
+
+  const handleDonorIntakeFee = async () => {
+    if (!intakeDonorEmail) {
+      toast.error('Please enter your email');
+      return;
+    }
+    if (window.self !== window.top) {
+      toast.error('Please use the published app to make donations');
+      return;
+    }
+    setIntakeDonorLoading(true);
+    try {
+      const { data } = await base44.functions.invoke('createIntakeFeeCheckout', {
+        paymentType: 'donor_pays',
+        email: intakeDonorEmail,
+      });
+      if (data?.url) {
+        window.location.href = data.url;
+      } else {
+        toast.error('Failed to start checkout');
+        setIntakeDonorLoading(false);
+      }
+    } catch (err) {
+      toast.error('Error starting checkout. Please try again.');
+      setIntakeDonorLoading(false);
+    }
   };
 
   const handleDonate = async () => {

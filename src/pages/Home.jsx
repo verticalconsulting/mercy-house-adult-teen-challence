@@ -50,9 +50,13 @@ export default function Home() {
       <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-6">Our Mission</h2>
-            <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed">
-              To provide an effective and comprehensive Christian faith-based solution to life-controlling problems in order to become productive members of society. By applying biblical principles, we endeavor to help people become mentally sound, emotionally balanced, and socially adjusted.
+            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Why Mercy House?</p>
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-6">Real Recovery. Real Lives Changed.</h2>
+            <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+              Addiction steals your future — but it doesn't have to write your story. Through Christ-centered recovery, vocational training, and a structured community, our residents rebuild from the inside out.
+            </p>
+            <p className="text-lg text-slate-600 dark:text-slate-400">
+              We treat the whole person — mind, body, and spirit — so the change that happens here actually lasts.
             </p>
           </div>
         </div>

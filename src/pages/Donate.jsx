@@ -257,6 +257,50 @@ export default function Donate() {
           </CardContent>
         </Card>
 
+        {/* Sponsor an Intake Fee — Donor Option */}
+        <Card className="mb-12 border-2 border-gold/40 bg-gold/5 dark:bg-gold/10">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <UserPlus className="w-7 h-7 text-gold" />
+              <div>
+                <CardTitle className="text-navy dark:text-gold text-xl">Give Someone a Fresh Start</CardTitle>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                  Cover the <strong>$1,000 intake fee</strong> for the next person entering Mercy House. Your gift removes the last barrier standing between someone and recovery.
+                </p>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="bg-white dark:bg-slate-800 rounded-lg p-4 text-sm text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+              💡 <strong>How it works:</strong> Your $1,000 donation is held in a dedicated fund. When the next applicant is accepted, their intake fee is covered by your gift — and they're notified someone believed in them before they even arrived.
+            </div>
+            <div>
+              <label htmlFor="intake_donor_email" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                Your email (for tax receipt)
+              </label>
+              <Input
+                id="intake_donor_email"
+                type="email"
+                placeholder="your@email.com"
+                value={intakeDonorEmail}
+                onChange={(e) => setIntakeDonorEmail(e.target.value)}
+              />
+            </div>
+            <Button
+              onClick={handleDonorIntakeFee}
+              disabled={intakeDonorLoading || !intakeDonorEmail}
+              className="w-full bg-gold hover:bg-gold/90 text-navy font-bold py-5"
+            >
+              {intakeDonorLoading ? (
+                <><Loader2 className="w-4 h-4 animate-spin mr-2" />Processing…</>
+              ) : (
+                <><UserPlus className="w-4 h-4 mr-2" />Sponsor Someone's Fresh Start — $1,000</>
+              )}
+            </Button>
+            <p className="text-xs text-center text-slate-500">🔒 Secure checkout via Stripe · Tax-deductible</p>
+          </CardContent>
+        </Card>
+
         {/* Impact Section */}
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           <div className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl shadow-lg text-center">
@@ -268,8 +312,8 @@ export default function Donate() {
             <p className="text-base md:text-sm text-slate-600 dark:text-slate-300">Covers educational materials and supplies</p>
           </div>
           <div className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl shadow-lg text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gold mb-2">$250</div>
-            <p className="text-base md:text-sm text-slate-600 dark:text-slate-300">Supports one resident for a full month</p>
+            <div className="text-4xl md:text-5xl font-bold text-gold mb-2">$1,000</div>
+            <p className="text-base md:text-sm text-slate-600 dark:text-slate-300">Covers a new resident's full intake fee</p>
           </div>
         </div>
       </div>

@@ -260,8 +260,8 @@ export default function Layout({ children, currentPageName }) {
 
 
 
-      {/* Floating WhatsApp Button */}
-      <FloatingWhatsAppButton />
+      {/* Floating AI Chat */}
+      <FloatingAIChat />
 
       {/* Footer */}
       <footer className="bg-navy dark:bg-slate-900 text-white mt-20">
@@ -308,13 +308,12 @@ export default function Layout({ children, currentPageName }) {
                   </a>
                 </div>
                 <a
-                  href={base44.agents.getWhatsAppConnectURL('intake_support')}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors font-semibold text-lg md:text-base"
+                  href="#main-content"
+                  onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0 }); }}
+                  className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-navy hover:bg-navy/90 text-white rounded-md transition-colors font-semibold text-lg md:text-base"
                 >
                   <MessageCircle className="w-5 h-5 md:w-4 md:h-4" />
-                  Chat on WhatsApp
+                  Ask Our AI Assistant
                 </a>
                 <DonateDropdown className="w-full" />
               </div>

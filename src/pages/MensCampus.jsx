@@ -101,10 +101,10 @@ export default function MensCampus() {
       </section>
 
       {/* Program Features */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+      <section aria-labelledby="mens-features-heading" className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-navy dark:text-gold mb-12">
-            Program Components
+          <h2 id="mens-features-heading" className="text-3xl md:text-4xl font-bold text-center text-navy dark:text-gold mb-12">
+            What the Program Includes
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">

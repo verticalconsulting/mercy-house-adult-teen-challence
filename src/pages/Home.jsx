@@ -182,21 +182,26 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Start Your Journey?</h2>
-          <p className="text-xl mb-8 text-slate-200">
-            Take the first step towards freedom and transformation today.
+          <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-4">The First Step Is the Hardest</p>
+          <h2 className="text-4xl font-bold mb-4">Someone Is Waiting to Help You — Right Now</h2>
+          <p className="text-xl mb-3 text-slate-200">
+            You've already shown courage by being here. The next step is simple: fill out a free application or call our intake line.
           </p>
+          <p className="text-slate-300 mb-8">No judgment. No fees. Just people who care.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to={createPageUrl('IntakeForm')}>
             <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
-              Apply Now
+              Apply for Free Today
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
-          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
-            Contact Us
-          </Button>
+          <Link to={createPageUrl('Contact')}>
+            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+              Talk to Someone Now
+            </Button>
+          </Link>
           </div>
+          <p className="mt-5 text-slate-400 text-sm">Or call us directly: <a href="tel:6017203718" className="text-gold underline font-semibold">(601) 720-3718</a></p>
         </div>
       </section>
     </div>

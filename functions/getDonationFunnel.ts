@@ -5,7 +5,7 @@ Deno.serve(async (req) => {
     const base44 = createClientFromRequest(req);
     const { accessToken } = await base44.asServiceRole.connectors.getConnection('google_analytics');
 
-    // First, get the list of GA4 properties
+    // Get the list of GA4 properties
     const accountsRes = await fetch(
       'https://analyticsadmin.googleapis.com/v1beta/accountSummaries',
       { headers: { Authorization: `Bearer ${accessToken}` } }

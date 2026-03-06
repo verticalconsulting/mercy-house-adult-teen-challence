@@ -148,11 +148,15 @@ export default function MensCampus() {
       </section>
 
       {/* Daily Schedule */}
-      <section className="py-20 bg-white dark:bg-slate-800">
+      <section aria-labelledby="mens-schedule-heading" className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-navy dark:text-gold mb-12">
-            Daily Structure
-          </h2>
+          <div className="text-center mb-12">
+            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Structured for Success</p>
+            <h2 id="mens-schedule-heading" className="text-3xl md:text-4xl font-bold text-navy dark:text-gold">
+              A Typical Day on Campus
+            </h2>
+            <p className="text-slate-600 dark:text-slate-300 mt-4 max-w-xl mx-auto">Structure is one of the most powerful tools in recovery. Every day is intentional.</p>
+          </div>
           
           <div className="space-y-3 md:space-y-4">
             {[

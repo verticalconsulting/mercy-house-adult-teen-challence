@@ -21,22 +21,27 @@ export default function Home() {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
           <div className="max-w-3xl">
+            <p className="text-gold font-semibold text-lg tracking-widest uppercase mb-4">Free · Faith-Based · Life-Changing</p>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              A New Beginning
-              <span className="block text-gold mt-2">Starts Here</span>
+              Freedom from
+              <span className="block text-gold mt-2">Addiction Starts Here</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-slate-200 leading-relaxed">
-              Providing comprehensive Christian faith-based solutions to life-controlling problems. Become mentally sound, emotionally balanced, and socially adjusted.
+            <p className="text-xl md:text-2xl mb-4 text-slate-200 leading-relaxed">
+              You don't have to fight this alone. For over 15 years, Mercy House has walked alongside men and women ready to reclaim their lives — completely free of charge.
+            </p>
+            <p className="text-lg mb-8 text-slate-300">
+              No insurance required. No fees. Just a proven path forward.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to={createPageUrl('IntakeForm')}>
                 <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                  Start Your Journey
+                  Apply for Free Today
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <DonateButton className="px-8 py-6 text-lg font-semibold" />
             </div>
+            <p className="mt-4 text-sm text-slate-400">Intake line open now: <a href="tel:6017203718" className="text-gold underline">(601) 720-3718</a></p>
           </div>
         </div>
       </section>

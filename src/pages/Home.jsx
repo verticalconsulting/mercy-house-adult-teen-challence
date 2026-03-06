@@ -82,13 +82,14 @@ export default function Home() {
                 />
               </div>
               <div className="p-8">
-                <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Women's Campus</h3>
+                <h3 className="text-2xl font-bold text-navy dark:text-gold mb-2">Women's Campus</h3>
+                <p className="text-sm text-gold font-medium mb-3">Georgetown, MS · 12–18 Month Residential Program</p>
                 <p className="text-slate-600 dark:text-slate-300 mb-6">
-                  A safe, supportive environment where women can heal, grow, and rebuild their lives through faith-based recovery and life skills training.
+                  A safe home where women heal from addiction, rebuild confidence, and gain the life skills needed to thrive — surrounded by a community of sisters who understand.
                 </p>
                 <Link to={createPageUrl('WomensCampus')}>
                   <Button className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
-                    Learn More
+                    See the Women's Program
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>

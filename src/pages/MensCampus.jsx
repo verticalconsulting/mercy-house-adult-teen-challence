@@ -230,9 +230,12 @@ export default function MensCampus() {
       </section>
 
       {/* Values & Additional Programs */}
-      <section className="py-20 bg-white dark:bg-slate-800">
+      <section aria-labelledby="mens-more-heading" className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-navy dark:text-gold mb-12">More Than Recovery</h2>
+          <div className="text-center mb-12">
+            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Whole-Person Transformation</p>
+            <h2 id="mens-more-heading" className="text-3xl md:text-4xl font-bold text-navy dark:text-gold">More Than Recovery</h2>
+          </div>
           
           <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12">
             <div className="bg-slate-50 dark:bg-slate-900 p-6 md:p-8 rounded-xl">

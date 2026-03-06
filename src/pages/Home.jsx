@@ -65,7 +65,11 @@ export default function Home() {
       {/* Programs Section */}
       <section className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">Our Programs</h2>
+          <div className="text-center mb-12">
+            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Who We Serve</p>
+            <h2 className="text-4xl font-bold text-navy dark:text-gold">Two Campuses. One Mission.</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 mt-3 max-w-2xl mx-auto">Separate residential programs — same proven curriculum, same unwavering support.</p>
+          </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             {/* Women's Campus */}

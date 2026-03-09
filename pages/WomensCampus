@@ -26,6 +26,8 @@ export default function WomensCampus() {
             src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b8b9b980-e36e-4ba6-24a4-70d45d74e500/heromobile"
             alt="Women's Campus"
             className="w-full h-full object-cover" />
+            fetchpriotity="high"
+            loading="eager"
 
           <div className="absolute inset-0 bg-gradient-to-r from-navy/90 to-navy/60 dark:from-slate-900/95 dark:to-slate-900/70" />
         </div>

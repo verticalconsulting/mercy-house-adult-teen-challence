@@ -8,7 +8,8 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import { Plus, Edit2, Trash2, Save, X, TrendingUp } from 'lucide-react';
-import { toast } from 'react-hot-toast';
+import { toast } from 'sonner';
+import { Badge } from '@/components/ui/badge';
 
 export default function CampaignManager() {
   const [editing, setEditing] = useState(null);

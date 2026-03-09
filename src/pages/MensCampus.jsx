@@ -26,9 +26,11 @@ export default function MensCampus() {
       >
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80"
+            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/aab06562-c0ee-4f31-ca4f-cb36c5faf700/heromobile"
             alt="Men working together in community at Mercy House Men's Campus in Georgetown, Mississippi"
             className="w-full h-full object-cover"
+            fetchpriority="high"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-navy/92 to-navy/60 dark:from-slate-900/97 dark:to-slate-900/75" aria-hidden="true" />
         </div>

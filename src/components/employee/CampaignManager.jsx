@@ -11,6 +11,40 @@ import { Plus, Edit2, Trash2, Save, X, TrendingUp } from 'lucide-react';
 import { toast } from 'sonner';
 import { Badge } from '@/components/ui/badge';
 
+function QuickAmountEditor({ campaign, onSave }) {
+  const [editing, setEditing] = useState(false);
+  const [value, setValue] = useState(campaign.current_amount || 0);
+
+  const handleSave = () => {
+    onSave(campaign.id, parseFloat(value) || 0);
+    setEditing(false);
+  };
+
+  if (editing) {
+    return (
+      <div className="flex items-center gap-1">
+        <span className="text-slate-500">$</span>
+        <input
+          type="number"
+          className="w-28 border border-slate-300 dark:border-slate-600 rounded px-2 py-0.5 text-sm bg-white dark:bg-slate-800"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          autoFocus
+          onKeyDown={(e) => { if (e.key === 'Enter') handleSave(); if (e.key === 'Escape') setEditing(false); }}
+        />
+        <Button size="icon" className="h-6 w-6 bg-green-600 hover:bg-green-700" onClick={handleSave}><Save className="w-3 h-3" /></Button>
+        <Button size="icon" variant="ghost" className="h-6 w-6" onClick={() => setEditing(false)}><X className="w-3 h-3" /></Button>
+      </div>
+    );
+  }
+
+  return (
+    <button onClick={() => { setValue(campaign.current_amount || 0); setEditing(true); }} className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold underline underline-offset-2 text-sm transition-colors">
+      ${(campaign.current_amount || 0).toLocaleString()} raised
+    </button>
+  );
+}
+
 export default function CampaignManager() {
   const [editing, setEditing] = useState(null);
   const [showForm, setShowForm] = useState(false);

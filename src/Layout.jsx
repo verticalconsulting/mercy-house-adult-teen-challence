@@ -290,7 +290,7 @@ export default function Layout({ children, currentPageName }) {
               <p className="text-slate-300 text-lg md:text-base leading-relaxed">
                 Office: 855-893-7333<br />
                 Intake: (601) 720-3718<br />
-                Email: info@mercyhouse.org
+                Email: info@mercyhouse.com
               </p>
               <p className="text-slate-300 text-lg md:text-sm mt-2">
                 Monday – Friday: 8am - 5pm

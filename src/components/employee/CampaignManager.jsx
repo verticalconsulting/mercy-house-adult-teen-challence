@@ -223,6 +223,13 @@ export default function CampaignManager() {
       )}
 
       {/* Campaigns List */}
+      {campaigns.length === 0 && (
+        <div className="text-center py-16 text-slate-500 dark:text-slate-400">
+          <TrendingUp className="w-12 h-12 mx-auto mb-4 opacity-30" />
+          <p className="text-lg font-medium">No campaigns yet</p>
+          <p className="text-sm">Create your first fundraising campaign above.</p>
+        </div>
+      )}
       <div className="space-y-4">
         {campaigns.map((campaign) => {
           const percentage = Math.min((campaign.current_amount / campaign.goal_amount) * 100, 100);

@@ -276,10 +276,8 @@ export default function CampaignManager() {
                 </div>
 
                 <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-slate-600 dark:text-slate-300">
-                      ${campaign.current_amount?.toLocaleString() || 0} raised
-                    </span>
+                  <div className="flex justify-between text-sm items-center">
+                    <QuickAmountEditor campaign={campaign} onSave={(id, val) => updateMutation.mutate({ id, data: { current_amount: val } })} />
                     <span className="font-bold text-navy dark:text-gold">
                       ${campaign.goal_amount?.toLocaleString()} goal
                     </span>
@@ -291,7 +289,7 @@ export default function CampaignManager() {
                     />
                   </div>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
-                    {percentage.toFixed(1)}% of goal • {campaign.end_date ? `Ends ${new Date(campaign.end_date).toLocaleDateString()}` : 'No end date'}
+                    {percentage.toFixed(1)}% of goal • {campaign.end_date ? `Ends ${new Date(campaign.end_date + 'T00:00:00').toLocaleDateString()}` : 'No end date'}
                   </p>
                 </div>
               </CardContent>

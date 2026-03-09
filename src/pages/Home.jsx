@@ -65,7 +65,7 @@ export default function Home() {
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
               <div className="h-64 overflow-hidden">
                 <img
-                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/3d69ae38-a33a-4130-942e-ab3c9e77d700/small"
+                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/78d14e94-ea93-40e2-fb1f-23041b143700/og"
                   alt="Women's Campus"
                   className="w-full h-full object-cover"
                   fetchpriority="high"
@@ -90,7 +90,7 @@ export default function Home() {
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
               <div className="h-64 overflow-hidden">
                 <img
-                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/0976214b-ebde-415f-7af6-5f9764faf500/small"
+                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/aab06562-c0ee-4f31-ca4f-cb36c5faf700/og"
                   alt="Men's Campus"
                   className="w-full h-full object-cover"
                   fetchpriority="high"

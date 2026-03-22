@@ -5,31 +5,37 @@ const team = [
   {
     name: 'Bryan Wilson',
     title: 'President/CFO',
+    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b3560cfa-a4f6-42c3-3089-938b4db94000/small',
     bio: "God called me to start this Teen Challenge because our family had a long line of alcoholics until God delivered my father & broke the generational curse on our family. We are now three generations of ministers. One life changed can transform the trajectory of a whole family of generations, saving children from abuse, giving sons back to mothers, husbands back to wives, & fathers back to children. There is also the reality that our church had sent 200 men to other TCs around the country but some could not leave the state because of legal issues. So we could not help them & God said, \"Do something about it.\" The the miracles began.",
   },
   {
     name: 'Matthew Milliman',
     title: 'Executive Director/CEO',
+    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/70e7c889-58c9-421b-b89a-188f9a87b400/small',
     bio: "I grew up seeing a lot of dysfunction which really altered how I viewed life. My dad was a good man but drank a lot and wasn't there for us like he should have been. This left me empty and looking for acceptance in all the wrong places. My only identity was in the alcohol I drank or the drugs I did. Coming through Adult and Teen Challenge helped rescue me from a lifestyle of addiction & taught me how to live again. I am now walking in my true calling helping men and their families find freedom from addiction!",
   },
   {
     name: 'Joshua Cook',
     title: 'Director of Operations',
+    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/fbee339a-6e0e-41b1-dec4-7e39ded9b900/small',
     bio: "I lived in darkness for 22 years of my life. I have been in over 11 rehabs 3 psych ward and multiple jails and prisons. I have overdosed countless times. But God had other plans. I walked in Mercy House on August 17, 2017 and never looked back. God has changed everything. I'm a husband, father and deacon in my church. The Lord has given back everything plus more that the enemy stole from me. I'm blessed and humble that the Lord is using me today to help others who struggle like I did for years.",
   },
   {
     name: 'Thomas Reif',
     title: 'Campus Director — Men',
+    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1777985b-43aa-4dcc-e288-ea7079952b00/small',
     bio: "I am happily married to my wife, Ashley, and we have the privilege of raising our three boys: Cayden, Zane, and Wyatt. After nearly a decade in the military and local law enforcement, my life fell apart due to addiction and PTSD. By the grace of God, I was saved and my family was restored, leading us into full-time ministry. My wife and I felt called to move our family from the Pacific Northwest, where I was pastoring a church in Oregon, to join the Mercy House Adult and Teen Challenge family. I am passionate about witnessing the transformation of men's lives through the power of Jesus Christ. I firmly believe that if God can change a single man, He can begin to change entire communities.",
   },
   {
     name: 'Lindsay Hughes',
     title: 'Campus Director — Women',
+    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/45c77396-fda6-438c-24a8-721975af3e00/small',
     bio: "Lindsay Hughes is the Director of the Women's Campus in Learned, MS, where she leads a dedicated team in creating a supportive environment for women. A Board Certified Christian Counselor with a Bachelor's in Social Work and graduate studies in Clinical Chaplaincy and Christian Counseling, she specializes in trauma-informed therapy. Lindsay has served as a Medical Chaplain in multiple hospitals, providing spiritual support to patients and families. Her coordination of mission projects for Global Outreach in Exuma, Bahamas, highlights her commitment to service and community. With her extensive experience and dedication, Lindsay plays a vital role in promoting holistic well-being at the Women's Campus.",
   },
   {
     name: 'Wesley Barnett',
     title: 'Student Life Coordinator',
+    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/18058ddc-6999-4a74-47a6-6fc6e80dce00/small',
     bio: "My name is Wesley Barnett. I was in active addiction for 8 years of my life. God delivered me from my addiction and brought me to Mercy House Adult and Teen Challenge on November 12, 2020. I also now have a beautiful wife and two amazing step sons that I get to raise up in the Lord. My life is forever changed!",
   },
   {

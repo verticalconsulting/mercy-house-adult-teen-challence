@@ -41,7 +41,7 @@ export default function MensCampus() {
             Men's Recovery Campus
           </h1>
           <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto mb-8">
-            A structured, faith-based program where men break the cycle of addiction and build lives of purpose, character, and lasting freedom.
+            A structured, faith-based program where men break free from life-controlling and dependency issues and build lives of purpose, character, and lasting freedom.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to={createPageUrl('IntakeForm')}>
@@ -83,7 +83,7 @@ export default function MensCampus() {
                 Reclaim Your Purpose
               </h2>
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-5 leading-relaxed">
-                Our Men's Campus provides a structured environment — not a short-term detox, but a full year of transformation. Men work through root causes of addiction, rebuild their identity in Christ, and graduate with marketable skills.
+                Our Men's Campus provides a structured environment — not a short-term fix, but a full year of transformation. Men work through root causes of life-controlling issues, rebuild their identity in Christ, and graduate with marketable skills.
               </p>
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
                 We equip men with biblical principles, vocational training, and the brotherhood needed to sustain a new life — long after the program ends.
@@ -157,7 +157,7 @@ export default function MensCampus() {
             <h2 id="mens-schedule-heading" className="text-3xl md:text-4xl font-bold text-navy dark:text-gold">
               A Typical Day on Campus
             </h2>
-            <p className="text-slate-600 dark:text-slate-300 mt-4 max-w-xl mx-auto">Structure is one of the most powerful tools in recovery. Every day is intentional.</p>
+            <p className="text-slate-600 dark:text-slate-300 mt-4 max-w-xl mx-auto">Structure is one of the most powerful tools in transformation. Every day is intentional.</p>
           </div>
           
           <div className="space-y-3 md:space-y-4">
@@ -257,7 +257,7 @@ export default function MensCampus() {
             <div className="bg-slate-50 dark:bg-slate-900 p-6 md:p-8 rounded-xl">
               <h3 className="text-xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Discipleship Training</h3>
               <p className="text-base md:text-base text-slate-700 dark:text-slate-300">
-                We focus on learning how to process and overcome the stress and pressure of addiction through spiritual teachings.
+                We focus on learning how to process and overcome the stress and pressure of life-controlling issues through spiritual teachings.
               </p>
             </div>
 

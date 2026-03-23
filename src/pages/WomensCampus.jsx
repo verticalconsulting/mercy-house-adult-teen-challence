@@ -20,70 +20,54 @@ export default function WomensCampus() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section
-        aria-label="Women's Campus overview"
-        className="relative h-[65vh] flex items-center justify-center overflow-hidden"
-      >
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1920&q=80"
-            alt="Women supporting one another through faith-based recovery at Mercy House Women's Campus in Learned, Mississippi"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/92 to-navy/60 dark:from-slate-900/97 dark:to-slate-900/75" aria-hidden="true" />
-        </div>
+            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b8b9b980-e36e-4ba6-24a4-70d45d74e500/heromobile"
+            alt="Women's Campus"
+            className="w-full h-full object-cover" />
+            fetchpriotity="high"
+            loading="eager"
 
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 to-navy/60 dark:from-slate-900/95 dark:to-slate-900/70" />
+        </div>
+        
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white text-center">
-          <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Learned, Mississippi</p>
-          <h1 className="text-5xl md:text-6xl font-bold mb-5">
-            Women's Recovery Campus
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            Women's Campus
           </h1>
-          <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto mb-8">
-            A safe, trauma-informed sanctuary where women break free from addiction, rediscover their identity, and build a life grounded in faith and purpose.
+          <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto">
+            A sanctuary for healing, growth, and transformation
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to={createPageUrl('IntakeForm')}>
-              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-5 text-base shadow-xl transform hover:scale-105 transition-all">
-                Apply for the Program
-                <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
-              </Button>
-            </Link>
-            <a href="tel:8558937333">
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-5 text-base font-semibold">
-                Call Us: 855-893-7333
-              </Button>
-            </a>
-          </div>
         </div>
       </section>
 
       {/* Bed Count */}
-      <section aria-label="Current bed availability" className="py-12 bg-slate-50 dark:bg-slate-900">
+      <section className="py-12 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <BedCountDisplay bedData={womensBedData} programName="Women's Campus" />
         </div>
       </section>
 
       {/* Program Overview */}
-      <section aria-labelledby="womens-overview-heading" className="py-20 bg-white dark:bg-slate-800">
+      <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">12-Month Program</p>
-              <h2 id="womens-overview-heading" className="text-4xl font-bold text-navy dark:text-gold mb-6">
-                A Safe Place to Heal — and Become
+              <h2 className="text-4xl font-bold text-navy dark:text-gold mb-6">
+                A Safe Place to Heal
               </h2>
-              <p className="text-lg text-slate-700 dark:text-slate-300 mb-5 leading-relaxed">
-                Our Women's Campus is more than a recovery program. It's a place where women can stop surviving and start truly living — with a community that sees them, supports them, and walks beside them every step.
+              <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
+                Our Women's Campus provides a nurturing environment where women can break free from life-controlling problems and rebuild their lives on a foundation of faith, hope, and practical skills.
               </p>
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
-                We address the spiritual, emotional, mental, and practical dimensions of healing — so women leave equipped, not just sober.
+                Through comprehensive programming that addresses spiritual, emotional, mental, and physical needs, women gain the tools necessary to become productive members of society.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex gap-4">
                 <Link to={createPageUrl('IntakeForm')}>
-                  <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy font-semibold">
-                    Apply Now — It's Free
-                    <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
+                  <Button className="bg-slate-500 text-white px-4 py-2 text-sm font-semibold rounded-md inline-flex items-center justify-center gap-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow h-9 dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 dark:text-navy">
+                    Apply Now
+                    <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>
                 <DonateButton />
@@ -101,21 +85,18 @@ export default function WomensCampus() {
       </section>
 
       {/* Program Features */}
-      <section aria-labelledby="womens-features-heading" className="py-20 bg-slate-50 dark:bg-slate-900">
+      <section className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">What's Included</p>
-            <h2 id="womens-features-heading" className="text-4xl font-bold text-navy dark:text-gold">
-              What the Program Includes
-            </h2>
-          </div>
+          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">
+            Program Components
+          </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
             {
               icon: Heart,
               title: 'Spiritual Development',
-              description: 'Biblical principles and faith-based counseling to address root causes'
+              description: 'Biblical principles and faith-based counseling to address root causes of life-controlling issues'
             },
             {
               icon: Users,
@@ -151,25 +132,21 @@ export default function WomensCampus() {
       </section>
 
       {/* What to Expect */}
-      <section aria-labelledby="womens-phases-heading" className="py-20 bg-white dark:bg-slate-800">
+      <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Your Roadmap</p>
-            <h2 id="womens-phases-heading" className="text-4xl font-bold text-navy dark:text-gold">
-              What to Expect — Month by Month
-            </h2>
-            <p className="text-slate-600 dark:text-slate-300 mt-4">Each phase takes you further from where you were — and closer to who you're meant to be.</p>
-          </div>
+          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">
+            What to Expect
+          </h2>
           
           <div className="space-y-6">
             {[
             {
               phase: 'Phase 1: Foundation (Months 1-3)',
-              description: 'Detox support, orientation to program structure, establishing healthy routines, and beginning spiritual development'
+              description: 'Orientation to program structure, establishing healthy routines, and beginning spiritual development'
             },
             {
               phase: 'Phase 2: Growth (Months 4-6)',
-              description: 'Deep dive into biblical teaching, life skills classes, trauma counseling, and beginning work therapy'
+              description: 'Deep dive into biblical teaching, life skills classes, pastoral counseling, and beginning work therapy'
             },
             {
               phase: 'Phase 3: Development (Months 7-9)',
@@ -197,33 +174,18 @@ export default function WomensCampus() {
       </section>
 
       {/* CTA */}
-      <section
-        aria-labelledby="womens-cta-heading"
-        className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white"
-      >
+      <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 id="womens-cta-heading" className="text-4xl font-bold mb-5">You Deserve More Than to Just Survive</h2>
-          <p className="text-xl mb-4 text-slate-200 max-w-2xl mx-auto leading-relaxed">
-            The next chapter of your life can be different. Our team is ready to welcome you — just as you are.
+          <h2 className="text-4xl font-bold mb-6">Ready to Begin Your Journey?</h2>
+          <p className="text-xl mb-8 text-slate-200">
+            Take the first step toward healing and transformation today.
           </p>
-          <p className="text-slate-300 mb-10">
-            Call us:{' '}
-            <a href="tel:8558937333" className="text-gold font-bold hover:underline">855-893-7333</a>
-            {' '}· Mon–Fri 8am–5pm
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to={createPageUrl('IntakeForm')}>
-              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-10 py-6 text-lg shadow-xl transform hover:scale-105 transition-all">
-                Apply Now — It's Free
-                <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
-              </Button>
-            </Link>
-            <Link to={createPageUrl('Contact')}>
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-10 py-6 text-lg font-semibold">
-                Ask Us a Question
-              </Button>
-            </Link>
-          </div>
+          <Link to={createPageUrl('IntakeForm')}>
+            <Button className="bg-gold hover:bg-gold/90 text-navy font-semibold px-8 py-6 text-lg shadow-xl">
+              Complete Intake Form
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
         </div>
       </section>
     </div>);

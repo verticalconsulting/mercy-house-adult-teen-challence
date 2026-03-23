@@ -8,7 +8,7 @@ const leadership = [
     name: 'Bryan Wilson',
     title: 'President / CFO',
     photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b3560cfa-a4f6-42c3-3089-938b4db94000/small',
-    bio: 'God called Bryan to start Mercy House after witnessing generational chains of addiction broken in his own family through faith. He carries that same vision for every person who walks through our doors — that one transformed life can change the trajectory of an entire family for generations.',
+    bio: 'God called Bryan to start Mercy House after witnessing generational chains of life-controlling issues broken in his own family through faith. He carries that same vision for every person who walks through our doors — that one transformed life can change the trajectory of an entire family for generations.',
   },
   {
     name: 'Matthew Milliman',
@@ -20,7 +20,7 @@ const leadership = [
     name: 'Joshua Cook',
     title: 'Director of Operations',
     photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/fbee339a-6e0e-41b1-dec4-7e39ded9b900/small',
-    bio: 'Joshua entered Mercy House in 2017 after years of addiction and hardship. God restored everything. He now leads operations with a heart for men still caught in the darkness he once knew — and a testimony that freedom is possible.',
+    bio: 'Joshua entered Mercy House in 2017 after years of life-controlling dependency and hardship. God restored everything. He now leads operations with a heart for men still caught in the darkness he once knew — and a testimony that freedom is possible.',
   },
   {
     name: 'Thomas Reif',
@@ -54,7 +54,7 @@ export default function About() {
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Who We Are</h1>
           <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto">
             Mercy House Adult &amp; Teen Challenge of Mississippi is a Christ-centered, residential recovery ministry
-            serving men and women struggling with addiction and life-controlling issues in the heart of Mississippi.
+            serving men and women struggling with life-controlling and dependency issues in the heart of Mississippi.
           </p>
         </div>
       </section>
@@ -75,7 +75,7 @@ export default function About() {
                 </p>
                 <p>
                   For more than 15 years, Mercy House Adult &amp; Teen Challenge of Mississippi has provided a structured,
-                  residential environment where men and women can step away from the chaos of addiction and step into
+                  residential environment where men and women can step away from the chaos of dependency issues and step into
                   something new — a community rooted in biblical principles, accountability, mentorship, and genuine
                   spiritual growth.
                 </p>
@@ -120,7 +120,7 @@ export default function About() {
               <h2 className="text-2xl font-bold text-navy dark:text-gold mb-4">Our Mission</h2>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
                 To provide an effective and comprehensive Christian faith-based environment where people struggling with
-                addiction and life-controlling issues can find lasting freedom — becoming mentally sound, emotionally
+                life-controlling and dependency issues can find lasting freedom — becoming mentally sound, emotionally
                 balanced, socially adjusted, and spiritually alive through a relationship with Jesus Christ.
               </p>
             </div>
@@ -130,7 +130,7 @@ export default function About() {
               </div>
               <h2 className="text-2xl font-bold text-navy dark:text-gold mb-4">Our Vision</h2>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
-                A Mississippi where every person struggling with addiction has access to a Christ-centered path toward
+                A Mississippi where every person struggling with life-controlling issues has access to a Christ-centered path toward
                 wholeness — and where transformed individuals become agents of transformation for their families,
                 communities, and the next generation.
               </p>

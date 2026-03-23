@@ -9,7 +9,7 @@ const programs = [
     location: 'Georgetown, MS',
     path: '/MensCampus',
     image: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=900&q=80',
-    desc: "A long-term, structured residential program for men struggling with addiction and life-controlling issues. Rooted in faith, accountability, and genuine community.",
+    desc: "A long-term, structured residential program for men struggling with life-controlling and dependency issues. Rooted in faith, accountability, and genuine community.",
     features: ['12–15 Month Residential Program', 'Biblical Discipleship', 'Vocational Training', 'Mentorship & Accountability', 'Life-Skills Development', 'Re-entry Support'],
   },
   {
@@ -17,7 +17,7 @@ const programs = [
     location: 'Learned, MS',
     path: '/WomensCampus',
     image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&q=80',
-    desc: "A safe, supportive residential environment for women ready to pursue freedom from addiction and life-controlling issues through a Christ-centered program designed for their unique journey.",
+    desc: "A safe, supportive residential environment for women ready to pursue freedom from life-controlling and dependency issues through a Christ-centered program designed for their unique journey.",
     features: ['Residential Program', 'Trauma-Informed Support', 'Biblical Counseling', 'Life-Skills Training', 'Spiritual Growth', 'Community & Mentorship'],
   },
 ];
@@ -117,7 +117,7 @@ export default function Programs() {
             <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">How It Works</p>
             <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">The Eight Pillars of Our Program</h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Our approach is holistic — addressing not just the symptoms of addiction but the spiritual, relational,
+              Our approach is holistic — addressing not just the symptoms of life-controlling issues but the spiritual, relational,
               and practical dimensions of a person's life. These eight pillars guide everything we do.
             </p>
           </div>
@@ -147,8 +147,8 @@ export default function Programs() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: 'Men & Women in Crisis', desc: 'Adults struggling with addiction to substances, alcohol, or other life-controlling behaviors who are ready to commit to a long-term residential program.' },
-              { title: 'Families Seeking Answers', desc: "If someone you love is caught in addiction, Mercy House offers a safe, structured environment where they can receive support. You are not alone, and there is hope." },
+              { title: 'Men & Women in Crisis', desc: 'Adults struggling with life-controlling and dependency issues who are ready to commit to a long-term residential program.' },
+              { title: 'Families Seeking Answers', desc: "If someone you love is caught in life-controlling issues, Mercy House offers a safe, structured environment where they can receive support. You are not alone, and there is hope." },
               { title: 'Those Court-Referred or Self-Motivated', desc: 'Whether you have come to us through the court system or entirely on your own, Mercy House meets you where you are and walks with you forward.' },
             ].map((item) => (
               <div key={item.title} className="bg-white/10 dark:bg-white/5 rounded-xl p-6">

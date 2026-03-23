@@ -128,8 +128,8 @@ export default function Contact() {
                     <Mail className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white">Email</p>
-                      <a href="mailto:info@mercyhouse.org" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
-                        info@mercyhouse.org
+                      <a href="mailto:info@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
+                        info@mercyhouseatc.com
                       </a>
                     </div>
                   </div>

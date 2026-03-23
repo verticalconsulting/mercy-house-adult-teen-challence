@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
               Mercy House Adult &amp; Teen Challenge of Mississippi ("Mercy House," "we," "our," or "us") is a
               501(c)(3) nonprofit, faith-based ministry organization headquartered in Georgetown, Mississippi.
               This Privacy Policy describes how we collect, use, and protect information you provide when you
-              interact with our website at <strong>mercyhouseworks.org</strong> and any related forms or services.
+              interact with our website at <strong>mercyhouseatc.com</strong> and any related forms or services.
             </p>
             <p className="mt-3">
               Contact us regarding privacy concerns at:{' '}

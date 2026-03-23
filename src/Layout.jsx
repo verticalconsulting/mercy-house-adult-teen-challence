@@ -284,8 +284,10 @@ export default function Layout({ children, currentPageName }) {
                 <li><Link to={createPageUrl('MicroBusinesses')} className="text-slate-300 hover:text-gold transition-colors">Micro Businesses</Link></li>
                 <li><Link to={createPageUrl('Blog')} className="text-slate-300 hover:text-gold transition-colors">News & Events</Link></li>
                 <li><Link to={createPageUrl('Volunteer')} className="text-slate-300 hover:text-gold transition-colors">Volunteer</Link></li>
+                <li><Link to="/About" className="text-slate-300 hover:text-gold transition-colors">About Us</Link></li>
+                <li><Link to="/Programs" className="text-slate-300 hover:text-gold transition-colors">Programs</Link></li>
                 <li><Link to={createPageUrl('EmployeePortal')} className="text-slate-300 hover:text-gold transition-colors">Employee Portal</Link></li>
-              <li><Link to="/MeetTheTeam" className="text-slate-300 hover:text-gold transition-colors">Meet the Team</Link></li>
+                <li><Link to="/MeetTheTeam" className="text-slate-300 hover:text-gold transition-colors">Meet the Team</Link></li>
               </ul>
             </div>
             <div>

@@ -101,7 +101,7 @@ export default function Layout({ children, currentPageName }) {
                   {item.submenu ? (
                     <div>
                       <Link
-                        to={createPageUrl(item.path)}
+                        to={item.directPath || createPageUrl(item.path)}
                         className="px-4 py-2 text-base md:text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors duration-200 flex items-center"
                       >
                         {item.name}

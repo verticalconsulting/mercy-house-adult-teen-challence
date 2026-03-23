@@ -116,7 +116,7 @@ export default function Support() {
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
             Your recurring support provides stability and hope for residents on their journey to transformation.
-            100% of donations go directly to our mission.
+            Your support goes directly to housing, meals, program care, and ministry operations.
           </p>
         </div>
       </div>

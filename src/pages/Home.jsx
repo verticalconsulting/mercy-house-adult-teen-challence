@@ -117,8 +117,8 @@ export default function Home() {
               <div className="text-slate-300">Years of Service</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-gold mb-2">100%</div>
-              <div className="text-slate-300">Donations to Mission</div>
+              <div className="text-5xl font-bold text-gold mb-2">501(c)(3)</div>
+              <div className="text-slate-300">Verified Nonprofit</div>
             </div>
             <div className="text-center">
               <div className="text-5xl font-bold text-gold mb-2">1000+</div>
@@ -138,7 +138,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Micro Businesses</h2>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Our micro businesses provide job training, develop work skills, and fund our operations—ensuring 100% of individual donations go directly to our mission.
+              Our micro businesses provide job training, develop work skills, and help fund our operations — so more of every dollar supports residents directly.
             </p>
           </div>
 

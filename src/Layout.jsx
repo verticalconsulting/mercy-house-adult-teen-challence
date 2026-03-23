@@ -28,6 +28,8 @@ export default function Layout({ children, currentPageName }) {
 
   const menuItems = [
     { name: 'Home', path: 'Home' },
+    { name: 'About', path: 'About', external: false, directPath: '/About' },
+    { name: 'Programs', path: 'Programs', external: false, directPath: '/Programs' },
     { name: "Women's Campus", path: 'WomensCampus' },
     { name: "Men's Campus", path: 'MensCampus' },
     { name: 'Events', path: 'Events' },

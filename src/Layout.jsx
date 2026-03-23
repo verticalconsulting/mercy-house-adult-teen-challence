@@ -221,7 +221,7 @@ export default function Layout({ children, currentPageName }) {
                     </div>
                   ) : (
                     <Link
-                      to={createPageUrl(item.path)}
+                      to={item.directPath || createPageUrl(item.path)}
                       onClick={() => setMobileMenuOpen(false)}
                       className={`block px-4 py-4 text-lg md:text-sm font-medium rounded-lg transition-colors ${
                         currentPageName === item.path

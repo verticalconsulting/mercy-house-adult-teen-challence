@@ -71,7 +71,7 @@ export default function Home() {
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Women's Campus</h3>
                 <p className="text-slate-600 dark:text-slate-300 mb-6">
-                  A safe, supportive environment where women can heal, grow, and rebuild their lives through faith-based support and life skills training.
+                  A safe, supportive environment where women can heal, grow, and rebuild their lives through faith-based recovery and life skills training.
                 </p>
                 <Link to={createPageUrl('WomensCampus')}>
                   <Button className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
@@ -94,7 +94,7 @@ export default function Home() {
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Men's Campus</h3>
                 <p className="text-slate-600 dark:text-slate-300 mb-6">
-                  Empowering men to overcome life-controlling and dependency issues through structured programming, spiritual development, and vocational training.
+                  Empowering men to overcome addiction and life-controlling issues through structured programming, spiritual development, and vocational training.
                 </p>
                 <Link to={createPageUrl('MensCampus')}>
                   <Button className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
@@ -138,7 +138,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Micro Businesses</h2>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Our micro businesses provide job training, develop work skills, and fund our operations—ensuring 110% of individual donations go directly to our mission.
+              Our micro businesses provide job training, develop work skills, and fund our operations—ensuring 100% of individual donations go directly to our mission.
             </p>
           </div>
 

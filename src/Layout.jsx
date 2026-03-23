@@ -125,7 +125,7 @@ export default function Layout({ children, currentPageName }) {
                     </div>
                   ) : (
                     <Link
-                      to={createPageUrl(item.path)}
+                      to={item.directPath || createPageUrl(item.path)}
                       className={`px-4 py-2 text-lg md:text-sm font-medium transition-colors duration-200 ${
                         currentPageName === item.path
                           ? 'text-navy dark:text-gold border-b-2 border-navy dark:border-gold'

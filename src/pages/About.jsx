@@ -186,6 +186,63 @@ export default function About() {
         </div>
       </section>
 
+      {/* How the Program Works */}
+      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">The Program</p>
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">How Mercy House Works</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              Our 12-month residential program is built around four progressive phases — each one designed to move
+              residents from crisis to independence with clear milestones, real accountability, and lasting support.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-14">
+            {[
+              {
+                phase: '01',
+                title: 'Stabilization & Foundation',
+                desc: 'Residents enter a safe, structured residential environment. Daily routines are established — chapel, biblical teaching, work assignments, meals, and group time. The goal is stability: removing chaos and replacing it with order, community, and an introduction to the spiritual core of the program.',
+              },
+              {
+                phase: '02',
+                title: 'Identity & Inner Healing',
+                desc: 'With stability in place, the deeper work begins. Residents engage in intensive biblical counseling, trauma-informed group sessions, and personal discipleship. This phase addresses root causes — not just behaviors — and helps each person understand who they are in Christ.',
+              },
+              {
+                phase: '03',
+                title: 'Responsibility & Skill Building',
+                desc: 'Residents move into greater responsibility — vocational training through our micro-businesses, GED preparation, financial literacy, and leadership development. This phase bridges faith and practical readiness for life after the program.',
+              },
+              {
+                phase: '04',
+                title: 'Transition & Reintegration',
+                desc: 'The final phase prepares residents for independent life. Job placement assistance, transitional housing support, aftercare planning, and connection to a local church community ensure that graduates leave with a foundation — not just a diploma.',
+              },
+            ].map((item) => (
+              <div key={item.phase} className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md border-l-4 border-gold">
+                <div className="text-gold font-black text-4xl mb-3 opacity-40">{item.phase}</div>
+                <h3 className="text-xl font-bold text-navy dark:text-gold mb-3">{item.title}</h3>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-navy dark:bg-slate-950 rounded-2xl p-8 text-white text-center max-w-3xl mx-auto">
+            <p className="text-lg text-slate-200 leading-relaxed mb-2">
+              <strong className="text-gold">The program is free to attend.</strong> A $1,000 intake fee helps offset initial program costs,
+              but no one is turned away for inability to pay. Payment plans and scholarships are available.
+            </p>
+            <p className="text-sm text-slate-400 mt-3">
+              Call our intake coordinator at{' '}
+              <a href="tel:6017203718" className="text-gold font-bold hover:underline">(601) 720-3718</a>
+              {' '}to discuss your situation.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Christian Foundation */}
       <section className="py-20 bg-navy dark:bg-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

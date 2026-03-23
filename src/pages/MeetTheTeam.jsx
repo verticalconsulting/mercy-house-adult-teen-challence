@@ -82,9 +82,9 @@ function TeamCard({ member }) {
   return (
     <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden flex flex-col">
       {/* Photo */}
-      <div className="h-56 bg-slate-200 dark:bg-slate-700 overflow-hidden">
+      <div className="aspect-square bg-slate-200 dark:bg-slate-700 overflow-hidden">
         {member.photo ? (
-          <img src={member.photo} alt={member.name} className="w-full h-full object-cover object-top" />
+          <img src={member.photo} alt={member.name} className="w-full h-full object-cover object-center" />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-slate-400 dark:text-slate-500">
             <User className="w-16 h-16" />

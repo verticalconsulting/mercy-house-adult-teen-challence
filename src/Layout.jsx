@@ -122,7 +122,7 @@ export default function Layout({ children, currentPageName }) {
                           ) : (
                             <Link
                               key={subItem.name}
-                              to={createPageUrl(subItem.path)}
+                              to={subItem.directPath || createPageUrl(subItem.path)}
                               className="block px-4 py-3 text-lg md:text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
                             >
                               {subItem.name}

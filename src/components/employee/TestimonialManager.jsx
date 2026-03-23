@@ -40,7 +40,8 @@ export default function TestimonialManager() {
       queryClient.invalidateQueries({ queryKey: ['testimonials'] });
       resetForm();
       toast.success('Testimonial created successfully');
-    }
+    },
+    onError: (err) => toast.error('Failed to create: ' + (err?.message || 'Unknown error')),
   });
 
   const updateMutation = useMutation({
@@ -49,7 +50,8 @@ export default function TestimonialManager() {
       queryClient.invalidateQueries({ queryKey: ['testimonials'] });
       resetForm();
       toast.success('Testimonial updated successfully');
-    }
+    },
+    onError: (err) => toast.error('Failed to update: ' + (err?.message || 'Unknown error')),
   });
 
   const deleteMutation = useMutation({
@@ -57,7 +59,8 @@ export default function TestimonialManager() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['testimonials'] });
       toast.success('Testimonial deleted');
-    }
+    },
+    onError: (err) => toast.error('Failed to delete: ' + (err?.message || 'Unknown error')),
   });
 
   const resetForm = () => {
@@ -103,7 +106,15 @@ export default function TestimonialManager() {
   };
 
   const handleEdit = (testimonial) => {
-    setFormData(testimonial);
+    setFormData({
+      graduate_name: testimonial.graduate_name,
+      photo_url: testimonial.photo_url || '',
+      testimonial_text: testimonial.testimonial_text,
+      program_type: testimonial.program_type,
+      graduation_year: testimonial.graduation_year || new Date().getFullYear(),
+      featured: testimonial.featured || false,
+      published: testimonial.published !== false,
+    });
     setEditingTestimonial(testimonial);
     setShowForm(true);
   };

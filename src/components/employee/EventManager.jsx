@@ -44,7 +44,8 @@ export default function EventManager() {
       queryClient.invalidateQueries({ queryKey: ['events'] });
       toast.success('Event created successfully!');
       resetForm();
-    }
+    },
+    onError: (err) => toast.error('Failed to create event: ' + (err?.message || 'Unknown error')),
   });
 
   const updateMutation = useMutation({
@@ -53,7 +54,8 @@ export default function EventManager() {
       queryClient.invalidateQueries({ queryKey: ['events'] });
       toast.success('Event updated successfully!');
       resetForm();
-    }
+    },
+    onError: (err) => toast.error('Failed to update event: ' + (err?.message || 'Unknown error')),
   });
 
   const deleteMutation = useMutation({
@@ -61,7 +63,8 @@ export default function EventManager() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['events'] });
       toast.success('Event deleted successfully!');
-    }
+    },
+    onError: (err) => toast.error('Failed to delete event: ' + (err?.message || 'Unknown error')),
   });
 
   const resetForm = () => {
@@ -85,10 +88,17 @@ export default function EventManager() {
   const handleEdit = (event) => {
     setEditingEvent(event);
     setFormData({
-      ...event,
+      title: event.title,
+      description: event.description || '',
+      category: event.category,
       event_date: event.event_date ? new Date(event.event_date).toISOString().slice(0, 16) : '',
       end_date: event.end_date ? new Date(event.end_date).toISOString().slice(0, 16) : '',
-      capacity: event.capacity || ''
+      location: event.location || '',
+      image_url: event.image_url || '',
+      registration_required: event.registration_required || false,
+      registration_link: event.registration_link || '',
+      capacity: event.capacity || '',
+      published: event.published !== false,
     });
     setShowForm(true);
   };

@@ -74,6 +74,7 @@ export default function CampaignManager() {
       toast.success('Campaign created!');
       resetForm();
     },
+    onError: (err) => toast.error('Failed to create campaign: ' + (err?.message || 'Unknown error')),
   });
 
   const updateMutation = useMutation({
@@ -83,6 +84,7 @@ export default function CampaignManager() {
       toast.success('Campaign updated!');
       resetForm();
     },
+    onError: (err) => toast.error('Failed to update campaign: ' + (err?.message || 'Unknown error')),
   });
 
   const deleteMutation = useMutation({
@@ -91,6 +93,7 @@ export default function CampaignManager() {
       queryClient.invalidateQueries({ queryKey: ['campaigns'] });
       toast.success('Campaign deleted');
     },
+    onError: (err) => toast.error('Failed to delete campaign: ' + (err?.message || 'Unknown error')),
   });
 
   const resetForm = () => {

@@ -56,6 +56,7 @@ export default function Layout({ children, currentPageName }) {
       </a>
       <ScrollToTop />
       <ScrollRestoration />
+      <TrustBar />
       {/* Header */}
       <header className="bg-white dark:bg-slate-800 shadow-md sticky top-0 z-50 transition-colors duration-300" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

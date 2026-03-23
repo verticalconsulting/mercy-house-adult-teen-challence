@@ -337,7 +337,7 @@ export default function Layout({ children, currentPageName }) {
           <div className="border-t border-slate-700 mt-8 pt-8 text-center text-lg md:text-base text-slate-400">
             <p>&copy; {new Date().getFullYear()} Mercy House Adult &amp; Teen Challenge. All rights reserved.</p>
             <p className="mt-2">
-              501(c)(3) Nonprofit &middot; Georgetown &amp; Learned, Mississippi &middot; 110% of individual donor proceeds go directly to our mission.
+              501(c)(3) Nonprofit &middot; Georgetown &amp; Learned, Mississippi &middot; 100% of individual donor proceeds go directly to our mission.
             </p>
             <nav aria-label="Footer utility links" className="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-3 text-sm text-slate-500">
               <Link to={createPageUrl('Contact')} className="hover:text-gold transition-colors">Contact</Link>

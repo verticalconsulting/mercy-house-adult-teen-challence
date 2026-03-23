@@ -10,6 +10,7 @@ import SearchPerformance from './pages/SearchPerformance';
 import About from './pages/About';
 import Programs from './pages/Programs';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import HelpForDependency from './pages/HelpForDependency';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 

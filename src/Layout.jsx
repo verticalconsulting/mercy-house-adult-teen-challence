@@ -335,7 +335,12 @@ export default function Layout({ children, currentPageName }) {
               </div>
             </div>
           </div>
-          <div className="border-t border-slate-700 mt-8 pt-8 text-center text-lg md:text-base text-slate-400">
+          {/* Nonprofit Legitimacy — Footer */}
+          <div className="border-t border-slate-700 mt-8 pt-8 mb-6">
+            <NonprofitLegitimacy variant="compact" />
+          </div>
+
+          <div className="text-center text-lg md:text-base text-slate-400">
             <p>&copy; {new Date().getFullYear()} Mercy House Adult &amp; Teen Challenge. All rights reserved.</p>
             <p className="mt-2">
               501(c)(3) Nonprofit &middot; Georgetown &amp; Learned, Mississippi &middot; Your gifts support housing, meals, program care, and ministry operations.

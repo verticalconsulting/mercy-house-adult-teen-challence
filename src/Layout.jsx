@@ -6,6 +6,7 @@ import DarkModeToggle from './components/DarkModeToggle';
 import DonateDropdown from './components/DonateDropdown';
 
 import ScrollToTop from './components/ScrollToTop';
+import TrustBar from './components/TrustBar';
 import ScrollRestoration from './components/ScrollRestoration';
 import MobileBottomNav from './components/MobileBottomNav';
 import FloatingAIChat from './components/FloatingAIChat';

@@ -71,7 +71,7 @@ export default function ApplicationViewer({ application, onClose }) {
     { label: 'Possibly Pregnant', value: application.possibly_pregnant ? 'Yes' : 'No' },
     { label: 'Eating Disorder', value: application.eating_disorder ? 'Yes' : 'No' },
     { label: 'Previous Treatment Programs', value: application.previous_treatment_programs },
-    { label: 'Addiction Details', value: application.addiction_details }
+    { label: 'Dependancy Details', value: application.dependancy_details }
   ];
 
   return (

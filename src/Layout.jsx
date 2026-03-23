@@ -15,7 +15,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [microBusinessOpen, setMicroBusinessOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState(null);
+  const toggleSubmenu = (name) => setOpenSubmenu(prev => prev === name ? null : name);
   const navigate = useNavigate();
   const location = useLocation();
   const mainRef = React.useRef(null);

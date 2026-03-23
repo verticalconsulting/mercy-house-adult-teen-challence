@@ -357,6 +357,7 @@ export default function Layout({ children, currentPageName }) {
               <Link to={createPageUrl('Donate')} className="hover:text-gold transition-colors">Donate</Link>
               <Link to={createPageUrl('IntakeForm')} className="hover:text-gold transition-colors">Apply for Program</Link>
               <Link to="/PrivacyPolicy" className="hover:text-gold transition-colors">Privacy Policy</Link>
+              <Link to="/help-for-dependency-abuse" className="hover:text-gold transition-colors">Help for Dependency</Link>
               <Link to="/About" className="hover:text-gold transition-colors">About Us</Link>
               <Link to="/Programs" className="hover:text-gold transition-colors">Programs</Link>
             </nav>

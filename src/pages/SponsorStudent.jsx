@@ -36,6 +36,10 @@ export default function SponsorStudent() {
       toast.error('Please enter your email address');
       return;
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
 
     if (window.self !== window.top) {
       toast.error('Sponsorships must be completed from the published app. Please open the app in a new tab.');

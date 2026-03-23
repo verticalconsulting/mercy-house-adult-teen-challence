@@ -266,7 +266,7 @@ export default function Donate() {
               <div>
                 <CardTitle className="text-navy dark:text-gold text-xl">Give Someone a Fresh Start</CardTitle>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                  Cover the <strong>$1,000 intake fee</strong> for the next person entering Mercy House. Your gift removes the last barrier standing between someone and recovery.
+                  Cover the <strong>$1,000 intake fee</strong> for the next person entering Mercy House. Your gift removes the last barrier standing between someone and a new beginning.
                 </p>
               </div>
             </div>

@@ -94,7 +94,7 @@ export default function Home() {
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Men's Campus</h3>
                 <p className="text-slate-600 dark:text-slate-300 mb-6">
-                  Empowering men to overcome addiction and life-controlling issues through structured programming, spiritual development, and vocational training.
+                  Empowering men to break free from life-controlling issues through structured programming, spiritual development, and vocational training.
                 </p>
                 <Link to={createPageUrl('MensCampus')}>
                   <Button className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
@@ -117,8 +117,8 @@ export default function Home() {
               <div className="text-slate-300">Years of Service</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-gold mb-2">501(c)(3)</div>
-              <div className="text-slate-300">Verified Nonprofit</div>
+              <div className="text-5xl font-bold text-gold mb-2">100%</div>
+              <div className="text-slate-300">Individual Donations to Mission</div>
             </div>
             <div className="text-center">
               <div className="text-5xl font-bold text-gold mb-2">1000+</div>
@@ -138,7 +138,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Micro Businesses</h2>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Our micro businesses provide job training, develop work skills, and help fund our operations — so more of every dollar supports residents directly.
+              Our micro businesses provide job training, develop work skills, and fund our operations—ensuring 110% of individual donations go directly to our mission.
             </p>
           </div>
 
@@ -162,6 +162,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Legitimacy Strip */}
+      <section className="py-10 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-slate-600 dark:text-slate-400 text-center">
+            <span className="font-bold text-navy dark:text-gold">✓ 501(c)(3) Verified Nonprofit</span>
+            <span>EIN: 99-1943281</span>
+            <span>Georgetown &amp; Learned, Mississippi</span>
+            <a href="tel:8558937333" className="hover:text-navy dark:hover:text-gold transition-colors">855-89-FREEDOM</a>
+            <a href="mailto:info@mercyhouseatc.com" className="hover:text-navy dark:hover:text-gold transition-colors">info@mercyhouseatc.com</a>
+            <span>15+ Years of Ministry</span>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -176,9 +190,11 @@ export default function Home() {
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
-          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
-            Contact Us
-          </Button>
+          <Link to={createPageUrl('Contact')}>
+            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+              Contact Us
+            </Button>
+          </Link>
           </div>
         </div>
       </section>

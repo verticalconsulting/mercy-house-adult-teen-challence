@@ -339,6 +339,11 @@ export default function Layout({ children, currentPageName }) {
             <p className="mt-2">
               501(c)(3) Nonprofit &middot; Georgetown &amp; Learned, Mississippi &middot; 100% of individual donor proceeds go directly to our mission.
             </p>
+            <div className="flex justify-center mt-4 mb-2">
+              <a href="https://app.candid.org/profile/9237605/mercy-house-teen-challenge-45-4670832/?pkId=85b52dd6-b112-4838-af55-83779d6afa0f" target="_blank" rel="noopener">
+                <img src="https://widgets.guidestar.org/prod/v1/pdp/transparency-seal/9237605/svg" alt="Candid Seal of Transparency" className="h-16 w-auto" />
+              </a>
+            </div>
             <nav aria-label="Footer utility links" className="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-3 text-sm text-slate-500">
               <Link to={createPageUrl('Contact')} className="hover:text-gold transition-colors">Contact</Link>
               <Link to={createPageUrl('Volunteer')} className="hover:text-gold transition-colors">Volunteer</Link>

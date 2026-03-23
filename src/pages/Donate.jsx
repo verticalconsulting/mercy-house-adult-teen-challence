@@ -7,6 +7,7 @@ import { base44 } from '@/api/base44Client';
 import { toast } from 'sonner';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import CampaignProgress from '../components/CampaignProgress';
+import NonprofitLegitimacy from '../components/NonprofitLegitimacy';
 
 export default function Donate() {
   const [customAmount, setCustomAmount] = useState('');

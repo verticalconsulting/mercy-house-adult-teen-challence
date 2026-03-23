@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Users, BookOpen, Home, ArrowRight, Star } from 'lucide-react';
 import CTABand from '../components/CTABand';
+import NonprofitLegitimacy from '../components/NonprofitLegitimacy';
 
 const leadership = [
   {

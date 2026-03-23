@@ -70,7 +70,7 @@ export default function About() {
                 <p>
                   Mercy House was founded with a simple but profound conviction: that the power of Jesus Christ can break
                   any chain. Our founder, Pastor Bryan Wilson, watched that truth play out in his own family — a
-                  multi-generational pattern of addiction broken by the grace of God. That personal transformation became
+                  multi-generational pattern of life-controlling issues broken by the grace of God. That personal transformation became
                   the foundation of everything Mercy House is today.
                 </p>
                 <p>

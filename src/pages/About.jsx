@@ -252,8 +252,8 @@ export default function About() {
           <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
             Mercy House Adult &amp; Teen Challenge of Mississippi is a registered 501(c)(3) nonprofit organization.
             We are committed to transparent stewardship of every gift entrusted to us. Our micro-business operations —
-            including our thrift store, vehicle donation program, and auto academy — generate revenue that supports
-            ministry operations, which means 110% of individual donor contributions go directly to our mission.
+            including our thrift store, vehicle donation program, and auto academy — generate revenue that helps support
+            ministry operations alongside individual donor contributions.
           </p>
           <p className="text-sm text-slate-500 dark:text-slate-400">
             EIN and financial documentation available upon request. Contact us at{' '}

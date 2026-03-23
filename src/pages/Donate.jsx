@@ -127,7 +127,7 @@ export default function Donate() {
           <Heart className="w-16 h-16 md:w-20 md:h-20 text-gold mx-auto mb-6" aria-hidden="true" />
           <h1 className="text-4xl md:text-5xl font-bold text-navy dark:text-gold mb-4">Your Gift Changes Lives</h1>
           <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            Every day without help is another day someone struggles alone. <strong>110% of individual donations</strong> go directly to our mission — your dollar works harder here than anywhere else.
+            Every day without help is another day someone struggles alone. Your gift goes directly to supporting residents through housing, meals, program care, and daily ministry operations.
           </p>
           {/* Social proof nudge */}
           <p className="mt-4 text-sm text-gold font-semibold">❤️ Join 1,000+ supporters who've already made a difference</p>
@@ -251,7 +251,7 @@ export default function Donate() {
             <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400 text-center">
               <span>🔒 Secure checkout via Stripe</span>
               <span>·</span>
-              <span>110% goes to mission</span>
+              <span>Your gift supports residents directly</span>
               {donationType === 'recurring' && <><span>·</span><span>Cancel anytime, no questions asked</span></>}
             </div>
           </CardContent>

@@ -337,7 +337,7 @@ export default function Layout({ children, currentPageName }) {
           <div className="border-t border-slate-700 mt-8 pt-8 text-center text-lg md:text-base text-slate-400">
             <p>&copy; {new Date().getFullYear()} Mercy House Adult &amp; Teen Challenge. All rights reserved.</p>
             <p className="mt-2">
-              501(c)(3) Nonprofit &middot; Georgetown &amp; Learned, Mississippi &middot; 100% of individual donor proceeds go directly to our mission.
+              501(c)(3) Nonprofit &middot; Georgetown &amp; Learned, Mississippi &middot; Your gifts support housing, meals, program care, and ministry operations.
             </p>
             <div className="flex justify-center mt-4 mb-2">
               <a href="https://app.candid.org/profile/9237605/mercy-house-teen-challenge-45-4670832/?pkId=85b52dd6-b112-4838-af55-83779d6afa0f" target="_blank" rel="noopener">

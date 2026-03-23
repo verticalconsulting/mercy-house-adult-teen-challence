@@ -21,7 +21,7 @@ export default function TrustBar() {
         </div>
         <div className="flex items-center gap-1.5 text-navy dark:text-gold font-semibold">
           <Heart className="w-4 h-4" />
-          501(c)(3) Nonprofit — 110% of Individual Donations Go to Mission
+          501(c)(3) Nonprofit — 100% of Individual Donations Go to Mission
         </div>
       </div>
     </div>

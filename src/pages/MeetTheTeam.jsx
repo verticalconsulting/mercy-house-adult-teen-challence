@@ -36,6 +36,7 @@ const team = [
     name: 'Wesley Barnett',
     title: 'Student Life Coordinator',
     photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/18058ddc-6999-4a74-47a6-6fc6e80dce00/small',
+    photoPosition: 'object-[center_30%]',
     bio: "My name is Wesley Barnett. I was in active addiction for 8 years of my life. God delivered me from my addiction and brought me to Mercy House Adult and Teen Challenge on November 12, 2020. I also now have a beautiful wife and two amazing step sons that I get to raise up in the Lord. My life is forever changed!",
   },
   {

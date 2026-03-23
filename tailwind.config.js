@@ -85,5 +85,6 @@ module.exports = {
   		}
   	}
   },
+  safelist: ['object-[center_30%]'],
   plugins: [require("tailwindcss-animate")],
 }

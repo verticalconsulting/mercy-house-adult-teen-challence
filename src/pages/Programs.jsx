@@ -202,6 +202,59 @@ export default function Programs() {
         </div>
       </section>
 
+      {/* How to Get Help */}
+      <section className="py-20 bg-white dark:bg-slate-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Getting Started</p>
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">How to Get Help</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+              Reaching out is the hardest part. We've kept the process as simple as possible — no paperwork walls, no runaround. Just a real conversation with people who understand.
+            </p>
+          </div>
+          <div className="space-y-6">
+            {[
+              {
+                step: '1',
+                title: 'Call or Apply Online',
+                desc: "Contact our intake coordinator at (601) 720-3718 or complete the online intake application — whichever feels most comfortable. You can also have a family member call on your behalf. Our team will answer your questions honestly and help you understand if Mercy House is the right fit.",
+                action: { label: 'Call (601) 720-3718', href: 'tel:6017203718' },
+              },
+              {
+                step: '2',
+                title: 'Complete the Intake Process',
+                desc: "Our intake team will walk you through a brief application and gather some basic information. This is a confidential conversation — not an interrogation. We want to understand your situation so we can best prepare for your arrival and make sure the program is the right environment for you at this time.",
+                action: null,
+              },
+              {
+                step: '3',
+                title: 'Arrive & Begin',
+                desc: "Once you're accepted, we'll give you everything you need to know about what to bring, what to expect on your first day, and how the first few weeks work. You'll arrive, get settled into your new home, and begin the program alongside people who are on the same journey you are.",
+                action: { label: 'Start Your Application', href: '/IntakeForm' },
+              },
+            ].map((item) => (
+              <div key={item.step} className="flex gap-6 items-start bg-slate-50 dark:bg-slate-900 rounded-2xl p-7 border border-slate-200 dark:border-slate-700">
+                <div className="flex-shrink-0 w-12 h-12 bg-gold rounded-full flex items-center justify-center text-navy font-black text-xl">
+                  {item.step}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-navy dark:text-gold mb-2">{item.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{item.desc}</p>
+                  {item.action && (
+                    <a
+                      href={item.action.href}
+                      className="inline-flex items-center gap-2 mt-4 text-navy dark:text-gold font-semibold hover:underline"
+                    >
+                      {item.action.label} <ArrowRight className="w-4 h-4" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CTABand
         heading="Take the First Step Today"
         subtext="Freedom is possible. Our team is ready to walk with you — one step at a time."

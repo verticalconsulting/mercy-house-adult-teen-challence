@@ -231,6 +231,121 @@ export default function MensCampus() {
         </div>
       </section>
 
+      {/* Who This Program Is For */}
+      <section aria-labelledby="mens-who-heading" className="py-20 bg-white dark:bg-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Who It's For</p>
+              <h2 id="mens-who-heading" className="text-3xl md:text-4xl font-bold text-navy dark:text-gold">Is This Program Right for You?</h2>
+            </div>
+            <div className="space-y-5 text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+              <p>
+                The Men's Program at Mercy House is for men who are ready to stop surviving and start living — men
+                who are tired of the same cycles, the same consequences, and the same hopeless feeling that nothing
+                will ever change. You don't have to have it all figured out before you call. You just have to be
+                willing to try something different.
+              </p>
+              <p>
+                We welcome men from all walks of life — those coming voluntarily, those referred by the court system,
+                and those who have been pushed toward us by a family member who still believes in them. Regardless of
+                how you arrive, what matters most is that you're willing to commit to the process.
+              </p>
+              <p>
+                This is not a quick fix. Mercy House is a long-term residential commitment — typically 12 to 15 months.
+                That length is intentional. Deep, lasting change doesn't happen in 30 days. It takes time, community,
+                and consistent effort. The men who finish this program come out different — not because the program
+                is magic, but because they did the work.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Daily Life & Structure */}
+      <section aria-labelledby="mens-daily-heading" className="py-20 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Life on Campus</p>
+            <h2 id="mens-daily-heading" className="text-3xl md:text-4xl font-bold text-navy dark:text-gold">Structure, Community &amp; Purpose</h2>
+            <p className="text-slate-600 dark:text-slate-300 mt-4 max-w-3xl mx-auto text-lg">
+              One of the most powerful tools at Mercy House is structure. For many men, daily routine is something they've never had. Here, every day is built around purpose — and that changes everything.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Discipleship & Biblical Teaching',
+                desc: "Every morning begins with chapel — not as a formality, but as the heartbeat of everything we do. Residents engage in daily Bible study, group prayer, and one-on-one discipleship with staff and mentors. Faith isn't added on top of the program here. It is the program.",
+              },
+              {
+                title: 'Mentorship & Accountability',
+                desc: "Every resident is paired with staff mentors and surrounded by peers walking the same path. Many of our staff came through this same program. They aren't coaching from the outside — they know what it's like from the inside. That kind of mentorship is rare and it matters.",
+              },
+              {
+                title: 'Life-Skills Development',
+                desc: "From financial literacy to conflict resolution, personal responsibility to healthy communication, residents build practical skills through classes, real-world work experience, and guided reflection. These are the skills that determine whether a man's life after graduation looks different from the one before it.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="bg-white dark:bg-slate-800 rounded-2xl p-7 shadow-md border-t-4 border-gold">
+                <h3 className="text-xl font-bold text-navy dark:text-gold mb-3">{item.title}</h3>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How to Get Help */}
+      <section aria-labelledby="mens-steps-heading" className="py-20 bg-white dark:bg-slate-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Getting Started</p>
+            <h2 id="mens-steps-heading" className="text-3xl md:text-4xl font-bold text-navy dark:text-gold">How to Get Help</h2>
+            <p className="text-slate-600 dark:text-slate-300 mt-4 max-w-xl mx-auto">
+              The first step is always the hardest. We've made the rest as straightforward as possible.
+            </p>
+          </div>
+          <div className="space-y-5">
+            {[
+              {
+                step: '1',
+                title: 'Call or Apply',
+                desc: "Pick up the phone and call our intake coordinator at (601) 720-3718, or fill out the online application. Either way, a real person will respond — not a voicemail system. We'll have an honest conversation about your situation and whether Mercy House is the right fit.",
+                cta: { label: 'Call (601) 720-3718', href: 'tel:6017203718' },
+              },
+              {
+                step: '2',
+                title: 'Complete Intake',
+                desc: "Our team will walk you through a confidential intake process — a simple conversation to gather the information we need to prepare for your arrival. We'll be honest with you about what to expect, and we'll answer every question you have.",
+                cta: null,
+              },
+              {
+                step: '3',
+                title: 'Arrive & Begin',
+                desc: "We'll tell you exactly what to bring, what your first week will look like, and who will be there to welcome you. From day one, you're part of a community. You won't be starting from zero alone.",
+                cta: { label: 'Start Your Application', href: '/IntakeForm' },
+              },
+            ].map((item) => (
+              <div key={item.step} className="flex gap-6 items-start bg-slate-50 dark:bg-slate-900 rounded-2xl p-7 border border-slate-200 dark:border-slate-700">
+                <div className="flex-shrink-0 w-12 h-12 bg-gold rounded-full flex items-center justify-center text-navy font-black text-xl">
+                  {item.step}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-navy dark:text-gold mb-2">{item.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{item.desc}</p>
+                  {item.cta && (
+                    <a href={item.cta.href} className="inline-flex items-center gap-2 mt-4 text-navy dark:text-gold font-semibold hover:underline">
+                      {item.cta.label} <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Values & Additional Programs */}
       <section aria-labelledby="mens-more-heading" className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

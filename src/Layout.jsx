@@ -340,7 +340,7 @@ export default function Layout({ children, currentPageName }) {
             <NonprofitLegitimacy variant="compact" />
           </div>
 
-          <div className="text-center text-lg md:text-base text-slate-400">
+          <div className="border-t border-slate-700 pt-6 text-center text-lg md:text-base text-slate-400">
             <p>&copy; {new Date().getFullYear()} Mercy House Adult &amp; Teen Challenge. All rights reserved.</p>
             <p className="mt-2">
               501(c)(3) Nonprofit &middot; Georgetown &amp; Learned, Mississippi &middot; Your gifts support housing, meals, program care, and ministry operations.

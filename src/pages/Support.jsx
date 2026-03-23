@@ -38,6 +38,7 @@ export default function Support() {
       name: 'Partner Support',
       amount: 50,
       priceId: 'price_1SxDysKHFeI9Ceo2T3pvT8eo',
+      stripeLink: 'https://donate.stripe.com/test_aFa9AUa2raZH3N76h7fAc00',
       description: 'Become a ministry partner',
       icon: Users,
       features: [

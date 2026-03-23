@@ -328,6 +328,11 @@ export default function Donate() {
           </p>
         </div>
 
+        {/* Nonprofit Legitimacy */}
+        <div className="mb-12">
+          <NonprofitLegitimacy />
+        </div>
+
         {/* Impact Section */}
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           <div className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl shadow-lg text-center">

@@ -4,6 +4,7 @@ import { createPageUrl } from './utils';
 import { Menu, X, ChevronDown, MessageCircle, Facebook, ArrowLeft } from 'lucide-react';
 import DarkModeToggle from './components/DarkModeToggle';
 import DonateDropdown from './components/DonateDropdown';
+import NonprofitLegitimacy from './components/NonprofitLegitimacy';
 
 import ScrollToTop from './components/ScrollToTop';
 import TrustBar from './components/TrustBar';

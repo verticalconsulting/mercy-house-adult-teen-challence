@@ -279,6 +279,21 @@ export default function EmployeePortal() {
     );
   }
 
+  if (user.role !== 'admin') {
+    return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center px-4">
+        <div className="text-center max-w-md">
+          <div className="text-6xl mb-4">🔒</div>
+          <h2 className="text-2xl font-bold text-navy dark:text-gold mb-2">Admin Access Required</h2>
+          <p className="text-slate-600 dark:text-slate-400 mb-4">
+            Your account (<strong>{user.email}</strong>) has role: <strong>{user.role}</strong>. You need <strong>admin</strong> role to access this portal.
+          </p>
+          <p className="text-sm text-slate-500">Contact your system administrator to have your role updated.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12">
       {/* Refresh indicator */}

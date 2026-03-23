@@ -193,13 +193,13 @@ export default function Layout({ children, currentPageName }) {
                   {item.submenu ? (
                     <div>
                       <button
-                        onClick={() => setMicroBusinessOpen(!microBusinessOpen)}
+                        onClick={() => toggleSubmenu(item.name)}
                         className="w-full flex items-center justify-between px-4 py-4 text-lg md:text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors"
                         >
                         {item.name}
-                        <ChevronDown className={`w-6 h-6 md:w-4 md:h-4 transition-transform ${microBusinessOpen ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`w-6 h-6 md:w-4 md:h-4 transition-transform ${openSubmenu === item.name ? 'rotate-180' : ''}`} />
                       </button>
-                      {microBusinessOpen && (
+                      {openSubmenu === item.name && (
                         <div className="ml-4 mt-2 space-y-1">
                           {item.submenu.map((subItem) => (
                             subItem.external ? (
@@ -216,7 +216,7 @@ export default function Layout({ children, currentPageName }) {
                             ) : (
                               <Link
                                 key={subItem.name}
-                                to={createPageUrl(subItem.path)}
+                                to={subItem.directPath || createPageUrl(subItem.path)}
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="block px-4 py-3 text-lg md:text-sm text-slate-600 dark:text-slate-300 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors"
                               >

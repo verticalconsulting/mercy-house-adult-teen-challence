@@ -173,7 +173,7 @@ Make the content engaging, SEO-optimized, and aligned with Christian faith-based
           <div>
             <Label>Prompt</Label>
             <Textarea
-              placeholder="Example: Write a blog post about a woman who overcame addiction and reunited with her children..."
+              placeholder="Example: Write a blog post about a woman who overcame life-controlling issues and reunited with her children..."
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               rows={4}

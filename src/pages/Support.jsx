@@ -66,14 +66,20 @@ export default function Support() {
   ];
 
   const handleSubscribe = async (plan) => {
-    if (!email) {
-      toast.error('Please enter your email address');
-      return;
-    }
-
     // Check if running in iframe
     if (window.self !== window.top) {
       toast.error('Subscriptions must be completed from the published app. Please open the app in a new tab.');
+      return;
+    }
+
+    // Use direct Stripe payment link if available
+    if (plan.stripeLink) {
+      window.location.href = plan.stripeLink;
+      return;
+    }
+
+    if (!email) {
+      toast.error('Please enter your email address');
       return;
     }
 

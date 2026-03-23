@@ -117,7 +117,7 @@ export default function Home() {
               <div className="text-slate-300">Years of Service</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-gold mb-2">110%</div>
+              <div className="text-5xl font-bold text-gold mb-2">100%</div>
               <div className="text-slate-300">Donations to Mission</div>
             </div>
             <div className="text-center">

@@ -301,6 +301,32 @@ export default function Donate() {
           </CardContent>
         </Card>
 
+        {/* How Funds Are Used */}
+        <div className="mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-navy dark:text-gold mb-2 text-center">How Your Donation Is Used</h2>
+          <p className="text-center text-slate-500 dark:text-slate-400 text-sm mb-8">
+            Mercy House is a 501(c)(3) nonprofit. Every gift helps sustain our residential ministry programs.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { emoji: '🏠', label: 'Housing & Facilities', desc: 'Safe, stable residential housing for men and women in the program' },
+              { emoji: '🍽️', label: 'Meals & Nutrition', desc: 'Three daily meals provided to every resident throughout their stay' },
+              { emoji: '📖', label: 'Program & Ministry', desc: 'Biblical teaching, counseling, life skills classes, and vocational training' },
+              { emoji: '⚙️', label: 'Daily Operations', desc: 'Utilities, staff, transportation, and the infrastructure that keeps our doors open' },
+            ].map((item) => (
+              <div key={item.label} className="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-100 dark:border-slate-700 text-center">
+                <div className="text-3xl mb-3">{item.emoji}</div>
+                <h3 className="font-bold text-navy dark:text-gold text-sm mb-1">{item.label}</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-xs text-slate-400 dark:text-slate-500 mt-4">
+            EIN and financial documentation available upon request —{' '}
+            <a href="mailto:info@mercyhouseatc.com" className="underline hover:text-navy dark:hover:text-gold">info@mercyhouseatc.com</a>
+          </p>
+        </div>
+
         {/* Impact Section */}
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           <div className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl shadow-lg text-center">

@@ -6,6 +6,8 @@
   :root {
     --navy: #002E54;
     --gold: #CCA357;
+    /* Accessible gold: passes 4.5:1 contrast on white (WCAG AA for normal text) */
+    --gold-accessible: #7A5C1E;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -29,6 +31,8 @@
   }
 
   .dark {
+    /* In dark mode, original bright gold passes contrast on dark bg — use it */
+    --gold-accessible: #CCA357;
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 8%;
@@ -109,7 +113,8 @@
     background-color: var(--navy);
   }
   .text-gold {
-    color: var(--gold);
+    /* Light mode: darkened gold (#8C6B2F) passes 4.5:1 on white — WCAG AA */
+    color: var(--gold-accessible);
   }
   .bg-gold {
     background-color: var(--gold);

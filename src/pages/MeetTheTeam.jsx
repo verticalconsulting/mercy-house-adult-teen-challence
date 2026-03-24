@@ -41,6 +41,7 @@ const team = [
   },
   {
     name: 'Howard Kittrell',
+    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/140fc32a-ed3d-414c-9b74-256965f03900/small',
     title: '3rd Phase Director Coordinator',
     bio: "For 40 years I lived in darkness. I spent most of those years hopelessly addicted to gambling. I thought, \"It is just who I am what I would always be.\" In 2014 my addiction landed me in jail and from there I came to MHATC, where I found hope in Christ Jesus. My marriage, as well as my relationship with my family has been restored and my wife and I now work for MHATC and are able to help others find the same hope through a relationship with Jesus Christ.",
   },

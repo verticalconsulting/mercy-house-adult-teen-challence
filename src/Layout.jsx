@@ -259,10 +259,10 @@ export default function Layout({ children, currentPageName }) {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentPageName}
-            initial={{ x: 300, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -300, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            initial={prefersReducedMotion ? { opacity: 0 } : { x: 300, opacity: 0 }}
+            animate={prefersReducedMotion ? { opacity: 1 } : { x: 0, opacity: 1 }}
+            exit={prefersReducedMotion ? { opacity: 0 } : { x: -300, opacity: 0 }}
+            transition={prefersReducedMotion ? { duration: 0.15 } : { type: "spring", stiffness: 260, damping: 20 }}
           >
             {children}
           </motion.div>

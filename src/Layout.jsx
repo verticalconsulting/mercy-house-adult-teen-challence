@@ -23,6 +23,7 @@ export default function Layout({ children, currentPageName }) {
   const mainRef = React.useRef(null);
   
   const [canGoBack, setCanGoBack] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     setCanGoBack(window.history.length > 1 && currentPageName !== 'Home');

@@ -113,7 +113,7 @@
     background-color: var(--navy);
   }
   .text-gold {
-    /* Light mode: darkened gold (#8C6B2F) passes 4.5:1 on white — WCAG AA */
+    /* Uses CSS variable: dark #7A5C1E on light bg (passes 4.5:1), bright #CCA357 in dark mode on dark bg */
     color: var(--gold-accessible);
   }
   .bg-gold {
@@ -124,6 +124,13 @@
   }
   .border-gold {
     border-color: var(--gold);
+  }
+  /* On dark/navy backgrounds in light mode, restore the bright gold for contrast */
+  .bg-navy .text-gold,
+  .bg-navy .text-gold *,
+  footer .text-gold,
+  footer .text-gold * {
+    color: var(--gold) !important;
   }
 }
 

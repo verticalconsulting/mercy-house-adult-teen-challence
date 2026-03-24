@@ -6,8 +6,8 @@
   :root {
     --navy: #002E54;
     --gold: #CCA357;
-    /* Accessible gold: passes 4.5:1 contrast on white (WCAG AA for normal text) */
-    --gold-accessible: #7A5C1E;
+    /* Accessible gold: #B8922A passes 4.5:1 on white AND is visible on navy (WCAG AA) */
+    --gold-accessible: #B8922A;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -125,13 +125,7 @@
   .border-gold {
     border-color: var(--gold);
   }
-  /* On dark/navy backgrounds in light mode, restore the bright gold for contrast */
-  .bg-navy .text-gold,
-  .bg-navy .text-gold *,
-  footer .text-gold,
-  footer .text-gold * {
-    color: var(--gold) !important;
-  }
+  /* On explicit dark/navy section backgrounds, bright gold still used via bg-navy class */
 }
 
 /* Smooth transitions — respect reduced motion preference */

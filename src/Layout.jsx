@@ -12,7 +12,7 @@ import ScrollRestoration from './components/ScrollRestoration';
 import MobileBottomNav from './components/MobileBottomNav';
 import FloatingAIChat from './components/FloatingAIChat';
 import { base44 } from '@/api/base44Client';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

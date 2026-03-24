@@ -50,7 +50,7 @@ export default function Layout({ children, currentPageName }) {
         { name: 'Thrift Store', path: 'ThriftStore' },
         { name: 'Vehicle Donation', path: 'VehicleDonation' },
         { name: 'Mercy Auto Academy', path: 'MercyAutoAcademy' },
-        { name: 'Products & Purpose', path: 'https://mercyhouseworks.org/', external: true }
+        { name: 'Products & Purpose', path: 'productswithapurpose.base44.app', external: false }
       ]
     },
     { name: 'Volunteer', path: 'Volunteer' },

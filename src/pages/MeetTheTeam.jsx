@@ -46,31 +46,37 @@ const team = [
   },
   {
     name: 'Sharon Pointer',
+    photyo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d4408b34-a5ff-4c8a-b2aa-e01e0b2dce00/small',
     title: 'Auto Center Administrator / VDP Coordinator',
     bio: "Addiction has followed me for years. As I grew up, my family was dysfunctional because of Drugs/Alcohol/Relationships. Those are the things I craved in my life. I was receiving counseling with Pastor Bryan Wilson and that is what brought me to MHATC. My life has been forever changed through this ministry.",
   },
   {
     name: 'Jessica Bratton',
     title: 'Office Administrator',
+    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/f20f049b-4f1c-4d35-8433-bde7f1e42900/small',
     bio: "My association with MHATC began through my husband, who graduated from the program in 2013 and remained employed with MHATC until 2018. I have always aspired to work within a ministry environment. After transitioning from an 11-year career as a Paralegal in 2022, a series of events led me to join Mercy House part-time in January 2023. Currently, I serve as the full-time Human Resources and Financial Administrator. This role has allowed me to reconnect with what feels like my second home. Since 2012, this ministry has significantly impacted my family, and I am honored to contribute to a remarkable team dedicated to restoring families by rehabilitating the men who participate in our program.",
   },
   {
     name: 'Kim Brink',
+    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/8bcba16c-e1b0-4f23-eea1-8564b806c600/small',
     title: 'Counselor',
     bio: "By God's grace and His mercy I am able to write this. At 56 years old I came to Georgetown, MS to start a new life in Christ. The prior 38 years of my life, I had been a \"functioning\" alcoholic and drug addict who had ran from the life God had planned for me. Bound and determined not to run again, to set my feet on the solid foundation of Truth, and seek a relationship with Christ, I have been made \"new.\" Since 2010 God has had His Hand on directing me and, today, I am the Director of Education and an ordained minister of the Gospel. I give God the glory, honor and praise for His love, patience, and compassion. Thank you, Jesus!",
   },
   {
     name: 'Ramsey Cumpton',
+    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/cf85407e-8a71-486f-2936-68371c1b5200/small',
     title: 'Work Detail Coordinator',
     bio: "My name is Ramsey Cumpton I was in addiction for 25 years. There, I found myself in total darkness not truly knowing that God had a purpose for my life. When I came to the end of myself I asked God for help. After I got out of prison I was brought to Mercy House under the order of MDOC on my birthday February 11 2020 where I went through the process of being set free from the bondage of sin. After graduating Mercy House Adult Teen Challenge I found a wife and family. Now that I have been sober since my surrender to Christ I have gotten peace from God's love and this has given me the opportunity to reach the broken guys that need help just like I did. All glory goes to God.",
   },
   {
     name: 'Michael Partridge',
+    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/4ea66623-bfa3-4d44-fad7-1e120f6de000/small',
     title: 'Marketing Director',
     bio: "My name is Michael Partridge. I'm 38 years old and I struggled with addiction for 22 years of my life. I came from good parents but because of their decision to divorce I became angry and rebellious and began to use drugs to fill that void and pain. I came through Teen Challenge and found freedom through Jesus Christ. I'm now happily married to my wife Stephanie and have found my purpose serving here at Mercy House helping men find FREEDOM!",
   },
   {
     name: 'Allison Yarborough',
+    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/161d1aeb-87c7-4a57-b242-fef80af01100/small',
     title: 'Outreach Coordinator — Women\'s Center',
     bio: '',
   },

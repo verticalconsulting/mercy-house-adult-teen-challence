@@ -22,7 +22,7 @@ export default function ThriftStore() {
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80"
+                src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/404691a3-3b0d-4718-20a4-0857456a2300/hero1920scale"
                 alt="Thrift store interior"
                 className="w-full h-full object-cover"
               />

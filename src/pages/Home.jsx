@@ -146,7 +146,7 @@ export default function Home() {
             {[
               { name: 'SuperTHRIFT', logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1a07ccd8-7054-46f7-c9c9-2e0ea56af100/logo', href: 'https://mercyhouseatc.superthriftdeals.org', external: true },
               { name: 'Vehicle Donation', logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/cbd67746-5b4e-47f4-1e72-9907121f3e00/logo', path: 'VehicleDonation' },
-              { name: 'Mercy Auto Academy', logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/27969669-e908-4e1e-a5a4-354b3bb55b00/logo', path: 'MercyAutoAcademy' },
+              { name: 'Mercy Auto Sales', logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/27969669-e908-4e1e-a5a4-354b3bb55b00/logo', path: 'MercyAutoAcademy' },
               { name: 'Products with a Purpose', logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/fc21316c-8c1b-4f75-b60f-809a953b7400/logo', path: 'ProductsPurpose' },
               { name: 'Elite Gutters', logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/9fd573a1-4df2-428f-d672-0b5b2b939b00/logo', href: 'https://myelitegutters.com', external: true },
             ].map((business) => (

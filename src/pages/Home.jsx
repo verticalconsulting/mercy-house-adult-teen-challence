@@ -10,7 +10,7 @@ const businesses = [
     name: 'SuperTHRIFT',
     logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1a07ccd8-7054-46f7-c9c9-2e0ea56af100/logo',
     href: 'https://mercyhouseatc.superthriftdeals.org',
-    external: true,
+    external: false,
   },
   {
     name: 'Vehicle Donation',
@@ -18,9 +18,10 @@ const businesses = [
     path: 'VehicleDonation',
   },
   {
-    name: 'Mercy Auto Sales',
+    name: 'Mercy House Auto Sales',
     logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/27969669-e908-4e1e-a5a4-354b3bb55b00/logo',
-    path: 'MercyAutoAcademy',
+    href: 'https://mercyhouseautocenter.com/',
+    external: false,
   },
   {
     name: 'Products with a Purpose',
@@ -31,7 +32,7 @@ const businesses = [
     name: 'Elite Gutters',
     logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/9fd573a1-4df2-428f-d672-0b5b2b939b00/logo',
     href: 'https://myelitegutters.com',
-    external: true,
+    external: false,
   },
 ];
 

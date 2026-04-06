@@ -144,7 +144,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: 'SuperTHRIFT', icon: '🏪', href: 'https://mercyhouseatc.superthriftdeals.org', external: true },
+              { name: 'SuperTHRIFT', logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1a07ccd8-7054-46f7-c9c9-2e0ea56af100/logo', href: 'https://mercyhouseatc.superthriftdeals.org', external: true },
               { name: 'Vehicle Donation', icon: '🚗', path: 'VehicleDonation' },
               { name: 'Mercy Auto Academy', icon: '🔧', path: 'MercyAutoAcademy' },
               { name: 'Products & Purpose', icon: '📦', path: 'ProductsPurpose' }
@@ -155,9 +155,13 @@ export default function Home() {
                   href={business.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
+                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center"
                 >
-                  <div className="text-5xl mb-4">{business.icon}</div>
+                  {business.logo ? (
+                    <img src={business.logo} alt={business.name} className="h-16 mb-3 object-contain" />
+                  ) : (
+                    <div className="text-5xl mb-4">{business.icon}</div>
+                  )}
                   <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
                 </a>
               ) : (

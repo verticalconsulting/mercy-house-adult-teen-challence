@@ -23,7 +23,7 @@ export default function WomensCampus() {
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b8b9b980-e36e-4ba6-24a4-70d45d74e500/heromobile"
+            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1f477ee8-0f8a-4fe2-8929-b95d7c719f00/herobanner"
             alt="Women's Campus"
             className="w-full h-full object-cover" />
             fetchpriotity="high"
@@ -96,7 +96,7 @@ export default function WomensCampus() {
             {
               icon: Heart,
               title: 'Spiritual Development',
-              description: 'Biblical principles and faith-based counseling to address root causes of life-controlling issues'
+              description: 'Biblical principles and faith-based counseling to address root causes'
             },
             {
               icon: Users,
@@ -142,11 +142,11 @@ export default function WomensCampus() {
             {[
             {
               phase: 'Phase 1: Foundation (Months 1-3)',
-              description: 'Orientation to program structure, establishing healthy routines, and beginning spiritual development'
+              description: 'Detox support, orientation to program structure, establishing healthy routines, and beginning spiritual development'
             },
             {
               phase: 'Phase 2: Growth (Months 4-6)',
-              description: 'Deep dive into biblical teaching, life skills classes, pastoral counseling, and beginning work therapy'
+              description: 'Deep dive into biblical teaching, life skills classes, trauma counseling, and beginning work therapy'
             },
             {
               phase: 'Phase 3: Development (Months 7-9)',

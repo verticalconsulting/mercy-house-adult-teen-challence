@@ -72,21 +72,41 @@ Application Submitted: ${new Date().toISOString()}
       notes: (volunteer.notes || '') + `\n[Drive ID: ${driveFile.id}]`
     });
 
-    // Send email to accounting
-    await base44.integrations.Core.SendEmail({
-      to: 'accounting@mercyatc.com',
-      subject: `New Volunteer Application: ${volunteer.full_name}`,
-      body: `A new volunteer application has been submitted.\n\nName: ${volunteer.full_name}\nEmail: ${volunteer.email}\nPhone: ${volunteer.phone}\n\nPlease review in the employee portal.`
-    });
+    // Send emails via Gmail to external addresses
+    const emailBody = `A new volunteer application has been submitted.\n\nName: ${volunteer.full_name}\nEmail: ${volunteer.email}\nPhone: ${volunteer.phone}\n\nPlease review in the employee portal.`;
 
-    // Send email to tmcniss
-    await base44.integrations.Core.SendEmail({
-      to: 'tmcniss@mercyhouseatc.com',
-      subject: `New Volunteer Application: ${volunteer.full_name}`,
-      body: `A new volunteer application has been submitted.\n\nName: ${volunteer.full_name}\nEmail: ${volunteer.email}\nPhone: ${volunteer.phone}\n\nPlease review in the employee portal.`
-    });
+    try {
+      const { accessToken: gmailToken } = await base44.asServiceRole.connectors.getConnection('gmail');
+      
+      const recipients = ['accounting@mercyatc.com', 'tmcniss@mercyhouseatc.com'];
+      for (const recipient of recipients) {
+        const message = [
+          `To: ${recipient}`,
+          `Subject: New Volunteer Application: ${volunteer.full_name}`,
+          'Content-Type: text/plain; charset="UTF-8"',
+          'Content-Transfer-Encoding: 7bit',
+          '',
+          emailBody
+        ].join('\r\n');
 
-    console.log('Emails sent for volunteer application:', volunteer.id);
+        const encodedMessage = btoa(message);
+        
+        await fetch('https://www.googleapis.com/gmail/v1/users/me/messages/send', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${gmailToken}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            raw: encodedMessage
+          })
+        });
+      }
+      console.log('Emails sent for volunteer application:', volunteer.id);
+    } catch (emailError) {
+      console.warn('Failed to send notification emails:', emailError.message);
+      // Don't fail the entire function if emails fail
+    }
 
     return Response.json({ status: 'success', file_id: driveFile.id });
   } catch (error) {

@@ -9,7 +9,7 @@ export default function MercyAutoAcademy() {
           <div className="text-center mb-12">
             <div className="text-6xl mb-4">🔧</div>
             <h1 className="text-5xl font-bold text-navy dark:text-gold mb-6">
-              Mercy Auto Academy
+              Mercy House Auto Center
             </h1>
             <p className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto">
               Professional automotive training preparing residents for successful careers in the automotive industry

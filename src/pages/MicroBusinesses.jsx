@@ -20,7 +20,7 @@ export default function MicroBusinesses() {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Micro Businesses
+            Workforce Development
           </h1>
           <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto">
             Training, Skills, and Sustainable Funding
@@ -35,7 +35,7 @@ export default function MicroBusinesses() {
             Purpose-Driven Enterprise
           </h2>
           <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
-            Our micro businesses serve a dual purpose: providing residents with valuable job training and marketable skills while generating revenue to fund our operations. This innovative model ensures that <strong className="text-navy dark:text-gold">110% of individual donor proceeds go directly to our mission</strong>—an unheard-of standard in nonprofit work.
+            Our workforce development businesses serve a dual purpose: providing residents with valuable job training and marketable skills while generating revenue to fund our operations. This innovative model ensures that <strong className="text-navy dark:text-gold">100% of individual donor proceeds go directly to our mission</strong>—an unheard-of standard in nonprofit work.
           </p>
           <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
             Through hands-on experience in real business environments, residents develop work ethics, professional skills, and financial literacy that prepare them for successful careers and independent living.
@@ -49,7 +49,7 @@ export default function MicroBusinesses() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <TrendingUp className="w-12 h-12 text-gold mx-auto mb-4" />
-              <div className="text-4xl font-bold text-navy dark:text-gold mb-2">110%</div>
+              <div className="text-4xl font-bold text-navy dark:text-gold mb-2">100%</div>
               <div className="text-slate-600 dark:text-slate-400">Donations to Mission</div>
             </div>
             <div className="text-center">
@@ -70,34 +70,45 @@ export default function MicroBusinesses() {
       <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">
-            Our Business Units
+            Our Workforce Development Businesses
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Thrift Store',
+                title: 'SuperTHRIFT',
                 emoji: '🏪',
                 description: 'Community thrift store offering quality secondhand goods while training residents in retail operations, customer service, and inventory management.',
-                path: 'ThriftStore'
+                path: 'ThriftStore',
+                external: false
               },
               {
                 title: 'Vehicle Donation',
                 emoji: '🚗',
                 description: 'Accepting vehicle donations to support our mission. Provides tax benefits to donors and funding for our programs.',
-                path: 'VehicleDonation'
+                path: 'VehicleDonation',
+                external: false
               },
               {
-                title: 'Mercy Auto Academy',
+                title: 'Mercy House Auto Center',
                 emoji: '🔧',
-                description: 'Professional automotive training center where residents learn mechanics, body work, and automotive technology.',
-                path: 'MercyAutoAcademy'
+                description: 'Professional automotive training center where residents learn mechanics, body work, and automotive technology — preparing them for well-paying careers upon graduation.',
+                path: 'MercyAutoAcademy',
+                external: false
               },
               {
-                title: 'Products & Purpose',
+                title: 'Product With A Purpose',
                 emoji: '📦',
-                description: 'Specialty products created by residents, combining craftsmanship with purpose. Every purchase supports recovery.',
-                path: 'ProductsPurpose'
+                description: 'Specialty products crafted by residents, combining quality craftsmanship with purpose. Every purchase directly supports the Mercy House mission and resident development.',
+                path: 'ProductsPurpose',
+                external: false
+              },
+              {
+                title: 'Mercy House Elite Gutters',
+                emoji: '🏠',
+                description: 'A full-service seamless gutter, downspout, and leaf guard installation company based in Brandon, MS. Residents receive hands-on job training in gutter system design, installation, cleaning, and maintenance — building real-world trade skills and work ethic. Backed by a 5-Year Craftsmanship Guarantee.',
+                href: 'https://myelitegutters.com',
+                external: true
               }
             ].map((business, idx) => (
               <div
@@ -111,12 +122,21 @@ export default function MicroBusinesses() {
                 <p className="text-slate-700 dark:text-slate-300 mb-6">
                   {business.description}
                 </p>
-                <Link to={createPageUrl(business.path)}>
-                  <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
-                    Learn More
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </Link>
+                {business.external ? (
+                  <a href={business.href} target="_blank" rel="noopener noreferrer">
+                    <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
+                      Visit Website
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </a>
+                ) : (
+                  <Link to={createPageUrl(business.path)}>
+                    <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
+                      Learn More
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
+                )}
               </div>
             ))}
           </div>

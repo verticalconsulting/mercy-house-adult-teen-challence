@@ -10,7 +10,7 @@ export default function ProductsPurpose() {
           <div className="text-center mb-12">
             <div className="text-6xl mb-4">📦</div>
             <h1 className="text-5xl font-bold text-navy dark:text-gold mb-6">
-              Products & Purpose
+              Product With A Purpose
             </h1>
             <p className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto">
               Handcrafted products made by residents. Every purchase supports recovery and builds skills.
@@ -23,7 +23,7 @@ export default function ProductsPurpose() {
                 Crafted With Purpose
               </h2>
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
-                Our residents create beautiful, handcrafted products including woodwork, artwork, baked goods, and specialty items. Each piece represents hope, healing, and a step toward independence.
+                Our residents create beautiful, handcrafted products including woodwork, artwork, and specialty items. Each piece represents hope, healing, and a step toward independence.
               </p>
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
                 Through these creative enterprises, residents develop marketable skills in production, quality control, customer service, and entrepreneurship.
@@ -50,7 +50,7 @@ export default function ProductsPurpose() {
               {
                 icon: Package,
                 title: 'Product Categories',
-                items: ['Woodwork & Furniture', 'Art & Crafts', 'Baked Goods', 'Candles & Soaps', 'Seasonal Items']
+                items: ['Woodwork & Furniture', 'Art & Crafts', 'Candles & Soaps', 'Seasonal Items', 'Specialty Goods']
               },
               {
                 icon: Heart,

@@ -44,13 +44,14 @@ export default function Layout({ children, currentPageName }) {
     },
     { name: 'Events', path: 'Events' },
     {
-      name: 'Micro Businesses',
+      name: 'Workforce Development',
       path: 'MicroBusinesses',
       submenu: [
-        { name: 'Thrift Store', path: 'ThriftStore' },
+        { name: 'SuperTHRIFT', path: 'ThriftStore' },
         { name: 'Vehicle Donation', path: 'VehicleDonation' },
-        { name: 'Mercy Auto Academy', path: 'MercyAutoAcademy' },
-        { name: 'Products & Purpose', path: 'productswithapurpose.base44.app', external: false }
+        { name: 'Mercy House Auto Center', path: 'MercyAutoAcademy' },
+        { name: 'Product With A Purpose', path: 'ProductsPurpose' },
+        { name: 'Elite Gutters', path: 'https://myelitegutters.com', external: true }
       ]
     },
     { name: 'Volunteer', path: 'Volunteer' },

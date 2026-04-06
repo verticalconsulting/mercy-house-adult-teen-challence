@@ -49,9 +49,20 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
-                      <p className="font-semibold text-slate-900 dark:text-white">Address</p>
+                      <p className="font-semibold text-slate-900 dark:text-white">Physical Address</p>
                       <p className="text-slate-600 dark:text-slate-300">
-                        1110 Mary St, PO Box 266<br />
+                        1110 Mary St<br />
+                        Georgetown, MS 39078
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
+                    <div>
+                      <p className="font-semibold text-slate-900 dark:text-white">Mailing Address</p>
+                      <p className="text-slate-600 dark:text-slate-300">
+                        PO Box 266<br />
                         Georgetown, MS 39078
                       </p>
                     </div>
@@ -71,7 +82,7 @@ export default function Contact() {
                     <Phone className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white">Intake Coordinator</p>
-                      <a href="tel:6017203718" className="text-gold font-bold hover:text-gold/80 transition-colors text-lg">
+                      <a href="tel:6017203718" className="text-gold font-bold hover:text-gold/80 transition-colors">
                         (601) 720-3718
                       </a>
                     </div>
@@ -82,6 +93,26 @@ export default function Contact() {
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white">Intake Fax</p>
                       <p className="text-slate-600 dark:text-slate-300">(601) 858-2420</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Mail className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
+                    <div>
+                      <p className="font-semibold text-slate-900 dark:text-white">General Email</p>
+                      <a href="mailto:info@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
+                        info@mercyhouseatc.com
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Mail className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
+                    <div>
+                      <p className="font-semibold text-slate-900 dark:text-white">Intake Email</p>
+                      <a href="mailto:intake@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
+                        intake@mercyhouseatc.com
+                      </a>
                     </div>
                   </div>
                 </address>
@@ -106,7 +137,7 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
-                      <p className="font-semibold text-slate-900 dark:text-white">Address</p>
+                      <p className="font-semibold text-slate-900 dark:text-white">Physical Address</p>
                       <p className="text-slate-600 dark:text-slate-300">
                         5257 Learned Rd<br />
                         Learned, MS 39154
@@ -115,11 +146,50 @@ export default function Contact() {
                   </div>
 
                   <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
+                    <div>
+                      <p className="font-semibold text-slate-900 dark:text-white">Mailing Address</p>
+                      <p className="text-slate-600 dark:text-slate-300">
+                        PO Box 266<br />
+                        Georgetown, MS 39078
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
                     <Phone className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
-                      <p className="font-semibold text-slate-900 dark:text-white">Phone</p>
+                      <p className="font-semibold text-slate-900 dark:text-white">Office Phone</p>
                       <a href="tel:8558937333" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
-                        855-893-7333
+                        855-89-FREEDOM (855-893-7333)
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Phone className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
+                    <div>
+                      <p className="font-semibold text-slate-900 dark:text-white">Intake Coordinator</p>
+                      <a href="tel:6017203718" className="text-gold font-bold hover:text-gold/80 transition-colors">
+                        (601) 720-3718
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Printer className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
+                    <div>
+                      <p className="font-semibold text-slate-900 dark:text-white">Intake Fax</p>
+                      <p className="text-slate-600 dark:text-slate-300">(601) 858-2420</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Mail className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
+                    <div>
+                      <p className="font-semibold text-slate-900 dark:text-white">General Email</p>
+                      <a href="mailto:info@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
+                        info@mercyhouseatc.com
                       </a>
                     </div>
                   </div>
@@ -127,9 +197,9 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <Mail className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
-                      <p className="font-semibold text-slate-900 dark:text-white">Email</p>
-                      <a href="mailto:info@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
-                        info@mercyhouseatc.com
+                      <p className="font-semibold text-slate-900 dark:text-white">Intake Email</p>
+                      <a href="mailto:intake@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
+                        intake@mercyhouseatc.com
                       </a>
                     </div>
                   </div>
@@ -198,37 +268,7 @@ export default function Contact() {
           </Card>
         </section>
 
-        {/* FAQ for SEO & Google Grants quality */}
-        <section aria-labelledby="faq-heading" className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow">
-          <h2 id="faq-heading" className="text-2xl font-bold text-navy dark:text-gold mb-6">
-            Common Questions
-          </h2>
-          <dl className="space-y-6">
-            {[
-              {
-                q: 'Is the program really free?',
-                a: 'Yes. Mercy House does not turn anyone away for lack of funds. A $1,000 intake fee helps cover initial program costs, but payment plans and scholarships are available. Call us to discuss your situation.',
-              },
-              {
-                q: 'Do I need to be Christian to apply?',
-                a: 'Our program is Christ-centered, but we welcome anyone who is serious about change. Many residents begin without faith and discover it through the process.',
-              },
-              {
-                q: 'How long is the program?',
-                a: 'Our core program is 12 months, structured in four phases. Some residents extend into our transition housing for continued support.',
-              },
-              {
-                q: 'Can family members contact residents?',
-                a: 'Yes, with guidelines. Healthy family relationships are part of our restoration model. Staff will explain visitation and communication policies at intake.',
-              },
-            ].map(({ q, a }) => (
-              <div key={q} className="border-b border-slate-100 dark:border-slate-700 pb-5 last:border-0 last:pb-0">
-                <dt className="font-bold text-navy dark:text-gold text-base mb-2">{q}</dt>
-                <dd className="text-slate-600 dark:text-slate-300 text-base leading-relaxed">{a}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
+
       </main>
     </div>
   );

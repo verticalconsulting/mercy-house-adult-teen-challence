@@ -63,7 +63,7 @@ export default function Home() {
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
               <div className="h-64 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
+                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d6694e82-5daa-4dc5-2bd3-788006a34500/large"
                   alt="Women's Campus"
                   className="w-full h-full object-cover"
                 />
@@ -94,7 +94,7 @@ export default function Home() {
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Men's Campus</h3>
                 <p className="text-slate-600 dark:text-slate-300 mb-6">
-                  Empowering men to overcome life-controlling issues through structured programming, spiritual development, and vocational training.
+                  Empowering men to overcome addiction and life-controlling issues through structured programming, spiritual development, and vocational training.
                 </p>
                 <Link to={createPageUrl('MensCampus')}>
                   <Button className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
@@ -144,19 +144,30 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: 'Thrift Store', icon: '🏪', path: 'ThriftStore' },
+              { name: 'Thrift Store', icon: '🏪', path: 'ThriftStore', external: true, href: 'https://mercyhouseatc.superthriftdeals.org' },
               { name: 'Vehicle Donation', icon: '🚗', path: 'VehicleDonation' },
               { name: 'Mercy Auto Academy', icon: '🔧', path: 'MercyAutoAcademy' },
               { name: 'Products & Purpose', icon: '📦', path: 'ProductsPurpose' }
             ].map((business) => (
-              <Link
-                key={business.name}
-                to={createPageUrl(business.path)}
-                className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
-              >
-                <div className="text-5xl mb-4">{business.icon}</div>
-                <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
-              </Link>
+              business.external ? (
+                <a
+                  key={business.name}
+                  href={business.href}
+                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
+                >
+                  <div className="text-5xl mb-4">{business.icon}</div>
+                  <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
+                </a>
+              ) : (
+                <Link
+                  key={business.name}
+                  to={createPageUrl(business.path)}
+                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
+                >
+                  <div className="text-5xl mb-4">{business.icon}</div>
+                  <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
+                </Link>
+              )
             ))}
           </div>
         </div>

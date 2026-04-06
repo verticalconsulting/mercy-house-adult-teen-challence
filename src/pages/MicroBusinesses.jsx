@@ -79,8 +79,8 @@ export default function MicroBusinesses() {
                 title: 'SuperTHRIFT',
                 emoji: '🏪',
                 description: 'Community thrift store offering quality secondhand goods while training residents in retail operations, customer service, and inventory management.',
-                path: 'ThriftStore',
-                external: false
+                href: 'https://mercyhouseatc.superthriftdeals.org',
+                external: true
               },
               {
                 title: 'Vehicle Donation',

@@ -210,7 +210,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to={createPageUrl('IntakeForm')}>
               <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
-                Vehicle Donation Program
+                Start your Intake Form
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>

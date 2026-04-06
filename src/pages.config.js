@@ -54,7 +54,7 @@ import Donate from './pages/Donate';
 import DonationFunnel from './pages/DonationFunnel';
 import EmployeePortal from './pages/EmployeePortal';
 import Events from './pages/Events';
-import Home from './pages/Home';
+import Home from './pages/Home.jsx';
 import IntakeForm from './pages/IntakeForm';
 import MensCampus from './pages/MensCampus';
 import MercyAutoAcademy from './pages/MercyAutoAcademy';

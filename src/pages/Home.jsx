@@ -208,7 +208,7 @@ export default function Home() {
             Take the first step towards freedom and transformation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to={createPageUrl('VehicleDonation')}>
+            <Link to={createPageUrl('IntakeForm')}>
               <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
                 Vehicle Donation Program
                 <ArrowRight className="ml-2 w-5 h-5" />

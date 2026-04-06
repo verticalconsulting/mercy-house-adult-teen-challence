@@ -225,7 +225,7 @@ export default function Volunteer() {
               <div className="text-xl md:text-2xl text-white font-medium">Hours Donated Annually</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-gold mb-4">50+</div>
+              <div className="text-5xl md:text-6xl font-bold text-gold mb-4">20+</div>
               <div className="text-xl md:text-2xl text-white font-medium">Active Volunteers</div>
             </div>
             <div className="text-center">

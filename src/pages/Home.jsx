@@ -1,39 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Heart, Users, TrendingUp, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DonateButton from '../components/DonateButton';
-
-const businesses = [
-  {
-    name: 'SuperTHRIFT',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1a07ccd8-7054-46f7-c9c9-2e0ea56af100/logo',
-    href: 'https://mercyhouseatc.superthriftdeals.org',
-    external: true,
-  },
-  {
-    name: 'Vehicle Donation',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/cbd67746-5b4e-47f4-1e72-9907121f3e00/logo',
-    path: 'VehicleDonation',
-  },
-  {
-    name: 'Mercy Auto Sales',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/27969669-e908-4e1e-a5a4-354b3bb55b00/logo',
-    path: 'MercyAutoAcademy',
-  },
-  {
-    name: 'Products with a Purpose',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/fc21316c-8c1b-4f75-b60f-809a953b7400/logo',
-    path: 'ProductsPurpose',
-  },
-  {
-    name: 'Elite Gutters',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/9fd573a1-4df2-428f-d672-0b5b2b939b00/logo',
-    href: 'https://myelitegutters.com',
-    external: true,
-  },
-];
 
 export default function Home() {
   return (
@@ -147,7 +117,7 @@ export default function Home() {
               <div className="text-slate-300">Years of Service</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-gold mb-2">100%</div>
+              <div className="text-5xl font-bold text-gold mb-2">110%</div>
               <div className="text-slate-300">Donations to Mission</div>
             </div>
             <div className="text-center">
@@ -162,40 +132,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Workforce Development Section */}
+      {/* Micro Businesses Section */}
       <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Workforce Development</h2>
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Micro Businesses</h2>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Our workforce development initiatives provide job training, develop work skills, and fund our operations—ensuring 100% of individual donations go directly to our mission.
+              Our micro businesses provide job training, develop work skills, and fund our operations—ensuring 110% of individual donations go directly to our mission.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {businesses.map((business) =>
-              business.external ? (
-                <a
-                  key={business.name}
-                  href={business.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center"
-                >
-                  <img src={business.logo} alt={business.name} className="h-16 mb-3 object-contain" />
-                  <h3 className="font-semibold text-navy dark:text-gold text-sm">{business.name}</h3>
-                </a>
-              ) : (
-                <Link
-                  key={business.name}
-                  to={createPageUrl(business.path)}
-                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center"
-                >
-                  <img src={business.logo} alt={business.name} className="h-16 mb-3 object-contain" />
-                  <h3 className="font-semibold text-navy dark:text-gold text-sm">{business.name}</h3>
-                </Link>
-              )
-            )}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: 'Thrift Store', icon: '🏪', path: 'ThriftStore' },
+              { name: 'Vehicle Donation', icon: '🚗', path: 'VehicleDonation' },
+              { name: 'Mercy Auto Academy', icon: '🔧', path: 'MercyAutoAcademy' },
+              { name: 'Products & Purpose', icon: '📦', path: 'ProductsPurpose' }
+            ].map((business) => (
+              <Link
+                key={business.name}
+                to={createPageUrl(business.path)}
+                className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
+              >
+                <div className="text-5xl mb-4">{business.icon}</div>
+                <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -208,17 +170,15 @@ export default function Home() {
             Take the first step towards freedom and transformation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to={createPageUrl('VehicleDonation')}>
-              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
-                Vehicle Donation Program
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-            <Link to={createPageUrl('Contact')}>
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
-                Contact Us
-              </Button>
-            </Link>
+          <Link to={createPageUrl('IntakeForm')}>
+            <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
+              Confidential Intake Form
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
+          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+            Contact Us
+          </Button>
           </div>
         </div>
       </section>

@@ -93,8 +93,8 @@ export default function MicroBusinesses() {
                 title: 'Mercy House Auto Center',
                 emoji: '🔧',
                 description: 'Professional automotive training center where residents learn mechanics, body work, and automotive technology — preparing them for well-paying careers upon graduation.',
-                path: 'MercyAutoAcademy',
-                external: false
+                href: 'https://mercyhouseautocenter.com/',
+                external: true
               },
               {
                 title: 'Product With A Purpose',

@@ -14,8 +14,8 @@ export default function Home() {
           <img
             src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&q=80"
             alt="Diverse families showing hope and freedom"
-            className="w-full h-full object-cover" />
-          
+            className="w-full h-full object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-transparent dark:from-slate-900/95 dark:via-slate-900/80" />
         </div>
         
@@ -65,8 +65,8 @@ export default function Home() {
                 <img
                   src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d6694e82-5daa-4dc5-2bd3-788006a34500/large"
                   alt="Women's Campus"
-                  className="w-full h-full object-cover" />
-                
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Women's Campus</h3>
@@ -88,8 +88,8 @@ export default function Home() {
                 <img
                   src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/59f4771a-4656-48bf-862b-1ccf413b4c00/large"
                   alt="Men's Campus"
-                  className="w-full h-full object-cover" />
-                
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Men's Campus</h3>
@@ -144,20 +144,33 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-            { name: 'Thrift Store', icon: '🏪', path: 'ThriftStore' },
-            { name: 'Vehicle Donation', icon: '🚗', path: 'VehicleDonation' },
-            { name: 'Mercy Auto Academy', icon: '🔧', path: 'MercyAutoAcademy' },
-            { name: 'Products & Purpose', icon: '📦', path: 'ProductsPurpose' }].
-            map((business) =>
-            <Link
-              key={business.name}
-              to={createPageUrl(business.path)}
-              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700">
-              
-                <div className="text-5xl mb-4">{business.icon}</div>
-                <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
-              </Link>
-            )}
+              { name: 'SuperTHRIFT', icon: '🏪', href: 'https://mercyhouseatc.superthriftdeals.org', external: true },
+              { name: 'Vehicle Donation', icon: '🚗', path: 'VehicleDonation' },
+              { name: 'Mercy Auto Academy', icon: '🔧', path: 'MercyAutoAcademy' },
+              { name: 'Products & Purpose', icon: '📦', path: 'ProductsPurpose' }
+            ].map((business) => (
+              business.external ? (
+                <a
+                  key={business.name}
+                  href={business.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
+                >
+                  <div className="text-5xl mb-4">{business.icon}</div>
+                  <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
+                </a>
+              ) : (
+                <Link
+                  key={business.name}
+                  to={createPageUrl(business.path)}
+                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
+                >
+                  <div className="text-5xl mb-4">{business.icon}</div>
+                  <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
+                </Link>
+              )
+            ))}
           </div>
         </div>
       </section>
@@ -182,6 +195,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>);
-
+    </div>
+  );
 }

@@ -210,21 +210,7 @@ export default function Volunteer() {
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-8 h-8 text-gold flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-2xl md:text-2xl font-bold text-navy dark:text-gold mb-2">Orientation</h3>
-                <p className="text-lg md:text-xl text-slate-700 dark:text-slate-200 leading-relaxed">Attend a volunteer orientation session to learn about our mission and guidelines</p>
-              </div>
-            </div>
 
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-8 h-8 text-gold flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-2xl md:text-2xl font-bold text-navy dark:text-gold mb-2">Commitment</h3>
-                <p className="text-lg md:text-xl text-slate-700 dark:text-slate-200 leading-relaxed">Ability to commit to a regular volunteer schedule (minimum 4 hours per month)</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>

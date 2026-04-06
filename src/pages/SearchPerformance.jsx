@@ -4,6 +4,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { Search, MousePointerClick, Eye, TrendingUp, BarChart2, Loader2, AlertCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import SearchQueriesDisplay from '../components/SearchQueriesDisplay';
 
 const RANGE_OPTIONS = [
   { label: '7 days', days: 7 },
@@ -229,6 +230,11 @@ export default function SearchPerformance() {
             <p>Select a site to load performance data.</p>
           </div>
         )}
+
+        {/* Top Queries Section */}
+        <div className="mt-12">
+          <SearchQueriesDisplay />
+        </div>
       </div>
     </div>
   );

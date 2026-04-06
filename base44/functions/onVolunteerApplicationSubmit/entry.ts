@@ -38,16 +38,25 @@ Status: ${volunteer.status}
 Application Submitted: ${new Date().toISOString()}
 `;
 
-    // Upload to Google Drive submission folder
-    const formData = new FormData();
-    const blob = new Blob([fileContent], { type: 'text/plain' });
-    formData.append('file', blob, `${volunteer.full_name}_Volunteer_Application.txt`);
-    formData.append('parents', JSON.stringify(['1ODt9OQo1puP7y88HztmhzxpRzaAh5yXY']));
+    // Create metadata for the file
+    const metadata = {
+      name: `${volunteer.full_name}_Volunteer_Application.txt`,
+      parents: ['1ODt9OQo1puP7y88HztmhzxpRzaAh5yXY']
+    };
+
+    // Create multipart body manually
+    const boundary = '===============1234567890==';
+    const metadataPart = `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${JSON.stringify(metadata)}\r\n`;
+    const filePart = `--${boundary}\r\nContent-Type: text/plain\r\n\r\n${fileContent}\r\n--${boundary}--`;
+    const body = metadataPart + filePart;
 
     const uploadRes = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
       method: 'POST',
-      headers: { Authorization: `Bearer ${accessToken}` },
-      body: formData
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': `multipart/related; boundary="${boundary}"`
+      },
+      body: body
     });
 
     if (!uploadRes.ok) {

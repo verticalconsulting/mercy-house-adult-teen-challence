@@ -86,15 +86,12 @@ export default function Layout({ children, currentPageName }) {
             }
             
             {/* Logo */}
-            <Link to={createPageUrl('Home')} className="flex items-center space-x-3 group">
-              <div className="flex flex-col">
-                <span className="text-2xl md:text-2xl font-bold text-navy dark:text-gold transition-colors duration-300">
-                  Mercy House
-                </span>
-                
-
-                
-              </div>
+            <Link to={createPageUrl('Home')} className="flex items-center group">
+              <img
+                src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/69569030-e057-455d-eaee-53c360c4ea00/menulogo"
+                alt="Mercy House"
+                className="h-12 w-auto"
+              />
             </Link>
 
             {/* Desktop Navigation */}

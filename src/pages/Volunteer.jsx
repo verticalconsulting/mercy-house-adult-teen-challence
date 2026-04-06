@@ -168,10 +168,9 @@ export default function Volunteer() {
             {[
               { icon: Users, title: 'Mentoring & Support', description: 'Guide and encourage residents through their recovery journey' },
               { icon: BookOpen, title: 'Teaching & Education', description: 'Lead classes, Bible studies, or GED tutoring sessions' },
-              { icon: Home, title: 'Administrative Support', description: 'Help with office tasks, data entry, and organization' },
               { icon: Wrench, title: 'Maintenance & Repairs', description: 'Assist with facility upkeep and improvement projects' },
               { icon: Heart, title: 'Event Planning', description: 'Organize and support special events and fundraisers' },
-              { icon: Truck, title: 'Thrift Store & Auto Academy', description: 'Support our micro businesses and vocational training' }
+              { icon: Truck, title: 'SuperTHRIFT', description: 'Support our workforce development program by volunteering in our SuperTHRIFT.' }
             ].map((opp, idx) => (
               <Card key={idx} className="hover:shadow-xl transition-all duration-300 border-2">
                 <CardHeader>

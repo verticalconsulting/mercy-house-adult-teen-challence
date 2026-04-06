@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Heart, Users, TrendingUp, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DonateButton from '../components/DonateButton';
 
@@ -14,7 +14,7 @@ const businesses = [
   },
   {
     name: 'Vehicle Donation',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/cbd67746-5b4e-47f4-1e72-9907121f3e00/logo',
+    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/e1e1e1e1-e1e1-e1e1-e1e1-e1e1e1e1e1e1/logo',
     path: 'VehicleDonation',
   },
   {
@@ -25,7 +25,7 @@ const businesses = [
   },
   {
     name: 'Products with a Purpose',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/fc21316c-8c1b-4f75-b60f-809a953b7400/logo',
+    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/c1c1c1c1-c1c1-c1c1-c1c1-c1c1c1c1c1c1/logo',
     path: 'ProductsPurpose',
   },
   {
@@ -175,7 +175,7 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {businesses.map((business) =>
-              business.external ? (
+              business.external || business.href ? (
                 <a
                   key={business.name}
                   href={business.href}
@@ -209,17 +209,15 @@ export default function Home() {
             Take the first step towards freedom and transformation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to={createPageUrl('IntakeForm')}>
-              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
-                Start your Intake Form
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-            <Link to={createPageUrl('Contact')}>
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
-                Contact Us
-              </Button>
-            </Link>
+          <Link to={createPageUrl('IntakeForm')}>
+            <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
+              Apply Now
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
+          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+            Contact Us
+          </Button>
           </div>
         </div>
       </section>

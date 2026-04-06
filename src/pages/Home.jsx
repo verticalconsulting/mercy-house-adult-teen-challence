@@ -63,7 +63,7 @@ export default function Home() {
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
               <div className="h-64 overflow-hidden">
                 <img
-                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/3670b88d-b639-4b2f-bdb3-ecff8685b800/heroslim"
+                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/a03f0ab6-fbdd-4477-52bd-0aaf2e25bb00/thumbnail"
                   alt="Women's Campus"
                   className="w-full h-full object-cover"
                 />

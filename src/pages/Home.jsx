@@ -14,8 +14,8 @@ export default function Home() {
           <img
             src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&q=80"
             alt="Diverse families showing hope and freedom"
-            className="w-full h-full object-cover"
-          />
+            className="w-full h-full object-cover" />
+          
           <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-transparent dark:from-slate-900/95 dark:via-slate-900/80" />
         </div>
         
@@ -63,10 +63,10 @@ export default function Home() {
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
               <div className="h-64 overflow-hidden">
                 <img
-                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d6694e82-5daa-4dc5-2bd3-788006a34500/large"
+                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
                   alt="Women's Campus"
-                  className="w-full h-full object-cover"
-                />
+                  className="w-full h-full object-cover" />
+                
               </div>
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Women's Campus</h3>
@@ -86,10 +86,10 @@ export default function Home() {
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
               <div className="h-64 overflow-hidden">
                 <img
-                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/59f4771a-4656-48bf-862b-1ccf413b4c00/large"
+                  src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=800&q=80"
                   alt="Men's Campus"
-                  className="w-full h-full object-cover"
-                />
+                  className="w-full h-full object-cover" />
+                
               </div>
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Men's Campus</h3>
@@ -136,7 +136,7 @@ export default function Home() {
       <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Micro Businesses</h2>
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Workforce Development</h2>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               Our micro businesses provide job training, develop work skills, and fund our operations—ensuring 110% of individual donations go directly to our mission.
             </p>
@@ -144,31 +144,20 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: 'Thrift Store', icon: '🏪', path: 'ThriftStore', external: true, href: 'https://mercyhouseatc.superthriftdeals.org' },
-              { name: 'Vehicle Donation', icon: '🚗', path: 'VehicleDonation' },
-              { name: 'Mercy Auto Academy', icon: '🔧', path: 'MercyAutoAcademy' },
-              { name: 'Products & Purpose', icon: '📦', path: 'ProductsPurpose' }
-            ].map((business) => (
-              business.external ? (
-                <a
-                  key={business.name}
-                  href={business.href}
-                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
-                >
-                  <div className="text-5xl mb-4">{business.icon}</div>
-                  <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
-                </a>
-              ) : (
-                <Link
-                  key={business.name}
-                  to={createPageUrl(business.path)}
-                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700"
-                >
-                  <div className="text-5xl mb-4">{business.icon}</div>
-                  <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
-                </Link>
-              )
-            ))}
+            { name: 'Thrift Store', icon: '🏪', path: 'ThriftStore' },
+            { name: 'Vehicle Donation', icon: '🚗', path: 'VehicleDonation' },
+            { name: 'Mercy Auto Academy', icon: '🔧', path: 'MercyAutoAcademy' },
+            { name: 'Products & Purpose', icon: '📦', path: 'ProductsPurpose' }].
+            map((business) =>
+            <Link
+              key={business.name}
+              to={createPageUrl(business.path)}
+              className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700">
+              
+                <div className="text-5xl mb-4">{business.icon}</div>
+                <h3 className="font-semibold text-navy dark:text-gold">{business.name}</h3>
+              </Link>
+            )}
           </div>
         </div>
       </section>
@@ -193,6 +182,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>);
+
 }

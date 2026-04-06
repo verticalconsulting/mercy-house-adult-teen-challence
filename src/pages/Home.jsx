@@ -63,7 +63,7 @@ export default function Home() {
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
               <div className="h-64 overflow-hidden">
                 <img
-                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d6694e82-5daa-4dc5-2bd3-788006a34500/large"
+                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
                   alt="Women's Campus"
                   className="w-full h-full object-cover"
                 />
@@ -86,7 +86,7 @@ export default function Home() {
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
               <div className="h-64 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=800&q=80"
+                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/59f4771a-4656-48bf-862b-1ccf413b4c00/large"
                   alt="Men's Campus"
                   className="w-full h-full object-cover"
                 />
@@ -94,7 +94,7 @@ export default function Home() {
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Men's Campus</h3>
                 <p className="text-slate-600 dark:text-slate-300 mb-6">
-                  Empowering men to overcome addiction and life-controlling issues through structured programming, spiritual development, and vocational training.
+                  Empowering men to overcome life-controlling issues through structured programming, spiritual development, and vocational training.
                 </p>
                 <Link to={createPageUrl('MensCampus')}>
                   <Button className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">

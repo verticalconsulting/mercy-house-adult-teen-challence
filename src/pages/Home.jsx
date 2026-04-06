@@ -63,7 +63,7 @@ export default function Home() {
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
               <div className="h-64 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
+                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d6694e82-5daa-4dc5-2bd3-788006a34500/large"
                   alt="Women's Campus"
                   className="w-full h-full object-cover" />
                 
@@ -86,7 +86,7 @@ export default function Home() {
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
               <div className="h-64 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=800&q=80"
+                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/59f4771a-4656-48bf-862b-1ccf413b4c00/large"
                   alt="Men's Campus"
                   className="w-full h-full object-cover" />
                 
@@ -136,9 +136,9 @@ export default function Home() {
       <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Workforce Development</h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">Our workforce development program provides job training, develop work skills, and fund our operations—ensuring 100% of individual donations go directly to our mission.
-
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Micro Businesses</h2>
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              Our micro businesses provide job training, develop work skills, and fund our operations—ensuring 110% of individual donations go directly to our mission.
             </p>
           </div>
 

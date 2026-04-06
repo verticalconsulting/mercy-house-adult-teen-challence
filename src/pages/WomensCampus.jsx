@@ -23,7 +23,7 @@ export default function WomensCampus() {
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b8b9b980-e36e-4ba6-24a4-70d45d74e500/heromobile"
+            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/194cc325-4342-4dcd-d49d-0945a764fb00/heromobile"
             alt="Women's Campus"
             className="w-full h-full object-cover" />
             fetchpriotity="high"

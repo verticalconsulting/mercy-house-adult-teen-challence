@@ -294,7 +294,7 @@ export default function Layout({ children, currentPageName }) {
                 <li><Link to={createPageUrl('WomensCampus')} className="text-slate-300 hover:text-gold transition-colors">Women's Campus</Link></li>
                 <li><Link to={createPageUrl('MensCampus')} className="text-slate-300 hover:text-gold transition-colors">Men's Campus</Link></li>
                 <li><Link to={createPageUrl('Events')} className="text-slate-300 hover:text-gold transition-colors">Events</Link></li>
-                <li><Link to={createPageUrl('MicroBusinesses')} className="text-slate-300 hover:text-gold transition-colors">Micro Businesses</Link></li>
+                <li><Link to={createPageUrl('MicroBusinesses')} className="text-slate-300 hover:text-gold transition-colors">Workforce Development</Link></li>
                 <li><Link to={createPageUrl('Blog')} className="text-slate-300 hover:text-gold transition-colors">News & Events</Link></li>
                 <li><Link to={createPageUrl('Volunteer')} className="text-slate-300 hover:text-gold transition-colors">Volunteer</Link></li>
                 <li><Link to="/About" className="text-slate-300 hover:text-gold transition-colors">About Us</Link></li>

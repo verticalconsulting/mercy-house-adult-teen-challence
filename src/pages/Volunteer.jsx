@@ -412,14 +412,14 @@ export default function Volunteer() {
                     {[
                       { value: 'mentoring', label: 'Mentoring & Support' },
                       { value: 'teaching', label: 'Teaching & Education' },
-                      { value: 'administrative', label: 'Administrative Support' },
+                      { value: 'chapel_teaching', label: 'Chapel Teaching' },
+                      { value: 'ged_prep', label: 'GED Prep' },
                       { value: 'maintenance', label: 'Maintenance & Repairs' },
                       { value: 'events', label: 'Event Planning' },
-                      { value: 'thrift_store', label: 'Thrift Store' },
+                      { value: 'superthrift', label: 'SuperTHRIFT' },
                       { value: 'auto_academy', label: 'Auto Academy' },
                       { value: 'kitchen', label: 'Kitchen & Meal Prep' },
-                      { value: 'childcare', label: 'Childcare' },
-                      { value: 'transportation', label: 'Transportation' }
+                      { value: 'landscaping', label: 'Landscaping' }
                     ].map((item) => (
                       <div key={item.value} className="flex items-center gap-3">
                         <Checkbox

@@ -23,7 +23,7 @@ export default function WomensCampus() {
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1f477ee8-0f8a-4fe2-8929-b95d7c719f00/herobanner"
+            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b8b9b980-e36e-4ba6-24a4-70d45d74e500/heromobile"
             alt="Women's Campus"
             className="w-full h-full object-cover" />
             fetchpriotity="high"
@@ -75,7 +75,7 @@ export default function WomensCampus() {
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=800&q=80"
+                src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d6694e82-5daa-4dc5-2bd3-788006a34500/large"
                 alt="Women supporting each other"
                 className="w-full h-full object-cover" />
 

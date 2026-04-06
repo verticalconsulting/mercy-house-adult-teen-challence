@@ -88,7 +88,7 @@ export default function Layout({ children, currentPageName }) {
             {/* Logo */}
             <Link to={createPageUrl('Home')} className="flex items-center group">
               <img
-                src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/69569030-e057-455d-eaee-53c360c4ea00/menulogo"
+                src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/f6308df5-e751-45c6-6b95-9631b3eb7800/menulogo"
                 alt="Mercy House"
                 className="h-12 w-auto"
               />

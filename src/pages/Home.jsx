@@ -26,7 +26,7 @@ const businesses = [
   },
   {
     name: 'Products with a Purpose',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d47281ee-71be-476a-2502-6823386a0900/logo',
+    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/c4284844-e6a1-4bdd-1174-4aee07c0fc00/logo',
     path: 'ProductsPurpose',
   },
   {

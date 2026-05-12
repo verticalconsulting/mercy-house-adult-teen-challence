@@ -62,7 +62,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to={createPageUrl('IntakeForm')}>
-                <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   Start Your Journey
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
@@ -92,11 +92,13 @@ export default function Home() {
           
           <div className="grid md:grid-cols-2 gap-8">
             {/* Women's Campus */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
               <div className="h-64 overflow-hidden">
                 <img
                   src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d6694e82-5daa-4dc5-2bd3-788006a34500/large"
                   alt="Women's Campus"
+                  width="600"
+                  height="256"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -115,11 +117,13 @@ export default function Home() {
             </div>
 
             {/* Men's Campus */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
               <div className="h-64 overflow-hidden">
                 <img
                   src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/59f4771a-4656-48bf-862b-1ccf413b4c00/large"
                   alt="Men's Campus"
+                  width="600"
+                  height="256"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -180,7 +184,7 @@ export default function Home() {
                 <a
                   key={business.name}
                   href={business.href}
-                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center"
+                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center"
                 >
                   <img src={business.logo} alt={business.name} className="h-16 mb-3 object-contain" />
                   <h3 className="font-semibold text-navy dark:text-gold text-sm">{business.name}</h3>
@@ -189,7 +193,7 @@ export default function Home() {
                 <Link
                   key={business.name}
                   to={createPageUrl(business.path)}
-                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center"
+                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center"
                 >
                   <img src={business.logo} alt={business.name} className="h-16 mb-3 object-contain" />
                   <h3 className="font-semibold text-navy dark:text-gold text-sm">{business.name}</h3>
@@ -214,9 +218,11 @@ export default function Home() {
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
-          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
-            Contact Us
-          </Button>
+          <Link to={createPageUrl('Contact')}>
+            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+              Contact Us
+            </Button>
+          </Link>
           </div>
         </div>
       </section>

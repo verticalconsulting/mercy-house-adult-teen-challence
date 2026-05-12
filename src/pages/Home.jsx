@@ -20,13 +20,13 @@ const businesses = [
   },
   {
     name: 'Mercy House Auto Sales',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/27969669-e908-4e1e-a5a4-354b3bb55b00/logo',
+    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/8cf14a20-40c5-4286-c68a-487401957200/logoo',
     href: 'https://mercyhouseautocenter.com/',
     external: false,
   },
   {
     name: 'Products with a Purpose',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/c1c1c1c1-c1c1-c1c1-c1c1-c1c1c1c1c1c1/logo',
+    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d47281ee-71be-476a-2502-6823386a0900/logo',
     path: 'ProductsPurpose',
   },
   {

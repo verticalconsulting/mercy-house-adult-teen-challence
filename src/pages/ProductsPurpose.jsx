@@ -38,7 +38,7 @@ export default function ProductsPurpose() {
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&q=80"
+                src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/c4284844-e6a1-4bdd-1174-4aee07c0fc00/logo"
                 alt="Handcrafted products"
                 className="w-full h-full object-cover"
               />

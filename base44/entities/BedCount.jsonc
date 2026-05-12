@@ -1,0 +1,59 @@
+{
+  "name": "BedCount",
+  "type": "object",
+  "properties": {
+    "program_type": {
+      "type": "string",
+      "enum": [
+        "mens",
+        "womens"
+      ],
+      "description": "Which program campus"
+    },
+    "total_beds": {
+      "type": "number",
+      "description": "Total bed capacity"
+    },
+    "occupied_beds": {
+      "type": "number",
+      "description": "Number of current residents"
+    },
+    "waitlist_count": {
+      "type": "number",
+      "description": "Number of people on waitlist",
+      "default": 0
+    },
+    "last_updated_by": {
+      "type": "string",
+      "description": "Staff member who last updated"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Additional information about bed availability"
+    }
+  },
+  "required": [
+    "program_type",
+    "total_beds",
+    "occupied_beds"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

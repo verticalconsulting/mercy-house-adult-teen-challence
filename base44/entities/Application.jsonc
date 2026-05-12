@@ -1,0 +1,219 @@
+{
+  "name": "Application",
+  "type": "object",
+  "properties": {
+    "application_type": {
+      "type": "string",
+      "enum": [
+        "mens_program",
+        "womens_program"
+      ],
+      "description": "Which program the applicant is applying for"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "under_review",
+        "accepted",
+        "declined",
+        "waitlist"
+      ],
+      "default": "pending"
+    },
+    "assigned_to": {
+      "type": "string",
+      "description": "Email of staff member reviewing this application"
+    },
+    "full_legal_name": {
+      "type": "string"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date"
+    },
+    "biological_sex": {
+      "type": "string",
+      "enum": [
+        "male",
+        "female"
+      ]
+    },
+    "ssn": {
+      "type": "string",
+      "description": "Social Security Number"
+    },
+    "address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string"
+    },
+    "home_phone": {
+      "type": "string"
+    },
+    "cell_phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "drivers_license": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no",
+        "expired",
+        "suspended"
+      ]
+    },
+    "referral_source": {
+      "type": "string"
+    },
+    "contact_person_1_name": {
+      "type": "string"
+    },
+    "contact_person_1_relationship": {
+      "type": "string"
+    },
+    "contact_person_1_phone": {
+      "type": "string"
+    },
+    "contact_person_1_email": {
+      "type": "string"
+    },
+    "under_legal_supervision": {
+      "type": "boolean"
+    },
+    "legally_mandated_treatment": {
+      "type": "boolean"
+    },
+    "pending_legal_matters": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "arrest_warrant",
+          "court_appearance",
+          "criminal_charges",
+          "sentencing"
+        ]
+      }
+    },
+    "sexual_offender_registry": {
+      "type": "boolean"
+    },
+    "sexual_offense_charges": {
+      "type": "boolean"
+    },
+    "arson_charges": {
+      "type": "boolean"
+    },
+    "violent_offense_charges": {
+      "type": "boolean"
+    },
+    "has_health_insurance": {
+      "type": "boolean"
+    },
+    "blood_type": {
+      "type": "string"
+    },
+    "legally_married": {
+      "type": "boolean"
+    },
+    "emergency_contact_name": {
+      "type": "string"
+    },
+    "emergency_contact_phone": {
+      "type": "string"
+    },
+    "emergency_contact_relationship": {
+      "type": "string"
+    },
+    "currently_treated_by_physician": {
+      "type": "boolean"
+    },
+    "physician_details": {
+      "type": "string"
+    },
+    "manual_work_limitations": {
+      "type": "boolean"
+    },
+    "exercise_limitations": {
+      "type": "boolean"
+    },
+    "recreational_limitations": {
+      "type": "boolean"
+    },
+    "allergies": {
+      "type": "string"
+    },
+    "mental_health_diagnosis": {
+      "type": "string"
+    },
+    "current_medications": {
+      "type": "string"
+    },
+    "possibly_pregnant": {
+      "type": "boolean"
+    },
+    "eating_disorder": {
+      "type": "boolean"
+    },
+    "previous_treatment_programs": {
+      "type": "string"
+    },
+    "addiction_details": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "submission_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Additional notes about the application"
+    }
+  },
+  "required": [
+    "application_type",
+    "full_legal_name",
+    "date_of_birth",
+    "cell_phone"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

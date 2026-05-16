@@ -9,8 +9,8 @@ const programs = [
     location: 'Georgetown, MS',
     path: '/MensCampus',
     image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b0adcea4-39fa-4c4c-9fcd-4a85031ac400/small',
-    desc: "A long-term, structured residential program for men struggling with life-controlling and dependency issues. Rooted in faith, accountability, and genuine community.",
-    features: ['12–15 Month Residential Program', 'Biblical Discipleship', 'Vocational Training', 'Mentorship & Accountability', 'Life-Skills Development', 'Re-entry Support'],
+    desc: "A structured 12-month residential Christian discipleship program for men struggling with life-controlling and dependency issues. Rooted in faith, accountability, and genuine community, the program takes place on our peaceful 14-acre campus.",
+    features: ['12-Month Residential Program', 'Biblical Discipleship & Life-Skills Development', 'Work Therapy & Vocational Training', 'Mentorship & Accountability', 'Family Restoration', 'Re-entry & Transitional Support'],
   },
   {
     name: "Women's Program",
@@ -18,19 +18,39 @@ const programs = [
     path: '/WomensCampus',
     image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/6967250f-138f-4d93-b91a-f375dfd4ab00/small',
     desc: "A safe, supportive residential environment for women ready to pursue freedom from life-controlling and dependency issues through a Christ-centered program designed for their unique journey.",
-    features: ['Residential Program', 'Trauma-Informed Support', 'Biblical Counseling', 'Life-Skills Training', 'Spiritual Growth', 'Community & Mentorship'],
+    features: ['12-Month Residential Program', 'Trauma-Informed Support & Biblical Counseling', 'Life-Skills Training', 'Spiritual Growth', 'Community & Mentorship'],
   },
 ];
 
-const pillars = [
-  { icon: <BookOpen className="w-6 h-6" />, title: 'Biblical Discipleship', desc: 'Daily Bible study, worship, and prayer are the foundation of the program — not an optional component.' },
-  { icon: <Users className="w-6 h-6" />, title: 'Mentorship & Accountability', desc: 'Every resident is connected with mentors and peers who walk alongside them through the program.' },
-  { icon: <Home className="w-6 h-6" />, title: 'Safe Residential Environment', desc: 'A structured home setting removes destructive environments and provides stability for genuine growth.' },
-  { icon: <Briefcase className="w-6 h-6" />, title: 'Vocational Training', desc: 'Residents develop real work skills through our micro-business programs, preparing them for life after graduation.' },
-  { icon: <Heart className="w-6 h-6" />, title: 'Life-Skills Development', desc: 'Financial literacy, communication, personal responsibility, and healthy relationships are taught and practiced daily.' },
-  { icon: <Shield className="w-6 h-6" />, title: 'Accountability Structure', desc: 'A phased program structure provides increasing levels of responsibility as residents grow and demonstrate readiness.' },
-  { icon: <Sun className="w-6 h-6" />, title: 'Spiritual Growth', desc: 'Chapel services, individual prayer, and community worship help residents develop a personal faith that sustains them beyond the program.' },
-  { icon: <Star className="w-6 h-6" />, title: 'Re-entry Support', desc: 'Graduates receive support in securing housing, employment, and community connections as they transition back into society.' },
+const foundations = [
+  'Live Christlike',
+  'Live with Character',
+  'Live Purposeful',
+  'Live Accountable',
+  'Live in Community',
+];
+
+const keyAreas = [
+  {
+    num: '1',
+    title: 'Life Transformation',
+    desc: 'Recovery is hard, but real change is possible. Our program goes beyond addressing addiction to teach residents how to build a God-centered life and live successfully in society.',
+  },
+  {
+    num: '2',
+    title: 'Spiritual Formation & Discipleship',
+    desc: 'Living a God-centered life is at the heart of our recovery process. We walk with each resident to apply that truth through intentional discipleship, daily Bible study, and worship. This includes structured curriculum, scripture memorization, and practical life-skills training.',
+  },
+  {
+    num: '3',
+    title: 'Work Therapy',
+    desc: 'Classroom learning matters, but hands-on experience is essential. Through meaningful work, residents learn responsibility, teamwork, and practical life skills. Students receive vocational training through our micro-businesses, including the Mercy House Auto Center, SuperThrift Stores, and crafting goods for Products with a Purpose.',
+  },
+  {
+    num: '4',
+    title: 'Family Restoration',
+    desc: 'Addiction shatters families—our mission is to restore them. We intentionally involve families in the recovery process to help rebuild trust, offer support, and establish a clear path toward healing and reconciliation.',
+  },
 ];
 
 export default function Programs() {
@@ -50,8 +70,7 @@ export default function Programs() {
           <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-4">Programs &amp; Services</p>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">A Path Toward Freedom</h1>
           <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto">
-            Mercy House offers long-term, Christ-centered residential programs for men and women ready to make a
-            lasting change. Our approach is not a quick fix — it is a structured journey of transformation.
+            Mercy House Adult &amp; Teen Challenge offers long-term, Christ-centered residential programs for men and women ready to make a lasting change. Our approach is not a quick fix — it is a structured journey of total life transformation.
           </p>
         </div>
       </section>
@@ -60,10 +79,7 @@ export default function Programs() {
       <section className="py-10 bg-amber-50 dark:bg-amber-900/20 border-b border-amber-200 dark:border-amber-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-amber-800 dark:text-amber-200 text-base font-medium">
-            <strong>Please note:</strong> Mercy House Adult &amp; Teen Challenge is a faith-based residential ministry
-            program — not a medical detox or licensed clinical treatment facility. If you or someone you know is
-            experiencing a medical emergency, please call 911 or go to your nearest emergency room.
-            For questions about program admissions, contact our intake team at{' '}
+            <strong>Please note:</strong> Mercy House Adult &amp; Teen Challenge is a faith-based residential ministry program — not a medical detox or licensed clinical treatment facility. If you or someone you know is experiencing a medical emergency, please call 911 or go to your nearest emergency room. For questions about program admissions, contact our intake team at{' '}
             <a href="tel:6017203718" className="underline hover:no-underline">(601) 720-3718</a>.
           </p>
         </div>
@@ -110,28 +126,58 @@ export default function Programs() {
         </div>
       </section>
 
-      {/* Program Pillars */}
+      {/* How It Works - Five Foundations */}
       <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">How It Works</p>
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">The Eight Pillars of Our Program</h2>
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">The Five Foundations of Freedom</h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Our approach is holistic — addressing not just the symptoms of life-controlling issues but the spiritual, relational,
-              and practical dimensions of a person's life. These eight pillars guide everything we do.
+              At Mercy House, our mission is to help individuals and families find a new life in Christ. Our culture and curriculum are built upon five core pillars:
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {pillars.map((p) => (
-              <div key={p.title} className="p-6 border border-slate-200 dark:border-slate-700 rounded-xl">
-                <div className="w-12 h-12 bg-navy/10 dark:bg-gold/10 rounded-xl flex items-center justify-center text-navy dark:text-gold mb-4">
-                  {p.icon}
-                </div>
-                <h3 className="text-base font-bold text-navy dark:text-gold mb-2">{p.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{p.desc}</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {foundations.map((f) => (
+              <div key={f} className="p-6 border border-slate-200 dark:border-slate-700 rounded-xl text-center">
+                <h3 className="text-lg font-bold text-navy dark:text-gold">{f}</h3>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Four Key Program Areas */}
+      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Our Four Key Program Areas</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              Our approach is holistic, addressing the spiritual, relational, and practical dimensions of a person's life. We guide everything we do through these four core areas:
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {keyAreas.map((area) => (
+              <div key={area.num} className="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-700 flex gap-6">
+                <div className="flex-shrink-0 w-12 h-12 bg-gold rounded-full flex items-center justify-center text-navy font-black text-lg">
+                  {area.num}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-navy dark:text-gold mb-3">{area.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{area.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Phased Structure */}
+      <section className="py-20 bg-white dark:bg-slate-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold text-navy dark:text-gold mb-6">Our Phased Structure</h2>
+          <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            Our 12-month program provides increasing levels of responsibility as residents grow and demonstrate readiness. Residents move from establishing a foundation of recovery to deep character development, eventually transitioning into our 3rd Phase program, which equips them with the tools, employment support, and community connections needed for long-term success.
+          </p>
         </div>
       </section>
 
@@ -145,17 +191,22 @@ export default function Programs() {
               Mercy House is for people who are ready to make a change — and for the families who love them.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { title: 'Men & Women in Crisis', desc: 'Adults struggling with life-controlling and dependency issues who are ready to commit to a long-term residential program.' },
-              { title: 'Families Seeking Answers', desc: "If someone you love is caught in life-controlling issues, Mercy House offers a safe, structured environment where they can receive support. You are not alone, and there is hope." },
-              { title: 'Those Court-Referred or Self-Motivated', desc: 'Whether you have come to us through the court system or entirely on your own, Mercy House meets you where you are and walks with you forward.' },
-            ].map((item) => (
-              <div key={item.title} className="bg-white/10 dark:bg-white/5 rounded-xl p-6">
-                <h3 className="text-lg font-bold text-gold mb-3">{item.title}</h3>
-                <p className="text-slate-300 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+          <div className="space-y-6">
+            <div className="bg-white/10 dark:bg-white/5 rounded-xl p-8">
+              <h3 className="text-xl font-bold text-gold mb-3">Men &amp; Women in Crisis</h3>
+              <p className="text-slate-300 leading-relaxed mb-3">Adults between the ages of 18 and 65 struggling with life-controlling and dependency issues who are ready to commit to a long-term residential program. Please note: Because our campuses are located near public parks and schools, we cannot accept registered sex offenders.</p>
+            </div>
+            <div className="bg-white/10 dark:bg-white/5 rounded-xl p-8">
+              <h3 className="text-xl font-bold text-gold mb-3">Families Seeking Answers</h3>
+              <p className="text-slate-300 leading-relaxed mb-3">If someone you love is caught in life-controlling issues, Mercy House offers a safe, structured environment where they can receive support. You are not alone, and there is hope.</p>
+            </div>
+            <div className="bg-white/10 dark:bg-white/5 rounded-xl p-8">
+              <h3 className="text-xl font-bold text-gold mb-3">Those Court-Referred or Self-Motivated</h3>
+              <p className="text-slate-300 leading-relaxed mb-3">Whether you have come to us through the court system or entirely on your own, Mercy House meets you where you are and walks with you forward. If an applicant is currently incarcerated, we can forward a letter of acceptance directly to the court so the judge can determine if our program is a good fit. If on probation, the applicant's Probation Officer must be contacted for approval.</p>
+            </div>
+            <p className="text-slate-400 italic mt-6">
+              Please note that an applicant must have a genuine personal desire to change for the program to be successful.
+            </p>
           </div>
         </div>
       </section>
@@ -169,20 +220,16 @@ export default function Programs() {
           </div>
           <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md space-y-5 text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
             <p>
-              The Mercy House program is designed as a <strong>long-term residential commitment</strong>, typically
-              lasting 12 to 15 months. This length is intentional — genuine life transformation takes time, and a
-              longer program allows residents to develop real habits, relationships, and spiritual depth that sustain
-              them after graduation.
+              The Mercy House program is designed as a <strong>long-term residential commitment</strong>, typically lasting 12 to 14 months. This length is intentional — genuine life transformation takes time, and a longer program allows residents to develop real habits, relationships, and spiritual depth that sustain them after graduation.
             </p>
             <p>
-              There is a <strong>one-time intake fee of $1,000</strong> to cover initial costs. Beyond that, Mercy
-              House operates as a <strong>no-cost program</strong> for residents — housing, meals, discipleship
-              resources, and program support are provided at no ongoing charge thanks to our generous donors and
-              micro-business operations.
+              There is a <strong>one-time, non-refundable intake fee of $1,000</strong> to cover initial costs. Beyond that, <strong>95% of the men at our facility attend the program at no cost</strong>. Housing, meals, discipleship resources, and program support are provided at no ongoing charge thanks to our generous donors and micro-business operations.
+            </p>
+            <p className="font-semibold">
+              <strong>Strict Nicotine Policy</strong> Please be aware that Mercy House is a nicotine-free environment. Residents cannot smoke, dip, or vape, and nicotine patches are not allowed.
             </p>
             <p>
-              We encourage anyone with financial concerns to contact us directly. We are committed to removing barriers
-              for those who are genuinely seeking help.
+              We encourage anyone with financial concerns to contact us directly. We are committed to removing barriers for those who are genuinely seeking help.
             </p>
             <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-700">
               <p className="font-semibold text-navy dark:text-gold mb-1">Ready to apply or learn more?</p>
@@ -216,21 +263,23 @@ export default function Programs() {
             {[
               {
                 step: '1',
-                title: 'Call or Apply Online',
-                desc: "Contact our intake coordinator at (601) 720-3718 or complete the online intake application — whichever feels most comfortable. You can also have a family member call on your behalf. Our team will answer your questions honestly and help you understand if Mercy House is the right fit.",
-                action: { label: 'Call (601) 720-3718', href: 'tel:6017203718' },
+                title: 'Complete the Application & Questionnaire',
+                desc: "Review our intake questionnaire to ensure you meet our basic eligibility requirements, then download and complete our application.",
               },
               {
                 step: '2',
-                title: 'Complete the Intake Process',
-                desc: "Our intake team will walk you through a brief application and gather some basic information. This is a confidential conversation — not an interrogation. We want to understand your situation so we can best prepare for your arrival and make sure the program is the right environment for you at this time.",
-                action: null,
+                title: 'Call for a Phone Interview',
+                desc: "Contact our Intake Coordinator, Howard Kittrell, at (601) 720-3718 to discuss your application and complete a phone interview. The best time to call is Monday–Friday, 8:00 AM – 5:00 PM. If you are reaching out on the weekend or no one answers, please leave a message or send a text with your name and number, and we will get back to you as soon as possible.",
               },
               {
                 step: '3',
+                title: 'Complete the Blood Work Requirement',
+                desc: "Before admission, applicants must complete required blood work. TB, HIV, and HEP B & C tests are required and need to be faxed to (601) 858-2420. (Exception: If the applicant is incarcerated and can only complete the TB test, the remaining tests can be administered upon arrival with Executive Director approval). Follow up with a phone call to confirm we have received your lab results.",
+              },
+              {
+                step: '4',
                 title: 'Arrive & Begin',
-                desc: "Once you're accepted, we'll give you everything you need to know about what to bring, what to expect on your first day, and how the first few weeks work. You'll arrive, get settled into your new home, and begin the program alongside people who are on the same journey you are.",
-                action: { label: 'Start Your Application', href: '/IntakeForm' },
+                desc: "Once you're accepted, we'll give you a list of approved items to bring and set a date and time for your arrival. You'll arrive at our campus, get settled into your new home, and begin the program alongside people who are on the same journey you are.",
               },
             ].map((item) => (
               <div key={item.step} className="flex gap-6 items-start bg-slate-50 dark:bg-slate-900 rounded-2xl p-7 border border-slate-200 dark:border-slate-700">
@@ -240,14 +289,6 @@ export default function Programs() {
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-navy dark:text-gold mb-2">{item.title}</h3>
                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{item.desc}</p>
-                  {item.action && (
-                    <a
-                      href={item.action.href}
-                      className="inline-flex items-center gap-2 mt-4 text-navy dark:text-gold font-semibold hover:underline"
-                    >
-                      {item.action.label} <ArrowRight className="w-4 h-4" />
-                    </a>
-                  )}
                 </div>
               </div>
             ))}

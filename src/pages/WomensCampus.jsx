@@ -58,10 +58,16 @@ export default function WomensCampus() {
                 A Safe Place to Heal
               </h2>
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
-                Our Women's Campus provides a nurturing environment where women can break free from life-controlling problems and rebuild their lives on a foundation of faith, hope, and practical skills.
+                At Mercy House, our women's campus team is here to walk with you every step of your recovery journey. Our heart is to see you experience true healing and lasting freedom in Christ.
+              </p>
+              <p className="italic text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
+                "He heals the brokenhearted and binds up their wounds." – Psalm 147:3
+              </p>
+              <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
+                You don't have to walk this road alone. The Lord is near, and we would be honored to come alongside you as He restores and renews.
               </p>
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
-                Through comprehensive programming that addresses spiritual, emotional, mental, and physical needs, women gain the tools necessary to become productive members of society.
+                We currently have space available and would love to welcome you into a safe, supportive environment of healing and hope. If you or someone you love needs support, please reach out—we're here for you.
               </p>
               <div className="flex gap-4">
                 <Link to={createPageUrl('IntakeForm')}>
@@ -75,9 +81,9 @@ export default function WomensCampus() {
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl">
                <img
-                 src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/1e72f2e7f_generated_image.png"
-                 alt="Women supporting each other"
-                 className="w-full h-full object-cover" />
+                  src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/257a28bc5_baptist.jpg"
+                  alt="Women supporting each other"
+                  className="w-full h-full object-cover" />
              </div>
           </div>
         </div>

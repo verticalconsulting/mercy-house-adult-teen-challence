@@ -296,7 +296,7 @@ export default function IntakeForm() {
               />
             ))}
           </div>
-          <p className="mt-3 text-sm text-green-700 dark:text-green-400 font-medium">✓ Free program — No cost to apply</p>
+          <p className="mt-3 text-sm text-green-700 dark:text-green-400 font-medium">✓ Low cost program — Financial help available</p>
         </div>
 
         {/* Condensed Mode Toggle */}

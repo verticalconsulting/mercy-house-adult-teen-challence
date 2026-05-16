@@ -109,10 +109,10 @@ export default function Layout({ children, currentPageName }) {
                       </Link>
                       <div className="absolute left-0 mt-0 w-56 bg-white dark:bg-slate-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-slate-200 dark:border-slate-700">
                         {item.submenu.map((subItem) =>
-                    subItem.external ?
+                    (subItem.external || subItem.href) ?
                     <a
                       key={subItem.name}
-                      href={subItem.path}
+                      href={subItem.href || subItem.path}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block px-4 py-3 text-lg md:text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg">
@@ -202,10 +202,10 @@ export default function Layout({ children, currentPageName }) {
                       {openSubmenu === item.name &&
                 <div className="ml-4 mt-2 space-y-1">
                           {item.submenu.map((subItem) =>
-                  subItem.external ?
+                  (subItem.external || subItem.href) ?
                   <a
                     key={subItem.name}
-                    href={subItem.path}
+                    href={subItem.href || subItem.path}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}

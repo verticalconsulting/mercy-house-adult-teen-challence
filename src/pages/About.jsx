@@ -5,37 +5,37 @@ import CTABand from '../components/CTABand';
 import NonprofitLegitimacy from '../components/NonprofitLegitimacy';
 
 const leadership = [
-  {
-    name: 'Bryan Wilson',
-    title: 'President / CFO',
-    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b3560cfa-a4f6-42c3-3089-938b4db94000/small',
-    bio: 'God called Bryan to start Mercy House after witnessing generational chains of life-controlling issues broken in his own family through faith. He carries that same vision for every person who walks through our doors — that one transformed life can change the trajectory of an entire family for generations.',
-  },
-  {
-    name: 'Matthew Milliman',
-    title: 'Executive Director / CEO',
-    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/70e7c889-58c9-421b-b89a-188f9a87b400/small',
-    bio: 'Matthew came through the Adult & Teen Challenge program himself and emerged with a renewed sense of purpose. Today he leads Mercy House with the conviction that every person who is struggling deserves a real chance at a new life through Christ.',
-  },
-  {
-    name: 'Joshua Cook',
-    title: 'Director of Operations',
-    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/fbee339a-6e0e-41b1-dec4-7e39ded9b900/small',
-    bio: 'Joshua entered Mercy House in 2017 after years of life-controlling dependency and hardship. God restored everything. He now leads operations with a heart for men still caught in the darkness he once knew — and a testimony that freedom is possible.',
-  },
-  {
-    name: 'Thomas Reif',
-    title: "Campus Director — Men's Program",
-    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1777985b-43aa-4dcc-e288-ea7079952b00/small',
-    bio: 'After nearly a decade in the military and law enforcement, Thomas found himself in need of the same grace he now helps extend to others. He leads the Men\'s Campus with discipline, compassion, and an unshakable belief in what God can do in a man\'s life.',
-  },
-  {
-    name: 'Lindsay Hughes',
-    title: "Campus Director — Women's Program",
-    photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/45c77396-fda6-438c-24a8-721975af3e00/small',
-    bio: "A Board Certified Christian Counselor with a background in Social Work and Clinical Chaplaincy, Lindsay brings both professional training and genuine compassion to every woman she serves at the Women's Campus in Learned, MS.",
-  },
-];
+{
+  name: 'Bryan Wilson',
+  title: 'President / CFO',
+  photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b3560cfa-a4f6-42c3-3089-938b4db94000/small',
+  bio: 'God called Bryan to start Mercy House after witnessing generational chains of life-controlling issues broken in his own family through faith. He carries that same vision for every person who walks through our doors — that one transformed life can change the trajectory of an entire family for generations.'
+},
+{
+  name: 'Matthew Milliman',
+  title: 'Executive Director / CEO',
+  photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/70e7c889-58c9-421b-b89a-188f9a87b400/small',
+  bio: 'Matthew came through the Adult & Teen Challenge program himself and emerged with a renewed sense of purpose. Today he leads Mercy House with the conviction that every person who is struggling deserves a real chance at a new life through Christ.'
+},
+{
+  name: 'Joshua Cook',
+  title: 'Director of Operations',
+  photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/fbee339a-6e0e-41b1-dec4-7e39ded9b900/small',
+  bio: 'Joshua entered Mercy House in 2017 after years of life-controlling dependency and hardship. God restored everything. He now leads operations with a heart for men still caught in the darkness he once knew — and a testimony that freedom is possible.'
+},
+{
+  name: 'Thomas Reif',
+  title: "Campus Director — Men's Program",
+  photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1777985b-43aa-4dcc-e288-ea7079952b00/small',
+  bio: 'After nearly a decade in the military and law enforcement, Thomas found himself in need of the same grace he now helps extend to others. He leads the Men\'s Campus with discipline, compassion, and an unshakable belief in what God can do in a man\'s life.'
+},
+{
+  name: 'Lindsay Hughes',
+  title: "Campus Director — Women's Program",
+  photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/45c77396-fda6-438c-24a8-721975af3e00/small',
+  bio: "A Board Certified Christian Counselor with a background in Social Work and Clinical Chaplaincy, Lindsay brings both professional training and genuine compassion to every woman she serves at the Women's Campus in Learned, MS."
+}];
+
 
 export default function About() {
   return (
@@ -47,8 +47,8 @@ export default function About() {
             src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=80"
             alt=""
             className="w-full h-full object-cover"
-            aria-hidden="true"
-          />
+            aria-hidden="true" />
+          
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-4">About Mercy House</p>
@@ -96,8 +96,8 @@ export default function About() {
                 <img
                   src="https://images.unsplash.com/photo-1609234656388-0ff363383899?w=900&q=80"
                   alt="Men in a faith-based group setting"
-                  className="w-full h-full object-cover"
-                />
+                  className="w-full h-full object-cover" />
+                
               </div>
               <div className="absolute -bottom-6 -left-6 bg-gold text-navy font-bold rounded-xl p-5 shadow-xl text-center hidden md:block">
                 <div className="text-3xl font-bold">50%</div>
@@ -146,18 +146,18 @@ export default function About() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
             {[
-              { number: '01', title: 'Live Christlike', desc: 'Modeling every aspect of life after the example of Jesus — in character, conduct, and relationship with others.' },
-              { number: '02', title: 'Live with Character', desc: 'Building integrity, honesty, and moral strength as the daily currency of a restored life.' },
-              { number: '03', title: 'Live Purposeful', desc: 'Discovering God\'s design for your life and pursuing it with intentionality, discipline, and hope.' },
-              { number: '04', title: 'Live Accountable', desc: 'Inviting correction and embracing transparency — because long-term freedom requires others who will tell you the truth.' },
-              { number: '05', title: 'Live in Community', desc: 'Remaining close to God, to the body of believers, and to the relationships that keep blind spots from becoming relapses.' },
-            ].map((item) => (
-              <div key={item.number} className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-md border-t-4 border-gold text-center">
+            { number: '01', title: 'Live Christlike', desc: 'Modeling every aspect of life after the example of Jesus — in character, conduct, and relationship with others.' },
+            { number: '02', title: 'Live with Character', desc: 'Building integrity, honesty, and moral strength as the daily currency of a restored life.' },
+            { number: '03', title: 'Live Purposeful', desc: 'Discovering God\'s design for your life and pursuing it with intentionality, discipline, and hope.' },
+            { number: '04', title: 'Live Accountable', desc: 'Inviting correction and embracing transparency — because long-term freedom requires others who will tell you the truth.' },
+            { number: '05', title: 'Live in Community', desc: 'Remaining close to God, to the body of believers, and to the relationships that keep blind spots from becoming relapses.' }].
+            map((item) =>
+            <div key={item.number} className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-md border-t-4 border-gold text-center">
                 <div className="text-gold font-black text-3xl mb-2 opacity-40">{item.number}</div>
                 <h3 className="text-base font-bold text-navy dark:text-gold mb-2">{item.title}</h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -174,28 +174,28 @@ export default function About() {
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             {[
-              {
-                icon: <Heart className="w-7 h-7" />,
-                title: 'Life Transformation',
-                desc: 'Recovery is more than overcoming substance abuse — it\'s learning how to build a God-centered life and live successfully in society. We address root causes, not just behaviors, because lasting change requires a complete identity shift.',
-              },
-              {
-                icon: <BookOpen className="w-7 h-7" />,
-                title: 'Spiritual Formation & Discipleship',
-                desc: 'Living a God-centered life is the core of our recovery process. Through "Studies Centered in Christ" and "Worship Centered in Christ," residents process the pressures of addiction through spiritual teachings, daily praise, and structured biblical curriculum.',
-              },
-              {
-                icon: <Home className="w-7 h-7" />,
-                title: 'Work Therapy',
-                desc: 'Hard work and dedication are critical to recovery. Residents participate in hands-on vocational training through our micro-businesses — the Mercy House Auto Center, SuperThrift Stores, and the Woodshop/Craft Center — learning responsibility, teamwork, and real-world skills.',
-              },
-              {
-                icon: <Users className="w-7 h-7" />,
-                title: 'Family Restoration',
-                desc: 'Addiction shatters families. A primary goal of the program is to help broken families rebuild trust, find support, and establish a clear path toward healing and reconciliation — because a person is not truly restored until their family is part of the story.',
-              },
-            ].map((item) => (
-              <div key={item.title} className="flex gap-5 p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-700">
+            {
+              icon: <Heart className="w-7 h-7" />,
+              title: 'Life Transformation',
+              desc: 'Recovery is more than overcoming substance abuse — it\'s learning how to build a God-centered life and live successfully in society. We address root causes, not just behaviors, because lasting change requires a complete identity shift.'
+            },
+            {
+              icon: <BookOpen className="w-7 h-7" />,
+              title: 'Spiritual Formation & Discipleship',
+              desc: 'Living a God-centered life is the core of our recovery process. Through "Studies Centered in Christ" and "Worship Centered in Christ," residents process the pressures of addiction through spiritual teachings, daily praise, and structured biblical curriculum.'
+            },
+            {
+              icon: <Home className="w-7 h-7" />,
+              title: 'Work Therapy',
+              desc: 'Hard work and dedication are critical to recovery. Residents participate in hands-on vocational training through our micro-businesses — the Mercy House Auto Center, SuperThrift Stores, and the Woodshop/Craft Center — learning responsibility, teamwork, and real-world skills.'
+            },
+            {
+              icon: <Users className="w-7 h-7" />,
+              title: 'Family Restoration',
+              desc: 'Addiction shatters families. A primary goal of the program is to help broken families rebuild trust, find support, and establish a clear path toward healing and reconciliation — because a person is not truly restored until their family is part of the story.'
+            }].
+            map((item) =>
+            <div key={item.title} className="flex gap-5 p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-700">
                 <div className="w-14 h-14 bg-navy/10 dark:bg-gold/10 rounded-2xl flex items-center justify-center shrink-0 text-navy dark:text-gold">
                   {item.icon}
                 </div>
@@ -204,7 +204,7 @@ export default function About() {
                   <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -214,7 +214,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">The Program</p>
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">The 14-Month Journey</h2>
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">The 12-Month Journey</h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               In a culture obsessed with the quick fix, Mercy House demands 14 months of a person's life. It is a radical
               trade — but the data justifies the cost. While most programs celebrate 30 days of sobriety, we focus on the five-year horizon.
@@ -223,32 +223,32 @@ export default function About() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-14">
             {[
-              {
-                phase: '01',
-                title: 'Recovery & Foundation',
-                time: '2–4 months',
-                desc: 'Residents enter a safe, structured environment. The focus is on "Why was I created?" — addressing deep-seated trauma, establishing healthy routines, and laying the spiritual foundation for everything ahead.',
-              },
-              {
-                phase: '02',
-                title: 'Growth & Character Development',
-                time: '3–5 months',
-                desc: 'With stability in place, the deeper work begins. Residents build healthy relationships, master conflict resolution, engage in intensive biblical discipleship, and develop the character required to sustain long-term change.',
-              },
-              {
-                phase: '03',
-                title: 'Application Through Transitional Living',
-                time: '5 months',
-                desc: 'Residents re-enter the workforce, resolve legal matters, reconcile with family, and complete vocational training. This phase bridges faith and practical readiness — graduates leave with a foundation, not just a certificate.',
-              },
-            ].map((item) => (
-              <div key={item.phase} className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md border-l-4 border-gold">
+            {
+              phase: '01',
+              title: 'Recovery & Foundation',
+              time: '2–4 months',
+              desc: 'Residents enter a safe, structured environment. The focus is on "Why was I created?" — addressing deep-seated trauma, establishing healthy routines, and laying the spiritual foundation for everything ahead.'
+            },
+            {
+              phase: '02',
+              title: 'Growth & Character Development',
+              time: '3–5 months',
+              desc: 'With stability in place, the deeper work begins. Residents build healthy relationships, master conflict resolution, engage in intensive biblical discipleship, and develop the character required to sustain long-term change.'
+            },
+            {
+              phase: '03',
+              title: 'Application Through Transitional Living',
+              time: '5 months',
+              desc: 'Residents re-enter the workforce, resolve legal matters, reconcile with family, and complete vocational training. This phase bridges faith and practical readiness — graduates leave with a foundation, not just a certificate.'
+            }].
+            map((item) =>
+            <div key={item.phase} className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md border-l-4 border-gold">
                 <div className="text-gold font-black text-4xl mb-1 opacity-40">{item.phase}</div>
                 <p className="text-xs text-gold font-semibold uppercase tracking-widest mb-2">{item.time}</p>
                 <h3 className="text-xl font-bold text-navy dark:text-gold mb-3">{item.title}</h3>
                 <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">{item.desc}</p>
               </div>
-            ))}
+            )}
           </div>
 
           <div className="bg-navy dark:bg-slate-950 rounded-2xl p-8 text-white text-center max-w-3xl mx-auto">
@@ -302,16 +302,16 @@ export default function About() {
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
-            {leadership.map((person) => (
-              <div key={person.name} className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-md">
+            {leadership.map((person) =>
+            <div key={person.name} className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-md">
                 <div className="aspect-square bg-slate-200 dark:bg-slate-700 overflow-hidden">
-                  {person.photo ? (
-                    <img src={person.photo} alt={person.name} className="w-full h-full object-cover object-center" />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-slate-400">
+                  {person.photo ?
+                <img src={person.photo} alt={person.name} className="w-full h-full object-cover object-center" /> :
+
+                <div className="w-full h-full flex items-center justify-center text-slate-400">
                       <Users className="w-12 h-12" />
                     </div>
-                  )}
+                }
                 </div>
                 <div className="p-5">
                   <h3 className="font-bold text-navy dark:text-gold text-base">{person.name}</h3>
@@ -319,13 +319,13 @@ export default function About() {
                   <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">{person.bio}</p>
                 </div>
               </div>
-            ))}
+            )}
           </div>
           <div className="text-center mt-10">
             <Link
               to="/MeetTheTeam"
-              className="inline-flex items-center gap-2 text-navy dark:text-gold font-semibold hover:underline text-lg"
-            >
+              className="inline-flex items-center gap-2 text-navy dark:text-gold font-semibold hover:underline text-lg">
+              
               Meet the Full Team <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -358,17 +358,17 @@ export default function About() {
             <h3 className="text-xl font-bold text-navy dark:text-gold text-center mb-6">How Your Donation Is Used</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {[
-                { emoji: '🏠', label: 'Housing & Facilities', desc: 'Safe, stable residential housing for men and women throughout their program stay' },
-                { emoji: '🍽️', label: 'Meals & Nutrition', desc: 'Three meals per day provided to every resident at no cost to them' },
-                { emoji: '📖', label: 'Program & Ministry', desc: 'Biblical teaching, counseling, life skills training, and vocational development' },
-                { emoji: '⚙️', label: 'Daily Operations', desc: 'Utilities, staff, transportation, and the essential infrastructure that keeps us running' },
-              ].map((item) => (
-                <div key={item.label} className="bg-slate-50 dark:bg-slate-900 rounded-xl p-5 border border-slate-100 dark:border-slate-700 text-center">
+              { emoji: '🏠', label: 'Housing & Facilities', desc: 'Safe, stable residential housing for men and women throughout their program stay' },
+              { emoji: '🍽️', label: 'Meals & Nutrition', desc: 'Three meals per day provided to every resident at no cost to them' },
+              { emoji: '📖', label: 'Program & Ministry', desc: 'Biblical teaching, counseling, life skills training, and vocational development' },
+              { emoji: '⚙️', label: 'Daily Operations', desc: 'Utilities, staff, transportation, and the essential infrastructure that keeps us running' }].
+              map((item) =>
+              <div key={item.label} className="bg-slate-50 dark:bg-slate-900 rounded-xl p-5 border border-slate-100 dark:border-slate-700 text-center">
                   <div className="text-3xl mb-3">{item.emoji}</div>
                   <h4 className="font-bold text-navy dark:text-gold text-sm mb-1">{item.label}</h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{item.desc}</p>
                 </div>
-              ))}
+              )}
             </div>
           </div>
 
@@ -387,8 +387,8 @@ export default function About() {
         primaryLabel="Contact Us"
         primaryTo="/Contact"
         secondaryLabel="Explore Programs"
-        secondaryTo="/Programs"
-      />
-    </div>
-  );
+        secondaryTo="/Programs" />
+      
+    </div>);
+
 }

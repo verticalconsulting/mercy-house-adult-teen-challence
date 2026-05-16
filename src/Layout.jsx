@@ -65,7 +65,15 @@ export default function Layout({ children, currentPageName }) {
 
   },
   { name: 'Volunteer', path: 'Volunteer' },
-  { name: 'Contact', path: 'Contact' }];
+  {
+    name: 'Team/Contact',
+    path: 'Contact',
+    directPath: '/Contact',
+    submenu: [
+      { name: 'Meet the Team', path: 'MeetTheTeam' },
+      { name: 'Contact Us', path: 'Contact' }
+    ]
+  }];
 
 
   return (

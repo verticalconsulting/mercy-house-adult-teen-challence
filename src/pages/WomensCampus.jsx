@@ -23,11 +23,11 @@ export default function WomensCampus() {
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1182cc9c-3be5-43bf-35e0-2b9ea3052500/heromobile"
+            src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/bafdf70d4_lukayak.jpg"
             alt="Women's Campus"
-            className="w-full h-full object-cover" />
-            fetchpriotity="high"
-            loading="eager"
+            className="w-full h-full object-cover"
+            fetchPriority="high"
+            loading="eager" />
 
           <div className="absolute inset-0 bg-gradient-to-r from-navy/90 to-navy/60 dark:from-slate-900/95 dark:to-slate-900/70" />
         </div>
@@ -74,12 +74,11 @@ export default function WomensCampus() {
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d6694e82-5daa-4dc5-2bd3-788006a34500/large"
-                alt="Women supporting each other"
-                className="w-full h-full object-cover" />
-
-            </div>
+               <img
+                 src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/1e72f2e7f_generated_image.png"
+                 alt="Women supporting each other"
+                 className="w-full h-full object-cover" />
+             </div>
           </div>
         </div>
       </section>

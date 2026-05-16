@@ -130,12 +130,12 @@ export default function SponsorStudent() {
           </p>
         </div>
 
-        {isLoading ? (
-          <div className="text-center py-20">
+        {isLoading ?
+        <div className="text-center py-20">
             <Loader2 className="w-12 h-12 animate-spin text-navy dark:text-gold mx-auto" />
-          </div>
-        ) : residents.length === 0 ? (
-          <Card className="text-center p-12">
+          </div> :
+        residents.length === 0 ?
+        <Card className="text-center p-12">
             <p className="text-slate-600 dark:text-slate-300">
               Currently, we sponsor students in our program as a cohort rather than individual sponsorships.
               <br />
@@ -143,29 +143,29 @@ export default function SponsorStudent() {
                 Support Our Students
               </Button>
             </p>
-          </Card>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {residents.map((resident) => (
-              <Card key={resident.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer" onClick={() => setSelectedResident(resident)}>
+          </Card> :
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {residents.map((resident) =>
+          <Card key={resident.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer" onClick={() => setSelectedResident(resident)}>
                 <div className="aspect-[4/5] overflow-hidden bg-slate-200 dark:bg-slate-700">
-                  {resident.photo_url ? (
-                    <img
-                      src={resident.photo_url}
-                      alt={resident.full_name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
+                  {resident.photo_url ?
+              <img
+                src={resident.photo_url}
+                alt={resident.full_name}
+                className="w-full h-full object-cover hidden" /> :
+
+
+              <div className="w-full h-full flex items-center justify-center">
                       <Users className="w-20 h-20 text-slate-400" />
                     </div>
-                  )}
+              }
                 </div>
                 <CardHeader>
                   <CardTitle className="text-navy dark:text-gold">{resident.full_name}</CardTitle>
-                  {resident.age && (
-                    <p className="text-sm text-slate-600 dark:text-slate-400">Age {resident.age}</p>
-                  )}
+                  {resident.age &&
+              <p className="text-sm text-slate-600 dark:text-slate-400">Age {resident.age}</p>
+              }
                 </CardHeader>
                 <CardContent>
                   <p className="text-slate-600 dark:text-slate-300 text-sm line-clamp-3">
@@ -177,9 +177,9 @@ export default function SponsorStudent() {
                   </Button>
                 </CardContent>
               </Card>
-            ))}
+          )}
           </div>
-        )}
+        }
       </div>
 
       <Dialog open={!!selectedResident} onOpenChange={(open) => !open && setSelectedResident(null)}>
@@ -201,23 +201,23 @@ export default function SponsorStudent() {
                 type="email"
                 placeholder="sponsor@example.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+                onChange={(e) => setEmail(e.target.value)} />
+              
             </div>
 
             <div>
               <Label>Monthly Sponsorship Amount</Label>
               <div className="grid grid-cols-4 gap-2 mt-2">
-                {suggestedAmounts.map((amt) => (
-                  <Button
-                    key={amt}
-                    variant={amount === amt ? 'default' : 'outline'}
-                    onClick={() => setAmount(amt)}
-                    className={amount === amt ? 'bg-navy dark:bg-gold text-white dark:text-navy font-bold' : 'font-semibold'}
-                  >
+                {suggestedAmounts.map((amt) =>
+                <Button
+                  key={amt}
+                  variant={amount === amt ? 'default' : 'outline'}
+                  onClick={() => setAmount(amt)}
+                  className={amount === amt ? 'bg-navy dark:bg-gold text-white dark:text-navy font-bold' : 'font-semibold'}>
+                  
                     ${amt}
                   </Button>
-                ))}
+                )}
               </div>
               <Input
                 type="number"
@@ -225,8 +225,8 @@ export default function SponsorStudent() {
                 value={amount}
                 onChange={(e) => setAmount(parseInt(e.target.value) || 0)}
                 className="mt-2"
-                placeholder="Custom amount"
-              />
+                placeholder="Custom amount" />
+              
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
                 Most sponsors choose $40/month, but you can adjust to any amount.
               </p>
@@ -257,23 +257,23 @@ export default function SponsorStudent() {
             <Button
               onClick={handleSponsor}
               disabled={loading || !email || amount < 10}
-              className="w-full bg-gold hover:bg-gold/90 text-navy font-bold"
-            >
-              {loading ? (
-                <>
+              className="w-full bg-gold hover:bg-gold/90 text-navy font-bold">
+              
+              {loading ?
+              <>
                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                   Processing...
-                </>
-              ) : (
-                <>
+                </> :
+
+              <>
                   <Heart className="w-4 h-4 mr-2" />
                   Sponsor ${amount}/month
                 </>
-              )}
+              }
             </Button>
           </div>
         </DialogContent>
       </Dialog>
-    </div>
-  );
+    </div>);
+
 }

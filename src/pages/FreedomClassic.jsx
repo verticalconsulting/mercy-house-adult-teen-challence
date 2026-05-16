@@ -8,8 +8,15 @@ export default function FreedomClassic() {
   const [showTypeform, setShowTypeform] = useState(false);
 
   useEffect(() => {
-    if (showTypeform && window.typeformEmbed) {
-      window.typeformEmbed.load();
+    if (showTypeform) {
+      if (!document.querySelector('script[src*="typeform.com"]')) {
+        const script = document.createElement('script');
+        script.src = '//embed.typeform.com/next/embed.js';
+        script.async = true;
+        document.body.appendChild(script);
+      } else if (window.tf) {
+        window.tf.load();
+      }
     }
   }, [showTypeform]);
 
@@ -240,9 +247,8 @@ export default function FreedomClassic() {
               aria-label="Close registration form">
               <X className="w-6 h-6 text-slate-600 dark:text-slate-300" />
             </button>
-            <div className="p-8">
+            <div className="p-8 min-h-[500px]">
               <div data-tf-live="01KRQWFVC1Z11ZRHXE1XWZR1DG"></div>
-              <script src="//embed.typeform.com/next/embed.js"></script>
             </div>
           </div>
         </div>

@@ -67,24 +67,69 @@ export default function SponsorStudent() {
     }
   };
 
-  const suggestedAmounts = [25, 50, 75, 100];
+  const suggestedAmounts = [40, 60, 80, 100];
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12">
-      <div className="bg-navy dark:bg-slate-950 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Users className="w-16 h-16 text-gold mx-auto mb-6" />
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Sponsor a Student
-          </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Make a direct, personal impact by sponsoring a resident's journey to transformation.
-            Your monthly support provides encouragement, resources, and hope.
-          </p>
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      {/* Hero Section */}
+      <div className="bg-navy dark:bg-slate-950 text-white py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                Sponsor a Student
+              </h1>
+              <p className="text-xl text-slate-300 mb-4 leading-relaxed">
+                Change a life. Build a future.
+              </p>
+              <p className="text-lg text-slate-200 mb-8">
+                For just <span className="text-gold font-bold text-2xl">$40</span> a month, you can sponsor a student in our program and provide direct support for their transformation journey.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <Check className="w-6 h-6 text-gold shrink-0 mt-1" />
+                  <span className="text-slate-300">Monthly support & encouragement</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="w-6 h-6 text-gold shrink-0 mt-1" />
+                  <span className="text-slate-300">Progress updates on their journey</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="w-6 h-6 text-gold shrink-0 mt-1" />
+                  <span className="text-slate-300">Direct funding for educational needs</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="w-6 h-6 text-gold shrink-0 mt-1" />
+                  <span className="text-slate-300">Tax-deductible donation</span>
+                </div>
+              </div>
+            </div>
+            <div className="hidden md:block">
+              <div className="bg-gold text-navy rounded-2xl p-8 text-center shadow-2xl">
+                <div className="text-6xl font-black mb-3">$40</div>
+                <div className="text-2xl font-bold mb-6">/month</div>
+                <p className="text-navy/80 font-semibold mb-8">
+                  Make a direct impact on a student's life
+                </p>
+                <Button className="w-full bg-navy hover:bg-navy/90 text-gold font-bold text-lg py-6">
+                  <Heart className="w-5 h-5 mr-2" />
+                  Become a Sponsor
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12">
+      {/* Students Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-navy dark:text-gold mb-3">Students Ready for Sponsorship</h2>
+          <p className="text-slate-600 dark:text-slate-300 text-lg">
+            Meet the students who would benefit from your monthly support
+          </p>
+        </div>
+
         {isLoading ? (
           <div className="text-center py-20">
             <Loader2 className="w-12 h-12 animate-spin text-navy dark:text-gold mx-auto" />
@@ -92,7 +137,11 @@ export default function SponsorStudent() {
         ) : residents.length === 0 ? (
           <Card className="text-center p-12">
             <p className="text-slate-600 dark:text-slate-300">
-              No residents available for sponsorship at this time. Please check back soon!
+              Currently, we sponsor students in our program as a cohort rather than individual sponsorships.
+              <br />
+              <Button variant="outline" className="mt-6" onClick={() => window.location.href = '/Donate'}>
+                Support Our Students
+              </Button>
             </p>
           </Card>
         ) : (
@@ -124,7 +173,7 @@ export default function SponsorStudent() {
                   </p>
                   <Button className="w-full mt-4 bg-gold hover:bg-gold/90 text-navy font-bold">
                     <Heart className="w-4 h-4 mr-2" />
-                    Sponsor {resident.full_name}
+                    Sponsor ${suggestedAmounts[0]}/month
                   </Button>
                 </CardContent>
               </Card>
@@ -178,6 +227,9 @@ export default function SponsorStudent() {
                 className="mt-2"
                 placeholder="Custom amount"
               />
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
+                Most sponsors choose $40/month, but you can adjust to any amount.
+              </p>
             </div>
 
             <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg">

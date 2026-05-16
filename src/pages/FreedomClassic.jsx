@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
-import { MapPin, Calendar, Users, Mail, Trophy, Flag, Clock, Heart } from 'lucide-react';
+import { MapPin, Calendar, Users, Mail, Trophy, Flag, Clock, Heart, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function FreedomClassic() {
+  const [showTypeform, setShowTypeform] = useState(false);
+
+  useEffect(() => {
+    if (showTypeform && window.typeformEmbed) {
+      window.typeformEmbed.load();
+    }
+  }, [showTypeform]);
+
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -35,12 +43,12 @@ export default function FreedomClassic() {
           <p className="text-xl text-slate-300 mb-8">Monday, October 19, 2026</p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:khardin@mercyhouseatc.com">
-              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
-                <Trophy className="mr-2 w-5 h-5" />
-                Register Your Team
-              </Button>
-            </a>
+            <Button 
+              onClick={() => setShowTypeform(true)}
+              className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
+              <Trophy className="mr-2 w-5 h-5" />
+              Register Your Team
+            </Button>
             <a href="mailto:info@mercyhouseatc.com">
               <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
                 <Mail className="mr-2 w-5 h-5" />
@@ -121,12 +129,12 @@ export default function FreedomClassic() {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <a href="mailto:khardin@mercyhouseatc.com">
-                    <Button className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy font-bold py-4 text-lg">
-                      Register Now
-                    </Button>
-                  </a>
-                </div>
+                   <Button 
+                     onClick={() => setShowTypeform(true)}
+                     className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy font-bold py-4 text-lg">
+                       Register Now
+                     </Button>
+                 </div>
               </div>
             </div>
 
@@ -221,6 +229,24 @@ export default function FreedomClassic() {
           </Link>
         </div>
       </section>
+
+      {/* Typeform Modal */}
+      {showTypeform && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative">
+            <button
+              onClick={() => setShowTypeform(false)}
+              className="absolute top-4 right-4 z-10 p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors"
+              aria-label="Close registration form">
+              <X className="w-6 h-6 text-slate-600 dark:text-slate-300" />
+            </button>
+            <div className="p-8">
+              <div data-tf-live="01KRQWFVC1Z11ZRHXE1XWZR1DG"></div>
+              <script src="//embed.typeform.com/next/embed.js"></script>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

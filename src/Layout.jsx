@@ -42,7 +42,15 @@ export default function Layout({ children, currentPageName }) {
     { name: "Men's Campus", path: 'MensCampus' }]
 
   },
-  { name: 'Events', path: 'Events' },
+  {
+    name: 'Events',
+    path: 'Events',
+    directPath: '/Events',
+    submenu: [
+      { name: 'All Events', directPath: '/Events' },
+      { name: 'Freedom Classic Golf', directPath: '/FreedomClassic' },
+    ]
+  },
   {
     name: 'Workforce Development',
     path: 'MicroBusinesses',

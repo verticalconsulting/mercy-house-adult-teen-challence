@@ -6,6 +6,7 @@ import { pagesConfig } from './pages.config'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import MeetTheTeam from './pages/MeetTheTeam';
+import FreedomClassic from './pages/FreedomClassic';
 import SearchPerformance from './pages/SearchPerformance';
 import About from './pages/About';
 import Programs from './pages/Programs';
@@ -70,6 +71,7 @@ const AuthenticatedApp = () => {
       <Route path="/Programs" element={<LayoutWrapper currentPageName="Programs"><Programs /></LayoutWrapper>} />
       <Route path="/PrivacyPolicy" element={<LayoutWrapper currentPageName="PrivacyPolicy"><PrivacyPolicy /></LayoutWrapper>} />
       <Route path="/help-for-dependency-abuse" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
+      <Route path="/FreedomClassic" element={<LayoutWrapper currentPageName="FreedomClassic"><FreedomClassic /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

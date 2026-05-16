@@ -220,7 +220,7 @@ export default function Programs() {
           </div>
           <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md space-y-5 text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
             <p>
-              The Mercy House program is designed as a <strong>long-term residential commitment</strong>, typically lasting 12 to 14 months. This length is intentional — genuine life transformation takes time, and a longer program allows residents to develop real habits, relationships, and spiritual depth that sustain them after graduation.
+              The Mercy House program is designed as a <strong>long-term residential commitment</strong>, typically lasting <strong>12 months</strong>. This length is intentional — genuine life transformation takes time, and the program allows residents to develop real habits, relationships, and spiritual depth that sustain them after graduation.
             </p>
             <p>
               There is a <strong>one-time, non-refundable intake fee of $1,000</strong> to cover initial costs. Beyond that, <strong>95% of the men at our facility attend the program at no cost</strong>. Housing, meals, discipleship resources, and program support are provided at no ongoing charge thanks to our generous donors and micro-business operations.

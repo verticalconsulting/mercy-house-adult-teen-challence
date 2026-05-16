@@ -8,11 +8,11 @@ export default function ProductsPurpose() {
       <section className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-             <img 
-               src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/pwap-logo/large"
-               alt="Product With A Purpose Logo"
-               className="h-24 mx-auto mb-6"
-             />
+             <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/8fcf97215_product-with-a-purpose-icon-2-01.png"
+
+            alt="Product With A Purpose Logo"
+            className="h-24 mx-auto mb-6" />
+            
              <h1 className="text-5xl font-bold text-navy dark:text-gold mb-6">
                Product With A Purpose
              </h1>
@@ -37,8 +37,8 @@ export default function ProductsPurpose() {
               </p>
               <Button
                 onClick={() => window.open('https://www.productwithapurpose.org/', '_blank')}
-                className="bg-gold hover:bg-gold/90 text-navy font-bold text-lg px-8 py-6"
-              >
+                className="bg-gold hover:bg-gold/90 text-navy font-bold text-lg px-8 py-6">
+                
                 <ShoppingCart className="w-5 h-5 mr-2" />
                 Shop Handmade Products
               </Button>
@@ -66,37 +66,37 @@ export default function ProductsPurpose() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {[
-              {
-                icon: Package,
-                title: 'What We Make',
-                items: ['Hand-carved door hangers', 'Custom woodwork & furniture', 'Decorative wall art', 'Seasonal home decor', 'Gift items & special orders']
-              },
-              {
-                icon: Award,
-                title: 'Built By Hand',
-                items: ['100% handcrafted by program residents', 'Each piece is unique', 'Attention to quality & detail', 'Personal pride in every item', 'Work therapy in action']
-              },
-              {
-                icon: Heart,
-                title: 'Your Impact',
-                items: ['Develops vocational skills', 'Funds recovery programs', 'Builds confidence & pride', 'Supports long-term independence', 'Transforms lives through work']
-              }
-            ].map((section, idx) => (
-              <div key={idx} className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg">
+            {
+              icon: Package,
+              title: 'What We Make',
+              items: ['Hand-carved door hangers', 'Custom woodwork & furniture', 'Decorative wall art', 'Seasonal home decor', 'Gift items & special orders']
+            },
+            {
+              icon: Award,
+              title: 'Built By Hand',
+              items: ['100% handcrafted by program residents', 'Each piece is unique', 'Attention to quality & detail', 'Personal pride in every item', 'Work therapy in action']
+            },
+            {
+              icon: Heart,
+              title: 'Your Impact',
+              items: ['Develops vocational skills', 'Funds recovery programs', 'Builds confidence & pride', 'Supports long-term independence', 'Transforms lives through work']
+            }].
+            map((section, idx) =>
+            <div key={idx} className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg">
                 <section.icon className="w-10 h-10 text-gold mb-4" />
                 <h3 className="text-xl font-bold text-navy dark:text-gold mb-4">
                   {section.title}
                 </h3>
                 <ul className="space-y-2">
-                  {section.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
+                  {section.items.map((item, i) =>
+                <li key={i} className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 bg-gold rounded-full mt-2 flex-shrink-0" />
                       <span className="text-slate-600 dark:text-slate-300">{item}</span>
                     </li>
-                  ))}
+                )}
                 </ul>
               </div>
-            ))}
+            )}
           </div>
 
           <div className="bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white p-12 rounded-xl text-center">
@@ -106,14 +106,14 @@ export default function ProductsPurpose() {
             </p>
             <Button
               onClick={() => window.open('https://www.productwithapurpose.org/', '_blank')}
-              className="bg-gold hover:bg-gold/90 text-navy font-bold text-lg px-10 py-8 shadow-lg"
-            >
+              className="bg-gold hover:bg-gold/90 text-navy font-bold text-lg px-10 py-8 shadow-lg">
+              
               <ShoppingCart className="w-6 h-6 mr-3" />
               Visit Product With A Purpose Store
             </Button>
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>);
+
 }

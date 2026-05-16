@@ -579,12 +579,12 @@ export default function IntakeForm() {
                     <FormField id="contact1_phone" label="Phone" error={errors.contact_person_1_phone}>
                       <Input id="contact1_phone" type="tel" value={formData.contact_person_1_phone}
                         onChange={e => updatePhone('contact_person_1_phone', e.target.value)}
-                        placeholder="(555) 555-5555" aria-invalid={!!errors.contact_person_1_phone} className="text-base mt-1" inputMode="tel" />
+                        placeholder="(855-893-733" aria-invalid={!!errors.contact_person_1_phone} className="text-base mt-1" inputMode="tel" />
                     </FormField>
                     <FormField id="contact1_email" label="Email" error={errors.contact_person_1_email}>
                       <Input id="contact1_email" type="email" value={formData.contact_person_1_email}
                         onChange={e => updateField('contact_person_1_email', e.target.value)}
-                        placeholder="contact@example.com" aria-invalid={!!errors.contact_person_1_email} className="text-base mt-1" inputMode="email" />
+                        placeholder="intake@mercyhouseatc.com" aria-invalid={!!errors.contact_person_1_email} className="text-base mt-1" inputMode="email" />
                     </FormField>
                   </div>
                 </CardContent>

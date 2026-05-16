@@ -86,7 +86,7 @@ export default function MicroBusinesses() {
                 title: 'Vehicle Donation',
                 emoji: '🚗',
                 description: 'Accepting vehicle donations to support our mission. Provides tax benefits to donors and funding for our programs.',
-                path: 'VehicleDonation',
+                href: 'https://mercyhouseatc.vehicledonationms.org',
                 external: false
               },
               {

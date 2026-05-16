@@ -113,8 +113,6 @@ export default function Layout({ children, currentPageName }) {
                     <a
                       key={subItem.name}
                       href={subItem.href || subItem.path}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="block px-4 py-3 text-lg md:text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg">
                       
                               {subItem.name}
@@ -206,8 +204,6 @@ export default function Layout({ children, currentPageName }) {
                   <a
                     key={subItem.name}
                     href={subItem.href || subItem.path}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
                     className="block px-4 py-3 text-lg md:text-sm text-slate-600 dark:text-slate-300 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors">
                     

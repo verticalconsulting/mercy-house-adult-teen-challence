@@ -14,7 +14,7 @@ const businesses = [
   },
   {
     name: 'Vehicle Donation Program',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/e1e1e1e1-e1e1-e1e1-e1e1-e1e1e1e1e1e1/logo',
+    logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4c5006539_vdplogo.jpg',
     href: 'https://mercyhouseatc.vehicledonationms.org',
     external: false,
   },

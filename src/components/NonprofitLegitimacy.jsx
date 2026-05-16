@@ -3,6 +3,7 @@ import { ShieldCheck, FileText, Phone, Mail, MapPin } from 'lucide-react';
 
 export default function NonprofitLegitimacy({ variant = 'full' }) {
   const annualReport2023 = 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983b4b00291b5dfd8507106/94e81b0ea_Annual-Report_v2023.pdf';
+  const annualReport2024 = 'https://drive.google.com/file/d/1nXKBoDu9NBTjiLXgmkfHXEZwMIurUxRb/view?usp=drive_link';
 
   if (variant === 'compact') {
     return (
@@ -23,6 +24,15 @@ export default function NonprofitLegitimacy({ variant = 'full' }) {
         >
           <FileText className="w-4 h-4" />
           2023 Annual Report
+        </a>
+        <a
+          href={annualReport2024}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1 text-navy dark:text-gold font-semibold hover:underline"
+        >
+          <FileText className="w-4 h-4" />
+          2024 Annual Report
         </a>
       </div>
     );
@@ -84,6 +94,15 @@ export default function NonprofitLegitimacy({ variant = 'full' }) {
           >
             <FileText className="w-4 h-4" />
             2023 Annual Report
+          </a>
+          <a
+            href={annualReport2024}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-navy dark:bg-gold text-white dark:text-navy rounded-lg text-sm font-semibold hover:bg-navy/90 dark:hover:bg-gold/90 transition-colors"
+          >
+            <FileText className="w-4 h-4" />
+            2024 Annual Report
           </a>
           <a
             href="mailto:info@mercyhouseatc.com?subject=Financial%20Documentation%20Request"

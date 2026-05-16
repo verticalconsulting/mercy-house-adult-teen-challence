@@ -8,10 +8,14 @@ export default function ProductsPurpose() {
       <section className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="text-6xl mb-4">📦</div>
-            <h1 className="text-5xl font-bold text-navy dark:text-gold mb-6">
-              Product With A Purpose
-            </h1>
+             <img 
+               src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/pwap-logo/large"
+               alt="Product With A Purpose Logo"
+               className="h-24 mx-auto mb-6"
+             />
+             <h1 className="text-5xl font-bold text-navy dark:text-gold mb-6">
+               Product With A Purpose
+             </h1>
             <p className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto">
               Handcrafted products made by residents. Every purchase supports recovery and builds skills.
             </p>

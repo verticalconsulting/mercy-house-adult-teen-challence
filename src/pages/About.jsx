@@ -76,20 +76,18 @@ export default function About() {
                 </p>
                 <p>
                   For more than 15 years, Mercy House Adult &amp; Teen Challenge of Mississippi has provided a structured,
-                  residential environment where men and women can step away from the chaos of dependency issues and step into
+                  residential environment where men and women can step away from the chaos of dependency and step into
                   something new — a community rooted in biblical principles, accountability, mentorship, and genuine
                   spiritual growth.
                 </p>
                 <p>
-                  Over the years, Mercy House has grown to include two residential campuses — the Men's Campus in
-                  Georgetown, MS, and the Women's Campus in Learned, MS — along with a family of micro-businesses that
-                  provide vocational training and help fund ministry operations without relying solely on donor
-                  contributions.
+                  We don't call it rehab. We call it <strong>discipleship</strong> — doing life together, teaching others
+                  what you've been taught. While the standard 30-day model treats addiction as a symptom to manage, we
+                  believe it is a lifestyle of chaos that requires total identity reconstruction. That's why our program
+                  demands more of a person's time, and gives more in return.
                 </p>
                 <p>
-                  We are not a hospital. We are not a licensed treatment clinic. We are a faith-based community that
-                  believes lasting change is possible — not through programs alone, but through a real encounter with God
-                  and the sustained support of a caring community.
+                  The results speak for themselves: <strong className="text-navy dark:text-gold">50% of our graduates remain sober five years after completing the program</strong> — in a state that ranks among the highest for incarceration and mental illness, where most programs offer a revolving door.
                 </p>
               </div>
             </div>
@@ -102,8 +100,8 @@ export default function About() {
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-gold text-navy font-bold rounded-xl p-5 shadow-xl text-center hidden md:block">
-                <div className="text-3xl font-bold">15+</div>
-                <div className="text-sm font-semibold">Years of Ministry</div>
+                <div className="text-3xl font-bold">50%</div>
+                <div className="text-sm font-semibold">5-Year Sobriety Rate</div>
               </div>
             </div>
           </div>
@@ -113,7 +111,7 @@ export default function About() {
       {/* Mission & Vision */}
       <section className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md border border-slate-100 dark:border-slate-700">
               <div className="w-12 h-12 bg-navy/10 dark:bg-gold/10 rounded-xl flex items-center justify-center mb-5">
                 <Heart className="w-6 h-6 text-navy dark:text-gold" />
@@ -121,8 +119,8 @@ export default function About() {
               <h2 className="text-2xl font-bold text-navy dark:text-gold mb-4">Our Mission</h2>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
                 To provide an effective and comprehensive Christian faith-based environment where people struggling with
-                life-controlling and dependency issues can find lasting freedom — becoming mentally sound, emotionally
-                balanced, socially adjusted, and spiritually alive through a relationship with Jesus Christ.
+                life-controlling and dependency issues can find lasting freedom — helping individuals and families find
+                a new life in Christ, develop godly character, and live purposefully through practical life skills and community.
               </p>
             </div>
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md border border-slate-100 dark:border-slate-700">
@@ -131,55 +129,80 @@ export default function About() {
               </div>
               <h2 className="text-2xl font-bold text-navy dark:text-gold mb-4">Our Vision</h2>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
-                A Mississippi where every person struggling with life-controlling issues has access to a Christ-centered path toward
-                wholeness — and where transformed individuals become agents of transformation for their families,
-                communities, and the next generation.
+                A Mississippi — and a nation — where the answer to addiction isn't a faster fix, but a more radical one.
+                Where transformed individuals become agents of transformation for their families, communities, and the next
+                generation, breaking the cycle of trauma for good.
               </p>
             </div>
+          </div>
+
+          {/* Five Foundations of Freedom */}
+          <div className="text-center mb-10">
+            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Core Values</p>
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Five Foundations of Freedom</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              Everything we do flows from five foundational pillars of truth — a framework for how our students learn to live as new people in Christ.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+            {[
+              { number: '01', title: 'Live Christlike', desc: 'Modeling every aspect of life after the example of Jesus — in character, conduct, and relationship with others.' },
+              { number: '02', title: 'Live with Character', desc: 'Building integrity, honesty, and moral strength as the daily currency of a restored life.' },
+              { number: '03', title: 'Live Purposeful', desc: 'Discovering God\'s design for your life and pursuing it with intentionality, discipline, and hope.' },
+              { number: '04', title: 'Live Accountable', desc: 'Inviting correction and embracing transparency — because long-term freedom requires others who will tell you the truth.' },
+              { number: '05', title: 'Live in Community', desc: 'Remaining close to God, to the body of believers, and to the relationships that keep blind spots from becoming relapses.' },
+            ].map((item) => (
+              <div key={item.number} className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-md border-t-4 border-gold text-center">
+                <div className="text-gold font-black text-3xl mb-2 opacity-40">{item.number}</div>
+                <h3 className="text-base font-bold text-navy dark:text-gold mb-2">{item.title}</h3>
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* What Makes Us Different */}
+      {/* Four Key Program Areas */}
       <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Our Approach</p>
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">What Makes Mercy House Different</h2>
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Four Key Programmatic Areas</h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              We are not a short-term program or a quick fix. Mercy House is a long-term, structured environment
-              designed to address the whole person — spirit, soul, and body.
+              The Five Foundations of Freedom are put into action through four programmatic pillars — each one addressing a dimension of recovery that short-term programs simply cannot reach.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                icon: <BookOpen className="w-7 h-7" />,
-                title: 'Faith-Centered',
-                desc: 'Biblical teaching, worship, prayer, and discipleship are woven into every aspect of daily life — not as an add-on, but as the foundation.',
+                icon: <Heart className="w-7 h-7" />,
+                title: 'Life Transformation',
+                desc: 'Recovery is more than overcoming substance abuse — it\'s learning how to build a God-centered life and live successfully in society. We address root causes, not just behaviors, because lasting change requires a complete identity shift.',
               },
               {
-                icon: <Users className="w-7 h-7" />,
-                title: 'Peer Community',
-                desc: 'Residents live and grow alongside others on the same journey. The community itself is part of the restoration.',
+                icon: <BookOpen className="w-7 h-7" />,
+                title: 'Spiritual Formation & Discipleship',
+                desc: 'Living a God-centered life is the core of our recovery process. Through "Studies Centered in Christ" and "Worship Centered in Christ," residents process the pressures of addiction through spiritual teachings, daily praise, and structured biblical curriculum.',
               },
               {
                 icon: <Home className="w-7 h-7" />,
-                title: 'Residential Structure',
-                desc: 'A safe, stable, structured home environment removes the pressures and triggers of everyday life so genuine healing can begin.',
+                title: 'Work Therapy',
+                desc: 'Hard work and dedication are critical to recovery. Residents participate in hands-on vocational training through our micro-businesses — the Mercy House Auto Center, SuperThrift Stores, and the Woodshop/Craft Center — learning responsibility, teamwork, and real-world skills.',
               },
               {
-                icon: <Heart className="w-7 h-7" />,
-                title: 'Staff Who Have Been There',
-                desc: 'Many of our staff are graduates of the program. They lead not from theory but from lived experience and genuine compassion.',
+                icon: <Users className="w-7 h-7" />,
+                title: 'Family Restoration',
+                desc: 'Addiction shatters families. A primary goal of the program is to help broken families rebuild trust, find support, and establish a clear path toward healing and reconciliation — because a person is not truly restored until their family is part of the story.',
               },
             ].map((item) => (
-              <div key={item.title} className="text-center p-6">
-                <div className="w-14 h-14 bg-navy/10 dark:bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4 text-navy dark:text-gold">
+              <div key={item.title} className="flex gap-5 p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-700">
+                <div className="w-14 h-14 bg-navy/10 dark:bg-gold/10 rounded-2xl flex items-center justify-center shrink-0 text-navy dark:text-gold">
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-bold text-navy dark:text-gold mb-2">{item.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                <div>
+                  <h3 className="text-lg font-bold text-navy dark:text-gold mb-2">{item.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -191,40 +214,39 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">The Program</p>
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">How Mercy House Works</h2>
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">The 14-Month Journey</h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Our 12-month residential program is built around four progressive phases — each one designed to move
-              residents from crisis to independence with clear milestones, real accountability, and lasting support.
+              In a culture obsessed with the quick fix, Mercy House demands 14 months of a person's life. It is a radical
+              trade — but the data justifies the cost. While most programs celebrate 30 days of sobriety, we focus on the five-year horizon.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-14">
+          <div className="grid md:grid-cols-3 gap-8 mb-14">
             {[
               {
                 phase: '01',
-                title: 'Stabilization & Foundation',
-                desc: 'Residents enter a safe, structured residential environment. Daily routines are established — chapel, biblical teaching, work assignments, meals, and group time. The goal is stability: removing chaos and replacing it with order, community, and an introduction to the spiritual core of the program.',
+                title: 'Recovery & Foundation',
+                time: '2–4 months',
+                desc: 'Residents enter a safe, structured environment. The focus is on "Why was I created?" — addressing deep-seated trauma, establishing healthy routines, and laying the spiritual foundation for everything ahead.',
               },
               {
                 phase: '02',
-                title: 'Identity & Inner Healing',
-                desc: 'With stability in place, the deeper work begins. Residents engage in intensive biblical counseling, trauma-informed group sessions, and personal discipleship. This phase addresses root causes — not just behaviors — and helps each person understand who they are in Christ.',
+                title: 'Growth & Character Development',
+                time: '3–5 months',
+                desc: 'With stability in place, the deeper work begins. Residents build healthy relationships, master conflict resolution, engage in intensive biblical discipleship, and develop the character required to sustain long-term change.',
               },
               {
                 phase: '03',
-                title: 'Responsibility & Skill Building',
-                desc: 'Residents move into greater responsibility — vocational training through our micro-businesses, GED preparation, financial literacy, and leadership development. This phase bridges faith and practical readiness for life after the program.',
-              },
-              {
-                phase: '04',
-                title: 'Transition & Reintegration',
-                desc: 'The final phase prepares residents for independent life. Job placement assistance, transitional housing support, aftercare planning, and connection to a local church community ensure that graduates leave with a foundation — not just a diploma.',
+                title: 'Application Through Transitional Living',
+                time: '5 months',
+                desc: 'Residents re-enter the workforce, resolve legal matters, reconcile with family, and complete vocational training. This phase bridges faith and practical readiness — graduates leave with a foundation, not just a certificate.',
               },
             ].map((item) => (
               <div key={item.phase} className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md border-l-4 border-gold">
-                <div className="text-gold font-black text-4xl mb-3 opacity-40">{item.phase}</div>
+                <div className="text-gold font-black text-4xl mb-1 opacity-40">{item.phase}</div>
+                <p className="text-xs text-gold font-semibold uppercase tracking-widest mb-2">{item.time}</p>
                 <h3 className="text-xl font-bold text-navy dark:text-gold mb-3">{item.title}</h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{item.desc}</p>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -243,20 +265,28 @@ export default function About() {
         </div>
       </section>
 
-      {/* Christian Foundation */}
+      {/* Testimonial pull-quote + Christian Foundation */}
       <section className="py-20 bg-navy dark:bg-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-4">Our Foundation</p>
           <h2 className="text-4xl font-bold mb-6">Rooted in the Gospel</h2>
-          <p className="text-xl text-slate-300 leading-relaxed mb-6">
+          <p className="text-xl text-slate-300 leading-relaxed mb-8">
             Mercy House is an expressly Christian ministry. Everything we do — from the daily schedule to the way we
             care for residents — flows from our belief that Jesus Christ transforms lives and that every person has
             dignity and worth in God's eyes.
           </p>
+          <blockquote className="border-l-4 border-gold pl-6 text-left mb-8 bg-white/5 rounded-r-xl py-4 pr-6">
+            <p className="text-slate-200 text-lg italic leading-relaxed">
+              "Something about the staff and other people who were a part of the program at Mercy House caught my
+              attention. They possessed a sense of happiness and contentment that I had never experienced before,
+              and I knew that I wanted it."
+            </p>
+            <cite className="text-gold text-sm font-semibold mt-3 block not-italic">— Joshua Cook, Graduate &amp; Director of Operations</cite>
+          </blockquote>
           <p className="text-lg text-slate-400 leading-relaxed">
             We are affiliated with Adult &amp; Teen Challenge, one of the world's largest faith-based recovery
-            organizations, operating in over 100 countries. That affiliation gives us a proven framework while our
-            local team provides the personal, Mississippi-rooted community that makes Mercy House home.
+            organizations, operating in over 100 countries. That affiliation provides a proven framework while our
+            local team delivers the personal, Mississippi-rooted community that makes Mercy House home.
           </p>
         </div>
       </section>

@@ -95,35 +95,48 @@ export default function WomensCampus() {
             {
               icon: Heart,
               title: 'Spiritual Development',
-              description: 'Biblical principles and faith-based counseling to address root causes'
+              description: 'Biblical principles and faith-based counseling to address root causes',
+              image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/46dee44ff_generated_image.png'
             },
             {
               icon: Users,
               title: 'Group Support',
-              description: 'Peer support groups and mentorship from women who understand your journey'
+              description: 'Peer support groups and mentorship from women who understand your journey',
+              image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/6af431044_generated_image.png'
             },
             {
               icon: BookOpen,
               title: 'Education',
-              description: 'GED preparation, life skills training, and personal development courses'
+              description: 'GED preparation, life skills training, and personal development courses',
+              image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/93a99a3ee_generated_image.png'
             },
             {
               icon: Briefcase,
               title: 'Job Training',
-              description: 'Vocational skills through our micro businesses and career development'
+              description: 'Vocational skills through our micro businesses and career development',
+              image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/a3000b313_generated_image.png'
             }].
             map((feature, idx) =>
             <div
               key={idx}
-              className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+              className="relative overflow-hidden bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 group">
+              
+              <div className="absolute inset-0 z-0">
+                <img
+                  src={feature.image}
+                  alt={feature.title}
+                  className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
+              </div>
 
-                <feature.icon className="w-12 h-12 text-gold mb-4" />
-                <h3 className="text-xl font-bold text-navy dark:text-gold mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-slate-600 dark:text-slate-300">
-                  {feature.description}
-                </p>
+                <div className="relative z-10">
+                  <feature.icon className="w-12 h-12 text-gold mb-4" />
+                  <h3 className="text-xl font-bold text-navy dark:text-gold mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
             )}
           </div>

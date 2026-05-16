@@ -79,7 +79,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-navy dark:text-gold mb-6">Our Mission</h2>
             <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed">
-              To provide an effective and comprehensive Christian faith-based solution to life-controlling problems in order to become productive members of society. By applying biblical principles, we endeavor to help people become mentally sound, emotionally balanced, and socially adjusted.
+              Helping adults and families find new life in Christ, develop godly character, and live restored, purposeful lives through practical life skills and community.
             </p>
           </div>
         </div>

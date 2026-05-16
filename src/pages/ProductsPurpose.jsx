@@ -8,7 +8,7 @@ export default function ProductsPurpose() {
       <section className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-             <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/8fcf97215_product-with-a-purpose-icon-2-01.png"
+             <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/604c6e1a5_product-logo.png"
 
             alt="Product With A Purpose Logo"
             className="h-24 mx-auto mb-6" />

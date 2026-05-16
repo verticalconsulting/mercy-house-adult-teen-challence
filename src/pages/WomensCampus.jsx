@@ -236,6 +236,22 @@ export default function WomensCampus() {
         </div>
       </section>
 
+      {/* Gallery Teaser */}
+      <section className="py-16 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Recent Events & Moments</h2>
+          <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
+            See what life looks like on our women's campus — celebrations, milestones, and everyday moments of healing.
+          </p>
+          <Link to="/WomensCampusGallery">
+            <Button className="bg-navy hover:bg-navy/90 dark:bg-gold dark:text-navy dark:hover:bg-gold/90 text-white font-semibold px-8 py-4 text-lg shadow-lg">
+              View Photos & Videos
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

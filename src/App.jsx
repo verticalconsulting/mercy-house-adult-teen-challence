@@ -6,6 +6,7 @@ import { pagesConfig } from './pages.config'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import MeetTheTeam from './pages/MeetTheTeam';
+import WomensCampusGallery from './pages/WomensCampusGallery';
 import FreedomClassic from './pages/FreedomClassic';
 import News from './pages/News';
 import SearchPerformance from './pages/SearchPerformance';
@@ -67,6 +68,7 @@ const AuthenticatedApp = () => {
         />
       ))}
       <Route path="/MeetTheTeam" element={<LayoutWrapper currentPageName="MeetTheTeam"><MeetTheTeam /></LayoutWrapper>} />
+      <Route path="/WomensCampusGallery" element={<LayoutWrapper currentPageName="WomensCampusGallery"><WomensCampusGallery /></LayoutWrapper>} />
       <Route path="/SearchPerformance" element={<LayoutWrapper currentPageName="SearchPerformance"><SearchPerformance /></LayoutWrapper>} />
       <Route path="/About" element={<LayoutWrapper currentPageName="About"><About /></LayoutWrapper>} />
       <Route path="/Programs" element={<LayoutWrapper currentPageName="Programs"><Programs /></LayoutWrapper>} />

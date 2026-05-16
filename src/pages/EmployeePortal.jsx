@@ -17,7 +17,7 @@ import IntegrationsManager from '../components/employee/IntegrationsManager';
 import AgentManager from '../components/employee/AgentManager';
 import TestimonialManager from '../components/employee/TestimonialManager';
 import VolunteerManager from '../components/employee/VolunteerManager';
-import BlogGenerator from '../components/employee/BlogGenerator';
+import BlogManager from '../components/employee/BlogManager';
 import CampaignManager from '../components/employee/CampaignManager';
 import EventManager from '../components/employee/EventManager';
 
@@ -503,7 +503,7 @@ export default function EmployeePortal() {
           </TabsContent>
 
           <TabsContent value="blog" className="mt-6">
-            <BlogGenerator />
+            <BlogManager />
           </TabsContent>
 
           <TabsContent value="campaigns" className="mt-6">

@@ -20,7 +20,7 @@ const businesses = [
   },
   {
     name: 'Mercy House Auto Sales',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/8cf14a20-40c5-4286-c68a-487401957200/logoo',
+    logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/2533657d4_mercyhouseautocenter.png',
     href: 'https://mercyhouseautocenter.com/',
     external: false,
   },

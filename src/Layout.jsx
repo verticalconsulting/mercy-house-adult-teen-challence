@@ -48,7 +48,7 @@ export default function Layout({ children, currentPageName }) {
     path: 'MicroBusinesses',
     submenu: [
     { name: 'SuperTHRIFT', path: 'https://mercyhouseatc.superthriftdeals.org', external: true },
-    { name: 'Vehicle Donation', path: 'VehicleDonation' },
+    { name: 'Vehicle Donation', path: 'https://mercyhouseatc.vehicledonationms.org', external: true },
     { name: 'Mercy House Auto Center', path: 'MercyAutoAcademy' },
     { name: 'Product With A Purpose', path: 'ProductsPurpose' },
     { name: 'Elite Gutters', path: 'https://myelitegutters.com', external: true }]

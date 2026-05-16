@@ -102,7 +102,7 @@ export default function WomensCampus() {
               icon: Heart,
               title: 'Spiritual Development',
               description: 'Biblical principles and faith-based counseling to address root causes',
-              image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/46dee44ff_generated_image.png'
+              image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/7b0c88056_generated_image.png'
             },
             {
               icon: Users,

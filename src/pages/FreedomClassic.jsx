@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
-import { MapPin, Calendar, Users, Mail, Trophy, Flag, Clock, Heart, X } from 'lucide-react';
+import { MapPin, Calendar, Users, Mail, Trophy, Flag, Clock, Heart, X, ExternalLink, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function FreedomClassic() {
@@ -60,6 +60,16 @@ export default function FreedomClassic() {
               <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
                 <Mail className="mr-2 w-5 h-5" />
                 Sponsorship Inquiry
+              </Button>
+            </a>
+            <a
+              href="https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/leaderboards"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline" className="border-2 border-gold text-gold hover:bg-gold hover:text-navy px-8 py-6 text-lg font-semibold">
+                <ExternalLink className="mr-2 w-5 h-5" />
+                Live Scores
               </Button>
             </a>
           </div>
@@ -218,6 +228,43 @@ export default function FreedomClassic() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Live Scores Section */}
+      <section className="py-16 bg-navy dark:bg-slate-900">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <Award className="w-7 h-7 text-gold" />
+              <h2 className="text-3xl font-bold text-white">Live Leaderboard</h2>
+            </div>
+            <p className="text-slate-300 mb-6">Follow the action in real time on tournament day.</p>
+            <a
+              href="https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/leaderboards"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-4 text-lg mb-8">
+                <ExternalLink className="mr-2 w-5 h-5" />
+                Open Live Scores
+              </Button>
+            </a>
+          </div>
+
+          {/* Iframe Embed */}
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
+            <iframe
+              src="https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/leaderboards"
+              title="Freedom Classic Live Leaderboard"
+              className="w-full"
+              style={{ height: '700px', border: 'none' }}
+              allowFullScreen
+            />
+          </div>
+          <p className="text-center text-slate-400 text-sm mt-3">
+            If the leaderboard doesn't load above, use the "Open Live Scores" button to view on GolfStatus.
+          </p>
         </div>
       </section>
 

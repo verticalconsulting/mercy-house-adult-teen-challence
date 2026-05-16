@@ -20,6 +20,8 @@ import VolunteerManager from '../components/employee/VolunteerManager';
 import BlogManager from '../components/employee/BlogManager';
 import CampaignManager from '../components/employee/CampaignManager';
 import EventManager from '../components/employee/EventManager';
+import DonationFunnel from './DonationFunnel';
+import SearchPerformance from './SearchPerformance';
 
 export default function EmployeePortal() {
   const [user, setUser] = useState(null);
@@ -308,7 +310,7 @@ export default function EmployeePortal() {
         <h1 className="text-4xl font-bold text-navy dark:text-gold mb-8">Employee Portal</h1>
 
         <Tabs defaultValue="applications">
-          <TabsList className="w-full overflow-x-auto flex lg:grid lg:grid-cols-10 justify-start">
+          <TabsList className="w-full overflow-x-auto flex lg:grid lg:grid-cols-12 justify-start">
             <TabsTrigger value="applications" className="text-sm flex-shrink-0">
               Applications
             </TabsTrigger>
@@ -335,6 +337,12 @@ export default function EmployeePortal() {
             </TabsTrigger>
             <TabsTrigger value="agent" className="text-sm flex-shrink-0">
               AI Agent
+            </TabsTrigger>
+            <TabsTrigger value="funnel" className="text-sm flex-shrink-0">
+              Donation Funnel
+            </TabsTrigger>
+            <TabsTrigger value="search" className="text-sm flex-shrink-0">
+              Search Performance
             </TabsTrigger>
             <TabsTrigger value="settings" className="text-sm flex-shrink-0">
               Settings
@@ -516,6 +524,14 @@ export default function EmployeePortal() {
 
           <TabsContent value="agent" className="mt-6">
             <AgentManager />
+          </TabsContent>
+
+          <TabsContent value="funnel" className="mt-6">
+            <DonationFunnel />
+          </TabsContent>
+
+          <TabsContent value="search" className="mt-6">
+            <SearchPerformance />
           </TabsContent>
 
           <TabsContent value="settings" className="mt-6">

@@ -173,6 +173,51 @@ export default function WomensCampus() {
         </div>
       </section>
 
+      {/* Five Foundations of Freedom */}
+      <section className="py-20 bg-white dark:bg-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">
+            Five Foundations of Freedom
+          </h2>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {[
+              {
+                title: 'Spiritual Foundation',
+                description: 'Faith-based principles to guide recovery and purpose'
+              },
+              {
+                title: 'Mental Health',
+                description: 'Trauma-informed counseling and emotional wellness'
+              },
+              {
+                title: 'Physical Wellness',
+                description: 'Health, nutrition, and fitness for whole-person recovery'
+              },
+              {
+                title: 'Educational Growth',
+                description: 'GED preparation and life skills development'
+              },
+              {
+                title: 'Vocational Skills',
+                description: 'Job training and career development pathways'
+              }
+            ].map((foundation, idx) => (
+              <div
+                key={idx}
+                className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700">
+                <h3 className="text-lg font-bold text-navy dark:text-gold mb-3">
+                  {foundation.title}
+                </h3>
+                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                  {foundation.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

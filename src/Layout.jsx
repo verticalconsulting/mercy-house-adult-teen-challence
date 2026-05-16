@@ -363,6 +363,7 @@ export default function Layout({ children, currentPageName }) {
               <Link to="/help-for-dependency-abuse" className="hover:text-gold transition-colors">Help for Dependency</Link>
               <Link to="/About" className="hover:text-gold transition-colors">About Us</Link>
               <Link to="/Programs" className="hover:text-gold transition-colors">Programs</Link>
+              <a href="https://drive.google.com/file/d/1nXKBoDu9NBTjiLXgmkfHXEZwMIurUxRb/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">2024 Annual Report</a>
             </nav>
           </div>
         </div>

@@ -258,6 +258,9 @@ export default function Programs() {
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
               Reaching out is the hardest part. We've kept the process as simple as possible — no paperwork walls, no runaround. Just a real conversation with people who understand.
             </p>
+            <Link to="/help-for-dependency-abuse" className="text-navy dark:text-gold hover:underline font-semibold mt-4 inline-block">
+              Learn more about help for dependency and abuse →
+            </Link>
           </div>
           <div className="space-y-6">
             {[

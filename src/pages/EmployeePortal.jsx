@@ -21,6 +21,7 @@ import BlogManager from '../components/employee/BlogManager';
 import CampaignManager from '../components/employee/CampaignManager';
 import EventManager from '../components/employee/EventManager';
 import DonationFunnel from './DonationFunnel';
+import WomensCampusMediaManager from '../components/employee/WomensCampusMediaManager';
 import SearchPerformance from './SearchPerformance';
 
 export default function EmployeePortal() {
@@ -344,6 +345,9 @@ export default function EmployeePortal() {
             <TabsTrigger value="search" className="text-sm flex-shrink-0">
               Search Performance
             </TabsTrigger>
+            <TabsTrigger value="womensgallery" className="text-sm flex-shrink-0">
+              Women's Gallery
+            </TabsTrigger>
             <TabsTrigger value="settings" className="text-sm flex-shrink-0">
               Settings
             </TabsTrigger>
@@ -532,6 +536,10 @@ export default function EmployeePortal() {
 
           <TabsContent value="search" className="mt-6">
             <SearchPerformance />
+          </TabsContent>
+
+          <TabsContent value="womensgallery" className="mt-6">
+            <WomensCampusMediaManager />
           </TabsContent>
 
           <TabsContent value="settings" className="mt-6">

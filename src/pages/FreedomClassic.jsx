@@ -228,7 +228,7 @@ export default function FreedomClassic() {
       {/* ── Team Sponsorships ── */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-10 text-navy">Team Sponsorships</h2>
+          <h2 className="text-4xl font-bold text-center mb-10 text-[hsl(var(--background))]">Team Sponsorships</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 rounded-2xl overflow-hidden shadow-xl border border-slate-200">
             {/* Platinum */}
             <div className="flex flex-col">

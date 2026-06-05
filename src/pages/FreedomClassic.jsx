@@ -390,7 +390,7 @@ export default function FreedomClassic() {
               <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png" alt="Mac Haik Ford Jackson" className="h-16 w-auto object-contain" />
               {/* Placeholder slots for future sponsors */}
             </div>
-            <p className="text-center text-slate-600 text-sm mt-6 italic">More sponsors to be announced — <a href="mailto:info@mercyhouseatc.com" className="underline hover:text-navy">contact us to become a sponsor</a>.</p>
+            <p className="text-center text-slate-600 text-sm mt-6 italic">More sponsors to be announced — <a href="mailto:khardin@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship" className="underline hover:text-navy">contact us to become a sponsor</a>.</p>
           </div>
         </div>
       </section>

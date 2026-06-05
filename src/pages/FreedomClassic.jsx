@@ -218,8 +218,8 @@ export default function FreedomClassic() {
               <a href="tel:6017203718" className="flex items-center gap-2 font-bold text-slate-800 hover:underline">
                 <Phone className="w-4 h-4" /> (601) 720-3718
               </a>
-              <a href="mailto:info@mercyhouseatc.com" className="block mt-1 text-sm font-semibold text-navy hover:underline">info@mercyhouseatc.com</a>
-              <a href="mailto:khardin@mercyhouseatc.com" className="block mt-1 text-sm font-semibold text-navy hover:underline">khardin@mercyhouseatc.com</a>
+              <a href="mailto:info@mercyhouseatc.com" className="block mt-1 text-sm font-semibold hover:underline text-[hsl(var(--background))]">info@mercyhouseatc.com</a>
+              <a href="mailto:khardin@mercyhouseatc.com" className="block mt-1 text-sm font-semibold hover:underline text-[hsl(var(--background))]">khardin@mercyhouseatc.com</a>
             </div>
           </div>
         </div>

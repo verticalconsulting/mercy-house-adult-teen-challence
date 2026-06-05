@@ -427,7 +427,7 @@ export default function FreedomClassic() {
       {/* ── Mission Banner ── */}
       <section className="py-14 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-[#8ade0d]">Play Golf. Change Lives.</h2>
+          <h2 className="text-3xl font-bold mb-4 text-[#426a06]">Play Golf. Change Lives.</h2>
           <p className="text-lg text-slate-700 leading-relaxed mb-8">
             Every swing you take supports men and women finding freedom from addiction. 100% of individual donations go directly to Mercy House's faith-based recovery mission.
           </p>

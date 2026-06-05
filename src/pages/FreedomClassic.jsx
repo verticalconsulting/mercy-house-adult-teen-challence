@@ -135,7 +135,7 @@ export default function FreedomClassic() {
       {/* ── 2026 Golf Classic Overview ── */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-navy">2026 Golf Classic</h2>
+          <h2 className="text-4xl font-bold text-center mb-12 text-[hsl(var(--popover))]">2026 Golf Classic</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Schedule */}
             <div>

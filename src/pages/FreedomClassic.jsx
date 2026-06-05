@@ -359,7 +359,7 @@ export default function FreedomClassic() {
               <ul className="space-y-1 mb-6">
                 {['Testimony Tee-Box Sponsor'].map((l) => <AddonItem key={l} label={l} />)}
               </ul>
-              <p className="text-2xl font-bold mb-4 text-navy"><sup className="text-base">$</sup>250 each</p>
+              <p className="text-2xl font-bold mb-4 text-slate-800">$250 each</p>
               <ul className="space-y-1">
                 {['Welcome Sign Sponsor'].map((l) => <AddonItem key={l} label={l} />)}
               </ul>

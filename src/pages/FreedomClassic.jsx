@@ -404,7 +404,7 @@ export default function FreedomClassic() {
           <div className="text-center mb-8 bg-[hsl(var(--destructive-foreground))]">
             <div className="flex items-center justify-center gap-3 mb-3">
               <Award className="w-7 h-7 text-gold" />
-              <h2 className="text-3xl font-bold text-white">Live Leaderboard</h2>
+              <h2 className="text-3xl font-bold text-[hsl(var(--background))]">Live Leaderboard</h2>
             </div>
             <p className="mb-6 text-[hsl(var(--background))]">Follow the action in real time on tournament day.</p>
             <a href="https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/leaderboards" target="_blank" rel="noopener noreferrer">
@@ -430,12 +430,12 @@ export default function FreedomClassic() {
       {/* ── Mission Banner ── */}
       <section className="py-14 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-navy">Play Golf. Change Lives.</h2>
+          <h2 className="text-3xl font-bold mb-4 text-[hsl(var(--background))]">Play Golf. Change Lives.</h2>
           <p className="text-lg text-slate-700 leading-relaxed mb-8">
             Every swing you take supports men and women finding freedom from addiction. 100% of individual donations go directly to Mercy House's faith-based recovery mission.
           </p>
           <a href="https://mercyhouseatc.com/donate-today" target="_blank" rel="noopener noreferrer">
-            <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-4 text-lg">
+            <Button className="hover:bg-gold/90 font-bold px-8 py-4 text-lg bg-[hsl(var(--card))] text-[hsl(var(--card))]">
               Support the Mission
             </Button>
           </a>

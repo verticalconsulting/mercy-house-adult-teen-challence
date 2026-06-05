@@ -23,61 +23,71 @@ export default function FreedomClassic() {
     <div className="w-full bg-white">
 
       {/* ── Hero ── */}
-      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '55vh' }}>
-        {/* Background: uploaded golf hero image */}
+      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '60vh' }}>
+        {/* Background: new golf hero image with strong golden overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/3a14a35fe_hero.png"
+            src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/d84ade956_herogolg.png"
             alt="Golf hero"
             className="w-full h-full object-cover object-center"
           />
-          {/* Golden overlay to match the yellow/amber tint */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(245,168,0,0.55) 0%, rgba(245,200,0,0.45) 60%, rgba(255,255,255,0.85) 100%)' }} />
+          {/* Strong amber/gold overlay matching reference */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(245,168,0,0.72) 0%, rgba(245,185,0,0.65) 55%, rgba(255,220,0,0.5) 80%, rgba(255,255,255,0.95) 100%)' }} />
         </div>
 
         {/* Wave bottom */}
         <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-16 md:h-20">
-            <path d="M0,40 C360,90 1080,-10 1440,40 L1440,80 L0,80 Z" fill="white" />
+          <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full" style={{ height: '80px' }}>
+            <path d="M0,60 C240,100 480,20 720,55 C960,90 1200,20 1440,55 L1440,100 L0,100 Z" fill="white" opacity="0.6" />
+            <path d="M0,70 C300,110 600,30 900,65 C1100,90 1300,40 1440,65 L1440,100 L0,100 Z" fill="white" />
           </svg>
         </div>
 
-        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto py-12 pb-20">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-10 mb-8">
-            {/* Tournament Logo — transparent bg */}
-            <img
-              src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/2abf977fd_freedom-golf.png"
-              alt="Freedom Golf Classic"
-              className="h-44 md:h-56 w-auto object-contain drop-shadow-2xl"
-            />
-            {/* Presented by — transparent */}
-            <div className="flex flex-col items-center gap-1">
+        {/* Content: left = Mercy House logo + tournament info, right = Presented by */}
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-6 py-12 pb-24">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+
+            {/* Left: Mercy House logo + tournament details */}
+            <div className="flex flex-col items-center md:items-start gap-4">
+              <img
+                src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/8095691f4_11BlackSquareStacked.png"
+                alt="Mercy House Adult & Teen Challenge"
+                className="h-32 md:h-40 w-auto object-contain drop-shadow-lg"
+              />
+              <div className="text-center md:text-left">
+                <h1 className="text-3xl md:text-5xl font-extrabold text-navy leading-tight drop-shadow">
+                  12th Annual<br />Freedom Classic
+                </h1>
+                <p className="text-xl md:text-2xl font-bold text-navy mt-1">Golf Tournament</p>
+                <p className="text-base md:text-lg text-navy/80 font-medium mt-1">Monday, October 19, 2026</p>
+                <p className="text-base text-navy/70 font-medium">Annandale Golf Club · Madison, MS</p>
+                <div className="flex flex-col sm:flex-row gap-3 mt-5">
+                  <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
+                    <Button className="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-5 text-base rounded-full shadow-xl flex items-center gap-2">
+                      <ExternalLink className="w-4 h-4" />
+                      Register Your Team
+                    </Button>
+                  </a>
+                  <a href="mailto:info@mercyhouseatc.com">
+                    <Button variant="outline" className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-8 py-5 text-base font-semibold rounded-full bg-white/50 backdrop-blur-sm">
+                      <Mail className="mr-2 w-4 h-4" />
+                      Sponsorship Inquiry
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Presented by */}
+            <div className="flex flex-col items-center gap-2 md:items-end">
               <p className="text-navy font-semibold text-base tracking-wide">Presented by</p>
               <img
-                src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png"
+                src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/d820a2e7b_presentedbymachaik.png"
                 alt="Mac Haik Ford Jackson"
-                className="h-14 w-auto object-contain drop-shadow-lg"
+                className="h-20 md:h-24 w-auto object-contain drop-shadow-lg"
               />
             </div>
-          </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-navy mb-2 drop-shadow">12th Annual Freedom Classic</h1>
-          <p className="text-2xl font-bold text-navy mb-1">Golf Tournament</p>
-          <p className="text-lg text-navy/80 font-medium mb-8">Monday, October 19, 2026 · Annandale Golf Club · Madison, MS</p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
-              <Button className="bg-green-600 hover:bg-green-700 text-white font-bold px-10 py-6 text-lg rounded-full shadow-xl flex items-center gap-2">
-                <ExternalLink className="w-5 h-5" />
-                Register Your Team
-              </Button>
-            </a>
-            <a href="mailto:info@mercyhouseatc.com">
-              <Button variant="outline" className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-10 py-6 text-lg font-semibold rounded-full bg-white/60 backdrop-blur-sm">
-                <Mail className="mr-2 w-5 h-5" />
-                Sponsorship Inquiry
-              </Button>
-            </a>
           </div>
         </div>
       </section>

@@ -401,14 +401,14 @@ export default function FreedomClassic() {
       {/* ── Live Leaderboard ── */}
       <section className="py-16 bg-navy">
         <div className="max-w-5xl mx-auto px-4">
-          <div className="text-center mb-8">
+          <div className="text-center mb-8 bg-[hsl(var(--destructive-foreground))]">
             <div className="flex items-center justify-center gap-3 mb-3">
               <Award className="w-7 h-7 text-gold" />
-              <h2 className="text-3xl font-bold text-white bg-[hsl(var(--background))]">Live Leaderboard</h2>
+              <h2 className="text-3xl font-bold text-white">Live Leaderboard</h2>
             </div>
             <p className="mb-6 text-[hsl(var(--background))]">Follow the action in real time on tournament day.</p>
             <a href="https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/leaderboards" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-4 text-lg mb-6">
+              <Button className="hover:bg-gold/90 text-navy font-bold px-8 py-4 text-lg mb-6 bg-[hsl(var(--background))]">
                 <ExternalLink className="mr-2 w-5 h-5" />
                 Open Live Scores
               </Button>

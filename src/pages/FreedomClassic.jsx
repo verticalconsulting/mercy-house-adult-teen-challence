@@ -334,7 +334,7 @@ export default function FreedomClassic() {
       {/* ── Add-on Sponsorships ── */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-3 text-navy">Add-on Sponsorships</h2>
+          <h2 className="text-4xl font-bold text-center mb-3 text-[hsl(var(--background))]">Add-on Sponsorships</h2>
           <p className="text-center text-slate-700 max-w-2xl mx-auto mb-10 text-sm leading-relaxed">
             Advertise your company's logo as the sole sponsor for any of the following add-ons. These can be added to a team sponsorship package above or purchased solo without a team. But hurry! Only one company per sponsorship.
           </p>

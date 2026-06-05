@@ -384,7 +384,7 @@ export default function FreedomClassic() {
       {/* ── Sponsors ── */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center tracking-widest uppercase mb-10 text-[#3061b0]">THANKS TO OUR SPONSORS</h2>
+          <h2 className="text-3xl font-bold text-center text-slate-800 tracking-widest uppercase mb-10">Thanks To Our Sponsors</h2>
           <div className="bg-white border border-slate-200 rounded-2xl shadow p-8">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-center justify-items-center">
               <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png" alt="Mac Haik Ford Jackson" className="h-16 w-auto object-contain" />
@@ -427,7 +427,7 @@ export default function FreedomClassic() {
       {/* ── Mission Banner ── */}
       <section className="py-14 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-[hsl(var(--background))]">Play Golf. Change Lives.</h2>
+          <h2 className="text-3xl font-bold mb-4 text-[#8ade0d]">Play Golf. Change Lives.</h2>
           <p className="text-lg text-slate-700 leading-relaxed mb-8">
             Every swing you take supports men and women finding freedom from addiction. 100% of individual donations go directly to Mercy House's faith-based recovery mission.
           </p>

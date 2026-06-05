@@ -23,72 +23,94 @@ export default function FreedomClassic() {
     <div className="w-full bg-white">
 
       {/* ── Hero ── */}
-      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '60vh' }}>
-        {/* Background: new golf hero image with strong golden overlay */}
+      <section className="relative overflow-hidden" style={{ minHeight: '62vh' }}>
+
+        {/* Background photo */}
         <div className="absolute inset-0 z-0">
           <img
             src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/d84ade956_herogolg.png"
-            alt="Golf hero"
-            className="w-full h-full object-cover object-center"
+            alt=""
+            aria-hidden="true"
+            className="w-full h-full object-cover object-center scale-105"
           />
-          {/* Strong amber/gold overlay matching reference */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(245,168,0,0.72) 0%, rgba(245,185,0,0.65) 55%, rgba(255,220,0,0.5) 80%, rgba(255,255,255,0.95) 100%)' }} />
+          {/* Warm amber/gold wash over entire image */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, rgba(250,175,0,0.78) 0%, rgba(245,165,0,0.70) 50%, rgba(255,200,0,0.55) 75%, rgba(255,240,100,0.30) 100%)' }} />
+          {/* Left-side dark gradient for text legibility */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.18) 55%, transparent 100%)' }} />
+          {/* Bottom fade to white */}
+          <div className="absolute bottom-0 left-0 right-0 h-32" style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.95))' }} />
         </div>
 
         {/* Wave bottom */}
-        <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full" style={{ height: '80px' }}>
-            <path d="M0,60 C240,100 480,20 720,55 C960,90 1200,20 1440,55 L1440,100 L0,100 Z" fill="white" opacity="0.6" />
-            <path d="M0,70 C300,110 600,30 900,65 C1100,90 1300,40 1440,65 L1440,100 L0,100 Z" fill="white" />
+        <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none">
+          <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full" style={{ height: '70px', display: 'block' }}>
+            <path d="M0,55 C360,95 720,15 1080,55 C1260,75 1380,35 1440,50 L1440,90 L0,90 Z" fill="white" opacity="0.5" />
+            <path d="M0,65 C280,100 600,35 960,68 C1150,84 1320,45 1440,62 L1440,90 L0,90 Z" fill="white" />
           </svg>
         </div>
 
-        {/* Content: left = Mercy House logo + tournament info, right = Presented by */}
-        <div className="relative z-10 w-full max-w-5xl mx-auto px-6 py-12 pb-24">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+        {/* Main content */}
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-10 flex flex-col md:flex-row items-center md:items-stretch justify-between gap-10 py-14 pb-28">
 
-            {/* Left: Mercy House logo + tournament details */}
-            <div className="flex flex-col items-center md:items-start gap-4">
-              <img
-                src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/8095691f4_11BlackSquareStacked.png"
-                alt="Mercy House Adult & Teen Challenge"
-                className="h-32 md:h-40 w-auto object-contain drop-shadow-lg"
-              />
-              <div className="text-center md:text-left">
-                <h1 className="text-3xl md:text-5xl font-extrabold text-navy leading-tight drop-shadow">
-                  12th Annual<br />Freedom Classic
-                </h1>
-                <p className="text-xl md:text-2xl font-bold text-navy mt-1">Golf Tournament</p>
-                <p className="text-base md:text-lg text-navy/80 font-medium mt-1">Monday, October 19, 2026</p>
-                <p className="text-base text-navy/70 font-medium">Annandale Golf Club · Madison, MS</p>
-                <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                  <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
-                    <Button className="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-5 text-base rounded-full shadow-xl flex items-center gap-2">
-                      <ExternalLink className="w-4 h-4" />
-                      Register Your Team
-                    </Button>
-                  </a>
-                  <a href="mailto:info@mercyhouseatc.com">
-                    <Button variant="outline" className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-8 py-5 text-base font-semibold rounded-full bg-white/50 backdrop-blur-sm">
-                      <Mail className="mr-2 w-4 h-4" />
-                      Sponsorship Inquiry
-                    </Button>
-                  </a>
-                </div>
+          {/* ── LEFT: Mercy House logo + headline + CTAs ── */}
+          <div className="flex flex-col items-center md:items-start gap-5 flex-1">
+            {/* Mercy House logo — white drop-shadow so it reads on gold */}
+            <img
+              src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/8095691f4_11BlackSquareStacked.png"
+              alt="Mercy House Adult & Teen Challenge"
+              className="h-24 md:h-28 w-auto object-contain"
+              style={{ filter: 'drop-shadow(0 2px 8px rgba(255,255,255,0.6)) brightness(0) invert(1)' }}
+            />
+
+            {/* Divider */}
+            <div className="w-12 h-1 rounded-full bg-white opacity-70 self-start hidden md:block" />
+
+            {/* Headline block */}
+            <div className="text-center md:text-left">
+              <p className="text-white/90 font-semibold text-sm uppercase tracking-widest mb-1">Benefiting Mercy House Ministry</p>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[1.05] tracking-tight drop-shadow-lg">
+                12th Annual<br />
+                <span className="text-yellow-200">Freedom Classic</span>
+              </h1>
+              <p className="text-xl md:text-2xl font-bold text-white/90 mt-2 tracking-wide">Golf Tournament</p>
+              <div className="flex flex-col sm:flex-row gap-1 mt-3 text-white/80 font-medium text-sm md:text-base">
+                <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4 text-yellow-300" /> Monday, October 19, 2026</span>
+                <span className="hidden sm:inline text-white/50">·</span>
+                <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-yellow-300" /> Annandale Golf Club, Madison, MS</span>
               </div>
             </div>
 
-            {/* Right: Presented by */}
-            <div className="flex flex-col items-center gap-2 md:items-end">
-              <p className="text-navy font-semibold text-base tracking-wide">Presented by</p>
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-3 mt-2">
+              <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
+                <Button className="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105">
+                  <ExternalLink className="w-4 h-4" />
+                  Register Your Team
+                </Button>
+              </a>
+              <a href="mailto:info@mercyhouseatc.com">
+                <Button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white text-white font-semibold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105">
+                  <Mail className="w-4 h-4" />
+                  Sponsorship Inquiry
+                </Button>
+              </a>
+            </div>
+          </div>
+
+          {/* ── RIGHT: Presented by ── */}
+          <div className="flex flex-col items-center justify-center gap-3 md:min-w-[220px] md:pl-8 md:border-l md:border-white/25">
+            <p className="text-white/75 font-semibold text-xs uppercase tracking-[0.2em]">Presented by</p>
+            {/* White pill backdrop ensures the logo is readable on the golden bg without a checkerboard */}
+            <div className="rounded-2xl px-5 py-3" style={{ background: 'rgba(255,255,255,0.18)', backdropFilter: 'blur(8px)' }}>
               <img
                 src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/d820a2e7b_presentedbymachaik.png"
                 alt="Mac Haik Ford Jackson"
-                className="h-20 md:h-24 w-auto object-contain drop-shadow-lg"
+                className="h-16 md:h-20 w-auto object-contain"
+                style={{ filter: 'drop-shadow(0 1px 4px rgba(0,0,0,0.15))' }}
               />
             </div>
-
           </div>
+
         </div>
       </section>
 

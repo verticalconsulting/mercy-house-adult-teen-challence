@@ -143,18 +143,18 @@ export default function FreedomClassic() {
               <div className="space-y-3 text-slate-700">
                 <div>
                   <p className="font-semibold">Morning Round</p>
-                  <p className="text-slate-500 text-sm">8:00 AM (breakfast included)</p>
-                </div>
-                <div>
+                  <p className="text-slate-600 text-sm">8:00 AM (breakfast included)</p>
+                  </div>
+                  <div>
                   <p className="font-semibold">Lunch</p>
-                  <p className="text-slate-500 text-sm">12:30 PM</p>
-                </div>
-                <div>
+                  <p className="text-slate-600 text-sm">12:30 PM</p>
+                  </div>
+                  <div>
                   <p className="font-semibold">Afternoon Round</p>
-                  <p className="text-slate-500 text-sm">1:30 PM</p>
+                  <p className="text-slate-600 text-sm">1:30 PM</p>
                 </div>
               </div>
-              <p className="text-slate-400 text-xs mt-4 italic">Tee-off preference is given on a first-come, first-served basis after payment.</p>
+              <p className="text-slate-600 text-xs mt-4 italic">Tee-off preference is given on a first-come, first-served basis after payment.</p>
             </div>
 
             {/* Cost & Includes */}
@@ -174,7 +174,7 @@ export default function FreedomClassic() {
             {/* Mission */}
             <div>
               <p className="text-xl font-bold mb-3" style={{ color: '#2d7a2d' }}>Helping Those Who Need A Mulligan In Life.</p>
-              <p className="text-slate-600 text-sm leading-relaxed mb-4">
+              <p className="text-slate-700 text-sm leading-relaxed mb-4">
                 By participating in the Golf Classic, you are supporting the Mercy House ministry and giving hope to men and women who are seeking freedom from addiction.
               </p>
               <p className="text-slate-700 font-semibold text-sm mb-4">Help us change lives by reaching our goal of $125,000.</p>
@@ -264,7 +264,7 @@ export default function FreedomClassic() {
                     [true, 'Branded feather banner'],
                     [false, 'Embroidered sleeve logo'],
                   ].map(([inc, label]) => (
-                    <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-400 line-through'}`}>
+                    <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-500 line-through'}`}>
                       <Check included={inc} />{label}
                     </div>
                   ))}
@@ -285,7 +285,7 @@ export default function FreedomClassic() {
                     [false, 'Branded feather banner'],
                     [false, 'Embroidered sleeve logo'],
                   ].map(([inc, label]) => (
-                    <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-400 line-through'}`}>
+                    <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-500 line-through'}`}>
                       <Check included={inc} />{label}
                     </div>
                   ))}
@@ -306,7 +306,7 @@ export default function FreedomClassic() {
                     [false, 'Branded feather banner'],
                     [false, 'Embroidered sleeve logo'],
                   ].map(([inc, label]) => (
-                    <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-400 line-through'}`}>
+                    <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-500 line-through'}`}>
                       <Check included={inc} />{label}
                     </div>
                   ))}
@@ -335,7 +335,7 @@ export default function FreedomClassic() {
       <section className="py-16 bg-slate-50">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-3" style={{ color: '#2d7a2d' }}>Add-on Sponsorships</h2>
-          <p className="text-center text-slate-600 max-w-2xl mx-auto mb-10 text-sm leading-relaxed">
+          <p className="text-center text-slate-700 max-w-2xl mx-auto mb-10 text-sm leading-relaxed">
             Advertise your company's logo as the sole sponsor for any of the following add-ons. These can be added to a team sponsorship package above or purchased solo without a team. But hurry! Only one company per sponsorship.
           </p>
 
@@ -393,7 +393,7 @@ export default function FreedomClassic() {
               <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png" alt="Mac Haik Ford Jackson" className="h-16 w-auto object-contain" />
               {/* Placeholder slots for future sponsors */}
             </div>
-            <p className="text-center text-slate-400 text-sm mt-6 italic">More sponsors to be announced — <a href="mailto:info@mercyhouseatc.com" className="underline hover:text-navy">contact us to become a sponsor</a>.</p>
+            <p className="text-center text-slate-600 text-sm mt-6 italic">More sponsors to be announced — <a href="mailto:info@mercyhouseatc.com" className="underline hover:text-navy">contact us to become a sponsor</a>.</p>
           </div>
         </div>
       </section>
@@ -423,7 +423,7 @@ export default function FreedomClassic() {
               allowFullScreen
             />
           </div>
-          <p className="text-center text-slate-400 text-xs mt-3">If the leaderboard doesn't load above, use the "Open Live Scores" button.</p>
+          <p className="text-center text-slate-300 text-xs mt-3">If the leaderboard doesn't load above, use the "Open Live Scores" button.</p>
         </div>
       </section>
 
@@ -431,7 +431,7 @@ export default function FreedomClassic() {
       <section className="py-14 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-navy mb-4">Play Golf. Change Lives.</h2>
-          <p className="text-lg text-slate-600 leading-relaxed mb-8">
+          <p className="text-lg text-slate-700 leading-relaxed mb-8">
             Every swing you take supports men and women finding freedom from life-controlling addiction.
             100% of individual donations go directly to Mercy House's mission of faith-based recovery.
           </p>

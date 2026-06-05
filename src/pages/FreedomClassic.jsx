@@ -369,7 +369,7 @@ export default function FreedomClassic() {
 
           <div className="flex flex-col items-center gap-4 mt-10">
             <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer" className="w-full max-w-sm">
-              <Button className="w-full bg-gold hover:bg-gold/90 text-navy font-bold py-5 text-lg rounded-full flex items-center justify-center gap-2 shadow-lg">
+              <Button className="w-full hover:bg-gold/90 font-bold py-5 text-lg rounded-full flex items-center justify-center gap-2 shadow-lg text-[hsl(var(--background))] bg-[hsl(var(--background))]">
                 <ExternalLink className="w-5 h-5" />
                 Register Now
               </Button>

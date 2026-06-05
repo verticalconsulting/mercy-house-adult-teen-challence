@@ -200,8 +200,8 @@ export default function FreedomClassic() {
                 <p className="font-bold text-xl text-slate-800">Annandale Golf Club</p>
               </div>
               <p className="text-slate-800 font-medium">100 Annandale Golf Club Drive<br />Madison, MS 39110</p>
-              <a href="https://maps.google.com/?q=100+Annandale+Golf+Club+Drive+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold text-navy hover:underline">
-                Get Directions →
+              <a href="https://maps.google.com/?q=100+Annandale+Golf+Club+Drive+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline text-[#1e293a]">Get Directions →
+
               </a>
             </div>
             <div className="flex-1">
@@ -210,8 +210,8 @@ export default function FreedomClassic() {
                 <p className="font-bold text-xl text-[hsl(var(--background))]">Reunion Golf & Country Club</p>
               </div>
               <p className="text-slate-800 font-medium">150 Greensward Dr<br />Madison, MS 39110</p>
-              <a href="https://maps.google.com/?q=150+Greensward+Dr+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold text-navy hover:underline">
-                Get Directions →
+              <a href="https://maps.google.com/?q=150+Greensward+Dr+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline text-[#1e293a]">Get Directions →
+
               </a>
             </div>
             <div className="flex-1">

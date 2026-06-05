@@ -435,7 +435,7 @@ export default function FreedomClassic() {
             Every swing you take supports men and women finding freedom from addiction. 100% of individual donations go directly to Mercy House's faith-based recovery mission.
           </p>
           <a href="https://mercyhouseatc.com/donate-today" target="_blank" rel="noopener noreferrer">
-            <Button className="hover:bg-gold/90 font-bold px-8 py-4 text-lg bg-[hsl(var(--card))] text-[hsl(var(--card))]">
+            <Button className="hover:bg-gold/90 font-bold px-8 py-4 text-lg bg-[hsl(var(--card))] text-[hsl(var(--foreground))]">
               Support the Mission
             </Button>
           </a>

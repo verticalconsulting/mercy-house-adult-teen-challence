@@ -253,7 +253,7 @@ export default function FreedomClassic() {
 
             {/* Gold */}
             <div className="flex flex-col">
-              <div className="bg-gold text-navy text-center font-bold text-lg py-4 tracking-widest">GOLD</div>
+              <div className="text-navy text-center font-bold text-lg py-4 tracking-widest bg-[hsl(var(--sidebar-foreground))]">GOLD</div>
               <div className="flex-1 bg-white p-6 flex flex-col border-l border-slate-100">
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>2,500</p>
                 <div className="space-y-3 mt-4 flex-1">
@@ -274,7 +274,7 @@ export default function FreedomClassic() {
 
             {/* Silver */}
             <div className="flex flex-col">
-              <div className="bg-navy-light text-white text-center font-bold text-lg py-4 tracking-widest">SILVER</div>
+              <div className="text-white text-center font-bold text-lg py-4 tracking-widest bg-[hsl(var(--primary-foreground))]">SILVER</div>
               <div className="flex-1 bg-white p-6 flex flex-col border-l border-slate-100">
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>1,500</p>
                 <div className="space-y-3 mt-4 flex-1">

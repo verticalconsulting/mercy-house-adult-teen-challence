@@ -375,7 +375,7 @@ export default function FreedomClassic() {
               </Button>
             </a>
             <a href={BROCHURE_URL} className="w-full max-w-sm">
-              <Button variant="outline" className="w-full border-2 border-slate-600 text-slate-700 hover:bg-slate-100 py-5 text-lg rounded-full font-semibold">
+              <Button variant="outline" className="w-full border-2 border-slate-600 hover:bg-slate-100 py-5 text-lg rounded-full font-semibold text-[hsl(var(--foreground))]">
                 📄 Download Brochure
               </Button>
             </a>

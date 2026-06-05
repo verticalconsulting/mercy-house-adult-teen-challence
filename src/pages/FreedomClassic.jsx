@@ -1,11 +1,12 @@
 import React from 'react';
+import { toast } from 'sonner';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { MapPin, Calendar, Users, Mail, Trophy, Flag, CheckCircle, XCircle, Plus, ExternalLink, Award, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const REGISTER_URL = 'https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament';
-const BROCHURE_URL = 'mailto:info@mercyhouseatc.com?subject=Freedom Classic Brochure Request';
+const SPONSORSHIP_EMAIL = 'mailto:khardin@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship Inquiry';
 
 const Check = ({ included }) => included ?
 <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" /> :
@@ -88,7 +89,7 @@ export default function FreedomClassic() {
                   Register Your Team
                 </Button>
               </a>
-              <a href="mailto:info@mercyhouseatc.com">
+              <a href={SPONSORSHIP_EMAIL}>
                 <Button className="hover:bg-white/30 backdrop-blur-sm border-2 border-white text-white font-semibold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 bg-[hsl(var(--primary-foreground))]">
                   <Mail className="w-4 h-4" />
                   Sponsorship Inquiry
@@ -322,11 +323,9 @@ export default function FreedomClassic() {
                 Register Now
               </Button>
             </a>
-            <a href={BROCHURE_URL}>
-              <Button variant="outline" className="border-2 border-slate-600 hover:bg-slate-100 px-12 py-5 text-lg rounded-full font-semibold text-[hsl(var(--foreground))]">
-                📄 Download Brochure
-              </Button>
-            </a>
+            <Button variant="outline" onClick={() => toast.info('Brochure coming soon!')} className="border-2 border-slate-600 hover:bg-slate-100 px-12 py-5 text-lg rounded-full font-semibold text-[hsl(var(--foreground))]">
+              📄 Download Brochure
+            </Button>
           </div>
         </div>
       </section>
@@ -374,11 +373,9 @@ export default function FreedomClassic() {
                 Register Now
               </Button>
             </a>
-            <a href={BROCHURE_URL} className="w-full max-w-sm">
-              <Button variant="outline" className="w-full border-2 border-slate-600 hover:bg-slate-100 py-5 text-lg rounded-full font-semibold text-[hsl(var(--foreground))]">
-                📄 Download Brochure
-              </Button>
-            </a>
+            <Button variant="outline" onClick={() => toast.info('Brochure coming soon!')} className="w-full max-w-sm border-2 border-slate-600 hover:bg-slate-100 py-5 text-lg rounded-full font-semibold text-[hsl(var(--foreground))]">
+              📄 Download Brochure
+            </Button>
             <p className="text-xl font-bold mt-2 text-navy">Questions? Call (601) 720-3718</p>
           </div>
         </div>

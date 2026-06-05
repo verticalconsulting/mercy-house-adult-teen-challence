@@ -1,0 +1,82 @@
+{
+  "name": "Campaign",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Campaign name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Campaign description"
+    },
+    "goal_amount": {
+      "type": "number",
+      "description": "Fundraising goal in dollars"
+    },
+    "current_amount": {
+      "type": "number",
+      "default": 0,
+      "description": "Amount raised so far"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Campaign image"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Campaign end date"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Is campaign active?"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Show on homepage?"
+    }
+  },
+  "required": [
+    "name",
+    "goal_amount"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "$and": [
+            {
+              "data.active": true
+            },
+            {
+              "data.featured": true
+            }
+          ]
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

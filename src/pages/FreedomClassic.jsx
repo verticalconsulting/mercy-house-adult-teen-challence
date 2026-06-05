@@ -1,305 +1,405 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
-import { MapPin, Calendar, Users, Mail, Trophy, Flag, Clock, Heart, X, ExternalLink, Award } from 'lucide-react';
+import { MapPin, Calendar, Users, Mail, Trophy, Flag, CheckCircle, XCircle, Plus, ExternalLink, Award, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+const REGISTER_URL = 'https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament';
+const BROCHURE_URL = 'mailto:info@mercyhouseatc.com?subject=Freedom Classic Brochure Request';
+
+const Check = ({ included }) => included
+  ? <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+  : <XCircle className="w-4 h-4 text-slate-300 flex-shrink-0" />;
+
+const AddonItem = ({ label }) => (
+  <li className="flex items-start gap-2 text-slate-700 text-sm py-1">
+    <Plus className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+    {label}
+  </li>
+);
+
 export default function FreedomClassic() {
-  const [showTypeform, setShowTypeform] = useState(false);
-
-  useEffect(() => {
-    if (showTypeform) {
-      if (!document.querySelector('script[src*="typeform.com"]')) {
-        const script = document.createElement('script');
-        script.src = '//embed.typeform.com/next/embed.js';
-        script.async = true;
-        document.body.appendChild(script);
-      } else if (window.tf) {
-        window.tf.load();
-      }
-    }
-  }, [showTypeform]);
-
   return (
-    <div className="w-full">
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-navy">
-        <div className="absolute inset-0 z-0">
+    <div className="w-full bg-white">
+
+      {/* ── Hero ── */}
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden" style={{ background: 'linear-gradient(135deg, #f5a800 0%, #f5c200 40%, #fff8dc 100%)' }}>
+        <div className="absolute inset-0 z-0 opacity-20">
           <img
             src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1920&q=80"
             alt="Golf course"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/90" />
         </div>
-
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto py-20">
-          {/* Logo */}
-          <div className="flex justify-center mb-8">
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto py-16">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-8">
+            {/* Tournament Logo */}
             <img
               src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/2abf977fd_freedom-golf.png"
-              alt="Freedom Golf Classic — Mercy House Adult & Teen Challenge"
-              className="h-48 md:h-64 w-auto object-contain bg-white rounded-2xl px-6 py-4 shadow-2xl"
+              alt="Freedom Golf Classic"
+              className="h-44 md:h-52 w-auto object-contain"
             />
+            {/* Presented by */}
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-navy font-semibold text-lg">Presented by</p>
+              <img
+                src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png"
+                alt="Mac Haik Ford Jackson"
+                className="h-16 w-auto object-contain bg-white rounded-lg px-3 py-2 shadow"
+              />
+            </div>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            12th Annual Freedom Classic
-          </h1>
-          <p className="text-2xl text-gold font-semibold mb-2">Golf Tournament</p>
-          <p className="text-xl text-slate-300 mb-8">Monday, October 19, 2026</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-navy mb-2">12th Annual Freedom Classic</h1>
+          <p className="text-2xl font-bold text-navy mb-1">Golf Tournament</p>
+          <p className="text-xl text-navy/80 font-medium mb-8">Monday, October 19, 2026 · Annandale Golf Club · Madison, MS</p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              onClick={() => setShowTypeform(true)}
-              className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
-              <Trophy className="mr-2 w-5 h-5" />
-              Register Your Team
-            </Button>
+            <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
+              <Button className="bg-green-600 hover:bg-green-700 text-white font-bold px-10 py-6 text-lg rounded-full shadow-xl flex items-center gap-2">
+                <ExternalLink className="w-5 h-5" />
+                Register Your Team
+              </Button>
+            </a>
             <a href="mailto:info@mercyhouseatc.com">
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
+              <Button variant="outline" className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-10 py-6 text-lg font-semibold rounded-full">
                 <Mail className="mr-2 w-5 h-5" />
                 Sponsorship Inquiry
               </Button>
             </a>
-            <a
-              href="https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/leaderboards"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="outline" className="border-2 border-gold text-gold hover:bg-gold hover:text-navy px-8 py-6 text-lg font-semibold">
-                <ExternalLink className="mr-2 w-5 h-5" />
-                Live Scores
+          </div>
+        </div>
+      </section>
+
+      {/* ── Overview Strip ── */}
+      <section className="bg-navy py-5">
+        <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <div className="flex items-center justify-center gap-2 text-white font-semibold text-base">
+            <Calendar className="w-5 h-5 text-gold" />
+            Monday, October 19, 2026
+          </div>
+          <div className="flex items-center justify-center gap-2 text-white font-semibold text-base">
+            <Flag className="w-5 h-5 text-gold" />
+            Four Person Scramble
+          </div>
+          <div className="flex items-center justify-center gap-2 text-white font-semibold text-base">
+            <MapPin className="w-5 h-5 text-gold" />
+            Annandale Golf Club · Madison, MS
+          </div>
+        </div>
+      </section>
+
+      {/* ── 2026 Golf Classic Overview ── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12" style={{ color: '#2d7a2d' }}>2026 Golf Classic</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Schedule */}
+            <div>
+              <p className="font-bold text-lg mb-3" style={{ color: '#2d7a2d' }}>Monday, October 19, 2026</p>
+              <div className="space-y-3 text-slate-700">
+                <div>
+                  <p className="font-semibold">Morning Round</p>
+                  <p className="text-slate-500 text-sm">8:00 AM (breakfast included)</p>
+                </div>
+                <div>
+                  <p className="font-semibold">Lunch</p>
+                  <p className="text-slate-500 text-sm">12:30 PM</p>
+                </div>
+                <div>
+                  <p className="font-semibold">Afternoon Round</p>
+                  <p className="text-slate-500 text-sm">1:30 PM</p>
+                </div>
+              </div>
+              <p className="text-slate-400 text-xs mt-4 italic">Tee-off preference is given on a first-come, first-served basis after payment.</p>
+            </div>
+
+            {/* Cost & Includes */}
+            <div>
+              <p className="text-3xl font-bold text-slate-800 mb-1"><sup className="text-xl">$</sup>1,000 per team</p>
+              <p className="font-semibold text-slate-700 mb-3">What's Included:</p>
+              <ul className="space-y-2">
+                {['4 Man Scramble at Annandale Golf Club', 'Delicious Lunch', 'High Quality Golf Polo', 'Several Chances to Win Prizes'].map(item => (
+                  <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Mission */}
+            <div>
+              <p className="text-xl font-bold mb-3" style={{ color: '#2d7a2d' }}>Helping Those Who Need A Mulligan In Life.</p>
+              <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                By participating in the Golf Classic, you are supporting the Mercy House ministry and giving hope to men and women who are seeking freedom from addiction.
+              </p>
+              <p className="text-slate-700 font-semibold text-sm mb-4">Help us change lives by reaching our goal of $125,000.</p>
+              <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
+                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full flex items-center justify-center gap-2 py-5">
+                  <ExternalLink className="w-4 h-4" />
+                  Register Now
+                </Button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Venue ── */}
+      <section className="py-10 bg-slate-50">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="bg-white rounded-2xl shadow p-8 flex flex-col md:flex-row gap-8 items-start">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <MapPin className="w-5 h-5 text-navy" />
+                <p className="font-bold text-xl text-navy">Annandale Golf Club</p>
+              </div>
+              <p className="text-slate-600">100 Annandale Golf Club Drive<br />Madison, MS 39110</p>
+              <a href="https://maps.google.com/?q=100+Annandale+Golf+Club+Drive+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-medium hover:underline" style={{ color: '#2d7a2d' }}>
+                Get Directions →
+              </a>
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <MapPin className="w-5 h-5 text-navy" />
+                <p className="font-bold text-xl text-navy">Reunion Golf & Country Club</p>
+              </div>
+              <p className="text-slate-600">150 Greensward Dr<br />Madison, MS 39110</p>
+              <a href="https://maps.google.com/?q=150+Greensward+Dr+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-medium hover:underline" style={{ color: '#2d7a2d' }}>
+                Get Directions →
+              </a>
+            </div>
+            <div className="flex-1">
+              <p className="font-bold text-navy mb-2">Questions?</p>
+              <a href="tel:6017203718" className="flex items-center gap-2 font-semibold text-slate-700 hover:underline">
+                <Phone className="w-4 h-4" /> (601) 720-3718
+              </a>
+              <a href="mailto:info@mercyhouseatc.com" className="block mt-1 text-sm text-navy hover:underline">info@mercyhouseatc.com</a>
+              <a href="mailto:khardin@mercyhouseatc.com" className="block mt-1 text-sm text-navy hover:underline">khardin@mercyhouseatc.com</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Team Sponsorships ── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-10" style={{ color: '#2d7a2d' }}>Team Sponsorships</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+            {/* Platinum */}
+            <div className="flex flex-col">
+              <div className="bg-blue-500 text-white text-center font-bold text-lg py-4 tracking-widest">PLATINUM</div>
+              <div className="flex-1 bg-white p-6 flex flex-col">
+                <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>5,000</p>
+                <div className="space-y-3 mt-4 flex-1">
+                  {[
+                    [true, '8 Golfers'],
+                    [true, 'Website logo'],
+                    [true, 'Testimony tee-box sign logo'],
+                    [true, 'Branded feather banner'],
+                    [true, 'Embroidered sleeve logo (limited availability)'],
+                  ].map(([inc, label]) => (
+                    <div key={label} className="flex items-start gap-2 text-sm text-slate-700">
+                      <Check included={inc} />{label}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Gold */}
+            <div className="flex flex-col">
+              <div className="text-white text-center font-bold text-lg py-4 tracking-widest" style={{ background: '#c9a227' }}>GOLD</div>
+              <div className="flex-1 bg-white p-6 flex flex-col border-l border-slate-100">
+                <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>2,500</p>
+                <div className="space-y-3 mt-4 flex-1">
+                  {[
+                    [true, '4 Golfers'],
+                    [true, 'Website logo'],
+                    [true, 'Testimony tee-box sign logo'],
+                    [true, 'Branded feather banner'],
+                    [false, 'Embroidered sleeve logo'],
+                  ].map(([inc, label]) => (
+                    <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-400 line-through'}`}>
+                      <Check included={inc} />{label}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Silver */}
+            <div className="flex flex-col">
+              <div className="bg-slate-400 text-white text-center font-bold text-lg py-4 tracking-widest">SILVER</div>
+              <div className="flex-1 bg-white p-6 flex flex-col border-l border-slate-100">
+                <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>1,500</p>
+                <div className="space-y-3 mt-4 flex-1">
+                  {[
+                    [true, '4 Golfers'],
+                    [true, 'Website logo'],
+                    [true, 'Testimony tee-box sign logo'],
+                    [false, 'Branded feather banner'],
+                    [false, 'Embroidered sleeve logo'],
+                  ].map(([inc, label]) => (
+                    <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-400 line-through'}`}>
+                      <Check included={inc} />{label}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Team Only */}
+            <div className="flex flex-col">
+              <div className="bg-green-600 text-white text-center font-bold text-lg py-4 tracking-widest">TEAM ONLY</div>
+              <div className="flex-1 bg-white p-6 flex flex-col border-l border-slate-100">
+                <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>1,000</p>
+                <div className="space-y-3 mt-4 flex-1">
+                  {[
+                    [true, '4 Golfers'],
+                    [false, 'Website logo'],
+                    [false, 'Testimony tee-box sign logo'],
+                    [false, 'Branded feather banner'],
+                    [false, 'Embroidered sleeve logo'],
+                  ].map(([inc, label]) => (
+                    <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-400 line-through'}`}>
+                      <Check included={inc} />{label}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
+              <Button className="bg-green-600 hover:bg-green-700 text-white font-bold px-12 py-5 text-lg rounded-full flex items-center gap-2 shadow-lg">
+                <ExternalLink className="w-5 h-5" />
+                Register Now
+              </Button>
+            </a>
+            <a href={BROCHURE_URL}>
+              <Button variant="outline" className="border-2 border-slate-600 text-slate-700 hover:bg-slate-100 px-12 py-5 text-lg rounded-full font-semibold">
+                📄 Download Brochure
               </Button>
             </a>
           </div>
         </div>
       </section>
 
-      {/* Key Details Strip */}
-      <section className="bg-gold py-6">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-navy text-center">
-          <div className="flex items-center justify-center gap-2 font-semibold text-lg">
-            <Calendar className="w-5 h-5" />
-            Monday, October 19, 2026
+      {/* ── Add-on Sponsorships ── */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-3" style={{ color: '#2d7a2d' }}>Add-on Sponsorships</h2>
+          <p className="text-center text-slate-600 max-w-2xl mx-auto mb-10 text-sm leading-relaxed">
+            Advertise your company's logo as the sole sponsor for any of the following add-ons. These can be added to a team sponsorship package above or purchased solo without a team. But hurry! Only one company per sponsorship.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* $2,500 */}
+            <div>
+              <p className="text-2xl font-bold mb-4" style={{ color: '#2d7a2d' }}><sup className="text-base">$</sup>2,500 each</p>
+              <ul className="space-y-1">
+                {['Closest to the Pin Sponsor', 'Longest Drive Sponsor', 'Golf Cannon Sponsor'].map(l => <AddonItem key={l} label={l} />)}
+              </ul>
+            </div>
+            {/* $2,000 */}
+            <div>
+              <p className="text-2xl font-bold mb-4" style={{ color: '#2d7a2d' }}><sup className="text-base">$</sup>2,000 each</p>
+              <ul className="space-y-1">
+                {['Registration Tent Sponsor', 'Hospitality Tent Sponsor', 'Golf Cart Sponsor', 'Driving Range Sponsor', 'Putting Green Sponsor', 'Golf Ball Sponsor'].map(l => <AddonItem key={l} label={l} />)}
+              </ul>
+            </div>
+            {/* $500 & $250 */}
+            <div>
+              <p className="text-2xl font-bold mb-4" style={{ color: '#2d7a2d' }}><sup className="text-base">$</sup>500 each</p>
+              <ul className="space-y-1 mb-6">
+                {['Testimony Tee-Box Sponsor'].map(l => <AddonItem key={l} label={l} />)}
+              </ul>
+              <p className="text-2xl font-bold mb-4" style={{ color: '#2d7a2d' }}><sup className="text-base">$</sup>250 each</p>
+              <ul className="space-y-1">
+                {['Welcome Sign Sponsor'].map(l => <AddonItem key={l} label={l} />)}
+              </ul>
+            </div>
           </div>
-          <div className="flex items-center justify-center gap-2 font-semibold text-lg">
-            <Flag className="w-5 h-5" />
-            Four Person Scramble
-          </div>
-          <div className="flex items-center justify-center gap-2 font-semibold text-lg">
-            <MapPin className="w-5 h-5" />
-            Madison, Mississippi
+
+          <div className="flex flex-col items-center gap-4 mt-10">
+            <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer" className="w-full max-w-sm">
+              <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-5 text-lg rounded-full flex items-center justify-center gap-2 shadow-lg">
+                <ExternalLink className="w-5 h-5" />
+                Register Now
+              </Button>
+            </a>
+            <a href={BROCHURE_URL} className="w-full max-w-sm">
+              <Button variant="outline" className="w-full border-2 border-slate-600 text-slate-700 hover:bg-slate-100 py-5 text-lg rounded-full font-semibold">
+                📄 Download Brochure
+              </Button>
+            </a>
+            <p className="text-xl font-bold mt-2" style={{ color: '#2d7a2d' }}>Questions? Call (601) 720-3718</p>
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-16 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-
-            {/* Left Column */}
-            <div className="space-y-8">
-              {/* Event Details */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8">
-                <h2 className="text-2xl font-bold text-navy dark:text-gold mb-6 flex items-center gap-2">
-                  <Calendar className="w-6 h-6" />
-                  Event Details
-                </h2>
-                <div className="space-y-4 text-slate-700 dark:text-slate-300">
-                  <div>
-                    <p className="font-semibold text-navy dark:text-gold">Date</p>
-                    <p>Monday, October 19, 2026</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-navy dark:text-gold">Format</p>
-                    <p>Four Person Scramble</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-navy dark:text-gold">Schedule</p>
-                    <p className="italic text-slate-500 dark:text-slate-400">Schedule of Events: TBD</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Registration Cost */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8">
-                <h2 className="text-2xl font-bold text-navy dark:text-gold mb-6 flex items-center gap-2">
-                  <Users className="w-6 h-6" />
-                  Registration
-                </h2>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-4">
-                    <div>
-                      <p className="font-semibold text-slate-800 dark:text-slate-200">Foursome</p>
-                      <p className="text-sm text-slate-500">Four players, one team entry</p>
-                    </div>
-                    <span className="text-2xl font-bold text-navy dark:text-gold">TBD</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="font-semibold text-slate-800 dark:text-slate-200">Individual</p>
-                      <p className="text-sm text-slate-500">Single player entry</p>
-                    </div>
-                    <span className="text-2xl font-bold text-navy dark:text-gold">TBD</span>
-                  </div>
-                </div>
-                <div className="mt-6">
-                   <Button 
-                     onClick={() => setShowTypeform(true)}
-                     className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy font-bold py-4 text-lg">
-                       Register Now
-                     </Button>
-                 </div>
-              </div>
+      {/* ── Sponsors ── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-slate-800 tracking-widest uppercase mb-10">Thanks To Our Sponsors</h2>
+          <div className="bg-white border border-slate-200 rounded-2xl shadow p-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-center justify-items-center">
+              <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png" alt="Mac Haik Ford Jackson" className="h-16 w-auto object-contain" />
+              {/* Placeholder slots for future sponsors */}
             </div>
-
-            {/* Right Column */}
-            <div className="space-y-8">
-              {/* Venues */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8">
-                <h2 className="text-2xl font-bold text-navy dark:text-gold mb-6 flex items-center gap-2">
-                  <MapPin className="w-6 h-6" />
-                  Venues
-                </h2>
-                <div className="space-y-6">
-                  <div className="border-l-4 border-gold pl-4">
-                    <p className="font-bold text-lg text-navy dark:text-white">Annandale Golf Club</p>
-                    <p className="text-slate-600 dark:text-slate-400 mt-1">
-                      100 Annandale Golf Club Drive<br />
-                      Madison, MS 39110
-                    </p>
-                    <a
-                      href="https://maps.google.com/?q=100+Annandale+Golf+Club+Drive+Madison+MS+39110"
-                      className="inline-block mt-2 text-sm text-navy dark:text-gold font-medium hover:underline"
-                    >
-                      Get Directions →
-                    </a>
-                  </div>
-                  <div className="border-l-4 border-navy dark:border-gold pl-4">
-                    <p className="font-bold text-lg text-navy dark:text-white">Reunion Golf & Country Club</p>
-                    <p className="text-slate-600 dark:text-slate-400 mt-1">
-                      150 Greensward Dr<br />
-                      Madison, MS 39110
-                    </p>
-                    <a
-                      href="https://maps.google.com/?q=150+Greensward+Dr+Madison+MS+39110"
-                      className="inline-block mt-2 text-sm text-navy dark:text-gold font-medium hover:underline"
-                    >
-                      Get Directions →
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Sponsorship */}
-              <div className="bg-navy dark:bg-slate-800 rounded-2xl shadow-lg p-8 text-white">
-                <h2 className="text-2xl font-bold text-gold mb-4 flex items-center gap-2">
-                  <Heart className="w-6 h-6" />
-                  Sponsorship Opportunities
-                </h2>
-                <p className="text-slate-300 mb-4 leading-relaxed">
-                  Sponsoring the Freedom Classic is a powerful way to support men and women on their journey to freedom from addiction. Your sponsorship directly funds Mercy House's life-changing programs.
-                </p>
-                <p className="text-slate-300 mb-6">Sponsorship packages available — contact us for details.</p>
-                <a href="mailto:info@mercyhouseatc.com">
-                  <Button className="w-full bg-gold hover:bg-gold/90 text-navy font-bold py-3 text-base">
-                    Inquire About Sponsorship
-                  </Button>
-                </a>
-              </div>
-
-              {/* Questions */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8">
-                <h2 className="text-2xl font-bold text-navy dark:text-gold mb-4 flex items-center gap-2">
-                  <Mail className="w-6 h-6" />
-                  Questions?
-                </h2>
-                <p className="text-slate-600 dark:text-slate-400 mb-4">Reach out to our team and we'll be happy to help.</p>
-                <div className="space-y-2">
-                  <a href="mailto:info@mercyhouseatc.com" className="block text-navy dark:text-gold font-medium hover:underline">
-                    info@mercyhouseatc.com
-                  </a>
-                  <a href="mailto:khardin@mercyhouseatc.com" className="block text-navy dark:text-gold font-medium hover:underline">
-                    khardin@mercyhouseatc.com
-                  </a>
-                </div>
-              </div>
-            </div>
+            <p className="text-center text-slate-400 text-sm mt-6 italic">More sponsors to be announced — <a href="mailto:info@mercyhouseatc.com" className="underline hover:text-navy">contact us to become a sponsor</a>.</p>
           </div>
         </div>
       </section>
 
-      {/* Live Scores Section */}
-      <section className="py-16 bg-navy dark:bg-slate-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── Live Leaderboard ── */}
+      <section className="py-16 bg-navy">
+        <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-3">
               <Award className="w-7 h-7 text-gold" />
               <h2 className="text-3xl font-bold text-white">Live Leaderboard</h2>
             </div>
             <p className="text-slate-300 mb-6">Follow the action in real time on tournament day.</p>
-            <a
-              href="https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/leaderboards"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-4 text-lg mb-8">
+            <a href="https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/leaderboards" target="_blank" rel="noopener noreferrer">
+              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-4 text-lg mb-6">
                 <ExternalLink className="mr-2 w-5 h-5" />
                 Open Live Scores
               </Button>
             </a>
           </div>
-
-          {/* Iframe Embed */}
           <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
             <iframe
               src="https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/leaderboards"
               title="Freedom Classic Live Leaderboard"
               className="w-full"
-              style={{ height: '700px', border: 'none' }}
+              style={{ height: '600px', border: 'none' }}
               allowFullScreen
             />
           </div>
-          <p className="text-center text-slate-400 text-sm mt-3">
-            If the leaderboard doesn't load above, use the "Open Live Scores" button to view on GolfStatus.
-          </p>
+          <p className="text-center text-slate-400 text-xs mt-3">If the leaderboard doesn't load above, use the "Open Live Scores" button.</p>
         </div>
       </section>
 
-      {/* Mission Banner */}
-      <section className="py-16 bg-white dark:bg-slate-800">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-navy dark:text-gold mb-4">Play Golf. Change Lives.</h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
-            Every swing you take supports men and women finding freedom from life-controlling addiction. 
+      {/* ── Mission Banner ── */}
+      <section className="py-14 bg-white">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-navy mb-4">Play Golf. Change Lives.</h2>
+          <p className="text-lg text-slate-600 leading-relaxed mb-8">
+            Every swing you take supports men and women finding freedom from life-controlling addiction.
             100% of individual donations go directly to Mercy House's mission of faith-based recovery.
           </p>
           <Link to={createPageUrl('Donate')}>
-            <Button variant="outline" className="border-2 border-navy dark:border-gold text-navy dark:text-gold hover:bg-navy hover:text-white dark:hover:bg-gold dark:hover:text-navy px-8 py-4 text-lg font-semibold">
+            <Button variant="outline" className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-8 py-4 text-lg font-semibold">
               Support the Mission
             </Button>
           </Link>
         </div>
       </section>
 
-      {/* Typeform Modal */}
-      {showTypeform && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative">
-            <button
-              onClick={() => setShowTypeform(false)}
-              className="absolute top-4 right-4 z-10 p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors"
-              aria-label="Close registration form">
-              <X className="w-6 h-6 text-slate-600 dark:text-slate-300" />
-            </button>
-            <div className="p-8 min-h-[500px]">
-              <div data-tf-live="01KRQWFVC1Z11ZRHXE1XWZR1DG"></div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

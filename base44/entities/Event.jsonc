@@ -1,0 +1,97 @@
+{
+  "name": "Event",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Event title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Event description"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "workshop",
+        "outreach",
+        "community_event",
+        "fundraiser",
+        "service",
+        "other"
+      ],
+      "default": "community_event",
+      "description": "Event category"
+    },
+    "event_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time of the event"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "End date and time (optional)"
+    },
+    "location": {
+      "type": "string",
+      "description": "Event location"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Event image"
+    },
+    "registration_required": {
+      "type": "boolean",
+      "default": false,
+      "description": "Does this event require registration?"
+    },
+    "registration_link": {
+      "type": "string",
+      "description": "External registration link (if applicable)"
+    },
+    "capacity": {
+      "type": "number",
+      "description": "Maximum number of attendees"
+    },
+    "published": {
+      "type": "boolean",
+      "default": true,
+      "description": "Is this event published?"
+    }
+  },
+  "required": [
+    "title",
+    "event_date",
+    "category"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.published": true
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

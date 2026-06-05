@@ -1,0 +1,90 @@
+{
+  "name": "BlogPost",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Post title"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly slug"
+    },
+    "content": {
+      "type": "string",
+      "description": "Post content (markdown supported)"
+    },
+    "excerpt": {
+      "type": "string",
+      "description": "Short summary for previews"
+    },
+    "featured_image": {
+      "type": "string",
+      "description": "URL to featured image"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "news",
+        "event",
+        "success_story",
+        "announcement"
+      ],
+      "default": "news"
+    },
+    "published": {
+      "type": "boolean",
+      "default": false,
+      "description": "Is this post published?"
+    },
+    "publish_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When to publish"
+    },
+    "event_date": {
+      "type": "string",
+      "format": "date",
+      "description": "For events - when is the event?"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "title",
+    "content"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.published": true
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

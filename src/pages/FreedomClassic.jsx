@@ -179,7 +179,7 @@ export default function FreedomClassic() {
               </p>
               <p className="text-slate-700 font-semibold text-sm mb-4">Help us change lives by reaching our goal of $125,000.</p>
               <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
-                <Button className="w-full bg-gold hover:bg-gold/90 text-navy font-bold rounded-full flex items-center justify-center gap-2 py-5">
+                <Button className="w-full hover:bg-gold/90 text-navy font-bold rounded-full flex items-center justify-center gap-2 py-5 bg-[hsl(var(--card))]">
                   <ExternalLink className="w-4 h-4" />
                   Register Now
                 </Button>

@@ -23,36 +23,47 @@ export default function FreedomClassic() {
     <div className="w-full bg-white">
 
       {/* ── Hero ── */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden" style={{ background: 'linear-gradient(135deg, #f5a800 0%, #f5c200 40%, #fff8dc 100%)' }}>
-        <div className="absolute inset-0 z-0 opacity-20">
+      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '55vh' }}>
+        {/* Background: uploaded golf hero image */}
+        <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1920&q=80"
-            alt="Golf course"
-            className="w-full h-full object-cover"
+            src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/3a14a35fe_hero.png"
+            alt="Golf hero"
+            className="w-full h-full object-cover object-center"
           />
+          {/* Golden overlay to match the yellow/amber tint */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(245,168,0,0.55) 0%, rgba(245,200,0,0.45) 60%, rgba(255,255,255,0.85) 100%)' }} />
         </div>
-        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto py-16">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-8">
-            {/* Tournament Logo */}
+
+        {/* Wave bottom */}
+        <div className="absolute bottom-0 left-0 right-0 z-10">
+          <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-16 md:h-20">
+            <path d="M0,40 C360,90 1080,-10 1440,40 L1440,80 L0,80 Z" fill="white" />
+          </svg>
+        </div>
+
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto py-12 pb-20">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-10 mb-8">
+            {/* Tournament Logo — transparent bg */}
             <img
               src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/2abf977fd_freedom-golf.png"
               alt="Freedom Golf Classic"
-              className="h-44 md:h-52 w-auto object-contain"
+              className="h-44 md:h-56 w-auto object-contain drop-shadow-2xl"
             />
-            {/* Presented by */}
-            <div className="flex flex-col items-center gap-2">
-              <p className="text-navy font-semibold text-lg">Presented by</p>
+            {/* Presented by — transparent */}
+            <div className="flex flex-col items-center gap-1">
+              <p className="text-navy font-semibold text-base tracking-wide">Presented by</p>
               <img
                 src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png"
                 alt="Mac Haik Ford Jackson"
-                className="h-16 w-auto object-contain bg-white rounded-lg px-3 py-2 shadow"
+                className="h-14 w-auto object-contain drop-shadow-lg"
               />
             </div>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-navy mb-2">12th Annual Freedom Classic</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-navy mb-2 drop-shadow">12th Annual Freedom Classic</h1>
           <p className="text-2xl font-bold text-navy mb-1">Golf Tournament</p>
-          <p className="text-xl text-navy/80 font-medium mb-8">Monday, October 19, 2026 · Annandale Golf Club · Madison, MS</p>
+          <p className="text-lg text-navy/80 font-medium mb-8">Monday, October 19, 2026 · Annandale Golf Club · Madison, MS</p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
@@ -62,7 +73,7 @@ export default function FreedomClassic() {
               </Button>
             </a>
             <a href="mailto:info@mercyhouseatc.com">
-              <Button variant="outline" className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-10 py-6 text-lg font-semibold rounded-full">
+              <Button variant="outline" className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-10 py-6 text-lg font-semibold rounded-full bg-white/60 backdrop-blur-sm">
                 <Mail className="mr-2 w-5 h-5" />
                 Sponsorship Inquiry
               </Button>

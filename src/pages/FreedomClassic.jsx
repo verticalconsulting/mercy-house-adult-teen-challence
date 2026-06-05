@@ -13,7 +13,7 @@ const Check = ({ included }) => included
 
 const AddonItem = ({ label }) => (
   <li className="flex items-start gap-2 text-slate-700 text-sm py-1">
-    <Plus className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+    <Plus className="w-4 h-4 text-navy flex-shrink-0 mt-0.5" />
     {label}
   </li>
 );
@@ -83,7 +83,7 @@ export default function FreedomClassic() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
               <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
-                <Button className="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105">
+                <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105">
                   <ExternalLink className="w-4 h-4" />
                   Register Your Team
                 </Button>
@@ -135,11 +135,11 @@ export default function FreedomClassic() {
       {/* ── 2026 Golf Classic Overview ── */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12" style={{ color: '#2d7a2d' }}>2026 Golf Classic</h2>
+          <h2 className="text-4xl font-bold text-center mb-12 text-navy">2026 Golf Classic</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Schedule */}
             <div>
-              <p className="font-bold text-lg mb-3" style={{ color: '#2d7a2d' }}>Monday, October 19, 2026</p>
+              <p className="font-bold text-lg mb-3 text-navy">Monday, October 19, 2026</p>
               <div className="space-y-3 text-slate-700">
                 <div>
                   <p className="font-semibold">Morning Round</p>
@@ -173,13 +173,13 @@ export default function FreedomClassic() {
 
             {/* Mission */}
             <div>
-              <p className="text-xl font-bold mb-3" style={{ color: '#2d7a2d' }}>Helping Those Who Need A Mulligan In Life.</p>
+              <p className="text-xl font-bold mb-3 text-navy">Helping Those Who Need A Mulligan In Life.</p>
               <p className="text-slate-700 text-sm leading-relaxed mb-4">
                 By participating in the Golf Classic, you are supporting the Mercy House ministry and giving hope to men and women who are seeking freedom from addiction.
               </p>
               <p className="text-slate-700 font-semibold text-sm mb-4">Help us change lives by reaching our goal of $125,000.</p>
               <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full flex items-center justify-center gap-2 py-5">
+                <Button className="w-full bg-gold hover:bg-gold/90 text-navy font-bold rounded-full flex items-center justify-center gap-2 py-5">
                   <ExternalLink className="w-4 h-4" />
                   Register Now
                 </Button>
@@ -199,7 +199,7 @@ export default function FreedomClassic() {
                 <p className="font-bold text-xl text-navy">Annandale Golf Club</p>
               </div>
               <p className="text-slate-800 font-medium">100 Annandale Golf Club Drive<br />Madison, MS 39110</p>
-              <a href="https://maps.google.com/?q=100+Annandale+Golf+Club+Drive+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline" style={{ color: '#2d7a2d' }}>
+              <a href="https://maps.google.com/?q=100+Annandale+Golf+Club+Drive+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold text-navy hover:underline">
                 Get Directions →
               </a>
             </div>
@@ -209,7 +209,7 @@ export default function FreedomClassic() {
                 <p className="font-bold text-xl text-navy">Reunion Golf & Country Club</p>
               </div>
               <p className="text-slate-800 font-medium">150 Greensward Dr<br />Madison, MS 39110</p>
-              <a href="https://maps.google.com/?q=150+Greensward+Dr+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline" style={{ color: '#2d7a2d' }}>
+              <a href="https://maps.google.com/?q=150+Greensward+Dr+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold text-navy hover:underline">
                 Get Directions →
               </a>
             </div>
@@ -228,11 +228,11 @@ export default function FreedomClassic() {
       {/* ── Team Sponsorships ── */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-10" style={{ color: '#2d7a2d' }}>Team Sponsorships</h2>
+          <h2 className="text-4xl font-bold text-center mb-10 text-navy">Team Sponsorships</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 rounded-2xl overflow-hidden shadow-xl border border-slate-200">
             {/* Platinum */}
             <div className="flex flex-col">
-              <div className="bg-blue-500 text-white text-center font-bold text-lg py-4 tracking-widest">PLATINUM</div>
+              <div className="bg-navy text-white text-center font-bold text-lg py-4 tracking-widest">PLATINUM</div>
               <div className="flex-1 bg-white p-6 flex flex-col">
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>5,000</p>
                 <div className="space-y-3 mt-4 flex-1">
@@ -253,7 +253,7 @@ export default function FreedomClassic() {
 
             {/* Gold */}
             <div className="flex flex-col">
-              <div className="text-white text-center font-bold text-lg py-4 tracking-widest" style={{ background: '#c9a227' }}>GOLD</div>
+              <div className="bg-gold text-navy text-center font-bold text-lg py-4 tracking-widest">GOLD</div>
               <div className="flex-1 bg-white p-6 flex flex-col border-l border-slate-100">
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>2,500</p>
                 <div className="space-y-3 mt-4 flex-1">
@@ -274,7 +274,7 @@ export default function FreedomClassic() {
 
             {/* Silver */}
             <div className="flex flex-col">
-              <div className="bg-slate-400 text-white text-center font-bold text-lg py-4 tracking-widest">SILVER</div>
+              <div className="bg-navy-light text-white text-center font-bold text-lg py-4 tracking-widest">SILVER</div>
               <div className="flex-1 bg-white p-6 flex flex-col border-l border-slate-100">
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>1,500</p>
                 <div className="space-y-3 mt-4 flex-1">
@@ -295,7 +295,7 @@ export default function FreedomClassic() {
 
             {/* Team Only */}
             <div className="flex flex-col">
-              <div className="bg-green-600 text-white text-center font-bold text-lg py-4 tracking-widest">TEAM ONLY</div>
+              <div className="bg-slate-600 text-white text-center font-bold text-lg py-4 tracking-widest">TEAM ONLY</div>
               <div className="flex-1 bg-white p-6 flex flex-col border-l border-slate-100">
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>1,000</p>
                 <div className="space-y-3 mt-4 flex-1">
@@ -317,7 +317,7 @@ export default function FreedomClassic() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
-              <Button className="bg-green-600 hover:bg-green-700 text-white font-bold px-12 py-5 text-lg rounded-full flex items-center gap-2 shadow-lg">
+              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-12 py-5 text-lg rounded-full flex items-center gap-2 shadow-lg">
                 <ExternalLink className="w-5 h-5" />
                 Register Now
               </Button>
@@ -334,7 +334,7 @@ export default function FreedomClassic() {
       {/* ── Add-on Sponsorships ── */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-3" style={{ color: '#2d7a2d' }}>Add-on Sponsorships</h2>
+          <h2 className="text-4xl font-bold text-center mb-3 text-navy">Add-on Sponsorships</h2>
           <p className="text-center text-slate-700 max-w-2xl mx-auto mb-10 text-sm leading-relaxed">
             Advertise your company's logo as the sole sponsor for any of the following add-ons. These can be added to a team sponsorship package above or purchased solo without a team. But hurry! Only one company per sponsorship.
           </p>
@@ -342,25 +342,25 @@ export default function FreedomClassic() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* $2,500 */}
             <div>
-              <p className="text-2xl font-bold mb-4" style={{ color: '#2d7a2d' }}><sup className="text-base">$</sup>2,500 each</p>
+              <p className="text-2xl font-bold mb-4 text-navy"><sup className="text-base">$</sup>2,500 each</p>
               <ul className="space-y-1">
                 {['Closest to the Pin Sponsor', 'Longest Drive Sponsor', 'Golf Cannon Sponsor'].map(l => <AddonItem key={l} label={l} />)}
               </ul>
             </div>
             {/* $2,000 */}
             <div>
-              <p className="text-2xl font-bold mb-4" style={{ color: '#2d7a2d' }}><sup className="text-base">$</sup>2,000 each</p>
+              <p className="text-2xl font-bold mb-4 text-navy"><sup className="text-base">$</sup>2,000 each</p>
               <ul className="space-y-1">
                 {['Registration Tent Sponsor', 'Hospitality Tent Sponsor', 'Golf Cart Sponsor', 'Driving Range Sponsor', 'Putting Green Sponsor', 'Golf Ball Sponsor'].map(l => <AddonItem key={l} label={l} />)}
               </ul>
             </div>
             {/* $500 & $250 */}
             <div>
-              <p className="text-2xl font-bold mb-4" style={{ color: '#2d7a2d' }}><sup className="text-base">$</sup>500 each</p>
+              <p className="text-2xl font-bold mb-4 text-navy"><sup className="text-base">$</sup>500 each</p>
               <ul className="space-y-1 mb-6">
                 {['Testimony Tee-Box Sponsor'].map(l => <AddonItem key={l} label={l} />)}
               </ul>
-              <p className="text-2xl font-bold mb-4" style={{ color: '#2d7a2d' }}><sup className="text-base">$</sup>250 each</p>
+              <p className="text-2xl font-bold mb-4 text-navy"><sup className="text-base">$</sup>250 each</p>
               <ul className="space-y-1">
                 {['Welcome Sign Sponsor'].map(l => <AddonItem key={l} label={l} />)}
               </ul>
@@ -369,7 +369,7 @@ export default function FreedomClassic() {
 
           <div className="flex flex-col items-center gap-4 mt-10">
             <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer" className="w-full max-w-sm">
-              <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-5 text-lg rounded-full flex items-center justify-center gap-2 shadow-lg">
+              <Button className="w-full bg-gold hover:bg-gold/90 text-navy font-bold py-5 text-lg rounded-full flex items-center justify-center gap-2 shadow-lg">
                 <ExternalLink className="w-5 h-5" />
                 Register Now
               </Button>
@@ -379,7 +379,7 @@ export default function FreedomClassic() {
                 📄 Download Brochure
               </Button>
             </a>
-            <p className="text-xl font-bold mt-2" style={{ color: '#2d7a2d' }}>Questions? Call (601) 720-3718</p>
+            <p className="text-xl font-bold mt-2 text-navy">Questions? Call (601) 720-3718</p>
           </div>
         </div>
       </section>
@@ -406,7 +406,7 @@ export default function FreedomClassic() {
               <Award className="w-7 h-7 text-gold" />
               <h2 className="text-3xl font-bold text-white">Live Leaderboard</h2>
             </div>
-            <p className="text-white mb-6">Follow the action in real time on tournament day.</p>
+            <p className="text-slate-100 mb-6">Follow the action in real time on tournament day.</p>
             <a href="https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/leaderboards" target="_blank" rel="noopener noreferrer">
               <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-4 text-lg mb-6">
                 <ExternalLink className="mr-2 w-5 h-5" />
@@ -430,13 +430,12 @@ export default function FreedomClassic() {
       {/* ── Mission Banner ── */}
       <section className="py-14 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4" style={{ color: '#1a3a52' }}>Play Golf. Change Lives.</h2>
+          <h2 className="text-3xl font-bold mb-4 text-navy">Play Golf. Change Lives.</h2>
           <p className="text-lg text-slate-700 leading-relaxed mb-8">
-            Every swing you take supports men and women finding freedom from life-controlling addiction.
-            100% of individual donations go directly to Mercy House's mission of faith-based recovery.
+            Every swing you take supports men and women finding freedom from addiction. 100% of individual donations go directly to Mercy House's faith-based recovery mission.
           </p>
           <a href="https://mercyhouseatc.com/donate-today" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-8 py-4 text-lg font-semibold">
+            <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-4 text-lg">
               Support the Mission
             </Button>
           </a>

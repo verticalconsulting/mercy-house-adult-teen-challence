@@ -197,7 +197,7 @@ export default function FreedomClassic() {
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
                 <MapPin className="w-5 h-5 text-navy" />
-                <p className="font-bold text-xl text-navy">Annandale Golf Club</p>
+                <p className="font-bold text-xl text-[#e6c94c]">Annandale Golf Club</p>
               </div>
               <p className="text-slate-800 font-medium">100 Annandale Golf Club Drive<br />Madison, MS 39110</p>
               <a href="https://maps.google.com/?q=100+Annandale+Golf+Club+Drive+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold text-navy hover:underline">
@@ -215,7 +215,7 @@ export default function FreedomClassic() {
               </a>
             </div>
             <div className="flex-1">
-              <p className="font-bold text-navy mb-2">Questions?</p>
+              <p className="font-bold mb-2 text-slate-600">Questions?</p>
               <a href="tel:6017203718" className="flex items-center gap-2 font-bold text-slate-800 hover:underline">
                 <Phone className="w-4 h-4" /> (601) 720-3718
               </a>

@@ -232,7 +232,7 @@ export default function FreedomClassic() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 rounded-2xl overflow-hidden shadow-xl border border-slate-200">
             {/* Platinum */}
             <div className="flex flex-col">
-              <div className="bg-navy text-white text-center font-bold text-lg py-4 tracking-widest">PLATINUM</div>
+              <div className="text-white text-center font-bold text-lg py-4 tracking-widest bg-[#fa7a1e]">PLATINUM</div>
               <div className="flex-1 bg-white p-6 flex flex-col">
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>5,000</p>
                 <div className="space-y-3 mt-4 flex-1">
@@ -253,7 +253,7 @@ export default function FreedomClassic() {
 
             {/* Gold */}
             <div className="flex flex-col">
-              <div className="text-navy text-center font-bold text-lg py-4 tracking-widest bg-[#e6bf4c]">GOLD</div>
+              <div className="text-navy text-center font-bold text-lg py-4 tracking-widest bg-[#e6c94c]">GOLD</div>
               <div className="flex-1 bg-white p-6 flex flex-col border-l border-slate-100">
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>2,500</p>
                 <div className="space-y-3 mt-4 flex-1">
@@ -274,7 +274,7 @@ export default function FreedomClassic() {
 
             {/* Silver */}
             <div className="flex flex-col">
-              <div className="text-white text-center font-bold text-lg py-4 tracking-widest bg-[hsl(var(--primary-foreground))]">SILVER</div>
+              <div className="text-white text-center font-bold text-lg py-4 tracking-widest bg-[#a8a8a8]">SILVER</div>
               <div className="flex-1 bg-white p-6 flex flex-col border-l border-slate-100">
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>1,500</p>
                 <div className="space-y-3 mt-4 flex-1">

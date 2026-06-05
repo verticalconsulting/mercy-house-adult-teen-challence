@@ -384,7 +384,7 @@ export default function FreedomClassic() {
       {/* ── Sponsors ── */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-slate-800 tracking-widest uppercase mb-10">Thanks To Our Sponsors</h2>
+          <h2 className="text-3xl font-bold text-center tracking-widest uppercase mb-10 text-[#3061b0]">THANKS TO OUR SPONSORS</h2>
           <div className="bg-white border border-slate-200 rounded-2xl shadow p-8">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-center justify-items-center">
               <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png" alt="Mac Haik Ford Jackson" className="h-16 w-auto object-contain" />

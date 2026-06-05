@@ -140,7 +140,7 @@ export default function FreedomClassic() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Schedule */}
             <div>
-              <p className="font-bold text-lg mb-3 text-navy">Monday, October 19, 2026</p>
+              <p className="font-bold text-lg mb-3 text-neutral-900">Monday, October 19, 2026</p>
               <div className="space-y-3 text-slate-700">
                 <div>
                   <p className="font-semibold">Morning Round</p>
@@ -174,7 +174,7 @@ export default function FreedomClassic() {
 
             {/* Mission */}
             <div>
-              <p className="text-xl font-bold mb-3 text-navy">Helping Those Who Need A Mulligan In Life.</p>
+              <p className="text-xl font-bold mb-3 text-neutral-900">Helping Those Who Need A Mulligan In Life.</p>
               <p className="text-slate-700 text-sm leading-relaxed mb-4">
                 By participating in the Golf Classic, you are supporting the Mercy House ministry and giving hope to men and women who are seeking freedom from addiction.
               </p>

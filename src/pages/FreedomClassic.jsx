@@ -7,16 +7,16 @@ import { Button } from '@/components/ui/button';
 const REGISTER_URL = 'https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament';
 const BROCHURE_URL = 'mailto:info@mercyhouseatc.com?subject=Freedom Classic Brochure Request';
 
-const Check = ({ included }) => included
-  ? <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-  : <XCircle className="w-4 h-4 text-slate-300 flex-shrink-0" />;
+const Check = ({ included }) => included ?
+<CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" /> :
+<XCircle className="w-4 h-4 text-slate-300 flex-shrink-0" />;
 
-const AddonItem = ({ label }) => (
-  <li className="flex items-start gap-2 text-slate-700 text-sm py-1">
+const AddonItem = ({ label }) =>
+<li className="flex items-start gap-2 text-slate-700 text-sm py-1">
     <Plus className="w-4 h-4 text-navy flex-shrink-0 mt-0.5" />
     {label}
-  </li>
-);
+  </li>;
+
 
 export default function FreedomClassic() {
   return (
@@ -31,8 +31,8 @@ export default function FreedomClassic() {
             src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/d84ade956_herogolg.png"
             alt=""
             aria-hidden="true"
-            className="w-full h-full object-cover object-center scale-105"
-          />
+            className="w-full h-full object-cover object-center scale-105" />
+          
           {/* Warm amber/gold wash over entire image */}
           <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, rgba(250,175,0,0.78) 0%, rgba(245,165,0,0.70) 50%, rgba(255,200,0,0.55) 75%, rgba(255,240,100,0.30) 100%)' }} />
           {/* Left-side dark gradient for text legibility */}
@@ -59,8 +59,8 @@ export default function FreedomClassic() {
               src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/8095691f4_11BlackSquareStacked.png"
               alt="Mercy House Adult & Teen Challenge"
               className="h-24 md:h-28 w-auto object-contain"
-              style={{ filter: 'drop-shadow(0 2px 8px rgba(255,255,255,0.6)) brightness(0) invert(1)' }}
-            />
+              style={{ filter: 'drop-shadow(0 2px 8px rgba(255,255,255,0.6)) brightness(0) invert(1)' }} />
+            
 
             {/* Divider */}
             <div className="w-12 h-1 rounded-full bg-white opacity-70 self-start hidden md:block" />
@@ -89,7 +89,7 @@ export default function FreedomClassic() {
                 </Button>
               </a>
               <a href="mailto:info@mercyhouseatc.com">
-                <Button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white text-white font-semibold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105">
+                <Button className="hover:bg-white/30 backdrop-blur-sm border-2 border-white text-white font-semibold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 bg-[hsl(var(--primary-foreground))]">
                   <Mail className="w-4 h-4" />
                   Sponsorship Inquiry
                 </Button>
@@ -106,8 +106,8 @@ export default function FreedomClassic() {
                 src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/d820a2e7b_presentedbymachaik.png"
                 alt="Mac Haik Ford Jackson"
                 className="h-16 md:h-20 w-auto object-contain"
-                style={{ filter: 'drop-shadow(0 1px 4px rgba(0,0,0,0.15))' }}
-              />
+                style={{ filter: 'drop-shadow(0 1px 4px rgba(0,0,0,0.15))' }} />
+              
             </div>
           </div>
 
@@ -162,12 +162,12 @@ export default function FreedomClassic() {
               <p className="text-3xl font-bold text-slate-800 mb-1"><sup className="text-xl">$</sup>1,000 per team</p>
               <p className="font-semibold text-slate-700 mb-3">What's Included:</p>
               <ul className="space-y-2">
-                {['4 Man Scramble at Annandale Golf Club', 'Delicious Lunch', 'High Quality Golf Polo', 'Several Chances to Win Prizes'].map(item => (
-                  <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                {['4 Man Scramble at Annandale Golf Club', 'Delicious Lunch', 'High Quality Golf Polo', 'Several Chances to Win Prizes'].map((item) =>
+                <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
                     {item}
                   </li>
-                ))}
+                )}
               </ul>
             </div>
 
@@ -237,16 +237,16 @@ export default function FreedomClassic() {
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>5,000</p>
                 <div className="space-y-3 mt-4 flex-1">
                   {[
-                    [true, '8 Golfers'],
-                    [true, 'Website logo'],
-                    [true, 'Testimony tee-box sign logo'],
-                    [true, 'Branded feather banner'],
-                    [true, 'Embroidered sleeve logo (limited availability)'],
-                  ].map(([inc, label]) => (
-                    <div key={label} className="flex items-start gap-2 text-sm text-slate-700">
+                  [true, '8 Golfers'],
+                  [true, 'Website logo'],
+                  [true, 'Testimony tee-box sign logo'],
+                  [true, 'Branded feather banner'],
+                  [true, 'Embroidered sleeve logo (limited availability)']].
+                  map(([inc, label]) =>
+                  <div key={label} className="flex items-start gap-2 text-sm text-slate-700">
                       <Check included={inc} />{label}
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>
@@ -258,16 +258,16 @@ export default function FreedomClassic() {
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>2,500</p>
                 <div className="space-y-3 mt-4 flex-1">
                   {[
-                    [true, '4 Golfers'],
-                    [true, 'Website logo'],
-                    [true, 'Testimony tee-box sign logo'],
-                    [true, 'Branded feather banner'],
-                    [false, 'Embroidered sleeve logo'],
-                  ].map(([inc, label]) => (
-                    <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-500 line-through'}`}>
+                  [true, '4 Golfers'],
+                  [true, 'Website logo'],
+                  [true, 'Testimony tee-box sign logo'],
+                  [true, 'Branded feather banner'],
+                  [false, 'Embroidered sleeve logo']].
+                  map(([inc, label]) =>
+                  <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-500 line-through'}`}>
                       <Check included={inc} />{label}
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>
@@ -279,16 +279,16 @@ export default function FreedomClassic() {
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>1,500</p>
                 <div className="space-y-3 mt-4 flex-1">
                   {[
-                    [true, '4 Golfers'],
-                    [true, 'Website logo'],
-                    [true, 'Testimony tee-box sign logo'],
-                    [false, 'Branded feather banner'],
-                    [false, 'Embroidered sleeve logo'],
-                  ].map(([inc, label]) => (
-                    <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-500 line-through'}`}>
+                  [true, '4 Golfers'],
+                  [true, 'Website logo'],
+                  [true, 'Testimony tee-box sign logo'],
+                  [false, 'Branded feather banner'],
+                  [false, 'Embroidered sleeve logo']].
+                  map(([inc, label]) =>
+                  <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-500 line-through'}`}>
                       <Check included={inc} />{label}
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>
@@ -300,16 +300,16 @@ export default function FreedomClassic() {
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>1,000</p>
                 <div className="space-y-3 mt-4 flex-1">
                   {[
-                    [true, '4 Golfers'],
-                    [false, 'Website logo'],
-                    [false, 'Testimony tee-box sign logo'],
-                    [false, 'Branded feather banner'],
-                    [false, 'Embroidered sleeve logo'],
-                  ].map(([inc, label]) => (
-                    <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-500 line-through'}`}>
+                  [true, '4 Golfers'],
+                  [false, 'Website logo'],
+                  [false, 'Testimony tee-box sign logo'],
+                  [false, 'Branded feather banner'],
+                  [false, 'Embroidered sleeve logo']].
+                  map(([inc, label]) =>
+                  <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-500 line-through'}`}>
                       <Check included={inc} />{label}
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>
@@ -344,25 +344,25 @@ export default function FreedomClassic() {
             <div>
               <p className="text-2xl font-bold mb-4 text-navy"><sup className="text-base">$</sup>2,500 each</p>
               <ul className="space-y-1">
-                {['Closest to the Pin Sponsor', 'Longest Drive Sponsor', 'Golf Cannon Sponsor'].map(l => <AddonItem key={l} label={l} />)}
+                {['Closest to the Pin Sponsor', 'Longest Drive Sponsor', 'Golf Cannon Sponsor'].map((l) => <AddonItem key={l} label={l} />)}
               </ul>
             </div>
             {/* $2,000 */}
             <div>
               <p className="text-2xl font-bold mb-4 text-navy"><sup className="text-base">$</sup>2,000 each</p>
               <ul className="space-y-1">
-                {['Registration Tent Sponsor', 'Hospitality Tent Sponsor', 'Golf Cart Sponsor', 'Driving Range Sponsor', 'Putting Green Sponsor', 'Golf Ball Sponsor'].map(l => <AddonItem key={l} label={l} />)}
+                {['Registration Tent Sponsor', 'Hospitality Tent Sponsor', 'Golf Cart Sponsor', 'Driving Range Sponsor', 'Putting Green Sponsor', 'Golf Ball Sponsor'].map((l) => <AddonItem key={l} label={l} />)}
               </ul>
             </div>
             {/* $500 & $250 */}
             <div>
               <p className="text-2xl font-bold mb-4 text-navy"><sup className="text-base">$</sup>500 each</p>
               <ul className="space-y-1 mb-6">
-                {['Testimony Tee-Box Sponsor'].map(l => <AddonItem key={l} label={l} />)}
+                {['Testimony Tee-Box Sponsor'].map((l) => <AddonItem key={l} label={l} />)}
               </ul>
               <p className="text-2xl font-bold mb-4 text-navy"><sup className="text-base">$</sup>250 each</p>
               <ul className="space-y-1">
-                {['Welcome Sign Sponsor'].map(l => <AddonItem key={l} label={l} />)}
+                {['Welcome Sign Sponsor'].map((l) => <AddonItem key={l} label={l} />)}
               </ul>
             </div>
           </div>
@@ -420,8 +420,8 @@ export default function FreedomClassic() {
               title="Freedom Classic Live Leaderboard"
               className="w-full"
               style={{ height: '600px', border: 'none' }}
-              allowFullScreen
-            />
+              allowFullScreen />
+            
           </div>
           <p className="text-center text-slate-300 text-xs mt-3">If the leaderboard doesn't load above, use the "Open Live Scores" button.</p>
         </div>
@@ -442,6 +442,6 @@ export default function FreedomClassic() {
         </div>
       </section>
 
-    </div>
-  );
+    </div>);
+
 }

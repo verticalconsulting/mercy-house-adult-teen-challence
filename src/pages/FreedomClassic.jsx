@@ -341,7 +341,7 @@ export default function FreedomClassic() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* $2,500 */}
             <div>
-              <p className="text-2xl font-bold mb-4 text-navy"><sup className="text-base">$</sup>2,500 each</p>
+              <p className="text-2xl font-bold mb-4 text-[#ff2500]">$2,500 each</p>
               <ul className="space-y-1">
                 {['Closest to the Pin Sponsor', 'Longest Drive Sponsor', 'Golf Cannon Sponsor'].map((l) => <AddonItem key={l} label={l} />)}
               </ul>

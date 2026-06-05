@@ -198,8 +198,8 @@ export default function FreedomClassic() {
                 <MapPin className="w-5 h-5 text-navy" />
                 <p className="font-bold text-xl text-navy">Annandale Golf Club</p>
               </div>
-              <p className="text-slate-600">100 Annandale Golf Club Drive<br />Madison, MS 39110</p>
-              <a href="https://maps.google.com/?q=100+Annandale+Golf+Club+Drive+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-medium hover:underline" style={{ color: '#2d7a2d' }}>
+              <p className="text-slate-800 font-medium">100 Annandale Golf Club Drive<br />Madison, MS 39110</p>
+              <a href="https://maps.google.com/?q=100+Annandale+Golf+Club+Drive+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline" style={{ color: '#2d7a2d' }}>
                 Get Directions →
               </a>
             </div>
@@ -208,18 +208,18 @@ export default function FreedomClassic() {
                 <MapPin className="w-5 h-5 text-navy" />
                 <p className="font-bold text-xl text-navy">Reunion Golf & Country Club</p>
               </div>
-              <p className="text-slate-600">150 Greensward Dr<br />Madison, MS 39110</p>
-              <a href="https://maps.google.com/?q=150+Greensward+Dr+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-medium hover:underline" style={{ color: '#2d7a2d' }}>
+              <p className="text-slate-800 font-medium">150 Greensward Dr<br />Madison, MS 39110</p>
+              <a href="https://maps.google.com/?q=150+Greensward+Dr+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline" style={{ color: '#2d7a2d' }}>
                 Get Directions →
               </a>
             </div>
             <div className="flex-1">
               <p className="font-bold text-navy mb-2">Questions?</p>
-              <a href="tel:6017203718" className="flex items-center gap-2 font-semibold text-slate-700 hover:underline">
+              <a href="tel:6017203718" className="flex items-center gap-2 font-bold text-slate-800 hover:underline">
                 <Phone className="w-4 h-4" /> (601) 720-3718
               </a>
-              <a href="mailto:info@mercyhouseatc.com" className="block mt-1 text-sm text-navy hover:underline">info@mercyhouseatc.com</a>
-              <a href="mailto:khardin@mercyhouseatc.com" className="block mt-1 text-sm text-navy hover:underline">khardin@mercyhouseatc.com</a>
+              <a href="mailto:info@mercyhouseatc.com" className="block mt-1 text-sm font-semibold text-navy hover:underline">info@mercyhouseatc.com</a>
+              <a href="mailto:khardin@mercyhouseatc.com" className="block mt-1 text-sm font-semibold text-navy hover:underline">khardin@mercyhouseatc.com</a>
             </div>
           </div>
         </div>

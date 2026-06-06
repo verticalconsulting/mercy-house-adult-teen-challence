@@ -56,11 +56,10 @@ export default function FreedomClassic() {
           {/* ── LEFT: Mercy House logo + headline + CTAs ── */}
           <div className="flex flex-col items-center md:items-start gap-5 flex-1">
             {/* Mercy House logo — white drop-shadow so it reads on gold */}
-            <img
-              src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/8095691f4_11BlackSquareStacked.png"
-              alt="Mercy House Adult & Teen Challenge"
-              className="h-24 md:h-28 w-auto object-contain"
-              style={{ filter: 'drop-shadow(0 2px 8px rgba(255,255,255,0.6)) brightness(0) invert(1)' }} />
+             <img
+               src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/33eb41083_mhgolflogo.png"
+               alt="Mercy House Adult & Teen Challenge"
+               className="h-24 md:h-28 w-auto object-contain" />
             
 
             {/* Divider */}

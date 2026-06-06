@@ -105,7 +105,7 @@ export default function FreedomClassic() {
               <img
                 src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/d820a2e7b_presentedbymachaik.png"
                 alt="Mac Haik Ford Jackson"
-                className="h-16 md:h-20 w-auto object-contain"
+                className="h-24 md:h-32 w-auto object-contain"
                 style={{ filter: 'drop-shadow(0 1px 4px rgba(0,0,0,0.15))' }} />
               
             </div>

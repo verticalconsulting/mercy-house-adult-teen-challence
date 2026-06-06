@@ -57,7 +57,7 @@ export default function FreedomClassic() {
           <div className="flex flex-col items-center md:items-start gap-5 flex-1">
             {/* Mercy House logo — white drop-shadow so it reads on gold */}
              <img
-               src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/33eb41083_mhgolflogo.png"
+               src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/6e0ede50b_mhgolf2026.png"
                alt="Mercy House Adult & Teen Challenge"
                className="h-24 md:h-28 w-auto object-contain" />
             

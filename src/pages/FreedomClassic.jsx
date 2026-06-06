@@ -57,9 +57,9 @@ export default function FreedomClassic() {
           <div className="flex flex-col items-center md:items-start gap-5 flex-1">
             {/* Mercy House logo — white drop-shadow so it reads on gold */}
              <img
-               src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/fa14d3c30_mercy_house_freedom_golf_classic_transparent.png"
-               alt="Mercy House Adult & Teen Challenge"
-               className="h-36 md:h-48 w-auto object-contain" />
+              src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/fa14d3c30_mercy_house_freedom_golf_classic_transparent.png"
+              alt="Mercy House Adult & Teen Challenge"
+              className="h-36 md:h-48 w-auto object-contain" />
             
 
             {/* Divider */}
@@ -67,7 +67,7 @@ export default function FreedomClassic() {
 
             {/* Headline block */}
             <div className="text-center md:text-left">
-              <p className="text-white/90 font-semibold text-sm uppercase tracking-widest mb-1">Benefiting Mercy House Ministry</p>
+              <p className="text-white/90 font-semibold text-sm uppercase tracking-widest mb-1">BENEFITING MERCY HOUSE </p>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[1.05] tracking-tight drop-shadow-lg">
                 12th Annual<br />
                 <span className="text-yellow-200">Freedom Classic</span>

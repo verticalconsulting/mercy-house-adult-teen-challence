@@ -174,8 +174,8 @@ export default function FreedomClassic() {
             {/* Mission */}
             <div>
               <p className="text-xl font-bold mb-3 text-[#01a24f]">Helping Those Who Need A Mulligan In Life.</p>
-              <p className="text-slate-700 text-sm leading-relaxed mb-4">
-                By participating in the Golf Classic, you are supporting the Mercy House ministry and giving hope to men and women who are seeking freedom from addiction.
+              <p className="text-slate-700 text-sm leading-relaxed mb-4">By participating in the Golf Classic, you are supporting the Mercy House ministry and giving hope to men and women who are seeking freedom from life controlling issues.
+
               </p>
               <p className="text-slate-700 font-semibold text-sm mb-4">Help us change lives by reaching our goal of $125,000.</p>
               <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">

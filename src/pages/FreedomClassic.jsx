@@ -22,7 +22,7 @@ const AddonItem = ({ label }) =>
 
 export default function FreedomClassic() {
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-slate-100">
 
       {/* ── Hero ── */}
       <section className="relative overflow-hidden" style={{ minHeight: '62vh' }}>
@@ -132,7 +132,7 @@ export default function FreedomClassic() {
       </section>
 
       {/* ── 2026 Golf Classic Overview ── */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-slate-100">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-slate-800">2026 Golf Classic</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -225,7 +225,7 @@ export default function FreedomClassic() {
       </section>
 
       {/* ── Sponsorship Levels ── */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-slate-100">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-3 text-slate-800">Become a Sponsor!</h2>
           <p className="text-center text-slate-600 mb-10 text-base">Help us with our $200K goal to open our new Women's Campus!</p>
@@ -361,7 +361,7 @@ export default function FreedomClassic() {
       </section>
 
       {/* ── Sponsors ── */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-slate-100">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-slate-800 tracking-widest uppercase mb-10">Thanks To Our Sponsors</h2>
           <div className="bg-white border border-slate-200 rounded-2xl shadow p-8">
@@ -402,7 +402,7 @@ export default function FreedomClassic() {
       </section>
 
       {/* ── Mission Banner ── */}
-      <section className="py-14 bg-white">
+      <section className="py-14 bg-slate-100">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4 text-[#426a06]">Play Golf. Change Lives.</h2>
           <p className="text-lg text-slate-700 leading-relaxed mb-8">

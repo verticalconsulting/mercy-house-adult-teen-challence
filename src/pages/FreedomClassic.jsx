@@ -114,19 +114,30 @@ export default function FreedomClassic() {
       </section>
 
       {/* ── Overview Strip ── */}
-      <section className="bg-navy py-5">
-        <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-          <div className="flex items-center justify-center gap-2 font-semibold text-base rounded bg-slate-800 text-[#edeff2]">
-            <Calendar className="w-5 h-5 text-gold" />
-            Monday, October 19, 2026
+      <section className="bg-navy py-12">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4">
+          <div className="flex items-center gap-4 text-white text-center md:text-left flex-1">
+            <Calendar className="w-10 h-10 md:w-12 md:h-12 text-gold flex-shrink-0" />
+            <div>
+              <p className="text-xs uppercase tracking-widest text-gold font-bold">Date</p>
+              <p className="text-2xl md:text-3xl font-black">Monday, October 19, 2026</p>
+            </div>
           </div>
-          <div className="flex items-center justify-center gap-2 font-semibold text-base bg-slate-800 text-[#f5f7fa]">
-            <Flag className="w-5 h-5 text-gold" />
-            Four Person Scramble
+          <div className="hidden md:block w-px h-16 bg-white/20" />
+          <div className="flex items-center gap-4 text-white text-center md:text-left flex-1">
+            <Flag className="w-10 h-10 md:w-12 md:h-12 text-gold flex-shrink-0" />
+            <div>
+              <p className="text-xs uppercase tracking-widest text-gold font-bold">Format</p>
+              <p className="text-2xl md:text-3xl font-black">Four Person Scramble</p>
+            </div>
           </div>
-          <div className="flex items-center justify-center gap-2 font-semibold text-base bg-slate-800 text-[#f4f7fb]">
-            <MapPin className="w-5 h-5 text-gold" />
-            Annandale &amp; Reunion Golf Club · Madison, MS
+          <div className="hidden md:block w-px h-16 bg-white/20" />
+          <div className="flex items-center gap-4 text-white text-center md:text-left flex-1">
+            <MapPin className="w-10 h-10 md:w-12 md:h-12 text-gold flex-shrink-0" />
+            <div>
+              <p className="text-xs uppercase tracking-widest text-gold font-bold">Location</p>
+              <p className="text-2xl md:text-3xl font-black">Annandale &amp; Reunion</p>
+            </div>
           </div>
         </div>
       </section>

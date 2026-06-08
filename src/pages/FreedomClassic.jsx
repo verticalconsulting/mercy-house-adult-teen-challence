@@ -149,7 +149,7 @@ export default function FreedomClassic() {
                   <p className="text-slate-600 text-sm">12:00 PM</p>
                 </div>
               </div>
-              <p className="text-slate-600 text-xs mt-4 italic">One round per course. Course selection is first come, first served.</p>
+              <p className="text-xs mt-4 italic text-[#ff2a00]">One round per course. Course selection is first come, first served.</p>
             </div>
 
             {/* Cost & Includes */}

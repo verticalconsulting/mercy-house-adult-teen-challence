@@ -116,7 +116,7 @@ export default function FreedomClassic() {
       {/* ── Overview Strip ── */}
       <section className="bg-navy py-5">
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-          <div className="flex items-center justify-center gap-2 font-semibold text-base text-slate-800 rounded bg-[#1b6f1c]">
+          <div className="flex items-center justify-center gap-2 font-semibold text-base rounded bg-slate-800 text-[#edeff2]">
             <Calendar className="w-5 h-5 text-gold" />
             Monday, October 19, 2026
           </div>

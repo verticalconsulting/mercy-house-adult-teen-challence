@@ -55,10 +55,10 @@ export default function FreedomClassic() {
 
           {/* ── LEFT: Mercy House logo + headline + CTAs ── */}
           <div className="flex flex-col items-center md:items-start gap-5 flex-1">
-            {/* Mercy House logo — white drop-shadow so it reads on gold */}
+            {/* Freedom Golf Classic logo */}
              <img
               src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/fa14d3c30_mercy_house_freedom_golf_classic_transparent.png"
-              alt="Mercy House Adult & Teen Challenge"
+              alt="Mercy House Freedom Golf Classic"
               className="h-36 md:h-48 w-auto object-contain" />
             
 
@@ -67,7 +67,7 @@ export default function FreedomClassic() {
 
             {/* Headline block */}
             <div className="text-center md:text-left">
-              <p className="text-white/90 font-semibold text-sm uppercase tracking-widest mb-1">BENEFITING MERCY HOUSE </p>
+              <p className="text-white/90 font-semibold text-sm uppercase tracking-widest mb-1">BENEFITING MERCY HOUSE</p>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[1.05] tracking-tight drop-shadow-lg">
                 12th Annual<br />
                 <span className="text-yellow-200">Freedom Classic</span>
@@ -76,7 +76,7 @@ export default function FreedomClassic() {
               <div className="flex flex-col sm:flex-row gap-1 mt-3 text-white/80 font-medium text-sm md:text-base">
                 <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4 text-yellow-300" /> Monday, October 19, 2026</span>
                 <span className="hidden sm:inline text-white/50">·</span>
-                <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-yellow-300" /> Annandale Golf Club, Madison, MS</span>
+                <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-yellow-300" /> Madison, MS</span>
               </div>
             </div>
 
@@ -100,14 +100,12 @@ export default function FreedomClassic() {
           {/* ── RIGHT: Presented by ── */}
           <div className="flex flex-col items-center justify-center gap-3 md:min-w-[220px] md:pl-8 md:border-l md:border-white/25">
             <p className="text-white/75 font-semibold text-xs uppercase tracking-[0.2em]">Presented by</p>
-            {/* White pill backdrop ensures the logo is readable on the golden bg without a checkerboard */}
             <div className="rounded-2xl px-5 py-3" style={{ background: 'rgba(255,255,255,0.18)', backdropFilter: 'blur(8px)' }}>
               <img
                 src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/d820a2e7b_presentedbymachaik.png"
                 alt="Mac Haik Ford Jackson"
                 className="h-24 md:h-32 w-auto object-contain"
                 style={{ filter: 'drop-shadow(0 1px 4px rgba(0,0,0,0.15))' }} />
-              
             </div>
           </div>
 
@@ -127,7 +125,7 @@ export default function FreedomClassic() {
           </div>
           <div className="flex items-center justify-center gap-2 text-white font-semibold text-base">
             <MapPin className="w-5 h-5 text-gold" />
-            Annandale Golf Club · Madison, MS
+            Annandale &amp; Reunion Golf Club · Madison, MS
           </div>
         </div>
       </section>
@@ -135,26 +133,22 @@ export default function FreedomClassic() {
       {/* ── 2026 Golf Classic Overview ── */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-[hsl(var(--popover))]">2026 Golf Classic</h2>
+          <h2 className="text-4xl font-bold text-center mb-12 text-slate-800">2026 Golf Classic</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Schedule */}
             <div>
               <p className="font-bold text-lg mb-3 text-neutral-900">Monday, October 19, 2026</p>
               <div className="space-y-3 text-slate-700">
                 <div>
-                  <p className="font-semibold">Morning Round</p>
-                  <p className="text-slate-600 text-sm">8:00 AM (breakfast included)</p>
-                  </div>
-                  <div>
                   <p className="font-semibold">Lunch</p>
-                  <p className="text-slate-600 text-sm">12:30 PM</p>
-                  </div>
-                  <div>
-                  <p className="font-semibold">Afternoon Round</p>
-                  <p className="text-slate-600 text-sm">1:30 PM</p>
+                  <p className="text-slate-600 text-sm">11:00 AM</p>
+                </div>
+                <div>
+                  <p className="font-semibold">Tee Time</p>
+                  <p className="text-slate-600 text-sm">12:00 PM</p>
                 </div>
               </div>
-              <p className="text-slate-600 text-xs mt-4 italic">Tee-off preference is given on a first-come, first-served basis after payment.</p>
+              <p className="text-slate-600 text-xs mt-4 italic">One round per course. Course selection is first come, first served.</p>
             </div>
 
             {/* Cost & Includes */}
@@ -162,8 +156,13 @@ export default function FreedomClassic() {
               <p className="text-3xl font-bold text-slate-800 mb-1"><sup className="text-xl">$</sup>1,000 per team</p>
               <p className="font-semibold text-slate-700 mb-3">What's Included:</p>
               <ul className="space-y-2">
-                {['4 Man Scramble at Annandale Golf Club', 'Delicious Lunch', 'High Quality Golf Polo', 'Several Chances to Win Prizes'].map((item) =>
-                <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                {[
+                  '4 Man Scramble at either Reunion Golf & Country Club or Annandale Golf Club',
+                  'Delicious Lunch',
+                  'Golf Swag',
+                  'Several Chances to Win Prizes'
+                ].map((item) =>
+                  <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
                     {item}
                   </li>
@@ -174,8 +173,8 @@ export default function FreedomClassic() {
             {/* Mission */}
             <div>
               <p className="text-xl font-bold mb-3 text-[#01a24f]">Helping Those Who Need A Mulligan In Life.</p>
-              <p className="text-slate-700 text-sm leading-relaxed mb-4">By participating in the Golf Classic, you are supporting the Mercy House ministry and giving hope to men and women who are seeking freedom from life controlling issues.
-
+              <p className="text-slate-700 text-sm leading-relaxed mb-4">
+                By participating in the Golf Classic, you are supporting the Mercy House ministry and giving hope to men and women who are seeking freedom from life controlling issues.
               </p>
               <p className="text-slate-700 font-semibold text-sm mb-4">Help us change lives by reaching our goal of $200,000.</p>
               <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
@@ -199,27 +198,26 @@ export default function FreedomClassic() {
                 <p className="font-bold text-xl text-slate-800">Annandale Golf Club</p>
               </div>
               <p className="text-slate-800 font-medium">100 Annandale Golf Club Drive<br />Madison, MS 39110</p>
-              <a href="https://maps.google.com/?q=100+Annandale+Golf+Club+Drive+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline text-[#1e293a]">Get Directions →
-
-              </a>
+              <a href="https://maps.google.com/?q=100+Annandale+Golf+Club+Drive+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline text-[#1e293a]">Get Directions →</a>
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
                 <MapPin className="w-5 h-5 text-navy" />
-                <p className="font-bold text-xl text-[hsl(var(--background))]">Reunion Golf & Country Club</p>
+                <p className="font-bold text-xl text-slate-800">Reunion Golf &amp; Country Club</p>
               </div>
               <p className="text-slate-800 font-medium">150 Greensward Dr<br />Madison, MS 39110</p>
-              <a href="https://maps.google.com/?q=150+Greensward+Dr+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline text-[#1e293a]">Get Directions →
-
-              </a>
+              <a href="https://maps.google.com/?q=150+Greensward+Dr+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline text-[#1e293a]">Get Directions →</a>
             </div>
             <div className="flex-1">
-              <p className="font-bold mb-2 text-slate-800 text-xl text-left">Questions?</p>
-              <a href="tel:6017203718" className="flex items-center gap-2 font-bold text-slate-800 hover:underline">
-                <Phone className="w-4 h-4" /> (601) 720-3718
+              <p className="font-bold mb-3 text-slate-800 text-xl">Questions?</p>
+              <a href="tel:6015869870" className="flex items-center gap-2 font-bold text-slate-800 hover:underline mb-1">
+                <Phone className="w-4 h-4" /> (601) 586-9870
               </a>
-              <a href="mailto:info@mercyhouseatc.com" className="block mt-1 text-sm font-semibold hover:underline text-[hsl(var(--background))]">info@mercyhouseatc.com</a>
-              <a href="mailto:khardin@mercyhouseatc.com" className="block mt-1 text-sm font-semibold hover:underline text-[hsl(var(--background))]">khardin@mercyhouseatc.com</a>
+              <a href="tel:6012138536" className="flex items-center gap-2 font-bold text-slate-800 hover:underline mb-2">
+                <Phone className="w-4 h-4" /> (601) 213-8536
+              </a>
+              <a href="mailto:info@mercyhouseatc.com" className="block text-sm font-semibold hover:underline text-navy">info@mercyhouseatc.com</a>
+              <a href="mailto:mmilliman@mercyhouseatc.com" className="block mt-1 text-sm font-semibold hover:underline text-navy">mmilliman@mercyhouseatc.com</a>
             </div>
           </div>
         </div>
@@ -228,11 +226,11 @@ export default function FreedomClassic() {
       {/* ── Team Sponsorships ── */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-10 text-[hsl(var(--background))]">Team Sponsorships</h2>
+          <h2 className="text-4xl font-bold text-center mb-10 text-slate-800">Team Sponsorships</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 rounded-2xl overflow-hidden shadow-xl border border-slate-200">
             {/* Platinum */}
             <div className="flex flex-col">
-              <div className="text-center font-bold text-lg py-4 tracking-widest bg-[#f0f0f0] text-[hsl(var(--background))]">PLATINUM</div>
+              <div className="text-center font-bold text-lg py-4 tracking-widest bg-[#f0f0f0] text-slate-700">PLATINUM</div>
               <div className="flex-1 bg-white p-6 flex flex-col">
                 <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>5,000</p>
                 <div className="space-y-3 mt-4 flex-1">
@@ -332,7 +330,7 @@ export default function FreedomClassic() {
       {/* ── Add-on Sponsorships ── */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-3 text-[hsl(var(--background))]">Add-on Sponsorships</h2>
+          <h2 className="text-4xl font-bold text-center mb-3 text-slate-800">Add-on Sponsorships</h2>
           <p className="text-center text-slate-700 max-w-2xl mx-auto mb-10 text-sm leading-relaxed">
             Advertise your company's logo as the sole sponsor for any of the following add-ons. These can be added to a team sponsorship package above or purchased solo without a team. But hurry! Only one company per sponsorship.
           </p>
@@ -375,7 +373,10 @@ export default function FreedomClassic() {
             <Button variant="outline" onClick={() => toast.info('Brochure coming soon!')} className="w-full max-w-sm border-2 border-slate-600 hover:bg-slate-100 py-5 text-lg rounded-full font-semibold text-[hsl(var(--foreground))]">
               📄 Download Brochure
             </Button>
-            <p className="text-xl font-bold mt-2 text-navy">Questions? Call (601) 720-3718</p>
+            <div className="mt-2 text-center">
+              <p className="text-xl font-bold text-navy mb-1">Questions?</p>
+              <p className="text-slate-700 font-semibold">(601) 586-9870 &nbsp;|&nbsp; (601) 213-8536</p>
+            </div>
           </div>
         </div>
       </section>
@@ -387,9 +388,8 @@ export default function FreedomClassic() {
           <div className="bg-white border border-slate-200 rounded-2xl shadow p-8">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-center justify-items-center">
               <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png" alt="Mac Haik Ford Jackson" className="h-16 w-auto object-contain" />
-              {/* Placeholder slots for future sponsors */}
             </div>
-            <p className="text-center text-slate-600 text-sm mt-6 italic">More sponsors to be announced — <a href="mailto:khardin@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship" className="underline hover:text-navy">contact us to become a sponsor</a>.</p>
+            <p className="text-center text-slate-600 text-sm mt-6 italic">More sponsors to be announced — <a href="mailto:mmilliman@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship" className="underline hover:text-navy">contact us to become a sponsor</a>.</p>
           </div>
         </div>
       </section>
@@ -397,14 +397,14 @@ export default function FreedomClassic() {
       {/* ── Live Leaderboard ── */}
       <section className="py-16 bg-navy">
         <div className="max-w-5xl mx-auto px-4">
-          <div className="text-center mb-8 bg-[hsl(var(--destructive-foreground))]">
+          <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-3">
               <Award className="w-7 h-7 text-gold" />
-              <h2 className="text-3xl font-bold text-[hsl(var(--background))]">Live Leaderboard</h2>
+              <h2 className="text-3xl font-bold text-white">Live Leaderboard</h2>
             </div>
-            <p className="mb-6 text-[hsl(var(--background))]">Follow the action in real time on tournament day.</p>
+            <p className="mb-6 text-slate-300">Follow the action in real time on tournament day.</p>
             <a href="https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/leaderboards" target="_blank" rel="noopener noreferrer">
-              <Button className="hover:bg-gold/90 text-navy font-bold px-8 py-4 text-lg mb-6 bg-[hsl(var(--background))]">
+              <Button className="hover:bg-gold/90 text-navy font-bold px-8 py-4 text-lg mb-6 bg-white">
                 <ExternalLink className="mr-2 w-5 h-5" />
                 Open Live Scores
               </Button>
@@ -417,7 +417,6 @@ export default function FreedomClassic() {
               className="w-full"
               style={{ height: '600px', border: 'none' }}
               allowFullScreen />
-            
           </div>
           <p className="text-center text-slate-300 text-xs mt-3">If the leaderboard doesn't load above, use the "Open Live Scores" button.</p>
         </div>
@@ -438,6 +437,6 @@ export default function FreedomClassic() {
         </div>
       </section>
 
-    </div>);
-
+    </div>
+  );
 }

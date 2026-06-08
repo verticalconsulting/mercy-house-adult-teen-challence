@@ -177,7 +177,7 @@ export default function FreedomClassic() {
               <p className="text-slate-700 text-sm leading-relaxed mb-4">By participating in the Golf Classic, you are supporting the Mercy House ministry and giving hope to men and women who are seeking freedom from life controlling issues.
 
               </p>
-              <p className="text-slate-700 font-semibold text-sm mb-4">Help us change lives by reaching our goal of $125,000.</p>
+              <p className="text-slate-700 font-semibold text-sm mb-4">Help us change lives by reaching our goal of $200,000.</p>
               <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
                 <Button className="w-full hover:bg-gold/90 text-navy font-bold rounded-full flex items-center justify-center gap-2 py-5 bg-[hsl(var(--card))]">
                   <ExternalLink className="w-4 h-4" />

@@ -332,7 +332,7 @@ export default function FreedomClassic() {
                 <p className="text-slate-600 font-semibold mt-1">Single Hole</p>
               </div>
               <div className="text-center bg-white rounded-xl p-5 shadow-sm border border-slate-100">
-                <p className="text-3xl font-black text-navy">$300</p>
+                <p className="text-3xl font-black text-[#13761c]">$300</p>
                 <p className="text-slate-600 font-semibold mt-1">Dual Hole</p>
               </div>
             </div>
@@ -340,8 +340,8 @@ export default function FreedomClassic() {
 
           {/* Mail info + CTAs */}
           <div className="bg-navy text-white rounded-2xl p-6 mb-8 text-sm text-center">
-            <p className="font-semibold mb-1">Mail Entries to: MHATC Golf Tournament</p>
-            <p>PO Box 266, Georgetown, MS 39078</p>
+            <p className="font-semibold mb-1 text-slate-800">Mail Entries to: MHATC Golf Tournament</p>
+            <p className="text-slate-800">PO Box 266, Georgetown, MS 39078</p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

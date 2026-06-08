@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 
 const REGISTER_URL = 'https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament';
 const SPONSORSHIP_EMAIL = 'mailto:khardin@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship Inquiry';
+const BROCHURE_URL = 'https://media.base44.com/files/public/6983b4b00291b5dfd8507106/d382579c9_2026_golfflyer.pdf';
 
 const Check = ({ included }) => included ?
 <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" /> :
@@ -223,160 +224,138 @@ export default function FreedomClassic() {
         </div>
       </section>
 
-      {/* ── Team Sponsorships ── */}
+      {/* ── Sponsorship Levels ── */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-10 text-slate-800">Team Sponsorships</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+          <h2 className="text-4xl font-bold text-center mb-3 text-slate-800">Become a Sponsor!</h2>
+          <p className="text-center text-slate-600 mb-10 text-base">Help us with our $200K goal to open our new Women's Campus!</p>
+
+          {/* Top row: Platinum + Diamond */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Platinum */}
-            <div className="flex flex-col">
-              <div className="text-center font-bold text-lg py-4 tracking-widest bg-[#f0f0f0] text-slate-700">PLATINUM</div>
-              <div className="flex-1 bg-white p-6 flex flex-col">
-                <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>5,000</p>
-                <div className="space-y-3 mt-4 flex-1">
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 flex flex-col">
+              <div className="bg-[#b0b0b0] text-white text-center py-4">
+                <p className="font-black text-2xl tracking-widest">PLATINUM SPONSOR</p>
+                <p className="text-4xl font-black mt-1">$10,000</p>
+              </div>
+              <div className="bg-white p-6 flex-1">
+                <ul className="space-y-2">
                   {[
-                  [true, '8 Golfers'],
-                  [true, 'Website logo'],
-                  [true, 'Testimony tee-box sign logo'],
-                  [true, 'Branded feather banner'],
-                  [true, 'Embroidered sleeve logo (limited availability)']].
-                  map(([inc, label]) =>
-                  <div key={label} className="flex items-start gap-2 text-sm text-slate-700">
-                      <Check included={inc} />{label}
-                    </div>
-                  )}
-                </div>
+                    'Advertised on main banner, local radio stations (96.3 & 101.7), & golf towels',
+                    'Premier logo recognition on all golf carts',
+                    'Framed plaque and recognition at event',
+                    '3 golf teams & 8 hole sponsorships',
+                    '4 exclusive feather banners — 2 at each course',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />{item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 
-            {/* Gold */}
-            <div className="flex flex-col">
-              <div className="text-navy text-center font-bold text-lg py-4 tracking-widest bg-[#e6c94c]">GOLD</div>
-              <div className="flex-1 bg-white p-6 flex flex-col border-l border-slate-100">
-                <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>2,500</p>
-                <div className="space-y-3 mt-4 flex-1">
-                  {[
-                  [true, '4 Golfers'],
-                  [true, 'Website logo'],
-                  [true, 'Testimony tee-box sign logo'],
-                  [true, 'Branded feather banner'],
-                  [false, 'Embroidered sleeve logo']].
-                  map(([inc, label]) =>
-                  <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-500 line-through'}`}>
-                      <Check included={inc} />{label}
-                    </div>
-                  )}
-                </div>
+            {/* Diamond */}
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-blue-300 flex flex-col">
+              <div className="bg-[#1a3a6e] text-white text-center py-4">
+                <p className="font-black text-2xl tracking-widest">DIAMOND SPONSOR</p>
+                <p className="text-4xl font-black mt-1">$5,000</p>
               </div>
-            </div>
-
-            {/* Silver */}
-            <div className="flex flex-col">
-              <div className="text-white text-center font-bold text-lg py-4 tracking-widest bg-[#a8a8a8]">SILVER</div>
-              <div className="flex-1 bg-white p-6 flex flex-col border-l border-slate-100">
-                <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>1,500</p>
-                <div className="space-y-3 mt-4 flex-1">
+              <div className="bg-white p-6 flex-1">
+                <ul className="space-y-2">
                   {[
-                  [true, '4 Golfers'],
-                  [true, 'Website logo'],
-                  [true, 'Testimony tee-box sign logo'],
-                  [false, 'Branded feather banner'],
-                  [false, 'Embroidered sleeve logo']].
-                  map(([inc, label]) =>
-                  <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-500 line-through'}`}>
-                      <Check included={inc} />{label}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Team Only */}
-            <div className="flex flex-col">
-              <div className="bg-slate-600 text-white text-center font-bold text-lg py-4 tracking-widest">TEAM ONLY</div>
-              <div className="flex-1 bg-white p-6 flex flex-col border-l border-slate-100">
-                <p className="text-4xl font-black text-slate-800 mb-1"><sup className="text-xl font-bold">$</sup>1,000</p>
-                <div className="space-y-3 mt-4 flex-1">
-                  {[
-                  [true, '4 Golfers'],
-                  [false, 'Website logo'],
-                  [false, 'Testimony tee-box sign logo'],
-                  [false, 'Branded feather banner'],
-                  [false, 'Embroidered sleeve logo']].
-                  map(([inc, label]) =>
-                  <div key={label} className={`flex items-start gap-2 text-sm ${inc ? 'text-slate-700' : 'text-slate-500 line-through'}`}>
-                      <Check included={inc} />{label}
-                    </div>
-                  )}
-                </div>
+                    'Advertised on main banner, local radio stations (96.3 & 98.1), and golf towels',
+                    'Premier logo recognition on all golf carts',
+                    'Framed plaque and recognition at event',
+                    '2 golf teams & 4 hole sponsorships',
+                    '2 exclusive feather banners — 1 at each course',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />{item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          {/* Bottom row: Gold + Silver */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+            {/* Gold */}
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-yellow-300 flex flex-col">
+              <div className="bg-[#e6c94c] text-navy text-center py-4">
+                <p className="font-black text-2xl tracking-widest">GOLD SPONSOR</p>
+                <p className="text-4xl font-black mt-1">$3,000</p>
+              </div>
+              <div className="bg-white p-6 flex-1">
+                <ul className="space-y-2">
+                  {[
+                    'Advertised on main banner, golf towels distributed to participants, and social media',
+                    'Presentation of framed plaque recognition',
+                    '1 golf team & 2 hole sponsorships',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />{item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Silver */}
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 flex flex-col">
+              <div className="bg-[#a8a8a8] text-white text-center py-4">
+                <p className="font-black text-2xl tracking-widest">SILVER SPONSOR</p>
+                <p className="text-4xl font-black mt-1">$2,000</p>
+              </div>
+              <div className="bg-white p-6 flex-1">
+                <ul className="space-y-2">
+                  {[
+                    'Advertised on main banner',
+                    '1 golf team and 1 hole sponsorship',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />{item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Hole Sponsorships */}
+          <div className="bg-slate-50 rounded-2xl p-8 mb-8 border border-slate-200">
+            <h3 className="text-2xl font-bold text-slate-800 mb-4 text-center">Hole Sponsorships</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
+              <div className="text-center bg-white rounded-xl p-5 shadow-sm border border-slate-100">
+                <p className="text-3xl font-black text-navy">$150</p>
+                <p className="text-slate-600 font-semibold mt-1">Single Hole</p>
+              </div>
+              <div className="text-center bg-white rounded-xl p-5 shadow-sm border border-slate-100">
+                <p className="text-3xl font-black text-navy">$300</p>
+                <p className="text-slate-600 font-semibold mt-1">Dual Hole</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Mail info + CTAs */}
+          <div className="bg-navy text-white rounded-2xl p-6 mb-8 text-sm text-center">
+            <p className="font-semibold mb-1">Mail Entries to: MHATC Golf Tournament</p>
+            <p>PO Box 266, Georgetown, MS 39078</p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
               <Button className="hover:bg-gold/90 text-navy font-bold px-12 py-5 text-lg rounded-full flex items-center gap-2 shadow-lg bg-[hsl(var(--background))]">
                 <ExternalLink className="w-5 h-5" />
                 Register Now
               </Button>
             </a>
-            <Button variant="outline" onClick={() => toast.info('Brochure coming soon!')} className="border-2 border-slate-600 hover:bg-slate-100 px-12 py-5 text-lg rounded-full font-semibold text-[hsl(var(--foreground))]">
-              📄 Download Brochure
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Add-on Sponsorships ── */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-3 text-slate-800">Add-on Sponsorships</h2>
-          <p className="text-center text-slate-700 max-w-2xl mx-auto mb-10 text-sm leading-relaxed">
-            Advertise your company's logo as the sole sponsor for any of the following add-ons. These can be added to a team sponsorship package above or purchased solo without a team. But hurry! Only one company per sponsorship.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* $2,500 */}
-            <div>
-              <p className="text-2xl font-bold mb-4 text-[#ff2500]">$2,500 each</p>
-              <ul className="space-y-1">
-                {['Closest to the Pin Sponsor', 'Longest Drive Sponsor', 'Golf Cannon Sponsor'].map((l) => <AddonItem key={l} label={l} />)}
-              </ul>
-            </div>
-            {/* $2,000 */}
-            <div>
-              <p className="text-2xl font-bold mb-4 text-[#1a7c13]">$2,000 each</p>
-              <ul className="space-y-1">
-                {['Registration Tent Sponsor', 'Hospitality Tent Sponsor', 'Golf Cart Sponsor', 'Driving Range Sponsor', 'Putting Green Sponsor', 'Golf Ball Sponsor'].map((l) => <AddonItem key={l} label={l} />)}
-              </ul>
-            </div>
-            {/* $500 & $250 */}
-            <div>
-              <p className="text-2xl font-bold mb-4 text-[#001eff]">$500 each</p>
-              <ul className="space-y-1 mb-6">
-                {['Testimony Tee-Box Sponsor'].map((l) => <AddonItem key={l} label={l} />)}
-              </ul>
-              <p className="text-2xl font-bold mb-4 text-slate-800">$250 each</p>
-              <ul className="space-y-1">
-                {['Welcome Sign Sponsor'].map((l) => <AddonItem key={l} label={l} />)}
-              </ul>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center gap-4 mt-10">
-            <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer" className="w-full max-w-sm">
-              <Button className="w-full hover:bg-gold/90 font-bold py-5 text-lg rounded-full flex items-center justify-center gap-2 shadow-lg bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
-                <ExternalLink className="w-5 h-5" />
-                Register Now
+            <a href={BROCHURE_URL} target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" className="border-2 border-slate-600 hover:bg-slate-100 px-12 py-5 text-lg rounded-full font-semibold text-[hsl(var(--foreground))]">
+                📄 Download Brochure
               </Button>
             </a>
-            <Button variant="outline" onClick={() => toast.info('Brochure coming soon!')} className="w-full max-w-sm border-2 border-slate-600 hover:bg-slate-100 py-5 text-lg rounded-full font-semibold text-[hsl(var(--foreground))]">
-              📄 Download Brochure
-            </Button>
-            <div className="mt-2 text-center">
-              <p className="text-xl font-bold text-navy mb-1">Questions?</p>
-              <p className="text-slate-700 font-semibold">(601) 586-9870 &nbsp;|&nbsp; (601) 213-8536</p>
-            </div>
           </div>
         </div>
       </section>

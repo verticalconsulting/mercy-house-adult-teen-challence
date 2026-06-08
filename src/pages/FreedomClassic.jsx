@@ -124,7 +124,7 @@ export default function FreedomClassic() {
             <Flag className="w-5 h-5 text-gold" />
             Four Person Scramble
           </div>
-          <div className="flex items-center justify-center gap-2 font-semibold text-base text-slate-800">
+          <div className="flex items-center justify-center gap-2 font-semibold text-base bg-slate-800 text-[#f4f7fb]">
             <MapPin className="w-5 h-5 text-gold" />
             Annandale &amp; Reunion Golf Club · Madison, MS
           </div>

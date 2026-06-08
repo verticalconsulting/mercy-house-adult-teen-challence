@@ -133,10 +133,10 @@ export default function FreedomClassic() {
           </div>
           <div className="hidden md:block w-px h-16 bg-white/20" />
           <div className="flex items-center gap-4 text-white text-center md:text-left flex-1">
-            <MapPin className="w-10 h-10 md:w-12 md:h-12 text-gold flex-shrink-0" />
+            <MapPin className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 text-[#da1616]" />
             <div>
-              <p className="text-xs uppercase tracking-widest text-gold font-bold">Location</p>
-              <p className="text-2xl md:text-3xl font-black">Annandale &amp; Reunion</p>
+              <p className="text-xs uppercase tracking-widest font-bold text-slate-800">LOCATION</p>
+              <p className="text-2xl md:text-3xl font-black text-slate-800">Annandale & Reunion</p>
             </div>
           </div>
         </div>

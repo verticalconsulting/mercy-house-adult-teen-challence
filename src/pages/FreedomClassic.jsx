@@ -117,18 +117,18 @@ export default function FreedomClassic() {
       <section className="bg-navy py-12">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4">
           <div className="flex items-center gap-4 text-white text-center md:text-left flex-1">
-            <Calendar className="w-10 h-10 md:w-12 md:h-12 text-gold flex-shrink-0" />
+            <Calendar className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 text-[#dcc061]" />
             <div>
-              <p className="text-xs uppercase tracking-widest text-gold font-bold">Date</p>
-              <p className="text-2xl md:text-3xl font-black">Monday, October 19, 2026</p>
+              <p className="text-xs uppercase tracking-widest font-bold text-slate-800">DATE</p>
+              <p className="text-2xl md:text-3xl font-black text-slate-800">Monday, October 19, 2026</p>
             </div>
           </div>
           <div className="hidden md:block w-px h-16 bg-white/20" />
           <div className="flex items-center gap-4 text-white text-center md:text-left flex-1">
-            <Flag className="w-10 h-10 md:w-12 md:h-12 text-gold flex-shrink-0" />
+            <Flag className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 text-[#4dff00]" />
             <div>
               <p className="text-xs uppercase tracking-widest text-gold font-bold">Format</p>
-              <p className="text-2xl md:text-3xl font-black">Four Person Scramble</p>
+              <p className="text-2xl md:text-3xl font-black text-slate-800">Four Person Scramble</p>
             </div>
           </div>
           <div className="hidden md:block w-px h-16 bg-white/20" />

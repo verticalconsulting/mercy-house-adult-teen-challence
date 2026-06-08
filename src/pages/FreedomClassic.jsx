@@ -120,7 +120,7 @@ export default function FreedomClassic() {
             <Calendar className="w-5 h-5 text-gold" />
             Monday, October 19, 2026
           </div>
-          <div className="flex items-center justify-center gap-2 font-semibold text-base text-slate-800">
+          <div className="flex items-center justify-center gap-2 font-semibold text-base bg-slate-800 text-[#f5f7fa]">
             <Flag className="w-5 h-5 text-gold" />
             Four Person Scramble
           </div>

@@ -68,7 +68,7 @@ export default function FreedomClassic() {
 
             {/* Headline block */}
             <div className="text-center md:text-left">
-              <p className="text-white/90 font-semibold text-sm uppercase tracking-widest mb-1">BENEFITING MERCY HOUSE</p>
+              <p className="text-white/90 font-semibold text-sm uppercase tracking-widest mb-1">HELPING THOSE WHO NEED A MULLIGAN IN LIFE</p>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[1.05] tracking-tight drop-shadow-lg">
                 12th Annual<br />
                 <span className="text-yellow-200">Freedom Classic</span>
@@ -158,12 +158,12 @@ export default function FreedomClassic() {
               <p className="font-semibold text-slate-700 mb-3">What's Included:</p>
               <ul className="space-y-2">
                 {[
-                  '4 Man Scramble at either Reunion Golf & Country Club or Annandale Golf Club',
-                  'Delicious Lunch',
-                  'Golf Swag',
-                  'Several Chances to Win Prizes'
-                ].map((item) =>
-                  <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                '4 Man Scramble at either Reunion Golf & Country Club or Annandale Golf Club',
+                'Delicious Lunch',
+                'Golf Swag',
+                'Several Chances to Win Prizes'].
+                map((item) =>
+                <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
                     {item}
                   </li>
@@ -241,16 +241,16 @@ export default function FreedomClassic() {
               <div className="bg-white p-6 flex-1">
                 <ul className="space-y-2">
                   {[
-                    'Advertised on main banner, local radio stations (96.3 & 101.7), & golf towels',
-                    'Premier logo recognition on all golf carts',
-                    'Framed plaque and recognition at event',
-                    '3 golf teams & 8 hole sponsorships',
-                    '4 exclusive feather banners — 2 at each course',
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                  'Advertised on main banner, local radio stations (96.3 & 101.7), & golf towels',
+                  'Premier logo recognition on all golf carts',
+                  'Framed plaque and recognition at event',
+                  '3 golf teams & 8 hole sponsorships',
+                  '4 exclusive feather banners — 2 at each course'].
+                  map((item) =>
+                  <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />{item}
                     </li>
-                  ))}
+                  )}
                 </ul>
               </div>
             </div>
@@ -264,16 +264,16 @@ export default function FreedomClassic() {
               <div className="bg-white p-6 flex-1">
                 <ul className="space-y-2">
                   {[
-                    'Advertised on main banner, local radio stations (96.3 & 98.1), and golf towels',
-                    'Premier logo recognition on all golf carts',
-                    'Framed plaque and recognition at event',
-                    '2 golf teams & 4 hole sponsorships',
-                    '2 exclusive feather banners — 1 at each course',
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                  'Advertised on main banner, local radio stations (96.3 & 98.1), and golf towels',
+                  'Premier logo recognition on all golf carts',
+                  'Framed plaque and recognition at event',
+                  '2 golf teams & 4 hole sponsorships',
+                  '2 exclusive feather banners — 1 at each course'].
+                  map((item) =>
+                  <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />{item}
                     </li>
-                  ))}
+                  )}
                 </ul>
               </div>
             </div>
@@ -290,14 +290,14 @@ export default function FreedomClassic() {
               <div className="bg-white p-6 flex-1">
                 <ul className="space-y-2">
                   {[
-                    'Advertised on main banner, golf towels distributed to participants, and social media',
-                    'Presentation of framed plaque recognition',
-                    '1 golf team & 2 hole sponsorships',
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                  'Advertised on main banner, golf towels distributed to participants, and social media',
+                  'Presentation of framed plaque recognition',
+                  '1 golf team & 2 hole sponsorships'].
+                  map((item) =>
+                  <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />{item}
                     </li>
-                  ))}
+                  )}
                 </ul>
               </div>
             </div>
@@ -311,13 +311,13 @@ export default function FreedomClassic() {
               <div className="bg-white p-6 flex-1">
                 <ul className="space-y-2">
                   {[
-                    'Advertised on main banner',
-                    '1 golf team and 1 hole sponsorship',
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                  'Advertised on main banner',
+                  '1 golf team and 1 hole sponsorship'].
+                  map((item) =>
+                  <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />{item}
                     </li>
-                  ))}
+                  )}
                 </ul>
               </div>
             </div>
@@ -416,6 +416,6 @@ export default function FreedomClassic() {
         </div>
       </section>
 
-    </div>
-  );
+    </div>);
+
 }

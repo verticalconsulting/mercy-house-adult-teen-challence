@@ -214,7 +214,7 @@ export default function FreedomClassic() {
               </a>
             </div>
             <div className="flex-1">
-              <p className="font-bold mb-2 text-slate-800 text-lg text-center">Questions?</p>
+              <p className="font-bold mb-2 text-slate-800 text-xl text-left">Questions?</p>
               <a href="tel:6017203718" className="flex items-center gap-2 font-bold text-slate-800 hover:underline">
                 <Phone className="w-4 h-4" /> (601) 720-3718
               </a>

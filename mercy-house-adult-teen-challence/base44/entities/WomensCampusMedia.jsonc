@@ -1,0 +1,70 @@
+{
+  "name": "WomensCampusMedia",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title or caption for the media item"
+    },
+    "media_type": {
+      "type": "string",
+      "enum": [
+        "photo",
+        "video"
+      ],
+      "description": "Type of media"
+    },
+    "media_url": {
+      "type": "string",
+      "description": "URL to the photo or video (YouTube/Vimeo embed URL or direct image URL)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the event or moment"
+    },
+    "event_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the event"
+    },
+    "published": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this item is visible publicly"
+    }
+  },
+  "required": [
+    "title",
+    "media_type",
+    "media_url"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.published": true
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

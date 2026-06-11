@@ -1,0 +1,79 @@
+{
+  "name": "Testimonial",
+  "type": "object",
+  "properties": {
+    "graduate_name": {
+      "type": "string",
+      "description": "Name of the program graduate"
+    },
+    "photo_url": {
+      "type": "string",
+      "description": "Photo URL of the graduate"
+    },
+    "testimonial_text": {
+      "type": "string",
+      "description": "The testimonial content"
+    },
+    "program_type": {
+      "type": "string",
+      "enum": [
+        "mens",
+        "womens"
+      ],
+      "description": "Which program they graduated from"
+    },
+    "graduation_year": {
+      "type": "number",
+      "description": "Year they graduated"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Should this testimonial be featured on homepage?"
+    },
+    "published": {
+      "type": "boolean",
+      "default": true,
+      "description": "Is this testimonial published?"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Additional context or background about the testimonial"
+    }
+  },
+  "required": [
+    "graduate_name",
+    "testimonial_text",
+    "program_type"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.published": true
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

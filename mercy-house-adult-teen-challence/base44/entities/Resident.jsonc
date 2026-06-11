@@ -1,0 +1,71 @@
+{
+  "name": "Resident",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string",
+      "description": "Resident's name"
+    },
+    "program_type": {
+      "type": "string",
+      "enum": [
+        "mens",
+        "womens"
+      ],
+      "description": "Which program campus"
+    },
+    "photo_url": {
+      "type": "string",
+      "description": "Photo URL"
+    },
+    "story": {
+      "type": "string",
+      "description": "Brief story/background"
+    },
+    "age": {
+      "type": "number"
+    },
+    "available_for_sponsorship": {
+      "type": "boolean",
+      "default": true
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Additional information about the resident"
+    }
+  },
+  "required": [
+    "full_name",
+    "program_type"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.available_for_sponsorship": true
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

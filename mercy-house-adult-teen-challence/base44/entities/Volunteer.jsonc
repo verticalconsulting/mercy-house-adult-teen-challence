@@ -1,0 +1,153 @@
+{
+  "name": "Volunteer",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string",
+      "description": "Volunteer's full name"
+    },
+    "email": {
+      "type": "string",
+      "description": "Contact email"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Contact phone number"
+    },
+    "address": {
+      "type": "string",
+      "description": "Full address"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date",
+      "description": "Volunteer's date of birth"
+    },
+    "emergency_contact_name": {
+      "type": "string"
+    },
+    "emergency_contact_phone": {
+      "type": "string"
+    },
+    "emergency_contact_relationship": {
+      "type": "string"
+    },
+    "availability": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "weekday_mornings",
+          "weekday_afternoons",
+          "weekday_evenings",
+          "weekends",
+          "flexible"
+        ]
+      },
+      "description": "When the volunteer is available"
+    },
+    "areas_of_interest": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "mentoring",
+          "teaching",
+          "administrative",
+          "maintenance",
+          "events",
+          "thrift_store",
+          "auto_academy",
+          "kitchen",
+          "childcare",
+          "transportation"
+        ]
+      },
+      "description": "Areas where volunteer wants to help"
+    },
+    "skills": {
+      "type": "string",
+      "description": "Special skills or qualifications"
+    },
+    "previous_volunteer_experience": {
+      "type": "string",
+      "description": "Past volunteer experience"
+    },
+    "why_volunteer": {
+      "type": "string",
+      "description": "Motivation for volunteering"
+    },
+    "background_check_consent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Consent to background check"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "active",
+        "inactive",
+        "declined"
+      ],
+      "default": "pending",
+      "description": "Application status"
+    },
+    "assigned_to": {
+      "type": "string",
+      "description": "Staff member managing this volunteer"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Internal notes from staff"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When volunteer started"
+    }
+  },
+  "required": [
+    "full_name",
+    "email",
+    "phone",
+    "availability",
+    "areas_of_interest",
+    "background_check_consent"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "$or": [
+        {
+          "data.email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

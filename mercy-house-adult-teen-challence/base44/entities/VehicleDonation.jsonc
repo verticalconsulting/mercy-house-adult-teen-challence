@@ -1,0 +1,145 @@
+{
+  "name": "VehicleDonation",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string",
+      "description": "Donor's first name"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Donor's last name"
+    },
+    "email": {
+      "type": "string",
+      "description": "Contact email"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Contact phone number"
+    },
+    "address": {
+      "type": "string",
+      "description": "Street address where vehicle is located"
+    },
+    "city": {
+      "type": "string",
+      "description": "City"
+    },
+    "state": {
+      "type": "string",
+      "description": "State"
+    },
+    "zip": {
+      "type": "string",
+      "description": "ZIP code"
+    },
+    "vehicle_make": {
+      "type": "string",
+      "description": "Vehicle make (e.g., Toyota, Ford)"
+    },
+    "vehicle_model": {
+      "type": "string",
+      "description": "Vehicle model"
+    },
+    "vehicle_year": {
+      "type": "number",
+      "description": "Vehicle year"
+    },
+    "vehicle_condition": {
+      "type": "string",
+      "enum": [
+        "running",
+        "not_running",
+        "needs_repairs"
+      ],
+      "description": "Vehicle condition"
+    },
+    "mileage": {
+      "type": "number",
+      "description": "Odometer reading"
+    },
+    "title_status": {
+      "type": "string",
+      "enum": [
+        "have_title",
+        "no_title",
+        "in_process"
+      ],
+      "description": "Title availability"
+    },
+    "additional_notes": {
+      "type": "string",
+      "description": "Additional information about the vehicle"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "scheduled",
+        "picked_up",
+        "processed",
+        "completed"
+      ],
+      "default": "pending",
+      "description": "Donation status"
+    },
+    "pickup_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Scheduled pickup date/time"
+    },
+    "estimated_value": {
+      "type": "number",
+      "description": "Estimated vehicle value"
+    },
+    "pickup_notes": {
+      "type": "string",
+      "description": "Internal notes about pickup"
+    },
+    "tax_receipt_sent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Has tax receipt been sent?"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Additional details about the donation"
+    }
+  },
+  "required": [
+    "first_name",
+    "last_name",
+    "email",
+    "phone",
+    "vehicle_make",
+    "vehicle_model",
+    "vehicle_condition"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "$or": [
+        {
+          "data.email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
-import { ArrowRight, Heart, Users, TrendingUp, CheckCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DonateButton from '../components/DonateButton';
 
@@ -184,6 +184,8 @@ export default function Home() {
                 <a
                   key={business.name}
                   href={business.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center"
                 >
                   <img src={business.logo} alt={business.name} className="h-16 mb-3 object-contain" />

@@ -2,33 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Mercy House theme — single source of truth.
+ * Light is the default; `.dark` on <html> opts into the dark theme.
+ * Brand palette: Deep Harbor Blue (navy) + Brand Gold, on warm neutrals.
+ */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    /* Mercy House brand colors (raw) */
+    --navy: #2F4E6F;            /* Deep Harbor Blue — primary */
+    --navy-light: #5F8FBF;      /* Sky Blue — secondary */
+    --gold: #CFA869;            /* Brand Gold — CTAs / accents */
+    --gold-accessible: #A07B3A; /* Accessible gold on light bg (WCAG AA) */
+    --warm-gray: #D6D2CB;       /* Neutral warm gray */
+
+    /* Semantic tokens (shadcn/ui) — LIGHT */
+    --background: 36 30% 98%;   /* warm off-white, not stark white */
+    --foreground: 214 42% 15%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 214 42% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
+    --popover-foreground: 214 42% 15%;
+    --primary: 214 42% 30%;     /* Deep Harbor Blue */
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    --secondary: 210 38% 85%;
+    --secondary-foreground: 214 42% 15%;
+    --muted: 30 8% 87%;         /* warm gray tint */
+    --muted-foreground: 214 20% 40%;
+    --accent: 37 46% 62%;       /* gold */
+    --accent-foreground: 214 42% 15%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 214 42% 30%;
+    --radius: 0.5rem;
+
+    /* Charts (employee portal analytics) */
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
+
+    /* Sidebar (employee portal) */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -40,30 +57,35 @@
   }
 
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    /* Brighter gold reads accessibly on dark bg */
+    --gold-accessible: #CFA869;
+
+    --background: 214 35% 10%;
+    --foreground: 210 40% 95%;
+    --card: 214 35% 14%;
+    --card-foreground: 210 40% 95%;
+    --popover: 214 35% 10%;
+    --popover-foreground: 210 40% 95%;
+    --primary: 37 46% 62%;
+    --primary-foreground: 214 42% 15%;
+    --secondary: 214 25% 20%;
+    --secondary-foreground: 210 40% 95%;
+    --muted: 214 25% 20%;
+    --muted-foreground: 214 20% 65%;
+    --accent: 37 46% 62%;
+    --accent-foreground: 210 40% 95%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --border: 214 25% 20%;
+    --input: 214 25% 20%;
+    --ring: 37 46% 62%;
+
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -75,8 +97,6 @@
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -84,5 +104,106 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Allow smooth scrolling in content areas */
+  main, [data-scroll-container] {
+    overscroll-behavior-y: contain;
+  }
+
+  /* Disable text selection / callouts on interactive elements */
+  button, a, nav, [role="button"], [role="link"] {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Mobile-first base font size — larger for readability */
+  html {
+    font-size: 18px;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  /* Minimum touch targets on mobile */
+  @media (max-width: 767px) {
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
   }
 }
+
+@layer utilities {
+  .text-navy { color: var(--navy); }
+  .bg-navy { background-color: var(--navy); }
+  .text-navy-light { color: var(--navy-light); }
+  .bg-navy-light { background-color: var(--navy-light); }
+  /* Accessible gold on light bg, bright gold in dark mode */
+  .text-gold { color: var(--gold-accessible); }
+  .bg-gold { background-color: var(--gold); }
+  .border-navy { border-color: var(--navy); }
+  .border-gold { border-color: var(--gold); }
+  .bg-warm-gray { background-color: var(--warm-gray); }
+  .text-warm-gray { color: var(--warm-gray); }
+}
+
+/* Smooth theme transitions — respect reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+}
+
+/* Always-visible keyboard focus */
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Mobile touch improvements */
+@media (max-width: 767px) {
+  /* Prevent zoom on input focus (iOS) */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+
+  button, a, [role="button"] {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  .overflow-x-hidden {
+    overflow-x: hidden;
+  }
+}
+
+/* Safe-area padding utilities */
+.pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+.pt-safe { padding-top: env(safe-area-inset-top); }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+.dark ::-webkit-scrollbar-track { background: #1e293b; }
+::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 5px; }
+.dark ::-webkit-scrollbar-thumb { background: var(--gold); }
+::-webkit-scrollbar-thumb:hover { background: var(--navy-light); }
+.dark ::-webkit-scrollbar-thumb:hover { background: #d4b56d; }

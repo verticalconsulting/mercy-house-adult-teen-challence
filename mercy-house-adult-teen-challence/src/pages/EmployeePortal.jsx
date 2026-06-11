@@ -9,7 +9,12 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
-import { Save, Users, FileText, Eye, CheckCircle, XCircle, Settings, Bot, Trash2, AlertTriangle, RefreshCw } from 'lucide-react';
+import {
+  Save, Users, FileText, Eye, CheckCircle, XCircle, Settings, Bot, Trash2,
+  AlertTriangle, RefreshCw, LogOut, ShieldCheck, Clock, ClipboardList,
+  BedDouble, Heart, Quote, Calendar, Sparkles, Megaphone, Plug, Filter,
+  Search, Image as ImageIcon,
+} from 'lucide-react';
 import { toast } from 'sonner';
 import { format } from 'date-fns';
 import ApplicationViewer from '../components/employee/ApplicationViewer';
@@ -23,6 +28,40 @@ import EventManager from '../components/employee/EventManager';
 import DonationFunnel from './DonationFunnel';
 import WomensCampusMediaManager from '../components/employee/WomensCampusMediaManager';
 import SearchPerformance from './SearchPerformance';
+
+const TAB_ITEMS = [
+  { value: 'applications', label: 'Applications', icon: FileText },
+  { value: 'beds', label: 'Beds', icon: BedDouble },
+  { value: 'volunteers', label: 'Volunteers', icon: Heart },
+  { value: 'testimonials', label: 'Testimonials', icon: Quote },
+  { value: 'events', label: 'Events', icon: Calendar },
+  { value: 'blog', label: 'Blog AI', icon: Sparkles },
+  { value: 'campaigns', label: 'Campaigns', icon: Megaphone },
+  { value: 'integrations', label: 'Integrations', icon: Plug },
+  { value: 'agent', label: 'AI Agent', icon: Bot },
+  { value: 'funnel', label: 'Donation Funnel', icon: Filter },
+  { value: 'search', label: 'Search Performance', icon: Search },
+  { value: 'womensgallery', label: "Women's Gallery", icon: ImageIcon },
+  { value: 'settings', label: 'Settings', icon: Settings },
+];
+
+function StatCard({ icon: Icon, label, value, accent }) {
+  return (
+    <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
+      <div className="flex items-center gap-4">
+        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${accent}`}>
+          <Icon className="h-5 w-5" />
+        </div>
+        <div className="min-w-0">
+          <div className="text-2xl font-bold leading-none text-navy dark:text-gold">{value}</div>
+          <div className="mt-1 truncate text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+            {label}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function EmployeePortal() {
   const [user, setUser] = useState(null);
@@ -191,30 +230,42 @@ export default function EmployeePortal() {
     });
   };
 
-  const handleApprove = (app) => {
+  const handleApprove = async (app) => {
+    // Guard: an already-accepted applicant has already claimed a bed.
+    if (app.status === 'accepted') {
+      toast.error('This application is already accepted.');
+      return;
+    }
+
     const programType = app.application_type === 'mens_program' ? 'mens' : 'womens';
     const currentData = programType === 'mens' ? mensData : womensData;
-    
+
     if (currentData.occupied_beds >= currentData.total_beds) {
       toast.error('No beds available. Please update bed count or add to waitlist.');
       return;
     }
 
-    // Update application to accepted
-    updateAppMutation.mutate({
-      id: app.id,
-      data: { ...app, status: 'accepted' }
-    });
+    // Step 1: accept the application. Only touch bed counts if this succeeds,
+    // so a failed/rolled-back update never leaves the bed counter ahead.
+    try {
+      await updateAppMutation.mutateAsync({
+        id: app.id,
+        data: { ...app, status: 'accepted' }
+      });
+    } catch {
+      // updateAppMutation.onError already rolled back the cache and notified.
+      return;
+    }
 
-    // Increase occupied beds
+    // Step 2: claim a bed now that the applicant is accepted.
     const newData = {
       ...currentData,
       occupied_beds: currentData.occupied_beds + 1,
       last_updated_by: user?.email
     };
-    
+
     updateBedMutation.mutate({ id: currentData.id, data: newData });
-    
+
     if (programType === 'mens') {
       setMensData(newData);
     } else {
@@ -229,29 +280,60 @@ export default function EmployeePortal() {
     });
   };
 
-  const handleWaitlist = (app) => {
+  const handleWaitlist = async (app) => {
+    // Guard: an applicant already on the waitlist has already been counted.
+    if (app.status === 'waitlist') {
+      toast.error('This application is already on the waitlist.');
+      return;
+    }
+
     const programType = app.application_type === 'mens_program' ? 'mens' : 'womens';
     const currentData = programType === 'mens' ? mensData : womensData;
-    
-    updateAppMutation.mutate({
-      id: app.id,
-      data: { ...app, status: 'waitlist' }
-    });
+
+    // Step 1: move the application to waitlist; only bump the counter on success.
+    try {
+      await updateAppMutation.mutateAsync({
+        id: app.id,
+        data: { ...app, status: 'waitlist' }
+      });
+    } catch {
+      // updateAppMutation.onError already rolled back the cache and notified.
+      return;
+    }
 
     const newData = {
       ...currentData,
       waitlist_count: (currentData.waitlist_count || 0) + 1,
       last_updated_by: user?.email
     };
-    
+
     updateBedMutation.mutate({ id: currentData.id, data: newData });
-    
+
     if (programType === 'mens') {
       setMensData(newData);
     } else {
       setWomensData(newData);
     }
   };
+
+  const handleSignOut = () => {
+    try {
+      base44.auth.logout(window.location.href);
+    } catch {
+      base44.auth.logout();
+    }
+  };
+
+  // At-a-glance metrics derived from already-loaded data
+  const pendingCount = applications.filter((a) => a.status === 'pending').length;
+  const underReviewCount = applications.filter((a) => a.status === 'under_review').length;
+  const mensAvailable = (mensData.total_beds || 0) - (mensData.occupied_beds || 0);
+  const womensAvailable = (womensData.total_beds || 0) - (womensData.occupied_beds || 0);
+  const waitlistTotal = (mensData.waitlist_count || 0) + (womensData.waitlist_count || 0);
+
+  // Disable application actions while a status/bed write is in flight (prevents
+  // a double-click from double-counting beds or waitlist entries).
+  const actionsBusy = updateAppMutation.isPending || updateBedMutation.isPending;
 
   const handleDeleteAccount = async () => {
     setDeleteLoading(true);
@@ -308,75 +390,130 @@ export default function EmployeePortal() {
       )}
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold text-navy dark:text-gold mb-8">Employee Portal</h1>
+        {/* Portal header */}
+        <div className="mb-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy dark:bg-gold">
+                <ShieldCheck className="h-6 w-6 text-gold dark:text-navy" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold leading-tight text-navy dark:text-gold">Employee Portal</h1>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Mercy House operations dashboard</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="hidden flex-col items-end sm:flex">
+                <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
+                  {user.full_name || user.email}
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-xs capitalize text-slate-500 dark:text-slate-400">
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-green-500" />
+                  {user.role}
+                </span>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleRefresh}
+                disabled={isRefreshing}
+                className="gap-2"
+              >
+                <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                <span className="hidden sm:inline">Refresh</span>
+              </Button>
+              <Button variant="outline" size="sm" onClick={handleSignOut} className="gap-2">
+                <LogOut className="h-4 w-4" />
+                <span className="hidden sm:inline">Sign out</span>
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* At-a-glance metrics */}
+        <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+          <StatCard icon={Clock} label="Pending" value={pendingCount} accent="bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300" />
+          <StatCard icon={Eye} label="In Review" value={underReviewCount} accent="bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300" />
+          <StatCard icon={BedDouble} label="Men's Beds Open" value={mensAvailable} accent="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300" />
+          <StatCard icon={BedDouble} label="Women's Beds Open" value={womensAvailable} accent="bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300" />
+          <StatCard icon={ClipboardList} label="Waitlist" value={waitlistTotal} accent="bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300" />
+        </div>
 
         <Tabs defaultValue="applications">
-          <TabsList className="w-full overflow-x-auto flex lg:grid lg:grid-cols-12 justify-start">
-            <TabsTrigger value="applications" className="text-sm flex-shrink-0">
-              Applications
-            </TabsTrigger>
-            <TabsTrigger value="beds" className="text-sm flex-shrink-0">
-              Beds
-            </TabsTrigger>
-            <TabsTrigger value="volunteers" className="text-sm flex-shrink-0">
-              Volunteers
-            </TabsTrigger>
-            <TabsTrigger value="testimonials" className="text-sm flex-shrink-0">
-              Testimonials
-            </TabsTrigger>
-            <TabsTrigger value="events" className="text-sm flex-shrink-0">
-              Events
-            </TabsTrigger>
-            <TabsTrigger value="blog" className="text-sm flex-shrink-0">
-              Blog AI
-            </TabsTrigger>
-            <TabsTrigger value="campaigns" className="text-sm flex-shrink-0">
-              Campaigns
-            </TabsTrigger>
-            <TabsTrigger value="integrations" className="text-sm flex-shrink-0">
-              Integrations
-            </TabsTrigger>
-            <TabsTrigger value="agent" className="text-sm flex-shrink-0">
-              AI Agent
-            </TabsTrigger>
-            <TabsTrigger value="funnel" className="text-sm flex-shrink-0">
-              Donation Funnel
-            </TabsTrigger>
-            <TabsTrigger value="search" className="text-sm flex-shrink-0">
-              Search Performance
-            </TabsTrigger>
-            <TabsTrigger value="womensgallery" className="text-sm flex-shrink-0">
-              Women's Gallery
-            </TabsTrigger>
-            <TabsTrigger value="settings" className="text-sm flex-shrink-0">
-              Settings
-            </TabsTrigger>
+          <TabsList className="mb-2 flex h-auto flex-wrap justify-start gap-2 bg-transparent p-0">
+            {TAB_ITEMS.map(({ value, label, icon: Icon }) => (
+              <TabsTrigger
+                key={value}
+                value={value}
+                className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-navy data-[state=active]:border-navy data-[state=active]:bg-navy data-[state=active]:text-white data-[state=active]:shadow-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:text-gold dark:data-[state=active]:border-gold dark:data-[state=active]:bg-gold dark:data-[state=active]:text-navy"
+              >
+                <Icon className="h-4 w-4" />
+                <span>{label}</span>
+              </TabsTrigger>
+            ))}
           </TabsList>
 
           <TabsContent value="applications" className="mt-6">
             <div className="grid lg:grid-cols-2 gap-6">
               <div>
-                <h2 className="text-2xl font-bold text-navy dark:text-gold mb-4">Applications</h2>
+                <h2 className="text-2xl font-bold text-navy dark:text-gold mb-4">
+                  Applications
+                  <span className="ml-2 text-base font-medium text-slate-400 dark:text-slate-500">
+                    {applications.length}
+                  </span>
+                </h2>
                 <div className="space-y-3">
-                  {applications.map(app => (
-                    <Card key={app.id} className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setSelectedApp(app)}>
-                      <CardContent className="p-4">
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <h3 className="font-bold text-navy dark:text-gold">{app.full_legal_name}</h3>
-                            <p className="text-sm text-slate-600 dark:text-slate-400">{app.cell_phone}</p>
-                            <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
-                              {format(new Date(app.created_date), 'MMM d, yyyy')}
-                            </p>
-                          </div>
-                          <div className="text-right">
-                            <Badge className={statusColors[app.status]}>{app.status}</Badge>
-                            <p className="text-xs text-slate-500 mt-1">{app.application_type === 'mens_program' ? "Men's" : "Women's"}</p>
-                          </div>
-                        </div>
+                  {applications.length === 0 ? (
+                    <Card>
+                      <CardContent className="flex flex-col items-center justify-center py-12 text-center">
+                        <FileText className="mb-3 h-10 w-10 text-slate-300 dark:text-slate-600" />
+                        <p className="font-medium text-slate-600 dark:text-slate-300">No applications yet</p>
+                        <p className="text-sm text-slate-400 dark:text-slate-500">
+                          New intake applications will appear here.
+                        </p>
                       </CardContent>
                     </Card>
-                  ))}
+                  ) : (
+                    applications.map(app => {
+                      const isSelected = selectedApp?.id === app.id;
+                      return (
+                        <Card
+                          key={app.id}
+                          role="button"
+                          tabIndex={0}
+                          aria-pressed={isSelected}
+                          onClick={() => setSelectedApp(app)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              setSelectedApp(app);
+                            }
+                          }}
+                          className={`cursor-pointer transition-shadow hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-navy dark:focus-visible:ring-gold ${
+                            isSelected ? 'ring-2 ring-navy dark:ring-gold' : ''
+                          }`}
+                        >
+                          <CardContent className="p-4">
+                            <div className="flex justify-between items-start">
+                              <div>
+                                <h3 className="font-bold text-navy dark:text-gold">{app.full_legal_name}</h3>
+                                <p className="text-sm text-slate-600 dark:text-slate-400">{app.cell_phone}</p>
+                                <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
+                                  {format(new Date(app.created_date), 'MMM d, yyyy')}
+                                </p>
+                              </div>
+                              <div className="text-right">
+                                <Badge className={statusColors[app.status] || 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200'}>
+                                  {app.status || 'unknown'}
+                                </Badge>
+                                <p className="text-xs text-slate-500 mt-1">{app.application_type === 'mens_program' ? "Men's" : "Women's"}</p>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      );
+                    })
+                  )}
                 </div>
               </div>
 
@@ -403,21 +540,21 @@ export default function EmployeePortal() {
                         </div>
 
                         <div className="flex gap-2">
-                          <Button onClick={() => handleAssignToMe(selectedApp)} className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold">
+                          <Button onClick={() => handleAssignToMe(selectedApp)} disabled={actionsBusy} className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold disabled:opacity-60">
                             <Eye className="w-4 h-4 mr-2" />
                             Assign to Me
                           </Button>
                         </div>
 
                         <div className="flex gap-2">
-                          <Button onClick={() => handleApprove(selectedApp)} className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold">
+                          <Button onClick={() => handleApprove(selectedApp)} disabled={actionsBusy} className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold disabled:opacity-60">
                             <CheckCircle className="w-4 h-4 mr-2" />
                             Approve & Add to Bed
                           </Button>
-                          <Button onClick={() => handleWaitlist(selectedApp)} className="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-semibold">
+                          <Button onClick={() => handleWaitlist(selectedApp)} disabled={actionsBusy} className="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-semibold disabled:opacity-60">
                             Waitlist
                           </Button>
-                          <Button onClick={() => handleDecline(selectedApp)} className="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold">
+                          <Button onClick={() => handleDecline(selectedApp)} disabled={actionsBusy} className="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold disabled:opacity-60">
                             <XCircle className="w-4 h-4 mr-2" />
                             Decline
                           </Button>

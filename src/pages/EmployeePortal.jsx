@@ -311,7 +311,7 @@ export default function EmployeePortal() {
         <h1 className="text-4xl font-bold text-navy dark:text-gold mb-8">Employee Portal</h1>
 
         <Tabs defaultValue="applications">
-          <TabsList className="w-full overflow-x-auto flex lg:grid lg:grid-cols-12 justify-start">
+          <TabsList className="w-full overflow-x-auto flex lg:grid lg:grid-cols-11 justify-start">
             <TabsTrigger value="applications" className="text-sm flex-shrink-0">
               Applications
             </TabsTrigger>
@@ -333,17 +333,11 @@ export default function EmployeePortal() {
             <TabsTrigger value="campaigns" className="text-sm flex-shrink-0">
               Campaigns
             </TabsTrigger>
-            <TabsTrigger value="integrations" className="text-sm flex-shrink-0">
-              Integrations
-            </TabsTrigger>
             <TabsTrigger value="agent" className="text-sm flex-shrink-0">
               AI Agent
             </TabsTrigger>
-            <TabsTrigger value="funnel" className="text-sm flex-shrink-0">
-              Donation Funnel
-            </TabsTrigger>
-            <TabsTrigger value="search" className="text-sm flex-shrink-0">
-              Search Performance
+            <TabsTrigger value="tools" className="text-sm flex-shrink-0">
+              Tools
             </TabsTrigger>
             <TabsTrigger value="womensgallery" className="text-sm flex-shrink-0">
               Women's Gallery
@@ -522,20 +516,27 @@ export default function EmployeePortal() {
             <CampaignManager />
           </TabsContent>
 
-          <TabsContent value="integrations" className="mt-6">
-            <IntegrationsManager />
-          </TabsContent>
-
           <TabsContent value="agent" className="mt-6">
             <AgentManager />
           </TabsContent>
 
-          <TabsContent value="funnel" className="mt-6">
-            <DonationFunnel />
-          </TabsContent>
-
-          <TabsContent value="search" className="mt-6">
-            <SearchPerformance />
+          <TabsContent value="tools" className="mt-6">
+            <Tabs defaultValue="integrations">
+              <TabsList className="mb-4">
+                <TabsTrigger value="integrations">Integrations</TabsTrigger>
+                <TabsTrigger value="funnel">Donation Funnel</TabsTrigger>
+                <TabsTrigger value="search">Search Performance</TabsTrigger>
+              </TabsList>
+              <TabsContent value="integrations">
+                <IntegrationsManager />
+              </TabsContent>
+              <TabsContent value="funnel">
+                <DonationFunnel />
+              </TabsContent>
+              <TabsContent value="search">
+                <SearchPerformance />
+              </TabsContent>
+            </Tabs>
           </TabsContent>
 
           <TabsContent value="womensgallery" className="mt-6">

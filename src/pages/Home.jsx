@@ -99,7 +99,7 @@ export default function Home() {
                   alt="Women's Campus"
                   width="600"
                   height="256"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
               <div className="p-8">

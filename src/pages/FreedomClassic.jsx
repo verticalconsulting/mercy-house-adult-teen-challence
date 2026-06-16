@@ -275,7 +275,7 @@ export default function FreedomClassic() {
               <div className="bg-white p-6 flex-1">
                 <ul className="space-y-2">
                   {[
-                  'Advertised on main banner, local radio stations (96.3 & 98.1), and golf towels',
+                  'Advertised on main banner, local radio stations (96.3 & 101.7), and golf towels',
                   'Premier logo recognition on all golf carts',
                   'Framed plaque and recognition at event',
                   '2 golf teams & 4 hole sponsorships',

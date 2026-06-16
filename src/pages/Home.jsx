@@ -7,7 +7,7 @@ import DonateButton from '../components/DonateButton';
 
 const businesses = [
   {
-    name: 'SuperTHRIFT',
+    name: 'SuperThrift',
     logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1a07ccd8-7054-46f7-c9c9-2e0ea56af100/logo',
     href: 'https://mercyhouseatc.superthriftdeals.org',
     external: false,

@@ -58,7 +58,7 @@ export default function Home() {
               <span className="block text-gold mt-2">Starts Here</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-slate-200 leading-relaxed">
-              Providing comprehensive Christian faith-based solutions to life-controlling problems. Become mentally sound, emotionally balanced, and socially adjusted.
+              Broken families restored — one person at a time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to={createPageUrl('IntakeForm')}>

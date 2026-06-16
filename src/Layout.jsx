@@ -57,7 +57,7 @@ export default function Layout({ children, currentPageName }) {
     name: 'Workforce Development',
     path: 'MicroBusinesses',
     submenu: [
-    { name: 'SuperTHRIFT', path: 'https://mercyhouseatc.superthriftdeals.org', external: true },
+    { name: 'SuperThrift', path: 'https://mercyhouseatc.superthriftdeals.org', external: true },
     { name: 'Vehicle Donation', path: 'https://mercyhouseatc.vehicledonationms.org', external: true },
     { name: 'Mercy House Auto Center', href: 'https://mercyhouseautocenter.com/' },
     { name: 'Product With A Purpose', path: 'ProductsPurpose' },

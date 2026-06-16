@@ -142,7 +142,7 @@ export default function About() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
             {[
-            { number: '01', title: 'Live Christlike', desc: 'Modeling every aspect of life after the example of Jesus — in character, conduct, and relationship with others.' },
+            { number: '01', title: 'Live Christlike', desc: 'Trusting Jesus as the source of freedom and new life, leaving behind old ways, and choosing to live with love, humility, and obedience in daily actions and decisions.' },
             { number: '02', title: 'Live with Character', desc: 'Building integrity, honesty, and moral strength as the daily currency of a restored life.' },
             { number: '03', title: 'Live Purposeful', desc: 'Discovering God\'s design for your life and pursuing it with intentionality, discipline, and hope.' },
             { number: '04', title: 'Live Accountable', desc: 'Inviting correction and embracing transparency — because long-term freedom requires others who will tell you the truth.' },

@@ -127,9 +127,7 @@ export default function About() {
               </div>
               <h2 className="text-2xl font-bold text-navy dark:text-gold mb-4">Our Vision</h2>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
-                A Mississippi — and a nation — where the answer to addiction isn't a faster fix, but a more radical one.
-                Where transformed individuals become agents of transformation for their families, communities, and the next
-                generation, breaking the cycle of trauma for good.
+                Broken families restored — one person at a time.
               </p>
             </div>
           </div>

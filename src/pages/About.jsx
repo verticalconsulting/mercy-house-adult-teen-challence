@@ -135,7 +135,7 @@ export default function About() {
           {/* Five Foundations of Freedom */}
           <div className="text-center mb-10">
             <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Core Values</p>
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Five Foundations of Freedom</h2>
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Five Life Truths for Freedom</h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               Everything we do flows from five foundational pillars of truth — a framework for how our students learn to live as new people in Christ.
             </p>

@@ -164,8 +164,8 @@ export default function About() {
           <div className="text-center mb-14">
             <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Our Approach</p>
             <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Four Key Programmatic Areas</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              The Five Foundations of Freedom are put into action through four programmatic pillars — each one addressing a dimension of recovery that short-term programs simply cannot reach.
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">The Five Life Truths of Freedom are put into action through four programmatic pillars — each one addressing a dimension of recovery that short-term programs simply cannot reach.
+
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">

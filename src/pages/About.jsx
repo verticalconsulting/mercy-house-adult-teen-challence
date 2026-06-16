@@ -118,9 +118,7 @@ export default function About() {
               </div>
               <h2 className="text-2xl font-bold text-navy dark:text-gold mb-4">Our Mission</h2>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
-                To provide an effective and comprehensive Christian faith-based environment where people struggling with
-                life-controlling and dependency issues can find lasting freedom — helping individuals and families find
-                a new life in Christ, develop godly character, and live purposefully through practical life skills and community.
+                Helping adults and families find new life in Christ, develop godly character, and live restored, purposeful lives through practical life skills and community.
               </p>
             </div>
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md border border-slate-100 dark:border-slate-700">

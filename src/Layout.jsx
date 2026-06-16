@@ -31,7 +31,15 @@ export default function Layout({ children, currentPageName }) {
 
   const menuItems = [
   { name: 'Home', path: 'Home' },
-  { name: 'About', path: 'About', external: false, directPath: '/About' },
+  {
+    name: 'About',
+    path: 'About',
+    directPath: '/About',
+    submenu: [
+      { name: 'About Us', directPath: '/About' },
+      { name: 'Financials', directPath: '/Financials' },
+    ]
+  },
   {
     name: 'Programs',
     path: 'Programs',
@@ -309,6 +317,7 @@ export default function Layout({ children, currentPageName }) {
                 <li><Link to={createPageUrl('News')} className="text-slate-300 hover:text-gold transition-colors">News</Link></li>
                 <li><Link to={createPageUrl('Volunteer')} className="text-slate-300 hover:text-gold transition-colors">Volunteer</Link></li>
                 <li><Link to="/About" className="text-slate-300 hover:text-gold transition-colors">About Us</Link></li>
+                <li><Link to="/Financials" className="text-slate-300 hover:text-gold transition-colors">Financials</Link></li>
                 <li><Link to="/Programs" className="text-slate-300 hover:text-gold transition-colors">Programs</Link></li>
                 <li><Link to={createPageUrl('EmployeePortal')} className="text-slate-300 hover:text-gold transition-colors">Employee Portal</Link></li>
                 <li><Link to="/MeetTheTeam" className="text-slate-300 hover:text-gold transition-colors">Meet the Team</Link></li>

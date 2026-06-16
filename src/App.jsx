@@ -11,6 +11,7 @@ import FreedomClassic from './pages/FreedomClassic';
 import News from './pages/News';
 import SearchPerformance from './pages/SearchPerformance';
 import About from './pages/About';
+import Financials from './pages/Financials';
 import Programs from './pages/Programs';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import HelpForDependency from './pages/HelpForDependency';
@@ -71,6 +72,7 @@ const AuthenticatedApp = () => {
       <Route path="/WomensCampusGallery" element={<LayoutWrapper currentPageName="WomensCampusGallery"><WomensCampusGallery /></LayoutWrapper>} />
       <Route path="/SearchPerformance" element={<LayoutWrapper currentPageName="SearchPerformance"><SearchPerformance /></LayoutWrapper>} />
       <Route path="/About" element={<LayoutWrapper currentPageName="About"><About /></LayoutWrapper>} />
+      <Route path="/Financials" element={<LayoutWrapper currentPageName="Financials"><Financials /></LayoutWrapper>} />
       <Route path="/Programs" element={<LayoutWrapper currentPageName="Programs"><Programs /></LayoutWrapper>} />
       <Route path="/PrivacyPolicy" element={<LayoutWrapper currentPageName="PrivacyPolicy"><PrivacyPolicy /></LayoutWrapper>} />
       <Route path="/help-for-dependency-abuse" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />

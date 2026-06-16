@@ -328,55 +328,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Nonprofit Legitimacy Block */}
-      <section className="py-12 bg-slate-50 dark:bg-slate-900">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <NonprofitLegitimacy />
-      </div>
-      </section>
-
-      {/* Financial Transparency + How Funds Are Used */}
-      <section className="py-20 bg-white dark:bg-slate-800">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Accountability &amp; Transparency</p>
-            <h2 className="text-3xl font-bold text-navy dark:text-gold mb-4">Trusted Stewardship</h2>
-            <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto">
-              Mercy House Adult &amp; Teen Challenge of Mississippi is a registered 501(c)(3) nonprofit organization.
-              We are committed to transparent stewardship of every gift entrusted to us. Our micro-business operations —
-              including our thrift store, vehicle donation program, and auto academy — generate revenue that helps support
-              ministry operations alongside individual donor contributions.
-            </p>
-          </div>
-
-          {/* How Funds Are Used */}
-          <div className="mb-10">
-            <h3 className="text-xl font-bold text-navy dark:text-gold text-center mb-6">How Your Donation Is Used</h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {[
-              { emoji: '🏠', label: 'Housing & Facilities', desc: 'Safe, stable residential housing for men and women throughout their program stay' },
-              { emoji: '🍽️', label: 'Meals & Nutrition', desc: 'Three meals per day provided to every resident at no cost to them' },
-              { emoji: '📖', label: 'Program & Ministry', desc: 'Biblical teaching, counseling, life skills training, and vocational development' },
-              { emoji: '⚙️', label: 'Daily Operations', desc: 'Utilities, staff, transportation, and the essential infrastructure that keeps us running' }].
-              map((item) =>
-              <div key={item.label} className="bg-slate-50 dark:bg-slate-900 rounded-xl p-5 border border-slate-100 dark:border-slate-700 text-center">
-                  <div className="text-3xl mb-3">{item.emoji}</div>
-                  <h4 className="font-bold text-navy dark:text-gold text-sm mb-1">{item.label}</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{item.desc}</p>
-                </div>
-              )}
-            </div>
-          </div>
-
-          <p className="text-center text-sm text-slate-500 dark:text-slate-400">
-            EIN and financial documentation available upon request. Contact us at{' '}
-            <a href="mailto:info@mercyhouseatc.com" className="text-navy dark:text-gold hover:underline">
-              info@mercyhouseatc.com
-            </a>
-          </p>
-        </div>
-      </section>
-
       <CTABand
         heading="Want to Learn More?"
         subtext="Reach out to our team, visit our campus, or explore the program pages to see how Mercy House can help."

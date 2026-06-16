@@ -12,7 +12,7 @@ export default function ThriftStoreArchived() {
             <div>
               <div className="text-6xl mb-4">🏪</div>
               <h1 className="text-5xl font-bold text-navy dark:text-gold mb-6">
-                SuperTHRIFT
+                SuperThrift
               </h1>
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
                 Our community thrift store offers quality secondhand clothing, furniture, household items, and more at affordable prices. Every purchase supports recovery and transformation.

@@ -76,7 +76,7 @@ export default function MicroBusinesses() {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                title: 'SuperTHRIFT',
+                title: 'SuperThrift',
                 emoji: '🏪',
                 description: 'Community thrift store offering quality secondhand goods while training residents in retail operations, customer service, and inventory management.',
                 href: 'https://mercyhouseatc.superthriftdeals.org',

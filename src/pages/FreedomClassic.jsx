@@ -375,11 +375,41 @@ export default function FreedomClassic() {
       <section className="py-16 bg-slate-100">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-slate-800 tracking-widest uppercase mb-10">Thanks To Our Sponsors</h2>
-          <div className="bg-white border border-slate-200 rounded-2xl shadow p-8">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-center justify-items-center">
-              <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png" alt="Mac Haik Ford Jackson" className="h-16 w-auto object-contain" />
+          <div className="bg-white border border-slate-200 rounded-2xl shadow p-10">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-10 items-center justify-items-center">
+
+              {/* Mac Haik Ford Jackson */}
+              <a href="https://www.machaikfordjackson.com/" target="_blank" rel="noopener noreferrer"
+                className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png" alt="Mac Haik Ford Jackson" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </a>
+
+              {/* Toyota of Hattiesburg */}
+              <a href="https://www.toyotahattiesburg.com/" target="_blank" rel="noopener noreferrer"
+                className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/485fb9290_ToyotaofHattiesburg-RedandBlack.png" alt="Toyota of Hattiesburg" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </a>
+
+              {/* Deviney Construction */}
+              <a href="https://www.devineyconstruction.com/" target="_blank" rel="noopener noreferrer"
+                className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/0a59a4908_DEVINEYLOGO.jpg" alt="Deviney Construction" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </a>
+
+              {/* Morgan White Group */}
+              <a href="https://morganwhite.com/" target="_blank" rel="noopener noreferrer"
+                className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/e4523a710_MorganWhite.jpg" alt="Morgan White Group" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </a>
+
+              {/* Knit Together Healthcare */}
+              <a href="https://knittogetherhealthcare.com/" target="_blank" rel="noopener noreferrer"
+                className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/9d7c3a24e_KnitTogetherLogoWhiteBG.jpg" alt="Knit Together Healthcare" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </a>
+
             </div>
-            <p className="text-center text-slate-600 text-sm mt-6 italic">More sponsors to be announced — <a href="mailto:mmilliman@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship" className="underline hover:text-navy">contact us to become a sponsor</a>.</p>
+            <p className="text-center text-slate-600 text-sm mt-8 italic">More sponsors to be announced — <a href="mailto:mmilliman@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship" className="underline hover:text-navy">contact us to become a sponsor</a>.</p>
           </div>
         </div>
       </section>

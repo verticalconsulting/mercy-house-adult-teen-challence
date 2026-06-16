@@ -275,7 +275,7 @@ export default function FreedomClassic() {
               <div className="bg-white p-6 flex-1">
                 <ul className="space-y-2">
                   {[
-                  'Advertised on main banner, local radio stations (96.3 & 101.7), and golf towels',
+                  'Advertised on main banner, local radio stations (96.3 & 98.1), and golf towels',
                   'Premier logo recognition on all golf carts',
                   'Framed plaque and recognition at event',
                   '2 golf teams & 4 hole sponsorships',
@@ -376,12 +376,8 @@ export default function FreedomClassic() {
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-slate-800 tracking-widest uppercase mb-10">Thanks To Our Sponsors</h2>
           <div className="bg-white border border-slate-200 rounded-2xl shadow p-8">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-center justify-items-center">
               <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png" alt="Mac Haik Ford Jackson" className="h-16 w-auto object-contain" />
-              <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/485fb9290_ToyotaofHattiesburg-RedandBlack.png" alt="Toyota of Hattiesburg" className="h-16 w-auto object-contain" />
-              <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/0a59a4908_DEVINEYLOGO.jpg" alt="Deviney" className="h-16 w-auto object-contain" />
-              <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/e4523a710_MorganWhite.jpg" alt="Morgan White Group" className="h-16 w-auto object-contain" />
-              <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/9d7c3a24e_KnitTogetherLogoWhiteBG.jpg" alt="Knit Together Healthcare" className="h-16 w-auto object-contain" />
             </div>
             <p className="text-center text-slate-600 text-sm mt-6 italic">More sponsors to be announced — <a href="mailto:mmilliman@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship" className="underline hover:text-navy">contact us to become a sponsor</a>.</p>
           </div>

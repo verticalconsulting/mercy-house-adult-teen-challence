@@ -248,7 +248,7 @@ export default function About() {
           </div>
 
           <div className="bg-navy dark:bg-slate-950 rounded-2xl p-8 text-white text-center max-w-3xl mx-auto">
-            <p className="text-lg text-slate-200 leading-relaxed mb-2">Aintake fee helps offset initial program costs, but no one is turned away for inability to pay. Payment plans and scholarships are available.
+            <p className="text-lg text-slate-200 leading-relaxed mb-2">A $1000 intake fee helps offset initial program costs, but no one is turned away for inability to pay. Payment plans and scholarships are available.
 
 
             </p>

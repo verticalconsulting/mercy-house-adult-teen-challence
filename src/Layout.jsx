@@ -296,7 +296,7 @@ export default function Layout({ children, currentPageName }) {
             <div>
               <h3 className="text-xl md:text-xl font-bold text-gold mb-4">Mercy House</h3>
               <p className="text-slate-300 text-lg md:text-sm leading-relaxed">
-                Providing an effective and comprehensive Christian faith-based solution to life-controlling problems for over 15 years.
+                Mercy House Adult & Teen Challenge is a Christ-centered, 12-month residential recovery ministry helping men, women, and families find freedom from life-controlling issues and experience lasting life change.
               </p>
             </div>
             <div>

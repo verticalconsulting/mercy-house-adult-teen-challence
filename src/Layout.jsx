@@ -30,58 +30,50 @@ export default function Layout({ children, currentPageName }) {
   }, [currentPageName, location]);
 
   const menuItems = [
-  { name: 'Home', path: 'Home' },
   {
-    name: 'About',
+    name: 'About Us',
     path: 'About',
     directPath: '/About',
     submenu: [
-    { name: 'About Us', directPath: '/About' },
-    { name: 'Financials', directPath: '/Financials' }]
-
+    { name: 'The Teen Challenge Story', directPath: '/About' },
+    { name: 'Our Leadership Team & Board of Directors', path: 'MeetTheTeam' },
+    { name: 'Our Mission, Culture & Values', directPath: '/About' },
+    { name: 'News and Events', directPath: '/Events' },
+    { name: 'Careers', directPath: '/Contact' },
+    { name: 'Media Resources', directPath: '/About' }]
   },
   {
-    name: 'Programs',
+    name: 'Our Approach',
     path: 'Programs',
     directPath: '/Programs',
     submenu: [
-    { name: 'All Programs', directPath: '/Programs' },
-    { name: "Women's Campus", path: 'WomensCampus' },
-    { name: "Men's Campus", path: 'MensCampus' },
-    { name: 'Help for Dependency', directPath: '/help-for-dependency-abuse' }]
-
+    { name: 'Our Comprehensive Approach', directPath: '/Programs' },
+    { name: 'SuperThrift', href: 'https://mercyhouseatc.superthriftdeals.org', external: true },
+    { name: 'Vehicle Donation Program', href: 'https://vehicledonationms.com', external: true },
+    { name: 'Products with a Purpose', href: 'https://productswithapurpose.com', external: true },
+    { name: 'Mercy House Auto Center', href: 'https://mercyhouseautocenter.com/', external: true },
+    { name: 'Elite Gutters', href: 'https://myelitegutters.com', external: true },
+    { name: 'Internship Program', directPath: '/Programs' },
+    { name: 'Testimonies: Stories of Hope', path: 'Testimonials' },
+    { name: 'FAQs', directPath: '/Programs' }]
   },
   {
-    name: 'News/Events',
-    path: 'Events',
-    directPath: '/Events',
+    name: 'Ways to Help',
+    path: 'Donate',
+    directPath: '/Donate',
     submenu: [
-    { name: 'All News/Events', directPath: '/Events' },
-    { name: 'News', directPath: '/News' },
-    { name: 'Freedom Classic Golf', directPath: '/FreedomClassic' }]
-
+    { name: 'Volunteer', path: 'Volunteer' },
+    { name: 'Sponsor a Student', path: 'SponsorStudent' },
+    { name: 'Intake Application Fee', directPath: '/Donate' },
+    { name: 'Make a Recurring Donation', path: 'Donate' }]
   },
   {
-    name: 'Workforce Development',
-    path: 'WorkforceDevelopment',
-    directPath: '/WorkforceDevelopment',
-    submenu: [
-    { name: 'All Workforce Development', directPath: '/WorkforceDevelopment' },
-    { name: 'SuperThrift', path: 'https://mercyhouseatc.superthriftdeals.org', external: true },
-    { name: 'Vehicle Donation', path: 'https://mercyhouseatc.vehicledonationms.org', external: true },
-    { name: 'Mercy House Auto Center', href: 'https://mercyhouseautocenter.com/' },
-    { name: 'Elite Gutters', path: 'https://myelitegutters.com', external: true }]
-
-  },
-  { name: 'Volunteer', path: 'Volunteer' },
-  {
-    name: 'Team/Contact',
+    name: 'Locations',
     path: 'Contact',
     directPath: '/Contact',
     submenu: [
-    { name: 'Meet the Team', path: 'MeetTheTeam' },
-    { name: 'Contact Us', path: 'Contact' }]
-
+    { name: "Men's Campus", path: 'MensCampus' },
+    { name: "Women's Campus", path: 'WomensCampus' }]
   }];
 
 

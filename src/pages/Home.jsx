@@ -46,13 +46,13 @@ export default function Home() {
 
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-navy">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               Broken Families Restored
               <span className="block text-gold mt-2">One Person At A Time</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-slate-200 leading-relaxed">
+            <p className="text-xl md:text-2xl mb-8 text-navy/80 leading-relaxed">
               Providing comprehensive Christian faith-based solutions to life-controlling problems. Become mentally sound, emotionally balanced, and socially adjusted.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">

@@ -5,6 +5,39 @@ import { ArrowRight, Heart, Users, TrendingUp, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button';
 import DonateButton from '../components/DonateButton';
 
+const businesses = [
+  {
+    name: 'SuperThrift',
+    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1a07ccd8-7054-46f7-c9c9-2e0ea56af100/logo',
+    href: 'https://mercyhouseatc.superthriftdeals.org',
+    external: true,
+  },
+  {
+    name: 'Vehicle Donation Program',
+    logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4c5006539_vdplogo.jpg',
+    href: 'https://mercyhouseatc.vehicledonationms.org',
+    external: true,
+  },
+  {
+    name: 'Mercy House Auto Sales',
+    logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/2533657d4_mercyhouseautocenter.png',
+    href: 'https://mercyhouseautocenter.com/',
+    external: true,
+  },
+  {
+    name: 'Products with a Purpose',
+    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/c4284844-e6a1-4bdd-1174-4aee07c0fc00/logo',
+    path: 'ProductsPurpose',
+    external: false,
+  },
+  {
+    name: 'Elite Gutters',
+    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/9fd573a1-4df2-428f-d672-0b5b2b939b00/logo',
+    href: 'https://myelitegutters.com',
+    external: true,
+  },
+];
+
 export default function Home() {
   return (
     <div className="w-full">

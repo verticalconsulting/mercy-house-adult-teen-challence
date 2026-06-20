@@ -39,7 +39,7 @@ export default function Home() {
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&q=80"
+            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/9ecd83f4-804b-41e4-f9e8-62da01098800/hero1920scale"
             alt="Diverse families showing hope and freedom"
             className="w-full h-full object-cover"
           />

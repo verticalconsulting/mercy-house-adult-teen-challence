@@ -57,8 +57,8 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to={createPageUrl('IntakeForm')}>
-                <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                  Start Your Journey
+                <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                  Get Help Now
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>

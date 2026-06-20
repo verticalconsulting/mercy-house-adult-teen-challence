@@ -98,114 +98,112 @@ export default function Layout({ children, currentPageName }) {
       <ScrollRestoration />
       <TrustBar />
       {/* Header */}
-      <header className="dark:bg-slate-800 shadow-md sticky top-0 z-50 transition-colors duration-300 bg-[#bd741b]" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
+      <header className="bg-white dark:bg-slate-900 sticky top-0 z-50 transition-colors duration-300 shadow-sm" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
+        {/* Top row: Logo centered */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            {/* Back Button (Mobile) */}
+          <div className="flex justify-between items-center h-16 relative">
+            {/* Back Button (Mobile only) */}
             {canGoBack &&
             <button
               onClick={() => navigate(-1)}
               className="lg:hidden text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors p-2 -ml-2"
               aria-label="Go back">
-              
                 <ArrowLeft className="w-7 h-7" />
               </button>
             }
-            
-            {/* Logo */}
-            <Link to={createPageUrl('Home')} className="flex items-center group">
+
+            {/* Logo — centered on desktop */}
+            <Link to={createPageUrl('Home')} className="flex items-center group lg:absolute lg:left-1/2 lg:-translate-x-1/2">
               <img
                 src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/f6308df5-e751-45c6-6b95-9631b3eb7800/menulogo"
                 alt="Mercy House"
                 className="h-12 w-auto" />
-              
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1">
-              {menuItems.map((item) =>
-              <div key={item.name} className="relative group">
-                  {item.submenu ?
-                <div>
-                      <Link
-                    to={item.directPath || createPageUrl(item.path)}
-                    className="px-4 py-2 text-base md:text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors duration-200 flex items-center">
-                    
-                        {item.name}
-                        <ChevronDown className="ml-1 w-5 h-5 md:w-4 md:h-4" />
-                      </Link>
-                      <div className="absolute left-0 mt-0 w-56 bg-white dark:bg-slate-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-slate-200 dark:border-slate-700">
-                        {item.submenu.map((subItem) =>
-                    subItem.external || subItem.href ?
-                    <a
-                      key={subItem.name}
-                      href={subItem.href || subItem.path}
-                      className="block px-4 py-3 text-lg md:text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg">
-                      
-                              {subItem.name}
-                            </a> :
-
-                    <Link
-                      key={subItem.name}
-                      to={subItem.directPath || createPageUrl(subItem.path)}
-                      className="block px-4 py-3 text-lg md:text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg">
-                      
-                              {subItem.name}
-                            </Link>
-
-                    )}
-                      </div>
-                    </div> :
-
-                <Link
-                  to={item.directPath || createPageUrl(item.path)}
-                  className={`px-4 py-2 text-lg md:text-sm font-medium transition-colors duration-200 ${
-                  currentPageName === item.path ?
-                  'text-navy dark:text-gold border-b-2 border-navy dark:border-gold' :
-                  'text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold'}`
-                  }>
-                  
-                      {item.name}
-                    </Link>
-                }
-                </div>
-              )}
-            </nav>
-
-            {/* Right side buttons */}
-            <div className="hidden lg:flex items-center space-x-4">
+            {/* Desktop: right-side icons */}
+            <div className="hidden lg:flex items-center space-x-3 ml-auto">
               <a
                 href="https://www.facebook.com/mercyhouseteenchallenge"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors p-2"
                 aria-label="Visit our Facebook page">
-                
-                <Facebook className="w-6 h-6" />
+                <Facebook className="w-5 h-5" />
               </a>
               <DarkModeToggle />
-              <DonateDropdown size="sm" />
             </div>
 
-            {/* Mobile menu button */}
-            <div className="lg:hidden flex items-center space-x-2">
+            {/* Mobile controls */}
+            <div className="lg:hidden flex items-center space-x-2 ml-auto">
               <a
                 href="https://www.facebook.com/mercyhouseteenchallenge"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors p-2"
                 aria-label="Visit our Facebook page">
-                
                 <Facebook className="w-7 h-7" />
               </a>
               <DarkModeToggle />
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors p-2">
-                
                 {mobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
               </button>
             </div>
+          </div>
+        </div>
+
+        {/* Gold divider line */}
+        <div className="hidden lg:block h-px bg-gold/70" />
+
+        {/* Desktop Nav row */}
+        <div className="hidden lg:block bg-white dark:bg-slate-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav className="flex items-center justify-center h-10 space-x-1">
+              {menuItems.map((item) =>
+              <div key={item.name} className="relative group">
+                  {item.submenu ?
+                <div>
+                      <Link
+                    to={item.directPath || createPageUrl(item.path)}
+                    className="px-3 py-2 text-sm font-medium text-navy dark:text-slate-200 hover:text-navy-light dark:hover:text-gold transition-colors duration-200 flex items-center">
+                        {item.name}
+                        <ChevronDown className="ml-1 w-4 h-4" />
+                      </Link>
+                      <div className="absolute left-0 top-full w-56 bg-white dark:bg-slate-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-slate-200 dark:border-slate-700 z-50">
+                        {item.submenu.map((subItem) =>
+                    subItem.external || subItem.href ?
+                    <a
+                      key={subItem.name}
+                      href={subItem.href || subItem.path}
+                      className="block px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg">
+                              {subItem.name}
+                            </a> :
+                    <Link
+                      key={subItem.name}
+                      to={subItem.directPath || createPageUrl(subItem.path)}
+                      className="block px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg">
+                              {subItem.name}
+                            </Link>
+                    )}
+                      </div>
+                    </div> :
+                <Link
+                  to={item.directPath || createPageUrl(item.path)}
+                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                  currentPageName === item.path ?
+                  'text-navy dark:text-gold border-b-2 border-navy dark:border-gold' :
+                  'text-navy dark:text-slate-200 hover:text-navy-light dark:hover:text-gold'}`
+                  }>
+                      {item.name}
+                    </Link>
+                }
+                </div>
+              )}
+              <div className="pl-2">
+                <DonateDropdown size="sm" />
+              </div>
+            </nav>
           </div>
         </div>
 

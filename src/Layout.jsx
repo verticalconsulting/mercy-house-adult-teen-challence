@@ -98,7 +98,7 @@ export default function Layout({ children, currentPageName }) {
       <ScrollRestoration />
       <TrustBar />
       {/* Header */}
-      <header className="dark:bg-slate-800 shadow-md sticky top-0 z-50 transition-colors duration-300 bg-[#975221]" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
+      <header className="dark:bg-slate-800 shadow-md sticky top-0 z-50 transition-colors duration-300 bg-[#f0e966]" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Back Button (Mobile) */}

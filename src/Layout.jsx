@@ -36,9 +36,9 @@ export default function Layout({ children, currentPageName }) {
     path: 'About',
     directPath: '/About',
     submenu: [
-      { name: 'About Us', directPath: '/About' },
-      { name: 'Financials', directPath: '/Financials' },
-    ]
+    { name: 'About Us', directPath: '/About' },
+    { name: 'Financials', directPath: '/Financials' }]
+
   },
   {
     name: 'Programs',
@@ -56,10 +56,10 @@ export default function Layout({ children, currentPageName }) {
     path: 'Events',
     directPath: '/Events',
     submenu: [
-      { name: 'All News/Events', directPath: '/Events' },
-      { name: 'News', directPath: '/News' },
-      { name: 'Freedom Classic Golf', directPath: '/FreedomClassic' },
-    ]
+    { name: 'All News/Events', directPath: '/Events' },
+    { name: 'News', directPath: '/News' },
+    { name: 'Freedom Classic Golf', directPath: '/FreedomClassic' }]
+
   },
   {
     name: 'Workforce Development',
@@ -79,9 +79,9 @@ export default function Layout({ children, currentPageName }) {
     path: 'Contact',
     directPath: '/Contact',
     submenu: [
-      { name: 'Meet the Team', path: 'MeetTheTeam' },
-      { name: 'Contact Us', path: 'Contact' }
-    ]
+    { name: 'Meet the Team', path: 'MeetTheTeam' },
+    { name: 'Contact Us', path: 'Contact' }]
+
   }];
 
 
@@ -98,7 +98,7 @@ export default function Layout({ children, currentPageName }) {
       <ScrollRestoration />
       <TrustBar />
       {/* Header */}
-      <header className="bg-white dark:bg-slate-800 shadow-md sticky top-0 z-50 transition-colors duration-300" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
+      <header className="dark:bg-slate-800 shadow-md sticky top-0 z-50 transition-colors duration-300 bg-[#975221]" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Back Button (Mobile) */}
@@ -117,8 +117,8 @@ export default function Layout({ children, currentPageName }) {
               <img
                 src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/f6308df5-e751-45c6-6b95-9631b3eb7800/menulogo"
                 alt="Mercy House"
-                className="h-12 w-auto"
-              />
+                className="h-12 w-auto" />
+              
             </Link>
 
             {/* Desktop Navigation */}
@@ -136,7 +136,7 @@ export default function Layout({ children, currentPageName }) {
                       </Link>
                       <div className="absolute left-0 mt-0 w-56 bg-white dark:bg-slate-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-slate-200 dark:border-slate-700">
                         {item.submenu.map((subItem) =>
-                    (subItem.external || subItem.href) ?
+                    subItem.external || subItem.href ?
                     <a
                       key={subItem.name}
                       href={subItem.href || subItem.path}
@@ -227,7 +227,7 @@ export default function Layout({ children, currentPageName }) {
                       {openSubmenu === item.name &&
                 <div className="ml-4 mt-2 space-y-1">
                           {item.submenu.map((subItem) =>
-                  (subItem.external || subItem.href) ?
+                  subItem.external || subItem.href ?
                   <a
                     key={subItem.name}
                     href={subItem.href || subItem.path}

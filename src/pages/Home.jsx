@@ -25,12 +25,6 @@ const businesses = [
     external: true,
   },
   {
-    name: 'Products with a Purpose',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/c4284844-e6a1-4bdd-1174-4aee07c0fc00/logo',
-    path: 'ProductsPurpose',
-    external: false,
-  },
-  {
     name: 'Elite Gutters',
     logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/9fd573a1-4df2-428f-d672-0b5b2b939b00/logo',
     href: 'https://myelitegutters.com',

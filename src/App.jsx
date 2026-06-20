@@ -15,6 +15,7 @@ import Financials from './pages/Financials';
 import Programs from './pages/Programs';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import HelpForDependency from './pages/HelpForDependency';
+import MicroBusinesses from './pages/MicroBusinesses';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -78,6 +79,7 @@ const AuthenticatedApp = () => {
       <Route path="/help-for-dependency-abuse" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
       <Route path="/FreedomClassic" element={<LayoutWrapper currentPageName="FreedomClassic"><FreedomClassic /></LayoutWrapper>} />
       <Route path="/News" element={<LayoutWrapper currentPageName="News"><News /></LayoutWrapper>} />
+      <Route path="/WorkforceDevelopment" element={<LayoutWrapper currentPageName="WorkforceDevelopment"><MicroBusinesses /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

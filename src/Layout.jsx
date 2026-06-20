@@ -63,12 +63,13 @@ export default function Layout({ children, currentPageName }) {
   },
   {
     name: 'Workforce Development',
-    path: 'MicroBusinesses',
+    path: 'WorkforceDevelopment',
+    directPath: '/WorkforceDevelopment',
     submenu: [
+    { name: 'All Workforce Development', directPath: '/WorkforceDevelopment' },
     { name: 'SuperThrift', path: 'https://mercyhouseatc.superthriftdeals.org', external: true },
     { name: 'Vehicle Donation', path: 'https://mercyhouseatc.vehicledonationms.org', external: true },
     { name: 'Mercy House Auto Center', href: 'https://mercyhouseautocenter.com/' },
-    { name: 'Product With A Purpose', path: 'ProductsPurpose' },
     { name: 'Elite Gutters', path: 'https://myelitegutters.com', external: true }]
 
   },
@@ -313,7 +314,7 @@ export default function Layout({ children, currentPageName }) {
                 <li><Link to={createPageUrl('WomensCampus')} className="text-slate-300 hover:text-gold transition-colors">Women's Campus</Link></li>
                 <li><Link to={createPageUrl('MensCampus')} className="text-slate-300 hover:text-gold transition-colors">Men's Campus</Link></li>
                 <li><Link to={createPageUrl('Events')} className="text-slate-300 hover:text-gold transition-colors">Events</Link></li>
-                <li><Link to={createPageUrl('MicroBusinesses')} className="text-slate-300 hover:text-gold transition-colors">Micro Businesses</Link></li>
+                <li><Link to="/WorkforceDevelopment" className="text-slate-300 hover:text-gold transition-colors">Workforce Development</Link></li>
                 <li><Link to={createPageUrl('News')} className="text-slate-300 hover:text-gold transition-colors">News</Link></li>
                 <li><Link to={createPageUrl('Volunteer')} className="text-slate-300 hover:text-gold transition-colors">Volunteer</Link></li>
                 <li><Link to="/About" className="text-slate-300 hover:text-gold transition-colors">About Us</Link></li>

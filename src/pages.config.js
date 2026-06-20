@@ -47,8 +47,6 @@
  *
  * The mainPage value must match a key in the PAGES object exactly.
  */
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 import Donate from './pages/Donate';
 import DonationFunnel from './pages/DonationFunnel';
@@ -57,9 +55,7 @@ import Events from './pages/Events';
 import Home from './pages/Home';
 import IntakeForm from './pages/IntakeForm';
 import MensCampus from './pages/MensCampus';
-import MercyAutoAcademy from './pages/MercyAutoAcademy';
 import MicroBusinesses from './pages/MicroBusinesses';
-import ProductsPurpose from './pages/ProductsPurpose';
 import SponsorStudent from './pages/SponsorStudent';
 import Support from './pages/Support';
 import Testimonials from './pages/Testimonials';
@@ -72,8 +68,6 @@ import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
-    "Blog": Blog,
-    "BlogPost": BlogPost,
     "Contact": Contact,
     "Donate": Donate,
     "DonationFunnel": DonationFunnel,
@@ -82,9 +76,7 @@ export const PAGES = {
     "Home": Home,
     "IntakeForm": IntakeForm,
     "MensCampus": MensCampus,
-    "MercyAutoAcademy": MercyAutoAcademy,
     "MicroBusinesses": MicroBusinesses,
-    "ProductsPurpose": ProductsPurpose,
     "SponsorStudent": SponsorStudent,
     "Support": Support,
     "Testimonials": Testimonials,

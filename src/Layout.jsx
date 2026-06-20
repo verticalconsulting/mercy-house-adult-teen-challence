@@ -98,7 +98,7 @@ export default function Layout({ children, currentPageName }) {
       <ScrollRestoration />
       <TrustBar />
       {/* Header */}
-      <header className="sticky top-0 z-50 transition-colors duration-300" style={{ paddingTop: 'env(safe-area-inset-top)', background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(255,255,255,0.25)', boxShadow: '0 4px 24px 0 rgba(0,0,0,0.10)' }}>
+      <header className="bg-white dark:bg-slate-800 shadow-md sticky top-0 z-50 transition-colors duration-300" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Back Button (Mobile) */}
@@ -129,7 +129,7 @@ export default function Layout({ children, currentPageName }) {
                 <div>
                       <Link
                     to={item.directPath || createPageUrl(item.path)}
-                    className="px-4 py-2 text-base md:text-sm font-medium text-white hover:text-gold transition-colors duration-200 flex items-center">
+                    className="px-4 py-2 text-base md:text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors duration-200 flex items-center">
                     
                         {item.name}
                         <ChevronDown className="ml-1 w-5 h-5 md:w-4 md:h-4" />
@@ -140,7 +140,7 @@ export default function Layout({ children, currentPageName }) {
                     <a
                       key={subItem.name}
                       href={subItem.href || subItem.path}
-                      className="block px-4 py-3 text-lg md:text-sm text-slate-700 hover:bg-navy/5 hover:text-navy transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg">
+                      className="block px-4 py-3 text-lg md:text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg">
                       
                               {subItem.name}
                             </a> :
@@ -148,7 +148,7 @@ export default function Layout({ children, currentPageName }) {
                     <Link
                       key={subItem.name}
                       to={subItem.directPath || createPageUrl(subItem.path)}
-                      className="block px-4 py-3 text-lg md:text-sm text-slate-700 hover:bg-navy/5 hover:text-navy transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg">
+                      className="block px-4 py-3 text-lg md:text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg">
                       
                               {subItem.name}
                             </Link>
@@ -161,8 +161,8 @@ export default function Layout({ children, currentPageName }) {
                   to={item.directPath || createPageUrl(item.path)}
                   className={`px-4 py-2 text-lg md:text-sm font-medium transition-colors duration-200 ${
                   currentPageName === item.path ?
-                  'text-gold border-b-2 border-gold' :
-                  'text-white hover:text-gold'}`
+                  'text-navy dark:text-gold border-b-2 border-navy dark:border-gold' :
+                  'text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold'}`
                   }>
                   
                       {item.name}
@@ -178,7 +178,7 @@ export default function Layout({ children, currentPageName }) {
                 href="https://www.facebook.com/mercyhouseteenchallenge"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-gold transition-colors p-2"
+                className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors p-2"
                 aria-label="Visit our Facebook page">
                 
                 <Facebook className="w-6 h-6" />
@@ -193,7 +193,7 @@ export default function Layout({ children, currentPageName }) {
                 href="https://www.facebook.com/mercyhouseteenchallenge"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-gold transition-colors p-2"
+                className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors p-2"
                 aria-label="Visit our Facebook page">
                 
                 <Facebook className="w-7 h-7" />
@@ -201,7 +201,7 @@ export default function Layout({ children, currentPageName }) {
               <DarkModeToggle />
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-white hover:text-gold transition-colors p-2">
+                className="text-slate-700 dark:text-slate-200 hover:text-navy dark:hover:text-gold transition-colors p-2">
                 
                 {mobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
               </button>
@@ -211,7 +211,7 @@ export default function Layout({ children, currentPageName }) {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen &&
-        <div className="lg:hidden bg-white/95 border-t border-white/30" style={{ backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}>
+        <div className="lg:hidden bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700">
             <div className="px-4 py-4 space-y-2">
               {menuItems.map((item) =>
             <div key={item.name}>

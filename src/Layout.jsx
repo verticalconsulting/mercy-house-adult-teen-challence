@@ -159,7 +159,7 @@ export default function Layout({ children, currentPageName }) {
         {/* Desktop Nav row */}
         <div className="hidden lg:block bg-white dark:bg-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <nav className="flex items-center justify-center h-10 space-x-1 bg-[hsl(var(--muted))]">
+            <nav className="flex items-center justify-center h-10 space-x-1">
               {menuItems.map((item) =>
               <div key={item.name} className="relative group">
                   {item.submenu ?

@@ -80,6 +80,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Who We Are Section */}
+      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Who We Are</h2>
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-2xl">
+            <video
+              controls
+              className="w-full"
+              poster=""
+            >
+              <source src="https://media.base44.com/videos/public/6983b4b00291b5dfd8507106/60591bc3e_MercyHouse.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
+
       {/* Programs Section */}
       <section className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

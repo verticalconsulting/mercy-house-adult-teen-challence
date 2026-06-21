@@ -77,6 +77,7 @@ const AuthenticatedApp = () => {
       <Route path="/Programs" element={<LayoutWrapper currentPageName="Programs"><Programs /></LayoutWrapper>} />
       <Route path="/PrivacyPolicy" element={<LayoutWrapper currentPageName="PrivacyPolicy"><PrivacyPolicy /></LayoutWrapper>} />
       <Route path="/help-for-dependency-abuse" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
+      <Route path="/DependancyHelp" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
       <Route path="/FreedomClassic" element={<LayoutWrapper currentPageName="FreedomClassic"><FreedomClassic /></LayoutWrapper>} />
       <Route path="/News" element={<LayoutWrapper currentPageName="News"><News /></LayoutWrapper>} />
       <Route path="/WorkforceDevelopment" element={<LayoutWrapper currentPageName="WorkforceDevelopment"><MicroBusinesses /></LayoutWrapper>} />

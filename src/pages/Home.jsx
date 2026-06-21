@@ -56,13 +56,13 @@ export default function Home() {
               Providing comprehensive Christian faith-based solutions to life-controlling problems. Become mentally sound, emotionally balanced, and socially adjusted.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to={createPageUrl('IntakeForm')}>
-                <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+              <Link to="/DependancyHelp">
+                <Button className="bg-gold hover:bg-gold/80 text-navy font-bold px-10 py-7 text-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 ring-4 ring-gold/40">
                   Get Help Now
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <ArrowRight className="ml-2 w-6 h-6" />
                 </Button>
               </Link>
-              <DonateButton className="px-8 py-6 text-lg font-semibold" />
+              <DonateButton className="px-10 py-7 text-2xl font-bold ring-4 ring-white/40 shadow-2xl" />
             </div>
           </div>
         </div>

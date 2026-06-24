@@ -380,31 +380,31 @@ export default function FreedomClassic() {
 
               {/* Mac Haik Ford Jackson */}
               <a href="https://www.machaikfordjackson.com/" target="_blank" rel="noopener noreferrer"
-                className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+              className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
                 <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png" alt="Mac Haik Ford Jackson" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
               </a>
 
               {/* Toyota of Hattiesburg */}
               <a href="https://www.toyotahattiesburg.com/" target="_blank" rel="noopener noreferrer"
-                className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/485fb9290_ToyotaofHattiesburg-RedandBlack.png" alt="Toyota of Hattiesburg" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/485fb9290_ToyotaofHattiesburg-RedandBlack.png" alt="Toyota of Hattiesburg" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform hidden" />
               </a>
 
               {/* Deviney Construction */}
               <a href="https://www.devineyconstruction.com/" target="_blank" rel="noopener noreferrer"
-                className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+              className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
                 <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/0a59a4908_DEVINEYLOGO.jpg" alt="Deviney Construction" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
               </a>
 
               {/* Morgan White Group */}
               <a href="https://morganwhite.com/" target="_blank" rel="noopener noreferrer"
-                className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+              className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
                 <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/e4523a710_MorganWhite.jpg" alt="Morgan White Group" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
               </a>
 
               {/* Knit Together Healthcare */}
               <a href="https://knittogetherhealthcare.com/" target="_blank" rel="noopener noreferrer"
-                className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+              className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
                 <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/9d7c3a24e_KnitTogetherLogoWhiteBG.jpg" alt="Knit Together Healthcare" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
               </a>
 

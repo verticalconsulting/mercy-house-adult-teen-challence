@@ -65,7 +65,8 @@ export default function Layout({ children, currentPageName }) {
     { name: 'Volunteer', path: 'Volunteer' },
     { name: 'Sponsor a Student', path: 'SponsorStudent' },
     { name: 'Intake Application Fee', directPath: '/Donate' },
-    { name: 'Make a Recurring Donation', path: 'Donate' }]
+    { name: 'Make a Recurring Donation', path: 'Donate' },
+    { name: 'Freedom Classic Golf Tournament', directPath: '/FreedomClassic' }]
   },
   {
     name: 'Locations',

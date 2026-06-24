@@ -387,7 +387,7 @@ export default function FreedomClassic() {
               {/* Toyota of Hattiesburg */}
               <a href="https://www.toyotahattiesburg.com/" target="_blank" rel="noopener noreferrer"
               className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/485fb9290_ToyotaofHattiesburg-RedandBlack.png" alt="Toyota of Hattiesburg" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform hidden" />
+                
               </a>
 
               {/* Deviney Construction */}

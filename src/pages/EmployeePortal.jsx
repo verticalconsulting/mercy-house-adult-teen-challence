@@ -40,14 +40,14 @@ export default function EmployeePortal() {
       try {
         const isAuth = await base44.auth.isAuthenticated();
         if (!isAuth) {
-          base44.auth.redirectToLogin();
+          base44.auth.redirectToLogin(window.location.href);
           return;
         }
         const userData = await base44.auth.me();
         setUser(userData);
       } catch (error) {
         console.error('Auth error:', error);
-        base44.auth.redirectToLogin();
+        base44.auth.redirectToLogin(window.location.href);
       } finally {
         setLoading(false);
       }

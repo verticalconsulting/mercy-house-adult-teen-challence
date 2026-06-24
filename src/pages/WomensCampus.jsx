@@ -3,16 +3,96 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { base44 } from '@/api/base44Client';
 import { useQuery } from '@tanstack/react-query';
-import { Heart, Users, BookOpen, Briefcase, Home, ArrowRight } from 'lucide-react';
+import { Heart, Users, BookOpen, Briefcase, Home, ArrowRight, Image, Video, X, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import BedCountDisplay from '../components/BedCountDisplay';
 import DonateButton from '../components/DonateButton';
 
+function getEmbedUrl(url) {
+  const ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+  if (ytMatch) return `https://www.youtube.com/embed/${ytMatch[1]}`;
+  const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
+  if (vimeoMatch) return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
+  return url;
+}
+
+function MediaCard({ item, onClick }) {
+  return (
+    <div
+      className="group cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-800"
+      onClick={() => onClick(item)}
+    >
+      {item.media_type === 'photo' ? (
+        <div className="relative aspect-video overflow-hidden">
+          <img src={item.media_url} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+          <div className="absolute top-3 right-3 bg-white/90 dark:bg-slate-800/90 rounded-full p-1.5">
+            <Image className="w-4 h-4 text-navy dark:text-gold" />
+          </div>
+        </div>
+      ) : (
+        <div className="relative aspect-video overflow-hidden bg-slate-900 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-gold/80 transition-colors duration-300">
+              <Play className="w-8 h-8 text-white ml-1" />
+            </div>
+          </div>
+          <div className="absolute top-3 right-3 bg-white/90 dark:bg-slate-800/90 rounded-full p-1.5">
+            <Video className="w-4 h-4 text-navy dark:text-gold" />
+          </div>
+          <p className="absolute bottom-4 left-4 text-white text-sm font-medium">{item.title}</p>
+        </div>
+      )}
+      <div className="p-4">
+        <h3 className="font-semibold text-navy dark:text-gold">{item.title}</h3>
+        {item.event_date && (
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            {new Date(item.event_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+          </p>
+        )}
+        {item.description && <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 line-clamp-2">{item.description}</p>}
+      </div>
+    </div>
+  );
+}
+
+function LightboxModal({ item, onClose }) {
+  if (!item) return null;
+  return (
+    <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={onClose}>
+      <button className="absolute top-4 right-4 text-white hover:text-gold transition-colors" onClick={onClose}>
+        <X className="w-8 h-8" />
+      </button>
+      <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
+        {item.media_type === 'photo' ? (
+          <img src={item.media_url} alt={item.title} className="w-full rounded-xl max-h-[80vh] object-contain" />
+        ) : (
+          <div className="aspect-video w-full rounded-xl overflow-hidden">
+            <iframe src={getEmbedUrl(item.media_url)} className="w-full h-full" allowFullScreen title={item.title} />
+          </div>
+        )}
+        <div className="mt-4 text-white">
+          <h3 className="text-xl font-bold">{item.title}</h3>
+          {item.event_date && <p className="text-slate-300 text-sm mt-1">{new Date(item.event_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>}
+          {item.description && <p className="text-slate-300 mt-2">{item.description}</p>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function WomensCampus() {
+  const [selectedMedia, setSelectedMedia] = useState(null);
+
   const { data: bedCounts } = useQuery({
     queryKey: ['bedCounts'],
     queryFn: () => base44.entities.BedCount.list(),
     initialData: []
+  });
+
+  const { data: media = [], isLoading: mediaLoading } = useQuery({
+    queryKey: ['womensCampusMedia'],
+    queryFn: () => base44.entities.WomensCampusMedia.filter({ published: true }, '-event_date'),
   });
 
   const womensBedData = bedCounts.find((bc) => bc.program_type === 'womens');
@@ -236,21 +316,41 @@ export default function WomensCampus() {
         </div>
       </section>
 
-      {/* Gallery Teaser */}
+      {/* Gallery */}
       <section className="py-16 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Recent Events & Moments</h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
-            See what life looks like on our women's campus — celebrations, milestones, and everyday moments of healing.
-          </p>
-          <Link to="/WomensCampusGallery">
-            <Button className="bg-navy hover:bg-navy/90 dark:bg-gold dark:text-navy dark:hover:bg-gold/90 text-white font-semibold px-8 py-4 text-lg shadow-lg">
-              View Photos & Videos
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </Link>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Recent Events & Moments</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+              See what life looks like on our women's campus — celebrations, milestones, and everyday moments of healing.
+            </p>
+          </div>
+          {mediaLoading ? (
+            <div className="flex justify-center items-center h-40">
+              <div className="w-8 h-8 border-4 border-navy border-t-transparent rounded-full animate-spin" />
+            </div>
+          ) : media.length === 0 ? (
+            <div className="text-center py-12 text-slate-500 dark:text-slate-400">
+              <p>Photos and videos from our campus events will appear here soon.</p>
+            </div>
+          ) : (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {media.map((item) => (
+                <MediaCard key={item.id} item={item} onClick={setSelectedMedia} />
+              ))}
+            </div>
+          )}
+          <div className="text-center mt-10">
+            <Link to="/WomensCampusGallery">
+              <Button variant="outline" className="border-navy text-navy dark:border-gold dark:text-gold font-semibold px-8 py-4 text-lg">
+                View Full Gallery
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
+      <LightboxModal item={selectedMedia} onClose={() => setSelectedMedia(null)} />
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">

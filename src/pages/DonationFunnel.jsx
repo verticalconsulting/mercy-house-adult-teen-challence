@@ -218,7 +218,7 @@ export default function DonationFunnel() {
                         {topPagesData.map((entry, index) => (
                           <Cell
                             key={entry.page}
-                            fill={entry.page.includes('Donate') || entry.page.includes('Support') ? '#CCA357' : '#002E54'}
+                            fill={entry.page.includes('Donate') || entry.page.includes('Support') ? 'hsl(var(--accent))' : 'hsl(var(--primary))'}
                           />
                         ))}
                       </Bar>

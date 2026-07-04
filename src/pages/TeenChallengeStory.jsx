@@ -8,19 +8,11 @@ export default function TeenChallengeStory() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative bg-navy dark:bg-slate-900 py-24 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <img
-            src="https://images.unsplash.com/photo-1493809842364-78817add2d03?w=1600&q=80"
-            alt=""
-            className="w-full h-full object-cover"
-            aria-hidden="true"
-          />
-        </div>
+      <section className="relative bg-gold dark:bg-gold py-24 text-navy overflow-hidden">
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-4">About Us</p>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">The Teen Challenge Story</h1>
-          <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-navy font-semibold uppercase tracking-widest text-sm mb-4">About Us</p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-navy">The Teen Challenge Story</h1>
+          <p className="text-xl text-navy/80 leading-relaxed max-w-3xl mx-auto font-medium">
             How one country preacher's compassion for troubled youth sparked a global movement of recovery and hope.
           </p>
         </div>

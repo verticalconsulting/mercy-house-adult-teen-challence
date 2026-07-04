@@ -46,7 +46,7 @@ export default function About() {
           <img
             src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=80"
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-100"
             aria-hidden="true" />
           
         </div>

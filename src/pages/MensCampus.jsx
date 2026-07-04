@@ -71,9 +71,12 @@ export default function MensCampus() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983b4b00291b5dfd8507106/05a4f88f2_bible.png"
-                alt="Resident studying the Bible during structured program time at Mercy House Men's Campus"
+              <video
+                src="https://media.base44.com/videos/public/6983b4b00291b5dfd8507106/a82ca1f96_men-program.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
                 className="w-full h-full object-cover"
               />
             </div>

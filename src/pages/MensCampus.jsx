@@ -94,7 +94,7 @@ export default function MensCampus() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to={createPageUrl('IntakeForm')}>
                   <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy font-semibold">
-                    Apply Now — It's Free
+                    Apply Now
                     <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
                   </Button>
                 </Link>

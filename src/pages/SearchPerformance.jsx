@@ -163,20 +163,20 @@ export default function SearchPerformance() {
                     <AreaChart data={trend} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
                       <defs>
                         <linearGradient id="clicks" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#002E54" stopOpacity={0.3} />
-                          <stop offset="95%" stopColor="#002E54" stopOpacity={0} />
+                          <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
+                          <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
                         </linearGradient>
                         <linearGradient id="impressions" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#CCA357" stopOpacity={0.3} />
-                          <stop offset="95%" stopColor="#CCA357" stopOpacity={0} />
+                          <stop offset="5%" stopColor="hsl(var(--accent))" stopOpacity={0.3} />
+                          <stop offset="95%" stopColor="hsl(var(--accent))" stopOpacity={0} />
                         </linearGradient>
                       </defs>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--muted))" />
                       <XAxis dataKey="date" tick={{ fontSize: 11 }} tickFormatter={d => d.slice(5)} />
                       <YAxis tick={{ fontSize: 11 }} />
                       <Tooltip formatter={(v, n) => [v.toLocaleString(), n === 'clicks' ? 'Clicks' : 'Impressions']} labelFormatter={d => `Date: ${d}`} />
-                      <Area type="monotone" dataKey="impressions" stroke="#CCA357" fill="url(#impressions)" strokeWidth={2} />
-                      <Area type="monotone" dataKey="clicks" stroke="#002E54" fill="url(#clicks)" strokeWidth={2} />
+                      <Area type="monotone" dataKey="impressions" stroke="hsl(var(--accent))" fill="url(#impressions)" strokeWidth={2} />
+                      <Area type="monotone" dataKey="clicks" stroke="hsl(var(--primary))" fill="url(#clicks)" strokeWidth={2} />
                     </AreaChart>
                   </ResponsiveContainer>
                 </CardContent>

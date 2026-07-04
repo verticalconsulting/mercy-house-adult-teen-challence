@@ -19,7 +19,7 @@ export default function DonationFunnelChart({ data }) {
           ))}
           <LabelList
             position="center"
-            fill="#fff"
+            fill="hsl(var(--background))"
             stroke="none"
             dataKey="name"
             style={{ fontSize: '13px', fontWeight: 600 }}

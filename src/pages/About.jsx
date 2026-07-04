@@ -43,11 +43,11 @@ export default function About() {
       {/* Hero */}
       <section className="relative bg-navy dark:bg-slate-900 py-24 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <img
-            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=80"
-            alt=""
-            className="w-full h-full object-cover opacity-100"
-            aria-hidden="true" />
+          <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/400f75909_IMG_5808.JPEG"
+
+          alt=""
+          className="w-full h-full object-cover opacity-100"
+          aria-hidden="true" />
           
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

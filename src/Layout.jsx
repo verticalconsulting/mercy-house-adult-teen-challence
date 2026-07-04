@@ -35,7 +35,7 @@ export default function Layout({ children, currentPageName }) {
     path: 'About',
     directPath: '/About',
     submenu: [
-    { name: 'The Teen Challenge Story', directPath: '/About' },
+    { name: 'The Teen Challenge Story', directPath: '/TeenChallengeStory' },
     { name: 'Our Leadership Team & Board of Directors', path: 'MeetTheTeam' },
     { name: 'Our Mission, Culture & Values', directPath: '/About' },
     { name: 'News and Events', directPath: '/Events' },

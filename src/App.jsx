@@ -8,6 +8,7 @@ import PageNotFound from './lib/PageNotFound';
 import MeetTheTeam from './pages/MeetTheTeam';
 import WomensCampusGallery from './pages/WomensCampusGallery';
 import FreedomClassic from './pages/FreedomClassic';
+import TeenChallengeStory from './pages/TeenChallengeStory';
 import News from './pages/News';
 import SearchPerformance from './pages/SearchPerformance';
 import About from './pages/About';
@@ -79,6 +80,7 @@ const AuthenticatedApp = () => {
       <Route path="/help-for-dependency-abuse" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
       <Route path="/DependancyHelp" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
       <Route path="/FreedomClassic" element={<LayoutWrapper currentPageName="FreedomClassic"><FreedomClassic /></LayoutWrapper>} />
+      <Route path="/TeenChallengeStory" element={<LayoutWrapper currentPageName="TeenChallengeStory"><TeenChallengeStory /></LayoutWrapper>} />
       <Route path="/News" element={<LayoutWrapper currentPageName="News"><News /></LayoutWrapper>} />
       <Route path="/WorkforceDevelopment" element={<LayoutWrapper currentPageName="WorkforceDevelopment"><MicroBusinesses /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />

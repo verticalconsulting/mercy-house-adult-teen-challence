@@ -117,7 +117,7 @@ export default function FreedomClassic() {
       <section className="bg-navy py-12">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4">
           <div className="flex items-center gap-4 text-white text-center md:text-left flex-1">
-            <Calendar className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 text-[#dcc061]" />
+            <Calendar className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 text-accent" />
             <div>
               <p className="text-xs uppercase tracking-widest font-bold text-slate-800">DATE</p>
               <p className="text-2xl md:text-3xl font-black text-slate-800">Monday, October 19, 2026</p>
@@ -125,7 +125,7 @@ export default function FreedomClassic() {
           </div>
           <div className="hidden md:block w-px h-16 bg-white/20" />
           <div className="flex items-center gap-4 text-white text-center md:text-left flex-1">
-            <Flag className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 text-[#3f891f]" />
+            <Flag className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 text-secondary" />
             <div>
               <p className="text-xs uppercase tracking-widest font-bold text-slate-800">FORMAT</p>
               <p className="text-2xl md:text-3xl font-black text-slate-800">Four Person Scramble</p>
@@ -133,7 +133,7 @@ export default function FreedomClassic() {
           </div>
           <div className="hidden md:block w-px h-16 bg-white/20" />
           <div className="flex items-center gap-4 text-white text-center md:text-left flex-1">
-            <MapPin className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 text-[#da1616]" />
+            <MapPin className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 text-destructive" />
             <div>
               <p className="text-xs uppercase tracking-widest font-bold text-slate-800">LOCATION</p>
               <p className="text-2xl md:text-3xl font-black text-slate-800">Annandale & Reunion</p>
@@ -160,7 +160,7 @@ export default function FreedomClassic() {
                   <p className="text-slate-600 text-sm">12:00 PM</p>
                 </div>
               </div>
-              <p className="text-xs mt-4 italic text-[#ff2a00]">One round per course. Course selection is first come, first served.</p>
+              <p className="text-xs mt-4 italic text-destructive">One round per course. Course selection is first come, first served.</p>
             </div>
 
             {/* Cost & Includes */}
@@ -184,7 +184,7 @@ export default function FreedomClassic() {
 
             {/* Mission */}
             <div>
-              <p className="text-xl font-bold mb-3 text-[#01a24f]">Helping Those Who Need A Mulligan In Life.</p>
+              <p className="text-xl font-bold mb-3 text-secondary">Helping Those Who Need A Mulligan In Life.</p>
               <p className="text-slate-700 text-sm leading-relaxed mb-4">
                 By participating in the Golf Classic, you are supporting the Mercy House ministry and giving hope to men and women who are seeking freedom from life controlling issues.
               </p>
@@ -210,7 +210,7 @@ export default function FreedomClassic() {
                 <p className="font-bold text-xl text-slate-800">Annandale Golf Club</p>
               </div>
               <p className="text-slate-800 font-medium">100 Annandale Golf Club Drive<br />Madison, MS 39110</p>
-              <a href="https://maps.google.com/?q=100+Annandale+Golf+Club+Drive+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline text-[#1e293a]">Get Directions →</a>
+              <a href="https://maps.google.com/?q=100+Annandale+Golf+Club+Drive+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline text-foreground">Get Directions →</a>
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
@@ -218,7 +218,7 @@ export default function FreedomClassic() {
                 <p className="font-bold text-xl text-slate-800">Reunion Golf &amp; Country Club</p>
               </div>
               <p className="text-slate-800 font-medium">150 Greensward Dr<br />Madison, MS 39110</p>
-              <a href="https://maps.google.com/?q=150+Greensward+Dr+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline text-[#1e293a]">Get Directions →</a>
+              <a href="https://maps.google.com/?q=150+Greensward+Dr+Madison+MS+39110" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-sm font-semibold hover:underline text-foreground">Get Directions →</a>
             </div>
             <div className="flex-1">
               <p className="font-bold mb-3 text-slate-800 text-xl">Questions?</p>
@@ -245,7 +245,7 @@ export default function FreedomClassic() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Platinum */}
             <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 flex flex-col">
-              <div className="bg-[#b0b0b0] text-white text-center py-4">
+              <div className="bg-muted-foreground text-white text-center py-4">
                 <p className="font-black text-2xl tracking-widest">PLATINUM SPONSOR</p>
                 <p className="text-4xl font-black mt-1">$10,000</p>
               </div>
@@ -268,7 +268,7 @@ export default function FreedomClassic() {
 
             {/* Diamond */}
             <div className="rounded-2xl overflow-hidden shadow-lg border border-blue-300 flex flex-col">
-              <div className="bg-[#1a3a6e] text-white text-center py-4">
+              <div className="bg-primary text-white text-center py-4">
                 <p className="font-black text-2xl tracking-widest">DIAMOND SPONSOR</p>
                 <p className="text-4xl font-black mt-1">$5,000</p>
               </div>
@@ -294,7 +294,7 @@ export default function FreedomClassic() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
             {/* Gold */}
             <div className="rounded-2xl overflow-hidden shadow-lg border border-yellow-300 flex flex-col">
-              <div className="bg-[#e6c94c] text-navy text-center py-4">
+              <div className="bg-accent text-navy text-center py-4">
                 <p className="font-black text-2xl tracking-widest">GOLD SPONSOR</p>
                 <p className="text-4xl font-black mt-1">$3,000</p>
               </div>
@@ -315,7 +315,7 @@ export default function FreedomClassic() {
 
             {/* Silver */}
             <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 flex flex-col">
-              <div className="bg-[#a8a8a8] text-white text-center py-4">
+              <div className="bg-muted-foreground text-white text-center py-4">
                 <p className="font-black text-2xl tracking-widest">SILVER SPONSOR</p>
                 <p className="text-4xl font-black mt-1">$2,000</p>
               </div>
@@ -339,11 +339,11 @@ export default function FreedomClassic() {
             <h3 className="text-2xl font-bold text-slate-800 mb-4 text-center">Hole Sponsorships</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
               <div className="text-center bg-white rounded-xl p-5 shadow-sm border border-slate-100">
-                <p className="text-3xl font-black text-[#13761c]">$150</p>
+                <p className="text-3xl font-black text-secondary">$150</p>
                 <p className="text-slate-600 font-semibold mt-1">Single Hole</p>
               </div>
               <div className="text-center bg-white rounded-xl p-5 shadow-sm border border-slate-100">
-                <p className="text-3xl font-black text-[#13761c]">$300</p>
+                <p className="text-3xl font-black text-secondary">$300</p>
                 <p className="text-slate-600 font-semibold mt-1">Dual Hole</p>
               </div>
             </div>
@@ -419,7 +419,7 @@ export default function FreedomClassic() {
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-3">
-              <Award className="w-7 h-7 text-[#d91c1c]" />
+              <Award className="w-7 h-7 text-destructive" />
               <h2 className="text-3xl font-bold text-slate-800">Live Leaderboard</h2>
             </div>
             <p className="mb-6 text-slate-800">Follow the action in real time on tournament day.</p>
@@ -445,7 +445,7 @@ export default function FreedomClassic() {
       {/* ── Mission Banner ── */}
       <section className="py-14 bg-slate-100">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-[#426a06]">Play Golf. Change Lives.</h2>
+          <h2 className="text-3xl font-bold mb-4 text-secondary">Play Golf. Change Lives.</h2>
           <p className="text-lg text-slate-700 leading-relaxed mb-8">Every swing you take supports men and women finding freedom from life controlling issues. 100% of individual donations go directly to Mercy House's faith-based recovery mission.
 
           </p>

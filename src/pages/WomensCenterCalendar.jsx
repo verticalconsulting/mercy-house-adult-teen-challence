@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { createPageUrl } from '../utils';
 import { format, startOfWeek, endOfWeek, addDays, isSameDay } from 'date-fns';
 import MonthCalendar from '@/components/volunteer/MonthCalendar';
+import SuccessStories from '@/components/volunteer/SuccessStories';
 
 export default function WomensCenterCalendar() {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -187,6 +188,9 @@ export default function WomensCenterCalendar() {
           )}
         </div>
       </section>
+
+      {/* Volunteer Success Stories — auto-shared to Facebook */}
+      <SuccessStories />
     </div>
   );
 }

@@ -40,6 +40,15 @@
       "type": "string",
       "maxLength": 1000,
       "description": "Additional context or background about the testimonial"
+    },
+    "shared_to_facebook": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this success story has been auto-shared to Facebook"
+    },
+    "facebook_post_id": {
+      "type": "string",
+      "description": "Facebook post ID returned after sharing"
     }
   },
   "required": [

@@ -21,14 +21,16 @@ Deno.serve(async (req) => {
       timeMax = new Date(now.getFullYear(), now.getMonth() + 4, 1).toISOString();
     }
 
-    // Fetch events from the builder's Google Calendar (shared connector)
+    // Fetch events from the Women's Center Google Calendar (shared connector)
     const { accessToken } = await base44.asServiceRole.connectors.getConnection('googlecalendar');
+    const calendarId = 'marketing1@mercyhouseatc.com';
 
     let googleEvents = [];
     try {
-      const url = `https://www.googleapis.com/calendar/v3/calendars/primary/events`
+      const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events`
         + `?timeMin=${encodeURIComponent(timeMin)}`
         + `&timeMax=${encodeURIComponent(timeMax)}`
+        + `&timeZone=${encodeURIComponent('America/Chicago')}`
         + `&singleEvents=true&orderBy=startTime&maxResults=250`;
       const res = await fetch(url, { headers: { 'Authorization': `Bearer ${accessToken}` } });
       if (res.ok) {

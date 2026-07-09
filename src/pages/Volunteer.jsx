@@ -103,9 +103,19 @@ export default function Volunteer() {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center text-white" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.65)' }}>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">Volunteer With Us</h1>
-          <p className="text-xl md:text-2xl text-slate-100 max-w-3xl mx-auto leading-relaxed font-medium">
+          <p className="text-xl md:text-2xl text-slate-100 max-w-3xl mx-auto leading-relaxed font-medium mb-8">
             Make a lasting impact in the lives of those seeking freedom and transformation. Join our mission to bring hope and healing to our community.
           </p>
+          <a
+            href="#volunteer-application"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('volunteer-application')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="inline-flex items-center gap-2 bg-gold hover:bg-gold/90 text-navy font-bold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-colors">
+            Volunteer Application
+            <ArrowRight className="w-5 h-5" />
+          </a>
         </div>
       </section>
 
@@ -193,7 +203,7 @@ export default function Volunteer() {
       </section>
 
       {/* Application Form */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+      <section id="volunteer-application" className="py-20 bg-slate-50 dark:bg-slate-900 scroll-mt-20">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-navy dark:text-gold mb-6">Volunteer Application</h2>

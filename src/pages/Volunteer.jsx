@@ -17,6 +17,7 @@ export default function Volunteer() {
   const [felonyConvicted, setFelonyConvicted] = useState('');
   const [usCitizen, setUsCitizen] = useState('');
   const [volunteeredBefore, setVolunteeredBefore] = useState('');
+  const [preferredCampus, setPreferredCampus] = useState('');
 
   const toggleCheckbox = (setter, list, value) => {
     setter(list.includes(value) ? list.filter(v => v !== value) : [...list, value]);
@@ -44,6 +45,7 @@ export default function Volunteer() {
         emergency_contact_relationship: data.emergency_contact_relationship,
         availability,
         areas_of_interest: areasOfInterest,
+        preferred_campus: preferredCampus,
         skills: data.skills,
         previous_volunteer_experience: data.previous_volunteer_experience,
         why_volunteer: data.why_volunteer,
@@ -215,6 +217,31 @@ export default function Volunteer() {
           <Card className="shadow-xl">
             <CardContent className="p-8 md:p-10">
               <form onSubmit={handleSubmit} className="space-y-10">
+
+                {/* Campus Preference */}
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-navy dark:text-gold mb-6">Which campus would you like to serve at? *</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    {[
+                      { value: 'womens_center', label: "Women's Center", desc: 'Learned, MS campus' },
+                      { value: 'mens_center', label: "Men's Center", desc: 'Georgetown & Crystal Springs, MS' },
+                    ].map((campus) => (
+                      <button
+                        key={campus.value}
+                        type="button"
+                        onClick={() => setPreferredCampus(campus.value)}
+                        className={`flex flex-col items-start text-left p-6 rounded-2xl border-2 transition-all duration-200 ${
+                          preferredCampus === campus.value
+                            ? 'border-navy bg-navy/5 dark:bg-navy/20 shadow-md'
+                            : 'border-slate-200 dark:border-slate-700 hover:border-navy/50'
+                        }`}
+                      >
+                        <span className="text-xl font-bold text-navy dark:text-gold">{campus.label}</span>
+                        <span className="text-base text-slate-600 dark:text-slate-300 mt-1">{campus.desc}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
                 {/* Applicant Information */}
                 <div>
@@ -396,6 +423,10 @@ export default function Volunteer() {
                       { value: 'auto_academy', label: 'Auto Academy' },
                       { value: 'kitchen', label: 'Kitchen & Meal Prep' },
                       { value: 'landscaping', label: 'Landscaping' },
+                      { value: 'gardening', label: 'Gardening' },
+                      { value: 'bee_keeping', label: 'Bee Keeping' },
+                      { value: 'chickens', label: 'Chickens' },
+                      { value: 'workforce_development', label: 'Workforce Development' },
                     ].map((item) => (
                       <div key={item.value} className="flex items-center gap-3">
                         <Checkbox

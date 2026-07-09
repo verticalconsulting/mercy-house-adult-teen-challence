@@ -41,6 +41,14 @@
     "emergency_contact_relationship": {
       "type": "string"
     },
+    "preferred_campus": {
+      "type": "string",
+      "enum": [
+        "womens_center",
+        "mens_center"
+      ],
+      "description": "Which campus the volunteer prefers to serve at"
+    },
     "availability": {
       "type": "array",
       "items": {
@@ -62,14 +70,22 @@
         "enum": [
           "mentoring",
           "teaching",
+          "chapel_teaching",
+          "ged_prep",
           "administrative",
           "maintenance",
           "events",
           "thrift_store",
+          "superthrift",
           "auto_academy",
           "kitchen",
           "childcare",
-          "transportation"
+          "transportation",
+          "landscaping",
+          "gardening",
+          "bee_keeping",
+          "chickens",
+          "workforce_development"
         ]
       },
       "description": "Areas where volunteer wants to help"

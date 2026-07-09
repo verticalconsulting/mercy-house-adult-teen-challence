@@ -96,14 +96,12 @@ export default function Volunteer() {
       <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983b4b00291b5dfd8507106/e7f510047_mississippi-city.png"
-            alt="Mississippi Community"
+            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/60d31fe5-e36f-4f89-20a1-faacd6810100/herobanner"
+            alt="Mercy House volunteers serving together"
             className="w-full h-full object-cover"
-            loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/70 to-navy/60 dark:from-slate-900/90 dark:via-slate-900/80 dark:to-slate-900/70" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center text-white">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center text-white" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.65)' }}>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">Volunteer With Us</h1>
           <p className="text-xl md:text-2xl text-slate-100 max-w-3xl mx-auto leading-relaxed font-medium">
             Make a lasting impact in the lives of those seeking freedom and transformation. Join our mission to bring hope and healing to our community.

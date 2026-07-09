@@ -4,19 +4,69 @@ Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
 
-    const events = await base44.asServiceRole.entities.Event.filter({ published: true }, 'event_date', 50);
-    const now = new Date();
-    const upcoming = events.filter(e => e.event_date && new Date(e.event_date) >= now);
+    // Allow a time range from the frontend; default to current month ± buffer
+    let timeMin, timeMax;
+    try {
+      const body = await req.json();
+      timeMin = body.timeMin;
+      timeMax = body.timeMax;
+    } catch (_) { /* no body — use defaults */ }
 
+    if (!timeMin) {
+      const now = new Date();
+      timeMin = new Date(now.getFullYear(), now.getMonth() - 2, 1).toISOString();
+    }
+    if (!timeMax) {
+      const now = new Date();
+      timeMax = new Date(now.getFullYear(), now.getMonth() + 4, 1).toISOString();
+    }
+
+    // Fetch events from the builder's Google Calendar (shared connector)
+    const { accessToken } = await base44.asServiceRole.connectors.getConnection('googlecalendar');
+
+    let googleEvents = [];
+    try {
+      const url = `https://www.googleapis.com/calendar/v3/calendars/primary/events`
+        + `?timeMin=${encodeURIComponent(timeMin)}`
+        + `&timeMax=${encodeURIComponent(timeMax)}`
+        + `&singleEvents=true&orderBy=startTime&maxResults=250`;
+      const res = await fetch(url, { headers: { 'Authorization': `Bearer ${accessToken}` } });
+      if (res.ok) {
+        const data = await res.json();
+        googleEvents = (data.items || []).filter(e => e.status !== 'cancelled');
+      } else {
+        console.error('Google Calendar API error:', res.status, await res.text());
+      }
+    } catch (e) {
+      console.error('Google Calendar fetch failed:', e.message);
+    }
+
+    // Normalize events
+    const events = googleEvents.map(e => {
+      const startStr = e.start?.dateTime || e.start?.date;
+      const endStr = e.end?.dateTime || e.end?.date;
+      return {
+        id: e.id,
+        title: e.summary || '(Untitled event)',
+        start: startStr,
+        end: endStr,
+        location: e.location || '',
+        description: e.description || '',
+        html_link: e.htmlLink || '',
+        all_day: !e.start?.dateTime
+      };
+    }).filter(e => e.start);
+
+    // Attach volunteer commitments by google_event_id
     const shifts = await base44.asServiceRole.entities.VolunteerShift.list('-event_date', 500);
     const byEvent = {};
     for (const s of shifts) {
-      if (s.status === 'cancelled') continue;
-      if (!byEvent[s.event_id]) byEvent[s.event_id] = [];
-      byEvent[s.event_id].push(s);
+      if (s.status === 'cancelled' || !s.google_event_id) continue;
+      if (!byEvent[s.google_event_id]) byEvent[s.google_event_id] = [];
+      byEvent[s.google_event_id].push(s);
     }
 
-    const result = upcoming.map(e => {
+    const result = events.map(e => {
       const evShifts = byEvent[e.id] || [];
       const firstNames = evShifts.map(s => {
         const parts = (s.volunteer_name || '').split(' ').filter(Boolean);
@@ -25,13 +75,7 @@ Deno.serve(async (req) => {
         return `${first} ${lastInitial}`.trim();
       });
       return {
-        id: e.id,
-        title: e.title,
-        description: e.description,
-        event_date: e.event_date,
-        location: e.location,
-        image_url: e.image_url,
-        category: e.category,
+        ...e,
         volunteer_count: evShifts.length,
         volunteer_first_names: firstNames
       };

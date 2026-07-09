@@ -39,11 +39,19 @@ export default function VolunteerShiftManager({ volunteer }) {
   });
 
   const { data: events = [] } = useQuery({
-    queryKey: ['events-for-shift'],
-    queryFn: () => base44.entities.Event.list('event_date', 50)
+    queryKey: ['google-events-for-shift'],
+    queryFn: async () => {
+      const now = new Date();
+      const max = new Date(now.getFullYear(), now.getMonth() + 6, 1);
+      const res = await base44.functions.invoke('getWomensCenterCalendar', {
+        timeMin: now.toISOString(),
+        timeMax: max.toISOString()
+      });
+      return res.data?.events || [];
+    }
   });
 
-  const upcomingEvents = events.filter(e => e.event_date && new Date(e.event_date) >= new Date());
+  const upcomingEvents = events;
 
   const addShiftMutation = useMutation({
     mutationFn: async () => {
@@ -52,9 +60,9 @@ export default function VolunteerShiftManager({ volunteer }) {
       return base44.entities.VolunteerShift.create({
         volunteer_id: volunteer.id,
         volunteer_name: volunteer.full_name,
-        event_id: event.id,
+        google_event_id: event.id,
         event_title: event.title,
-        event_date: event.event_date,
+        event_date: event.start,
         role: role || 'Volunteer',
         status: 'scheduled',
         reminder_sent: false
@@ -105,7 +113,7 @@ export default function VolunteerShiftManager({ volunteer }) {
                 <SelectItem value="none" disabled>No upcoming events</SelectItem>
               ) : upcomingEvents.map(e => (
                 <SelectItem key={e.id} value={e.id} className="text-lg">
-                  {e.title} — {format(new Date(e.event_date), 'MMM dd, yyyy h:mm a')}
+                  {e.title} — {format(new Date(e.start), 'MMM dd, yyyy h:mm a')}
                 </SelectItem>
               ))}
             </SelectContent>

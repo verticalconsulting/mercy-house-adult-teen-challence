@@ -12,7 +12,11 @@
     },
     "event_id": {
       "type": "string",
-      "description": "Reference to the Event the volunteer is serving at"
+      "description": "Reference to an Event entity (legacy, optional)"
+    },
+    "google_event_id": {
+      "type": "string",
+      "description": "Google Calendar event ID this shift is tied to"
     },
     "event_title": {
       "type": "string",
@@ -21,7 +25,7 @@
     "event_date": {
       "type": "string",
       "format": "date-time",
-      "description": "Date/time of the shift (matches the event date)"
+      "description": "Date/time of the shift (matches the event start)"
     },
     "status": {
       "type": "string",
@@ -58,7 +62,6 @@
   "required": [
     "volunteer_id",
     "volunteer_name",
-    "event_id",
     "event_title",
     "event_date"
   ],

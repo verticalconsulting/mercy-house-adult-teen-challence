@@ -112,7 +112,7 @@ export default function Volunteer() {
               e.preventDefault();
               document.getElementById('volunteer-application')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center gap-2 bg-gold hover:bg-gold/90 text-navy font-bold text-lg md:text-xl px-8 py-4 rounded-lg shadow-lg transition-colors">
+            className="inline-flex items-center gap-2 bg-navy hover:bg-navy/90 text-white font-bold text-lg md:text-xl px-8 py-4 rounded-full shadow-lg transition-colors">
             Volunteer Application
             <ArrowRight className="w-5 h-5" />
           </a>

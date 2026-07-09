@@ -29,7 +29,7 @@ Deno.serve(async (req) => {
           hour: 'numeric', minute: '2-digit', timeZone: 'America/Chicago'
         });
 
-        const msg = `Reminder: You have a volunteer shift for "${shift.event_title}" on ${dateStr}. Reply CONFIRM, CANCEL, or RESCHEDULE. — Mercy House`;
+        const msg = `Mercy House Reminder: Volunteer shift for "${shift.event_title}" on ${dateStr}. Reply CONFIRM, CANCEL, or RESCHEDULE. View schedule: https://mercyhouseatc.com/WomensCenterCalendar | Questions? Call 855-893-7333. Msg&data rates may apply. Reply STOP to cancel.`;
         await sendTwilioSms(volunteer.phone, msg);
 
         await base44.asServiceRole.entities.VolunteerShift.update(shift.id, {

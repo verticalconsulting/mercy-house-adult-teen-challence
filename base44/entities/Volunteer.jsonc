@@ -107,6 +107,16 @@
       "default": false,
       "description": "Consent to background check"
     },
+    "sms_opt_in": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the volunteer opted in to receive SMS text messages"
+    },
+    "sms_opt_in_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the volunteer opted in to SMS messaging"
+    },
     "status": {
       "type": "string",
       "enum": [

@@ -14,6 +14,7 @@ export default function Volunteer() {
   const [availability, setAvailability] = useState([]);
   const [areasOfInterest, setAreasOfInterest] = useState([]);
   const [backgroundConsent, setBackgroundConsent] = useState(false);
+  const [smsOptIn, setSmsOptIn] = useState(false);
   const [felonyConvicted, setFelonyConvicted] = useState('');
   const [usCitizen, setUsCitizen] = useState('');
   const [volunteeredBefore, setVolunteeredBefore] = useState('');
@@ -62,6 +63,8 @@ export default function Volunteer() {
         previous_volunteer_experience: data.previous_volunteer_experience,
         why_volunteer: data.why_volunteer,
         background_check_consent: backgroundConsent,
+        sms_opt_in: smsOptIn,
+        sms_opt_in_date: smsOptIn ? new Date().toISOString() : null,
       });
       // Fire Formspree email notification in the background (non-blocking)
       handleFormspreeSubmit(e).catch(() => {});
@@ -523,6 +526,41 @@ export default function Volunteer() {
                         <Input id="emergency_contact_relationship" name="emergency_contact_relationship" className="mt-2 h-14 text-lg" />
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                {/* SMS Text Message Opt-In */}
+                <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl space-y-4">
+                  <h3 className="text-2xl md:text-3xl font-bold text-navy dark:text-gold">Get Volunteer Updates by Text</h3>
+                  <div className="flex items-start gap-4">
+                    <Checkbox
+                      id="sms_opt_in"
+                      checked={smsOptIn}
+                      onCheckedChange={(checked) => setSmsOptIn(checked === true)}
+                      className="w-6 h-6 mt-1"
+                    />
+                    <Label htmlFor="sms_opt_in" className="text-lg text-slate-800 dark:text-slate-200 cursor-pointer leading-relaxed">
+                      Yes, sign me up! I agree to receive SMS text messages from Mercy House Adult &amp; Teen Challenge at the phone number provided above.
+                    </Label>
+                  </div>
+                  <div className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed space-y-2 pl-0">
+                    <p>
+                      <strong>What you'll receive:</strong> Volunteer shift reminders, schedule updates, and important notifications about your service at Mercy House.
+                    </p>
+                    <p>
+                      <strong>Message frequency:</strong> Varies based on your scheduled shifts (typically 1–4 messages per month).
+                    </p>
+                    <p>
+                      <strong>Standard message &amp; data rates may apply</strong> based on your mobile carrier plan. Messages are sent using an automatic telephone dialing system.
+                    </p>
+                    <p>
+                      <strong>HELP:</strong> Reply HELP to any message for assistance. <strong>STOP:</strong> Reply STOP to any message to cancel your subscription at any time. You may also opt out by emailing info@mercyhouseatc.com.
+                    </p>
+                    <p>
+                      By checking the box above and submitting this form, you confirm that you are the account holder for the mobile number provided or have authorization to consent, and you agree to our{' '}
+                      <a href="/PrivacyPolicy" className="text-navy dark:text-gold underline hover:opacity-80">Privacy Policy</a>{' '}and{' '}
+                      <a href="/About" className="text-navy dark:text-gold underline hover:opacity-80">Terms of Service</a>.
+                    </p>
                   </div>
                 </div>
 

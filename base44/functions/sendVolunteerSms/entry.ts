@@ -1,6 +1,7 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.31';
 
 Deno.serve(async (req) => {
+  let volunteer_id;
   try {
     const base44 = createClientFromRequest(req);
     const user = await base44.auth.me();
@@ -8,7 +9,9 @@ Deno.serve(async (req) => {
       return Response.json({ error: 'Unauthorized' }, { status: 403 });
     }
 
-    const { volunteer_id, message } = await req.json();
+    const body = await req.json();
+    volunteer_id = body.volunteer_id;
+    const message = body.message;
     if (!volunteer_id || !message) {
       return Response.json({ error: 'volunteer_id and message are required' }, { status: 400 });
     }
@@ -55,6 +58,6 @@ async function sendTwilioSms(to, body) {
     body: params.toString()
   });
   const data = await res.json();
-  if (!res.ok) throw new Error(data.message || 'Twilio API error');
+  if (!res.ok) throw new Error(`Twilio API error (${res.status}): ${data.message || JSON.stringify(data)}`);
   return data;
 }

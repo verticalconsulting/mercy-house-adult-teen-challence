@@ -29,6 +29,7 @@ const statusConfig = {
 export default function VolunteerShiftManager({ volunteer }) {
   const queryClient = useQueryClient();
   const [selectedEventId, setSelectedEventId] = useState('');
+  const [shiftVolunteerName, setShiftVolunteerName] = useState(volunteer.full_name || '');
   const [role, setRole] = useState('');
   const [message, setMessage] = useState('');
 
@@ -64,7 +65,7 @@ export default function VolunteerShiftManager({ volunteer }) {
         : event.start;
       return base44.entities.VolunteerShift.create({
         volunteer_id: volunteer.id,
-        volunteer_name: volunteer.full_name,
+        volunteer_name: shiftVolunteerName || volunteer.full_name,
         google_event_id: event.id,
         event_title: event.title,
         event_date: eventDate,
@@ -77,6 +78,7 @@ export default function VolunteerShiftManager({ volunteer }) {
       queryClient.invalidateQueries({ queryKey: ['volunteer-shifts', volunteer.id] });
       toast.success('Shift scheduled');
       setSelectedEventId('');
+      setShiftVolunteerName(volunteer.full_name || '');
       setRole('');
     },
     onError: (e) => toast.error(e?.response?.data?.detail || e?.message || 'Failed to schedule shift')
@@ -129,6 +131,12 @@ export default function VolunteerShiftManager({ volunteer }) {
               ))}
             </SelectContent>
           </Select>
+          <Input
+            value={shiftVolunteerName}
+            onChange={e => setShiftVolunteerName(e.target.value)}
+            placeholder="Volunteer name"
+            className="h-12 text-lg"
+          />
           <Input
             value={role}
             onChange={e => setRole(e.target.value)}

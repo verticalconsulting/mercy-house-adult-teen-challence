@@ -74,7 +74,8 @@ export default function Layout({ children, currentPageName }) {
     directPath: '/Contact',
     submenu: [
     { name: "Men's Campus", path: 'MensCampus' },
-    { name: "Women's Campus", path: 'WomensCampus' }]
+    { name: "Women's Campus", path: 'WomensCampus' },
+    { name: "Women's Center Calendar", directPath: '/WomensCenterCalendar' }]
   }];
 
 

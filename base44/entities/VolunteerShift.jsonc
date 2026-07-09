@@ -1,0 +1,87 @@
+{
+  "name": "VolunteerShift",
+  "type": "object",
+  "properties": {
+    "volunteer_id": {
+      "type": "string",
+      "description": "Reference to the Volunteer"
+    },
+    "volunteer_name": {
+      "type": "string",
+      "description": "Volunteer full name (denormalized for display)"
+    },
+    "event_id": {
+      "type": "string",
+      "description": "Reference to the Event the volunteer is serving at"
+    },
+    "event_title": {
+      "type": "string",
+      "description": "Event title (denormalized)"
+    },
+    "event_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date/time of the shift (matches the event date)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "confirmed",
+        "cancelled",
+        "reschedule_requested",
+        "completed",
+        "no_show"
+      ],
+      "default": "scheduled",
+      "description": "Current status of the volunteer shift"
+    },
+    "role": {
+      "type": "string",
+      "description": "What the volunteer will be doing at the event"
+    },
+    "reminder_sent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the SMS reminder has been sent"
+    },
+    "reminder_sent_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the reminder was sent"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Staff notes about this shift"
+    }
+  },
+  "required": [
+    "volunteer_id",
+    "volunteer_name",
+    "event_id",
+    "event_title",
+    "event_date"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Users, Mail, Phone, Calendar, MapPin, CheckCircle, XCircle, Clock, UserCheck } from 'lucide-react';
+import VolunteerShiftManager from './VolunteerShiftManager';
 import { toast } from 'sonner';
 import { format } from 'date-fns';
 
@@ -363,6 +364,8 @@ export default function VolunteerManager() {
               >
                 Update Assignment & Start Date
               </Button>
+
+              <VolunteerShiftManager volunteer={selectedVolunteer} />
             </div>
           )}
         </DialogContent>

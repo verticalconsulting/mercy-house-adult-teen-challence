@@ -144,9 +144,9 @@ export default function Volunteer() {
       </section>
 
       {/* Volunteer Opportunities */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+      <section className="py-20 bg-amber-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-navy dark:text-gold mb-16">Volunteer Opportunities</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-navy dark:text-gold mb-16" style={{ color: '#1e293b' }}>Volunteer Opportunities</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { icon: Users, title: 'Mentoring & Support', description: 'Guide and encourage residents through their recovery journey' },

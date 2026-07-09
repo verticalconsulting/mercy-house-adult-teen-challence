@@ -55,7 +55,7 @@ export default function WomensCenterCalendar() {
       <section className="relative bg-navy dark:bg-slate-900 py-16 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-60">
           <img
-            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/60d31fe5-e36f-4f89-20a1-faacd6810100/herobanner"
+            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/5423eb63-1830-4349-a9c0-4efcf3906e00/herobanner"
             alt="Mercy House Women's Center volunteers serving together"
             className="w-full h-full object-cover"
           />

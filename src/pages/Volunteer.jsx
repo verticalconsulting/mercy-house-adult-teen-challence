@@ -18,6 +18,9 @@ export default function Volunteer() {
   const [usCitizen, setUsCitizen] = useState('');
   const [volunteeredBefore, setVolunteeredBefore] = useState('');
   const [preferredCampus, setPreferredCampus] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const toggleCheckbox = (setter, list, value) => {
     setter(list.includes(value) ? list.filter(v => v !== value) : [...list, value]);
@@ -25,14 +28,23 @@ export default function Volunteer() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
+    setSubmitError('');
 
     const form = e.target;
     const data = Object.fromEntries(new FormData(form).entries());
 
-    // Save to Volunteer entity to keep automations working
+    // Build full name from individual name fields
+    const fullName = [data.first_name, data.middle_initial, data.last_name]
+      .filter(Boolean)
+      .join(' ')
+      .trim();
+
+    // Save to Volunteer entity — this triggers the automation that uploads to
+    // Google Drive and sends notification emails, so it is the source of truth.
     try {
       await base44.entities.Volunteer.create({
-        full_name: data.full_name,
+        full_name: fullName,
         email: data.email,
         phone: data.phone,
         address: data.address,
@@ -51,15 +63,21 @@ export default function Volunteer() {
         why_volunteer: data.why_volunteer,
         background_check_consent: backgroundConsent,
       });
-    } catch (_) {
-      // entity save failure should not block Formspree submission
+      // Fire Formspree email notification in the background (non-blocking)
+      handleFormspreeSubmit(e).catch(() => {});
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(
+        err?.response?.data?.detail ||
+        err?.message ||
+        'Something went wrong submitting your application. Please try again or call us at 855-893-7333.'
+      );
+    } finally {
+      setSubmitting(false);
     }
-
-    // Submit to Formspree
-    await handleFormspreeSubmit(e);
   };
 
-  if (state.succeeded) {
+  if (submitted) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center p-6">
         <Card className="max-w-2xl w-full">
@@ -538,18 +556,18 @@ export default function Volunteer() {
                   </div>
                 </div>
 
-                {state.errors && state.errors.length > 0 && (
+                {submitError && (
                   <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-4">
-                    <p className="text-red-600 dark:text-red-400 font-semibold">Please correct the errors above and try again.</p>
+                    <p className="text-red-600 dark:text-red-400 font-semibold">{submitError}</p>
                   </div>
                 )}
 
                 <Button
                   type="submit"
-                  disabled={state.submitting || !backgroundConsent}
+                  disabled={submitting || !backgroundConsent}
                   className="w-full bg-gold hover:bg-gold/90 text-navy font-bold text-xl py-7 shadow-xl hover:shadow-2xl transition-all duration-300"
                 >
-                  {state.submitting ? 'Submitting...' : 'Submit Application'}
+                  {submitting ? 'Submitting...' : 'Submit Application'}
                   <ArrowRight className="ml-2 w-6 h-6" />
                 </Button>
               </form>

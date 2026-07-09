@@ -57,12 +57,17 @@ export default function VolunteerShiftManager({ volunteer }) {
     mutationFn: async () => {
       const event = events.find(e => e.id === selectedEventId);
       if (!event) throw new Error('Please select an event');
+      // All-day events have a date-only start (e.g. "2026-09-17"); convert to
+      // a full date-time string so the VolunteerShift.event_date field validates.
+      const eventDate = event.start && event.start.length === 10
+        ? event.start + 'T00:00:00'
+        : event.start;
       return base44.entities.VolunteerShift.create({
         volunteer_id: volunteer.id,
         volunteer_name: volunteer.full_name,
         google_event_id: event.id,
         event_title: event.title,
-        event_date: event.start,
+        event_date: eventDate,
         role: role || 'Volunteer',
         status: 'scheduled',
         reminder_sent: false
@@ -74,7 +79,7 @@ export default function VolunteerShiftManager({ volunteer }) {
       setSelectedEventId('');
       setRole('');
     },
-    onError: (e) => toast.error(e.message || 'Failed to schedule')
+    onError: (e) => toast.error(e?.response?.data?.detail || e?.message || 'Failed to schedule shift')
   });
 
   const sendSmsMutation = useMutation({

@@ -36,6 +36,9 @@ export default function VolunteerManager() {
       queryClient.invalidateQueries({ queryKey: ['volunteers'] });
       toast.success('Volunteer updated successfully');
       setSelectedVolunteer(null);
+    },
+    onError: (e) => {
+      toast.error(e?.response?.data?.detail || e?.message || 'Failed to update volunteer');
     }
   });
 
@@ -357,7 +360,7 @@ export default function VolunteerManager() {
                   id: selectedVolunteer.id,
                   data: {
                     assigned_to: selectedVolunteer.assigned_to,
-                    start_date: selectedVolunteer.start_date
+                    start_date: selectedVolunteer.start_date || null
                   }
                 })}
                 className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy text-xl py-6"

@@ -16,6 +16,7 @@ import About from './pages/About';
 import Financials from './pages/Financials';
 import Programs from './pages/Programs';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
 import HelpForDependency from './pages/HelpForDependency';
 import MicroBusinesses from './pages/MicroBusinesses';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
@@ -78,6 +79,7 @@ const AuthenticatedApp = () => {
       <Route path="/Financials" element={<LayoutWrapper currentPageName="Financials"><Financials /></LayoutWrapper>} />
       <Route path="/Programs" element={<LayoutWrapper currentPageName="Programs"><Programs /></LayoutWrapper>} />
       <Route path="/PrivacyPolicy" element={<LayoutWrapper currentPageName="PrivacyPolicy"><PrivacyPolicy /></LayoutWrapper>} />
+      <Route path="/TermsConditions" element={<LayoutWrapper currentPageName="TermsConditions"><TermsConditions /></LayoutWrapper>} />
       <Route path="/help-for-dependency-abuse" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
       <Route path="/DependancyHelp" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
       <Route path="/FreedomClassic" element={<LayoutWrapper currentPageName="FreedomClassic"><FreedomClassic /></LayoutWrapper>} />

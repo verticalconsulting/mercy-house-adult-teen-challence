@@ -559,7 +559,7 @@ export default function Volunteer() {
                     <p>
                       By checking the box above and submitting this form, you confirm that you are the account holder for the mobile number provided or have authorization to consent, and you agree to our{' '}
                       <a href="/PrivacyPolicy" className="text-navy dark:text-gold underline hover:opacity-80">Privacy Policy</a>{' '}and{' '}
-                      <a href="/About" className="text-navy dark:text-gold underline hover:opacity-80">Terms of Service</a>.
+                      <a href="/TermsConditions" className="text-navy dark:text-gold underline hover:opacity-80">Terms of Service</a>.
                     </p>
                   </div>
                 </div>

@@ -21,7 +21,7 @@ Deno.serve(async (req) => {
     const result = await sendTwilioSms(volunteer.phone, message);
     return Response.json({ success: true, sid: result.sid });
   } catch (error) {
-    console.error('sendVolunteerSms error:', error.message);
+    console.error('sendVolunteerSms error:', error.message, '| volunteer_id:', volunteer_id);
     return Response.json({ error: error.message }, { status: 500 });
   }
 });

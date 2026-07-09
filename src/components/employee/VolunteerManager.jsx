@@ -33,10 +33,10 @@ export default function VolunteerManager() {
 
   const updateVolunteerMutation = useMutation({
     mutationFn: ({ id, data }) => base44.entities.Volunteer.update(id, data),
-    onSuccess: () => {
+    onSuccess: (updated) => {
       queryClient.invalidateQueries({ queryKey: ['volunteers'] });
       toast.success('Volunteer updated successfully');
-      setSelectedVolunteer(null);
+      setSelectedVolunteer(updated);
     },
     onError: (e) => {
       toast.error(e?.response?.data?.detail || e?.message || 'Failed to update volunteer');
@@ -199,54 +199,88 @@ export default function VolunteerManager() {
               {/* Contact Information */}
               <div>
                 <h3 className="text-2xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Contact Information</h3>
-                <div className="grid md:grid-cols-2 gap-4 text-lg md:text-xl">
+                <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <span className="font-semibold text-slate-700 dark:text-slate-200">Email:</span>
-                    <p className="text-slate-600 dark:text-slate-300">{selectedVolunteer.email}</p>
+                    <Label className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2 block">Email</Label>
+                    <Input value={selectedVolunteer.email || ''} onChange={(e) => setSelectedVolunteer({...selectedVolunteer, email: e.target.value})} className="h-12 text-lg" />
                   </div>
                   <div>
-                    <span className="font-semibold text-slate-700 dark:text-slate-200">Phone:</span>
-                    <p className="text-slate-600 dark:text-slate-300">{selectedVolunteer.phone}</p>
+                    <Label className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2 block">Phone</Label>
+                    <Input value={selectedVolunteer.phone || ''} onChange={(e) => setSelectedVolunteer({...selectedVolunteer, phone: e.target.value})} className="h-12 text-lg" />
                   </div>
-                  {selectedVolunteer.address && (
-                    <div className="md:col-span-2">
-                      <span className="font-semibold text-slate-700 dark:text-slate-200">Address:</span>
-                      <p className="text-slate-600 dark:text-slate-300">
-                        {selectedVolunteer.address}, {selectedVolunteer.city}, {selectedVolunteer.state} {selectedVolunteer.zip}
-                      </p>
-                    </div>
-                  )}
-                  {selectedVolunteer.date_of_birth && (
-                    <div>
-                      <span className="font-semibold text-slate-700 dark:text-slate-200">Date of Birth:</span>
-                      <p className="text-slate-600 dark:text-slate-300">
-                        {format(new Date(selectedVolunteer.date_of_birth), 'MMMM dd, yyyy')}
-                      </p>
-                    </div>
-                  )}
+                  <div className="md:col-span-2">
+                    <Label className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2 block">Street Address</Label>
+                    <Input value={selectedVolunteer.address || ''} onChange={(e) => setSelectedVolunteer({...selectedVolunteer, address: e.target.value})} className="h-12 text-lg" />
+                  </div>
+                  <div>
+                    <Label className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2 block">City</Label>
+                    <Input value={selectedVolunteer.city || ''} onChange={(e) => setSelectedVolunteer({...selectedVolunteer, city: e.target.value})} className="h-12 text-lg" />
+                  </div>
+                  <div>
+                    <Label className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2 block">State</Label>
+                    <Input value={selectedVolunteer.state || ''} onChange={(e) => setSelectedVolunteer({...selectedVolunteer, state: e.target.value})} className="h-12 text-lg" />
+                  </div>
+                  <div>
+                    <Label className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2 block">ZIP Code</Label>
+                    <Input value={selectedVolunteer.zip || ''} onChange={(e) => setSelectedVolunteer({...selectedVolunteer, zip: e.target.value})} className="h-12 text-lg" />
+                  </div>
+                  <div>
+                    <Label className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2 block">Date of Birth</Label>
+                    <Input type="date" value={selectedVolunteer.date_of_birth || ''} onChange={(e) => setSelectedVolunteer({...selectedVolunteer, date_of_birth: e.target.value})} className="h-12 text-lg" />
+                  </div>
                 </div>
+                <Button
+                  onClick={() => updateVolunteerMutation.mutate({
+                    id: selectedVolunteer.id,
+                    data: {
+                      email: selectedVolunteer.email,
+                      phone: selectedVolunteer.phone,
+                      address: selectedVolunteer.address,
+                      city: selectedVolunteer.city,
+                      state: selectedVolunteer.state,
+                      zip: selectedVolunteer.zip,
+                      date_of_birth: selectedVolunteer.date_of_birth || null
+                    }
+                  })}
+                  disabled={updateVolunteerMutation.isPending}
+                  className="mt-4 text-lg px-6 py-3"
+                >
+                  Save Contact Info
+                </Button>
               </div>
 
               {/* Emergency Contact */}
-              {selectedVolunteer.emergency_contact_name && (
-                <div>
-                  <h3 className="text-2xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Emergency Contact</h3>
-                  <div className="grid md:grid-cols-2 gap-4 text-lg md:text-xl">
-                    <div>
-                      <span className="font-semibold text-slate-700 dark:text-slate-200">Name:</span>
-                      <p className="text-slate-600 dark:text-slate-300">{selectedVolunteer.emergency_contact_name}</p>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-slate-700 dark:text-slate-200">Phone:</span>
-                      <p className="text-slate-600 dark:text-slate-300">{selectedVolunteer.emergency_contact_phone}</p>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-slate-700 dark:text-slate-200">Relationship:</span>
-                      <p className="text-slate-600 dark:text-slate-300">{selectedVolunteer.emergency_contact_relationship}</p>
-                    </div>
+              <div>
+                <h3 className="text-2xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Emergency Contact</h3>
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div>
+                    <Label className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2 block">Name</Label>
+                    <Input value={selectedVolunteer.emergency_contact_name || ''} onChange={(e) => setSelectedVolunteer({...selectedVolunteer, emergency_contact_name: e.target.value})} className="h-12 text-lg" />
+                  </div>
+                  <div>
+                    <Label className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2 block">Phone</Label>
+                    <Input value={selectedVolunteer.emergency_contact_phone || ''} onChange={(e) => setSelectedVolunteer({...selectedVolunteer, emergency_contact_phone: e.target.value})} className="h-12 text-lg" />
+                  </div>
+                  <div>
+                    <Label className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2 block">Relationship</Label>
+                    <Input value={selectedVolunteer.emergency_contact_relationship || ''} onChange={(e) => setSelectedVolunteer({...selectedVolunteer, emergency_contact_relationship: e.target.value})} className="h-12 text-lg" />
                   </div>
                 </div>
-              )}
+                <Button
+                  onClick={() => updateVolunteerMutation.mutate({
+                    id: selectedVolunteer.id,
+                    data: {
+                      emergency_contact_name: selectedVolunteer.emergency_contact_name,
+                      emergency_contact_phone: selectedVolunteer.emergency_contact_phone,
+                      emergency_contact_relationship: selectedVolunteer.emergency_contact_relationship
+                    }
+                  })}
+                  disabled={updateVolunteerMutation.isPending}
+                  className="mt-4 text-lg px-6 py-3"
+                >
+                  Save Emergency Contact
+                </Button>
+              </div>
 
               {/* Availability */}
               <div>

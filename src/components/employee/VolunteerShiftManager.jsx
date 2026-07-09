@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { MessageSquare, Plus, Send, CalendarClock } from 'lucide-react';
+import { MessageSquare, Plus, Send, CalendarClock, RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
 import { format } from 'date-fns';
 
@@ -83,7 +83,13 @@ export default function VolunteerShiftManager({ volunteer }) {
   });
 
   const sendSmsMutation = useMutation({
-    mutationFn: (msg) => base44.functions.invoke('sendVolunteerSms', { volunteer_id: volunteer.id, message: msg }),
+    mutationFn: async (msg) => {
+      const res = await base44.functions.invoke('sendVolunteerSms', { volunteer_id: volunteer.id, message: msg });
+      if (res.status >= 400) {
+        throw new Error(res.data?.error || 'Failed to send SMS');
+      }
+      return res;
+    },
     onSuccess: () => {
       toast.success('Message sent');
       setMessage('');
@@ -192,7 +198,7 @@ export default function VolunteerShiftManager({ volunteer }) {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => setMessage(`Hi ${volunteer.full_name.split(' ')[0]}, this is a reminder about your volunteer shift. Reply CONFIRM, CANCEL, or RESCHEDULE. — Mercy House`)}
+              onClick={() => setMessage(`Hi ${volunteer.full_name?.split(' ')[0] || 'there'}, this is a reminder about your volunteer shift. Reply CONFIRM, CANCEL, or RESCHEDULE. — Mercy House`)}
             >
               Reminder template
             </Button>
@@ -202,7 +208,11 @@ export default function VolunteerShiftManager({ volunteer }) {
             disabled={!message.trim() || sendSmsMutation.isPending}
             className="bg-gold text-navy hover:bg-gold/90 text-lg px-6 py-3 font-semibold"
           >
-            <Send className="w-5 h-5 mr-2" /> Send SMS
+            {sendSmsMutation.isPending ? (
+              <><RefreshCw className="w-5 h-5 mr-2 animate-spin" /> Sending...</>
+            ) : (
+              <><Send className="w-5 h-5 mr-2" /> Send SMS</>
+            )}
           </Button>
           <p className="text-sm text-slate-500 dark:text-slate-400">Sends to {volunteer.phone}</p>
         </div>

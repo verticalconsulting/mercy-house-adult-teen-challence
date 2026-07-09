@@ -17,6 +17,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Users, Mail, Phone, Calendar, MapPin, CheckCircle, XCircle, Clock, UserCheck } from 'lucide-react';
 import VolunteerShiftManager from './VolunteerShiftManager';
+import VolunteerActivityEditor, { formatActivity } from './VolunteerActivityEditor';
 import { toast } from 'sonner';
 import { format } from 'date-fns';
 
@@ -62,18 +63,7 @@ export default function VolunteerManager() {
     flexible: 'Flexible'
   };
 
-  const interestLabels = {
-    mentoring: 'Mentoring',
-    teaching: 'Teaching',
-    administrative: 'Administrative',
-    maintenance: 'Maintenance',
-    events: 'Events',
-    thrift_store: 'Thrift Store',
-    auto_academy: 'Auto Academy',
-    kitchen: 'Kitchen',
-    childcare: 'Childcare',
-    transportation: 'Transportation'
-  };
+
 
   return (
     <div className="space-y-6">
@@ -151,13 +141,17 @@ export default function VolunteerManager() {
                       </span>
                     </div>
                     <div>
-                      <span className="font-semibold text-lg md:text-lg text-slate-700 dark:text-slate-200">Interests: </span>
+                      <span className="font-semibold text-lg md:text-lg text-slate-700 dark:text-slate-200">Activities: </span>
                       <div className="flex flex-wrap gap-2 mt-2">
-                        {volunteer.areas_of_interest?.map((interest, idx) => (
-                          <Badge key={idx} variant="outline" className="text-base md:text-base px-3 py-1">
-                            {interestLabels[interest]}
-                          </Badge>
-                        ))}
+                        {volunteer.areas_of_interest?.length > 0 ? (
+                          volunteer.areas_of_interest.map((interest, idx) => (
+                            <Badge key={idx} variant="outline" className="text-base md:text-base px-3 py-1">
+                              {formatActivity(interest)}
+                            </Badge>
+                          ))
+                        ) : (
+                          <span className="text-lg text-slate-400">None assigned</span>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -254,28 +248,21 @@ export default function VolunteerManager() {
                 </div>
               )}
 
-              {/* Availability & Interests */}
+              {/* Availability */}
               <div>
-                <h3 className="text-2xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Availability & Interests</h3>
-                <div className="space-y-4">
-                  <div>
-                    <span className="font-semibold text-lg md:text-xl text-slate-700 dark:text-slate-200">Available:</span>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {selectedVolunteer.availability?.map((a, idx) => (
-                        <Badge key={idx} className="text-base md:text-base px-3 py-1">{availabilityLabels[a]}</Badge>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <span className="font-semibold text-lg md:text-xl text-slate-700 dark:text-slate-200">Areas of Interest:</span>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {selectedVolunteer.areas_of_interest?.map((interest, idx) => (
-                        <Badge key={idx} variant="outline" className="text-base md:text-base px-3 py-1">{interestLabels[interest]}</Badge>
-                      ))}
-                    </div>
-                  </div>
+                <h3 className="text-2xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Availability</h3>
+                <div className="flex flex-wrap gap-2">
+                  {selectedVolunteer.availability?.length > 0 ? (
+                    selectedVolunteer.availability.map((a, idx) => (
+                      <Badge key={idx} className="text-base md:text-base px-3 py-1">{availabilityLabels[a]}</Badge>
+                    ))
+                  ) : (
+                    <span className="text-lg text-slate-400">Not specified</span>
+                  )}
                 </div>
               </div>
+
+              <VolunteerActivityEditor volunteer={selectedVolunteer} />
 
               {/* Skills & Experience */}
               {(selectedVolunteer.skills || selectedVolunteer.previous_volunteer_experience || selectedVolunteer.why_volunteer) && (

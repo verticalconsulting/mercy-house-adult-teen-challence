@@ -53,9 +53,9 @@ export default function WomensCenterCalendar() {
     <div className="w-full">
       {/* Hero */}
       <section className="relative bg-navy dark:bg-slate-900 py-16 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-60">
           <img
-            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/42618a10-c693-463e-4c46-003b08d10b00/hero"
+            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/60d31fe5-e36f-4f89-20a1-faacd6810100/herobanner"
             alt="Mercy House Women's Center volunteers serving together"
             className="w-full h-full object-cover"
           />

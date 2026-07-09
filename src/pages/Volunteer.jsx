@@ -96,7 +96,7 @@ export default function Volunteer() {
       <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/60d31fe5-e36f-4f89-20a1-faacd6810100/herobanner"
+            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/8f4e11ac-0883-457f-2234-b9eb7b6b3d00/herobanner"
             alt="Mercy House volunteers serving together"
             className="w-full h-full object-cover"
           />

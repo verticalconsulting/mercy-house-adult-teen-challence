@@ -23,10 +23,13 @@ import EventManager from '../components/employee/EventManager';
 import DonationFunnel from './DonationFunnel';
 import WomensCampusMediaManager from '../components/employee/WomensCampusMediaManager';
 import SearchPerformance from './SearchPerformance';
+import PortalLogin from '../components/employee/PortalLogin';
+import UserManagement from '../components/employee/UserManagement';
 
 export default function EmployeePortal() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [needsLogin, setNeedsLogin] = useState(false);
   const [selectedApp, setSelectedApp] = useState(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
@@ -40,14 +43,15 @@ export default function EmployeePortal() {
       try {
         const isAuth = await base44.auth.isAuthenticated();
         if (!isAuth) {
-          base44.auth.redirectToLogin(window.location.href);
+          setNeedsLogin(true);
+          setLoading(false);
           return;
         }
         const userData = await base44.auth.me();
         setUser(userData);
       } catch (error) {
         console.error('Auth error:', error);
-        base44.auth.redirectToLogin(window.location.href);
+        setNeedsLogin(true);
       } finally {
         setLoading(false);
       }
@@ -274,12 +278,16 @@ export default function EmployeePortal() {
     waitlist: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
   };
 
-  if (loading || !user) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-navy dark:border-gold"></div>
       </div>
     );
+  }
+
+  if (needsLogin || !user) {
+    return <PortalLogin />;
   }
 
   if (user.role !== 'admin') {
@@ -311,7 +319,7 @@ export default function EmployeePortal() {
         <h1 className="text-4xl font-bold text-navy dark:text-gold mb-8">Employee Portal</h1>
 
         <Tabs defaultValue="applications">
-          <TabsList className="w-full overflow-x-auto flex lg:grid lg:grid-cols-11 justify-start">
+          <TabsList className="w-full overflow-x-auto flex lg:grid lg:grid-cols-12 justify-start">
             <TabsTrigger value="applications" className="text-sm flex-shrink-0">
               Applications
             </TabsTrigger>
@@ -344,6 +352,9 @@ export default function EmployeePortal() {
             </TabsTrigger>
             <TabsTrigger value="settings" className="text-sm flex-shrink-0">
               Settings
+            </TabsTrigger>
+            <TabsTrigger value="useraccess" className="text-sm flex-shrink-0">
+              User Access
             </TabsTrigger>
           </TabsList>
 
@@ -544,7 +555,7 @@ export default function EmployeePortal() {
           </TabsContent>
 
           <TabsContent value="settings" className="mt-6">
-            <Card>
+            <Card id="settings-card">
               <CardHeader>
                 <CardTitle className="text-navy dark:text-gold">Account Settings</CardTitle>
               </CardHeader>
@@ -579,6 +590,10 @@ export default function EmployeePortal() {
                 </div>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          <TabsContent value="useraccess" className="mt-6">
+            <UserManagement />
           </TabsContent>
         </Tabs>
       </div>

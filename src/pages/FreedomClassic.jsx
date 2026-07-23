@@ -239,7 +239,7 @@ export default function FreedomClassic() {
       <section className="py-16 bg-slate-100">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-3 text-slate-800">Become a Sponsor!</h2>
-          <p className="text-center text-slate-600 mb-10 text-base">Help us with our $200K goal to open our </p>
+          <p className="text-center text-slate-600 mb-10 text-base">Help us with our $200K goal to open our womens</p>
 
           {/* Top row: Platinum + Diamond */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">

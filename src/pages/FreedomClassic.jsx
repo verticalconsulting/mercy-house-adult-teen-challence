@@ -269,8 +269,8 @@ export default function FreedomClassic() {
             {/* Diamond */}
             <div className="rounded-2xl overflow-hidden shadow-lg border border-blue-300 flex flex-col">
               <div className="bg-primary text-white text-center py-4">
-                <p className="font-black text-2xl tracking-widest">DIAMOND SPONSOR</p>
-                <p className="text-4xl font-black mt-1">$5,000</p>
+                <p className="font-black text-2xl tracking-widest text-[#9e9494]">DIAMOND SPONSOR</p>
+                <p className="text-4xl font-black mt-1 text-[#aca5a5]">$5,000</p>
               </div>
               <div className="bg-white p-6 flex-1">
                 <ul className="space-y-2">

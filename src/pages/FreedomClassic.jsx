@@ -84,7 +84,7 @@ export default function FreedomClassic() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
               <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
-                <Button className="hover:bg-navy/90 text-white font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105 bg-[hsl(var(--card))]">
+                <Button className="hover:bg-navy/90 font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105 bg-[hsl(var(--card))] text-gray-800">
                   <ExternalLink className="w-4 h-4" />
                   Register Your Team
                 </Button>

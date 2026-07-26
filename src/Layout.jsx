@@ -80,7 +80,7 @@ export default function Layout({ children, currentPageName }) {
 
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+    <div className="min-h-screen bg-parchment dark:bg-slate-900 transition-colors duration-300">
       {/* Skip to main content — accessibility */}
       <a
         href="#main-content"
@@ -291,7 +291,7 @@ export default function Layout({ children, currentPageName }) {
       <FloatingAIChat />
 
       {/* Footer */}
-      <footer className="bg-navy dark:bg-slate-900 text-white mt-20">
+      <footer className="bg-navy-deep dark:bg-slate-950 text-white mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
@@ -341,7 +341,7 @@ export default function Layout({ children, currentPageName }) {
                 <a
                   href="#main-content"
                   onClick={(e) => {e.preventDefault();window.scrollTo({ top: 0 });}}
-                  className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-navy hover:bg-navy/90 text-white rounded-md transition-colors font-semibold text-lg md:text-base">
+                  className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-navy-light hover:bg-navy-light/90 text-navy-deep rounded-md transition-colors font-semibold text-lg md:text-base">
                   
                   <MessageCircle className="w-5 h-5 md:w-4 md:h-4" />
                   Ask Our AI Assistant

@@ -1,4 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+
+/**
+ * Brand colors come through as raw `R G B` channel triplets (see src/index.css)
+ * so that `<alpha-value>` composition works — that is what makes `bg-navy/90`,
+ * `ring-gold/40` and `text-navy/80` resolve. Declaring them as plain CSS
+ * utility classes instead silently drops every opacity modifier.
+ */
+const channel = (name) => `rgb(var(--${name}) / <alpha-value>)`;
+
 module.exports = {
     darkMode: ["class"],
     content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
@@ -7,6 +16,8 @@ module.exports = {
       fontFamily: {
         sans: ['Roboto', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
+        // Handwritten accent from the wireframes — pull quotes and eyebrows only.
+        accent: ['Caveat', 'ui-rounded', 'cursive'],
       },
   		borderRadius: {
   			lg: 'var(--radius)',
@@ -14,6 +25,30 @@ module.exports = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
+        /* Mercy House brand palette */
+        navy: {
+          DEFAULT: channel('navy'),
+          deep: channel('navy-deep'),
+          light: channel('navy-light'),
+        },
+        gold: {
+          DEFAULT: channel('gold'),
+          deep: channel('gold-deep'),
+          /* Gold that clears WCAG AA as *text* on light surfaces. */
+          accessible: channel('gold-accessible'),
+        },
+        parchment: {
+          DEFAULT: channel('parchment'),
+          soft: channel('parchment-soft'),
+          deep: channel('parchment-deep'),
+        },
+        'warm-gray': channel('warm-gray'),
+        ink: channel('ink'),
+        note: {
+          DEFAULT: channel('note-bg'),
+          ink: channel('note-ink'),
+        },
+
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -65,6 +100,16 @@ module.exports = {
   				ring: 'hsl(var(--sidebar-ring))'
   			}
   		},
+      spacing: {
+        section: 'var(--space-section)',
+        'section-sm': 'var(--space-section-sm)',
+        block: 'var(--space-block)',
+      },
+      backgroundImage: {
+        /* The crossed-diagonals placeholder box the wireframes use for imagery. */
+        'wire-placeholder':
+          'linear-gradient(to top right, transparent calc(50% - 1px), rgb(var(--warm-gray)) calc(50%), transparent calc(50% + 1px)), linear-gradient(to top left, transparent calc(50% - 1px), rgb(var(--warm-gray)) calc(50%), transparent calc(50% + 1px))',
+      },
   		keyframes: {
   			'accordion-down': {
   				from: {

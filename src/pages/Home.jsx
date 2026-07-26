@@ -1,241 +1,278 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
-import { ArrowRight, Heart, Users, TrendingUp, CheckCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import DonateButton from '../components/DonateButton';
+import CTABand from '../components/CTABand';
+import FeaturedTestimonials from '../components/FeaturedTestimonials';
+import AccreditationStrip from '../components/site/AccreditationStrip';
+import CommonQuestions from '../components/site/CommonQuestions';
+import GiftAllocation from '../components/site/GiftAllocation';
+import HowWeHelp from '../components/site/HowWeHelp';
+import ImpactBand from '../components/site/ImpactBand';
+import ProgramsGrid from '../components/site/ProgramsGrid';
+import SplitHero from '../components/site/SplitHero';
+import TwoPaths from '../components/site/TwoPaths';
 
 const businesses = [
   {
     name: 'SuperThrift',
     logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1a07ccd8-7054-46f7-c9c9-2e0ea56af100/logo',
     href: 'https://mercyhouseatc.superthriftdeals.org',
-    external: true,
   },
   {
     name: 'Vehicle Donation Program',
     logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4c5006539_vdplogo.jpg',
     href: 'https://mercyhouseatc.vehicledonationms.org',
-    external: true,
   },
   {
     name: 'Mercy House Auto Sales',
     logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/2533657d4_mercyhouseautocenter.png',
     href: 'https://mercyhouseautocenter.com/',
-    external: true,
   },
   {
     name: 'Elite Gutters',
     logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/9fd573a1-4df2-428f-d672-0b5b2b939b00/logo',
     href: 'https://myelitegutters.com',
-    external: true,
+  },
+];
+
+const accreditations = [
+  { label: 'Candid Seal of Transparency', href: 'https://app.candid.org/profile/9237605/mercy-house-teen-challenge-45-4670832/?pkId=85b52dd6-b112-4838-af55-83779d6afa0f' },
+  { label: 'Adult & Teen Challenge' },
+  { label: '501(c)(3) · EIN 99-1943281', to: '/Financials' },
+];
+
+const steps = [
+  {
+    title: 'Reach out',
+    description:
+      'Call our intake coordinator at (601) 720-3718, Monday–Friday 8am–5pm, or send an application online. A real person picks up.',
+  },
+  {
+    title: 'Begin the program',
+    description:
+      'After a phone interview and required lab work, you arrive on campus and start the 12-month residential program alongside people on the same road.',
+  },
+  {
+    title: 'Restore & reconnect',
+    description:
+      'Discipleship, work skills and counsel rebuild what dependency took — so graduates leave mentally sound, emotionally balanced and socially adjusted.',
+  },
+];
+
+const stats = [
+  { value: '15+', label: 'years of service' },
+  { value: '100%', label: 'of individual donations to the mission' },
+  { value: '1000+', label: 'lives changed' },
+  { value: '12', label: 'month residential program' },
+];
+
+const programs = [
+  {
+    name: "Women's Campus",
+    description:
+      'A safe, supportive environment in which women heal, grow and rebuild their lives through faith-based recovery and life-skills training.',
+    to: createPageUrl('WomensCampus'),
+    image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d6694e82-5daa-4dc5-2bd3-788006a34500/large',
+  },
+  {
+    name: "Men's Campus",
+    description:
+      'Structured programming, spiritual development and vocational training that help men overcome dependency and life-controlling issues.',
+    to: createPageUrl('MensCampus'),
+    image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/59f4771a-4656-48bf-862b-1ccf413b4c00/large',
+  },
+  {
+    name: 'Families & loved ones',
+    description:
+      'You are not the only one carrying this. Find out what help looks like when the person you love is the one struggling.',
+    to: '/help-for-dependency-abuse',
+  },
+  {
+    name: 'Our comprehensive approach',
+    description:
+      'The five foundations of freedom, our four key program areas, and the phased structure a resident moves through over twelve months.',
+    to: '/Programs',
+  },
+];
+
+const faqs = [
+  {
+    question: 'What does the program cost?',
+    answer: (
+      <>
+        There is a one-time, non-refundable intake fee of $1,000 to cover initial costs. Beyond that,
+        95% of the men at our facility attend at no cost — housing, meals, discipleship resources and
+        program support are provided through our donors and micro-businesses. If cost is a barrier,
+        call us anyway;{' '}
+        <Link to="/Programs" className="font-semibold text-navy underline dark:text-gold">
+          the full details are on our Programs page
+        </Link>
+        .
+      </>
+    ),
+  },
+  {
+    question: 'How long is the program?',
+    answer:
+      'Twelve months, residential. The length is deliberate — lasting change takes time to build into real habits, relationships and spiritual depth that hold after graduation.',
+  },
+  {
+    question: 'What does getting started involve?',
+    answer:
+      'Complete the application and questionnaire, call (601) 720-3718 for a phone interview with our intake coordinator, complete the required blood work (TB, HIV, and HEP B & C), then set an arrival date and begin.',
+  },
+  {
+    question: 'Is Mercy House a nicotine-free campus?',
+    answer:
+      'Yes. Residents cannot smoke, dip or vape, and nicotine patches are not permitted. We say so plainly up front so nobody is surprised on arrival.',
+  },
+  {
+    question: 'Do you serve both men and women?',
+    answer: (
+      <>
+        Yes — we operate a{' '}
+        <Link to={createPageUrl('MensCampus')} className="font-semibold text-navy underline dark:text-gold">
+          men&apos;s campus
+        </Link>{' '}
+        and a{' '}
+        <Link to={createPageUrl('WomensCampus')} className="font-semibold text-navy underline dark:text-gold">
+          women&apos;s campus
+        </Link>{' '}
+        in Georgetown and Learned, Mississippi.
+      </>
+    ),
   },
 ];
 
 export default function Home() {
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/9ecd83f4-804b-41e4-f9e8-62da01098800/hero1920scale"
-            alt="Diverse families showing hope and freedom"
-            className="w-full h-full object-cover"
-          />
+      <SplitHero
+        eyebrow="Mercy House Adult & Teen Challenge of Mississippi"
+        headline="Broken Families Restored"
+        headlineAccent="One Person At A Time"
+        body="A Christ-centered, 12-month residential recovery ministry for men and women facing life-controlling problems — so they can become mentally sound, emotionally balanced and socially adjusted."
+        primaryLabel="Get Help Now"
+        primaryTo="/help-for-dependency-abuse"
+        secondaryLabel="Donate"
+        secondaryTo={createPageUrl('Donate')}
+        reassurance="Confidential · Free to call · Faith-based, and we will meet you where you are"
+        image="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/9ecd83f4-804b-41e4-f9e8-62da01098800/hero1920scale"
+        imageAlt="Families finding hope and freedom through Mercy House"
+      />
 
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-navy">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Broken Families Restored
-              <span className="block text-gold mt-2">One Person At A Time</span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-navy/80 leading-relaxed">
-              Providing comprehensive Christian faith-based solutions to life-controlling problems. Become mentally sound, emotionally balanced, and socially adjusted.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/DependancyHelp">
-                <Button className="bg-gold hover:bg-gold/80 text-navy font-bold px-10 py-7 text-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 ring-4 ring-gold/40">
-                  Get Help Now
-                  <ArrowRight className="ml-2 w-6 h-6" />
-                </Button>
-              </Link>
-              <DonateButton className="px-10 py-7 text-2xl font-bold ring-4 ring-white/40 shadow-2xl" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <AccreditationStrip items={accreditations} />
 
-      {/* Mission Statement */}
-      <section className="py-20 bg-white dark:bg-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-6">Our Mission</h2>
-            <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed">
-              To provide an effective and comprehensive Christian faith-based solution to life-controlling problems in order to become productive members of society. By applying biblical principles, we endeavor to help people become mentally sound, emotionally balanced, and socially adjusted.
-            </p>
-          </div>
+      <TwoPaths
+        helpBody="For yourself or someone you love. Call (601) 720-3718 — it is confidential, and there is no cost to reach out."
+        helpTo="/help-for-dependency-abuse"
+        giveBody="Give, volunteer or partner with us so the next person who calls has a bed waiting for them."
+        giveTo={createPageUrl('Donate')}
+      />
+
+      <HowWeHelp steps={steps} />
+
+      <ImpactBand stats={stats} />
+
+      {/* Mission */}
+      <section className="bg-white py-section-sm dark:bg-slate-800 md:py-section">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="mb-6 font-accent text-4xl font-bold text-navy dark:text-gold">Our Mission</h2>
+          <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 md:text-xl">
+            To provide an effective and comprehensive Christian faith-based solution to
+            life-controlling problems in order to become productive members of society. By applying
+            biblical principles, we endeavor to help people become mentally sound, emotionally
+            balanced, and socially adjusted.
+          </p>
         </div>
       </section>
 
-      {/* Who We Are Section */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Who We Are</h2>
-          </div>
-          <div className="rounded-2xl overflow-hidden shadow-2xl">
-            <video
-              controls
-              className="w-full"
-              poster=""
-            >
-              <source src="https://media.base44.com/videos/public/6983b4b00291b5dfd8507106/60591bc3e_MercyHouse.mp4" type="video/mp4" />
+      {/* Who We Are */}
+      <section className="bg-parchment py-section-sm dark:bg-slate-900 md:py-section">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <h2 className="mb-8 text-center font-accent text-4xl font-bold text-navy dark:text-gold">
+            Who We Are
+          </h2>
+          <div className="overflow-hidden rounded-[10px] border-2 border-navy shadow-lg">
+            <video controls className="w-full">
+              <source
+                src="https://media.base44.com/videos/public/6983b4b00291b5dfd8507106/60591bc3e_MercyHouse.mp4"
+                type="video/mp4"
+              />
               Your browser does not support the video tag.
             </video>
           </div>
         </div>
       </section>
 
-      {/* Programs Section */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">Our Programs</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Women's Campus */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
-              <div className="h-64 overflow-hidden">
-                <img
-                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d6694e82-5daa-4dc5-2bd3-788006a34500/large"
-                  alt="Women's Campus"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Women's Campus</h3>
-                <p className="text-slate-600 dark:text-slate-300 mb-6">
-                  A safe, supportive environment where women can heal, grow, and rebuild their lives through faith-based recovery and life skills training.
-                </p>
-                <Link to={createPageUrl('WomensCampus')}>
-                  <Button className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
-                    Learn More
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
+      <ProgramsGrid programs={programs} />
 
-            {/* Men's Campus */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
-              <div className="h-64 overflow-hidden">
-                <img
-                  src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/59f4771a-4656-48bf-862b-1ccf413b4c00/large"
-                  alt="Men's Campus"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Men's Campus</h3>
-                <p className="text-slate-600 dark:text-slate-300 mb-6">
-                  Empowering men to overcome addiction and life-controlling issues through structured programming, spiritual development, and vocational training.
-                </p>
-                <Link to={createPageUrl('MensCampus')}>
-                  <Button className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
-                    Learn More
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
+      {/* Stories of hope — real, consented testimonials only; renders nothing
+          until published testimonials exist. */}
+      <section className="bg-parchment py-section-sm dark:bg-slate-900 md:py-section">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="mb-8 text-center font-accent text-4xl font-bold text-navy dark:text-gold">
+            Stories of hope
+          </h2>
+          <FeaturedTestimonials />
+          <div className="mt-8 text-center">
+            <Link
+              to={createPageUrl('Testimonials')}
+              className="font-semibold text-navy hover:underline dark:text-gold"
+            >
+              Read more graduate stories →
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-navy dark:bg-slate-950 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-5xl font-bold text-gold mb-2">15+</div>
-              <div className="text-slate-300">Years of Service</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-gold mb-2">100%</div>
-              <div className="text-slate-300">Donations to Mission</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-gold mb-2">1000+</div>
-              <div className="text-slate-300">Lives Changed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-gold mb-2">24/7</div>
-              <div className="text-slate-300">Support Available</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <GiftAllocation />
 
-      {/* Workforce Development Section */}
-      <section className="py-20 bg-white dark:bg-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Workforce Development</h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Our workforce development initiatives provide job training, develop work skills, and fund our operations—ensuring 100% of individual donations go directly to our mission.
+      {/* Workforce development */}
+      <section className="bg-white py-section-sm dark:bg-slate-800 md:py-section">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <h2 className="mb-4 font-accent text-4xl font-bold text-navy dark:text-gold">
+              Workforce Development
+            </h2>
+            <p className="mx-auto max-w-3xl text-lg text-slate-600 dark:text-slate-300">
+              Our workforce development initiatives provide job training, develop work skills, and
+              fund our operations — ensuring 100% of individual donations go directly to our mission.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {businesses.map((business) =>
-              business.external ? (
-                <a
-                  key={business.name}
-                  href={business.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center"
-                >
-                  <img src={business.logo} alt={business.name} className="h-16 mb-3 object-contain" />
-                  <h3 className="font-semibold text-navy dark:text-gold text-sm">{business.name}</h3>
-                </a>
-              ) : (
-                <Link
-                  key={business.name}
-                  to={createPageUrl(business.path)}
-                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center"
-                >
-                  <img src={business.logo} alt={business.name} className="h-16 mb-3 object-contain" />
-                  <h3 className="font-semibold text-navy dark:text-gold text-sm">{business.name}</h3>
-                </Link>
-              )
-            )}
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+            {businesses.map((business) => (
+              <a
+                key={business.name}
+                href={business.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mh-card-outline flex flex-col items-center justify-center p-6 text-center transition-shadow hover:shadow-lg dark:border-slate-600"
+              >
+                <img
+                  src={business.logo}
+                  alt=""
+                  className="mb-3 h-16 object-contain"
+                  loading="lazy"
+                />
+                <h3 className="text-sm font-semibold text-navy dark:text-gold">{business.name}</h3>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Start Your Journey?</h2>
-          <p className="text-xl mb-8 text-slate-200">
-            Take the first step towards freedom and transformation today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to={createPageUrl('IntakeForm')}>
-            <Button className="bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-6 text-lg shadow-xl">
-              Apply Now
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </Link>
-          <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-6 text-lg font-semibold">
-            Contact Us
-          </Button>
-          </div>
-        </div>
-      </section>
+      <CommonQuestions items={faqs} />
+
+      <CTABand
+        heading="Ready to Start Your Journey?"
+        subtext="Take the first step towards freedom and transformation today."
+        primaryLabel="Apply Now"
+        primaryTo={createPageUrl('IntakeForm')}
+        secondaryLabel="Contact Us"
+        secondaryTo={createPageUrl('Contact')}
+      />
     </div>
   );
 }

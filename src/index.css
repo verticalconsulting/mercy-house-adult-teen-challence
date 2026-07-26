@@ -65,7 +65,7 @@
 
     /* ---- tokens/fonts ---- */
     --font-sans: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-accent: 'Caveat', ui-rounded, cursive;
+    --font-accent: 'Caveat', 'Roboto', sans-serif;
 
     --chart-1: 214 41% 31%;
     --chart-2: 37 51% 61%;

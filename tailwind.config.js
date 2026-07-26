@@ -16,8 +16,11 @@ module.exports = {
       fontFamily: {
         sans: ['Roboto', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
-        // Handwritten accent from the wireframes — pull quotes and eyebrows only.
-        accent: ['Caveat', 'ui-rounded', 'cursive'],
+        // Handwritten accent from the wireframes — section headings and eyebrows.
+        // Falls back to the body face, not a generic `cursive`: if Google Fonts
+        // is slow or blocked, headings should degrade to clean Roboto rather
+        // than to whatever cursive the OS happens to ship.
+        accent: ['Caveat', 'Roboto', 'sans-serif'],
       },
   		borderRadius: {
   			lg: 'var(--radius)',

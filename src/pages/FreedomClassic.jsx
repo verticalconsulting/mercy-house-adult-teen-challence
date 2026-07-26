@@ -408,6 +408,56 @@ export default function FreedomClassic() {
                 <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/9d7c3a24e_KnitTogetherLogoWhiteBG.jpg" alt="Knit Together Healthcare" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
               </a>
 
+              {/* Roush Performance */}
+              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full bg-slate-900">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/eae1dff1f_RoushPerformance.png" alt="Roush Performance" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </div>
+
+              {/* All Things New Ministry */}
+              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/8326ce82e_allthingsnew20241.jpg" alt="All Things New Ministry" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </div>
+
+              {/* Born Again Roofing & Remodeling */}
+              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/3a6975cd4_BornAgainRoofingNew-1.png" alt="Born Again Roofing & Remodeling" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </div>
+
+              {/* DAA Jackson */}
+              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/f38a9c1d9_DAAJacksonmaybe723.png" alt="DAA Jackson" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </div>
+
+              {/* Dwayne and Kathy Boyd */}
+              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/9eb7c3de3_DWAYNEANDKATHYBOYD.png" alt="Dwayne and Kathy Boyd" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </div>
+
+              {/* Errington Landworx */}
+              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/e259c7eb6_erringtonlandworx.jpg" alt="Errington Landworx" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </div>
+
+              {/* Family Medical Clinic of Crystal Springs */}
+              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full bg-slate-900">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/924efcc60_FamilyMedicalCrystalSprings.png" alt="Family Medical Clinic of Crystal Springs" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </div>
+
+              {/* LandMax */}
+              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/b2b549d20_LANDMAXLOGO1.jpg" alt="LandMax" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </div>
+
+              {/* Pull-A-Part */}
+              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/eb7bc847f_PullAPartLOGO.jpg" alt="Pull-A-Part" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </div>
+
+              {/* Sullivan's Marketplace */}
+              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
+                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/67f2f523e_sullivansmarketplace.jpg" alt="Sullivan's Marketplace" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+              </div>
+
             </div>
             <p className="text-center text-slate-600 text-sm mt-8 italic">More sponsors to be announced — <a href="mailto:mmilliman@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship" className="underline hover:text-navy">contact us to become a sponsor</a>.</p>
           </div>

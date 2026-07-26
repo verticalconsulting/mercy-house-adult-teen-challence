@@ -1,47 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Check } from 'lucide-react';
 
 /**
- * Accreditation / trust chips.
+ * Accreditation / trust chips — the strip that sits directly under the hero.
  *
- * From the wireframes: approach A places this on a parchment strip between
- * dashed rules directly under the hero; approach B runs the same chips on the
- * navy band. Both variants are supported so a page can pick whichever sits
- * better against its neighbouring section.
+ * White pills on a navy-50 band, each led by a gold check. The Ad Grant
+ * standard asks for at least two trust signals on any page that solicits, and
+ * this is how the design satisfies it above the fold.
  *
  * @param {object} props
- * @param {'parchment'|'navy'} [props.variant]
- * @param {string} [props.label] Optional lead-in text (parchment variant only).
+ * @param {string} [props.label] Uppercase lead-in.
  * @param {Array<{ label: string, href?: string, to?: string }>} [props.items]
  */
-export default function AccreditationStrip({
-  variant = 'parchment',
-  label = 'Trusted & accredited:',
-  items = [],
-}) {
+export default function AccreditationStrip({ label = 'Trusted & Accredited', items = [] }) {
   if (items.length === 0) return null;
-
-  const onNavy = variant === 'navy';
-
-  const chipClass = onNavy
-    ? 'inline-flex items-center rounded-md border-[1.5px] border-navy-light px-2.5 py-1.5 text-xs text-slate-100'
-    : 'mh-chip';
 
   return (
     <section
       aria-label="Accreditations and trust signals"
-      className={
-        onNavy
-          ? 'bg-navy px-4 py-3'
-          : 'border-y border-dashed border-warm-gray bg-parchment-soft px-4 py-3 dark:bg-slate-900'
-      }
+      className="border-b border-border bg-navy-50 px-4 py-4 dark:border-slate-700 dark:bg-slate-900"
     >
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-2.5">
-        {!onNavy && label && (
-          <span className="font-accent text-base text-slate-600 dark:text-slate-300">{label}</span>
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        {label && (
+          <span className="text-xs font-bold uppercase tracking-[0.12em] text-navy dark:text-gold">
+            {label}
+          </span>
         )}
         {items.map((item) => {
-          const content = <span className={chipClass}>{item.label}</span>;
+          const content = (
+            <span className="mh-chip">
+              <Check className="h-3.5 w-3.5 shrink-0 text-gold-accessible" aria-hidden="true" />
+              {item.label}
+            </span>
+          );
 
           if (item.to) {
             return (

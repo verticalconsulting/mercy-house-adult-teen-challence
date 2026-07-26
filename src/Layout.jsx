@@ -80,7 +80,7 @@ export default function Layout({ children, currentPageName }) {
 
 
   return (
-    <div className="min-h-screen bg-parchment dark:bg-slate-900 transition-colors duration-300">
+    <div className="min-h-screen bg-background dark:bg-slate-900 transition-colors duration-300">
       {/* Skip to main content — accessibility */}
       <a
         href="#main-content"
@@ -147,8 +147,8 @@ export default function Layout({ children, currentPageName }) {
           </div>
         </div>
 
-        {/* Gold divider line */}
-        <div className="hidden lg:block h-px bg-gold/70" />
+        {/* Hairline rule between the logo row and the nav row */}
+        <div className="hidden lg:block h-px bg-border" />
 
         {/* Desktop Nav row */}
         <div className="hidden lg:block bg-white dark:bg-slate-900">
@@ -186,7 +186,7 @@ export default function Layout({ children, currentPageName }) {
                   to={item.directPath || createPageUrl(item.path)}
                   className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   currentPageName === item.path ?
-                  'text-navy dark:text-gold border-b-2 border-navy dark:border-gold' :
+                  'text-navy dark:text-gold border-b-2 border-gold' :
                   'text-navy dark:text-slate-200 hover:text-navy-light dark:hover:text-gold'}`
                   }>
                       {item.name}
@@ -291,8 +291,14 @@ export default function Layout({ children, currentPageName }) {
       <FloatingAIChat />
 
       {/* Footer */}
-      <footer className="bg-navy-deep dark:bg-slate-950 text-white mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <footer className="relative overflow-hidden bg-navy-deep dark:bg-slate-950 text-white mt-20">
+        {/* Oversized monogram watermark from the design — decorative only. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-20 -right-10 select-none text-[256px] font-black leading-none text-white/5">
+          MH
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="text-xl md:text-xl font-bold text-gold mb-4">Mercy House</h3>
@@ -351,11 +357,11 @@ export default function Layout({ children, currentPageName }) {
             </div>
           </div>
           {/* Nonprofit Legitimacy — Footer */}
-          <div className="border-t border-slate-700 mt-8 pt-8 mb-6">
+          <div className="border-t border-white/10 mt-8 pt-8 mb-6">
             <NonprofitLegitimacy variant="compact" />
           </div>
 
-          <div className="border-t border-slate-700 pt-6 text-center text-lg md:text-base text-slate-400">
+          <div className="border-t border-white/10 pt-6 text-center text-lg md:text-base text-white/50">
             <p>&copy; {new Date().getFullYear()} Mercy House Adult &amp; Teen Challenge. All rights reserved.</p>
             <p className="mt-2">
               501(c)(3) Nonprofit &middot; Georgetown &amp; Learned, Mississippi &middot; Your gifts support housing, meals, program care, and ministry operations.

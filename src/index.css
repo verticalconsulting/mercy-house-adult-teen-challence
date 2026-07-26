@@ -3,12 +3,18 @@
 @tailwind utilities;
 
 /*
- * Mercy House design system.
+ * Mercy House ATC design system.
  *
- * Tokens are transcribed from the Mercy House hero wireframes: navy structure,
- * gold primary CTA (always with navy text — white-on-gold fails WCAG AA),
- * warm parchment canvas, and a dashed-gold annotation treatment reused for
- * "note" callouts.
+ * Transcribed from the Claude Design handoff bundle — `_ds/tokens/colors.css`,
+ * `typography.css` and `spacing.css`. Those files are the source of truth; when
+ * they change, change these to match rather than adjusting values by eye.
+ *
+ * Governing rules from the bundle's brand guide:
+ *   - 70 / 20 / 10 — blue structure, neutral breathing room, gold CTA only.
+ *   - Gold is never a background. Gold buttons always take navy text; white on
+ *     gold is ~2.2:1 and fails WCAG AA. Use `gold-accessible` (#A07B3A) for
+ *     gold *text* on light surfaces.
+ *   - Never more than two blues in one design; max three colors total.
  *
  * Brand colors are declared as raw channel triplets so Tailwind can compose
  * them with alpha modifiers (`bg-navy/90`, `ring-gold/40`, `text-navy/80`).
@@ -17,55 +23,70 @@
 
 @layer base {
   :root {
-    /* ---- tokens/colors ---- */
-    /* Deep Harbor Blue — primary structure, headers, footers */
-    --navy: 47 78 111;          /* #2F4E6F */
-    --navy-deep: 38 64 92;      /* #26405C — footer / darker navy band */
-    --navy-light: 95 143 191;   /* #5F8FBF — Sky Blue, secondary */
-    /* Brand Gold — primary CTA fills only */
-    --gold: 207 168 105;        /* #CFA869 */
-    --gold-deep: 201 162 74;    /* #C9A24A — annotation borders */
-    /* Accessible gold for gold *text* on light backgrounds (AA at 4.5:1) */
-    --gold-accessible: 160 123 58;  /* #A07B3A */
-    /* Warm neutral canvas from the wireframe board */
-    --parchment: 231 229 223;   /* #E7E5DF — page canvas */
-    --parchment-soft: 244 242 238; /* #F4F2EE — inset panels */
-    --parchment-deep: 236 233 227; /* #ECE9E3 — chrome / bars */
-    --warm-gray: 216 213 207;    /* #D8D5CF — placeholder rules, borders */
-    --ink: 44 44 44;             /* #2C2C2C — wireframe outline / body ink */
-    --note-bg: 255 247 224;      /* #FFF7E0 — sticky-note callout */
-    --note-ink: 107 84 24;       /* #6B5418 */
+    /* ---- tokens/colors — brand core ---- */
+    --navy: 47 78 111;              /* #2F4E6F Deep Harbor — primary structure */
+    --navy-light: 95 143 191;       /* #5F8FBF Steel Blue — secondary */
+    --gold: 207 168 105;            /* #CFA869 Soft Gold — CTA fills only */
+    --gold-accessible: 160 123 58;  /* #A07B3A gold-ink — gold text on light */
+    --warm-gray: 214 210 203;       /* #D6D2CB Warm Stone — neutral panels */
+    --blush: 226 182 163;           /* #E2B6A3 Muted Blush — women/family only */
 
-    /* ---- shadcn surface tokens (HSL channels) ---- */
-    --background: 0 0% 100%;
-    --foreground: 214 42% 15%;
+    /* Deep Harbor ramp */
+    --navy-950: 21 39 58;    /* #15273A — utility bar, footer */
+    --navy-900: 30 56 82;    /* #1E3852 — primary hover */
+    --navy-500: 70 106 142;  /* #466A8E */
+    --navy-300: 143 170 196; /* #8FAAC4 */
+    --navy-100: 217 227 237; /* #D9E3ED */
+    --navy-50: 238 243 248;  /* #EEF3F8 — trust strip */
+    /* Retained alias: `navy-deep` predates the ramp and is used for footer
+       bands, which is exactly what navy-950 is for. */
+    --navy-deep: 21 39 58;
+
+    /* Gold ramp */
+    --gold-300: 226 201 155; /* #E2C99B */
+    --gold-100: 244 233 214; /* #F4E9D6 */
+
+    /* Warm neutral ramp */
+    --stone-900: 61 58 53;   /* #3D3A35 */
+    --stone-700: 107 102 94; /* #6B665E */
+    --stone-500: 155 149 139;/* #9B958B */
+    --stone-200: 231 228 223;/* #E7E4DF */
+    --stone-100: 244 242 239;/* #F4F2EF — inset panels */
+
+    /* Cool slate — UI chrome: page background, borders, muted text */
+    --surface-page: 248 250 252; /* #F8FAFC */
+
+    /* ---- shadcn surface tokens (HSL channels) ----
+       Mapped onto the DS semantic aliases: near-white slate page, white cards,
+       navy primary, gold accent, hairline slate borders. */
+    --background: 210 40% 98%;   /* surface-page #F8FAFC */
+    --foreground: 212 47% 15%;   /* text-strong  #15273A */
     --card: 0 0% 100%;
-    --card-foreground: 214 42% 15%;
+    --card-foreground: 212 47% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 214 42% 15%;
-    --primary: 214 41% 31%;      /* navy */
-    --primary-foreground: 0 0% 98%;
-    --secondary: 210 38% 85%;
-    --secondary-foreground: 214 42% 15%;
-    --muted: 40 15% 89%;         /* parchment tint */
-    --muted-foreground: 214 20% 45%;
-    --accent: 37 51% 61%;        /* gold */
-    --accent-foreground: 214 42% 15%;
-    --destructive: 0 77% 48%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 40 12% 83%;
-    --input: 40 12% 83%;
-    --ring: 37 51% 61%;
-    --radius: 0.625rem;          /* wireframe cards sit at 10px */
+    --popover-foreground: 212 47% 15%;
+    --primary: 212 41% 31%;      /* navy #2F4E6F */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 209 39% 89%;    /* navy-100 #D9E3ED */
+    --secondary-foreground: 212 47% 15%;
+    --muted: 210 40% 96%;        /* slate-100 #F1F5F9 */
+    --muted-foreground: 215 16% 47%;  /* slate-500 #64748B */
+    --accent: 37 51% 61%;        /* gold #CFA869 */
+    --accent-foreground: 212 47% 15%;
+    --destructive: 6 63% 46%;    /* #C0392B */
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;       /* slate-200 #E2E8F0 */
+    --input: 214 32% 91%;
+    --ring: 37 51% 61%;          /* gold focus ring */
+    --radius: 0.5rem;            /* DS base radius — 8px */
 
-    /* ---- tokens/spacing — wireframe rhythm ---- */
-    --space-section: 5rem;       /* between page sections */
+    /* ---- tokens/spacing ---- */
+    --space-section: 5rem;       /* 80px — vertical rhythm between sections */
     --space-section-sm: 3rem;
-    --space-block: 1.5rem;       /* inside a card / band */
+    --space-block: 1.5rem;       /* 24px — minimum padding, never crowd */
 
-    /* ---- tokens/fonts ---- */
+    /* ---- tokens/fonts — Roboto only, no decorative faces ---- */
     --font-sans: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-accent: 'Caveat', 'Roboto', sans-serif;
 
     --chart-1: 214 41% 31%;
     --chart-2: 37 51% 61%;
@@ -73,27 +94,31 @@
     --chart-4: 40 15% 82%;
     --chart-5: 214 25% 62%;
 
-    --sidebar-background: 40 20% 97%;
-    --sidebar-foreground: 214 30% 26%;
-    --sidebar-primary: 214 41% 31%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 40 15% 93%;
-    --sidebar-accent-foreground: 214 41% 31%;
-    --sidebar-border: 40 12% 86%;
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 215 25% 27%;
+    --sidebar-primary: 212 41% 31%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 212 41% 31%;
+    --sidebar-border: 214 32% 91%;
     --sidebar-ring: 37 51% 61%;
   }
 
+  /*
+   * The design system does not define a dark mode — the site is a near-white
+   * slate page with white cards and full-bleed navy sections. This block only
+   * exists because ~30 pages outside this change still carry `dark:` variants;
+   * it keeps them coherent rather than expressing an intended design. Sweeping
+   * those variants out is follow-up work.
+   */
   .dark {
-    /* On dark surfaces the full-strength gold already clears AA, so gold text
-       does not need the darkened variant. */
+    /* Full-strength gold already clears AA on dark surfaces, so gold text does
+       not need the darkened variant here. */
     --gold-accessible: 207 168 105;
-    --parchment: 17 26 37;
-    --parchment-soft: 22 33 46;
-    --parchment-deep: 26 39 54;
     --warm-gray: 51 65 82;
-    --ink: 226 232 240;
-    --note-bg: 46 38 18;
-    --note-ink: 232 209 152;
+    --surface-page: 17 26 37;
+    --stone-100: 22 33 46;
+    --stone-200: 30 41 59;
 
     --background: 214 35% 10%;
     --foreground: 210 40% 95%;
@@ -194,34 +219,56 @@
 
 @layer components {
   /*
-   * Wireframe "sticky note" — the dashed gold callout used to carry a piece of
-   * supporting rationale next to a CTA or a stat.
+   * Eyebrow / overline — small uppercase label with wide tracking above a
+   * section heading ("OUR MISSION", "PROGRAMS").
    */
-  .mh-note {
-    @apply flex items-start gap-2 rounded-lg border-[1.5px] border-dashed border-gold-deep bg-note px-4 py-3 text-note-ink;
+  .mh-eyebrow {
+    @apply text-sm font-bold uppercase tracking-[0.12em] text-gold-accessible;
   }
 
-  /* Accreditation / trust chip from the trust bar. */
-  .mh-chip {
-    @apply inline-flex items-center rounded-md border-[1.5px] border-warm-gray px-2.5 py-1.5 text-xs text-slate-600 dark:text-slate-300;
+  /* Section heading. Max two font sizes per section, so headings share one. */
+  .mh-h2 {
+    @apply text-[38px] font-bold leading-tight text-navy dark:text-white;
   }
 
-  /* Outlined card — the 2px ink outline the wireframes use for content blocks. */
-  .mh-card-outline {
-    @apply rounded-[10px] border-2 border-ink/80 bg-white dark:bg-slate-800;
+  /*
+   * Card — white surface, hairline slate border, soft navy-tinted shadow.
+   * `.mh-card-interactive` adds the 300ms lift the DS specifies for clickable
+   * cards; it is deliberately separate so static cards do not animate.
+   */
+  .mh-card {
+    @apply rounded-2xl border border-border bg-card shadow-sm;
+  }
+
+  .mh-card-interactive {
+    @apply transition-shadow duration-300 ease-standard hover:shadow-xl;
   }
 
   /*
    * Gold primary CTA. Navy text is deliberate and load-bearing: white on
-   * #CFA869 is roughly 2:1 and fails WCAG AA.
+   * #CFA869 is ~2.2:1 and fails WCAG AA. Hover goes to gold-700, which is dark
+   * enough to carry white text.
    */
   .mh-cta-primary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[10px] border-2 border-navy bg-gold px-5 font-bold text-navy shadow-[2px_2px_0_rgb(var(--navy)/0.2)] transition-colors hover:bg-gold/85;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md bg-gold px-6 py-[15px] font-bold text-navy-950 shadow-cta transition-colors hover:bg-gold-accessible hover:text-white;
   }
 
-  /* Secondary action — outlined, never competes with the gold CTA. */
-  .mh-cta-secondary {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[10px] border-2 border-navy bg-white px-5 font-bold text-navy transition-colors hover:bg-navy/5 dark:bg-transparent dark:border-gold dark:text-gold dark:hover:bg-gold/10;
+  /* Solid navy action — used where gold would be a second focal point. */
+  .mh-cta-navy {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md bg-navy px-6 py-[14px] font-bold text-white transition-colors hover:bg-navy-900;
+  }
+
+  /*
+   * Outlined secondary. `currentColor` on the border so it inverts correctly
+   * when placed on a navy hero without needing a variant.
+   */
+  .mh-cta-outline {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md border-2 border-current px-6 py-[13px] font-bold text-navy transition-colors hover:bg-navy hover:text-white;
+  }
+
+  /* Trust chip — white pill on the accreditation strip. */
+  .mh-chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1.5 text-sm text-navy-900 dark:bg-slate-800 dark:text-slate-200;
   }
 }
 
@@ -252,7 +299,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(var(--parchment-soft));
+  background: rgb(var(--stone-100));
 }
 
 ::-webkit-scrollbar-thumb {

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 /**
- * "Where your gift goes" — the dashed-gold panel with an allocation bar from
- * wireframe B, paired with a link out to the published financials so the claim
- * is verifiable rather than asserted.
+ * "Where your gift goes" — an allocation bar paired with a link out to the
+ * published financials, so the claim is verifiable rather than asserted. The
+ * brand standard requires this pairing anywhere the site solicits.
  *
  * @param {object} props
  * @param {string} [props.heading]
@@ -26,10 +26,10 @@ export default function GiftAllocation({
   const clamped = Math.max(0, Math.min(100, percent));
 
   return (
-    <section className="bg-parchment py-section-sm dark:bg-slate-900 md:py-section">
+    <section className="bg-background py-section-sm md:py-section dark:bg-slate-900">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-[10px] border-[1.5px] border-dashed border-gold-deep bg-parchment-soft p-7 dark:bg-slate-800">
-          <h2 className="font-accent text-3xl font-bold text-navy dark:text-gold">{heading}</h2>
+        <div className="mh-card bg-stone-100 p-8 dark:bg-slate-800">
+          <h2 className="text-2xl font-bold text-navy dark:text-gold">{heading}</h2>
 
           <div className="mt-5 flex items-center gap-4">
             <div
@@ -42,12 +42,12 @@ export default function GiftAllocation({
             <span className="shrink-0 text-sm font-bold text-navy dark:text-gold">{clamped}%</span>
           </div>
 
-          <p className="mt-3 text-sm font-semibold text-slate-700 dark:text-slate-200">{claim}</p>
-          <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{note}</p>
+          <p className="mt-3 font-semibold text-slate-700 dark:text-slate-200">{claim}</p>
+          <p className="mt-3 leading-relaxed text-slate-600 dark:text-slate-300">{note}</p>
 
           <Link
             to={linkTo}
-            className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-navy hover:underline dark:text-gold"
+            className="mt-5 inline-flex items-center gap-2 font-bold text-navy hover:underline dark:text-gold"
           >
             {linkLabel} <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>

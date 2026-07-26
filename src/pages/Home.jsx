@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Store, Truck } from 'lucide-react';
 import { createPageUrl } from '../utils';
 import CTABand from '../components/CTABand';
 import FeaturedTestimonials from '../components/FeaturedTestimonials';
@@ -9,36 +10,43 @@ import GiftAllocation from '../components/site/GiftAllocation';
 import HowWeHelp from '../components/site/HowWeHelp';
 import ImpactBand from '../components/site/ImpactBand';
 import ProgramsGrid from '../components/site/ProgramsGrid';
-import SplitHero from '../components/site/SplitHero';
-import TwoPaths from '../components/site/TwoPaths';
+import SiteHero from '../components/site/SiteHero';
 
 const businesses = [
   {
     name: 'SuperThrift',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1a07ccd8-7054-46f7-c9c9-2e0ea56af100/logo',
+    blurb: 'Quality resale that funds recovery.',
+    icon: Store,
     href: 'https://mercyhouseatc.superthriftdeals.org',
   },
   {
     name: 'Vehicle Donation Program',
-    logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4c5006539_vdplogo.jpg',
+    blurb: 'Turn a vehicle you no longer need into a bed for someone who does.',
+    icon: Truck,
     href: 'https://mercyhouseatc.vehicledonationms.org',
   },
   {
-    name: 'Mercy House Auto Sales',
-    logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/2533657d4_mercyhouseautocenter.png',
+    name: 'Mercy House Auto',
+    blurb: 'Vehicle sales supporting the mission.',
+    icon: Truck,
     href: 'https://mercyhouseautocenter.com/',
   },
   {
     name: 'Elite Gutters',
-    logo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/9fd573a1-4df2-428f-d672-0b5b2b939b00/logo',
+    blurb: 'A trade our residents learn, and a business that funds the program.',
+    icon: Store,
     href: 'https://myelitegutters.com',
   },
 ];
 
 const accreditations = [
-  { label: 'Candid Seal of Transparency', href: 'https://app.candid.org/profile/9237605/mercy-house-teen-challenge-45-4670832/?pkId=85b52dd6-b112-4838-af55-83779d6afa0f' },
-  { label: 'Adult & Teen Challenge' },
+  {
+    label: 'Candid Platinum Seal of Transparency',
+    href: 'https://app.candid.org/profile/9237605/mercy-house-teen-challenge-45-4670832/?pkId=85b52dd6-b112-4838-af55-83779d6afa0f',
+  },
+  { label: 'Adult & Teen Challenge Affiliated' },
   { label: '501(c)(3) · EIN 99-1943281', to: '/Financials' },
+  { label: '100% of gifts to the mission', to: '/Financials' },
 ];
 
 const steps = [
@@ -60,26 +68,30 @@ const steps = [
 ];
 
 const stats = [
-  { value: '15+', label: 'years of service' },
-  { value: '100%', label: 'of individual donations to the mission' },
-  { value: '1000+', label: 'lives changed' },
-  { value: '12', label: 'month residential program' },
+  { value: '15+', label: 'Years of Service' },
+  { value: '100%', label: 'Donations to Mission' },
+  { value: '1,000+', label: 'Lives Changed' },
+  { value: '12', label: 'Month Residential Program' },
 ];
 
 const programs = [
   {
-    name: "Women's Campus",
+    name: "Women's Program",
     description:
-      'A safe, supportive environment in which women heal, grow and rebuild their lives through faith-based recovery and life-skills training.',
+      'A 12-month residential discipleship program in Learned, Mississippi for women ready to find freedom, rebuild family, and step into a new life in Christ.',
     to: createPageUrl('WomensCampus'),
-    image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d6694e82-5daa-4dc5-2bd3-788006a34500/large',
+    image: '/assets/images/women-program.png',
+    imageAlt: 'Women in the Mercy House program gathered together outdoors',
+    badge: 'Now Enrolling',
   },
   {
-    name: "Men's Campus",
+    name: "Men's Program",
     description:
-      'Structured programming, spiritual development and vocational training that help men overcome dependency and life-controlling issues.',
+      'A 12-month residential discipleship program in Georgetown, Mississippi where men build godly character, practical skills, and the accountability that keeps freedom from slipping away.',
     to: createPageUrl('MensCampus'),
-    image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/59f4771a-4656-48bf-862b-1ccf413b4c00/large',
+    image: '/assets/images/mens-1.jpeg',
+    imageAlt: 'Men in the Mercy House program working together on campus',
+    badge: 'Now Enrolling',
   },
   {
     name: 'Families & loved ones',
@@ -147,38 +159,27 @@ const faqs = [
 export default function Home() {
   return (
     <div className="w-full">
-      <SplitHero
-        eyebrow="Mercy House Adult & Teen Challenge of Mississippi"
-        headline="Broken Families Restored"
-        headlineAccent="One Person At A Time"
-        body="A Christ-centered, 12-month residential recovery ministry for men and women facing life-controlling problems — so they can become mentally sound, emotionally balanced and socially adjusted."
-        primaryLabel="Get Help Now"
+      <SiteHero
+        headline="Broken Families"
+        headlineBreak="Restored"
+        body="Providing comprehensive Christian faith-based solutions to life-controlling problems. Find new life, godly character, and lasting freedom."
+        primaryLabel="Start Your Journey"
         primaryTo="/help-for-dependency-abuse"
         secondaryLabel="Donate"
         secondaryTo={createPageUrl('Donate')}
-        reassurance="Confidential · Free to call · Faith-based, and we will meet you where you are"
-        image="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/9ecd83f4-804b-41e4-f9e8-62da01098800/hero1920scale"
-        imageAlt="Families finding hope and freedom through Mercy House"
+        reassurance="Confidential · Free to call · Faith-based, never preachy"
+        image="/assets/images/family-hero.webp"
+        imageAlt="A family standing together outdoors at sunrise"
       />
 
       <AccreditationStrip items={accreditations} />
 
-      <TwoPaths
-        helpBody="For yourself or someone you love. Call (601) 720-3718 — it is confidential, and there is no cost to reach out."
-        helpTo="/help-for-dependency-abuse"
-        giveBody="Give, volunteer or partner with us so the next person who calls has a bed waiting for them."
-        giveTo={createPageUrl('Donate')}
-      />
-
-      <HowWeHelp steps={steps} />
-
-      <ImpactBand stats={stats} />
-
       {/* Mission */}
-      <section className="bg-white py-section-sm dark:bg-slate-800 md:py-section">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="mb-6 font-accent text-4xl font-bold text-navy dark:text-gold">Our Mission</h2>
-          <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 md:text-xl">
+      <section className="bg-card py-section-sm md:py-section dark:bg-slate-800">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+          <p className="mh-eyebrow">Our Mission</p>
+          <h2 className="mt-4 mh-h2">Broken families restored, one person at a time.</h2>
+          <p className="mt-6 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
             To provide an effective and comprehensive Christian faith-based solution to
             life-controlling problems in order to become productive members of society. By applying
             biblical principles, we endeavor to help people become mentally sound, emotionally
@@ -187,13 +188,20 @@ export default function Home() {
         </div>
       </section>
 
+      <ProgramsGrid programs={programs} />
+
+      <ImpactBand stats={stats} />
+
+      <HowWeHelp steps={steps} />
+
       {/* Who We Are */}
-      <section className="bg-parchment py-section-sm dark:bg-slate-900 md:py-section">
+      <section className="bg-background py-section-sm md:py-section dark:bg-slate-900">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-8 text-center font-accent text-4xl font-bold text-navy dark:text-gold">
-            Who We Are
-          </h2>
-          <div className="overflow-hidden rounded-[10px] border-2 border-navy shadow-lg">
+          <div className="text-center">
+            <p className="mh-eyebrow">Who We Are</p>
+            <h2 className="mt-3 mh-h2">See the ministry for yourself</h2>
+          </div>
+          <div className="mh-card mt-10 overflow-hidden">
             <video controls className="w-full">
               <source
                 src="https://media.base44.com/videos/public/6983b4b00291b5dfd8507106/60591bc3e_MercyHouse.mp4"
@@ -205,16 +213,17 @@ export default function Home() {
         </div>
       </section>
 
-      <ProgramsGrid programs={programs} />
-
       {/* Stories of hope — real, consented testimonials only; renders nothing
           until published testimonials exist. */}
-      <section className="bg-parchment py-section-sm dark:bg-slate-900 md:py-section">
+      <section className="bg-card py-section-sm md:py-section dark:bg-slate-800">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-8 text-center font-accent text-4xl font-bold text-navy dark:text-gold">
-            Stories of hope
-          </h2>
-          <FeaturedTestimonials />
+          <div className="text-center">
+            <p className="mh-eyebrow">Stories</p>
+            <h2 className="mt-3 mh-h2">Stories of hope</h2>
+          </div>
+          <div className="mt-10">
+            <FeaturedTestimonials />
+          </div>
           <div className="mt-8 text-center">
             <Link
               to={createPageUrl('Testimonials')}
@@ -229,36 +238,36 @@ export default function Home() {
       <GiftAllocation />
 
       {/* Workforce development */}
-      <section className="bg-white py-section-sm dark:bg-slate-800 md:py-section">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <h2 className="mb-4 font-accent text-4xl font-bold text-navy dark:text-gold">
-              Workforce Development
-            </h2>
-            <p className="mx-auto max-w-3xl text-lg text-slate-600 dark:text-slate-300">
-              Our workforce development initiatives provide job training, develop work skills, and
-              fund our operations — ensuring 100% of individual donations go directly to our mission.
+      <section className="bg-card py-section-sm md:py-section dark:bg-slate-800">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="mh-eyebrow">Workforce Development</p>
+            <h2 className="mt-4 mh-h2">Work that funds the mission</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+              Our industries provide job training and real-world skills — and ensure 100% of
+              individual donations go directly to our mission.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-            {businesses.map((business) => (
-              <a
-                key={business.name}
-                href={business.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mh-card-outline flex flex-col items-center justify-center p-6 text-center transition-shadow hover:shadow-lg dark:border-slate-600"
-              >
-                <img
-                  src={business.logo}
-                  alt=""
-                  className="mb-3 h-16 object-contain"
-                  loading="lazy"
-                />
-                <h3 className="text-sm font-semibold text-navy dark:text-gold">{business.name}</h3>
-              </a>
-            ))}
+          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+            {businesses.map((business) => {
+              const Icon = business.icon;
+              return (
+                <a
+                  key={business.name}
+                  href={business.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mh-card mh-card-interactive bg-stone-100 p-8 text-center dark:bg-slate-700"
+                >
+                  <Icon className="mx-auto h-8 w-8 text-navy dark:text-gold" aria-hidden="true" />
+                  <h3 className="mt-4 text-lg font-bold text-navy dark:text-gold">
+                    {business.name}
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{business.blurb}</p>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -267,7 +276,7 @@ export default function Home() {
 
       <CTABand
         heading="Ready to Start Your Journey?"
-        subtext="Take the first step towards freedom and transformation today."
+        subtext="Take the first step toward freedom and transformation today."
         primaryLabel="Apply Now"
         primaryTo={createPageUrl('IntakeForm')}
         secondaryLabel="Contact Us"

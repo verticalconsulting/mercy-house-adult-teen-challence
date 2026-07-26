@@ -14,43 +14,48 @@ module.exports = {
   theme: {
   	extend: {
       fontFamily: {
+        // Roboto only — the brand guide rules out decorative faces entirely.
         sans: ['Roboto', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
-        // Handwritten accent from the wireframes — section headings and eyebrows.
-        // Falls back to the body face, not a generic `cursive`: if Google Fonts
-        // is slow or blocked, headings should degrade to clean Roboto rather
-        // than to whatever cursive the OS happens to ship.
-        accent: ['Caveat', 'Roboto', 'sans-serif'],
       },
   		borderRadius: {
+        // DS radius scale: 6px buttons, 12px small cards, 16px feature cards.
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			sm: 'calc(var(--radius) - 4px)',
+        xl: '0.75rem',
+        '2xl': '1rem',
   		},
   		colors: {
-        /* Mercy House brand palette */
+        /* Mercy House brand palette — see src/index.css for provenance. */
         navy: {
-          DEFAULT: channel('navy'),
-          deep: channel('navy-deep'),
-          light: channel('navy-light'),
+          DEFAULT: channel('navy'),      /* #2F4E6F Deep Harbor */
+          light: channel('navy-light'),  /* #5F8FBF Steel Blue */
+          deep: channel('navy-deep'),    /* alias of 950 — footer bands */
+          950: channel('navy-950'),
+          900: channel('navy-900'),
+          500: channel('navy-500'),
+          300: channel('navy-300'),
+          100: channel('navy-100'),
+          50: channel('navy-50'),
         },
         gold: {
-          DEFAULT: channel('gold'),
-          deep: channel('gold-deep'),
+          DEFAULT: channel('gold'),      /* #CFA869 — CTA fills only */
           /* Gold that clears WCAG AA as *text* on light surfaces. */
           accessible: channel('gold-accessible'),
+          300: channel('gold-300'),
+          100: channel('gold-100'),
         },
-        parchment: {
-          DEFAULT: channel('parchment'),
-          soft: channel('parchment-soft'),
-          deep: channel('parchment-deep'),
+        stone: {
+          900: channel('stone-900'),
+          700: channel('stone-700'),
+          500: channel('stone-500'),
+          200: channel('stone-200'),
+          100: channel('stone-100'),
         },
-        'warm-gray': channel('warm-gray'),
-        ink: channel('ink'),
-        note: {
-          DEFAULT: channel('note-bg'),
-          ink: channel('note-ink'),
-        },
+        'warm-gray': channel('warm-gray'), /* #D6D2CB Warm Stone */
+        /* Rare highlight — women and family contexts only. */
+        blush: channel('blush'),
 
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -108,12 +113,26 @@ module.exports = {
         'section-sm': 'var(--space-section-sm)',
         block: 'var(--space-block)',
       },
-      backgroundImage: {
-        /* The crossed-diagonals placeholder box the wireframes use for imagery. */
-        'wire-placeholder':
-          'linear-gradient(to top right, transparent calc(50% - 1px), rgb(var(--warm-gray)) calc(50%), transparent calc(50% + 1px)), linear-gradient(to top left, transparent calc(50% - 1px), rgb(var(--warm-gray)) calc(50%), transparent calc(50% + 1px))',
+      transitionTimingFunction: {
+        /* The DS motion curve — calm, no overshoot. */
+        standard: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
+      boxShadow: {
+        /* Soft, cool navy-tinted elevation — never hard or pure black. */
+        sm: '0 1px 3px rgba(15, 39, 58, 0.10), 0 1px 2px rgba(15, 39, 58, 0.06)',
+        md: '0 4px 6px -1px rgba(15, 39, 58, 0.10), 0 2px 4px -2px rgba(15, 39, 58, 0.08)',
+        lg: '0 10px 15px -3px rgba(15, 39, 58, 0.12), 0 4px 6px -4px rgba(15, 39, 58, 0.08)',
+        xl: '0 20px 25px -5px rgba(15, 39, 58, 0.14), 0 8px 10px -6px rgba(15, 39, 58, 0.10)',
+        '2xl': '0 25px 50px -12px rgba(15, 39, 58, 0.28)',
+        /* Warm glow reserved for gold CTAs. */
+        cta: '0 8px 20px -6px rgba(207, 168, 105, 0.55)',
       },
   		keyframes: {
+        /* Hero entrance from the design — a single calm rise, no bounce. */
+        'mh-fade-up': {
+          from: { opacity: '0', transform: 'translateY(24px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
   			'accordion-down': {
   				from: {
   					height: '0'
@@ -132,6 +151,7 @@ module.exports = {
   			}
   		},
   		animation: {
+        'mh-fade-up': 'mh-fade-up 0.7s cubic-bezier(0.4, 0, 0.2, 1) both',
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
   		}

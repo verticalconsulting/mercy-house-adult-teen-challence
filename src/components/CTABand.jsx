@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 /**
- * Closing CTA band. Uses the wireframe's navy-with-gold-primary pairing: one
- * gold action (navy text, per WCAG AA) and one outlined secondary.
+ * Closing CTA band — full-bleed navy with a single gold action and one
+ * outlined secondary. This is the last focal point on a page, so nothing else
+ * below it should carry gold.
  */
 export default function CTABand({
   heading = 'Ready to Take the Next Step?',
@@ -16,16 +17,17 @@ export default function CTABand({
 }) {
   return (
     <section className="bg-navy px-4 py-section-sm md:py-section">
-      <div className="mx-auto max-w-4xl text-center text-white">
-        <h2 className="mb-4 font-accent text-4xl font-bold md:text-5xl">{heading}</h2>
-        <p className="mx-auto mb-8 max-w-2xl text-lg text-slate-200">{subtext}</p>
-        <div className="flex flex-col justify-center gap-4 sm:flex-row">
-          <Link to={primaryTo} className="mh-cta-primary text-lg">
-            {primaryLabel} <ArrowRight className="h-5 w-5" aria-hidden="true" />
+      <div className="mx-auto max-w-3xl text-center text-white">
+        <h2 className="text-[38px] font-bold leading-tight">{heading}</h2>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">{subtext}</p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Link to={primaryTo} className="mh-cta-primary">
+            {primaryLabel}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
           <Link
             to={secondaryTo}
-            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[10px] border-2 border-white px-6 text-lg font-bold text-white transition-colors hover:bg-white hover:text-navy"
+            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md border border-white/50 px-6 py-[15px] font-bold text-white transition-colors hover:bg-white hover:text-navy"
           >
             {secondaryLabel}
           </Link>

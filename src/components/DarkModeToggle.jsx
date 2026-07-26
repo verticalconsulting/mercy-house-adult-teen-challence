@@ -4,7 +4,14 @@ import { Sun, Moon } from 'lucide-react';
 export default function DarkModeToggle() {
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('darkMode');
-    return saved !== null ? saved === 'true' : true;
+    if (saved !== null) return saved === 'true';
+    /*
+     * Fall back to the visitor's own setting rather than forcing dark. The
+     * design system is a light system — near-white slate page, white cards,
+     * full-bleed navy sections — so defaulting to dark meant nobody saw the
+     * intended palette without finding this toggle first.
+     */
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
   });
 
   useEffect(() => {

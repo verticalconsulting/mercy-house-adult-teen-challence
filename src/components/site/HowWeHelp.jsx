@@ -1,33 +1,40 @@
 import React from 'react';
 
 /**
- * The "How we help" three-step row from wireframe A: outlined numeral circles
- * with a short label and one line of supporting copy.
+ * The three-step "how we help" row — numbered navy discs, a short label, and
+ * one line of supporting copy.
  *
  * @param {object} props
+ * @param {string} [props.eyebrow]
  * @param {string} [props.heading]
  * @param {Array<{ title: string, description: string }>} props.steps
  */
-export default function HowWeHelp({ heading = 'How we help', steps = [] }) {
+export default function HowWeHelp({
+  eyebrow = 'Getting Started',
+  heading = 'How we help',
+  steps = [],
+}) {
   if (steps.length === 0) return null;
 
   return (
-    <section className="bg-white py-section-sm dark:bg-slate-800 md:py-section">
+    <section className="bg-card py-section-sm md:py-section dark:bg-slate-800">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-10 text-center font-accent text-4xl font-bold text-navy dark:text-gold">
-          {heading}
-        </h2>
-        <ol className="grid gap-10 md:grid-cols-3 md:gap-8">
+        <div className="text-center">
+          {eyebrow && <p className="mh-eyebrow">{eyebrow}</p>}
+          <h2 className="mt-3 mh-h2">{heading}</h2>
+        </div>
+
+        <ol className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
           {steps.map((step, index) => (
-            <li key={step.title} className="flex flex-col items-center gap-3 text-center">
+            <li key={step.title} className="flex flex-col items-center gap-4 text-center">
               <span
                 aria-hidden="true"
-                className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-ink/80 font-accent text-2xl font-bold text-navy dark:border-slate-500 dark:text-gold"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-navy text-xl font-bold text-white"
               >
                 {index + 1}
               </span>
-              <h3 className="text-base font-bold text-slate-800 dark:text-slate-100">{step.title}</h3>
-              <p className="max-w-xs text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+              <h3 className="text-lg font-bold text-navy dark:text-gold">{step.title}</h3>
+              <p className="max-w-xs leading-relaxed text-slate-600 dark:text-slate-300">
                 {step.description}
               </p>
             </li>

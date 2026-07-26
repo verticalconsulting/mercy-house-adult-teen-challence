@@ -2,87 +2,315 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Mercy House ATC design system.
+ *
+ * Transcribed from the Claude Design handoff bundle — `_ds/tokens/colors.css`,
+ * `typography.css` and `spacing.css`. Those files are the source of truth; when
+ * they change, change these to match rather than adjusting values by eye.
+ *
+ * Governing rules from the bundle's brand guide:
+ *   - 70 / 20 / 10 — blue structure, neutral breathing room, gold CTA only.
+ *   - Gold is never a background. Gold buttons always take navy text; white on
+ *     gold is ~2.2:1 and fails WCAG AA. Use `gold-accessible` (#A07B3A) for
+ *     gold *text* on light surfaces.
+ *   - Never more than two blues in one design; max three colors total.
+ *
+ * Brand colors are declared as raw channel triplets so Tailwind can compose
+ * them with alpha modifiers (`bg-navy/90`, `ring-gold/40`, `text-navy/80`).
+ * Consume them through the Tailwind color names, not the variables directly.
+ */
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 216 32% 17%;
+    /* ---- tokens/colors — brand core ---- */
+    --navy: 47 78 111;              /* #2F4E6F Deep Harbor — primary structure */
+    --navy-light: 95 143 191;       /* #5F8FBF Steel Blue — secondary */
+    --gold: 207 168 105;            /* #CFA869 Soft Gold — CTA fills only */
+    --gold-accessible: 160 123 58;  /* #A07B3A gold-ink — gold text on light */
+    --warm-gray: 214 210 203;       /* #D6D2CB Warm Stone — neutral panels */
+    --blush: 226 182 163;           /* #E2B6A3 Muted Blush — women/family only */
+
+    /* Deep Harbor ramp */
+    --navy-950: 21 39 58;    /* #15273A — utility bar, footer */
+    --navy-900: 30 56 82;    /* #1E3852 — primary hover */
+    --navy-500: 70 106 142;  /* #466A8E */
+    --navy-300: 143 170 196; /* #8FAAC4 */
+    --navy-100: 217 227 237; /* #D9E3ED */
+    --navy-50: 238 243 248;  /* #EEF3F8 — trust strip */
+    /* Retained alias: `navy-deep` predates the ramp and is used for footer
+       bands, which is exactly what navy-950 is for. */
+    --navy-deep: 21 39 58;
+
+    /* Gold ramp */
+    --gold-300: 226 201 155; /* #E2C99B */
+    --gold-100: 244 233 214; /* #F4E9D6 */
+
+    /* Warm neutral ramp */
+    --stone-900: 61 58 53;   /* #3D3A35 */
+    --stone-700: 107 102 94; /* #6B665E */
+    --stone-500: 155 149 139;/* #9B958B */
+    --stone-200: 231 228 223;/* #E7E4DF */
+    --stone-100: 244 242 239;/* #F4F2EF — inset panels */
+
+    /* Cool slate — UI chrome: page background, borders, muted text */
+    --surface-page: 248 250 252; /* #F8FAFC */
+
+    /* ---- shadcn surface tokens (HSL channels) ----
+       Mapped onto the DS semantic aliases: near-white slate page, white cards,
+       navy primary, gold accent, hairline slate borders. */
+    --background: 210 40% 98%;   /* surface-page #F8FAFC */
+    --foreground: 212 47% 15%;   /* text-strong  #15273A */
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 212 47% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 217 62% 27%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 216 12% 84%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 80%;
-    --muted-foreground: 0 0% 66%;
-    --accent: 49 100% 40%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 77% 48%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10% / 50%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --popover-foreground: 212 47% 15%;
+    --primary: 212 41% 31%;      /* navy #2F4E6F */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 209 39% 89%;    /* navy-100 #D9E3ED */
+    --secondary-foreground: 212 47% 15%;
+    --muted: 210 40% 96%;        /* slate-100 #F1F5F9 */
+    --muted-foreground: 215 16% 47%;  /* slate-500 #64748B */
+    --accent: 37 51% 61%;        /* gold #CFA869 */
+    --accent-foreground: 212 47% 15%;
+    --destructive: 6 63% 46%;    /* #C0392B */
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;       /* slate-200 #E2E8F0 */
+    --input: 214 32% 91%;
+    --ring: 37 51% 61%;          /* gold focus ring */
+    --radius: 0.5rem;            /* DS base radius — 8px */
+
+    /* ---- tokens/spacing ---- */
+    --space-section: 5rem;       /* 80px — vertical rhythm between sections */
+    --space-section-sm: 3rem;
+    --space-block: 1.5rem;       /* 24px — minimum padding, never crowd */
+
+    /* ---- tokens/fonts — Roboto only, no decorative faces ---- */
+    --font-sans: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --chart-1: 214 41% 31%;
+    --chart-2: 37 51% 61%;
+    --chart-3: 210 43% 56%;
+    --chart-4: 40 15% 82%;
+    --chart-5: 214 25% 62%;
+
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 215 25% 27%;
+    --sidebar-primary: 212 41% 31%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 212 41% 31%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 37 51% 61%;
   }
 
+  /*
+   * The design system does not define a dark mode — the site is a near-white
+   * slate page with white cards and full-bleed navy sections. This block only
+   * exists because ~30 pages outside this change still carry `dark:` variants;
+   * it keeps them coherent rather than expressing an intended design. Sweeping
+   * those variants out is follow-up work.
+   */
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    /* Full-strength gold already clears AA on dark surfaces, so gold text does
+       not need the darkened variant here. */
+    --gold-accessible: 207 168 105;
+    --warm-gray: 51 65 82;
+    --surface-page: 17 26 37;
+    --stone-100: 22 33 46;
+    --stone-200: 30 41 59;
+
+    --background: 214 35% 10%;
+    --foreground: 210 40% 95%;
+    --card: 214 35% 14%;
+    --card-foreground: 210 40% 95%;
+    --popover: 214 35% 12%;
+    --popover-foreground: 210 40% 95%;
+    --primary: 37 51% 61%;
+    --primary-foreground: 214 42% 15%;
+    --secondary: 214 25% 20%;
+    --secondary-foreground: 210 40% 95%;
+    --muted: 214 25% 20%;
+    --muted-foreground: 214 20% 65%;
+    --accent: 37 51% 61%;
+    --accent-foreground: 214 42% 15%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 214 25% 22%;
+    --input: 214 25% 22%;
+    --ring: 37 51% 61%;
+
+    --chart-1: 37 51% 61%;
+    --chart-2: 210 43% 56%;
+    --chart-3: 214 41% 45%;
+    --chart-4: 214 25% 35%;
+    --chart-5: 40 15% 70%;
+
+    --sidebar-background: 214 35% 12%;
+    --sidebar-foreground: 210 40% 92%;
+    --sidebar-primary: 37 51% 61%;
+    --sidebar-primary-foreground: 214 42% 15%;
+    --sidebar-accent: 214 25% 20%;
+    --sidebar-accent-foreground: 210 40% 92%;
+    --sidebar-border: 214 25% 22%;
+    --sidebar-ring: 37 51% 61%;
   }
 }
 
-
-
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
   }
+
+  main,
+  [data-scroll-container] {
+    overscroll-behavior-y: contain;
+  }
+
+  button,
+  a,
+  nav,
+  [role="button"],
+  [role="link"] {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Mobile-first base size; tightens up once there is room for it. */
+  html {
+    font-size: 18px;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    button,
+    a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Stop iOS zooming the viewport when a field takes focus. */
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
+  }
+}
+
+@layer components {
+  /*
+   * Eyebrow / overline — small uppercase label with wide tracking above a
+   * section heading ("OUR MISSION", "PROGRAMS").
+   */
+  .mh-eyebrow {
+    @apply text-sm font-bold uppercase tracking-[0.12em] text-gold-accessible;
+  }
+
+  /* Section heading. Max two font sizes per section, so headings share one. */
+  .mh-h2 {
+    @apply text-[38px] font-bold leading-tight text-navy dark:text-white;
+  }
+
+  /*
+   * Card — white surface, hairline slate border, soft navy-tinted shadow.
+   * `.mh-card-interactive` adds the 300ms lift the DS specifies for clickable
+   * cards; it is deliberately separate so static cards do not animate.
+   */
+  .mh-card {
+    @apply rounded-2xl border border-border bg-card shadow-sm;
+  }
+
+  .mh-card-interactive {
+    @apply transition-shadow duration-300 ease-standard hover:shadow-xl;
+  }
+
+  /*
+   * Gold primary CTA. Navy text is deliberate and load-bearing: white on
+   * #CFA869 is ~2.2:1 and fails WCAG AA. Hover goes to gold-700, which is dark
+   * enough to carry white text.
+   */
+  .mh-cta-primary {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md bg-gold px-6 py-[15px] font-bold text-navy-950 shadow-cta transition-colors hover:bg-gold-accessible hover:text-white;
+  }
+
+  /* Solid navy action — used where gold would be a second focal point. */
+  .mh-cta-navy {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md bg-navy px-6 py-[14px] font-bold text-white transition-colors hover:bg-navy-900;
+  }
+
+  /*
+   * Outlined secondary. `currentColor` on the border so it inverts correctly
+   * when placed on a navy hero without needing a variant.
+   */
+  .mh-cta-outline {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md border-2 border-current px-6 py-[13px] font-bold text-navy transition-colors hover:bg-navy hover:text-white;
+  }
+
+  /* Trust chip — white pill on the accreditation strip. */
+  .mh-chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1.5 text-sm text-navy-900 dark:bg-slate-800 dark:text-slate-200;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid rgb(var(--gold));
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--stone-100));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--navy));
+  border-radius: 5px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgb(var(--gold));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--navy-light));
 }

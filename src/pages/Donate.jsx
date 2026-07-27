@@ -6,6 +6,8 @@ import VirtuousGiveForm from '../components/VirtuousGiveForm';
 
 // Mercy House — Virtuous giving form (one-time + recurring, Stripe + Virtuous CRM).
 const MERCYHOUSE_VIRTUOUS_FORM_ID = '7033B8F5-8F23-42AC-8934-BFAC670B91CA';
+// Dedicated Virtuous form for the $1,000 intake-fee sponsorship gift.
+const MERCYHOUSE_INTAKE_FEE_FORM_ID = 'AE0BD86D-8C6F-43F0-87BB-E9E85FB8FCA6';
 
 export default function Donate() {
   const [campaignId, setCampaignId] = React.useState(null);
@@ -73,7 +75,7 @@ export default function Donate() {
             💡 <strong>How it works:</strong> Your $1,000 donation is held in a dedicated fund. When the next applicant is accepted, their intake fee is covered by your gift — and they're notified someone believed in them before they even arrived.
           </p>
           <VirtuousGiveForm
-            formId={MERCYHOUSE_VIRTUOUS_FORM_ID}
+            formId={MERCYHOUSE_INTAKE_FEE_FORM_ID}
             subtitle="Sponsor an intake fee — enter $1,000 in the secure form below."
           />
         </div>

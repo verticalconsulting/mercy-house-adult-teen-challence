@@ -6,11 +6,20 @@ Deno.serve(async (req) => {
     const base44 = createClientFromRequest(req);
     const { event, data } = await req.json();
 
-    if (!data || !data.id) {
-      return Response.json({ error: 'Invalid volunteer data' }, { status: 400 });
+    // Trust boundary: this handler writes to Google Drive and sends email via
+    // the app's OAuth connectors. The request payload is not trusted — only a
+    // genuine entity-automation "create" event for a Volunteer is honored, and
+    // the record is re-fetched from the database so an unauthenticated caller
+    // cannot inject arbitrary content into Drive files or notification emails
+    // (CWE-306).
+    if (!event || event.type !== 'create' || event.entity_name !== 'Volunteer' || !data?.id) {
+      return Response.json({ error: 'Invalid trigger payload' }, { status: 400 });
     }
 
-    const volunteer = data;
+    const volunteer = await base44.asServiceRole.entities.Volunteer.get(data.id);
+    if (!volunteer) {
+      return Response.json({ error: 'Volunteer record not found' }, { status: 400 });
+    }
     const { accessToken } = await base44.asServiceRole.connectors.getConnection('googledrive');
     
     // Create a text file with volunteer application details

@@ -4,25 +4,44 @@ Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
 
-    // This function is called by an entity automation (no user context)
-    // and also supports manual invocation from the admin portal.
+    // This function is called by an entity automation (no user context) and
+    // also supports manual invocation from the admin portal. The client-
+    // supplied `data` object is NEVER trusted — the testimonial is always
+    // fetched from the database so an unauthenticated caller cannot post
+    // arbitrary content to the organization's Facebook page (CWE-306).
     const body = await req.json().catch(() => ({}));
 
-    // Automation payload: { event: { type, entity_name, entity_id }, data: {...} }
-    // Manual payload: { testimonial_id: "..." }
-    let testimonialId = body?.testimonial_id || body?.event?.entity_id;
-    let testimonial = body?.data;
+    let testimonialId;
 
-    // If called manually or data is missing, fetch from DB
-    if (!testimonial && testimonialId) {
-      testimonial = await base44.asServiceRole.entities.Testimonial.get(testimonialId);
-    }
-    if (!testimonialId && testimonial) {
-      testimonialId = testimonial.id;
+    if (body?.event) {
+      // Entity-automation trigger: validate the event shape and use its id.
+      const ev = body.event;
+      if ((ev.type !== 'create' && ev.type !== 'update') ||
+          ev.entity_name !== 'Testimonial' || !ev.entity_id) {
+        return Response.json({ error: 'Invalid automation payload' }, { status: 400 });
+      }
+      testimonialId = ev.entity_id;
+    } else {
+      // Manual invocation from the admin portal — require an admin session.
+      let user;
+      try {
+        user = await base44.auth.me();
+      } catch {
+        return Response.json({ error: 'Unauthorized' }, { status: 401 });
+      }
+      if (!user || user.role !== 'admin') {
+        return Response.json({ error: 'Admin access required' }, { status: 403 });
+      }
+      testimonialId = body?.testimonial_id;
+      if (!testimonialId) {
+        return Response.json({ error: 'testimonial_id is required' }, { status: 400 });
+      }
     }
 
+    // Always read the testimonial from the database — never from the payload.
+    const testimonial = await base44.asServiceRole.entities.Testimonial.get(testimonialId);
     if (!testimonial) {
-      return Response.json({ error: 'No testimonial data provided' }, { status: 400 });
+      return Response.json({ error: 'Testimonial not found' }, { status: 404 });
     }
 
     // Only share published women's success stories

@@ -12,18 +12,24 @@ Deno.serve(async (req) => {
         try {
             const { accessToken: gmailToken } = await base44.asServiceRole.connectors.getConnection('gmail');
             const program = formData.application_type === 'mens_program' ? "Men's" : "Women's";
+            const esc = (v) => String(v ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
             const subject = `New ${program} Program Application - ${formData.full_legal_name}`;
             const bodyHtml = `
 <h2>New Intake Application Received</h2>
 <table cellpadding="6" style="border-collapse:collapse;font-family:sans-serif;">
-  <tr><td><strong>Program</strong></td><td>${program} Campus</td></tr>
-  <tr><td><strong>Name</strong></td><td>${formData.full_legal_name}</td></tr>
-  <tr><td><strong>Date of Birth</strong></td><td>${formData.date_of_birth || '—'}</td></tr>
-  <tr><td><strong>Cell Phone</strong></td><td>${formData.cell_phone}</td></tr>
-  <tr><td><strong>Email</strong></td><td>${formData.email || '—'}</td></tr>
-  <tr><td><strong>City / State</strong></td><td>${formData.city || '—'}, ${formData.state || '—'}</td></tr>
+  <tr><td><strong>Program</strong></td><td>${esc(program)} Campus</td></tr>
+  <tr><td><strong>Name</strong></td><td>${esc(formData.full_legal_name)}</td></tr>
+  <tr><td><strong>Date of Birth</strong></td><td>${esc(formData.date_of_birth || '—')}</td></tr>
+  <tr><td><strong>Cell Phone</strong></td><td>${esc(formData.cell_phone)}</td></tr>
+  <tr><td><strong>Email</strong></td><td>${esc(formData.email || '—')}</td></tr>
+  <tr><td><strong>City / State</strong></td><td>${esc(formData.city || '—')}, ${esc(formData.state || '—')}</td></tr>
   <tr><td><strong>Condensed Submission</strong></td><td>${formData.condensed_mode ? 'Yes' : 'No'}</td></tr>
-  <tr><td><strong>Application ID</strong></td><td>${application.id}</td></tr>
+  <tr><td><strong>Application ID</strong></td><td>${esc(application.id)}</td></tr>
 </table>
 <p>Please review in the <strong>Employee Portal</strong>.</p>
 `;

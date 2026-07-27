@@ -4,6 +4,12 @@ Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
 
+    let user;
+    try { user = await base44.auth.me(); } catch { user = null; }
+    if (!user || user.role !== 'admin') {
+      return Response.json({ error: 'Unauthorized' }, { status: 403 });
+    }
+
     const now = new Date();
     const in24 = new Date(now.getTime() + 24 * 60 * 60 * 1000);
     const in48 = new Date(now.getTime() + 48 * 60 * 60 * 1000);

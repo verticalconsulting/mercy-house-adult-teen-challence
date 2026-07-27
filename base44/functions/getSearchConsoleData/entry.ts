@@ -3,6 +3,11 @@ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.21';
 Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
+    let user;
+    try { user = await base44.auth.me(); } catch { user = null; }
+    if (!user || user.role !== 'admin') {
+      return Response.json({ error: 'Unauthorized' }, { status: 403 });
+    }
     const { accessToken } = await base44.asServiceRole.connectors.getConnection('google_search_console');
 
     const body = await req.json().catch(() => ({}));

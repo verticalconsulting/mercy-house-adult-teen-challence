@@ -1,0 +1,34 @@
+{
+  "name": "Share Success Story to Facebook",
+  "description": "Automatically posts new published women's success stories to the Mercy House Facebook Page",
+  "trigger": {
+    "condition": "${ ((.trigger.data.program_type == \"womens\") and (.trigger.data.published == true)) }",
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "Testimonial"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "share_success_story_to_facebook",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "shareStoryToFacebook",
+            "args": {}
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

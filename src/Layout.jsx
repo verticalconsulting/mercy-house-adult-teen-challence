@@ -111,7 +111,7 @@ export default function Layout({ children, currentPageName }) {
               <img
                 src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/f6308df5-e751-45c6-6b95-9631b3eb7800/menulogo"
                 alt="Mercy House"
-                className="h-12 w-auto" />
+                className="h-12 w-auto invert dark:invert-0 transition-[filter] duration-300" />
             </Link>
 
             {/* Desktop: right-side icons */}

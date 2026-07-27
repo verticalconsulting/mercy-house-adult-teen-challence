@@ -188,7 +188,7 @@ export default function Home() {
         </div>
       </section>
 
-      <ProgramsGrid programs={programs} />
+      <ProgramsGrid programs={programs} heading="Who We Serve" />
 
       <ImpactBand stats={stats} />
 

@@ -8,6 +8,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Users, Heart, Loader2, Check } from 'lucide-react';
 import { toast } from 'sonner';
+import VirtuousGiveForm from '../components/VirtuousGiveForm';
+
+// Virtuous form designated for student sponsorship.
+const MERCYHOUSE_SPONSOR_STUDENT_FORM_ID = 'B7298929-DC2A-43F9-BBFD-A60F4C0A2A5D';
 
 export default function SponsorStudent() {
   const [selectedResident, setSelectedResident] = useState(null);
@@ -180,6 +184,21 @@ export default function SponsorStudent() {
           )}
           </div>
         }
+      </div>
+
+      {/* Sponsor a Student — Virtuous giving form */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="text-center mb-8">
+          <Heart className="w-12 h-12 text-gold mx-auto mb-4" aria-hidden="true" />
+          <h2 className="text-3xl font-bold text-navy dark:text-gold mb-3">Become a Sponsor</h2>
+          <p className="text-slate-600 dark:text-slate-300 text-lg max-w-2xl mx-auto">
+            Give monthly through the secure form below and walk alongside a student on their journey to lasting transformation.
+          </p>
+        </div>
+        <VirtuousGiveForm formId={MERCYHOUSE_SPONSOR_STUDENT_FORM_ID} />
+        <p className="text-center text-xs text-slate-500 dark:text-slate-400 mt-4">
+          🔒 Secure checkout · Tax-deductible · EIN 27-4670832 · Cancel anytime
+        </p>
       </div>
 
       <Dialog open={!!selectedResident} onOpenChange={(open) => !open && setSelectedResident(null)}>

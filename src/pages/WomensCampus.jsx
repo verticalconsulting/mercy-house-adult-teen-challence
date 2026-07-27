@@ -357,7 +357,7 @@ export default function WomensCampus() {
       <LightboxModal item={selectedMedia} onClose={() => setSelectedMedia(null)} />
 
       {/* Give to the Women's Center */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+      <section id="give-womens-center" className="py-20 bg-slate-50 dark:bg-slate-900 scroll-mt-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <Heart className="w-12 h-12 text-blush mx-auto mb-4" aria-hidden="true" />

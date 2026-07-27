@@ -206,7 +206,7 @@ export default function Donate() {
                   placeholder="Enter amount (min $5)"
                   value={customAmount}
                   onChange={(e) => { setCustomAmount(e.target.value); setSelectedAmount(0); }}
-                  className="pl-10 text-lg md:text-base"
+                  className="pl-10 md:pl-10 text-lg md:text-base"
                   aria-describedby="custom-amount-hint"
                 />
               </div>

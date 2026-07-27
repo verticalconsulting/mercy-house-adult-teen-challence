@@ -7,6 +7,10 @@ import { Heart, Users, BookOpen, Briefcase, Home, ArrowRight, Image, Video, X, P
 import { Button } from '@/components/ui/button';
 import BedCountDisplay from '../components/BedCountDisplay';
 import DonateButton from '../components/DonateButton';
+import VirtuousGiveForm from '../components/VirtuousGiveForm';
+
+// Virtuous form designated for Women's Center giving.
+const MERCYHOUSE_WOMENS_CENTER_FORM_ID = '47F00F09-AB05-4CC6-960E-2688C20CFFA4';
 
 function getEmbedUrl(url) {
   const ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
@@ -351,6 +355,23 @@ export default function WomensCampus() {
         </div>
       </section>
       <LightboxModal item={selectedMedia} onClose={() => setSelectedMedia(null)} />
+
+      {/* Give to the Women's Center */}
+      <section className="py-20 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <Heart className="w-12 h-12 text-blush mx-auto mb-4" aria-hidden="true" />
+            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Give to the Women's Center</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+              Your gift goes directly to the women's campus — housing, meals, counseling, and Christ-centered care for every woman walking through our doors.
+            </p>
+          </div>
+          <VirtuousGiveForm formId={MERCYHOUSE_WOMENS_CENTER_FORM_ID} />
+          <p className="text-center text-xs text-slate-500 dark:text-slate-400 mt-4">
+            🔒 Secure checkout · Tax-deductible · EIN 27-4670832
+          </p>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">

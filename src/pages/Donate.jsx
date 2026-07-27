@@ -8,6 +8,8 @@ import VirtuousGiveForm from '../components/VirtuousGiveForm';
 const MERCYHOUSE_VIRTUOUS_FORM_ID = '7033B8F5-8F23-42AC-8934-BFAC670B91CA';
 // Dedicated Virtuous form for the $1,000 intake-fee sponsorship gift.
 const MERCYHOUSE_INTAKE_FEE_FORM_ID = 'AE0BD86D-8C6F-43F0-87BB-E9E85FB8FCA6';
+// Virtuous form designated for Women's Center giving.
+const MERCYHOUSE_WOMENS_CENTER_FORM_ID = '47F00F09-AB05-4CC6-960E-2688C20CFFA4';
 
 export default function Donate() {
   const [campaignId, setCampaignId] = React.useState(null);
@@ -77,6 +79,23 @@ export default function Donate() {
           <VirtuousGiveForm
             formId={MERCYHOUSE_INTAKE_FEE_FORM_ID}
             subtitle="Sponsor an intake fee — enter $1,000 in the secure form below."
+          />
+        </div>
+
+        {/* Support the Women's Center */}
+        <div className="mb-12 rounded-2xl border-2 border-blush/40 bg-blush/5 dark:bg-blush/10 p-6">
+          <div className="flex items-start gap-3 mb-4">
+            <Heart className="w-7 h-7 text-blush mt-1 shrink-0" aria-hidden="true" />
+            <div>
+              <h2 className="text-navy dark:text-gold text-xl font-bold">Support the Women's Center</h2>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                Gifts made here go directly to the women's campus — housing, meals, counseling, and Christ-centered care for the women walking through our doors.
+              </p>
+            </div>
+          </div>
+          <VirtuousGiveForm
+            formId={MERCYHOUSE_WOMENS_CENTER_FORM_ID}
+            subtitle="Give to the Women's Center through the secure form below."
           />
         </div>
 

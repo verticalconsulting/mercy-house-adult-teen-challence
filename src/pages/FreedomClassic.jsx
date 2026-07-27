@@ -184,7 +184,7 @@ export default function FreedomClassic() {
 
             {/* Mission */}
             <div>
-              <p className="text-xl font-bold mb-3 text-secondary">Helping Those Who Need A Mulligan In Life.</p>
+              <p className="text-xl font-bold mb-3 text-[#a6bdd3]">Helping Those Who Need A Mulligan In Life.</p>
               <p className="text-slate-700 text-sm leading-relaxed mb-4">
                 By participating in the Golf Classic, you are supporting the Mercy House ministry and giving hope to men and women who are seeking freedom from life controlling issues.
               </p>
@@ -351,8 +351,8 @@ export default function FreedomClassic() {
 
           {/* Mail info + CTAs */}
           <div className="bg-navy text-white rounded-2xl p-6 mb-8 text-sm text-center">
-            <p className="font-semibold mb-1 text-slate-800">Mail Entries to: MHATC Golf Tournament</p>
-            <p className="text-slate-800">PO Box 266, Georgetown, MS 39078</p>
+            <p className="font-semibold mb-1 text-[#abbdd8] text-xl">Mail Entries to: MHATC Golf Tournament</p>
+            <p className="text-xl text-gray-300">PO Box 266, Georgetown, MS 39078</p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -495,7 +495,7 @@ export default function FreedomClassic() {
       {/* ── Mission Banner ── */}
       <section className="py-14 bg-slate-100">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-secondary">Play Golf. Change Lives.</h2>
+          <h2 className="text-3xl font-bold mb-4 text-[#93abc2]">Play Golf. Change Lives.</h2>
           <p className="text-lg text-slate-700 leading-relaxed mb-8">Every swing you take supports men and women finding freedom from life controlling issues. 100% of individual donations go directly to Mercy House's faith-based recovery mission.
 
           </p>

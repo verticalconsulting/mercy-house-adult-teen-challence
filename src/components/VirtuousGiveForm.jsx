@@ -4,12 +4,18 @@ import React, { useEffect, useRef, useState } from 'react';
  * VirtuousGiveForm — embeds a Virtuous giving form (Stripe + Virtuous CRM).
  *
  * The Virtuous embed script renders a PCI-compliant payment form inside its
- * own hosted iframe, so card data never touches this app. We simply inject
- * the script with the right data-attributes and let Virtuous own the form.
+ * own hosted iframe, so card data never touches this app. We inject the
+ * script with the right data-attributes and let Virtuous own the form.
  *
  * The form itself is configured in the Virtuous Form Builder (gift array,
  * recurring toggle, frequency, branding). This component is intentionally
  * dumb: give it a `formId` and it renders that form.
+ *
+ * NOTE — Virtuous Giving Forms require the embedding domain to be whitelisted
+ * in Virtuous Giving Settings → Payment Processor → Organization Domains. On
+ * a non-whitelisted host (e.g. a staging/preview domain) the iframe won't
+ * render, so we watch the container for injected content and fall back to a
+ * helpful message instead of spinning forever.
  *
  * @param {string} formId  The Virtuous form ID (data-vform).
  * @param {string} orgId   Virtuous org ID (default Mercy House: "5169").
@@ -17,6 +23,9 @@ import React, { useEffect, useRef, useState } from 'react';
  * @param {string} subtitle  Optional supporting line under the title.
  * @param {string} className Extra classes for the outer wrapper.
  */
+const VIRTUOUS_SCRIPT_SRC = 'https://cdn.virtuoussoftware.com/virtuous.embed.min.js';
+const RENDER_TIMEOUT_MS = 15000;
+
 export default function VirtuousGiveForm({
   formId,
   orgId = '5169',
@@ -25,29 +34,57 @@ export default function VirtuousGiveForm({
   className = '',
 }) {
   const containerRef = useRef(null);
-  const [loaded, setLoaded] = useState(false);
+  // loading | ready | failed
+  const [status, setStatus] = useState('loading');
 
   useEffect(() => {
     if (!formId || !containerRef.current) return;
 
-    // Virtuous's embed script keys off the script element's data attributes
-    // and renders the form where the script tag sits in the DOM.
+    let observer;
+    let timeout;
+    let cancelled = false;
+
+    const markReadyIfRendered = () => {
+      const host = containerRef.current;
+      if (host && host.children.length > 0) {
+        setStatus('ready');
+        return true;
+      }
+      return false;
+    };
+
+    // Clear loading the moment Virtuous injects its iframe/form markup into
+    // the container — script.onload fires too early (before the form renders).
+    observer = new MutationObserver(() => {
+      if (!cancelled) markReadyIfRendered();
+    });
+    observer.observe(containerRef.current, { childList: true, subtree: true });
+
+    // If nothing renders in time, the embedding domain most likely isn't
+    // whitelisted in Virtuous — show a helpful fallback instead of spinning.
+    timeout = setTimeout(() => {
+      if (cancelled) return;
+      if (!markReadyIfRendered()) setStatus('failed');
+    }, RENDER_TIMEOUT_MS);
+
     const script = document.createElement('script');
-    script.src = 'https://cdn.virtuoussoftware.com/virtuous.embed.min.js';
+    script.src = VIRTUOUS_SCRIPT_SRC;
     script.async = true;
     script.setAttribute('data-vform', formId);
     script.setAttribute('data-orgId', orgId);
     script.setAttribute('data-isGiving', 'true');
     script.setAttribute('data-merchantType', 'StripeUnified');
     script.setAttribute('data-dependencies', '[]');
-    script.onload = () => setLoaded(true);
 
     containerRef.current.innerHTML = '';
     containerRef.current.appendChild(script);
 
     return () => {
+      cancelled = true;
+      if (observer) observer.disconnect();
+      if (timeout) clearTimeout(timeout);
       if (containerRef.current) containerRef.current.innerHTML = '';
-      setLoaded(false);
+      setStatus('loading');
     };
   }, [formId, orgId]);
 
@@ -64,10 +101,21 @@ export default function VirtuousGiveForm({
         </div>
       )}
       <div className="p-6">
-        {/* Accessible affordance while the iframe form mounts */}
-        {!loaded && (
+        {status === 'loading' && (
           <div className="flex items-center justify-center py-16 text-slate-400" role="status" aria-live="polite">
             <span className="text-sm">Loading secure giving form…</span>
+          </div>
+        )}
+        {status === 'failed' && (
+          <div className="text-center py-12 px-4" role="alert">
+            <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+              The secure giving form couldn't load on this domain.
+            </p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+              Virtuous Giving Forms must be published on a whitelisted domain. Add this site to
+              Virtuous Giving Settings → Payment Processor → Organization Domains, or open the form
+              on your published Mercy House domain.
+            </p>
           </div>
         )}
         <div ref={containerRef} className="virtuous-embed-host min-h-[400px]" aria-label="Mercy House secure giving form" />

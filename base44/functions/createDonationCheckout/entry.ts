@@ -1,5 +1,6 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.6';
 import Stripe from 'npm:stripe@17.5.0';
+import { getSafeAppUrl } from '../../shared/security.ts';
 
 const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY'), {
     apiVersion: '2024-12-18.acacia',
@@ -14,7 +15,7 @@ Deno.serve(async (req) => {
             return Response.json({ error: 'Minimum donation is $5' }, { status: 400 });
         }
 
-        const appUrl = req.headers.get('origin') || 'https://your-app.base44.com';
+        const appUrl = getSafeAppUrl(req);
 
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],

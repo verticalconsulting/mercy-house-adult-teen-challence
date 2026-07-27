@@ -1,5 +1,6 @@
 import Stripe from 'npm:stripe@17.5.0';
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.6';
+import { getSafeAppUrl } from '../../shared/security.ts';
 
 const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY'));
 
@@ -13,6 +14,7 @@ Deno.serve(async (req) => {
 
     const base44 = createClientFromRequest(req);
     const resident = await base44.asServiceRole.entities.Resident.get(residentId);
+    const appUrl = getSafeAppUrl(req);
 
     if (!resident) {
       return Response.json({ error: 'Resident not found' }, { status: 404 });
@@ -38,8 +40,8 @@ Deno.serve(async (req) => {
           quantity: 1,
         },
       ],
-      success_url: `${req.headers.get('origin')}/SponsorStudent?sponsorship=success&resident=${resident.full_name}`,
-      cancel_url: `${req.headers.get('origin')}/SponsorStudent?sponsorship=cancelled`,
+      success_url: `${appUrl}/SponsorStudent?sponsorship=success&resident=${resident.full_name}`,
+      cancel_url: `${appUrl}/SponsorStudent?sponsorship=cancelled`,
       customer_email: email || undefined,
       metadata: {
         base44_app_id: Deno.env.get('BASE44_APP_ID'),

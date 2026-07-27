@@ -1,4 +1,5 @@
 import Stripe from 'npm:stripe@17.5.0';
+import { getSafeAppUrl } from '../../shared/security.ts';
 
 const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY'));
 
@@ -10,6 +11,8 @@ Deno.serve(async (req) => {
       return Response.json({ error: 'Price ID is required' }, { status: 400 });
     }
 
+    const appUrl = getSafeAppUrl(req);
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'subscription',
@@ -19,8 +22,8 @@ Deno.serve(async (req) => {
           quantity: 1,
         },
       ],
-      success_url: `${req.headers.get('origin')}?subscription=success`,
-      cancel_url: `${req.headers.get('origin')}?subscription=cancelled`,
+      success_url: `${appUrl}?subscription=success`,
+      cancel_url: `${appUrl}?subscription=cancelled`,
       customer_email: email || undefined,
       metadata: {
         base44_app_id: Deno.env.get('BASE44_APP_ID')

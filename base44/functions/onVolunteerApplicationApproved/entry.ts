@@ -3,16 +3,27 @@ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
 Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
-    const { event, data, old_data } = await req.json();
+    const { event, data } = await req.json();
 
-    if (!data || !data.id) {
-      return Response.json({ error: 'Invalid volunteer data' }, { status: 400 });
+    // Trust boundary: this handler moves Google Drive files and sends email
+    // using the app's OAuth connectors. The request payload is not trusted —
+    // only a genuine entity-automation "update" event for a Volunteer that is
+    // actually approved in the database is acted on, and the Drive file ID and
+    // recipient email are read from the stored record (not the payload). This
+    // prevents an unauthenticated caller from moving arbitrary Drive files or
+    // redirecting the approval email (CWE-306).
+    if (!event || event.type !== 'update' || event.entity_name !== 'Volunteer' || !data?.id) {
+      return Response.json({ error: 'Invalid trigger payload' }, { status: 400 });
     }
 
-    const volunteer = data;
+    const volunteer = await base44.asServiceRole.entities.Volunteer.get(data.id);
+    if (!volunteer || volunteer.status !== 'approved') {
+      return Response.json({ error: 'Volunteer not approved' }, { status: 400 });
+    }
 
-    // Extract Drive file ID from notes
-    const notesMatch = volunteer.notes?.match(/\[Drive ID: ([^\]]+)\]/);
+    // Extract Drive file ID from the stored notes; validate the charset to
+    // avoid path manipulation in the Drive API URL.
+    const notesMatch = volunteer.notes?.match(/\[Drive ID: ([A-Za-z0-9_-]+)\]/);
     const driveFileId = notesMatch ? notesMatch[1] : null;
 
     if (!driveFileId) {

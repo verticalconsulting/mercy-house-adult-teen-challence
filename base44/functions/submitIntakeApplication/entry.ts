@@ -1,4 +1,5 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.20';
+import { sanitizeHeader } from '../../shared/security.ts';
 
 Deno.serve(async (req) => {
     try {
@@ -18,7 +19,7 @@ Deno.serve(async (req) => {
                 .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&#39;');
-            const subject = `New ${program} Program Application - ${formData.full_legal_name}`;
+            const subject = `New ${program} Program Application - ${sanitizeHeader(formData.full_legal_name)}`;
             const bodyHtml = `
 <h2>New Intake Application Received</h2>
 <table cellpadding="6" style="border-collapse:collapse;font-family:sans-serif;">

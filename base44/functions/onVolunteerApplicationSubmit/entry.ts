@@ -1,4 +1,5 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
+import { sanitizeHeader } from '../../shared/security.ts';
 
 Deno.serve(async (req) => {
   try {
@@ -82,7 +83,7 @@ Application Submitted: ${new Date().toISOString()}
       for (const recipient of recipients) {
         const message = [
           `To: ${recipient}`,
-          `Subject: New Volunteer Application: ${volunteer.full_name}`,
+          `Subject: New Volunteer Application: ${sanitizeHeader(volunteer.full_name)}`,
           'Content-Type: text/plain; charset="UTF-8"',
           'Content-Transfer-Encoding: 7bit',
           '',

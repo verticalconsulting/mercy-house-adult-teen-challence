@@ -1,5 +1,6 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.20';
 import Stripe from 'npm:stripe@17.5.0';
+import { getSafeAppUrl } from '../../shared/security.ts';
 
 const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY'), {
     apiVersion: '2024-12-18.acacia',
@@ -10,7 +11,7 @@ Deno.serve(async (req) => {
         const { paymentType, email, applicantName, donorPaysForNext } = await req.json();
         // paymentType: 'full' ($1000 one-time) | 'installment' ($100/month x 10) | 'donor_pays' (donor covers next person's fee)
 
-        const appUrl = req.headers.get('origin') || 'https://mercyhouse.base44.app';
+        const appUrl = getSafeAppUrl(req);
 
         let session;
 

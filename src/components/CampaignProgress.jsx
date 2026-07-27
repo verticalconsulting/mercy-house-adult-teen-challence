@@ -8,7 +8,7 @@ import { Heart, Calendar, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 
-export default function CampaignProgress({ campaignId, showDonateButton = true }) {
+export default function CampaignProgress({ campaignId, showDonateButton = true, ctaPath }) {
   const { data: campaigns = [], isLoading } = useQuery({
     queryKey: ['campaigns', campaignId],
     queryFn: () => campaignId 
@@ -73,7 +73,7 @@ export default function CampaignProgress({ campaignId, showDonateButton = true }
               )}
 
               {showDonateButton && (
-                <Link to={createPageUrl('Donate') + `?campaign=${campaign.id}`}>
+                <Link to={ctaPath || (createPageUrl('Donate') + `?campaign=${campaign.id}`)}>
                   <Button className="w-full bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
                     <Heart className="w-4 h-4 mr-2" />
                     Donate to This Campaign

@@ -15,7 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { Users, Mail, Phone, Calendar, MapPin, CheckCircle, XCircle, Clock, UserCheck } from 'lucide-react';
+import { Users, Mail, Phone, Calendar, MapPin, CheckCircle, XCircle, Clock, UserCheck, BellRing } from 'lucide-react';
 import VolunteerShiftManager from './VolunteerShiftManager';
 import VolunteerActivityEditor, { formatActivity } from './VolunteerActivityEditor';
 import { toast } from 'sonner';
@@ -41,6 +41,21 @@ export default function VolunteerManager() {
     onError: (e) => {
       toast.error(e?.response?.data?.detail || e?.message || 'Failed to update volunteer');
     }
+  });
+
+  const sendRemindersMutation = useMutation({
+    mutationFn: async () => {
+      const res = await base44.functions.invoke('sendVolunteerReminders', {});
+      if (res.status >= 400) {
+        throw new Error(res.data?.error || 'Failed to send reminders');
+      }
+      return res.data;
+    },
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ['volunteer-shifts'] });
+      toast.success(`Reminders processed — ${data.sent || 0} sent, ${data.failed || 0} failed (${data.checked || 0} shifts checked)`);
+    },
+    onError: (e) => toast.error(e?.message || 'Failed to send reminders')
   });
 
   const filteredVolunteers = volunteers.filter(v => 
@@ -75,19 +90,30 @@ export default function VolunteerManager() {
           </p>
         </div>
 
-        <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-48 text-lg h-12">
-            <SelectValue placeholder="Filter by status" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all" className="text-lg">All Applications</SelectItem>
-            <SelectItem value="pending" className="text-lg">Pending</SelectItem>
-            <SelectItem value="approved" className="text-lg">Approved</SelectItem>
-            <SelectItem value="active" className="text-lg">Active</SelectItem>
-            <SelectItem value="inactive" className="text-lg">Inactive</SelectItem>
-            <SelectItem value="declined" className="text-lg">Declined</SelectItem>
-          </SelectContent>
-        </Select>
+        <div className="flex flex-wrap items-center gap-3">
+          <Button
+            onClick={() => sendRemindersMutation.mutate()}
+            disabled={sendRemindersMutation.isPending}
+            className="bg-gold text-navy hover:bg-gold/90 text-lg px-5 py-3 font-semibold h-12"
+            title="Send SMS reminders to volunteers with shifts in the next 24–48 hours"
+          >
+            <BellRing className="w-5 h-5 mr-2" />
+            {sendRemindersMutation.isPending ? 'Sending…' : 'Send Reminders'}
+          </Button>
+          <Select value={statusFilter} onValueChange={setStatusFilter}>
+            <SelectTrigger className="w-48 text-lg h-12">
+              <SelectValue placeholder="Filter by status" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all" className="text-lg">All Applications</SelectItem>
+              <SelectItem value="pending" className="text-lg">Pending</SelectItem>
+              <SelectItem value="approved" className="text-lg">Approved</SelectItem>
+              <SelectItem value="active" className="text-lg">Active</SelectItem>
+              <SelectItem value="inactive" className="text-lg">Inactive</SelectItem>
+              <SelectItem value="declined" className="text-lg">Declined</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
       {isLoading ? (

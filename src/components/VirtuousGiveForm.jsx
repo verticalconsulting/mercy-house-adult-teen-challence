@@ -46,7 +46,9 @@ export default function VirtuousGiveForm({
 
     const markReadyIfRendered = () => {
       const host = containerRef.current;
-      if (host && host.children.length > 0) {
+      // The <script> tag we append is itself a child, so don't count it —
+      // wait until Virtuous injects real markup (an iframe or wrapper element).
+      if (host && Array.from(host.children).some((c) => c.tagName.toLowerCase() !== 'script')) {
         setStatus('ready');
         return true;
       }

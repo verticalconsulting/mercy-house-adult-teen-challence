@@ -15,23 +15,23 @@ export default function MensCampus() {
     initialData: []
   });
 
-  const mensBedData = bedCounts.find(bc => bc.program_type === 'mens');
+  const mensBedData = bedCounts.find((bc) => bc.program_type === 'mens');
 
   return (
     <div className="w-full">
       {/* Hero */}
       <section
         aria-label="Men's Campus overview"
-        className="relative h-[65vh] flex items-center justify-center overflow-hidden"
-      >
+        className="relative h-[65vh] flex items-center justify-center overflow-hidden">
+        
         <div className="absolute inset-0 z-0">
           <img
             src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/aab06562-c0ee-4f31-ca4f-cb36c5faf700/heromobile"
             alt="Men working together in community at Mercy House Men's Campus in Georgetown, Mississippi"
             className="w-full h-full object-cover"
             fetchpriority="high"
-            loading="eager"
-          />
+            loading="eager" />
+          
           <div className="absolute inset-0 bg-gradient-to-r from-navy/92 to-navy/60 dark:from-slate-900/97 dark:to-slate-900/75" aria-hidden="true" />
         </div>
 
@@ -51,7 +51,7 @@ export default function MensCampus() {
               </Button>
             </Link>
             <a href="tel:6017203718">
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-5 text-base font-semibold">
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-5 text-base font-semibold bg-[hsl(var(--accent))]">
                 Call Intake: (601) 720-3718
               </Button>
             </a>
@@ -77,8 +77,8 @@ export default function MensCampus() {
                 muted
                 loop
                 playsInline
-                className="w-full h-full object-cover"
-              />
+                className="w-full h-full object-cover" />
+              
             </div>
             <div>
               <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">12-Month Program</p>
@@ -114,31 +114,31 @@ export default function MensCampus() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {[
-              {
-                icon: Shield,
-                title: 'Character Building',
-                description: 'Biblical principles to develop integrity, accountability, and moral strength'
-              },
-              {
-                icon: Target,
-                title: 'Goal Setting',
-                description: 'Personal development planning and strategic life coaching'
-              },
-              {
-                icon: Wrench,
-                title: 'Vocational Training',
-                description: 'Hands-on job skills through automotive, construction, and retail experience'
-              },
-              {
-                icon: Users,
-                title: 'Brotherhood',
-                description: 'Mentorship and accountability in a supportive community'
-              }
-            ].map((feature, idx) => (
-              <div
-                key={idx}
-                className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-              >
+            {
+              icon: Shield,
+              title: 'Character Building',
+              description: 'Biblical principles to develop integrity, accountability, and moral strength'
+            },
+            {
+              icon: Target,
+              title: 'Goal Setting',
+              description: 'Personal development planning and strategic life coaching'
+            },
+            {
+              icon: Wrench,
+              title: 'Vocational Training',
+              description: 'Hands-on job skills through automotive, construction, and retail experience'
+            },
+            {
+              icon: Users,
+              title: 'Brotherhood',
+              description: 'Mentorship and accountability in a supportive community'
+            }].
+            map((feature, idx) =>
+            <div
+              key={idx}
+              className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+              
                 <feature.icon className="w-10 h-10 md:w-12 md:h-12 text-gold mb-4" />
                 <h3 className="text-lg md:text-xl font-bold text-navy dark:text-gold mb-3">
                   {feature.title}
@@ -147,7 +147,7 @@ export default function MensCampus() {
                   {feature.description}
                 </p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -165,21 +165,21 @@ export default function MensCampus() {
           
           <div className="space-y-3 md:space-y-4">
             {[
-              { time: '6:00 AM', activity: 'Wake Up & Morning Devotions' },
-              { time: '7:00 AM', activity: 'Breakfast & Campus Responsibilities' },
-              { time: '8:30 AM', activity: 'Chapel Service & Biblical Teaching' },
-              { time: '10:00 AM', activity: 'Work Therapy / Vocational Training' },
-              { time: '12:00 PM', activity: 'Lunch & Rest Period' },
-              { time: '1:00 PM', activity: 'Continued Work / Education Classes' },
-              { time: '5:00 PM', activity: 'Dinner & Recreation' },
-              { time: '7:00 PM', activity: 'Group Counseling / Support Groups' },
-              { time: '9:00 PM', activity: 'Evening Reflection & Personal Time' },
-              { time: '10:30 PM', activity: 'Lights Out' }
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-6 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg"
-              >
+            { time: '6:00 AM', activity: 'Wake Up & Morning Devotions' },
+            { time: '7:00 AM', activity: 'Breakfast & Campus Responsibilities' },
+            { time: '8:30 AM', activity: 'Chapel Service & Biblical Teaching' },
+            { time: '10:00 AM', activity: 'Work Therapy / Vocational Training' },
+            { time: '12:00 PM', activity: 'Lunch & Rest Period' },
+            { time: '1:00 PM', activity: 'Continued Work / Education Classes' },
+            { time: '5:00 PM', activity: 'Dinner & Recreation' },
+            { time: '7:00 PM', activity: 'Group Counseling / Support Groups' },
+            { time: '9:00 PM', activity: 'Evening Reflection & Personal Time' },
+            { time: '10:30 PM', activity: 'Lights Out' }].
+            map((item, idx) =>
+            <div
+              key={idx}
+              className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-6 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg">
+              
                 <div className="text-gold font-bold text-base md:text-lg md:min-w-[100px]">
                   {item.time}
                 </div>
@@ -187,7 +187,7 @@ export default function MensCampus() {
                   {item.activity}
                 </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -203,33 +203,33 @@ export default function MensCampus() {
           
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {[
-              {
-                phase: 'Phase 1',
-                title: 'Why was I created?',
-                description: 'Dealing with past wounds. How to move forward from life altering dependency.'
-              },
-              {
-                phase: 'Phase 2',
-                title: 'Conflict resolution',
-                description: 'Building healthy relationships. Dealing with triggers. Continued in-depth Bible studies.'
-              },
-              {
-                phase: 'Phase 3',
-                title: 'Move into our transition home',
-                description: 'Get a job. Pay fines. Get a driver\'s license. Marriage counseling. Improved life skills.'
-              },
-              {
-                phase: 'Phase 4',
-                title: 'Transition to alumni home',
-                description: 'Have accountability. Live freely. Develop a new life.'
-              }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl shadow-lg border-l-4 border-gold">
+            {
+              phase: 'Phase 1',
+              title: 'Why was I created?',
+              description: 'Dealing with past wounds. How to move forward from life altering dependency.'
+            },
+            {
+              phase: 'Phase 2',
+              title: 'Conflict resolution',
+              description: 'Building healthy relationships. Dealing with triggers. Continued in-depth Bible studies.'
+            },
+            {
+              phase: 'Phase 3',
+              title: 'Move into our transition home',
+              description: 'Get a job. Pay fines. Get a driver\'s license. Marriage counseling. Improved life skills.'
+            },
+            {
+              phase: 'Phase 4',
+              title: 'Transition to alumni home',
+              description: 'Have accountability. Live freely. Develop a new life.'
+            }].
+            map((item, idx) =>
+            <div key={idx} className="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-xl shadow-lg border-l-4 border-gold">
                 <div className="text-gold font-bold text-base md:text-sm mb-2">{item.phase}</div>
                 <h3 className="text-xl md:text-2xl font-bold text-navy dark:text-gold mb-3">{item.title}</h3>
                 <p className="text-base md:text-base text-slate-600 dark:text-slate-300">{item.description}</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -277,24 +277,24 @@ export default function MensCampus() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              {
-                title: 'Discipleship & Biblical Teaching',
-                desc: "Every morning begins with chapel — not as a formality, but as the heartbeat of everything we do. Residents engage in daily Bible study, group prayer, and one-on-one discipleship with staff and mentors. Faith isn't added on top of the program here. It is the program.",
-              },
-              {
-                title: 'Mentorship & Accountability',
-                desc: "Every resident is paired with staff mentors and surrounded by peers walking the same path. Many of our staff came through this same program. They aren't coaching from the outside — they know what it's like from the inside. That kind of mentorship is rare and it matters.",
-              },
-              {
-                title: 'Life-Skills Development',
-                desc: "From financial literacy to conflict resolution, personal responsibility to healthy communication, residents build practical skills through classes, real-world work experience, and guided reflection. These are the skills that determine whether a man's life after graduation looks different from the one before it.",
-              },
-            ].map((item) => (
-              <div key={item.title} className="bg-white dark:bg-slate-800 rounded-2xl p-7 shadow-md border-t-4 border-gold">
+            {
+              title: 'Discipleship & Biblical Teaching',
+              desc: "Every morning begins with chapel — not as a formality, but as the heartbeat of everything we do. Residents engage in daily Bible study, group prayer, and one-on-one discipleship with staff and mentors. Faith isn't added on top of the program here. It is the program."
+            },
+            {
+              title: 'Mentorship & Accountability',
+              desc: "Every resident is paired with staff mentors and surrounded by peers walking the same path. Many of our staff came through this same program. They aren't coaching from the outside — they know what it's like from the inside. That kind of mentorship is rare and it matters."
+            },
+            {
+              title: 'Life-Skills Development',
+              desc: "From financial literacy to conflict resolution, personal responsibility to healthy communication, residents build practical skills through classes, real-world work experience, and guided reflection. These are the skills that determine whether a man's life after graduation looks different from the one before it."
+            }].
+            map((item) =>
+            <div key={item.title} className="bg-white dark:bg-slate-800 rounded-2xl p-7 shadow-md border-t-4 border-gold">
                 <h3 className="text-xl font-bold text-navy dark:text-gold mb-3">{item.title}</h3>
                 <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{item.desc}</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -311,40 +311,40 @@ export default function MensCampus() {
           </div>
           <div className="space-y-5">
             {[
-              {
-                step: '1',
-                title: 'Call or Apply',
-                desc: "Pick up the phone and call our intake coordinator at (601) 720-3718, or fill out the online application. Either way, a real person will respond — not a voicemail system. We'll have an honest conversation about your situation and whether Mercy House is the right fit.",
-                cta: { label: 'Call (601) 720-3718', href: 'tel:6017203718' },
-              },
-              {
-                step: '2',
-                title: 'Complete Intake',
-                desc: "Our team will walk you through a confidential intake process — a simple conversation to gather the information we need to prepare for your arrival. We'll be honest with you about what to expect, and we'll answer every question you have.",
-                cta: null,
-              },
-              {
-                step: '3',
-                title: 'Arrive & Begin',
-                desc: "We'll tell you exactly what to bring, what your first week will look like, and who will be there to welcome you. From day one, you're part of a community. You won't be starting from zero alone.",
-                cta: { label: 'Start Your Application', href: '/IntakeForm' },
-              },
-            ].map((item) => (
-              <div key={item.step} className="flex gap-6 items-start bg-slate-50 dark:bg-slate-900 rounded-2xl p-7 border border-slate-200 dark:border-slate-700">
+            {
+              step: '1',
+              title: 'Call or Apply',
+              desc: "Pick up the phone and call our intake coordinator at (601) 720-3718, or fill out the online application. Either way, a real person will respond — not a voicemail system. We'll have an honest conversation about your situation and whether Mercy House is the right fit.",
+              cta: { label: 'Call (601) 720-3718', href: 'tel:6017203718' }
+            },
+            {
+              step: '2',
+              title: 'Complete Intake',
+              desc: "Our team will walk you through a confidential intake process — a simple conversation to gather the information we need to prepare for your arrival. We'll be honest with you about what to expect, and we'll answer every question you have.",
+              cta: null
+            },
+            {
+              step: '3',
+              title: 'Arrive & Begin',
+              desc: "We'll tell you exactly what to bring, what your first week will look like, and who will be there to welcome you. From day one, you're part of a community. You won't be starting from zero alone.",
+              cta: { label: 'Start Your Application', href: '/IntakeForm' }
+            }].
+            map((item) =>
+            <div key={item.step} className="flex gap-6 items-start bg-slate-50 dark:bg-slate-900 rounded-2xl p-7 border border-slate-200 dark:border-slate-700">
                 <div className="flex-shrink-0 w-12 h-12 bg-gold rounded-full flex items-center justify-center text-navy font-black text-xl">
                   {item.step}
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-navy dark:text-gold mb-2">{item.title}</h3>
                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{item.desc}</p>
-                  {item.cta && (
-                    <a href={item.cta.href} className="inline-flex items-center gap-2 mt-4 text-navy dark:text-gold font-semibold hover:underline">
+                  {item.cta &&
+                <a href={item.cta.href} className="inline-flex items-center gap-2 mt-4 text-navy dark:text-gold font-semibold hover:underline">
                       {item.cta.label} <ArrowRight className="w-4 h-4" aria-hidden="true" />
                     </a>
-                  )}
+                }
                 </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -392,8 +392,8 @@ export default function MensCampus() {
       {/* CTA */}
       <section
         aria-labelledby="mens-cta-heading"
-        className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white"
-      >
+        className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
+        
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 id="mens-cta-heading" className="text-3xl md:text-4xl font-bold mb-5">Your New Life Starts With One Decision</h2>
           <p className="text-lg md:text-xl mb-4 text-slate-200 max-w-2xl mx-auto">
@@ -412,13 +412,13 @@ export default function MensCampus() {
               </Button>
             </Link>
             <Link to={createPageUrl('Contact')}>
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-10 py-6 text-lg font-semibold">
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-10 py-6 text-lg font-semibold bg-[hsl(var(--accent))]">
                 Ask Us a Question
               </Button>
             </Link>
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>);
+
 }

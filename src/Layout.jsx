@@ -41,7 +41,7 @@ export default function Layout({ children, currentPageName }) {
     { name: 'Our Leadership Team & Board of Directors', path: 'MeetTheTeam' },
     { name: 'Our Mission, Culture & Values', directPath: '/About' },
     { name: 'News and Events', directPath: '/Events' },
-    { name: 'Careers', directPath: '/Contact' },
+    { name: 'Careers', directPath: '/Careers' },
     { name: 'Media Resources', directPath: '/About' }]
   },
   {
@@ -383,6 +383,7 @@ export default function Layout({ children, currentPageName }) {
                 <li><Link to={createPageUrl('Volunteer')} className="text-slate-300 hover:text-gold transition-colors">Volunteer</Link></li>
                 <li><Link to="/About" className="text-slate-300 hover:text-gold transition-colors">About Us</Link></li>
                 <li><Link to="/Financials" className="text-slate-300 hover:text-gold transition-colors">Financials</Link></li>
+                <li><Link to="/Careers" className="text-slate-300 hover:text-gold transition-colors">Careers</Link></li>
                 <li><Link to="/Programs" className="text-slate-300 hover:text-gold transition-colors">Programs</Link></li>
                 <li><Link to={createPageUrl('EmployeePortal')} className="text-slate-300 hover:text-gold transition-colors">Employee Portal</Link></li>
                 <li><Link to="/MeetTheTeam" className="text-slate-300 hover:text-gold transition-colors">Meet the Team</Link></li>

@@ -20,6 +20,7 @@ import VolunteerManager from '../components/employee/VolunteerManager';
 import BlogManager from '../components/employee/BlogManager';
 import CampaignManager from '../components/employee/CampaignManager';
 import EventManager from '../components/employee/EventManager';
+import CareerListingManager from '../components/employee/CareerListingManager';
 import DonationFunnel from './DonationFunnel';
 import WomensCampusMediaManager from '../components/employee/WomensCampusMediaManager';
 import SearchPerformance from './SearchPerformance';
@@ -338,6 +339,9 @@ export default function EmployeePortal() {
             <TabsTrigger value="blog" className="text-sm flex-shrink-0">
               Blog AI
             </TabsTrigger>
+            <TabsTrigger value="careers" className="text-sm flex-shrink-0">
+              Careers
+            </TabsTrigger>
             <TabsTrigger value="campaigns" className="text-sm flex-shrink-0">
               Campaigns
             </TabsTrigger>
@@ -521,6 +525,10 @@ export default function EmployeePortal() {
 
           <TabsContent value="blog" className="mt-6">
             <BlogManager />
+          </TabsContent>
+
+          <TabsContent value="careers" className="mt-6">
+            <CareerListingManager />
           </TabsContent>
 
           <TabsContent value="campaigns" className="mt-6">

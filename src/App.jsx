@@ -20,6 +20,7 @@ import TermsConditions from './pages/TermsConditions';
 import HelpForDependency from './pages/HelpForDependency';
 import MicroBusinesses from './pages/MicroBusinesses';
 import ComprehensiveApproach from './pages/ComprehensiveApproach';
+import Careers from './pages/Careers';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -89,6 +90,7 @@ const AuthenticatedApp = () => {
       <Route path="/WomensCenterCalendar" element={<LayoutWrapper currentPageName="WomensCenterCalendar"><WomensCenterCalendar /></LayoutWrapper>} />
       <Route path="/WorkforceDevelopment" element={<LayoutWrapper currentPageName="WorkforceDevelopment"><MicroBusinesses /></LayoutWrapper>} />
       <Route path="/ComprehensiveApproach" element={<LayoutWrapper currentPageName="ComprehensiveApproach"><ComprehensiveApproach /></LayoutWrapper>} />
+      <Route path="/Careers" element={<LayoutWrapper currentPageName="Careers"><Careers /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

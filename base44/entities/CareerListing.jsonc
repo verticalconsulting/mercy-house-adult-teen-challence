@@ -1,0 +1,108 @@
+{
+  "name": "CareerListing",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Job title"
+    },
+    "department": {
+      "type": "string",
+      "description": "Department or team (e.g., Men's Campus, Administration, Auto Center)"
+    },
+    "location": {
+      "type": "string",
+      "description": "Where the role is based (campus name, city, or Remote)"
+    },
+    "job_type": {
+      "type": "string",
+      "enum": [
+        "full_time",
+        "part_time",
+        "contract",
+        "internship"
+      ],
+      "default": "full_time",
+      "description": "Employment type"
+    },
+    "description": {
+      "type": "string",
+      "description": "Role overview and responsibilities"
+    },
+    "requirements": {
+      "type": "string",
+      "description": "Qualifications and requirements"
+    },
+    "salary_range": {
+      "type": "string",
+      "description": "Optional salary or compensation range"
+    },
+    "application_email": {
+      "type": "string",
+      "description": "Email address to send applications to"
+    },
+    "application_link": {
+      "type": "string",
+      "description": "External application URL (if applicable)"
+    },
+    "posting_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When the listing was posted"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "closed"
+      ],
+      "default": "open",
+      "description": "Whether the position is actively accepting applications"
+    },
+    "published": {
+      "type": "boolean",
+      "default": true,
+      "description": "Is this listing visible on the public Careers page?"
+    }
+  },
+  "required": [
+    "title",
+    "job_type"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "$and": [
+            {
+              "data.published": true
+            },
+            {
+              "data.status": "open"
+            }
+          ]
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

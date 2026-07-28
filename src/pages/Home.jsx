@@ -164,7 +164,7 @@ export default function Home() {
         headlineBreak="Restored"
         body="Providing comprehensive Christian faith-based solutions to life-controlling problems. Find new life, godly character, and lasting freedom."
         primaryLabel="Start Your Journey"
-        primaryTo="/help-for-dependency-abuse"
+        primaryTo={createPageUrl('IntakeForm')}
         secondaryLabel="Donate"
         secondaryTo={createPageUrl('Donate')}
         reassurance="Confidential · Free to call · Faith-based, never preachy"

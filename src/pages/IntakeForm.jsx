@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,7 +9,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Loader2, ChevronLeft, ChevronRight, Info, AlertCircle } from 'lucide-react';
+import { CheckCircle, Loader2, ChevronLeft, ChevronRight, Info, AlertCircle, Phone, Heart, ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
 import IntakeFeePayment from '../components/IntakeFeePayment';
 
@@ -270,6 +271,39 @@ export default function IntakeForm() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero banner — encouraging, help is here */}
+        <section className="mb-10 rounded-2xl bg-navy dark:bg-slate-950 text-white overflow-hidden shadow-lg">
+          <div className="px-6 py-10 md:px-12 md:py-14 text-center">
+            <Heart className="w-10 h-10 text-gold mx-auto mb-4" aria-hidden="true" />
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">
+              Get Help Now — We&rsquo;re Here for You
+            </h1>
+            <p className="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto mb-6 leading-relaxed">
+              You don&rsquo;t have to do this alone. We&rsquo;re waiting on you and ready to help.
+              Call us right now, or fill out the form below and our intake team will get back to you.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="tel:+16017203718"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md bg-gold px-6 py-3 font-bold text-navy-950 shadow-cta transition-colors hover:bg-gold-accessible hover:text-white"
+              >
+                <Phone className="w-5 h-5" aria-hidden="true" />
+                Call (601) 720-3718
+              </a>
+              <Link
+                to="/DependancyHelp"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md border-2 border-white/70 px-6 py-2 font-bold text-white transition-colors hover:bg-white hover:text-navy"
+              >
+                Learn More About Getting Help
+                <ArrowRight className="w-5 h-5" aria-hidden="true" />
+              </Link>
+            </div>
+            <p className="mt-5 text-sm text-slate-300">
+              Confidential · Free to call · Faith-based, never preachy
+            </p>
+          </div>
+        </section>
+
         {/* Header */}
         <div className="mb-8 text-center">
           <h1 className="text-4xl font-bold text-navy dark:text-gold mb-2">

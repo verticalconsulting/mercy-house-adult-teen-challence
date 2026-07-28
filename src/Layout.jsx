@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Menu, X, ChevronDown, MessageCircle, Facebook, ArrowLeft } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight, MessageCircle, Facebook, ArrowLeft } from 'lucide-react';
 import DarkModeToggle from './components/DarkModeToggle';
 import DonateDropdown from './components/DonateDropdown';
 import NonprofitLegitimacy from './components/NonprofitLegitimacy';
@@ -17,7 +17,9 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null);
+  const [openNested, setOpenNested] = useState(null);
   const toggleSubmenu = (name) => setOpenSubmenu((prev) => prev === name ? null : name);
+  const toggleNested = (name) => setOpenNested((prev) => prev === name ? null : name);
   const navigate = useNavigate();
   const location = useLocation();
   const mainRef = React.useRef(null);
@@ -48,11 +50,12 @@ export default function Layout({ children, currentPageName }) {
     directPath: '/ComprehensiveApproach',
     submenu: [
     { name: 'Our Comprehensive Approach', directPath: '/ComprehensiveApproach' },
-    { name: 'SuperThrift', href: 'https://mercyhouseatc.superthriftdeals.org', external: true },
-    { name: 'Vehicle Donation Program', href: 'https://vehicledonationms.com', external: true },
-    { name: 'Products with a Purpose', href: 'https://productswithapurpose.com', external: true },
-    { name: 'Mercy House Auto Center', href: 'https://mercyhouseautocenter.com/', external: true },
-    { name: 'Elite Gutters', href: 'https://myelitegutters.com', external: true },
+    { name: 'Workforce Development', directPath: '/WorkforceDevelopment', submenu: [
+      { name: 'SuperThrift', href: 'https://mercyhouseatc.superthriftdeals.org', external: true },
+      { name: 'Vehicle Donation Program', href: 'https://vehicledonationms.com', external: true },
+      { name: 'Products with a Purpose', href: 'https://productswithapurpose.com', external: true },
+      { name: 'Mercy House Auto Center', href: 'https://mercyhouseautocenter.com/', external: true },
+      { name: 'Elite Gutters', href: 'https://myelitegutters.com', external: true } ] },
     { name: 'Internship Program', directPath: '/Programs' },
     { name: 'Testimonies: Stories of Hope', path: 'Testimonials' },
     { name: 'FAQs', directPath: '/Programs' }]
@@ -166,6 +169,34 @@ export default function Layout({ children, currentPageName }) {
                       </Link>
                       <div className="absolute left-0 top-full w-56 bg-white dark:bg-slate-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-slate-200 dark:border-slate-700 z-50">
                         {item.submenu.map((subItem) =>
+                    subItem.submenu ?
+                    <div key={subItem.name} className="relative group/sub">
+                            <Link
+                        to={subItem.directPath || createPageUrl(subItem.path)}
+                        className="flex items-center justify-between px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg">
+                              {subItem.name}
+                              <ChevronRight className="w-4 h-4 ml-2" />
+                            </Link>
+                            <div className="absolute left-full top-0 w-56 bg-white dark:bg-slate-800 rounded-lg shadow-xl opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 border border-slate-200 dark:border-slate-700 z-50 ml-1">
+                              {subItem.submenu.map((nested) =>
+                          nested.external || nested.href ?
+                          <a
+                            key={nested.name}
+                            href={nested.href || nested.path}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg">
+                                  {nested.name}
+                                </a> :
+                          <Link
+                            key={nested.name}
+                            to={nested.directPath || createPageUrl(nested.path)}
+                            className="block px-4 py-3 text-sm text-slate-700 dark:text-slate-200 hover:bg-navy/5 dark:hover:bg-gold/10 hover:text-navy dark:hover:text-gold transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg">
+                                  {nested.name}
+                                </Link>
+                          )}
+                            </div>
+                          </div> :
                     subItem.external || subItem.href ?
                     <a
                       key={subItem.name}
@@ -218,28 +249,63 @@ export default function Layout({ children, currentPageName }) {
                       </button>
                       {openSubmenu === item.name &&
                 <div className="ml-4 mt-2 space-y-1">
-                          {item.submenu.map((subItem) =>
-                  subItem.external || subItem.href ?
-                  <a
-                    key={subItem.name}
-                    href={subItem.href || subItem.path}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block px-4 py-3 text-lg md:text-sm text-slate-600 dark:text-slate-300 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors">
-                    
-                                {subItem.name}
+                        {item.submenu.map((subItem) =>
+                subItem.submenu ?
+                <div key={subItem.name}>
+                          <button
+                    onClick={() => toggleNested(subItem.name)}
+                    className="w-full flex items-center justify-between px-4 py-3 text-lg md:text-sm text-slate-600 dark:text-slate-300 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors">
+                            {subItem.name}
+                            <ChevronDown className={`w-5 h-5 md:w-4 md:h-4 transition-transform ${openNested === subItem.name ? 'rotate-180' : ''}`} />
+                          </button>
+                          {openNested === subItem.name &&
+                  <div className="ml-4 mt-1 space-y-1">
+                            {subItem.submenu.map((nested) =>
+                    nested.external || nested.href ?
+                    <a
+                      key={nested.name}
+                      href={nested.href || nested.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-3 text-lg md:text-sm text-slate-600 dark:text-slate-300 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors">
+                                {nested.name}
                               </a> :
 
-                  <Link
-                    key={subItem.name}
-                    to={subItem.directPath || createPageUrl(subItem.path)}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block px-4 py-3 text-lg md:text-sm text-slate-600 dark:text-slate-300 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors">
-                    
-                                {subItem.name}
+                    <Link
+                      key={nested.name}
+                      to={nested.directPath || createPageUrl(nested.path)}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-3 text-lg md:text-sm text-slate-600 dark:text-slate-300 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors">
+                                {nested.name}
                               </Link>
 
-                  )}
-                        </div>
+                    )}
+                          </div>
+                  }
+                        </div> :
+
+                subItem.external || subItem.href ?
+                <a
+                  key={subItem.name}
+                  href={subItem.href || subItem.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-lg md:text-sm text-slate-600 dark:text-slate-300 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors">
+
+                              {subItem.name}
+                            </a> :
+
+                <Link
+                  key={subItem.name}
+                  to={subItem.directPath || createPageUrl(subItem.path)}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-lg md:text-sm text-slate-600 dark:text-slate-300 hover:bg-navy/5 dark:hover:bg-gold/10 rounded-lg transition-colors">
+
+                              {subItem.name}
+                            </Link>
+
+                )}
+                      </div>
                 }
                     </div> :
 

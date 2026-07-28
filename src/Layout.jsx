@@ -44,10 +44,10 @@ export default function Layout({ children, currentPageName }) {
   },
   {
     name: 'Our Approach',
-    path: 'Programs',
-    directPath: '/Programs',
+    path: 'ComprehensiveApproach',
+    directPath: '/ComprehensiveApproach',
     submenu: [
-    { name: 'Our Comprehensive Approach', directPath: '/Programs' },
+    { name: 'Our Comprehensive Approach', directPath: '/ComprehensiveApproach' },
     { name: 'SuperThrift', href: 'https://mercyhouseatc.superthriftdeals.org', external: true },
     { name: 'Vehicle Donation Program', href: 'https://vehicledonationms.com', external: true },
     { name: 'Products with a Purpose', href: 'https://productswithapurpose.com', external: true },

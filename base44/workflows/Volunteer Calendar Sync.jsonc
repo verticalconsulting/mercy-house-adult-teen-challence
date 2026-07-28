@@ -1,0 +1,41 @@
+{
+  "name": "Volunteer Calendar Sync",
+  "description": "When the connected Google Calendar (volunteer activities) changes, mirror each changed event into an Event entity and email + SMS-notify every volunteer assigned to that calendar event.",
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "volunteer_calendar_sync",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "sync_calendar": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "syncVolunteerCalendar",
+            "args": {
+              "data": "${ .trigger.data }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Sync volunteer calendar",
+            "description": "Mirror changed events & notify assigned volunteers"
+          }
+        }
+      }
+    ]
+  },
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "connector",
+      "events": [
+        "events"
+      ],
+      "integration_type": "googlecalendar",
+      "resource_id": "primary"
+    }
+  }
+}

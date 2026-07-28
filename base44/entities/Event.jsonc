@@ -58,6 +58,10 @@
       "type": "boolean",
       "default": true,
       "description": "Is this event published?"
+    },
+    "google_event_id": {
+      "type": "string",
+      "description": "Google Calendar event ID this record mirrors (set by the volunteer calendar sync workflow)"
     }
   },
   "required": [

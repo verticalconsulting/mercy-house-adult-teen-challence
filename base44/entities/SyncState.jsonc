@@ -1,0 +1,40 @@
+{
+  "name": "SyncState",
+  "type": "object",
+  "properties": {
+    "provider": {
+      "type": "string",
+      "default": "googlecalendar",
+      "description": "Which connector this sync state belongs to"
+    },
+    "sync_token": {
+      "type": "string",
+      "description": "Google Calendar sync token used for incremental event sync"
+    }
+  },
+  "required": [
+    "sync_token"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

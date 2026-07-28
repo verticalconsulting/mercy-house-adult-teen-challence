@@ -47,7 +47,7 @@ const team = [
   },
   {
     name: 'Sharon Pointer',
-    photyo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/d4408b34-a5ff-4c8a-b2aa-e01e0b2dce00/small',
+    photo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/197f7aa05_sharon-pointer1.jpg',
     title: 'Auto Center Administrator / VDP Coordinator',
     bio: "Addiction has followed me for years. As I grew up, my family was dysfunctional because of Drugs/Alcohol/Relationships. Those are the things I craved in my life. I was receiving counseling with Pastor Bryan Wilson and that is what brought me to MHATC. My life has been forever changed through this ministry.",
   },

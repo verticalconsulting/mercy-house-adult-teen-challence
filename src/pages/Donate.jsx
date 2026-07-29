@@ -5,7 +5,7 @@ import NonprofitLegitimacy from '../components/NonprofitLegitimacy';
 import VirtuousGiveForm from '../components/VirtuousGiveForm';
 
 // Mercy House — Virtuous giving form (one-time + recurring, Stripe + Virtuous CRM).
-const MERCYHOUSE_VIRTUOUS_FORM_ID = '7033B8F5-8F23-42AC-8934-BFAC670B91CA';
+const MERCYHOUSE_VIRTUOUS_FORM_ID = 'BD48ECA9-6E77-4CBC-81F7-D8A42A7751E8';
 // Dedicated Virtuous form for the $1,000 intake-fee sponsorship gift.
 const MERCYHOUSE_INTAKE_FEE_FORM_ID = 'AE0BD86D-8C6F-43F0-87BB-E9E85FB8FCA6';
 

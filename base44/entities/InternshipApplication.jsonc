@@ -1,0 +1,308 @@
+{
+  "name": "InternshipApplication",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string",
+      "description": "Applicant's full legal name"
+    },
+    "email": {
+      "type": "string",
+      "description": "Contact email"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Contact phone number"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of birth"
+    },
+    "address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string"
+    },
+    "marital_status": {
+      "type": "string",
+      "enum": [
+        "single",
+        "married",
+        "divorced",
+        "widowed",
+        "separated"
+      ]
+    },
+    "children": {
+      "type": "string",
+      "description": "Number and ages of children, if any"
+    },
+    "has_health_insurance": {
+      "type": "boolean"
+    },
+    "current_medications": {
+      "type": "string"
+    },
+    "allergies": {
+      "type": "string"
+    },
+    "physical_limitations": {
+      "type": "string",
+      "description": "Any physical or dietary restrictions"
+    },
+    "mental_health_history": {
+      "type": "string",
+      "description": "Any mental health history or treatment"
+    },
+    "physician_name_phone": {
+      "type": "string",
+      "description": "Current physician name and phone"
+    },
+    "how_long_christian": {
+      "type": "string",
+      "description": "How long have you been a Christian?"
+    },
+    "baptized": {
+      "type": "boolean"
+    },
+    "salvation_testimony": {
+      "type": "string",
+      "description": "Brief summary of your salvation experience"
+    },
+    "church_background": {
+      "type": "string",
+      "description": "Your church background / denomination"
+    },
+    "church_name": {
+      "type": "string",
+      "description": "Name of your local church"
+    },
+    "church_address": {
+      "type": "string"
+    },
+    "pastor_name": {
+      "type": "string"
+    },
+    "pastor_phone": {
+      "type": "string"
+    },
+    "member_since": {
+      "type": "string",
+      "description": "How long have you been a member?"
+    },
+    "involved_in_ministry": {
+      "type": "boolean"
+    },
+    "ministry_involvement_details": {
+      "type": "string",
+      "description": "Areas of ministry involvement"
+    },
+    "testimony": {
+      "type": "string",
+      "description": "Your personal testimony / faith story"
+    },
+    "diversity_response": {
+      "type": "string",
+      "description": "How do you value diversity (such as racial or socioeconomic differences or varying beliefs) and what is your method of working alongside those of diversity?"
+    },
+    "why_internship": {
+      "type": "string",
+      "description": "Why do you want to do this internship?"
+    },
+    "strengths_weaknesses": {
+      "type": "string",
+      "description": "What are your strengths and weaknesses?"
+    },
+    "how_heard": {
+      "type": "string",
+      "description": "How did you hear about the internship?"
+    },
+    "education_level": {
+      "type": "string",
+      "description": "Highest level of education completed"
+    },
+    "school_name": {
+      "type": "string",
+      "description": "Name of school/college last attended"
+    },
+    "graduation_year": {
+      "type": "number"
+    },
+    "field_of_study": {
+      "type": "string"
+    },
+    "additional_education": {
+      "type": "string",
+      "description": "Additional certifications, training, or education"
+    },
+    "current_employer": {
+      "type": "string"
+    },
+    "current_position": {
+      "type": "string"
+    },
+    "work_experience": {
+      "type": "string",
+      "description": "Summary of your work history"
+    },
+    "years_experience": {
+      "type": "string"
+    },
+    "skills": {
+      "type": "string",
+      "description": "Special skills or qualifications"
+    },
+    "ever_arrested": {
+      "type": "boolean"
+    },
+    "arrest_details": {
+      "type": "string",
+      "description": "If yes, please explain"
+    },
+    "under_legal_supervision": {
+      "type": "boolean",
+      "description": "Currently under legal supervision (probation/parole)"
+    },
+    "probation_parole_details": {
+      "type": "string"
+    },
+    "pending_legal_matters": {
+      "type": "boolean"
+    },
+    "pending_legal_details": {
+      "type": "string"
+    },
+    "criminal_charges": {
+      "type": "boolean"
+    },
+    "criminal_charges_details": {
+      "type": "string"
+    },
+    "sexual_offender_registry": {
+      "type": "boolean"
+    },
+    "legally_mandated_treatment": {
+      "type": "boolean"
+    },
+    "drivers_license": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no",
+        "expired",
+        "suspended"
+      ]
+    },
+    "preferred_start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "availability": {
+      "type": "string",
+      "description": "Availability and preferred duration"
+    },
+    "emergency_contact_name": {
+      "type": "string"
+    },
+    "emergency_contact_phone": {
+      "type": "string"
+    },
+    "emergency_contact_relationship": {
+      "type": "string"
+    },
+    "reference_1_name": {
+      "type": "string"
+    },
+    "reference_1_relationship": {
+      "type": "string"
+    },
+    "reference_1_phone": {
+      "type": "string"
+    },
+    "reference_1_email": {
+      "type": "string"
+    },
+    "reference_2_name": {
+      "type": "string"
+    },
+    "reference_2_relationship": {
+      "type": "string"
+    },
+    "reference_2_phone": {
+      "type": "string"
+    },
+    "reference_2_email": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string",
+      "description": "Typed signature"
+    },
+    "signature_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "submission_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "under_review",
+        "accepted",
+        "declined",
+        "waitlist"
+      ],
+      "default": "pending"
+    },
+    "assigned_to": {
+      "type": "string",
+      "description": "Staff reviewing this application"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Internal staff notes"
+    }
+  },
+  "required": [
+    "full_name",
+    "email",
+    "phone",
+    "testimony"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "$or": [
+        {
+          "data.email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

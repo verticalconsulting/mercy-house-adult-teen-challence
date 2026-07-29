@@ -56,7 +56,7 @@ export default function Layout({ children, currentPageName }) {
       { name: 'Products with a Purpose', href: 'https://productswithapurpose.com', external: true },
       { name: 'Mercy House Auto Center', href: 'https://mercyhouseautocenter.com/', external: true },
       { name: 'Elite Gutters', href: 'https://myelitegutters.com', external: true } ] },
-    { name: 'Internship Program', directPath: '/Programs' },
+    { name: 'Internship Program', directPath: '/Internship' },
     { name: 'Testimonies: Stories of Hope', path: 'Testimonials' },
     { name: 'FAQs', directPath: '/Programs' }]
   },

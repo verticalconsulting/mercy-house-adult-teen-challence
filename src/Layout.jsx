@@ -58,7 +58,7 @@ export default function Layout({ children, currentPageName }) {
       { name: 'Elite Gutters', href: 'https://myelitegutters.com', external: true } ] },
     { name: 'Internship Program', directPath: '/Internship' },
     { name: 'Testimonies: Stories of Hope', path: 'Testimonials' },
-    { name: 'FAQs', directPath: '/Programs' }]
+    { name: 'FAQs', directPath: '/FAQ' }]
   },
   {
     name: 'Ways to Help',

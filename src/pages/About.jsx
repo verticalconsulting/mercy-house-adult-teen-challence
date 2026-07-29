@@ -112,7 +112,7 @@ export default function About() {
       <section className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 mb-16">
-            <div className="dark:bg-slate-800 rounded-2xl p-8 shadow-md border border-slate-100 dark:border-slate-700 bg-[hsl(var(--secondary))]">
+            <div className="dark:bg-slate-800 rounded-2xl p-8 shadow-md border border-slate-100 dark:border-slate-700 bg-[hsl(var(--muted))]">
               <div className="w-12 h-12 bg-navy/10 dark:bg-gold/10 rounded-xl flex items-center justify-center mb-5">
                 <Heart className="w-6 h-6 text-navy dark:text-gold" />
               </div>
@@ -121,7 +121,7 @@ export default function About() {
                 Helping adults and families find new life in Christ, develop godly character, and live restored, purposeful lives through practical life skills and community.
               </p>
             </div>
-            <div className="dark:bg-slate-800 rounded-2xl p-8 shadow-md border border-slate-100 dark:border-slate-700 bg-[hsl(var(--secondary))]">
+            <div className="dark:bg-slate-800 rounded-2xl p-8 shadow-md border border-slate-100 dark:border-slate-700 bg-[hsl(var(--muted))]">
               <div className="w-12 h-12 bg-navy/10 dark:bg-gold/10 rounded-xl flex items-center justify-center mb-5">
                 <Star className="w-6 h-6 text-navy dark:text-gold" />
               </div>

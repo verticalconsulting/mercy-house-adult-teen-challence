@@ -1,0 +1,89 @@
+{
+  "name": "GolfTeamRegistration",
+  "type": "object",
+  "properties": {
+    "team_name": {
+      "type": "string",
+      "description": "Team name"
+    },
+    "captain_name": {
+      "type": "string",
+      "description": "Team captain full name"
+    },
+    "captain_email": {
+      "type": "string",
+      "description": "Captain contact email"
+    },
+    "captain_phone": {
+      "type": "string",
+      "description": "Captain phone number"
+    },
+    "course_preference": {
+      "type": "string",
+      "enum": [
+        "annandale",
+        "reunion",
+        "no_preference"
+      ],
+      "default": "no_preference",
+      "description": "Preferred course for the scramble"
+    },
+    "player2_name": {
+      "type": "string",
+      "description": "Player 2 name"
+    },
+    "player3_name": {
+      "type": "string",
+      "description": "Player 3 name"
+    },
+    "player4_name": {
+      "type": "string",
+      "description": "Player 4 name"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes or requests"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "confirmed",
+        "paid",
+        "cancelled"
+      ],
+      "default": "pending",
+      "description": "Registration status"
+    }
+  },
+  "required": [
+    "team_name",
+    "captain_name",
+    "captain_email"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "$or": [
+        {
+          "data.captain_email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

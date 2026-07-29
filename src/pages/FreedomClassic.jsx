@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { MapPin, Calendar, Users, Mail, Trophy, Flag, CheckCircle, XCircle, Plus, ExternalLink, Award, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import TeamRegistrationForm from '../components/freedomclassic/TeamRegistrationForm';
 
 const REGISTER_URL = 'https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament';
 const SPONSORSHIP_EMAIL = 'mailto:khardin@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship Inquiry';
@@ -83,9 +84,9 @@ export default function FreedomClassic() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
-              <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
+              <a href="#register" onClick={(e) => { e.preventDefault(); document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' }); }}>
                 <Button className="hover:bg-navy/90 font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105 bg-[hsl(var(--card))] text-gray-800">
-                  <ExternalLink className="w-4 h-4" />
+                  <Users className="w-4 h-4" />
                   Register Your Team
                 </Button>
               </a>
@@ -189,14 +190,28 @@ export default function FreedomClassic() {
                 By participating in the Golf Classic, you are supporting the Mercy House ministry and giving hope to men and women who are seeking freedom from life controlling issues.
               </p>
               <p className="text-slate-700 font-semibold text-sm mb-4">Help us change lives by reaching our goal of $200,000.</p>
-              <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
+              <a href="#register" onClick={(e) => { e.preventDefault(); document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' }); }}>
                 <Button className="w-full hover:bg-gold/90 text-navy font-bold rounded-full flex items-center justify-center gap-2 py-5 bg-[hsl(var(--card))]">
-                  <ExternalLink className="w-4 h-4" />
+                  <Users className="w-4 h-4" />
                   Register Now
                 </Button>
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Team Registration ── */}
+      <section id="register" className="py-16 bg-slate-50 scroll-mt-20">
+        <div className="max-w-3xl mx-auto px-4">
+          <div className="text-center mb-8">
+            <Users className="w-12 h-12 text-gold mx-auto mb-3" />
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-2">Register Your Team</h2>
+            <p className="text-slate-600 text-lg">
+              Sign up your four-person scramble team below — we'll pre-fill your details if you're logged in. Then finalize your $1,000 entry on GolfStatus.
+            </p>
+          </div>
+          <TeamRegistrationForm />
         </div>
       </section>
 
@@ -356,9 +371,9 @@ export default function FreedomClassic() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer">
+            <a href="#register" onClick={(e) => { e.preventDefault(); document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' }); }}>
               <Button className="hover:bg-gold/90 text-navy font-bold px-12 py-5 text-lg rounded-full flex items-center gap-2 shadow-lg bg-[hsl(var(--background))]">
-                <ExternalLink className="w-5 h-5" />
+                <Users className="w-5 h-5" />
                 Register Now
               </Button>
             </a>

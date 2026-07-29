@@ -1,0 +1,80 @@
+{
+  "name": "AgentConfig",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "Short description of the agent shown in the portal"
+    },
+    "instructions": {
+      "type": "string",
+      "description": "Full system-prompt instructions for the agent"
+    },
+    "whatsapp_greeting": {
+      "type": "string",
+      "description": "Greeting shown when a user first messages the agent on WhatsApp"
+    },
+    "model": {
+      "type": "string",
+      "default": "automatic",
+      "description": "LLM model the agent uses"
+    },
+    "tool_configs": {
+      "type": "array",
+      "description": "Entity tools and operations the agent is permitted to use",
+      "items": {
+        "type": "object",
+        "properties": {
+          "entity_name": {
+            "type": "string"
+          },
+          "allowed_operations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "create",
+                "read",
+                "update",
+                "delete"
+              ]
+            }
+          }
+        },
+        "required": [
+          "entity_name"
+        ]
+      }
+    },
+    "updated_by": {
+      "type": "string",
+      "description": "Display name of the staff member who last saved"
+    }
+  },
+  "required": [
+    "description",
+    "instructions"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -22,6 +22,7 @@ import MicroBusinesses from './pages/MicroBusinesses';
 import ComprehensiveApproach from './pages/ComprehensiveApproach';
 import Careers from './pages/Careers';
 import Internship from './pages/Internship';
+import MediaResources from './pages/MediaResources';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -93,6 +94,7 @@ const AuthenticatedApp = () => {
       <Route path="/ComprehensiveApproach" element={<LayoutWrapper currentPageName="ComprehensiveApproach"><ComprehensiveApproach /></LayoutWrapper>} />
       <Route path="/Careers" element={<LayoutWrapper currentPageName="Careers"><Careers /></LayoutWrapper>} />
       <Route path="/Internship" element={<LayoutWrapper currentPageName="Internship"><Internship /></LayoutWrapper>} />
+      <Route path="/MediaResources" element={<LayoutWrapper currentPageName="MediaResources"><MediaResources /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

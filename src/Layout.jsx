@@ -42,7 +42,7 @@ export default function Layout({ children, currentPageName }) {
     { name: 'Our Mission, Culture & Values', directPath: '/About' },
     { name: 'News and Events', directPath: '/Events' },
     { name: 'Careers', directPath: '/Careers' },
-    { name: 'Media Resources', directPath: '/About' }]
+    { name: 'Media Resources', directPath: '/MediaResources' }]
   },
   {
     name: 'Our Approach',

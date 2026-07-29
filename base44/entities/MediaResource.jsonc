@@ -1,0 +1,88 @@
+{
+  "name": "MediaResource",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title or caption for the media item"
+    },
+    "media_type": {
+      "type": "string",
+      "enum": [
+        "photo",
+        "video"
+      ],
+      "description": "Type of media"
+    },
+    "media_url": {
+      "type": "string",
+      "description": "URL to the photo (uploaded file URL or direct image link) or video (YouTube/Vimeo embed URL or uploaded file URL)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the event or moment"
+    },
+    "event_name": {
+      "type": "string",
+      "description": "Name of the event the media is from"
+    },
+    "event_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the event"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "general",
+        "outreach",
+        "fundraiser",
+        "graduation",
+        "service",
+        "community_event",
+        "other"
+      ],
+      "default": "general",
+      "description": "Category of the media"
+    },
+    "published": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this item is visible publicly"
+    }
+  },
+  "required": [
+    "title",
+    "media_type",
+    "media_url"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.published": true
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

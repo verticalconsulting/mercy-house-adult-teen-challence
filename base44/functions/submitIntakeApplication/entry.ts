@@ -6,8 +6,35 @@ Deno.serve(async (req) => {
         const base44 = createClientFromRequest(req);
         const formData = await req.json();
 
+        // Whitelist only applicant-suppliable fields to prevent mass assignment
+        // (e.g. an attacker setting status="accepted" or assigned_to).
+        const ALLOWED_FIELDS = new Set([
+            'application_type', 'full_legal_name', 'date_of_birth', 'biological_sex',
+            'ssn', 'address', 'city', 'state', 'zip', 'home_phone', 'cell_phone',
+            'email', 'drivers_license', 'referral_source',
+            'contact_person_1_name', 'contact_person_1_relationship',
+            'contact_person_1_phone', 'contact_person_1_email',
+            'under_legal_supervision', 'legally_mandated_treatment',
+            'pending_legal_matters', 'sexual_offender_registry',
+            'sexual_offense_charges', 'arson_charges', 'violent_offense_charges',
+            'has_health_insurance', 'blood_type', 'legally_married',
+            'emergency_contact_name', 'emergency_contact_phone',
+            'emergency_contact_relationship', 'currently_treated_by_physician',
+            'physician_details', 'manual_work_limitations', 'exercise_limitations',
+            'recreational_limitations', 'allergies', 'mental_health_diagnosis',
+            'current_medications', 'possibly_pregnant', 'eating_disorder',
+            'previous_treatment_programs', 'addiction_details', 'signature',
+            'submission_date', 'description', 'condensed_mode'
+        ]);
+        const sanitized = {};
+        for (const key of Object.keys(formData)) {
+            if (ALLOWED_FIELDS.has(key)) sanitized[key] = formData[key];
+        }
+        // Administrative fields are always controlled by staff — never by submitter.
+        sanitized.status = 'pending';
+
         // Save application to database (service role so public users can submit)
-        const application = await base44.asServiceRole.entities.Application.create(formData);
+        const application = await base44.asServiceRole.entities.Application.create(sanitized);
 
         // --- Gmail notification ---
         try {

@@ -52,7 +52,7 @@ export default function Layout({ children, currentPageName }) {
     { name: 'Our Comprehensive Approach', directPath: '/ComprehensiveApproach' },
     { name: 'Workforce Development', directPath: '/WorkforceDevelopment', submenu: [
       { name: 'SuperThrift', href: 'https://mercyhouseatc.superthriftdeals.org', external: true },
-      { name: 'Vehicle Donation Program', href: 'https://vehicledonationms.com', external: true },
+      { name: 'Vehicle Donation Program', href: 'https://mercyhouseatc.vehicledonationms.org', external: true },
       { name: 'Products with a Purpose', href: 'https://productswithapurpose.com', external: true },
       { name: 'Mercy House Auto Center', href: 'https://mercyhouseautocenter.com/', external: true },
       { name: 'Elite Gutters', href: 'https://myelitegutters.com', external: true } ] },

@@ -1,33 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useQuery } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { Users, Heart, Loader2, Check } from 'lucide-react';
-import { toast } from 'sonner';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Users, Heart, Check, Loader2, ArrowDown } from 'lucide-react';
 import VirtuousGiveForm from '../components/VirtuousGiveForm';
 
 // Virtuous form designated for student sponsorship.
 const MERCYHOUSE_SPONSOR_STUDENT_FORM_ID = 'B7298929-DC2A-43F9-BBFD-A60F4C0A2A5D';
 
 export default function SponsorStudent() {
-  const [selectedResident, setSelectedResident] = useState(null);
-  const [email, setEmail] = useState('');
-  const [amount, setAmount] = useState(50);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('sponsorship') === 'success') {
-      const residentName = params.get('resident');
-      toast.success(`Thank you for sponsoring ${residentName}! You will receive a confirmation email.`);
-    } else if (params.get('sponsorship') === 'cancelled') {
-      toast.error('Sponsorship cancelled. Feel free to try again anytime.');
-    }
-  }, []);
+  const formRef = useRef(null);
 
   const { data: residents, isLoading } = useQuery({
     queryKey: ['residents'],
@@ -35,43 +18,9 @@ export default function SponsorStudent() {
     initialData: []
   });
 
-  const handleSponsor = async () => {
-    if (!email) {
-      toast.error('Please enter your email address');
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-      toast.error('Please enter a valid email address');
-      return;
-    }
-
-    if (window.self !== window.top) {
-      toast.error('Sponsorships must be completed from the published app. Please open the app in a new tab.');
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const { data } = await base44.functions.invoke('createSponsorshipCheckout', {
-        residentId: selectedResident.id,
-        amount: amount,
-        email: email
-      });
-
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        throw new Error('No checkout URL returned');
-      }
-    } catch (error) {
-      console.error('Sponsorship error:', error);
-      toast.error('Failed to start sponsorship. Please try again.');
-      setLoading(false);
-    }
+  const scrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
-
-  const suggestedAmounts = [40, 60, 80, 100];
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
@@ -107,6 +56,12 @@ export default function SponsorStudent() {
                   <span className="text-slate-300">Tax-deductible donation</span>
                 </div>
               </div>
+              <Button
+                onClick={scrollToForm}
+                className="mt-8 bg-gold hover:bg-gold/90 text-navy font-bold text-lg py-6">
+                <Heart className="w-5 h-5 mr-2" />
+                Become a Sponsor
+              </Button>
             </div>
             <div className="hidden md:block">
               <div className="bg-gold text-navy rounded-2xl p-8 text-center shadow-2xl">
@@ -115,9 +70,11 @@ export default function SponsorStudent() {
                 <p className="text-navy/80 font-semibold mb-8">
                   Make a direct impact on a student's life
                 </p>
-                <Button className="w-full bg-navy hover:bg-navy/90 text-gold font-bold text-lg py-6">
+                <Button
+                  onClick={scrollToForm}
+                  className="w-full bg-navy hover:bg-navy/90 text-gold font-bold text-lg py-6">
                   <Heart className="w-5 h-5 mr-2" />
-                  Become a Sponsor
+                  Sponsor Now
                 </Button>
               </div>
             </div>
@@ -143,7 +100,8 @@ export default function SponsorStudent() {
             <p className="text-slate-600 dark:text-slate-300">
               Currently, we sponsor students in our program as a cohort rather than individual sponsorships.
               <br />
-              <Button variant="outline" className="mt-6" onClick={() => window.location.href = '/Donate'}>
+              <Button variant="outline" className="mt-6" onClick={scrollToForm}>
+                <ArrowDown className="w-4 h-4 mr-2" />
                 Support Our Students
               </Button>
             </p>
@@ -151,14 +109,13 @@ export default function SponsorStudent() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {residents.map((resident) =>
-          <Card key={resident.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer" onClick={() => setSelectedResident(resident)}>
+          <Card key={resident.id} className="overflow-hidden hover:shadow-xl transition-all duration-300">
                 <div className="aspect-[4/5] overflow-hidden bg-slate-200 dark:bg-slate-700">
                   {resident.photo_url ?
               <img
                 src={resident.photo_url}
                 alt={resident.full_name}
-                className="w-full h-full object-cover hidden" /> :
-
+                className="w-full h-full object-cover" /> :
 
               <div className="w-full h-full flex items-center justify-center">
                       <Users className="w-20 h-20 text-slate-400" />
@@ -175,9 +132,11 @@ export default function SponsorStudent() {
                   <p className="text-slate-600 dark:text-slate-300 text-sm line-clamp-3">
                     {resident.story || 'On a journey to transformation...'}
                   </p>
-                  <Button className="w-full mt-4 bg-gold hover:bg-gold/90 text-navy font-bold">
+                  <Button
+                    onClick={scrollToForm}
+                    className="w-full mt-4 bg-gold hover:bg-gold/90 text-navy font-bold">
                     <Heart className="w-4 h-4 mr-2" />
-                    Sponsor ${suggestedAmounts[0]}/month
+                    Sponsor a Student
                   </Button>
                 </CardContent>
               </Card>
@@ -187,7 +146,7 @@ export default function SponsorStudent() {
       </div>
 
       {/* Sponsor a Student — Virtuous giving form */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div ref={formRef} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 scroll-mt-24">
         <div className="text-center mb-8">
           <Heart className="w-12 h-12 text-gold mx-auto mb-4" aria-hidden="true" />
           <h2 className="text-3xl font-bold text-navy dark:text-gold mb-3">Become a Sponsor</h2>
@@ -200,99 +159,6 @@ export default function SponsorStudent() {
           🔒 Secure checkout · Tax-deductible · EIN 27-4670832 · Cancel anytime
         </p>
       </div>
-
-      <Dialog open={!!selectedResident} onOpenChange={(open) => !open && setSelectedResident(null)}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-navy dark:text-gold">
-              Sponsor {selectedResident?.full_name}
-            </DialogTitle>
-            <DialogDescription>
-              Your monthly support will directly impact {selectedResident?.full_name}'s journey to transformation.
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="space-y-4">
-            <div>
-              <Label htmlFor="sponsor_email">Your Email</Label>
-              <Input
-                id="sponsor_email"
-                type="email"
-                placeholder="sponsor@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)} />
-              
-            </div>
-
-            <div>
-              <Label>Monthly Sponsorship Amount</Label>
-              <div className="grid grid-cols-4 gap-2 mt-2">
-                {suggestedAmounts.map((amt) =>
-                <Button
-                  key={amt}
-                  variant={amount === amt ? 'default' : 'outline'}
-                  onClick={() => setAmount(amt)}
-                  className={amount === amt ? 'bg-navy dark:bg-gold text-white dark:text-navy font-bold' : 'font-semibold'}>
-                  
-                    ${amt}
-                  </Button>
-                )}
-              </div>
-              <Input
-                type="number"
-                min="10"
-                value={amount}
-                onChange={(e) => setAmount(parseInt(e.target.value) || 0)}
-                className="mt-2"
-                placeholder="Custom amount" />
-              
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
-                Most sponsors choose $40/month, but you can adjust to any amount.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg">
-              <h4 className="font-semibold text-navy dark:text-gold mb-2">Your Impact:</h4>
-              <ul className="space-y-1 text-sm text-slate-600 dark:text-slate-300">
-                <li className="flex items-center">
-                  <Check className="w-4 h-4 text-green-600 mr-2" />
-                  Monthly encouragement & support
-                </li>
-                <li className="flex items-center">
-                  <Check className="w-4 h-4 text-green-600 mr-2" />
-                  Progress updates on their journey
-                </li>
-                <li className="flex items-center">
-                  <Check className="w-4 h-4 text-green-600 mr-2" />
-                  Direct funding for their needs
-                </li>
-                <li className="flex items-center">
-                  <Check className="w-4 h-4 text-green-600 mr-2" />
-                  Tax-deductible donation
-                </li>
-              </ul>
-            </div>
-
-            <Button
-              onClick={handleSponsor}
-              disabled={loading || !email || amount < 10}
-              className="w-full bg-gold hover:bg-gold/90 text-navy font-bold">
-              
-              {loading ?
-              <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Processing...
-                </> :
-
-              <>
-                  <Heart className="w-4 h-4 mr-2" />
-                  Sponsor ${amount}/month
-                </>
-              }
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
-    </div>);
-
+    </div>
+  );
 }

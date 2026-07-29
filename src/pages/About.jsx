@@ -1,40 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Heart, Users, BookOpen, Home, ArrowRight, Star } from 'lucide-react';
+import { Heart, Star } from 'lucide-react';
 import CTABand from '../components/CTABand';
 import NonprofitLegitimacy from '../components/NonprofitLegitimacy';
-
-const leadership = [
-{
-  name: 'Bryan Wilson',
-  title: 'President / CFO',
-  photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b3560cfa-a4f6-42c3-3089-938b4db94000/small',
-  bio: 'God called Bryan to start Mercy House after witnessing generational chains of life-controlling issues broken in his own family through faith. He carries that same vision for every person who walks through our doors — that one transformed life can change the trajectory of an entire family for generations.'
-},
-{
-  name: 'Matthew Milliman',
-  title: 'Executive Director / CEO',
-  photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/70e7c889-58c9-421b-b89a-188f9a87b400/small',
-  bio: 'Matthew came through the Adult & Teen Challenge program himself and emerged with a renewed sense of purpose. Today he leads Mercy House with the conviction that every person who is struggling deserves a real chance at a new life through Christ.'
-},
-{
-  name: 'Joshua Cook',
-  title: 'Director of Operations',
-  photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/fbee339a-6e0e-41b1-dec4-7e39ded9b900/small',
-  bio: 'Joshua entered Mercy House in 2017 after years of life-controlling dependency and hardship. God restored everything. He now leads operations with a heart for men still caught in the darkness he once knew — and a testimony that freedom is possible.'
-},
-{
-  name: 'Thomas Reif',
-  title: "Campus Director — Men's Program",
-  photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1777985b-43aa-4dcc-e288-ea7079952b00/small',
-  bio: 'After nearly a decade in the military and law enforcement, Thomas found himself in need of the same grace he now helps extend to others. He leads the Men\'s Campus with discipline, compassion, and an unshakable belief in what God can do in a man\'s life.'
-},
-{
-  name: 'Lindsay Hughes',
-  title: "Campus Director — Women's Program",
-  photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/45c77396-fda6-438c-24a8-721975af3e00/small',
-  bio: "A Board Certified Christian Counselor with a background in Social Work and Clinical Chaplaincy, Lindsay brings both professional training and genuine compassion to every woman she serves at the Women's Campus in Learned, MS."
-}];
 
 
 export default function About() {
@@ -158,109 +125,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Four Key Program Areas */}
-      <section className="py-20 bg-white dark:bg-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Our Approach</p>
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Four Key Programmatic Areas</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">The Five Life Truths of Freedom are put into action through four programmatic pillars — each one addressing a dimension of recovery that short-term programs simply cannot reach.
-
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-            {
-              icon: <Heart className="w-7 h-7" />,
-              title: 'Life Transformation',
-              desc: 'Recovery is more than overcoming substance abuse — it\'s learning how to build a God-centered life and live successfully in society. We address root causes, not just behaviors, because lasting change requires a complete identity shift.'
-            },
-            {
-              icon: <BookOpen className="w-7 h-7" />,
-              title: 'Spiritual Formation & Discipleship',
-              desc: 'Living a God-centered life is the core of our recovery process. Through "Studies Centered in Christ" and "Worship Centered in Christ," residents process the pressures of addiction through spiritual teachings, daily praise, and structured biblical curriculum.'
-            },
-            {
-              icon: <Home className="w-7 h-7" />,
-              title: 'Work Therapy',
-              desc: 'Hard work and dedication are critical to recovery. Residents participate in hands-on vocational training through our micro-businesses — the Mercy House Auto Center, SuperThrift Stores, and the Woodshop/Craft Center — learning responsibility, teamwork, and real-world skills.'
-            },
-            {
-              icon: <Users className="w-7 h-7" />,
-              title: 'Family Restoration',
-              desc: 'Addiction shatters families. A primary goal of the program is to help broken families rebuild trust, find support, and establish a clear path toward healing and reconciliation — because a person is not truly restored until their family is part of the story.'
-            }].
-            map((item) =>
-            <div key={item.title} className="flex gap-5 p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-700">
-                <div className="w-14 h-14 bg-navy/10 dark:bg-gold/10 rounded-2xl flex items-center justify-center shrink-0 text-navy dark:text-gold">
-                  {item.icon}
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-navy dark:text-gold mb-2">{item.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* How the Program Works */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">The Program</p>
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">The 12-Month Journey</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">In a culture obsessed with the quick fix, Mercy House demands 12 months of a person's life. It is a radical trade — but the data justifies the cost. While most programs celebrate 30 days of sobriety, we focus on the five-year horizon.
-
-
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-14">
-            {[
-            {
-              phase: '01',
-              title: 'Recovery & Foundation',
-              time: '2–4 months',
-              desc: 'Residents enter a safe, structured environment. The focus is on "Why was I created?" — addressing deep-seated trauma, establishing healthy routines, and laying the spiritual foundation for everything ahead.'
-            },
-            {
-              phase: '02',
-              title: 'Growth & Character Development',
-              time: '3–5 months',
-              desc: 'With stability in place, the deeper work begins. Residents build healthy relationships, master conflict resolution, engage in intensive biblical discipleship, and develop the character required to sustain long-term change.'
-            },
-            {
-              phase: '03',
-              title: 'Application Through Transitional Living',
-              time: '5 months',
-              desc: 'Residents re-enter the workforce, resolve legal matters, reconcile with family, and complete vocational training. This phase bridges faith and practical readiness — graduates leave with a foundation, not just a certificate.'
-            }].
-            map((item) =>
-            <div key={item.phase} className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md border-l-4 border-gold">
-                <div className="text-gold font-black text-4xl mb-1 opacity-40">{item.phase}</div>
-                <p className="text-xs text-gold font-semibold uppercase tracking-widest mb-2">{item.time}</p>
-                <h3 className="text-xl font-bold text-navy dark:text-gold mb-3">{item.title}</h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">{item.desc}</p>
-              </div>
-            )}
-          </div>
-
-          <div className="bg-navy dark:bg-slate-950 rounded-2xl p-8 text-white text-center max-w-3xl mx-auto">
-            <p className="text-lg text-slate-200 leading-relaxed mb-2">A $1000 intake fee helps offset initial program costs, but no one is turned away for inability to pay. Payment plans and scholarships are available.
-
-
-            </p>
-            <p className="text-sm text-slate-400 mt-3">
-              Call our intake coordinator at{' '}
-              <a href="tel:6017203718" className="text-gold font-bold hover:underline">(601) 720-3718</a>
-              {' '}to discuss your situation.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Testimonial pull-quote + Christian Foundation */}
       <section className="py-20 bg-navy dark:bg-slate-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -284,47 +148,6 @@ export default function About() {
             organizations, operating in over 100 countries. That affiliation provides a proven framework while our
             local team delivers the personal, Mississippi-rooted community that makes Mercy House home.
           </p>
-        </div>
-      </section>
-
-      {/* Leadership */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">The Team</p>
-            <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Leadership</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-              Our team is made up of ministers, graduates, counselors, and community members united by a shared calling to serve.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
-            {leadership.map((person) =>
-            <div key={person.name} className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-md">
-                <div className="aspect-square bg-slate-200 dark:bg-slate-700 overflow-hidden">
-                  {person.photo ?
-                <img src={person.photo} alt={person.name} className="w-full h-full object-cover object-center" /> :
-
-                <div className="w-full h-full flex items-center justify-center text-slate-400">
-                      <Users className="w-12 h-12" />
-                    </div>
-                }
-                </div>
-                <div className="p-5">
-                  <h3 className="font-bold text-navy dark:text-gold text-base">{person.name}</h3>
-                  <p className="text-gold dark:text-gold/70 text-xs font-semibold mb-2">{person.title}</p>
-                  <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">{person.bio}</p>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="text-center mt-10">
-            <Link
-              to="/MeetTheTeam"
-              className="inline-flex items-center gap-2 text-navy dark:text-gold font-semibold hover:underline text-lg">
-              
-              Meet the Full Team <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
         </div>
       </section>
 

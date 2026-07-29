@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
   Select,
   SelectContent,
@@ -15,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { Users, Mail, Phone, Calendar, MapPin, CheckCircle, XCircle, Clock, UserCheck, BellRing } from 'lucide-react';
+import { Users, Mail, Phone, Calendar, MapPin, CheckCircle, XCircle, Clock, UserCheck, BellRing, CalendarPlus, MessageSquare, RefreshCw, Loader2 } from 'lucide-react';
 import VolunteerShiftManager from './VolunteerShiftManager';
 import VolunteerActivityEditor, { formatActivity } from './VolunteerActivityEditor';
 import { toast } from 'sonner';
@@ -24,11 +25,33 @@ import { format } from 'date-fns';
 export default function VolunteerManager() {
   const [selectedVolunteer, setSelectedVolunteer] = useState(null);
   const [statusFilter, setStatusFilter] = useState('all');
+  const [selectedIds, setSelectedIds] = useState(new Set());
   const queryClient = useQueryClient();
+
+  // Bulk action dialog state
+  const [assignOpen, setAssignOpen] = useState(false);
+  const [smsOpen, setSmsOpen] = useState(false);
+  const [bulkEventId, setBulkEventId] = useState('');
+  const [bulkRole, setBulkRole] = useState('');
+  const [bulkMessage, setBulkMessage] = useState('');
 
   const { data: volunteers = [], isLoading } = useQuery({
     queryKey: ['volunteers'],
     queryFn: () => base44.entities.Volunteer.list('-created_date')
+  });
+
+  // Upcoming events (Google Calendar via the women's center calendar function).
+  const { data: events = [] } = useQuery({
+    queryKey: ['google-events-for-bulk-shift'],
+    queryFn: async () => {
+      const now = new Date();
+      const max = new Date(now.getFullYear(), now.getMonth() + 6, 1);
+      const res = await base44.functions.invoke('getWomensCenterCalendar', {
+        timeMin: now.toISOString(),
+        timeMax: max.toISOString()
+      });
+      return res.data?.events || [];
+    }
   });
 
   const updateVolunteerMutation = useMutation({
@@ -58,9 +81,91 @@ export default function VolunteerManager() {
     onError: (e) => toast.error(e?.message || 'Failed to send reminders')
   });
 
-  const filteredVolunteers = volunteers.filter(v => 
+  // Bulk assign selected volunteers to a single event (creates VolunteerShift per volunteer).
+  const bulkAssignMutation = useMutation({
+    mutationFn: async () => {
+      const event = events.find(e => e.id === bulkEventId);
+      if (!event) throw new Error('Please select an event');
+      const eventDate = event.start && event.start.length === 10
+        ? event.start + 'T00:00:00'
+        : event.start;
+      const selected = volunteers.filter(v => selectedIds.has(v.id));
+      const payloads = selected.map(v => ({
+        volunteer_id: v.id,
+        volunteer_name: v.full_name,
+        google_event_id: event.id,
+        event_title: event.title,
+        event_date: eventDate,
+        role: bulkRole || 'Volunteer',
+        status: 'scheduled',
+        reminder_sent: false
+      }));
+      return base44.entities.VolunteerShift.bulkCreate(payloads);
+    },
+    onSuccess: (created) => {
+      queryClient.invalidateQueries({ queryKey: ['volunteer-shifts'] });
+      toast.success(`Assigned ${Array.isArray(created) ? created.length : selectedIds.size} volunteer(s) to the event`);
+      setAssignOpen(false);
+      setBulkEventId('');
+      setBulkRole('');
+    },
+    onError: (e) => toast.error(e?.response?.data?.detail || e?.message || 'Failed to assign volunteers')
+  });
+
+  // Bulk SMS to selected volunteers (respects sms_opt_in server-side).
+  const bulkSmsMutation = useMutation({
+    mutationFn: async () => {
+      const res = await base44.functions.invoke('sendBulkVolunteerSms', {
+        volunteer_ids: Array.from(selectedIds),
+        message: bulkMessage
+      });
+      if (res.status >= 400) {
+        throw new Error(res.data?.error || 'Failed to send bulk SMS');
+      }
+      return res.data;
+    },
+    onSuccess: (data) => {
+      toast.success(`Bulk SMS sent: ${data.sent || 0} sent, ${data.skipped || 0} skipped (opt-out/no phone), ${data.failed || 0} failed`);
+      setSmsOpen(false);
+      setBulkMessage('');
+    },
+    onError: (e) => toast.error(e?.data?.error || e?.message || 'Failed to send bulk SMS')
+  });
+
+  const filteredVolunteers = volunteers.filter(v =>
     statusFilter === 'all' || v.status === statusFilter
   );
+
+  const toggleSelect = (id) => {
+    setSelectedIds(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
+
+  const allFilteredSelected = filteredVolunteers.length > 0 && filteredVolunteers.every(v => selectedIds.has(v.id));
+
+  const toggleSelectAll = () => {
+    if (allFilteredSelected) {
+      setSelectedIds(prev => {
+        const next = new Set(prev);
+        filteredVolunteers.forEach(v => next.delete(v.id));
+        return next;
+      });
+    } else {
+      setSelectedIds(prev => {
+        const next = new Set(prev);
+        filteredVolunteers.forEach(v => next.add(v.id));
+        return next;
+      });
+    }
+  };
+
+  const clearSelection = () => setSelectedIds(new Set());
+
+  const selectedVolunteers = volunteers.filter(v => selectedIds.has(v.id));
+  const optedInCount = selectedVolunteers.filter(v => v.sms_opt_in === true).length;
 
   const statusConfig = {
     pending: { color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200', label: 'Pending', icon: Clock },
@@ -77,8 +182,6 @@ export default function VolunteerManager() {
     weekends: 'Weekends',
     flexible: 'Flexible'
   };
-
-
 
   return (
     <div className="space-y-6">
@@ -98,7 +201,7 @@ export default function VolunteerManager() {
             title="Send SMS reminders to volunteers with shifts in the next 24–48 hours"
           >
             <BellRing className="w-5 h-5 mr-2" />
-            {sendRemindersMutation.isPending ? 'Sending…' : 'Send Reminders'}
+            {sendRemindersMutation.isPending ? 'Sending…' : 'Send Shift Reminders'}
           </Button>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
             <SelectTrigger className="w-48 text-lg h-12">
@@ -116,6 +219,52 @@ export default function VolunteerManager() {
         </div>
       </div>
 
+      {/* Bulk Action Bar */}
+      {selectedIds.size > 0 && (
+        <div className="sticky top-2 z-20 flex flex-col sm:flex-row sm:items-center gap-3 bg-navy dark:bg-slate-800 text-white rounded-xl p-4 shadow-lg">
+          <span className="text-lg font-semibold flex items-center gap-2">
+            <CheckCircle className="w-5 h-5 text-gold" />
+            {selectedIds.size} selected
+          </span>
+          <div className="flex flex-wrap gap-2 sm:ml-auto">
+            <Button
+              onClick={() => setAssignOpen(true)}
+              className="bg-gold text-navy hover:bg-gold/90 text-base px-4 py-2 h-10"
+            >
+              <CalendarPlus className="w-4 h-4 mr-2" /> Assign to Event
+            </Button>
+            <Button
+              onClick={() => setSmsOpen(true)}
+              className="bg-white text-navy hover:bg-slate-100 text-base px-4 py-2 h-10"
+            >
+              <MessageSquare className="w-4 h-4 mr-2" /> Send Bulk SMS
+            </Button>
+            <Button
+              onClick={clearSelection}
+              variant="ghost"
+              className="text-white hover:bg-white/10 text-base px-4 py-2 h-10"
+            >
+              Clear
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {/* Select-all row */}
+      {!isLoading && filteredVolunteers.length > 0 && (
+        <div className="flex items-center gap-3 px-1">
+          <Checkbox
+            id="select-all"
+            checked={allFilteredSelected}
+            onCheckedChange={toggleSelectAll}
+            className="w-5 h-5"
+          />
+          <Label htmlFor="select-all" className="text-base text-slate-600 dark:text-slate-300 cursor-pointer">
+            Select all {filteredVolunteers.length}
+          </Label>
+        </div>
+      )}
+
       {isLoading ? (
         <div className="text-center py-12 text-lg md:text-xl text-slate-500">Loading applications...</div>
       ) : filteredVolunteers.length === 0 ? (
@@ -129,30 +278,47 @@ export default function VolunteerManager() {
         <div className="grid gap-6">
           {filteredVolunteers.map((volunteer) => {
             const StatusIcon = statusConfig[volunteer.status]?.icon || Clock;
+            const isSel = selectedIds.has(volunteer.id);
             return (
-              <Card key={volunteer.id} className="hover:shadow-xl transition-shadow cursor-pointer border-2" onClick={() => setSelectedVolunteer(volunteer)}>
+              <Card key={volunteer.id} className={`hover:shadow-xl transition-shadow border-2 ${isSel ? 'border-gold' : ''}`}>
                 <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <CardTitle className="text-2xl md:text-3xl text-navy dark:text-gold mb-2">
-                        {volunteer.full_name}
-                      </CardTitle>
-                      <CardDescription className="space-y-2">
-                        <div className="flex items-center gap-2 text-lg md:text-lg">
-                          <Mail className="w-5 h-5" />
-                          {volunteer.email}
-                        </div>
-                        <div className="flex items-center gap-2 text-lg md:text-lg">
-                          <Phone className="w-5 h-5" />
-                          {volunteer.phone}
-                        </div>
-                        <div className="flex items-center gap-2 text-lg md:text-lg">
-                          <Calendar className="w-5 h-5" />
-                          Applied {format(new Date(volunteer.created_date), 'MMM dd, yyyy')}
-                        </div>
-                      </CardDescription>
+                  <div className="flex justify-between items-start gap-3">
+                    <div className="flex items-start gap-3 flex-1 min-w-0">
+                      <Checkbox
+                        checked={isSel}
+                        onCheckedChange={() => toggleSelect(volunteer.id)}
+                        className="w-5 h-5 mt-1 shrink-0"
+                        aria-label={`Select ${volunteer.full_name}`}
+                      />
+                      <button
+                        className="text-left flex-1 min-w-0"
+                        onClick={() => setSelectedVolunteer(volunteer)}
+                      >
+                        <CardTitle className="text-2xl md:text-3xl text-navy dark:text-gold mb-2 text-left">
+                          {volunteer.full_name}
+                        </CardTitle>
+                        <CardDescription className="space-y-2 text-left">
+                          <div className="flex items-center gap-2 text-lg">
+                            <Mail className="w-5 h-5 shrink-0" />
+                            <span className="truncate">{volunteer.email}</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-lg">
+                            <Phone className="w-5 h-5 shrink-0" />
+                            {volunteer.phone}
+                          </div>
+                          <div className="flex items-center gap-2 text-lg">
+                            <Calendar className="w-5 h-5 shrink-0" />
+                            Applied {format(new Date(volunteer.created_date), 'MMM dd, yyyy')}
+                          </div>
+                          {volunteer.sms_opt_in && (
+                            <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400">
+                              <MessageSquare className="w-4 h-4" /> SMS opt-in
+                            </div>
+                          )}
+                        </CardDescription>
+                      </button>
                     </div>
-                    <Badge className={`${statusConfig[volunteer.status]?.color} text-base md:text-base px-4 py-2 flex items-center gap-2`}>
+                    <Badge className={`${statusConfig[volunteer.status]?.color} text-base px-4 py-2 flex items-center gap-2 shrink-0`}>
                       <StatusIcon className="w-5 h-5" />
                       {statusConfig[volunteer.status]?.label}
                     </Badge>
@@ -161,17 +327,17 @@ export default function VolunteerManager() {
                 <CardContent>
                   <div className="space-y-3">
                     <div>
-                      <span className="font-semibold text-lg md:text-lg text-slate-700 dark:text-slate-200">Availability: </span>
-                      <span className="text-lg md:text-lg text-slate-600 dark:text-slate-300">
+                      <span className="font-semibold text-lg text-slate-700 dark:text-slate-200">Availability: </span>
+                      <span className="text-lg text-slate-600 dark:text-slate-300">
                         {volunteer.availability?.map(a => availabilityLabels[a]).join(', ') || 'Not specified'}
                       </span>
                     </div>
                     <div>
-                      <span className="font-semibold text-lg md:text-lg text-slate-700 dark:text-slate-200">Activities: </span>
+                      <span className="font-semibold text-lg text-slate-700 dark:text-slate-200">Activities: </span>
                       <div className="flex flex-wrap gap-2 mt-2">
                         {volunteer.areas_of_interest?.length > 0 ? (
                           volunteer.areas_of_interest.map((interest, idx) => (
-                            <Badge key={idx} variant="outline" className="text-base md:text-base px-3 py-1">
+                            <Badge key={idx} variant="outline" className="text-base px-3 py-1">
                               {formatActivity(interest)}
                             </Badge>
                           ))
@@ -187,6 +353,113 @@ export default function VolunteerManager() {
           })}
         </div>
       )}
+
+      {/* Bulk Assign to Event Dialog */}
+      <Dialog open={assignOpen} onOpenChange={setAssignOpen}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="text-2xl text-navy dark:text-gold flex items-center gap-2">
+              <CalendarPlus className="w-6 h-6" /> Assign {selectedIds.size} Volunteer(s) to Event
+            </DialogTitle>
+            <DialogDescription>
+              Creates a scheduled shift for each selected volunteer.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 mt-4">
+            <div>
+              <Label className="text-lg font-semibold mb-2 block">Select an event</Label>
+              <Select value={bulkEventId} onValueChange={setBulkEventId}>
+                <SelectTrigger className="h-12 text-lg">
+                  <SelectValue placeholder="Choose an upcoming event" />
+                </SelectTrigger>
+                <SelectContent>
+                  {events.length === 0 ? (
+                    <SelectItem value="none" disabled>No upcoming events</SelectItem>
+                  ) : events.map(e => (
+                    <SelectItem key={e.id} value={e.id} className="text-lg">
+                      {e.title} — {format(new Date(e.start.length === 10 ? e.start + 'T00:00:00' : e.start), 'MMM dd, yyyy h:mm a')}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label className="text-lg font-semibold mb-2 block">Role (optional)</Label>
+              <Input
+                value={bulkRole}
+                onChange={e => setBulkRole(e.target.value)}
+                placeholder="e.g. Kitchen prep, Setup crew"
+                className="h-12 text-lg"
+              />
+            </div>
+            <Button
+              onClick={() => bulkAssignMutation.mutate()}
+              disabled={!bulkEventId || bulkAssignMutation.isPending}
+              className="w-full bg-navy dark:bg-gold text-white dark:text-navy text-lg py-6"
+            >
+              {bulkAssignMutation.isPending ? (
+                <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Assigning…</>
+              ) : (
+                <><CalendarPlus className="w-5 h-5 mr-2" /> Assign to Event</>
+              )}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Bulk SMS Dialog */}
+      <Dialog open={smsOpen} onOpenChange={setSmsOpen}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="text-2xl text-navy dark:text-gold flex items-center gap-2">
+              <MessageSquare className="w-6 h-6" /> Send Bulk SMS
+            </DialogTitle>
+            <DialogDescription>
+              Sends one text message to {selectedIds.size} selected volunteer(s). Only volunteers who opted in to SMS will receive it ({optedInCount} eligible).
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 mt-4">
+            <Textarea
+              value={bulkMessage}
+              onChange={e => setBulkMessage(e.target.value)}
+              placeholder="Type a message to send via SMS…"
+              className="min-h-32 text-lg"
+            />
+            <div className="flex gap-2 flex-wrap">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setBulkMessage(`Hi! This is a reminder about your upcoming volunteer shift at Mercy House. Reply CONFIRM, CANCEL, or RESCHEDULE. — Mercy House`)}
+              >
+                Reminder template
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setBulkMessage(`Mercy House volunteer update: we appreciate your service! If you have questions, call 855-893-7333. Reply STOP to opt out.`)}
+              >
+                Update template
+              </Button>
+            </div>
+            {optedInCount < selectedIds.size && (
+              <p className="text-sm text-amber-600 dark:text-amber-400">
+                {selectedIds.size - optedInCount} volunteer(s) have not opted in to SMS and will be skipped.
+              </p>
+            )}
+            <Button
+              onClick={() => bulkSmsMutation.mutate()}
+              disabled={!bulkMessage.trim() || bulkSmsMutation.isPending}
+              className="w-full bg-gold text-navy hover:bg-gold/90 text-lg py-6 font-semibold"
+            >
+              {bulkSmsMutation.isPending ? (
+                <><RefreshCw className="w-5 h-5 mr-2 animate-spin" /> Sending…</>
+              ) : (
+                <><MessageSquare className="w-5 h-5 mr-2" /> Send to {optedInCount} Volunteer(s)</>
+              )}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Volunteer Detail Dialog */}
       <Dialog open={!!selectedVolunteer} onOpenChange={() => setSelectedVolunteer(null)}>
@@ -204,15 +477,15 @@ export default function VolunteerManager() {
             <div className="space-y-8 mt-6">
               {/* Status Update */}
               <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl">
-                <Label className="text-xl md:text-xl font-semibold mb-4 block text-slate-800 dark:text-slate-200">Update Status</Label>
+                <Label className="text-xl font-semibold mb-4 block text-slate-800 dark:text-slate-200">Update Status</Label>
                 <div className="flex flex-wrap gap-3">
                   {['pending', 'approved', 'active', 'inactive', 'declined'].map((status) => (
                     <Button
                       key={status}
                       variant={selectedVolunteer.status === status ? 'default' : 'outline'}
-                      onClick={() => updateVolunteerMutation.mutate({ 
-                        id: selectedVolunteer.id, 
-                        data: { status } 
+                      onClick={() => updateVolunteerMutation.mutate({
+                        id: selectedVolunteer.id,
+                        data: { status }
                       })}
                       className="text-lg px-6 py-3"
                     >
@@ -224,7 +497,7 @@ export default function VolunteerManager() {
 
               {/* Contact Information */}
               <div>
-                <h3 className="text-2xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Contact Information</h3>
+                <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Contact Information</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <Label className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2 block">Email</Label>
@@ -277,7 +550,7 @@ export default function VolunteerManager() {
 
               {/* Emergency Contact */}
               <div>
-                <h3 className="text-2xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Emergency Contact</h3>
+                <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Emergency Contact</h3>
                 <div className="grid md:grid-cols-3 gap-4">
                   <div>
                     <Label className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-2 block">Name</Label>
@@ -310,11 +583,11 @@ export default function VolunteerManager() {
 
               {/* Availability */}
               <div>
-                <h3 className="text-2xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Availability</h3>
+                <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Availability</h3>
                 <div className="flex flex-wrap gap-2">
                   {selectedVolunteer.availability?.length > 0 ? (
                     selectedVolunteer.availability.map((a, idx) => (
-                      <Badge key={idx} className="text-base md:text-base px-3 py-1">{availabilityLabels[a]}</Badge>
+                      <Badge key={idx} className="text-base px-3 py-1">{availabilityLabels[a]}</Badge>
                     ))
                   ) : (
                     <span className="text-lg text-slate-400">Not specified</span>
@@ -327,7 +600,7 @@ export default function VolunteerManager() {
               {/* Skills & Experience */}
               {(selectedVolunteer.skills || selectedVolunteer.previous_volunteer_experience || selectedVolunteer.why_volunteer) && (
                 <div>
-                  <h3 className="text-2xl md:text-2xl font-bold text-navy dark:text-gold mb-4">Skills & Experience</h3>
+                  <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">Skills & Experience</h3>
                   <div className="space-y-4 text-lg md:text-xl">
                     {selectedVolunteer.skills && (
                       <div>
@@ -353,7 +626,7 @@ export default function VolunteerManager() {
 
               {/* Notes */}
               <div>
-                <Label htmlFor="notes" className="text-xl md:text-xl font-semibold mb-3 block text-slate-800 dark:text-slate-200">
+                <Label htmlFor="notes" className="text-xl font-semibold mb-3 block text-slate-800 dark:text-slate-200">
                   Internal Notes
                 </Label>
                 <Textarea
@@ -377,7 +650,7 @@ export default function VolunteerManager() {
               {/* Assigned Staff & Start Date */}
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
-                  <Label htmlFor="assigned_to" className="text-xl md:text-xl font-semibold mb-3 block text-slate-800 dark:text-slate-200">
+                  <Label htmlFor="assigned_to" className="text-xl font-semibold mb-3 block text-slate-800 dark:text-slate-200">
                     Assigned Staff
                   </Label>
                   <Input
@@ -389,7 +662,7 @@ export default function VolunteerManager() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="start_date" className="text-xl md:text-xl font-semibold mb-3 block text-slate-800 dark:text-slate-200">
+                  <Label htmlFor="start_date" className="text-xl font-semibold mb-3 block text-slate-800 dark:text-slate-200">
                     Start Date
                   </Label>
                   <Input

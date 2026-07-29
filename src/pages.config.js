@@ -57,7 +57,7 @@ import IntakeForm from './pages/IntakeForm';
 import MensCampus from './pages/MensCampus';
 import MicroBusinesses from './pages/MicroBusinesses';
 import SponsorStudent from './pages/SponsorStudent';
-import Support from './pages/Support';
+import RecurringDonation from './pages/RecurringDonation';
 import Testimonials from './pages/Testimonials';
 import ThriftStore from './pages/ThriftStore';
 import VehicleDonation from './pages/VehicleDonation';
@@ -78,7 +78,7 @@ export const PAGES = {
     "MensCampus": MensCampus,
     "MicroBusinesses": MicroBusinesses,
     "SponsorStudent": SponsorStudent,
-    "Support": Support,
+    "RecurringDonation": RecurringDonation,
     "Testimonials": Testimonials,
     "ThriftStore": ThriftStore,
     "VehicleDonation": VehicleDonation,

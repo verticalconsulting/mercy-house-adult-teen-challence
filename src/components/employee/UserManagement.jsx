@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
-import { UserPlus, Shield, Trash2, Mail, AlertTriangle } from 'lucide-react';
+import { UserPlus, Shield, Trash2, Mail, AlertTriangle, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function UserManagement() {
@@ -22,6 +22,11 @@ export default function UserManagement() {
   const { data: users = [], isLoading } = useQuery({
     queryKey: ['users'],
     queryFn: () => base44.entities.User.list(),
+  });
+
+  const { data: pendingInvites = [] } = useQuery({
+    queryKey: ['pendingInvites'],
+    queryFn: () => base44.entities.PendingInvite.list('-created_date'),
   });
 
   const updateRoleMutation = useMutation({
@@ -43,12 +48,35 @@ export default function UserManagement() {
     onError: (err) => toast.error(`Failed to remove user: ${err.message}`),
   });
 
+  const cancelInviteMutation = useMutation({
+    mutationFn: (id) => base44.entities.PendingInvite.delete(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['pendingInvites'] });
+      toast.success('Invitation cancelled');
+    },
+    onError: (err) => toast.error(`Failed to cancel invitation: ${err.message}`),
+  });
+
+  // Pending invitations whose email isn't already a registered user (those drop
+  // off automatically once the person accepts and joins).
+  const userEmails = new Set(users.map((u) => (u.email || '').toLowerCase()));
+  const pendingNotJoined = pendingInvites.filter(
+    (p) => !userEmails.has((p.email || '').toLowerCase())
+  );
+
   const handleInvite = async () => {
     setInviting(true);
     try {
       await base44.users.inviteUser(inviteEmail, inviteRole);
+      // Persist a record so the admin can see who's been invited even though
+      // the User record isn't created until the invitee accepts.
+      await base44.entities.PendingInvite.create({
+        email: inviteEmail,
+        role: inviteRole,
+        status: 'pending',
+      });
       toast.success(`Invitation sent to ${inviteEmail}`);
-      queryClient.invalidateQueries({ queryKey: ['users'] });
+      queryClient.invalidateQueries({ queryKey: ['pendingInvites'] });
       setInviteOpen(false);
       setInviteEmail('');
       setInviteRole('user');
@@ -88,6 +116,34 @@ export default function UserManagement() {
             </div>
           ) : (
             <div className="space-y-3">
+              {/* Pending invitations — shown until the invitee accepts */}
+              {pendingNotJoined.map((p) => (
+                <div key={`pending-${p.id}`} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-lg border border-amber-200 dark:border-amber-900/50 bg-amber-50 dark:bg-amber-900/10">
+                  <div className="min-w-0">
+                    <p className="font-semibold text-slate-800 dark:text-slate-100 truncate flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-amber-500 flex-shrink-0" />
+                      {p.email}
+                    </p>
+                    <p className="text-sm text-amber-700 dark:text-amber-400 mt-0.5">
+                      Invitation sent — awaiting account creation
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <Badge className="bg-amber-200 text-amber-800">{p.role || 'user'}</Badge>
+                    <Badge variant="outline">Pending</Badge>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => cancelInviteMutation.mutate(p.id)}
+                      className="text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
+                      aria-label="Cancel invitation"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+              ))}
+
               {users.map((u) => (
                 <div key={u.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
                   <div className="min-w-0">
@@ -124,7 +180,7 @@ export default function UserManagement() {
                   </div>
                 </div>
               ))}
-              {users.length === 0 && (
+              {users.length === 0 && pendingNotJoined.length === 0 && (
                 <p className="text-center text-slate-500 py-8">No users found.</p>
               )}
             </div>
@@ -141,7 +197,7 @@ export default function UserManagement() {
               Invite New User
             </DialogTitle>
             <DialogDescription>
-              Send an invitation email. The recipient will be able to create an account and access the portal with the selected role.
+              Send an invitation email. The recipient will be able to create an account and access the portal with the selected role. They'll appear in the list as "Pending" until they create their account.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-2">

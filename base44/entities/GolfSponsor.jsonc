@@ -1,0 +1,66 @@
+{
+  "name": "GolfSponsor",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Sponsor name"
+    },
+    "logo_url": {
+      "type": "string",
+      "description": "URL to the sponsor logo image"
+    },
+    "website_url": {
+      "type": "string",
+      "description": "Optional link to the sponsor's website"
+    },
+    "dark_background": {
+      "type": "boolean",
+      "default": false,
+      "description": "Display this logo on a dark tile (for logos that need a dark background)"
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0,
+      "description": "Sort order \u2014 lower numbers appear first on the Freedom Classic page"
+    },
+    "published": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show this sponsor on the public Freedom Classic page"
+    }
+  },
+  "required": [
+    "name",
+    "logo_url"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.published": true
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

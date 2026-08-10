@@ -22,6 +22,7 @@ import CampaignManager from '../components/employee/CampaignManager';
 import EventManager from '../components/employee/EventManager';
 import CareerListingManager from '../components/employee/CareerListingManager';
 import MediaResourceManager from '../components/employee/MediaResourceManager';
+import GolfSponsorManager from '../components/employee/GolfSponsorManager';
 import DonationFunnel from './DonationFunnel';
 import WomensCampusMediaManager from '../components/employee/WomensCampusMediaManager';
 import SearchPerformance from './SearchPerformance';
@@ -349,6 +350,9 @@ export default function EmployeePortal() {
             <TabsTrigger value="campaigns" className="text-sm flex-shrink-0">
               Campaigns
             </TabsTrigger>
+            <TabsTrigger value="sponsors" className="text-sm flex-shrink-0">
+              Sponsors
+            </TabsTrigger>
             <TabsTrigger value="agent" className="text-sm flex-shrink-0">
               AI Agent
             </TabsTrigger>
@@ -541,6 +545,10 @@ export default function EmployeePortal() {
 
           <TabsContent value="campaigns" className="mt-6">
             <CampaignManager />
+          </TabsContent>
+
+          <TabsContent value="sponsors" className="mt-6">
+            <GolfSponsorManager />
           </TabsContent>
 
           <TabsContent value="agent" className="mt-6">

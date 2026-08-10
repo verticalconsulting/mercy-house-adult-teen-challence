@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { base44 } from '@/api/base44Client';
 import { toast } from 'sonner';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
@@ -22,6 +23,18 @@ const AddonItem = ({ label }) =>
 
 
 export default function FreedomClassic() {
+  const [sponsors, setSponsors] = useState([]);
+  const [sponsorsLoading, setSponsorsLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    base44.entities.GolfSponsor.list('display_order')
+      .then((data) => { if (!cancelled) setSponsors(data); })
+      .catch((err) => console.error('Failed to load sponsors:', err))
+      .finally(() => { if (!cancelled) setSponsorsLoading(false); });
+    return () => { cancelled = true; };
+  }, []);
+
   return (
     <div className="w-full bg-slate-100">
 
@@ -94,6 +107,12 @@ export default function FreedomClassic() {
                 <Button className="hover:bg-white/30 backdrop-blur-sm border-2 border-white font-semibold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 bg-[hsl(var(--primary-foreground))] text-gray-800">
                   <Mail className="w-4 h-4" />
                   Sponsorship Inquiry
+                </Button>
+              </a>
+              <a href="#sponsors" onClick={(e) => { e.preventDefault(); document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' }); }}>
+                <Button className="hover:bg-gold/90 text-navy font-bold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 bg-gold">
+                  <Award className="w-4 h-4" />
+                  See Our Sponsors
                 </Button>
               </a>
             </div>
@@ -387,93 +406,39 @@ export default function FreedomClassic() {
       </section>
 
       {/* ── Sponsors ── */}
-      <section className="py-16 bg-slate-100">
+      <section id="sponsors" className="py-16 bg-slate-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-slate-800 tracking-widest uppercase mb-10">Thanks To Our Sponsors</h2>
           <div className="bg-white border border-slate-200 rounded-2xl shadow p-10">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-10 items-center justify-items-center">
-
-              {/* Mac Haik Ford Jackson */}
-              <a href="https://www.machaikfordjackson.com/" target="_blank" rel="noopener noreferrer"
-              className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4f3719d_image.png" alt="Mac Haik Ford Jackson" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
-              </a>
-
-              {/* Toyota of Hattiesburg */}
-              <a href="https://www.toyotahattiesburg.com/" target="_blank" rel="noopener noreferrer"
-              className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                
-              </a>
-
-              {/* Deviney Construction */}
-              <a href="https://www.devineyconstruction.com/" target="_blank" rel="noopener noreferrer"
-              className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/0a59a4908_DEVINEYLOGO.jpg" alt="Deviney Construction" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
-              </a>
-
-              {/* Morgan White Group */}
-              <a href="https://morganwhite.com/" target="_blank" rel="noopener noreferrer"
-              className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/e4523a710_MorganWhite.jpg" alt="Morgan White Group" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
-              </a>
-
-              {/* Knit Together Healthcare */}
-              <a href="https://knittogetherhealthcare.com/" target="_blank" rel="noopener noreferrer"
-              className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/9d7c3a24e_KnitTogetherLogoWhiteBG.jpg" alt="Knit Together Healthcare" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
-              </a>
-
-              {/* Roush Performance */}
-              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full bg-slate-900">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/eae1dff1f_RoushPerformance.png" alt="Roush Performance" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+            {sponsorsLoading ? (
+              <div className="flex items-center justify-center py-16 text-slate-400">
+                <span className="text-sm">Loading sponsors…</span>
               </div>
-
-              {/* All Things New Ministry */}
-              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/8326ce82e_allthingsnew20241.jpg" alt="All Things New Ministry" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+            ) : sponsors.length === 0 ? (
+              <div className="text-center py-12 text-slate-500 text-sm italic">
+                Sponsor logos coming soon.
               </div>
-
-              {/* Born Again Roofing & Remodeling */}
-              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/3a6975cd4_BornAgainRoofingNew-1.png" alt="Born Again Roofing & Remodeling" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-10 items-center justify-items-center">
+                {sponsors.map((sponsor) => {
+                  const inner = (
+                    <img
+                      src={sponsor.logo_url}
+                      alt={sponsor.name}
+                      className="h-24 w-auto object-contain group-hover:scale-105 transition-transform"
+                    />
+                  );
+                  const wrapperClass = `group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full${sponsor.dark_background ? ' bg-slate-900' : ''}`;
+                  return sponsor.website_url ? (
+                    <a key={sponsor.id} href={sponsor.website_url} target="_blank" rel="noopener noreferrer" className={wrapperClass}>
+                      {inner}
+                    </a>
+                  ) : (
+                    <div key={sponsor.id} className={wrapperClass}>{inner}</div>
+                  );
+                })}
               </div>
-
-              {/* DAA Jackson */}
-              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/f38a9c1d9_DAAJacksonmaybe723.png" alt="DAA Jackson" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
-              </div>
-
-              {/* Dwayne and Kathy Boyd */}
-              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/9eb7c3de3_DWAYNEANDKATHYBOYD.png" alt="Dwayne and Kathy Boyd" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
-              </div>
-
-              {/* Errington Landworx */}
-              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/e259c7eb6_erringtonlandworx.jpg" alt="Errington Landworx" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
-              </div>
-
-              {/* Family Medical Clinic of Crystal Springs */}
-              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full bg-slate-900">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/924efcc60_FamilyMedicalCrystalSprings.png" alt="Family Medical Clinic of Crystal Springs" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
-              </div>
-
-              {/* LandMax */}
-              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/b2b549d20_LANDMAXLOGO1.jpg" alt="LandMax" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
-              </div>
-
-              {/* Pull-A-Part */}
-              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/eb7bc847f_PullAPartLOGO.jpg" alt="Pull-A-Part" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
-              </div>
-
-              {/* Sullivan's Marketplace */}
-              <div className="group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full">
-                <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/67f2f523e_sullivansmarketplace.jpg" alt="Sullivan's Marketplace" className="h-24 w-auto object-contain group-hover:scale-105 transition-transform" />
-              </div>
-
-            </div>
+            )}
             <p className="text-center text-slate-600 text-sm mt-8 italic">More sponsors to be announced — <a href="mailto:mmilliman@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship" className="underline hover:text-navy">contact us to become a sponsor</a>.</p>
           </div>
         </div>

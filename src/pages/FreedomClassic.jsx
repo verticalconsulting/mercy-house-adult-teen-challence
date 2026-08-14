@@ -11,6 +11,30 @@ const REGISTER_URL = 'https://events.golfstatus.com/event/12th-annual-freedom-cl
 const SPONSORSHIP_EMAIL = 'mailto:khardin@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship Inquiry';
 const BROCHURE_URL = 'https://media.base44.com/files/public/6983b4b00291b5dfd8507106/d382579c9_2026_golfflyer.pdf';
 
+const PACKAGES_BASE = 'https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/packages';
+const PACKAGE_VIEW = '?view=sponsor&view=team&view=player';
+const packageUrl = (id) => `${PACKAGES_BASE}/${id}${PACKAGE_VIEW}`;
+
+const SPONSORSHIP_URLS = {
+  platinum: packageUrl('1a446d66-d9d2-4148-bf98-3a673ac1557c'),
+  diamond: packageUrl('1260245e-f80f-4a4e-91c1-4ab73aa66779'),
+  gold: packageUrl('699b4738-9dc5-4ee9-aff6-b6a5f2333d74'),
+  silver: packageUrl('44deb42d-56c8-41d1-a112-101f807d060e'),
+  dualHole: packageUrl('485c27b3-d84b-4998-9d07-c09818ec6bd1'),
+  singleHole: packageUrl('f1b495cc-37e3-4897-b3c1-f8952d2293f5')
+};
+
+/*
+ * Shared click/hover motion for every sponsorship card. Not `mh-card-interactive`
+ * because that is shadow-only and this page's cards carry per-tier border colors
+ * that `mh-card` would overwrite; the 300ms/ease-standard curve is kept in sync
+ * with the DS. The press is faster than the lift so the click feels immediate.
+ */
+const CARD_MOTION =
+'transition-all duration-300 ease-standard hover:-translate-y-1.5 hover:shadow-2xl ' +
+'active:translate-y-0 active:scale-[0.98] active:duration-100 cursor-pointer ' +
+'focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gold/60 focus-visible:ring-offset-2';
+
 const Check = ({ included }) => included ?
 <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" /> :
 <XCircle className="w-4 h-4 text-slate-300 flex-shrink-0" />;
@@ -278,12 +302,17 @@ export default function FreedomClassic() {
           {/* Top row: Platinum + Diamond */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Platinum */}
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 flex flex-col">
+            <a
+              href={SPONSORSHIP_URLS.platinum}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Become a Platinum Sponsor — $10,000"
+              className={`${CARD_MOTION} group rounded-2xl overflow-hidden shadow-lg border border-slate-200 flex flex-col`}>
               <div className="bg-muted-foreground text-white text-center py-4">
                 <p className="font-black text-2xl tracking-widest">PLATINUM SPONSOR</p>
                 <p className="text-4xl font-black mt-1">$10,000</p>
               </div>
-              <div className="bg-white p-6 flex-1">
+              <div className="bg-white p-6 flex-1 flex flex-col">
                 <ul className="space-y-2">
                   {[
                   'Advertised on main banner, local radio stations (96.3 & 101.7), & golf towels',
@@ -297,16 +326,24 @@ export default function FreedomClassic() {
                     </li>
                   )}
                 </ul>
+                <p className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-sm font-bold text-navy group-hover:gap-2.5 transition-all">
+                  Select This Sponsorship <ExternalLink className="w-4 h-4" />
+                </p>
               </div>
-            </div>
+            </a>
 
             {/* Diamond */}
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-blue-300 flex flex-col">
+            <a
+              href={SPONSORSHIP_URLS.diamond}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Become a Diamond Sponsor — $5,000"
+              className={`${CARD_MOTION} group rounded-2xl overflow-hidden shadow-lg border border-blue-300 flex flex-col`}>
               <div className="bg-primary text-white text-center py-4">
                 <p className="font-black text-2xl tracking-widest text-[#9e9494]">DIAMOND SPONSOR</p>
                 <p className="text-4xl font-black mt-1 text-[#aca5a5]">$5,000</p>
               </div>
-              <div className="bg-white p-6 flex-1">
+              <div className="bg-white p-6 flex-1 flex flex-col">
                 <ul className="space-y-2">
                   {[
                   'Advertised on main banner, local radio stations (96.3 & 98.1), and golf towels',
@@ -320,19 +357,27 @@ export default function FreedomClassic() {
                     </li>
                   )}
                 </ul>
+                <p className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-sm font-bold text-navy group-hover:gap-2.5 transition-all">
+                  Select This Sponsorship <ExternalLink className="w-4 h-4" />
+                </p>
               </div>
-            </div>
+            </a>
           </div>
 
           {/* Bottom row: Gold + Silver */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
             {/* Gold */}
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-yellow-300 flex flex-col">
+            <a
+              href={SPONSORSHIP_URLS.gold}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Become a Gold Sponsor — $3,000"
+              className={`${CARD_MOTION} group rounded-2xl overflow-hidden shadow-lg border border-yellow-300 flex flex-col`}>
               <div className="bg-accent text-navy text-center py-4">
                 <p className="font-black text-2xl tracking-widest">GOLD SPONSOR</p>
                 <p className="text-4xl font-black mt-1">$3,000</p>
               </div>
-              <div className="bg-white p-6 flex-1">
+              <div className="bg-white p-6 flex-1 flex flex-col">
                 <ul className="space-y-2">
                   {[
                   'Advertised on main banner, golf towels distributed to participants, and social media',
@@ -344,16 +389,24 @@ export default function FreedomClassic() {
                     </li>
                   )}
                 </ul>
+                <p className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-sm font-bold text-navy group-hover:gap-2.5 transition-all">
+                  Select This Sponsorship <ExternalLink className="w-4 h-4" />
+                </p>
               </div>
-            </div>
+            </a>
 
             {/* Silver */}
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 flex flex-col">
+            <a
+              href={SPONSORSHIP_URLS.silver}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Become a Silver Sponsor — $2,000"
+              className={`${CARD_MOTION} group rounded-2xl overflow-hidden shadow-lg border border-slate-200 flex flex-col`}>
               <div className="bg-muted-foreground text-white text-center py-4">
                 <p className="font-black text-2xl tracking-widest">SILVER SPONSOR</p>
                 <p className="text-4xl font-black mt-1">$2,000</p>
               </div>
-              <div className="bg-white p-6 flex-1">
+              <div className="bg-white p-6 flex-1 flex flex-col">
                 <ul className="space-y-2">
                   {[
                   'Advertised on main banner',
@@ -364,22 +417,41 @@ export default function FreedomClassic() {
                     </li>
                   )}
                 </ul>
+                <p className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-sm font-bold text-navy group-hover:gap-2.5 transition-all">
+                  Select This Sponsorship <ExternalLink className="w-4 h-4" />
+                </p>
               </div>
-            </div>
+            </a>
           </div>
 
           {/* Hole Sponsorships */}
           <div className="bg-slate-50 rounded-2xl p-8 mb-8 border border-slate-200">
             <h3 className="text-2xl font-bold text-slate-800 mb-4 text-center">Hole Sponsorships</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
-              <div className="text-center bg-white rounded-xl p-5 shadow-sm border border-slate-100">
+              <a
+                href={SPONSORSHIP_URLS.singleHole}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Sponsor a Single Hole — $150"
+                className={`${CARD_MOTION} group block text-center bg-white rounded-xl p-5 shadow-sm border border-slate-100`}>
                 <p className="text-3xl font-black text-secondary">$150</p>
                 <p className="text-slate-600 font-semibold mt-1">Single Hole</p>
-              </div>
-              <div className="text-center bg-white rounded-xl p-5 shadow-sm border border-slate-100">
+                <p className="mt-2 flex items-center justify-center gap-1.5 text-xs font-bold text-navy group-hover:gap-2.5 transition-all">
+                  Select <ExternalLink className="w-3.5 h-3.5" />
+                </p>
+              </a>
+              <a
+                href={SPONSORSHIP_URLS.dualHole}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Sponsor a Dual Hole — $300"
+                className={`${CARD_MOTION} group block text-center bg-white rounded-xl p-5 shadow-sm border border-slate-100`}>
                 <p className="text-3xl font-black text-secondary">$300</p>
                 <p className="text-slate-600 font-semibold mt-1">Dual Hole</p>
-              </div>
+                <p className="mt-2 flex items-center justify-center gap-1.5 text-xs font-bold text-navy group-hover:gap-2.5 transition-all">
+                  Select <ExternalLink className="w-3.5 h-3.5" />
+                </p>
+              </a>
             </div>
           </div>
 

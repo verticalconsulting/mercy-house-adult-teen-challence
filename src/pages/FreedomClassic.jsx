@@ -479,40 +479,64 @@ export default function FreedomClassic() {
 
       {/* ── Sponsors ── */}
       <section id="sponsors" className="py-16 bg-slate-100 scroll-mt-20">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-slate-800 tracking-widest uppercase mb-10">Thanks To Our Sponsors</h2>
-          <div className="bg-white border border-slate-200 rounded-2xl shadow p-10">
-            {sponsorsLoading ? (
-              <div className="flex items-center justify-center py-16 text-slate-400">
-                <span className="text-sm">Loading sponsors…</span>
-              </div>
-            ) : sponsors.length === 0 ? (
-              <div className="text-center py-12 text-slate-500 text-sm italic">
-                Sponsor logos coming soon.
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-10 items-center justify-items-center">
-                {sponsors.map((sponsor) => {
-                  const inner = (
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <p className="mh-eyebrow mb-2">12th Annual Freedom Classic</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy tracking-wide">Thanks To Our Sponsors</h2>
+            <p className="text-slate-600 mt-3 max-w-2xl mx-auto">
+              We are grateful for the businesses and partners who make the Freedom Classic possible.
+            </p>
+          </div>
+
+          {sponsorsLoading ? (
+            <div className="flex items-center justify-center py-16 text-slate-400">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
+            </div>
+          ) : sponsors.length === 0 ? (
+            <div className="mh-card text-center py-12 text-slate-500 italic">
+              Sponsor logos coming soon.
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+              {sponsors.map((sponsor) => {
+                const tile = (
+                  <span
+                    className={`flex h-full min-h-[140px] items-center justify-center p-6 rounded-xl ${
+                      sponsor.dark_background ? 'bg-navy-deep' : 'bg-white'
+                    }`}>
                     <img
                       src={sponsor.logo_url}
                       alt={sponsor.name}
-                      className="h-24 w-auto object-contain group-hover:scale-105 transition-transform"
+                      loading="lazy"
+                      className="max-h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                     />
-                  );
-                  const wrapperClass = `group flex items-center justify-center p-4 rounded-xl hover:bg-slate-50 transition-colors w-full${sponsor.dark_background ? ' bg-slate-900' : ''}`;
-                  return sponsor.website_url ? (
-                    <a key={sponsor.id} href={sponsor.website_url} target="_blank" rel="noopener noreferrer" className={wrapperClass}>
-                      {inner}
-                    </a>
-                  ) : (
-                    <div key={sponsor.id} className={wrapperClass}>{inner}</div>
-                  );
-                })}
-              </div>
-            )}
-            <p className="text-center text-slate-600 text-sm mt-8 italic">More sponsors to be announced — <a href="mailto:mmilliman@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship" className="underline hover:text-navy">contact us to become a sponsor</a>.</p>
-          </div>
+                  </span>
+                );
+                const cardClass =
+                  'group mh-card mh-card-interactive flex items-stretch justify-center focus-visible:ring-gold/60';
+                return sponsor.website_url ? (
+                  <a
+                    key={sponsor.id}
+                    href={sponsor.website_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit ${sponsor.name}`}
+                    className={cardClass}>
+                    {tile}
+                  </a>
+                ) : (
+                  <div key={sponsor.id} className={cardClass}>{tile}</div>
+                );
+              })}
+            </div>
+          )}
+
+          <p className="text-center text-slate-600 text-sm mt-8 italic">
+            More sponsors to be announced —{' '}
+            <a href="mailto:mmilliman@mercyhouseatc.com,info@mercyhouseatc.com?subject=Freedom Classic Sponsorship" className="underline hover:text-navy">
+              contact us to become a sponsor
+            </a>.
+          </p>
         </div>
       </section>
 

@@ -367,7 +367,7 @@ export default function Layout({ children, currentPageName }) {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-xl md:text-xl font-bold text-gold mb-4">Mercy House</h3>
+              <h3 className="text-xl md:text-xl font-bold text-gold mb-4">Mercy House Adult Teen Challenge</h3>
               <p className="text-slate-300 text-lg md:text-sm leading-relaxed">
                 Mercy House Adult Teen Challenge is a Christ-centered, 12-month residential recovery ministry helping men, women, and families find freedom from life-controlling issues and experience lasting life change.
               </p>

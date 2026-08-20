@@ -19,7 +19,7 @@ export default function GiftAllocation({
   heading = 'Where your gift goes',
   percent = 100,
   claim = '100% of individual donations go directly to the mission',
-  note = 'Our workforce development businesses — SuperThrift, Vehicle Donation Program, Auto Center, Products with a Purpose, and Elite Gutters — fund operations, so individual donor gifts stay with the people we serve.',
+  note = 'Our workforce development businesses — SuperThrift, Vehicle Donation Program, Auto Center, Products with a Purpose, and Elite Gutters — fund operations, so individual gifts stay with the people we serve.',
   linkLabel = 'Read our financials and annual reports',
   linkTo = '/Financials',
 }) {

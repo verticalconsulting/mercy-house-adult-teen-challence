@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-The website + back-office app for **Mercy House Adult & Teen Challenge of Mississippi**, a faith-based addiction-recovery nonprofit. It is a **Base44 app**: a Vite + React 18 (JSX) frontend in `src/`, backed by Base44's hosted platform (auth, database entities, serverless functions) defined in `base44/`. Code pushed to this repo is also reflected in the Base44 Builder, and vice-versa — the platform owns several files (see "Generated / platform-owned files").
+The website + back-office app for **Mercy House Adult Teen Challenge**, a faith-based addiction-recovery nonprofit. It is a **Base44 app**: a Vite + React 18 (JSX) frontend in `src/`, backed by Base44's hosted platform (auth, database entities, serverless functions) defined in `base44/`. Code pushed to this repo is also reflected in the Base44 Builder, and vice-versa — the platform owns several files (see "Generated / platform-owned files").
 
 ## Commands
 

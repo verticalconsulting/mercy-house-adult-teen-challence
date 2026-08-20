@@ -21,7 +21,10 @@ const SPONSORSHIP_URLS = {
   gold: packageUrl('699b4738-9dc5-4ee9-aff6-b6a5f2333d74'),
   silver: packageUrl('44deb42d-56c8-41d1-a112-101f807d060e'),
   dualHole: packageUrl('485c27b3-d84b-4998-9d07-c09818ec6bd1'),
-  singleHole: packageUrl('f1b495cc-37e3-4897-b3c1-f8952d2293f5')
+  singleHole: packageUrl('f1b495cc-37e3-4897-b3c1-f8952d2293f5'),
+  // Add-on sponsorships — sponsor view only (no team/player views on these packages)
+  nineteenthHole: 'https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/packages/a548c169-85f7-44a6-b2bf-d544d2ece481?view=sponsor',
+  beverage: 'https://events.golfstatus.com/event/12th-annual-freedom-classic-golf-tournament/packages/221bd684-994f-4d30-a17e-eb7af204fae7?view=sponsor'
 };
 
 /*
@@ -411,6 +414,69 @@ export default function FreedomClassic() {
                   {[
                   'Advertised on main banner',
                   '1 golf team and 1 hole sponsorship'].
+                  map((item) =>
+                  <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />{item}
+                    </li>
+                  )}
+                </ul>
+                <p className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-sm font-bold text-navy group-hover:gap-2.5 transition-all">
+                  Select This Sponsorship <ExternalLink className="w-4 h-4" />
+                </p>
+              </div>
+            </a>
+          </div>
+
+          {/* Add-on Sponsorships: 19th Hole Food + Beverage */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            {/* 19th Hole Food Sponsor */}
+            <a
+              href={SPONSORSHIP_URLS.nineteenthHole}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Become a 19th Hole Food Sponsor — $3,000"
+              className={`${CARD_MOTION} group rounded-2xl overflow-hidden shadow-lg border border-slate-200 flex flex-col`}>
+              <div className="bg-primary text-white text-center py-4">
+                <p className="font-black text-2xl tracking-widest">19TH HOLE FOOD SPONSOR</p>
+                <p className="text-4xl font-black mt-1">$3,000</p>
+                <p className="text-sm font-semibold text-white/80 mt-1">5 Available</p>
+              </div>
+              <div className="bg-white p-6 flex-1 flex flex-col">
+                <ul className="space-y-2">
+                  {[
+                  'Recognition on main banner',
+                  'Logo on golf towels',
+                  'Social media recognition',
+                  'Branding at food and after party areas'].
+                  map((item) =>
+                  <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
+                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />{item}
+                    </li>
+                  )}
+                </ul>
+                <p className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-sm font-bold text-navy group-hover:gap-2.5 transition-all">
+                  Select This Sponsorship <ExternalLink className="w-4 h-4" />
+                </p>
+              </div>
+            </a>
+
+            {/* Beverage Sponsor */}
+            <a
+              href={SPONSORSHIP_URLS.beverage}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Become a Beverage Sponsor — $2,000"
+              className={`${CARD_MOTION} group rounded-2xl overflow-hidden shadow-lg border border-slate-200 flex flex-col`}>
+              <div className="bg-secondary text-navy text-center py-4">
+                <p className="font-black text-2xl tracking-widest">BEVERAGE SPONSOR</p>
+                <p className="text-4xl font-black mt-1">$2,000</p>
+                <p className="text-sm font-semibold text-navy/70 mt-1">5 Available</p>
+              </div>
+              <div className="bg-white p-6 flex-1 flex flex-col">
+                <ul className="space-y-2">
+                  {[
+                  'Recognition on main banner',
+                  'Branding at refreshment areas'].
                   map((item) =>
                   <li key={item} className="flex items-start gap-2 text-slate-700 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />{item}

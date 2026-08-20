@@ -6,9 +6,11 @@ Deno.serve(async (req) => {
         const base44 = createClientFromRequest(req);
         const formData = await req.json();
 
-        // Whitelist only applicant-suppliable fields to prevent mass assignment
-        // (e.g. an attacker setting status="accepted" or assigned_to).
-        const ALLOWED_FIELDS = new Set([
+        // Allowlist of applicant-suppliable fields only. Iterate the allowlist
+        // (not the request body) so no attacker-controlled key can ever reach the
+        // create() sink — prevents mass assignment of administrative fields like
+        // status / assigned_to, and blocks prototype-pollution keys (__proto__).
+        const ALLOWED_FIELDS = [
             'application_type', 'full_legal_name', 'date_of_birth', 'biological_sex',
             'ssn', 'address', 'city', 'state', 'zip', 'home_phone', 'cell_phone',
             'email', 'drivers_license', 'referral_source',
@@ -25,10 +27,10 @@ Deno.serve(async (req) => {
             'current_medications', 'possibly_pregnant', 'eating_disorder',
             'previous_treatment_programs', 'addiction_details', 'signature',
             'submission_date', 'description', 'condensed_mode'
-        ]);
+        ];
         const sanitized = {};
-        for (const key of Object.keys(formData)) {
-            if (ALLOWED_FIELDS.has(key)) sanitized[key] = formData[key];
+        for (const key of ALLOWED_FIELDS) {
+            if (key in formData) sanitized[key] = formData[key];
         }
         // Administrative fields are always controlled by staff — never by submitter.
         sanitized.status = 'pending';

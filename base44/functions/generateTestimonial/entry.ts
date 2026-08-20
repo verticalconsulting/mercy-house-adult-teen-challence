@@ -16,7 +16,7 @@ Deno.serve(async (req) => {
         }
 
         const response = await base44.integrations.Core.InvokeLLM({
-            prompt: `Write a powerful, authentic testimonial for a Mercy House Adult & Teen Challenge graduate. 
+            prompt: `Write a powerful, authentic testimonial for a Mercy House Adult Teen Challenge graduate. 
             
 Based on these keywords/themes: ${keywords}
 

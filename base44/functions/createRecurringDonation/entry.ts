@@ -26,7 +26,7 @@ Deno.serve(async (req) => {
                         currency: 'usd',
                         product_data: {
                             name: 'Monthly Program Support',
-                            description: 'Recurring monthly donation to Mercy House Adult & Teen Challenge',
+                            description: 'Recurring monthly donation to Mercy House Adult Teen Challenge',
                         },
                         unit_amount: amount,
                         recurring: {

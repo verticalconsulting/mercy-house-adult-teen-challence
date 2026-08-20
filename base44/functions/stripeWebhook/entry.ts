@@ -38,7 +38,7 @@ Deno.serve(async (req) => {
               body: `
                 Dear Supporter,
 
-                Thank you for becoming a monthly partner with Mercy House Adult & Teen Challenge!
+                Thank you for becoming a monthly partner with Mercy House Adult Teen Challenge!
 
                 Your recurring donation will directly impact lives and help residents on their journey to transformation.
 

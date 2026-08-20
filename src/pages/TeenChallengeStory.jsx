@@ -150,7 +150,7 @@ export default function TeenChallengeStory() {
           <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-4">Our Heritage</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-5">A Legacy That Lives On at Mercy House</h2>
           <p className="text-lg text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Mercy House Adult &amp; Teen Challenge carries this same vision forward in Mississippi —
+            Mercy House Adult Teen Challenge carries this same vision forward in Mississippi —
             offering lasting freedom through Christ, one life at a time.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

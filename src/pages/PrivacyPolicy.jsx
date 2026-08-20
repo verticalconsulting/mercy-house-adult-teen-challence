@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
           <section>
             <h2 className="text-2xl font-bold text-navy dark:text-gold mb-3">1. Who We Are</h2>
             <p>
-              Mercy House Adult &amp; Teen Challenge of Mississippi ("Mercy House," "we," "our," or "us") is a
+              Mercy House Adult Teen Challenge ("Mercy House," "we," "our," or "us") is a
               501(c)(3) nonprofit, faith-based ministry organization headquartered in Georgetown, Mississippi.
               This Privacy Policy describes how we collect, use, and protect information you provide when you
               interact with our website at <strong>mercyhouseatc.com</strong> and any related forms or services.
@@ -131,7 +131,7 @@ export default function PrivacyPolicy() {
           <section>
             <h2 className="text-2xl font-bold text-navy dark:text-gold mb-3">10. SMS Text Messaging — Privacy &amp; Terms</h2>
             <p>
-              Mercy House Adult &amp; Teen Challenge operates an SMS text messaging program to send volunteer shift
+              Mercy House Adult Teen Challenge operates an SMS text messaging program to send volunteer shift
               reminders, schedule updates, and important notifications to volunteers who have opted in. The
               following terms apply to all text messages sent through this program.
             </p>
@@ -207,7 +207,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-2xl font-bold text-navy dark:text-gold mb-3">11. Contact Us</h2>
             <p>If you have questions about this Privacy Policy, please contact us:</p>
             <div className="mt-3 bg-slate-50 dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700">
-              <p><strong>Mercy House Adult &amp; Teen Challenge of Mississippi</strong></p>
+              <p><strong>Mercy House Adult Teen Challenge</strong></p>
               <p>1110 Mary St, PO Box 266</p>
               <p>Georgetown, MS 39078</p>
               <p className="mt-2">

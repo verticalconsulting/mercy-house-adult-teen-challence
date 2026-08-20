@@ -21,7 +21,7 @@ export default function About() {
           <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-4">About Mercy House</p>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Who We Are</h1>
           <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto">
-            Mercy House Adult &amp; Teen Challenge of Mississippi is a Christ-centered, residential recovery ministry
+            Mercy House Adult Teen Challenge is a Christ-centered, residential recovery ministry
             serving men and women struggling with life-controlling issues in the heart of Mississippi.
           </p>
         </div>
@@ -42,7 +42,7 @@ export default function About() {
                   the foundation of everything Mercy House is today.
                 </p>
                 <p>
-                  For more than 15 years, Mercy House Adult &amp; Teen Challenge of Mississippi has provided a structured,
+                  For more than 15 years, Mercy House Adult Teen Challenge has provided a structured,
                   residential environment where men and women can step away from the chaos of dependency and step into
                   something new — a community rooted in biblical principles, accountability, mentorship, and genuine
                   spiritual growth.

@@ -246,7 +246,7 @@ export default function IntakeForm() {
               Thank you for taking this important step. Our intake team will review your application and contact you within 24–48 hours.
             </p>
             <p className="text-slate-600 dark:text-slate-400">
-              Mercy House Adult &amp; Teen Challenge<br />
+              Mercy House Adult Teen Challenge<br />
               1110 Mary St, PO Box 266<br />
               Georgetown, MS 39078<br />
               Intake Coordinator: (601) 720-3718
@@ -310,7 +310,7 @@ export default function IntakeForm() {
             Confidential Intake Application
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-300 mb-1">
-            Mercy House Adult &amp; Teen Challenge of Mississippi
+            Mercy House Adult Teen Challenge
           </p>
           <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
             Step {step} of {totalSteps} — {Math.round((step / totalSteps) * 100)}% complete
@@ -461,7 +461,7 @@ export default function IntakeForm() {
                   <p><strong>Email:</strong> {formData.email || 'Not provided'}</p>
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400">
-                  By signing below, I authorize Mercy House Adult &amp; Teen Challenge of Mississippi to contact me and begin my intake process. I understand staff will follow up by phone to gather additional information.
+                  By signing below, I authorize Mercy House Adult Teen Challenge to contact me and begin my intake process. I understand staff will follow up by phone to gather additional information.
                 </p>
                 <FormField id="signature_c" label="Signature (Type your full name)" required error={errors.signature}>
                   <Input
@@ -808,7 +808,7 @@ export default function IntakeForm() {
                   </div>
 
                   <p className="text-sm text-slate-600 dark:text-slate-400">
-                    By signing below, I authorize the tests listed to be completed and information sent to Mercy House Adult &amp; Teen Challenge of Mississippi. I certify that all information provided is true and accurate to the best of my knowledge.
+                    By signing below, I authorize the tests listed to be completed and information sent to Mercy House Adult Teen Challenge. I certify that all information provided is true and accurate to the best of my knowledge.
                   </p>
 
                   <FormField id="signature" label="Signature (Type your full name)" required error={errors.signature}>
@@ -823,7 +823,7 @@ export default function IntakeForm() {
 
                   <div className="bg-navy dark:bg-slate-950 text-white p-4 rounded-lg text-center text-sm">
                     <p className="font-semibold">Submit Application To:</p>
-                    <p className="mt-1">Mercy House Adult &amp; Teen Challenge of Mississippi</p>
+                    <p className="mt-1">Mercy House Adult Teen Challenge</p>
                     <p>1110 Mary St, PO Box 266, Georgetown, MS 39078</p>
                     <p>Intake Coordinator: (601) 720-3718</p>
                   </div>

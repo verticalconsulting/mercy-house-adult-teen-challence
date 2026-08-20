@@ -540,7 +540,7 @@ export default function Volunteer() {
                       className="w-6 h-6 mt-1"
                     />
                     <Label htmlFor="sms_opt_in" className="text-lg text-slate-800 dark:text-slate-200 cursor-pointer leading-relaxed">
-                      Yes, sign me up! I agree to receive SMS text messages from Mercy House Adult &amp; Teen Challenge at the phone number provided above.
+                      Yes, sign me up! I agree to receive SMS text messages from Mercy House Adult Teen Challenge at the phone number provided above.
                     </Label>
                   </div>
                   <div className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed space-y-2 pl-0">
@@ -578,7 +578,7 @@ export default function Volunteer() {
 
                   <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl">
                     <p className="text-base text-slate-700 dark:text-slate-300 italic leading-relaxed mb-4">
-                      I understand that as a volunteer of Mercy House Adult and Teen Challenge (Georgetown, Crystal Springs, Byram, Pearl, and/or Learned, MS), they will use the services of an outside agency to research and verify the information provided. I hereby authorize a representative of MHTC to obtain information on my criminal background. I understand that this check must be done before I can volunteer or serve.
+                      I understand that as a volunteer of Mercy House Adult Teen Challenge (Georgetown, Crystal Springs, Byram, Pearl, and/or Learned, MS), they will use the services of an outside agency to research and verify the information provided. I hereby authorize a representative of MHTC to obtain information on my criminal background. I understand that this check must be done before I can volunteer or serve.
                     </p>
                     <div className="flex items-start gap-4">
                       <Checkbox

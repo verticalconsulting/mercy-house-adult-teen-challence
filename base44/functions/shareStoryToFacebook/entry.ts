@@ -69,7 +69,7 @@ Deno.serve(async (req) => {
     const yearText = testimonial.graduation_year ? ` (${testimonial.graduation_year})` : '';
     const text = testimonial.testimonial_text || '';
 
-    const message = `🌟 Volunteer Success Story${yearText}\n\n"${text}"\n\n— ${name}, Mercy House Adult & Teen Challenge\n\n#MercyHouse #TeenChallenge #ChangedLives #Recovery`;
+    const message = `🌟 Volunteer Success Story${yearText}\n\n"${text}"\n\n— ${name}, Mercy House Adult Teen Challenge\n\n#MercyHouse #TeenChallenge #ChangedLives #Recovery`;
 
     const payload = {
       message,

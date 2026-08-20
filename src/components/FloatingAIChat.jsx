@@ -40,7 +40,7 @@ export default function FloatingAIChat() {
     setConversation(conv);
     setMessages([{
       role: 'assistant',
-      content: "Hi! I'm here to answer any questions you have about Mercy House Adult & Teen Challenge. Whether you're seeking help, looking to volunteer, or just want to learn more — ask away! 💙"
+      content: "Hi! I'm here to answer any questions you have about Mercy House Adult Teen Challenge. Whether you're seeking help, looking to volunteer, or just want to learn more — ask away! 💙"
     }]);
 
     base44.agents.subscribeToConversation(conv.id, (data) => {

@@ -12,7 +12,7 @@ export default function NonprofitLegitimacy({ variant = 'full' }) {
           <ShieldCheck className="w-4 h-4" />
           501(c)(3) Nonprofit
         </span>
-        <span>EIN: 99-1943281</span>
+        <span>EIN: 45-4670832</span>
         <span>Georgetown, MS</span>
         <a href="tel:8558937333" className="hover:text-navy dark:hover:text-gold transition-colors">855-89-FREEDOM</a>
         <a href="mailto:info@mercyhouseatc.com" className="hover:text-navy dark:hover:text-gold transition-colors">info@mercyhouseatc.com</a>
@@ -46,7 +46,7 @@ export default function NonprofitLegitimacy({ variant = 'full' }) {
         </div>
         <div>
           <h3 className="font-bold text-navy dark:text-gold text-lg leading-tight">Verified 501(c)(3) Nonprofit</h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">Mercy House Adult &amp; Teen Challenge of Mississippi</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400">Mercy House Adult Teen Challenge</p>
         </div>
       </div>
 
@@ -55,7 +55,7 @@ export default function NonprofitLegitimacy({ variant = 'full' }) {
           <div className="flex items-start gap-2 text-slate-700 dark:text-slate-300">
             <ShieldCheck className="w-4 h-4 text-gold mt-0.5 shrink-0" />
             <div>
-              <span className="font-semibold">EIN:</span> 99-1943281
+              <span className="font-semibold">EIN:</span> 45-4670832
             </div>
           </div>
           <div className="flex items-start gap-2 text-slate-700 dark:text-slate-300">

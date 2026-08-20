@@ -76,7 +76,7 @@ Deno.serve(async (req) => {
                         currency: 'usd',
                         product_data: {
                             name: 'Mercy House Intake Fee — Full Payment',
-                            description: 'One-time $1,000 intake fee for Mercy House Adult & Teen Challenge program',
+                            description: 'One-time $1,000 intake fee for Mercy House Adult Teen Challenge program',
                         },
                         unit_amount: 100000, // $1,000
                     },

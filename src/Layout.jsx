@@ -369,7 +369,7 @@ export default function Layout({ children, currentPageName }) {
             <div>
               <h3 className="text-xl md:text-xl font-bold text-gold mb-4">Mercy House</h3>
               <p className="text-slate-300 text-lg md:text-sm leading-relaxed">
-                Mercy House Adult & Teen Challenge is a Christ-centered, 12-month residential recovery ministry helping men, women, and families find freedom from life-controlling issues and experience lasting life change.
+                Mercy House Adult Teen Challenge is a Christ-centered, 12-month residential recovery ministry helping men, women, and families find freedom from life-controlling issues and experience lasting life change.
               </p>
             </div>
             <div>
@@ -429,7 +429,7 @@ export default function Layout({ children, currentPageName }) {
           </div>
 
           <div className="border-t border-white/10 pt-6 text-center text-lg md:text-base text-white/50">
-            <p>&copy; {new Date().getFullYear()} Mercy House Adult &amp; Teen Challenge. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Mercy House Adult Teen Challenge. All rights reserved.</p>
             <p className="mt-2">
               501(c)(3) Nonprofit &middot; Georgetown &amp; Learned, Mississippi &middot; Your gifts support housing, meals, program care, and ministry operations.
             </p>

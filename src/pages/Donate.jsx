@@ -54,7 +54,7 @@ export default function Donate() {
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400 text-center">
             <span>🔒 Secure checkout via Stripe</span>
             <span>·</span>
-            <span>Tax-deductible · EIN 27-4670832</span>
+            <span>Tax-deductible · EIN 45-4670832</span>
             <span>·</span>
             <span>Cancel recurring gifts anytime</span>
           </div>

@@ -70,7 +70,7 @@ export default function Programs() {
           <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-4">Programs &amp; Services</p>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">A Path Toward Freedom</h1>
           <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto">
-            Mercy House Adult &amp; Teen Challenge offers long-term, Christ-centered residential programs for men and women ready to make a lasting change. Our approach is not a quick fix — it is a structured journey of total life transformation.
+            Mercy House Adult Teen Challenge offers long-term, Christ-centered residential programs for men and women ready to make a lasting change. Our approach is not a quick fix — it is a structured journey of total life transformation.
           </p>
         </div>
       </section>
@@ -79,7 +79,7 @@ export default function Programs() {
       <section className="py-10 bg-amber-50 dark:bg-amber-900/20 border-b border-amber-200 dark:border-amber-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-amber-800 dark:text-amber-200 text-base font-medium">
-            <strong>Please note:</strong> Mercy House Adult &amp; Teen Challenge is a faith-based residential ministry program — not a medical detox or licensed clinical treatment facility. If you or someone you know is experiencing a medical emergency, please call 911 or go to your nearest emergency room. For questions about program admissions, contact our intake team at{' '}
+            <strong>Please note:</strong> Mercy House Adult Teen Challenge is a faith-based residential ministry program — not a medical detox or licensed clinical treatment facility. If you or someone you know is experiencing a medical emergency, please call 911 or go to your nearest emergency room. For questions about program admissions, contact our intake team at{' '}
             <a href="tel:6017203718" className="underline hover:no-underline">(601) 720-3718</a>.
           </p>
         </div>

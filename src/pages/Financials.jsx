@@ -41,7 +41,7 @@ export default function Financials() {
             <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Verified & Certified</p>
             <h2 className="text-4xl font-bold text-navy dark:text-gold mb-4">Our Credentials</h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-              Mercy House Adult &amp; Teen Challenge meets the highest standards for nonprofit accountability and transparency.
+              Mercy House Adult Teen Challenge meets the highest standards for nonprofit accountability and transparency.
             </p>
           </div>
 
@@ -112,7 +112,7 @@ export default function Financials() {
             <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Stewardship</p>
             <h2 className="text-3xl font-bold text-navy dark:text-gold mb-4">How Your Donation Is Used</h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Mercy House Adult &amp; Teen Challenge of Mississippi is committed to transparent stewardship of every gift. Our micro-business operations — including our thrift store, vehicle donation program, and auto academy — generate revenue that helps support ministry operations alongside individual donor contributions.
+              Mercy House Adult Teen Challenge is committed to transparent stewardship of every gift. Our micro-business operations — including our thrift store, vehicle donation program, and auto academy — generate revenue that helps support ministry operations alongside individual donor contributions.
             </p>
           </div>
 

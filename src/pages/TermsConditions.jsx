@@ -12,8 +12,7 @@ export default function TermsConditions() {
           <section>
             <h2 className="text-2xl font-bold text-navy dark:text-gold mb-3">1. Acceptance of Terms</h2>
             <p>
-              By accessing or using the website, services, and programs of Mercy House Adult &amp; Teen Challenge of
-              Mississippi ("Mercy House," "we," "our," or "us") at <strong>mercyhouseatc.com</strong>, you agree to be
+              By accessing or using the website, services, and programs of Mercy House Adult Teen Challenge ("Mercy House," "we," "our," or "us") at <strong>mercyhouseatc.com</strong>, you agree to be
               bound by these Terms &amp; Conditions. If you do not agree with any part of these terms, please do not
               use our website or services.
             </p>
@@ -22,7 +21,7 @@ export default function TermsConditions() {
           <section>
             <h2 className="text-2xl font-bold text-navy dark:text-gold mb-3">2. About Our Organization</h2>
             <p>
-              Mercy House Adult &amp; Teen Challenge of Mississippi is a 501(c)(3) nonprofit, Christ-centered,
+              Mercy House Adult Teen Challenge is a 501(c)(3) nonprofit, Christ-centered,
               faith-based residential recovery ministry. Our programs and services are offered in accordance with our
               mission to help men, women, and families find freedom from life-controlling issues through a 12-month
               residential program.
@@ -103,7 +102,7 @@ export default function TermsConditions() {
           <section>
             <h2 className="text-2xl font-bold text-navy dark:text-gold mb-3">8. Limitation of Liability</h2>
             <p>
-              Mercy House Adult &amp; Teen Challenge of Mississippi, its staff, board members, volunteers, and affiliates
+              Mercy House Adult Teen Challenge, its staff, board members, volunteers, and affiliates
               are not liable for any direct, indirect, incidental, or consequential damages arising from the use of
               our website, programs, or services to the maximum extent permitted by applicable law.
             </p>
@@ -140,7 +139,7 @@ export default function TermsConditions() {
             <h2 className="text-2xl font-bold text-navy dark:text-gold mb-3">12. Contact Us</h2>
             <p>If you have questions about these Terms &amp; Conditions, please contact us:</p>
             <div className="mt-3 bg-slate-50 dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700">
-              <p><strong>Mercy House Adult &amp; Teen Challenge of Mississippi</strong></p>
+              <p><strong>Mercy House Adult Teen Challenge</strong></p>
               <p>1110 Mary St, PO Box 266</p>
               <p>Georgetown, MS 39078</p>
               <p className="mt-2">

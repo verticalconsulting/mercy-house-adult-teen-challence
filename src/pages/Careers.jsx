@@ -28,7 +28,7 @@ export default function Careers() {
     <div className="w-full">
       {/* Hero */}
       <section className="bg-navy dark:bg-slate-900 py-20 text-center text-white">
-        <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Mercy House Adult &amp; Teen Challenge</p>
+        <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Mercy House Adult Teen Challenge</p>
         <h1 className="text-5xl font-bold mb-4">Careers</h1>
         <p className="text-xl text-slate-300 max-w-2xl mx-auto">
           Join a Christ-centered team dedicated to helping men, women, and families find lasting freedom. Every role at Mercy House is part of a ministry that changes lives.

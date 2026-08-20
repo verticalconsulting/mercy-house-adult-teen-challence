@@ -45,7 +45,7 @@ const accreditations = [
     href: 'https://app.candid.org/profile/9237605/mercy-house-teen-challenge-45-4670832/?pkId=85b52dd6-b112-4838-af55-83779d6afa0f',
   },
   { label: 'Adult & Teen Challenge Affiliated' },
-  { label: '501(c)(3) · EIN 99-1943281', to: '/Financials' },
+  { label: '501(c)(3) · EIN 45-4670832', to: '/Financials' },
   { label: '100% of gifts to the mission', to: '/Financials' },
 ];
 

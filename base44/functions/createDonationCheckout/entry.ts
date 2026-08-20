@@ -25,7 +25,7 @@ Deno.serve(async (req) => {
                         currency: 'usd',
                         product_data: {
                             name: 'General Program Support',
-                            description: 'One-time donation to Mercy House Adult & Teen Challenge',
+                            description: 'One-time donation to Mercy House Adult Teen Challenge',
                         },
                         unit_amount: amount,
                     },

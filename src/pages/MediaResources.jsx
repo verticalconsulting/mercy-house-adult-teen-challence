@@ -45,7 +45,7 @@ export default function MediaResources() {
     <div className="w-full">
       {/* Hero */}
       <section className="bg-navy dark:bg-slate-950 py-20 text-center text-white">
-        <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Mercy House Adult &amp; Teen Challenge</p>
+        <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Mercy House Adult Teen Challenge</p>
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Media Resources</h1>
         <p className="text-lg text-slate-300 max-w-2xl mx-auto">
           A visual gallery of God's work through our community — events, outreaches, graduations, and moments of life change.

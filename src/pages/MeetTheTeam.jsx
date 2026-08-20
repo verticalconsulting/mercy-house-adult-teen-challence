@@ -24,7 +24,7 @@ const team = [
     name: 'Thomas Reif',
     title: 'Campus Director — Men',
     photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/1777985b-43aa-4dcc-e288-ea7079952b00/small',
-    bio: "I am happily married to my wife, Ashley, and we have the privilege of raising our three boys: Cayden, Zane, and Wyatt. After nearly a decade in the military and local law enforcement, my life fell apart due to addiction and PTSD. By the grace of God, I was saved and my family was restored, leading us into full-time ministry. My wife and I felt called to move our family from the Pacific Northwest, where I was pastoring a church in Oregon, to join the Mercy House Adult and Teen Challenge family. I am passionate about witnessing the transformation of men's lives through the power of Jesus Christ. I firmly believe that if God can change a single man, He can begin to change entire communities.",
+    bio: "I am happily married to my wife, Ashley, and we have the privilege of raising our three boys: Cayden, Zane, and Wyatt. After nearly a decade in the military and local law enforcement, my life fell apart due to addiction and PTSD. By the grace of God, I was saved and my family was restored, leading us into full-time ministry. My wife and I felt called to move our family from the Pacific Northwest, where I was pastoring a church in Oregon, to join the Mercy House Adult Teen Challenge family. I am passionate about witnessing the transformation of men's lives through the power of Jesus Christ. I firmly believe that if God can change a single man, He can begin to change entire communities.",
   },
   {
     name: 'Lindsay Hughes',
@@ -37,7 +37,7 @@ const team = [
     title: 'Student Life Coordinator',
     photo: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/18058ddc-6999-4a74-47a6-6fc6e80dce00/small',
     photoPosition: 'object-[center_30%]',
-    bio: "My name is Wesley Barnett. I was in active addiction for 8 years of my life. God delivered me from my addiction and brought me to Mercy House Adult and Teen Challenge on November 12, 2020. I also now have a beautiful wife and two amazing step sons that I get to raise up in the Lord. My life is forever changed!",
+    bio: "My name is Wesley Barnett. I was in active addiction for 8 years of my life. God delivered me from my addiction and brought me to Mercy House Adult Teen Challenge on November 12, 2020. I also now have a beautiful wife and two amazing step sons that I get to raise up in the Lord. My life is forever changed!",
   },
   {
     name: 'Howard Kittrell',
@@ -130,7 +130,7 @@ export default function MeetTheTeam() {
     <div className="w-full">
       {/* Hero */}
       <section className="bg-navy dark:bg-slate-900 py-20 text-center text-white">
-        <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Mercy House Adult &amp; Teen Challenge</p>
+        <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Mercy House Adult Teen Challenge</p>
         <h1 className="text-5xl font-bold mb-4">Meet Our Team</h1>
         <p className="text-xl text-slate-300 max-w-2xl mx-auto">
           A dedicated team of staff and graduates united by faith and a mission to bring lasting freedom to those in need.
@@ -156,7 +156,7 @@ export default function MeetTheTeam() {
       {/* Board of Directors */}
       <section className="py-20 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Mercy House Adult &amp; Teen Challenge</p>
+          <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Mercy House Adult Teen Challenge</p>
           <h2 className="text-4xl font-bold text-navy dark:text-gold mb-12">Board of Directors</h2>
 
           {/* Group photo placeholder */}

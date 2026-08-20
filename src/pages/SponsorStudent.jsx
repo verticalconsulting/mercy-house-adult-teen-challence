@@ -156,7 +156,7 @@ export default function SponsorStudent() {
         </div>
         <VirtuousGiveForm formId={MERCYHOUSE_SPONSOR_STUDENT_FORM_ID} />
         <p className="text-center text-xs text-slate-500 dark:text-slate-400 mt-4">
-          🔒 Secure checkout · Tax-deductible · EIN 27-4670832 · Cancel anytime
+          🔒 Secure checkout · Tax-deductible · EIN 45-4670832 · Cancel anytime
         </p>
       </div>
     </div>

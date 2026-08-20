@@ -304,7 +304,7 @@ const FAQ_SECTIONS = [
         question: 'Is my donation tax-deductible?',
         answer: (
           <>
-            Yes. Mercy House Adult &amp; Teen Challenge is a registered 501(c)(3) nonprofit, and your gifts are
+            Yes. Mercy House Adult Teen Challenge is a registered 501(c)(3) nonprofit, and your gifts are
             tax-deductible to the extent allowed by law. You'll receive a receipt for every gift.
           </>
         ),

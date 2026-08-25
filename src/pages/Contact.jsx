@@ -31,6 +31,16 @@ export default function Contact() {
 
       <main id="contact-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
+        {/* Housing Assistance Notice */}
+        <section aria-label="Housing assistance notice" className="mb-12">
+          <div className="mx-auto max-w-3xl rounded-lg border border-gold/40 bg-gold/10 p-5 dark:bg-gold/10">
+            <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-200">
+              <span className="font-bold text-navy dark:text-gold">Housing Assistance Notice:</span>{' '}
+              Mercy House Adult &amp; Teen Challenge is a faith-based recovery and Christian discipleship ministry. We are not a public housing authority and do not administer Section 8, Housing Choice Vouchers, HUD housing, or rental-assistance programs.
+            </p>
+          </div>
+        </section>
+
         {/* Campus Cards */}
         <section aria-labelledby="campuses-heading">
           <h2 id="campuses-heading" className="text-3xl font-bold text-navy dark:text-gold mb-8 text-center">

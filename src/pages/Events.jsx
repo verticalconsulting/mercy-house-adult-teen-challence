@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -10,7 +11,6 @@ import { Calendar, Users, ExternalLink, Clock, MapPin, ArrowLeft, Newspaper } fr
 import { format, isAfter, isBefore, startOfDay } from 'date-fns';
 import { SelectItem } from '@/components/ui/select';
 import PullToRefresh from '../components/PullToRefresh';
-import ReactMarkdown from 'react-markdown';
 
 export default function Events() {
   const [categoryFilter, setCategoryFilter] = useState('all');
@@ -195,32 +195,34 @@ export default function Events() {
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {blogPosts.map((post) => (
-                  <Card key={post.id} className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer group" onClick={() => setSelectedEvent({ ...post, _type: 'blog' })}>
-                    {post.featured_image && (
-                      <div className="h-48 overflow-hidden">
-                        <img src={post.featured_image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                      </div>
-                    )}
-                    <CardHeader>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge className={blogCategoryColors[post.category] || 'bg-gray-100 text-gray-800'}>
-                          {post.category?.replace('_', ' ')}
-                        </Badge>
-                        {post.publish_date && (
-                          <span className="text-xs text-slate-500 dark:text-slate-400">
-                            {format(new Date(post.publish_date), 'MMM d, yyyy')}
-                          </span>
-                        )}
-                      </div>
-                      <CardTitle className="text-navy dark:text-gold line-clamp-2">{post.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-slate-600 dark:text-slate-300 text-sm line-clamp-3">{post.excerpt || post.content?.slice(0, 150)}</p>
-                      <Button variant="ghost" className="mt-3 p-0 h-auto text-navy dark:text-gold font-semibold text-sm hover:underline">
-                        Read More →
-                      </Button>
-                    </CardContent>
-                  </Card>
+                  <Link key={post.id} to={`/Events/${post.slug || post.id}`} className="group">
+                    <Card className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer h-full">
+                      {post.featured_image && (
+                        <div className="h-48 overflow-hidden">
+                          <img src={post.featured_image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                        </div>
+                      )}
+                      <CardHeader>
+                        <div className="flex items-center gap-2 mb-2">
+                          <Badge className={blogCategoryColors[post.category] || 'bg-gray-100 text-gray-800'}>
+                            {post.category?.replace('_', ' ')}
+                          </Badge>
+                          {post.publish_date && (
+                            <span className="text-xs text-slate-500 dark:text-slate-400">
+                              {format(new Date(post.publish_date), 'MMM d, yyyy')}
+                            </span>
+                          )}
+                        </div>
+                        <CardTitle className="text-navy dark:text-gold line-clamp-2">{post.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-slate-600 dark:text-slate-300 text-sm line-clamp-3">{post.excerpt || post.content?.slice(0, 150)}</p>
+                        <span className="mt-3 inline-flex items-center text-navy dark:text-gold font-semibold text-sm group-hover:underline">
+                          Read More →
+                        </span>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 ))}
               </div>
             )}
@@ -253,30 +255,6 @@ export default function Events() {
           </Dialog>
         )}
 
-        {/* Blog Post Detail Dialog */}
-        {selectedEvent && selectedEvent._type === 'blog' && (
-          <Dialog open={!!selectedEvent} onOpenChange={() => setSelectedEvent(null)}>
-            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-              <DialogHeader>
-                <div className="flex items-center gap-2 mb-2">
-                  <Badge className={blogCategoryColors[selectedEvent.category] || 'bg-gray-100 text-gray-800'}>
-                    {selectedEvent.category?.replace('_', ' ')}
-                  </Badge>
-                  {selectedEvent.publish_date && (
-                    <span className="text-xs text-slate-500">{format(new Date(selectedEvent.publish_date), 'MMMM d, yyyy')}</span>
-                  )}
-                </div>
-                <DialogTitle className="text-navy dark:text-gold text-xl leading-snug">{selectedEvent.title}</DialogTitle>
-              </DialogHeader>
-              {selectedEvent.featured_image && (
-                <img src={selectedEvent.featured_image} alt={selectedEvent.title} className="w-full h-52 object-cover rounded-lg" />
-              )}
-              <div className="blog-content max-w-none">
-                <ReactMarkdown>{selectedEvent.content}</ReactMarkdown>
-              </div>
-            </DialogContent>
-          </Dialog>
-        )}
       </div>
     </PullToRefresh>
   );

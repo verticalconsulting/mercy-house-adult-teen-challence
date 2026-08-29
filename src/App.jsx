@@ -24,6 +24,7 @@ import Careers from './pages/Careers';
 import Internship from './pages/Internship';
 import MediaResources from './pages/MediaResources';
 import FAQ from './pages/FAQ';
+import BlogPostPage from './pages/BlogPostPage';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -97,6 +98,7 @@ const AuthenticatedApp = () => {
       <Route path="/Internship" element={<LayoutWrapper currentPageName="Internship"><Internship /></LayoutWrapper>} />
       <Route path="/MediaResources" element={<LayoutWrapper currentPageName="MediaResources"><MediaResources /></LayoutWrapper>} />
       <Route path="/FAQ" element={<LayoutWrapper currentPageName="FAQ"><FAQ /></LayoutWrapper>} />
+      <Route path="/Events/:slug" element={<LayoutWrapper currentPageName="BlogPostPage"><BlogPostPage /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

@@ -271,7 +271,7 @@ export default function Events() {
               {selectedEvent.featured_image && (
                 <img src={selectedEvent.featured_image} alt={selectedEvent.title} className="w-full h-52 object-cover rounded-lg" />
               )}
-              <div className="prose prose-sm prose-slate dark:prose-invert max-w-none">
+              <div className="blog-content max-w-none">
                 <ReactMarkdown>{selectedEvent.content}</ReactMarkdown>
               </div>
             </DialogContent>

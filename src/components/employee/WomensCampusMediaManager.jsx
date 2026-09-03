@@ -105,28 +105,12 @@ export default function WomensCampusMediaManager() {
 
     setUploading(true);
     try {
-      // Step 1: upload original
+      // Step 1: upload original (UploadFile stays client-side per platform guidance)
       const { file_url } = await base44.integrations.Core.UploadFile({ file });
 
-      // Step 2: use InvokeLLM with the image to get an auto-optimized/enhanced version
-      // This applies image analysis — brightness, contrast, and crop suggestions
-      const result = await base44.integrations.Core.InvokeLLM({
-        prompt: `You are an image optimization assistant. Analyze this image and return a JSON object with:
-- quality_score: number 1-10 rating the image quality
-- suggested_title: a short descriptive title for a women's campus gallery
-- description: a 1-2 sentence caption suitable for a ministry gallery
-
-Keep the response concise and appropriate for a Christian women's recovery program.`,
-        file_urls: [file_url],
-        response_json_schema: {
-          type: 'object',
-          properties: {
-            quality_score: { type: 'number' },
-            suggested_title: { type: 'string' },
-            description: { type: 'string' },
-          },
-        },
-      });
+      // Step 2: analyze the image via a backend function to protect integration credits
+      const response = await base44.functions.invoke('analyzeMediaImage', { file_url });
+      const result = response.data;
 
       setForm((prev) => ({
         ...prev,

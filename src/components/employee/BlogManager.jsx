@@ -248,19 +248,8 @@ export default function BlogManager() {
     if (!prompt.trim()) { toast.error('Please enter a prompt'); return; }
     setGenerating(true);
     try {
-      const result = await base44.integrations.Core.InvokeLLM({
-        prompt: `${prompt}\n\nGenerate in this JSON format: { "title": "...", "excerpt": "...", "content": "...markdown...", "tags": ["..."] }\n\nMake it engaging and aligned with Christian faith-based recovery themes.`,
-        response_json_schema: {
-          type: "object",
-          properties: {
-            title: { type: "string" },
-            excerpt: { type: "string" },
-            content: { type: "string" },
-            tags: { type: "array", items: { type: "string" } },
-          }
-        }
-      });
-      setGeneratedContent(result);
+      const response = await base44.functions.invoke('generateBlogPost', { prompt });
+      setGeneratedContent(response.data);
       toast.success('Content generated!');
     } catch (e) {
       toast.error('Generation failed: ' + e.message);

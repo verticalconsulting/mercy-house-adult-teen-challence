@@ -65,7 +65,7 @@ Deno.serve(async (req) => {
 
     // Send email to applicant
     if (volunteer.email) {
-      await base44.integrations.Core.SendEmail({
+      await base44.asServiceRole.integrations.Core.SendEmail({
         to: volunteer.email,
         subject: 'Your Volunteer Application Has Been Approved',
         body: `Dear ${volunteer.full_name},\n\nGreat news! Your volunteer application has been approved.\n\nWe look forward to having you join our team. A member of our staff will be in touch shortly with next steps.\n\nThank you for your interest in Mercy House!\n\nBest regards,\nMercy House Team`

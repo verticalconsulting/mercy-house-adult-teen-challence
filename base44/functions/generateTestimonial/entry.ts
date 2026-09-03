@@ -15,7 +15,7 @@ Deno.serve(async (req) => {
             return Response.json({ error: 'Keywords are required' }, { status: 400 });
         }
 
-        const response = await base44.integrations.Core.InvokeLLM({
+        const response = await base44.asServiceRole.integrations.Core.InvokeLLM({
             prompt: `Write a powerful, authentic testimonial for a Mercy House Adult Teen Challenge graduate. 
             
 Based on these keywords/themes: ${keywords}

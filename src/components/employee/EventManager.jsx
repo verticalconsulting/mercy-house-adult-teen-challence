@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import { Calendar, MapPin, Plus, Pencil, Trash2, Save, X } from 'lucide-react';
 import { toast } from 'sonner';
 import { format } from 'date-fns';
+import ImageUploadInput from '@/components/ImageUploadInput';
 
 export default function EventManager() {
   const [showForm, setShowForm] = useState(false);
@@ -228,12 +229,11 @@ export default function EventManager() {
               </div>
 
               <div>
-                <Label htmlFor="image_url">Image URL</Label>
-                <Input
-                  id="image_url"
-                  value={formData.image_url}
-                  onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-                  placeholder="https://..."
+                <Label htmlFor="image_url">Event Image</Label>
+                <ImageUploadInput
+                  value={formData.image_url || ''}
+                  onChange={(url) => setFormData({ ...formData, image_url: url })}
+                  maxWidth={1600}
                 />
               </div>
 

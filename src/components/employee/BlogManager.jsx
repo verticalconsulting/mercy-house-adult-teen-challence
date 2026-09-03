@@ -12,6 +12,7 @@ import { Wand2, Loader2, Save, Sparkles, Globe, Facebook, Plus, Pencil, Trash2, 
 import { toast } from 'react-hot-toast';
 import { Checkbox } from '@/components/ui/checkbox';
 import { format } from 'date-fns';
+import ImageUploadInput from '@/components/ImageUploadInput';
 
 const categoryColors = {
   news: 'bg-blue-100 text-blue-800',
@@ -94,8 +95,13 @@ function PostForm({ post, onSave, onCancel, saving }) {
           <Input type="date" value={form.publish_date} onChange={e => update('publish_date', e.target.value)} className="mt-1" />
         </div>
         <div>
-          <Label>Featured Image URL</Label>
-          <Input value={form.featured_image || ''} onChange={e => update('featured_image', e.target.value)} className="mt-1" placeholder="https://..." />
+          <Label>Featured Image</Label>
+          <ImageUploadInput
+            value={form.featured_image || ''}
+            onChange={url => update('featured_image', url)}
+            maxWidth={1600}
+            className="mt-1"
+          />
         </div>
         <div className="md:col-span-2">
           <Label>Excerpt</Label>

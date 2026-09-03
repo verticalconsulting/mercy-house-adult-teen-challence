@@ -7,6 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import { Calendar, ArrowLeft, ArrowRight, Tag } from 'lucide-react';
 import { format } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
+import SocialShareButtons from '@/components/SocialShareButtons';
+import { useShareMeta } from '@/hooks/useShareMeta';
 
 const blogCategoryColors = {
   news: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
@@ -32,6 +34,13 @@ export default function BlogPostPage() {
       }
     },
     enabled: !!slug,
+  });
+
+  useShareMeta({
+    title: post?.title,
+    description: post?.excerpt,
+    image: post?.featured_image,
+    url: typeof window !== 'undefined' ? window.location.href : '',
   });
 
   if (isLoading) {
@@ -102,20 +111,26 @@ export default function BlogPostPage() {
             <ReactMarkdown>{post.content}</ReactMarkdown>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-            <Link to="/Events">
-              <Button
-                variant="outline"
-                className="border-navy text-navy dark:border-gold dark:text-gold hover:bg-navy hover:text-white dark:hover:bg-gold dark:hover:text-navy"
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" /> All News & Events
-              </Button>
-            </Link>
-            <Link to="/Donate">
-              <Button className="bg-gold text-navy hover:bg-gold-accessible hover:text-white">
-                Support Our Ministry <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
+          <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700 space-y-6">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.12em] text-gold-accessible mb-3">Share this story</p>
+              <SocialShareButtons url={typeof window !== 'undefined' ? window.location.href : ''} title={post.title} />
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+              <Link to="/Events">
+                <Button
+                  variant="outline"
+                  className="border-navy text-navy dark:border-gold dark:text-gold hover:bg-navy hover:text-white dark:hover:bg-gold dark:hover:text-navy"
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" /> All News & Events
+                </Button>
+              </Link>
+              <Link to="/Donate">
+                <Button className="bg-gold text-navy hover:bg-gold-accessible hover:text-white">
+                  Support Our Ministry <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MobileSelect } from '@/components/ui/mobile-select';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Calendar, Users, ExternalLink, Clock, MapPin, ArrowLeft, Newspaper } from 'lucide-react';
+import { Calendar, ExternalLink, Clock, MapPin, ArrowLeft, Newspaper } from 'lucide-react';
 import { format, isAfter, isBefore, startOfDay } from 'date-fns';
 import { SelectItem } from '@/components/ui/select';
 import PullToRefresh from '../components/PullToRefresh';
@@ -15,9 +14,9 @@ import PullToRefresh from '../components/PullToRefresh';
 export default function Events() {
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [dateFilter, setDateFilter] = useState('upcoming');
-  const [selectedEvent, setSelectedEvent] = useState(null);
   const [activeTab, setActiveTab] = useState('events'); // 'events' | 'blog'
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const { data: events, isLoading } = useQuery({
     queryKey: ['events'],
@@ -139,7 +138,7 @@ export default function Events() {
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredEvents.map((event) => (
-                  <Card key={event.id} className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer" onClick={() => setSelectedEvent(event)}>
+                  <Card key={event.id} className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer" onClick={() => navigate(`/Events/event/${event.id}`)}>
                     {event.image_url && (
                       <div className="h-48 overflow-hidden">
                         <img src={event.image_url} alt={event.title} className="w-full h-full object-cover" />
@@ -229,31 +228,6 @@ export default function Events() {
           </>
         )}
         </div>
-
-        {/* Event Detail Dialog */}
-        {selectedEvent && !selectedEvent._type && (
-          <Dialog open={!!selectedEvent} onOpenChange={() => setSelectedEvent(null)}>
-            <DialogContent className="max-w-lg">
-              <DialogHeader>
-                <Badge className={`w-fit mb-2 ${categoryColors[selectedEvent.category]}`}>{categoryLabels[selectedEvent.category]}</Badge>
-                <DialogTitle className="text-navy dark:text-gold text-xl">{selectedEvent.title}</DialogTitle>
-              </DialogHeader>
-              {selectedEvent.image_url && <img src={selectedEvent.image_url} alt={selectedEvent.title} className="w-full h-48 object-cover rounded-lg" />}
-              <div className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                <div className="flex items-center gap-2"><Calendar className="w-4 h-4 text-gold" />{format(new Date(selectedEvent.event_date), 'EEEE, MMMM d, yyyy')}</div>
-                <div className="flex items-center gap-2"><Clock className="w-4 h-4 text-gold" />{format(new Date(selectedEvent.event_date), 'h:mm a')}{selectedEvent.end_date && ` – ${format(new Date(selectedEvent.end_date), 'h:mm a')}`}</div>
-                {selectedEvent.location && <div className="flex items-center gap-2"><MapPin className="w-4 h-4 text-gold" />{selectedEvent.location}</div>}
-                {selectedEvent.capacity && <div className="flex items-center gap-2"><Users className="w-4 h-4 text-gold" />Capacity: {selectedEvent.capacity}</div>}
-              </div>
-              <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">{selectedEvent.description}</p>
-              {selectedEvent.registration_link && (
-                <a href={selectedEvent.registration_link} target="_blank" rel="noopener noreferrer">
-                  <Button className="w-full bg-navy dark:bg-gold text-white dark:text-navy">Register Now <ExternalLink className="w-4 h-4 ml-2" /></Button>
-                </a>
-              )}
-            </DialogContent>
-          </Dialog>
-        )}
 
       </div>
     </PullToRefresh>

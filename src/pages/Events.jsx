@@ -194,7 +194,7 @@ export default function Events() {
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {blogPosts.map((post) => (
-                  <Link key={post.id} to={`/events/${post.slug || post.id}`} className="group">
+                  <Link key={post.id} to={`/news/${post.slug || post.id}`} className="group">
                     <Card className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer h-full">
                       {post.featured_image && (
                         <div className="h-48 overflow-hidden">

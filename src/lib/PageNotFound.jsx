@@ -33,7 +33,7 @@ export default function PageNotFound() {
           <Link to="/" className="mh-cta-primary">
             <Home className="w-5 h-5" /> Return Home
           </Link>
-          <Link to="/intake-form" className="mh-cta-outline">
+          <Link to="/get-help-now" className="mh-cta-outline">
             <HeartHandshake className="w-5 h-5" /> Get Help / Admissions
           </Link>
         </div>

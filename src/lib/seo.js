@@ -3,10 +3,13 @@
  *
  * Titles follow the pattern: "Primary Keyword | Mercy House Adult & Teen Challenge".
  * Each route has a unique title (~50–60 chars) and description (~150–160 chars).
- * Admin/internal and duplicate-alias routes are marked `noindex: true`.
+ * Admin/internal routes are marked `noindex: true`.
+ *
+ * Keys/paths match the .org → .com canonical URL map final slugs so the SEO
+ * migration audit and the routing stay in lockstep.
  *
  * Consumed by <SeoManager /> in Layout, which looks up the current pathname.
- * Dynamic routes (e.g. /events/:slug, /events/event/:id) have no entry here —
+ * Dynamic routes (e.g. /news/:slug, /events/event/:id) have no entry here —
  * those pages set their own meta via useShareMeta.
  */
 export const pageSeo = {
@@ -16,11 +19,11 @@ export const pageSeo = {
       'Christ-centered residential recovery program in Mississippi helping men and women overcome addiction through faith, structure, and community. Get help today.',
     path: '/',
   },
-  '/about': {
+  '/what-we-do': {
     title: 'Our Mission & Story | Mercy House Adult & Teen Challenge',
     description:
       'Discover the mission behind Mercy House Adult & Teen Challenge — a Christ-centered 12-month residential recovery ministry bringing hope to men and women in Mississippi.',
-    path: '/about',
+    path: '/what-we-do',
   },
   '/contact': {
     title: 'Contact & Admissions | Mercy House Adult & Teen Challenge',
@@ -34,35 +37,36 @@ export const pageSeo = {
       'Your gift funds housing, meals, and Christ-centered care for men and women in residential recovery at Mercy House Adult & Teen Challenge. Give today and change a life.',
     path: '/donate',
   },
-  '/intake-form': {
+  '/get-help-now': {
     title: 'Admissions Application | Mercy House Adult & Teen Challenge',
     description:
       'Apply for residential recovery at Mercy House Adult & Teen Challenge. Start your faith-based addiction recovery journey in Mississippi today. Take the first step.',
-    path: '/intake-form',
+    path: '/get-help-now',
+    noindex: true,
   },
-  '/mens-campus': {
+  '/programs-locations/mens-campus': {
     title: "Men's Recovery Program | Mercy House Adult & Teen Challenge",
     description:
       "Our men's campus offers a Christ-centered residential recovery program for men seeking freedom from drug and alcohol addiction in Mississippi. Get help today.",
-    path: '/mens-campus',
+    path: '/programs-locations/mens-campus',
   },
-  '/womens-campus': {
+  '/programs-locations/womens-campus': {
     title: "Women's Recovery Program | Mercy House Adult & Teen Challenge",
     description:
       "Our women's campus provides a Christ-centered residential recovery program for women and mothers overcoming addiction and life-controlling issues. Get help today.",
-    path: '/womens-campus',
+    path: '/programs-locations/womens-campus',
   },
-  '/programs': {
+  '/programs-locations': {
     title: 'Recovery Programs | Mercy House Adult & Teen Challenge',
     description:
       'Explore the residential recovery programs at Mercy House Adult & Teen Challenge — faith-based addiction recovery for men and women in Mississippi. Find your path.',
-    path: '/programs',
+    path: '/programs-locations',
   },
-  '/comprehensive-approach': {
+  '/faith-based-program': {
     title: 'Our Comprehensive Approach | Mercy House Adult & Teen Challenge',
     description:
       "Discover Mercy House's comprehensive approach to recovery — faith, counseling, education, and workforce development for lasting life change. Take the first step.",
-    path: '/comprehensive-approach',
+    path: '/faith-based-program',
   },
   '/workforce-development': {
     title: 'Workforce Development | Mercy House Adult & Teen Challenge',
@@ -70,35 +74,35 @@ export const pageSeo = {
       'Mercy House Adult & Teen Challenge equips residents with job skills and work experience through social enterprises that fund recovery. Build a new future today.',
     path: '/workforce-development',
   },
-  '/testimonials': {
+  '/testimonies': {
     title: 'Stories of Hope | Mercy House Adult & Teen Challenge',
     description:
       'Read testimonies from graduates whose lives were transformed by Christ-centered residential recovery at Mercy House Adult & Teen Challenge. Find hope in their stories.',
-    path: '/testimonials',
+    path: '/testimonies',
   },
-  '/volunteer': {
+  '/get-involved': {
     title: 'Volunteer With Us | Mercy House Adult & Teen Challenge',
     description:
       'Lend your time and talents to Mercy House Adult & Teen Challenge — mentor, teach, and support faith-based recovery in Mississippi. Volunteer today and change a life.',
-    path: '/volunteer',
+    path: '/get-involved',
   },
-  '/sponsor-student': {
+  '/donate-sponsor-student': {
     title: 'Sponsor a Student | Mercy House Adult & Teen Challenge',
     description:
       "Sponsor a student through Mercy House Adult & Teen Challenge and directly fund a man or woman's Christ-centered residential recovery. Change a life today.",
-    path: '/sponsor-student',
+    path: '/donate-sponsor-student',
   },
-  '/recurring-donation': {
+  '/donate/monthly': {
     title: 'Recurring Giving | Mercy House Adult & Teen Challenge',
     description:
       'Become a monthly giver to Mercy House Adult & Teen Challenge and provide steady support for faith-based addiction recovery. Set up your recurring gift today.',
-    path: '/recurring-donation',
+    path: '/donate/monthly',
   },
-  '/freedom-classic': {
+  '/golf-tournament': {
     title: 'Freedom Classic Golf Tournament | Mercy House Adult & Teen Challenge',
     description:
       'Join the Freedom Classic golf tournament benefiting Mercy House Adult & Teen Challenge. Sponsor or register a team and support faith-based recovery. Sign up today.',
-    path: '/freedom-classic',
+    path: '/golf-tournament',
   },
   '/teen-challenge-story': {
     title: 'The Teen Challenge Story | Mercy House Adult & Teen Challenge',
@@ -130,17 +134,17 @@ export const pageSeo = {
       'Explore career opportunities at Mercy House Adult & Teen Challenge. Join a Christ-centered team serving men and women in residential recovery. Apply today.',
     path: '/careers',
   },
-  '/internship': {
+  '/get-involved/internship': {
     title: 'Internship Program | Mercy House Adult & Teen Challenge',
     description:
       'Apply for the internship program at Mercy House Adult & Teen Challenge and grow in ministry, service, and Christ-centered leadership. Take the first step today.',
-    path: '/internship',
+    path: '/get-involved/internship',
   },
-  '/media-resources': {
+  '/media': {
     title: 'Media Resources | Mercy House Adult & Teen Challenge',
     description:
       'Access photos, videos, and press resources from Mercy House Adult & Teen Challenge — a faith-based recovery ministry in Mississippi. Download and share.',
-    path: '/media-resources',
+    path: '/media',
   },
   '/faq': {
     title: 'Frequently Asked Questions | Mercy House Adult & Teen Challenge',
@@ -148,11 +152,11 @@ export const pageSeo = {
       'Get answers about Mercy House Adult & Teen Challenge — admissions, program length, costs, and what to expect from faith-based residential recovery. Get help today.',
     path: '/faq',
   },
-  '/meet-the-team': {
+  '/meet-our-team': {
     title: 'Our Leadership & Board | Mercy House Adult & Teen Challenge',
     description:
       'Meet the leadership team and board of directors guiding Mercy House Adult & Teen Challenge in its Christ-centered recovery mission in Mississippi. Learn more.',
-    path: '/meet-the-team',
+    path: '/meet-our-team',
   },
   '/financials': {
     title: 'Financials & Transparency | Mercy House Adult & Teen Challenge',
@@ -166,17 +170,17 @@ export const pageSeo = {
       'Read the privacy policy for Mercy House Adult & Teen Challenge — how we collect, use, and protect your information on our faith-based recovery website.',
     path: '/privacy-policy',
   },
-  '/terms-conditions': {
+  '/terms-of-use': {
     title: 'Terms & Conditions | Mercy House Adult & Teen Challenge',
     description:
       'Review the terms and conditions for using the Mercy House Adult & Teen Challenge website and supporting our faith-based recovery ministry. Read the details.',
-    path: '/terms-conditions',
+    path: '/terms-of-use',
   },
-  '/help-for-dependency-abuse': {
+  '/freedom-from-addiction-starts-here': {
     title: 'Help for Dependency & Abuse | Mercy House Adult & Teen Challenge',
     description:
       'Find help for drug and alcohol dependency at Mercy House Adult & Teen Challenge, a Christ-centered residential recovery program in Mississippi. Get help today.',
-    path: '/help-for-dependency-abuse',
+    path: '/freedom-from-addiction-starts-here',
   },
   '/thrift-store': {
     title: 'SuperThrift Store | Mercy House Adult & Teen Challenge',
@@ -184,26 +188,27 @@ export const pageSeo = {
       'Shop at SuperThrift, a social enterprise of Mercy House Adult & Teen Challenge where every purchase funds faith-based recovery. Shop with purpose today.',
     path: '/thrift-store',
   },
-  '/vehicle-donation': {
+  '/vehicle-donation-program': {
     title: 'Donate Your Vehicle | Mercy House Adult & Teen Challenge',
     description:
       'Donate your car, truck, or boat to Mercy House Adult & Teen Challenge and turn an unused vehicle into housing and care for someone in recovery. Donate today.',
-    path: '/vehicle-donation',
+    path: '/vehicle-donation-program',
   },
-  '/vehicle-donation-form': {
+  '/vehicle-donation-program/form': {
     title: 'Vehicle Donation Form | Mercy House Adult & Teen Challenge',
     description:
       'Start your vehicle donation to Mercy House Adult & Teen Challenge — free pickup, tax-deductible receipt, and support for faith-based recovery. Donate today.',
-    path: '/vehicle-donation-form',
+    path: '/vehicle-donation-program/form',
+    noindex: true,
   },
-  '/womens-campus-gallery': {
+  '/programs-locations/womens-campus/gallery': {
     title: "Women's Campus Gallery | Mercy House Adult & Teen Challenge",
     description:
       "View photos of the women's campus at Mercy House Adult & Teen Challenge — a Christ-centered residential recovery home in Mississippi. See our community.",
-    path: '/womens-campus-gallery',
+    path: '/programs-locations/womens-campus/gallery',
   },
 
-  // ---- Admin / internal / duplicate-alias routes: indexed off, simple titles ----
+  // ---- Admin / internal routes: indexed off, simple titles ----
   '/employee-portal': {
     title: 'Employee Portal | Mercy House Adult & Teen Challenge',
     description: 'Staff portal for Mercy House Adult & Teen Challenge volunteers and employees.',
@@ -227,18 +232,6 @@ export const pageSeo = {
     description:
       'Christ-centered residential recovery program in Mississippi helping men and women overcome addiction through faith, structure, and community. Get help today.',
     path: '/',
-    noindex: true,
-  },
-  '/micro-businesses': {
-    title: 'Micro-Businesses | Mercy House Adult & Teen Challenge',
-    description: 'Social enterprises of Mercy House Adult & Teen Challenge that fund faith-based recovery.',
-    path: '/workforce-development',
-    noindex: true,
-  },
-  '/DependancyHelp': {
-    title: 'Help for Dependency | Mercy House Adult & Teen Challenge',
-    description: 'Find help for dependency at Mercy House Adult & Teen Challenge.',
-    path: '/help-for-dependency-abuse',
     noindex: true,
   },
 };

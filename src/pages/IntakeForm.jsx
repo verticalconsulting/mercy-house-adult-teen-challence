@@ -291,7 +291,7 @@ export default function IntakeForm() {
                 Call (601) 720-3718
               </a>
               <Link
-                to="/DependancyHelp"
+                to="/freedom-from-addiction-starts-here"
                 className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md border-2 border-white/70 px-6 py-2 font-bold text-white transition-colors hover:bg-white hover:text-navy"
               >
                 Learn More About Getting Help

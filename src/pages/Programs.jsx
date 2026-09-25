@@ -7,7 +7,7 @@ const programs = [
 {
   name: "Men's Program",
   location: 'Georgetown, MS',
-  path: '/mens-campus',
+  path: '/programs-locations/mens-campus',
   image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b0adcea4-39fa-4c4c-9fcd-4a85031ac400/small',
   desc: "A structured 12-month residential Christian discipleship program for men struggling with life-controlling and dependency issues. Rooted in faith, accountability, and genuine community, the program takes place on our peaceful 14-acre campus.",
   features: ['12-Month Residential Program', 'Biblical Discipleship & Life-Skills Development', 'Work Therapy & Vocational Training', 'Mentorship & Accountability', 'Family Restoration', 'Re-entry & Transitional Support']
@@ -15,7 +15,7 @@ const programs = [
 {
   name: "Women's Program",
   location: 'Learned, MS',
-  path: '/womens-campus',
+  path: '/programs-locations/womens-campus',
   image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/6967250f-138f-4d93-b91a-f375dfd4ab00/small',
   desc: "A safe, supportive residential environment for women ready to pursue freedom from life-controlling and dependency issues through a Christ-centered program designed for their unique journey.",
   features: ['12-Month Residential Program', 'Trauma-Informed Support & Biblical Counseling', 'Life-Skills Training', 'Spiritual Growth', 'Community & Mentorship']
@@ -239,7 +239,7 @@ export default function Programs() {
                   (601) 720-3718
                 </a>{' '}
                 or{' '}
-                <Link to="/intake-form" className="text-navy dark:text-gold hover:underline font-semibold">
+                <Link to="/get-help-now" className="text-navy dark:text-gold hover:underline font-semibold">
                   submit an application online
                 </Link>
                 .
@@ -258,7 +258,7 @@ export default function Programs() {
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
               Reaching out is the hardest part. We've kept the process as simple as possible — no paperwork walls, no runaround. Just a real conversation with people who understand.
             </p>
-            <Link to="/help-for-dependency-abuse" className="text-navy dark:text-gold hover:underline font-semibold mt-4 inline-block">
+            <Link to="/freedom-from-addiction-starts-here" className="text-navy dark:text-gold hover:underline font-semibold mt-4 inline-block">
               Learn more about help for dependency and abuse →
             </Link>
           </div>
@@ -303,7 +303,7 @@ export default function Programs() {
         heading="Take the First Step Today"
         subtext="Freedom is possible. Our team is ready to walk with you — one step at a time."
         primaryLabel="Apply for the Program"
-        primaryTo="/intake-form"
+        primaryTo="/get-help-now"
         secondaryLabel="Contact Us"
         secondaryTo="/contact" />
       

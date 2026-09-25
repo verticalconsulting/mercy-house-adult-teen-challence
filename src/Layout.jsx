@@ -12,6 +12,7 @@ import ScrollRestoration from './components/ScrollRestoration';
 import MobileBottomNav from './components/MobileBottomNav';
 import FloatingAIChat from './components/FloatingAIChat';
 import SeoManager from './components/SeoManager';
+import { useOrganizationSchema } from './hooks/useOrganizationSchema';
 import { base44 } from '@/api/base44Client';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 
@@ -27,6 +28,8 @@ export default function Layout({ children, currentPageName }) {
 
   const [canGoBack, setCanGoBack] = useState(false);
   const prefersReducedMotion = useReducedMotion();
+
+  useOrganizationSchema();
 
   useEffect(() => {
     setCanGoBack(window.history.length > 1 && currentPageName !== 'Home');
@@ -51,7 +54,7 @@ export default function Layout({ children, currentPageName }) {
     directPath: createPageUrl('ComprehensiveApproach'),
     submenu: [
     { name: 'Our Comprehensive Approach', directPath: createPageUrl('ComprehensiveApproach') },
-    { name: 'Workforce Development', directPath: createPageUrl('WorkforceDevelopment'), submenu: [
+    { name: 'Workforce Development', directPath: createPageUrl('MicroBusinesses'), submenu: [
       { name: 'SuperThrift', href: 'https://mercyhouseatc.superthriftdeals.org', external: true },
       { name: 'Vehicle Donation Program', href: 'https://vehicledonationms.com', external: true },
       { name: 'Products with a Purpose', href: 'https://www.productwithapurpose.org/', external: true },
@@ -69,7 +72,7 @@ export default function Layout({ children, currentPageName }) {
     { name: 'Volunteer', path: 'Volunteer' },
     { name: 'Sponsor a Student', path: 'SponsorStudent' },
     { name: 'Intake Application Fee', directPath: createPageUrl('Donate') },
-    { name: 'Make a Recurring Donation', path: 'Donate' },
+    { name: 'Make a Recurring Donation', path: 'RecurringDonation' },
     { name: 'Freedom Classic Golf Tournament', directPath: createPageUrl('FreedomClassic') }]
   },
   {
@@ -112,7 +115,7 @@ export default function Layout({ children, currentPageName }) {
             }
 
             {/* Logo — centered on desktop */}
-            <Link to={createPageUrl('Home')} className="flex items-center group lg:absolute lg:left-1/2 lg:-translate-x-1/2">
+            <Link to="/" className="flex items-center group lg:absolute lg:left-1/2 lg:-translate-x-1/2">
               <img
                 src="https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/f6308df5-e751-45c6-6b95-9631b3eb7800/menulogo"
                 alt="Mercy House"
@@ -380,7 +383,7 @@ export default function Layout({ children, currentPageName }) {
                 <li><Link to={createPageUrl('WomensCampus')} className="text-slate-300 hover:text-gold transition-colors">Women's Campus</Link></li>
                 <li><Link to={createPageUrl('MensCampus')} className="text-slate-300 hover:text-gold transition-colors">Men's Campus</Link></li>
                 <li><Link to={createPageUrl('Events')} className="text-slate-300 hover:text-gold transition-colors">Events</Link></li>
-                <li><Link to={createPageUrl('WorkforceDevelopment')} className="text-slate-300 hover:text-gold transition-colors">Workforce Development</Link></li>
+                <li><Link to={createPageUrl('MicroBusinesses')} className="text-slate-300 hover:text-gold transition-colors">Workforce Development</Link></li>
                 <li><Link to={createPageUrl('News')} className="text-slate-300 hover:text-gold transition-colors">News</Link></li>
                 <li><Link to={createPageUrl('Volunteer')} className="text-slate-300 hover:text-gold transition-colors">Volunteer</Link></li>
                 <li><Link to={createPageUrl('About')} className="text-slate-300 hover:text-gold transition-colors">About Us</Link></li>
@@ -448,7 +451,7 @@ export default function Layout({ children, currentPageName }) {
               <Link to={createPageUrl('IntakeForm')} className="hover:text-gold transition-colors">Apply for Program</Link>
               <Link to={createPageUrl('PrivacyPolicy')} className="hover:text-gold transition-colors">Privacy Policy</Link>
               <Link to={createPageUrl('TermsConditions')} className="hover:text-gold transition-colors">Terms &amp; Conditions</Link>
-              <Link to="/help-for-dependency-abuse" className="hover:text-gold transition-colors">Help for Dependency</Link>
+              <Link to="/freedom-from-addiction-starts-here" className="hover:text-gold transition-colors">Help for Dependency</Link>
               <Link to={createPageUrl('About')} className="hover:text-gold transition-colors">About Us</Link>
               <Link to={createPageUrl('Programs')} className="hover:text-gold transition-colors">Programs</Link>
               <a href="https://drive.google.com/file/d/1nXKBoDu9NBTjiLXgmkfHXEZwMIurUxRb/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">2024 Annual Report</a>

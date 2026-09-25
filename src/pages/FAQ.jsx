@@ -83,7 +83,7 @@ const FAQ_SECTIONS = [
             You can start by calling our intake coordinator at{' '}
             <a href="tel:6017203718" className="text-navy font-semibold hover:underline">{INTAKE_PHONE}</a> or by
             completing our secure online{' '}
-            <Link to="/intake-form" className="text-navy font-semibold hover:underline">Intake Application</Link>. Our
+            <Link to="/get-help-now" className="text-navy font-semibold hover:underline">Intake Application</Link>. Our
             intake staff will walk you through admission requirements and answer any questions.
           </>
         ),
@@ -181,7 +181,7 @@ const FAQ_SECTIONS = [
         answer: (
           <>
             Absolutely — yes. You can{' '}
-            <Link to="/sponsor-student" className="text-navy font-semibold hover:underline">sponsor a student</Link>{' '}
+            <Link to="/donate-sponsor-student" className="text-navy font-semibold hover:underline">sponsor a student</Link>{' '}
             directly or give toward intake fees through our{' '}
             <Link to="/donate" className="text-navy font-semibold hover:underline">donation page</Link>.
             Sponsorship is one of the most direct ways to put a person through the door who couldn't otherwise afford it.
@@ -278,7 +278,7 @@ const FAQ_SECTIONS = [
             <a href="tel:6017203718" className="text-navy font-semibold hover:underline">{INTAKE_PHONE}</a>. We'll
             listen, answer your questions honestly, and help you understand whether Mercy House is the right fit and
             what next steps look like. You can also read our{' '}
-            <Link to="/help-for-dependency-abuse" className="text-navy font-semibold hover:underline">help for dependency &amp; abuse</Link>{' '}
+            <Link to="/freedom-from-addiction-starts-here" className="text-navy font-semibold hover:underline">help for dependency &amp; abuse</Link>{' '}
             page.
           </>
         ),
@@ -313,7 +313,7 @@ const FAQ_SECTIONS = [
         question: 'Can I donate my vehicle?',
         answer: (
           <>
-            Yes. Our <Link to="/vehicle-donation" className="text-navy font-semibold hover:underline">Vehicle Donation Program</Link>{' '}
+            Yes. Our <Link to="/vehicle-donation-program" className="text-navy font-semibold hover:underline">Vehicle Donation Program</Link>{' '}
             accepts running and non-running vehicles. Proceeds directly support the ministry, and we handle the
             pickup and paperwork — including your tax-deductible receipt.
           </>
@@ -323,7 +323,7 @@ const FAQ_SECTIONS = [
         question: 'How can I volunteer?',
         answer: (
           <>
-            We'd love to have you. Visit our <Link to="/volunteer" className="text-navy font-semibold hover:underline">Volunteer page</Link>{' '}
+            We'd love to have you. Visit our <Link to="/get-involved" className="text-navy font-semibold hover:underline">Volunteer page</Link>{' '}
             to share your availability and areas of interest — from mentoring and tutoring to the kitchen, thrift
             store, auto academy, events, and more. A background check is required for most roles.
           </>
@@ -333,8 +333,8 @@ const FAQ_SECTIONS = [
         question: 'Where are the Mercy House campuses located?',
         answer: (
           <>
-            We have two Mississippi campuses: the <Link to="/mens-campus" className="text-navy font-semibold hover:underline">Men's Campus</Link>{' '}
-            in Georgetown and the <Link to="/womens-campus" className="text-navy font-semibold hover:underline">Women's Campus</Link>{' '}
+            We have two Mississippi campuses: the <Link to="/programs-locations/mens-campus" className="text-navy font-semibold hover:underline">Men's Campus</Link>{' '}
+            in Georgetown and the <Link to="/programs-locations/womens-campus" className="text-navy font-semibold hover:underline">Women's Campus</Link>{' '}
             in Learned. See our <Link to="/contact" className="text-navy font-semibold hover:underline">Contact page</Link> for addresses and directions.
           </>
         ),
@@ -442,7 +442,7 @@ export default function FAQ() {
         heading="Still Have Questions?"
         subtext="Our intake coordinator is ready to listen, answer honestly, and help you find the right next step — for yourself or someone you love."
         primaryLabel="Apply for the Program"
-        primaryTo="/intake-form"
+        primaryTo="/get-help-now"
         secondaryLabel="Contact Us"
         secondaryTo="/contact" />
 

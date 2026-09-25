@@ -157,7 +157,7 @@ export default function About() {
         primaryLabel="Contact Us"
         primaryTo="/contact"
         secondaryLabel="Explore Programs"
-        secondaryTo="/programs" />
+        secondaryTo="/programs-locations" />
       
     </div>);
 

@@ -30,6 +30,14 @@ export default function Testimonials() {
           <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             Hear from graduates whose lives have been forever changed through faith, community, and perseverance.
           </p>
+          <div className="flex justify-center mb-8">
+            <img
+              src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/f6447f59c_Guyincar.webp"
+              alt="Mercy House alumnus giving a thumbs up in his work van"
+              className="rounded-2xl shadow-lg max-w-md w-full object-cover"
+              loading="lazy"
+            />
+          </div>
           <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mt-6 leading-relaxed">
             It&rsquo;s good to see our alumni out working and staying successful! The hard work begins when they graduate and have to live out the life they learned while with us! Keep him in your prayers and thank you everyone for the support in helping guys like him succeed! 🙌🏻🙏🙏 We want to instill in our men the value of family and becoming the man God created them to be. A lot of healing has to take place but we love seeing families being restored! 🙌🏻🙏
           </p>

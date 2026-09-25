@@ -44,6 +44,20 @@ export default function Testimonials() {
           <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mt-6 leading-relaxed">
             It&rsquo;s good to see our alumni out working and staying successful! The hard work begins when they graduate and have to live out the life they learned while with us! Keep him in your prayers and thank you everyone for the support in helping guys like him succeed! 🙌🏻🙏🙏 We want to instill in our men the value of family and becoming the man God created them to be. A lot of healing has to take place but we love seeing families being restored! 🙌🏻🙏
           </p>
+          <p className="text-2xl md:text-3xl font-bold text-navy dark:text-gold mt-10 mb-4">
+            A Life Restored!
+          </p>
+          <div className="flex justify-center mb-4">
+            <img
+              src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/e2e2a34d1_Billyrehab.webp"
+              alt="Mercy House graduate Billy enjoying time outdoors with his children"
+              className="rounded-2xl shadow-lg max-w-md w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mt-6 leading-relaxed">
+            We love seeing photos of our graduates! Billy&rsquo;s life has been restored, and he now gets to enjoy making memories with his children! 🙌🏻🇺🇸❤️🙌🏾 We&rsquo;re proud of you, Billy!
+          </p>
         </div>
 
         {/* Testimonials Grid */}

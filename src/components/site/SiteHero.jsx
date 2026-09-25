@@ -19,7 +19,7 @@ export default function SiteHero({
   headlineBreak,
   body,
   primaryLabel = 'Start Your Journey',
-  primaryTo = '/help-for-dependency-abuse',
+  primaryTo = '/freedom-from-addiction-starts-here',
   secondaryLabel = 'Donate',
   secondaryTo = '/donate',
   reassurance,

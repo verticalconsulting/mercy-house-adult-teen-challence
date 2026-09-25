@@ -69,7 +69,9 @@ const AuthenticatedApp = () => {
           <MainPage />
         </LayoutWrapper>
       } />
-      {Object.entries(Pages).map(([path, Page]) => (
+      {Object.entries(Pages)
+        .filter(([path]) => path !== 'MicroBusinesses')
+        .map(([path, Page]) => (
         <Route
           key={path}
           path={createPageUrl(path)}
@@ -88,20 +90,19 @@ const AuthenticatedApp = () => {
       <Route path={createPageUrl('Programs')} element={<LayoutWrapper currentPageName="Programs"><Programs /></LayoutWrapper>} />
       <Route path={createPageUrl('PrivacyPolicy')} element={<LayoutWrapper currentPageName="PrivacyPolicy"><PrivacyPolicy /></LayoutWrapper>} />
       <Route path={createPageUrl('TermsConditions')} element={<LayoutWrapper currentPageName="TermsConditions"><TermsConditions /></LayoutWrapper>} />
-      <Route path="/help-for-dependency-abuse" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
-      <Route path="/DependancyHelp" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
+      <Route path="/freedom-from-addiction-starts-here" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
       <Route path={createPageUrl('FreedomClassic')} element={<LayoutWrapper currentPageName="FreedomClassic"><FreedomClassic /></LayoutWrapper>} />
       <Route path={createPageUrl('TeenChallengeStory')} element={<LayoutWrapper currentPageName="TeenChallengeStory"><TeenChallengeStory /></LayoutWrapper>} />
       <Route path={createPageUrl('News')} element={<LayoutWrapper currentPageName="News"><News /></LayoutWrapper>} />
       <Route path={createPageUrl('WomensCenterCalendar')} element={<LayoutWrapper currentPageName="WomensCenterCalendar"><WomensCenterCalendar /></LayoutWrapper>} />
-      <Route path={createPageUrl('WorkforceDevelopment')} element={<LayoutWrapper currentPageName="WorkforceDevelopment"><MicroBusinesses /></LayoutWrapper>} />
+      <Route path={createPageUrl('MicroBusinesses')} element={<LayoutWrapper currentPageName="MicroBusinesses"><MicroBusinesses /></LayoutWrapper>} />
       <Route path={createPageUrl('ComprehensiveApproach')} element={<LayoutWrapper currentPageName="ComprehensiveApproach"><ComprehensiveApproach /></LayoutWrapper>} />
       <Route path={createPageUrl('Careers')} element={<LayoutWrapper currentPageName="Careers"><Careers /></LayoutWrapper>} />
       <Route path={createPageUrl('Internship')} element={<LayoutWrapper currentPageName="Internship"><Internship /></LayoutWrapper>} />
       <Route path={createPageUrl('MediaResources')} element={<LayoutWrapper currentPageName="MediaResources"><MediaResources /></LayoutWrapper>} />
       <Route path={createPageUrl('FAQ')} element={<LayoutWrapper currentPageName="FAQ"><FAQ /></LayoutWrapper>} />
       <Route path="/events/event/:id" element={<LayoutWrapper currentPageName="EventDetailPage"><EventDetailPage /></LayoutWrapper>} />
-      <Route path="/events/:slug" element={<LayoutWrapper currentPageName="BlogPostPage"><BlogPostPage /></LayoutWrapper>} />
+      <Route path="/news/:slug" element={<LayoutWrapper currentPageName="BlogPostPage"><BlogPostPage /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

@@ -135,7 +135,7 @@ export default function ComprehensiveApproach() {
         heading="Take the First Step Today"
         subtext="Freedom is possible. Our team is ready to walk with you \u2014 one step at a time."
         primaryLabel="Apply for the Program"
-        primaryTo="/intake-form"
+        primaryTo="/get-help-now"
         secondaryLabel="Contact Us"
         secondaryTo="/contact"
       />

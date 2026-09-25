@@ -97,13 +97,13 @@ const programs = [
     name: 'Families & loved ones',
     description:
       'You are not the only one carrying this. Find out what help looks like when the person you love is the one struggling.',
-    to: '/help-for-dependency-abuse',
+    to: '/freedom-from-addiction-starts-here',
   },
   {
     name: 'Our comprehensive approach',
     description:
       'The five foundations of freedom, our four key program areas, and the phased structure a resident moves through over twelve months.',
-    to: '/programs',
+    to: '/programs-locations',
   },
 ];
 
@@ -116,7 +116,7 @@ const faqs = [
         95% of the men at our facility attend at no cost — housing, meals, discipleship resources and
         program support are provided through our donors and micro-businesses. If cost is a barrier,
         call us anyway;{' '}
-        <Link to="/programs" className="font-semibold text-navy underline dark:text-gold">
+        <Link to="/programs-locations" className="font-semibold text-navy underline dark:text-gold">
           the full details are on our Programs page
         </Link>
         .

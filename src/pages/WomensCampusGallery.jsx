@@ -139,7 +139,7 @@ export default function WomensCampusGallery() {
       <section className="py-8 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <Link
-            to="/womens-campus"
+            to="/programs-locations/womens-campus"
             className="inline-flex items-center gap-2 text-navy dark:text-gold font-medium hover:underline"
           >
             <ArrowLeft className="w-4 h-4" />

@@ -233,7 +233,7 @@ export default function HelpForDependency() {
               Call (601) 720-3718
             </a>
             <Link
-              to="/intake-form"
+              to="/get-help-now"
               className="inline-flex items-center justify-center gap-2 bg-navy dark:bg-slate-700 hover:bg-navy/90 text-white font-bold px-8 py-4 rounded-lg text-lg transition-colors"
             >
               Apply for the Program <ArrowRight className="w-5 h-5" />
@@ -248,7 +248,7 @@ export default function HelpForDependency() {
         primaryLabel="Call Intake: (601) 720-3718"
         primaryTo="/contact"
         secondaryLabel="Learn About Our Programs"
-        secondaryTo="/programs"
+        secondaryTo="/programs-locations"
       />
     </div>
   );

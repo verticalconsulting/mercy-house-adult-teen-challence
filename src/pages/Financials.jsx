@@ -195,7 +195,7 @@ export default function Financials() {
         primaryLabel="Donate Now"
         primaryTo="/donate"
         secondaryLabel="Learn About Our Programs"
-        secondaryTo="/programs"
+        secondaryTo="/programs-locations"
       />
     </div>
   );

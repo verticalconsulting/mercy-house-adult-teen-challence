@@ -5,7 +5,7 @@ import { pageSeo } from '@/lib/seo';
 /**
  * Reads the current route and applies that route's SEO metadata.
  * Place once inside Layout so every Layout-wrapped route is covered.
- * Routes with no entry here (dynamic pages like /Events/:slug) are skipped
+ * Routes with no entry here (dynamic pages like /news/:slug) are skipped
  * so the page can set its own meta via useShareMeta.
  */
 export default function SeoManager() {

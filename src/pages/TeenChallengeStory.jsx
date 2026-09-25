@@ -160,7 +160,7 @@ export default function TeenChallengeStory() {
                 <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
               </Button>
             </Link>
-            <Link to={createPageUrl('Home')}>
+            <Link to={createPageUrl('Programs')}>
               <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-5 text-base font-semibold">
                 Explore Our Programs
               </Button>

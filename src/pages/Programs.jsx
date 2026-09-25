@@ -99,7 +99,7 @@ export default function Programs() {
             {programs.map((prog) =>
             <div key={prog.name} className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg flex flex-col">
                 <div className="h-64 overflow-hidden">
-                  <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/ed80f89de_Faith-Based-what-we-do-social-meta.webp" alt={prog.name} className="w-full h-full object-cover" />
+                  <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/054023a0b_womensministry.jpg" alt={prog.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="p-8 flex flex-col flex-1">
                   <p className="text-gold text-sm font-semibold mb-1">{prog.location}</p>

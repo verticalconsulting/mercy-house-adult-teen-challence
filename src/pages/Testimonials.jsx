@@ -79,11 +79,7 @@ export default function Testimonials() {
           <div className="text-center text-slate-500 py-12">Loading testimonials...</div>
         )}
 
-        {!isLoading && testimonials.length === 0 && (
-          <div className="text-center text-slate-500 py-12">
-            No testimonials available yet.
-          </div>
-        )}
+
       </div>
       </div>
     </PullToRefresh>

@@ -79,15 +79,15 @@ export default function MicroBusinesses() {
                 title: 'SuperThrift',
                 emoji: '🏪',
                 description: 'Community thrift store offering quality secondhand goods while training residents in retail operations, customer service, and inventory management.',
-                href: 'https://mercyhouseatc.superthriftdeals.org',
+                href: 'https://superthriftdeals.org',
                 external: true
               },
               {
                 title: 'Vehicle Donation',
                 emoji: '🚗',
                 description: 'Accepting vehicle donations to support our mission. Provides tax benefits to donors and funding for our programs.',
-                href: 'https://mercyhouseatc.vehicledonationms.org',
-                external: false
+                href: 'https://vehicledonationms.com',
+                external: true
               },
               {
                 title: 'Mercy House Auto Center',
@@ -100,14 +100,14 @@ export default function MicroBusinesses() {
                 title: 'Product With A Purpose',
                 emoji: '📦',
                 description: 'Specialty products crafted by residents, combining quality craftsmanship with purpose. Every purchase directly supports the Mercy House mission and resident development.',
-                path: 'ProductsPurpose',
-                external: false
+                href: 'https://www.productwithapurpose.org/',
+                external: true
               },
               {
                 title: 'Mercy House Elite Gutters',
                 emoji: '🏠',
                 description: 'A full-service seamless gutter, downspout, and leaf guard installation company based in Brandon, MS. Residents receive hands-on job training in gutter system design, installation, cleaning, and maintenance — building real-world trade skills and work ethic. Backed by a 5-Year Craftsmanship Guarantee.',
-                href: 'https://myelitegutters.com',
+                href: 'https://www.myelitegutters.com/',
                 external: true
               }
             ].map((business, idx) => (

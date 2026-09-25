@@ -26,7 +26,15 @@ export default function Testimonials() {
           {/* Billy Graham Endorsement — left column */}
           <aside className="lg:col-span-1 lg:sticky lg:top-24">
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 border-l-4 border-gold">
-              <Quote className="w-10 h-10 text-gold mb-4" />
+              <div className="flex items-center gap-4 mb-4">
+                <img
+                  src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4d4d08711_billyg.png"
+                  alt="Billy Graham"
+                  className="w-20 h-20 rounded-full object-cover ring-2 ring-gold/40 shrink-0"
+                  loading="lazy"
+                />
+                <Quote className="w-10 h-10 text-gold shrink-0" />
+              </div>
               <blockquote className="text-lg md:text-xl text-slate-700 dark:text-slate-200 italic leading-relaxed mb-6">
                 &ldquo;I&rsquo;ve believed in this ministry since its very beginning. And I continue to support it. I consider it a real privilege to endorse this work. Thank God for Teen Challenge!&rdquo;
               </blockquote>

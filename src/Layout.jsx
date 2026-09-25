@@ -11,6 +11,7 @@ import TrustBar from './components/TrustBar';
 import ScrollRestoration from './components/ScrollRestoration';
 import MobileBottomNav from './components/MobileBottomNav';
 import FloatingAIChat from './components/FloatingAIChat';
+import SeoManager from './components/SeoManager';
 import { base44 } from '@/api/base44Client';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 
@@ -93,6 +94,7 @@ export default function Layout({ children, currentPageName }) {
       </a>
       <ScrollToTop />
       <ScrollRestoration />
+      <SeoManager />
       <TrustBar />
       {/* Header */}
       <header className="bg-white dark:bg-slate-900 sticky top-0 z-50 transition-colors duration-300 shadow-sm" style={{ paddingTop: 'env(safe-area-inset-top)' }}>

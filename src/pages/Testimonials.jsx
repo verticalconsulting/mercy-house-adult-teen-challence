@@ -47,6 +47,30 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
+
+            {/* Phil Bryant Endorsement */}
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 border-l-4 border-gold mt-6">
+              <Quote className="w-10 h-10 text-gold mb-4" />
+              <blockquote className="text-lg md:text-xl text-slate-700 dark:text-slate-200 italic leading-relaxed mb-6">
+                &ldquo;It is a pleasure to extend most sincere congratulations to Teen Challenge of Mississippi on their outstanding work in assisting Mississippi individuals who struggle with alcohol and/or drug problems&hellip;I wish Teen Challenge of Mississippi much continued success and appreciate the service they provide to the people of Mississippi.&rdquo;
+              </blockquote>
+              <div className="border-t border-slate-200 dark:border-slate-700 pt-4 flex items-center gap-4">
+                <img
+                  src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/0b0528836_philb.png"
+                  alt="Phil Bryant"
+                  className="w-16 h-16 rounded-full object-cover ring-2 ring-gold/40 shrink-0"
+                  loading="lazy"
+                />
+                <div>
+                  <p className="font-bold text-navy dark:text-gold text-lg">
+                    Phil Bryant
+                  </p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                    Former Governor of Mississippi
+                  </p>
+                </div>
+              </div>
+            </div>
           </aside>
 
           {/* Main hero content — right column */}

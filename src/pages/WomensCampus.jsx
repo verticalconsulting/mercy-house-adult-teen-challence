@@ -345,7 +345,7 @@ export default function WomensCampus() {
             </div>
           )}
           <div className="text-center mt-10">
-            <Link to="/WomensCampusGallery">
+            <Link to="/womens-campus-gallery">
               <Button variant="outline" className="border-navy text-navy dark:border-gold dark:text-gold font-semibold px-8 py-4 text-lg">
                 View Full Gallery
                 <ArrowRight className="ml-2 w-5 h-5" />

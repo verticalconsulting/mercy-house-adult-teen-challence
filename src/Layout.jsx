@@ -36,50 +36,50 @@ export default function Layout({ children, currentPageName }) {
   {
     name: 'About Us',
     path: 'About',
-    directPath: '/About',
+    directPath: createPageUrl('About'),
     submenu: [
-    { name: 'The Teen Challenge Story', directPath: '/TeenChallengeStory' },
+    { name: 'The Teen Challenge Story', directPath: createPageUrl('TeenChallengeStory') },
     { name: 'Our Leadership Team & Board of Directors', path: 'MeetTheTeam' },
-    { name: 'Our Mission, Culture & Values', directPath: '/About' },
-    { name: 'News and Events', directPath: '/Events' },
-    { name: 'Careers', directPath: '/Careers' },
-    { name: 'Media Resources', directPath: '/MediaResources' }]
+    { name: 'Our Mission, Culture & Values', directPath: createPageUrl('About') },
+    { name: 'News and Events', directPath: createPageUrl('Events') },
+    { name: 'Careers', directPath: createPageUrl('Careers') },
+    { name: 'Media Resources', directPath: createPageUrl('MediaResources') }]
   },
   {
     name: 'Our Approach',
     path: 'ComprehensiveApproach',
-    directPath: '/ComprehensiveApproach',
+    directPath: createPageUrl('ComprehensiveApproach'),
     submenu: [
-    { name: 'Our Comprehensive Approach', directPath: '/ComprehensiveApproach' },
-    { name: 'Workforce Development', directPath: '/WorkforceDevelopment', submenu: [
+    { name: 'Our Comprehensive Approach', directPath: createPageUrl('ComprehensiveApproach') },
+    { name: 'Workforce Development', directPath: createPageUrl('WorkforceDevelopment'), submenu: [
       { name: 'SuperThrift', href: 'https://mercyhouseatc.superthriftdeals.org', external: true },
       { name: 'Vehicle Donation Program', href: 'https://vehicledonationms.com', external: true },
       { name: 'Products with a Purpose', href: 'https://www.productwithapurpose.org/', external: true },
       { name: 'Mercy House Auto Center', href: 'https://mercyhouseautocenter.com/', external: true },
       { name: 'Elite Gutters', href: 'https://myelitegutters.com', external: true } ] },
-    { name: 'Internship Program', directPath: '/Internship' },
+    { name: 'Internship Program', directPath: createPageUrl('Internship') },
     { name: 'Testimonies: Stories of Hope', path: 'Testimonials' },
-    { name: 'FAQs', directPath: '/FAQ' }]
+    { name: 'FAQs', directPath: createPageUrl('FAQ') }]
   },
   {
     name: 'Ways to Help',
     path: 'Donate',
-    directPath: '/Donate',
+    directPath: createPageUrl('Donate'),
     submenu: [
     { name: 'Volunteer', path: 'Volunteer' },
     { name: 'Sponsor a Student', path: 'SponsorStudent' },
-    { name: 'Intake Application Fee', directPath: '/Donate' },
+    { name: 'Intake Application Fee', directPath: createPageUrl('Donate') },
     { name: 'Make a Recurring Donation', path: 'Donate' },
-    { name: 'Freedom Classic Golf Tournament', directPath: '/FreedomClassic' }]
+    { name: 'Freedom Classic Golf Tournament', directPath: createPageUrl('FreedomClassic') }]
   },
   {
     name: 'Locations',
     path: 'Contact',
-    directPath: '/Contact',
+    directPath: createPageUrl('Contact'),
     submenu: [
     { name: "Men's Campus", path: 'MensCampus' },
     { name: "Women's Campus", path: 'WomensCampus' },
-    { name: "Women's Center Calendar", directPath: '/WomensCenterCalendar' }]
+    { name: "Women's Center Calendar", directPath: createPageUrl('WomensCenterCalendar') }]
   }];
 
 
@@ -380,15 +380,15 @@ export default function Layout({ children, currentPageName }) {
                 <li><Link to={createPageUrl('WomensCampus')} className="text-slate-300 hover:text-gold transition-colors">Women's Campus</Link></li>
                 <li><Link to={createPageUrl('MensCampus')} className="text-slate-300 hover:text-gold transition-colors">Men's Campus</Link></li>
                 <li><Link to={createPageUrl('Events')} className="text-slate-300 hover:text-gold transition-colors">Events</Link></li>
-                <li><Link to="/WorkforceDevelopment" className="text-slate-300 hover:text-gold transition-colors">Workforce Development</Link></li>
+                <li><Link to={createPageUrl('WorkforceDevelopment')} className="text-slate-300 hover:text-gold transition-colors">Workforce Development</Link></li>
                 <li><Link to={createPageUrl('News')} className="text-slate-300 hover:text-gold transition-colors">News</Link></li>
                 <li><Link to={createPageUrl('Volunteer')} className="text-slate-300 hover:text-gold transition-colors">Volunteer</Link></li>
-                <li><Link to="/About" className="text-slate-300 hover:text-gold transition-colors">About Us</Link></li>
-                <li><Link to="/Financials" className="text-slate-300 hover:text-gold transition-colors">Financials</Link></li>
-                <li><Link to="/Careers" className="text-slate-300 hover:text-gold transition-colors">Careers</Link></li>
-                <li><Link to="/Programs" className="text-slate-300 hover:text-gold transition-colors">Programs</Link></li>
+                <li><Link to={createPageUrl('About')} className="text-slate-300 hover:text-gold transition-colors">About Us</Link></li>
+                <li><Link to={createPageUrl('Financials')} className="text-slate-300 hover:text-gold transition-colors">Financials</Link></li>
+                <li><Link to={createPageUrl('Careers')} className="text-slate-300 hover:text-gold transition-colors">Careers</Link></li>
+                <li><Link to={createPageUrl('Programs')} className="text-slate-300 hover:text-gold transition-colors">Programs</Link></li>
                 <li><Link to={createPageUrl('EmployeePortal')} className="text-slate-300 hover:text-gold transition-colors">Employee Portal</Link></li>
-                <li><Link to="/MeetTheTeam" className="text-slate-300 hover:text-gold transition-colors">Meet the Team</Link></li>
+                <li><Link to={createPageUrl('MeetTheTeam')} className="text-slate-300 hover:text-gold transition-colors">Meet the Team</Link></li>
               </ul>
             </div>
             <div>
@@ -446,11 +446,11 @@ export default function Layout({ children, currentPageName }) {
               <Link to={createPageUrl('Events')} className="hover:text-gold transition-colors">Events &amp; News</Link>
               <Link to={createPageUrl('Donate')} className="hover:text-gold transition-colors">Donate</Link>
               <Link to={createPageUrl('IntakeForm')} className="hover:text-gold transition-colors">Apply for Program</Link>
-              <Link to="/PrivacyPolicy" className="hover:text-gold transition-colors">Privacy Policy</Link>
-              <Link to="/TermsConditions" className="hover:text-gold transition-colors">Terms &amp; Conditions</Link>
+              <Link to={createPageUrl('PrivacyPolicy')} className="hover:text-gold transition-colors">Privacy Policy</Link>
+              <Link to={createPageUrl('TermsConditions')} className="hover:text-gold transition-colors">Terms &amp; Conditions</Link>
               <Link to="/help-for-dependency-abuse" className="hover:text-gold transition-colors">Help for Dependency</Link>
-              <Link to="/About" className="hover:text-gold transition-colors">About Us</Link>
-              <Link to="/Programs" className="hover:text-gold transition-colors">Programs</Link>
+              <Link to={createPageUrl('About')} className="hover:text-gold transition-colors">About Us</Link>
+              <Link to={createPageUrl('Programs')} className="hover:text-gold transition-colors">Programs</Link>
               <a href="https://drive.google.com/file/d/1nXKBoDu9NBTjiLXgmkfHXEZwMIurUxRb/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">2024 Annual Report</a>
             </nav>
           </div>

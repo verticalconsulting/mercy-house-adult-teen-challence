@@ -51,7 +51,7 @@ export default function EventDetailPage() {
       <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
         <h1 className="text-3xl font-bold text-navy dark:text-gold mb-3">Event not found</h1>
         <p className="text-slate-600 dark:text-slate-300 mb-6">The event you're looking for may have been removed.</p>
-        <Link to="/Events"><Button variant="outline">Back to News & Events</Button></Link>
+        <Link to="/events"><Button variant="outline">Back to News & Events</Button></Link>
       </div>
     );
   }
@@ -106,12 +106,12 @@ export default function EventDetailPage() {
             <SocialShareButtons url={typeof window !== 'undefined' ? window.location.href : ''} title={event.title} />
           </div>
           <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-            <Link to="/Events">
+            <Link to="/events">
               <Button variant="outline" className="border-navy text-navy dark:border-gold dark:text-gold hover:bg-navy hover:text-white dark:hover:bg-gold dark:hover:text-navy">
                 <ArrowLeft className="w-4 h-4 mr-2" /> All News & Events
               </Button>
             </Link>
-            <Link to="/Donate">
+            <Link to="/donate">
               <Button className="bg-gold text-navy hover:bg-gold-accessible hover:text-white">
                 Support Our Ministry <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

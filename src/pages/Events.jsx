@@ -138,7 +138,7 @@ export default function Events() {
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredEvents.map((event) => (
-                  <Card key={event.id} className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer" onClick={() => navigate(`/Events/event/${event.id}`)}>
+                  <Card key={event.id} className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer" onClick={() => navigate(`/events/event/${event.id}`)}>
                     {event.image_url && (
                       <div className="h-48 overflow-hidden">
                         <img src={event.image_url} alt={event.title} className="w-full h-full object-cover" />
@@ -194,7 +194,7 @@ export default function Events() {
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {blogPosts.map((post) => (
-                  <Link key={post.id} to={`/Events/${post.slug || post.id}`} className="group">
+                  <Link key={post.id} to={`/events/${post.slug || post.id}`} className="group">
                     <Card className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer h-full">
                       {post.featured_image && (
                         <div className="h-48 overflow-hidden">

@@ -21,7 +21,7 @@ export default function SiteHero({
   primaryLabel = 'Start Your Journey',
   primaryTo = '/help-for-dependency-abuse',
   secondaryLabel = 'Donate',
-  secondaryTo = '/Donate',
+  secondaryTo = '/donate',
   reassurance,
   image,
   imageAlt = '',

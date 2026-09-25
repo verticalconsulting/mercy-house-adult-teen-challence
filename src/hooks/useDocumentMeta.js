@@ -7,7 +7,8 @@ import { useEffect } from 'react';
  * client-side. Modern crawlers (Google, Bing) execute JS and pick them up.
  * The index.html defaults act as the initial-paint fallback before this runs.
  */
-const SITE_ORIGIN = 'https://mercyhouseatc.com';
+// TODO: flip to https://mercyhouseatc.com at DNS cutover (still on .org as of writing)
+const SITE_ORIGIN = 'https://mercyhouseatc.org';
 
 function upsertMeta(name, content, attr = 'name') {
   if (!content) return;

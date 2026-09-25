@@ -83,7 +83,7 @@ const FAQ_SECTIONS = [
             You can start by calling our intake coordinator at{' '}
             <a href="tel:6017203718" className="text-navy font-semibold hover:underline">{INTAKE_PHONE}</a> or by
             completing our secure online{' '}
-            <Link to="/IntakeForm" className="text-navy font-semibold hover:underline">Intake Application</Link>. Our
+            <Link to="/intake-form" className="text-navy font-semibold hover:underline">Intake Application</Link>. Our
             intake staff will walk you through admission requirements and answer any questions.
           </>
         ),
@@ -115,7 +115,7 @@ const FAQ_SECTIONS = [
             Dual diagnosis is common, but Mercy House is not a licensed drug, alcohol, or mental-health treatment
             center and does not employ licensed therapists. If an applicant's mental-health needs are beyond our scope,
             we will help redirect them to a facility equipped to provide that care.{' '}
-            <Link to="/Contact" className="text-navy font-semibold hover:underline">Call intake</Link> to discuss your specific situation honestly.
+            <Link to="/contact" className="text-navy font-semibold hover:underline">Call intake</Link> to discuss your specific situation honestly.
           </>
         ),
       },
@@ -160,7 +160,7 @@ const FAQ_SECTIONS = [
         answer: (
           <>
             If the $1,000 fee is a hardship,{' '}
-            <Link to="/Contact" className="text-navy font-semibold hover:underline">call our intake coordinator</Link>{' '}
+            <Link to="/contact" className="text-navy font-semibold hover:underline">call our intake coordinator</Link>{' '}
             at <a href="tel:6017203718" className="text-navy font-semibold hover:underline">{INTAKE_PHONE}</a>. Payment
             plans and scholarships are available, and donors often sponsor intake fees for students in need.
           </>
@@ -181,9 +181,9 @@ const FAQ_SECTIONS = [
         answer: (
           <>
             Absolutely — yes. You can{' '}
-            <Link to="/SponsorStudent" className="text-navy font-semibold hover:underline">sponsor a student</Link>{' '}
+            <Link to="/sponsor-student" className="text-navy font-semibold hover:underline">sponsor a student</Link>{' '}
             directly or give toward intake fees through our{' '}
-            <Link to="/Donate" className="text-navy font-semibold hover:underline">donation page</Link>.
+            <Link to="/donate" className="text-navy font-semibold hover:underline">donation page</Link>.
             Sponsorship is one of the most direct ways to put a person through the door who couldn't otherwise afford it.
           </>
         ),
@@ -313,7 +313,7 @@ const FAQ_SECTIONS = [
         question: 'Can I donate my vehicle?',
         answer: (
           <>
-            Yes. Our <Link to="/VehicleDonation" className="text-navy font-semibold hover:underline">Vehicle Donation Program</Link>{' '}
+            Yes. Our <Link to="/vehicle-donation" className="text-navy font-semibold hover:underline">Vehicle Donation Program</Link>{' '}
             accepts running and non-running vehicles. Proceeds directly support the ministry, and we handle the
             pickup and paperwork — including your tax-deductible receipt.
           </>
@@ -323,7 +323,7 @@ const FAQ_SECTIONS = [
         question: 'How can I volunteer?',
         answer: (
           <>
-            We'd love to have you. Visit our <Link to="/Volunteer" className="text-navy font-semibold hover:underline">Volunteer page</Link>{' '}
+            We'd love to have you. Visit our <Link to="/volunteer" className="text-navy font-semibold hover:underline">Volunteer page</Link>{' '}
             to share your availability and areas of interest — from mentoring and tutoring to the kitchen, thrift
             store, auto academy, events, and more. A background check is required for most roles.
           </>
@@ -333,9 +333,9 @@ const FAQ_SECTIONS = [
         question: 'Where are the Mercy House campuses located?',
         answer: (
           <>
-            We have two Mississippi campuses: the <Link to="/MensCampus" className="text-navy font-semibold hover:underline">Men's Campus</Link>{' '}
-            in Georgetown and the <Link to="/WomensCampus" className="text-navy font-semibold hover:underline">Women's Campus</Link>{' '}
-            in Learned. See our <Link to="/Contact" className="text-navy font-semibold hover:underline">Contact page</Link> for addresses and directions.
+            We have two Mississippi campuses: the <Link to="/mens-campus" className="text-navy font-semibold hover:underline">Men's Campus</Link>{' '}
+            in Georgetown and the <Link to="/womens-campus" className="text-navy font-semibold hover:underline">Women's Campus</Link>{' '}
+            in Learned. See our <Link to="/contact" className="text-navy font-semibold hover:underline">Contact page</Link> for addresses and directions.
           </>
         ),
       },
@@ -442,9 +442,9 @@ export default function FAQ() {
         heading="Still Have Questions?"
         subtext="Our intake coordinator is ready to listen, answer honestly, and help you find the right next step — for yourself or someone you love."
         primaryLabel="Apply for the Program"
-        primaryTo="/IntakeForm"
+        primaryTo="/intake-form"
         secondaryLabel="Contact Us"
-        secondaryTo="/Contact" />
+        secondaryTo="/contact" />
 
       <div className="pb-4" />
     </div>

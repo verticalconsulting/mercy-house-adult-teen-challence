@@ -58,7 +58,7 @@ export default function BlogPostPage() {
         <p className="text-slate-600 dark:text-slate-300 mb-8">
           The story you're looking for may have been moved or is no longer available.
         </p>
-        <Button onClick={() => navigate('/Events')} className="bg-navy dark:bg-gold text-white dark:text-navy">
+        <Button onClick={() => navigate('/events')} className="bg-navy dark:bg-gold text-white dark:text-navy">
           <ArrowLeft className="w-4 h-4 mr-2" /> Back to News & Events
         </Button>
       </div>
@@ -71,7 +71,7 @@ export default function BlogPostPage() {
       <section className="bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
-            to="/Events"
+            to="/events"
             className="inline-flex items-center gap-2 text-slate-200 hover:text-gold transition-colors mb-6 text-sm font-semibold"
           >
             <ArrowLeft className="w-4 h-4" /> Back to News & Events
@@ -117,7 +117,7 @@ export default function BlogPostPage() {
               <SocialShareButtons url={typeof window !== 'undefined' ? window.location.href : ''} title={post.title} />
             </div>
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-              <Link to="/Events">
+              <Link to="/events">
                 <Button
                   variant="outline"
                   className="border-navy text-navy dark:border-gold dark:text-gold hover:bg-navy hover:text-white dark:hover:bg-gold dark:hover:text-navy"
@@ -125,7 +125,7 @@ export default function BlogPostPage() {
                   <ArrowLeft className="w-4 h-4 mr-2" /> All News & Events
                 </Button>
               </Link>
-              <Link to="/Donate">
+              <Link to="/donate">
                 <Button className="bg-gold text-navy hover:bg-gold-accessible hover:text-white">
                   Support Our Ministry <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>

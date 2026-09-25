@@ -193,9 +193,9 @@ export default function Financials() {
         heading="Support Our Mission"
         subtext="Your gift is tax-deductible and goes directly to housing, meals, program care, and ministry operations."
         primaryLabel="Donate Now"
-        primaryTo="/Donate"
+        primaryTo="/donate"
         secondaryLabel="Learn About Our Programs"
-        secondaryTo="/Programs"
+        secondaryTo="/programs"
       />
     </div>
   );

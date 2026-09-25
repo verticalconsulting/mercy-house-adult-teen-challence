@@ -155,9 +155,9 @@ export default function About() {
         heading="Want to Learn More?"
         subtext="Reach out to our team, visit our campus, or explore the program pages to see how Mercy House can help."
         primaryLabel="Contact Us"
-        primaryTo="/Contact"
+        primaryTo="/contact"
         secondaryLabel="Explore Programs"
-        secondaryTo="/Programs" />
+        secondaryTo="/programs" />
       
     </div>);
 

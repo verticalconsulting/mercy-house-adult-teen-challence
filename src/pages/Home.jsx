@@ -45,8 +45,8 @@ const accreditations = [
     href: 'https://app.candid.org/profile/9237605/mercy-house-teen-challenge-45-4670832/?pkId=85b52dd6-b112-4838-af55-83779d6afa0f',
   },
   { label: 'Adult & Teen Challenge Affiliated' },
-  { label: '501(c)(3) · EIN 45-4670832', to: '/Financials' },
-  { label: '100% of gifts to the mission', to: '/Financials' },
+  { label: '501(c)(3) · EIN 45-4670832', to: '/financials' },
+  { label: '100% of gifts to the mission', to: '/financials' },
 ];
 
 const steps = [
@@ -103,7 +103,7 @@ const programs = [
     name: 'Our comprehensive approach',
     description:
       'The five foundations of freedom, our four key program areas, and the phased structure a resident moves through over twelve months.',
-    to: '/Programs',
+    to: '/programs',
   },
 ];
 
@@ -116,7 +116,7 @@ const faqs = [
         95% of the men at our facility attend at no cost — housing, meals, discipleship resources and
         program support are provided through our donors and micro-businesses. If cost is a barrier,
         call us anyway;{' '}
-        <Link to="/Programs" className="font-semibold text-navy underline dark:text-gold">
+        <Link to="/programs" className="font-semibold text-navy underline dark:text-gold">
           the full details are on our Programs page
         </Link>
         .

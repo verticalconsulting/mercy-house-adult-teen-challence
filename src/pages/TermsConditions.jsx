@@ -86,7 +86,7 @@ export default function TermsConditions() {
             </ul>
             <p className="mt-3">
               Full SMS privacy details are available in our{' '}
-              <a href="/PrivacyPolicy" className="text-navy dark:text-gold hover:underline">Privacy Policy</a>.
+              <a href="/privacy-policy" className="text-navy dark:text-gold hover:underline">Privacy Policy</a>.
             </p>
           </section>
 
@@ -121,7 +121,7 @@ export default function TermsConditions() {
             <h2 className="text-2xl font-bold text-navy dark:text-gold mb-3">10. Privacy</h2>
             <p>
               Your use of our website and services is also governed by our{' '}
-              <a href="/PrivacyPolicy" className="text-navy dark:text-gold hover:underline">Privacy Policy</a>, which is
+              <a href="/privacy-policy" className="text-navy dark:text-gold hover:underline">Privacy Policy</a>, which is
               incorporated into these Terms by reference.
             </p>
           </section>

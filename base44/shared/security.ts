@@ -17,8 +17,9 @@ export function sanitizeHeader(value) {
  * the production domain. Prevents open-redirect / post-payment phishing
  * (CWE-601).
  */
-const ALLOWED_ORIGIN_HOSTS = ['mercyhouseatc.com', 'www.mercyhouseatc.com'];
-const PRODUCTION_URL = 'https://mercyhouseatc.com';
+// .org is the live domain pre-cutover; .com stays allowed for the DNS cutover to mercyhouseatc.com.
+const ALLOWED_ORIGIN_HOSTS = ['mercyhouseatc.org', 'www.mercyhouseatc.org', 'mercyhouseatc.com', 'www.mercyhouseatc.com'];
+const PRODUCTION_URL = 'https://mercyhouseatc.org';
 
 export function getSafeAppUrl(req) {
   const origin = (req.headers.get('origin') || '').trim();

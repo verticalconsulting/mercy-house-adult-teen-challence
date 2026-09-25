@@ -22,7 +22,27 @@ export default function Testimonials() {
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero */}
-        <div className="text-center mb-16">
+        <div className="grid lg:grid-cols-3 gap-8 items-start mb-16">
+          {/* Billy Graham Endorsement — left column */}
+          <aside className="lg:col-span-1 lg:sticky lg:top-24">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 border-l-4 border-gold">
+              <Quote className="w-10 h-10 text-gold mb-4" />
+              <blockquote className="text-lg md:text-xl text-slate-700 dark:text-slate-200 italic leading-relaxed mb-6">
+                &ldquo;I&rsquo;ve believed in this ministry since its very beginning. And I continue to support it. I consider it a real privilege to endorse this work. Thank God for Teen Challenge!&rdquo;
+              </blockquote>
+              <div className="border-t border-slate-200 dark:border-slate-700 pt-4">
+                <p className="font-bold text-navy dark:text-gold text-lg">
+                  Billy Graham
+                </p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  American Evangelist
+                </p>
+              </div>
+            </div>
+          </aside>
+
+          {/* Main hero content — right column */}
+          <div className="lg:col-span-2 text-center">
           <Quote className="w-16 h-16 md:w-20 md:h-20 text-gold mx-auto mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold text-navy dark:text-gold mb-4">
             Stories of Transformation
@@ -72,6 +92,7 @@ export default function Testimonials() {
           <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mt-6 leading-relaxed">
             Look at this precious little girl raising her little hand in worship of Jesus with her mom in church. What you may not know is right beside them is the little girl&rsquo;s dad who graduated from Mercy House Adult &amp; Teen Challenge in 2018. Chris and Ashley were married after his graduation and are raising their children to love Jesus. This is what restoration looks like &ndash; completely turning a family line around. ❤️
           </p>
+          </div>
         </div>
 
         {/* Testimonials Grid */}

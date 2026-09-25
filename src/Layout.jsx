@@ -13,6 +13,7 @@ import MobileBottomNav from './components/MobileBottomNav';
 import FloatingAIChat from './components/FloatingAIChat';
 import { base44 } from '@/api/base44Client';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import useCanonicalUrl from './hooks/useCanonicalUrl';
 
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,6 +22,8 @@ export default function Layout({ children, currentPageName }) {
   const navigate = useNavigate();
   const location = useLocation();
   const mainRef = React.useRef(null);
+
+  useCanonicalUrl();
 
   const [canGoBack, setCanGoBack] = useState(false);
   const prefersReducedMotion = useReducedMotion();
@@ -31,13 +34,13 @@ export default function Layout({ children, currentPageName }) {
 
   const menuItems = [
   { name: 'Home', path: 'Home' },
-  { name: 'About', path: 'About', external: false, directPath: '/About' },
+  { name: 'About', path: 'About', external: false, directPath: '/about' },
   {
     name: 'Programs',
     path: 'Programs',
-    directPath: '/Programs',
+    directPath: '/programs',
     submenu: [
-    { name: 'All Programs', directPath: '/Programs' },
+    { name: 'All Programs', directPath: '/programs' },
     { name: "Women's Campus", path: 'WomensCampus' },
     { name: "Men's Campus", path: 'MensCampus' }]
 
@@ -294,10 +297,10 @@ export default function Layout({ children, currentPageName }) {
                 <li><Link to={createPageUrl('MicroBusinesses')} className="text-slate-300 hover:text-gold transition-colors">Micro Businesses</Link></li>
                 <li><Link to={createPageUrl('Blog')} className="text-slate-300 hover:text-gold transition-colors">News & Events</Link></li>
                 <li><Link to={createPageUrl('Volunteer')} className="text-slate-300 hover:text-gold transition-colors">Volunteer</Link></li>
-                <li><Link to="/About" className="text-slate-300 hover:text-gold transition-colors">About Us</Link></li>
-                <li><Link to="/Programs" className="text-slate-300 hover:text-gold transition-colors">Programs</Link></li>
+                <li><Link to="/about" className="text-slate-300 hover:text-gold transition-colors">About Us</Link></li>
+                <li><Link to="/programs" className="text-slate-300 hover:text-gold transition-colors">Programs</Link></li>
                 <li><Link to={createPageUrl('EmployeePortal')} className="text-slate-300 hover:text-gold transition-colors">Employee Portal</Link></li>
-                <li><Link to="/MeetTheTeam" className="text-slate-300 hover:text-gold transition-colors">Meet the Team</Link></li>
+                <li><Link to="/meet-the-team" className="text-slate-300 hover:text-gold transition-colors">Meet the Team</Link></li>
               </ul>
             </div>
             <div>
@@ -355,10 +358,10 @@ export default function Layout({ children, currentPageName }) {
               <Link to={createPageUrl('Events')} className="hover:text-gold transition-colors">Events &amp; News</Link>
               <Link to={createPageUrl('Donate')} className="hover:text-gold transition-colors">Donate</Link>
               <Link to={createPageUrl('IntakeForm')} className="hover:text-gold transition-colors">Apply for Program</Link>
-              <Link to="/PrivacyPolicy" className="hover:text-gold transition-colors">Privacy Policy</Link>
+              <Link to="/privacy-policy" className="hover:text-gold transition-colors">Privacy Policy</Link>
               <Link to="/help-for-dependency-abuse" className="hover:text-gold transition-colors">Help for Dependency</Link>
-              <Link to="/About" className="hover:text-gold transition-colors">About Us</Link>
-              <Link to="/Programs" className="hover:text-gold transition-colors">Programs</Link>
+              <Link to="/about" className="hover:text-gold transition-colors">About Us</Link>
+              <Link to="/programs" className="hover:text-gold transition-colors">Programs</Link>
             </nav>
           </div>
         </div>

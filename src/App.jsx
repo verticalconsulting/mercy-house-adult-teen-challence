@@ -4,6 +4,7 @@ import { queryClientInstance } from '@/lib/query-client'
 import NavigationTracker from '@/lib/NavigationTracker'
 import { pagesConfig } from './pages.config'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { createPageUrl } from './utils';
 import PageNotFound from './lib/PageNotFound';
 import MeetTheTeam from './pages/MeetTheTeam';
 import SearchPerformance from './pages/SearchPerformance';
@@ -47,7 +48,7 @@ const AuthenticatedApp = () => {
 
   // Render the main app
   return (
-    <Routes>
+    <Routes caseSensitive>
       <Route path="/" element={
         <LayoutWrapper currentPageName={mainPageKey}>
           <MainPage />
@@ -56,7 +57,7 @@ const AuthenticatedApp = () => {
       {Object.entries(Pages).map(([path, Page]) => (
         <Route
           key={path}
-          path={`/${path}`}
+          path={createPageUrl(path)}
           element={
             <LayoutWrapper currentPageName={path}>
               <Page />
@@ -64,11 +65,11 @@ const AuthenticatedApp = () => {
           }
         />
       ))}
-      <Route path="/MeetTheTeam" element={<LayoutWrapper currentPageName="MeetTheTeam"><MeetTheTeam /></LayoutWrapper>} />
-      <Route path="/SearchPerformance" element={<LayoutWrapper currentPageName="SearchPerformance"><SearchPerformance /></LayoutWrapper>} />
-      <Route path="/About" element={<LayoutWrapper currentPageName="About"><About /></LayoutWrapper>} />
-      <Route path="/Programs" element={<LayoutWrapper currentPageName="Programs"><Programs /></LayoutWrapper>} />
-      <Route path="/PrivacyPolicy" element={<LayoutWrapper currentPageName="PrivacyPolicy"><PrivacyPolicy /></LayoutWrapper>} />
+      <Route path="/meet-the-team" element={<LayoutWrapper currentPageName="MeetTheTeam"><MeetTheTeam /></LayoutWrapper>} />
+      <Route path="/search-performance" element={<LayoutWrapper currentPageName="SearchPerformance"><SearchPerformance /></LayoutWrapper>} />
+      <Route path="/about" element={<LayoutWrapper currentPageName="About"><About /></LayoutWrapper>} />
+      <Route path="/programs" element={<LayoutWrapper currentPageName="Programs"><Programs /></LayoutWrapper>} />
+      <Route path="/privacy-policy" element={<LayoutWrapper currentPageName="PrivacyPolicy"><PrivacyPolicy /></LayoutWrapper>} />
       <Route path="/help-for-dependency-abuse" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>

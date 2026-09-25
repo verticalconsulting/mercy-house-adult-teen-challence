@@ -6,9 +6,9 @@ export default function CTABand({
   heading = 'Ready to Take the Next Step?',
   subtext = 'Whether you are seeking help, supporting a loved one, or looking to give — we are here.',
   primaryLabel = 'Get Help Now',
-  primaryTo = '/Contact',
+  primaryTo = '/contact',
   secondaryLabel = 'Support the Mission',
-  secondaryTo = '/Donate',
+  secondaryTo = '/donate',
 }) {
   return (
     <section className="bg-navy dark:bg-slate-950 py-16 px-4">

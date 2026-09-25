@@ -293,7 +293,7 @@ export default function About() {
           </div>
           <div className="text-center mt-10">
             <Link
-              to="/MeetTheTeam"
+              to="/meet-the-team"
               className="inline-flex items-center gap-2 text-navy dark:text-gold font-semibold hover:underline text-lg"
             >
               Meet the Full Team <ArrowRight className="w-5 h-5" />
@@ -355,9 +355,9 @@ export default function About() {
         heading="Want to Learn More?"
         subtext="Reach out to our team, visit our campus, or explore the program pages to see how Mercy House can help."
         primaryLabel="Contact Us"
-        primaryTo="/Contact"
+        primaryTo="/contact"
         secondaryLabel="Explore Programs"
-        secondaryTo="/Programs"
+        secondaryTo="/programs"
       />
     </div>
   );

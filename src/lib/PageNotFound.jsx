@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { useQuery } from '@tanstack/react-query';
@@ -6,6 +7,35 @@ import { useQuery } from '@tanstack/react-query';
 export default function PageNotFound({}) {
     const location = useLocation();
     const pageName = location.pathname.substring(1);
+
+    // The server always returns HTTP 200 for unknown routes (static SPA fallback),
+    // so Google would otherwise index these as soft 404s. Since we can't change the
+    // response status from here, mark the page noindex and drop the homepage canonical.
+    useEffect(() => {
+        const previousTitle = document.title;
+        document.title = 'Page Not Found | Mercy House Adult & Teen Challenge';
+
+        const robotsTag = document.querySelector('meta[name="robots"]');
+        const previousRobots = robotsTag?.getAttribute('content') ?? null;
+        robotsTag?.setAttribute('content', 'noindex, nofollow');
+
+        const canonicalTag = document.querySelector('link[rel="canonical"]');
+        const previousCanonical = canonicalTag?.getAttribute('href') ?? null;
+        canonicalTag?.remove();
+
+        return () => {
+            document.title = previousTitle;
+            if (robotsTag && previousRobots) {
+                robotsTag.setAttribute('content', previousRobots);
+            }
+            if (previousCanonical && !document.querySelector('link[rel="canonical"]')) {
+                const restored = document.createElement('link');
+                restored.setAttribute('rel', 'canonical');
+                restored.setAttribute('href', previousCanonical);
+                document.head.appendChild(restored);
+            }
+        };
+    }, []);
 
     const { data: authData, isFetched } = useQuery({
         queryKey: ['user'],

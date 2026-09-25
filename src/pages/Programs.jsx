@@ -7,7 +7,7 @@ const programs = [
   {
     name: "Men's Program",
     location: 'Georgetown, MS',
-    path: '/MensCampus',
+    path: '/mens-campus',
     image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b0adcea4-39fa-4c4c-9fcd-4a85031ac400/small',
     desc: "A long-term, structured residential program for men struggling with life-controlling and dependency issues. Rooted in faith, accountability, and genuine community.",
     features: ['12–15 Month Residential Program', 'Biblical Discipleship', 'Vocational Training', 'Mentorship & Accountability', 'Life-Skills Development', 'Re-entry Support'],
@@ -15,7 +15,7 @@ const programs = [
   {
     name: "Women's Program",
     location: 'Learned, MS',
-    path: '/WomensCampus',
+    path: '/womens-campus',
     image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/6967250f-138f-4d93-b91a-f375dfd4ab00/small',
     desc: "A safe, supportive residential environment for women ready to pursue freedom from life-controlling and dependency issues through a Christ-centered program designed for their unique journey.",
     features: ['Residential Program', 'Trauma-Informed Support', 'Biblical Counseling', 'Life-Skills Training', 'Spiritual Growth', 'Community & Mentorship'],
@@ -192,7 +192,7 @@ export default function Programs() {
                   (601) 720-3718
                 </a>{' '}
                 or{' '}
-                <Link to="/IntakeForm" className="text-navy dark:text-gold hover:underline font-semibold">
+                <Link to="/intake-form" className="text-navy dark:text-gold hover:underline font-semibold">
                   submit an application online
                 </Link>
                 .
@@ -230,7 +230,7 @@ export default function Programs() {
                 step: '3',
                 title: 'Arrive & Begin',
                 desc: "Once you're accepted, we'll give you everything you need to know about what to bring, what to expect on your first day, and how the first few weeks work. You'll arrive, get settled into your new home, and begin the program alongside people who are on the same journey you are.",
-                action: { label: 'Start Your Application', href: '/IntakeForm' },
+                action: { label: 'Start Your Application', href: '/intake-form' },
               },
             ].map((item) => (
               <div key={item.step} className="flex gap-6 items-start bg-slate-50 dark:bg-slate-900 rounded-2xl p-7 border border-slate-200 dark:border-slate-700">
@@ -259,9 +259,9 @@ export default function Programs() {
         heading="Take the First Step Today"
         subtext="Freedom is possible. Our team is ready to walk with you — one step at a time."
         primaryLabel="Apply for the Program"
-        primaryTo="/IntakeForm"
+        primaryTo="/intake-form"
         secondaryLabel="Contact Us"
-        secondaryTo="/Contact"
+        secondaryTo="/contact"
       />
     </div>
   );

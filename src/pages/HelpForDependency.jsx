@@ -233,7 +233,7 @@ export default function HelpForDependency() {
               Call (601) 720-3718
             </a>
             <Link
-              to="/IntakeForm"
+              to="/intake-form"
               className="inline-flex items-center justify-center gap-2 bg-navy dark:bg-slate-700 hover:bg-navy/90 text-white font-bold px-8 py-4 rounded-lg text-lg transition-colors"
             >
               Apply for the Program <ArrowRight className="w-5 h-5" />
@@ -246,9 +246,9 @@ export default function HelpForDependency() {
         heading="Ready to Talk?"
         subtext="Our intake team is available Monday – Friday, 8am – 5pm. There's no obligation — just a real conversation."
         primaryLabel="Call Intake: (601) 720-3718"
-        primaryTo="/Contact"
+        primaryTo="/contact"
         secondaryLabel="Learn About Our Programs"
-        secondaryTo="/Programs"
+        secondaryTo="/programs"
       />
     </div>
   );

@@ -324,7 +324,7 @@ export default function MensCampus() {
                 step: '3',
                 title: 'Arrive & Begin',
                 desc: "We'll tell you exactly what to bring, what your first week will look like, and who will be there to welcome you. From day one, you're part of a community. You won't be starting from zero alone.",
-                cta: { label: 'Start Your Application', href: '/IntakeForm' },
+                cta: { label: 'Start Your Application', href: '/intake-form' },
               },
             ].map((item) => (
               <div key={item.step} className="flex gap-6 items-start bg-slate-50 dark:bg-slate-900 rounded-2xl p-7 border border-slate-200 dark:border-slate-700">

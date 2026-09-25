@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs ls -la)",
+      "WebFetch(domain:mercyhouseatc.com)"
+    ]
+  }
+}

@@ -33,6 +33,11 @@ const RENDER_TIMEOUT_MS = 15000;
 // before rendering it directly. The scan runs synchronously when the forms
 // library finishes loading, so a couple of frames is plenty.
 const SCAN_GRACE_MS = 300;
+// On client-side navigation the one-shot scan has already run, so we call
+// virtuousForm() directly. If the form still hasn't injected content after
+// this interval, retry — the embed occasionally needs a second nudge.
+const RETRY_INTERVAL_MS = 2000;
+const MAX_RETRIES = 3;
 
 export default function VirtuousGiveForm({
   formId,
@@ -51,7 +56,9 @@ export default function VirtuousGiveForm({
     let observer;
     let timeout;
     let renderTimer;
+    let retryTimer;
     let cancelled = false;
+    let retryCount = 0;
 
     const markReadyIfRendered = () => {
       const host = containerRef.current;
@@ -74,26 +81,30 @@ export default function VirtuousGiveForm({
       if (!markReadyIfRendered()) setStatus('failed');
     }, RENDER_TIMEOUT_MS);
 
-    // Placeholder the embed's scan (and virtuousForm) locate by data-vform.
-    const placeholder = document.createElement('script');
-    placeholder.setAttribute('data-vform', formId);
-    placeholder.setAttribute('data-orgId', orgId);
-    placeholder.setAttribute('data-isGiving', 'true');
-    placeholder.setAttribute('data-merchantType', 'StripeUnified');
-    placeholder.setAttribute('data-dependencies', '[]');
+    const createPlaceholder = () => {
+      const ph = document.createElement('script');
+      ph.setAttribute('data-vform', formId);
+      ph.setAttribute('data-orgId', orgId);
+      ph.setAttribute('data-isGiving', 'true');
+      ph.setAttribute('data-merchantType', 'StripeUnified');
+      ph.setAttribute('data-dependencies', '[]');
+      return ph;
+    };
 
     containerRef.current.innerHTML = '';
-    containerRef.current.appendChild(placeholder);
+    containerRef.current.appendChild(createPlaceholder());
 
     // Ensure the embed + forms library are loaded once, then render this form
     // directly if the embed's one-shot scan didn't already (client-side nav,
-    // re-mounts, or multiple forms on one page).
+    // re-mounts, or multiple forms on one page). Retry a few times because
+    // the embed occasionally doesn't pick up the placeholder on the first
+    // call after client-side navigation.
     ensureVirtuousReady()
       .then(({ virtuousForm, apiUrl }) => {
         if (cancelled) return;
-        renderTimer = setTimeout(() => {
+        const attemptRender = () => {
           if (cancelled) return;
-          if (markReadyIfRendered()) return; // scan already handled it
+          if (markReadyIfRendered()) return; // already rendered
           try {
             virtuousForm({
               organizationId: orgId,
@@ -105,7 +116,22 @@ export default function VirtuousGiveForm({
           } catch (err) {
             console.error('Virtuous form render failed:', err);
           }
-        }, SCAN_GRACE_MS);
+          // Schedule a retry — re-create the placeholder in case the embed
+          // consumed or removed it, then call virtuousForm() again.
+          retryCount += 1;
+          if (retryCount <= MAX_RETRIES) {
+            retryTimer = setTimeout(() => {
+              if (cancelled) return;
+              if (markReadyIfRendered()) return;
+              if (containerRef.current) {
+                containerRef.current.innerHTML = '';
+                containerRef.current.appendChild(createPlaceholder());
+              }
+              attemptRender();
+            }, RETRY_INTERVAL_MS);
+          }
+        };
+        renderTimer = setTimeout(attemptRender, SCAN_GRACE_MS);
       })
       .catch((err) => {
         if (!cancelled) console.error('Virtuous embed failed to load:', err);
@@ -116,6 +142,7 @@ export default function VirtuousGiveForm({
       if (observer) observer.disconnect();
       if (timeout) clearTimeout(timeout);
       if (renderTimer) clearTimeout(renderTimer);
+      if (retryTimer) clearTimeout(retryTimer);
       if (containerRef.current) containerRef.current.innerHTML = '';
       setStatus('loading');
     };

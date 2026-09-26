@@ -405,6 +405,22 @@
   background: rgb(30 41 59);
 }
 
+/*
+ * Virtuous Giving Form embed — the embed injects an iframe into the
+ * .virtuous-embed-host container. On client-side navigation the iframe's
+ * auto-resize can fail to fire, leaving it at height 0. These rules ensure
+ * the iframe is always visible while letting the embed's inline height
+ * override when auto-resize works correctly.
+ */
+.virtuous-embed-host iframe {
+  min-height: 600px;
+  width: 100% !important;
+  border: 0;
+}
+.virtuous-embed-host > div {
+  min-height: 600px;
+}
+
 .pb-safe {
   padding-bottom: env(safe-area-inset-bottom);
 }

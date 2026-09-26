@@ -45,7 +45,8 @@ export default function Layout({ children, currentPageName }) {
     { name: 'Our Leadership Team & Board of Directors', path: 'MeetTheTeam' },
     { name: 'Our Mission, Culture & Values', directPath: createPageUrl('About') },
     { name: 'Information Hub', directPath: createPageUrl('Events'), submenu: [
-      { name: 'Events', directPath: createPageUrl('Events') },
+      { name: 'Events', directPath: createPageUrl('Events'), submenu: [
+        { name: 'Freedom Classic Golf Tournament', directPath: createPageUrl('FreedomClassic') } ] },
       { name: 'News', directPath: createPageUrl('News') },
       { name: 'Media Resources', directPath: createPageUrl('MediaResources') },
       { name: 'Financials', directPath: createPageUrl('Financials') },
@@ -76,8 +77,7 @@ export default function Layout({ children, currentPageName }) {
     { name: 'Volunteer', path: 'Volunteer' },
     { name: 'Sponsor a Student', path: 'SponsorStudent' },
     { name: 'Intake Application Fee', directPath: createPageUrl('Donate') },
-    { name: 'Make a Recurring Donation', path: 'RecurringDonation' },
-    { name: 'Freedom Classic Golf Tournament', directPath: createPageUrl('FreedomClassic') }]
+    { name: 'Make a Recurring Donation', path: 'RecurringDonation' }]
   },
   {
     name: 'Locations',

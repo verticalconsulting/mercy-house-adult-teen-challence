@@ -421,6 +421,158 @@
   min-height: 600px;
 }
 
+/*
+ * Sponsor a Student — Split Spotlight section.
+ * Deep navy gradient band with gold accents; scoped to this section only.
+ */
+.sponsor-spotlight {
+  background: linear-gradient(135deg, #1e3852 0%, #15273a 100%);
+  position: relative;
+  overflow: hidden;
+}
+.sponsor-spotlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a66b, transparent);
+  opacity: 0.75;
+  pointer-events: none;
+}
+.sponsor-spotlight-rise {
+  animation: sponsor-spotlight-rise 0.7s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+.sponsor-spotlight-rise-1 {
+  animation-delay: 0.1s;
+}
+.sponsor-spotlight-rise-empty {
+  animation: sponsor-spotlight-rise 0.8s cubic-bezier(0.2, 0.75, 0.25, 1) 0.2s both;
+}
+@keyframes sponsor-spotlight-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.sponsor-spotlight-empty {
+  border: 1px solid rgba(221, 204, 169, 0.35);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18), inset 0 1px rgba(255, 255, 255, 0.08);
+}
+.sponsor-spotlight-btn {
+  margin-top: 36px;
+  min-height: 60px;
+  padding: 0 34px;
+  border: 1px solid #e0c17f;
+  border-radius: 5px;
+  background: #d4b36f;
+  color: #15273a;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.sponsor-spotlight-btn:hover {
+  background: #e4c986;
+  box-shadow: 0 13px 28px rgba(0, 0, 0, 0.28);
+}
+.sponsor-spotlight-btn:active {
+  background: #c5a25c;
+  transform: translateY(1px);
+}
+.sponsor-spotlight-btn:focus-visible {
+  outline: 3px solid #f3dfad;
+  outline-offset: 5px;
+}
+.sponsor-spotlight-featured {
+  border: 1px solid rgba(221, 204, 169, 0.25);
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+  animation: sponsor-spotlight-rise 0.7s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+.sponsor-spotlight-featured:hover {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+.sponsor-spotlight-tile {
+  border: 1px solid rgba(221, 204, 169, 0.2);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: stretch;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  animation: sponsor-spotlight-rise 0.7s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+.sponsor-spotlight-tile:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(221, 204, 169, 0.4);
+}
+.sponsor-spotlight-cta {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 24px;
+  border: 1px solid #e0c17f;
+  border-radius: 5px;
+  background: #d4b36f;
+  color: #15273a;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.sponsor-spotlight-cta:hover {
+  background: #e4c986;
+  box-shadow: 0 11px 24px rgba(0, 0, 0, 0.24);
+}
+.sponsor-spotlight-cta:active {
+  background: #c5a25c;
+  transform: translateY(1px);
+}
+.sponsor-spotlight-cta:focus-visible {
+  outline: 3px solid #f3dfad;
+  outline-offset: 5px;
+}
+.sponsor-spotlight-link {
+  border: none;
+  background: transparent;
+  color: #d6b46f;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+.sponsor-spotlight-link:hover {
+  color: #e4c986;
+}
+.sponsor-spotlight-link:focus-visible {
+  outline: 3px solid #f3dfad;
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
 .pb-safe {
   padding-bottom: env(safe-area-inset-bottom);
 }

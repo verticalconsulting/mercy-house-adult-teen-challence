@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useQuery } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Users, Heart, Check, Loader2, ArrowDown } from 'lucide-react';
 import VirtuousGiveForm from '../components/VirtuousGiveForm';
 
@@ -82,68 +81,90 @@ export default function SponsorStudent() {
         </div>
       </div>
 
-      {/* Students Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-navy dark:text-gold mb-3">Students Ready for Sponsorship</h2>
-          <p className="text-slate-600 dark:text-slate-300 text-lg">
+      {/* Students Grid — Split Spotlight */}
+      <section className="sponsor-spotlight text-[#f6f1e7] py-16 md:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="sponsor-spotlight-rise text-center text-[#d6b46f] text-3xl md:text-4xl lg:text-[46px] font-bold leading-tight tracking-tight">
+            Students Ready for Sponsorship
+          </h2>
+          <p className="sponsor-spotlight-rise sponsor-spotlight-rise-1 text-center text-[#d0d8df] text-lg md:text-xl mt-4 mb-12">
             Meet the students who would benefit from your monthly support
           </p>
-        </div>
 
-        {isLoading ?
-        <div className="text-center py-20">
-            <Loader2 className="w-12 h-12 animate-spin text-navy dark:text-gold mx-auto" />
-          </div> :
-        residents.length === 0 ?
-        <Card className="text-center p-12">
-            <p className="text-slate-600 dark:text-slate-300">
-              Currently, we sponsor students in our program as a cohort rather than individual sponsorships.
-              <br />
-              <Button variant="outline" className="mt-6" onClick={scrollToForm}>
-                <ArrowDown className="w-4 h-4 mr-2" />
+          {isLoading ? (
+            <div className="text-center py-20">
+              <Loader2 className="w-12 h-12 animate-spin text-[#d6b46f] mx-auto" />
+            </div>
+          ) : residents.length === 0 ? (
+            <div className="sponsor-spotlight-empty sponsor-spotlight-rise-empty mx-auto max-w-5xl min-h-[260px] md:min-h-[420px] flex flex-col items-center justify-center text-center px-8 md:px-16 py-12 md:py-16">
+              <p className="text-[#f4f1ea] text-xl md:text-2xl leading-relaxed max-w-3xl">
+                Currently, we sponsor students in our program as a cohort rather than individual sponsorships.
+              </p>
+              <button onClick={scrollToForm} className="sponsor-spotlight-btn">
+                <ArrowDown className="w-5 h-5" />
                 Support Our Students
-              </Button>
-            </p>
-          </Card> :
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {residents.map((resident) =>
-          <Card key={resident.id} className="overflow-hidden hover:shadow-xl transition-all duration-300">
-                <div className="aspect-[4/5] overflow-hidden bg-slate-200 dark:bg-slate-700">
-                  {resident.photo_url ?
-              <img
-                src={resident.photo_url}
-                alt={resident.full_name}
-                className="w-full h-full object-cover" /> :
-
-              <div className="w-full h-full flex items-center justify-center">
-                      <Users className="w-20 h-20 text-slate-400" />
+              </button>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-start">
+              {/* Featured student — large card on the left */}
+              <article className={`sponsor-spotlight-featured overflow-hidden ${residents.length === 1 ? 'md:col-span-2 max-w-2xl mx-auto' : ''}`}>
+                <div className="aspect-[4/5] md:aspect-[16/11] overflow-hidden bg-slate-800">
+                  {residents[0].photo_url ? (
+                    <img src={residents[0].photo_url} alt={residents[0].full_name} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <Users className="w-20 h-20 text-slate-500" />
                     </div>
-              }
+                  )}
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-navy dark:text-gold">{resident.full_name}</CardTitle>
-                  {resident.age &&
-              <p className="text-sm text-slate-600 dark:text-slate-400">Age {resident.age}</p>
-              }
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm line-clamp-3">
-                    {resident.story || 'On a journey to transformation...'}
+                <div className="p-6 md:p-8">
+                  <span className="text-[#d6b46f] text-sm font-bold uppercase tracking-[0.12em]">Featured Student</span>
+                  <h3 className="text-white text-2xl md:text-3xl font-bold mt-2 mb-1">{residents[0].full_name}</h3>
+                  {residents[0].age && <p className="text-[#d6b46f] text-sm mb-3">Age {residents[0].age}</p>}
+                  <p className="text-[#d0d8df] text-base leading-relaxed line-clamp-5 mb-6">
+                    {residents[0].story || 'On a journey to transformation...'}
                   </p>
-                  <Button
-                    onClick={scrollToForm}
-                    className="w-full mt-4 bg-gold hover:bg-gold/90 text-navy font-bold">
-                    <Heart className="w-4 h-4 mr-2" />
+                  <button onClick={scrollToForm} className="sponsor-spotlight-cta">
+                    <Heart className="w-4 h-4" />
                     Sponsor a Student
-                  </Button>
-                </CardContent>
-              </Card>
+                  </button>
+                </div>
+              </article>
+
+              {/* Compact tile stack on the right */}
+              {residents.length > 1 && (
+                <div className="grid gap-4 content-start">
+                  {residents.slice(1).map((resident, i) => (
+                    <article key={resident.id} className="sponsor-spotlight-tile" style={{ animationDelay: `${0.1 + i * 0.08}s` }}>
+                      <div className="w-28 h-28 sm:w-32 sm:h-32 shrink-0 overflow-hidden bg-slate-800">
+                        {resident.photo_url ? (
+                          <img src={resident.photo_url} alt={resident.full_name} className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <Users className="w-10 h-10 text-slate-500" />
+                          </div>
+                        )}
+                      </div>
+                      <div className="p-4 flex-1 min-w-0 flex flex-col">
+                        <h3 className="text-white font-bold text-lg leading-tight truncate">{resident.full_name}</h3>
+                        {resident.age && <p className="text-[#d6b46f] text-xs mb-1">Age {resident.age}</p>}
+                        <p className="text-[#d0d8df] text-sm line-clamp-2 mb-3 flex-1">
+                          {resident.story || 'On a journey to transformation...'}
+                        </p>
+                        <button onClick={scrollToForm} className="sponsor-spotlight-link self-start">
+                          <Heart className="w-3.5 h-3.5" />
+                          Sponsor
+                        </button>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              )}
+            </div>
           )}
-          </div>
-        }
-      </div>
+        </div>
+      </section>
 
       {/* Sponsor a Student — Virtuous giving form */}
       <div ref={formRef} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 scroll-mt-24">

@@ -52,7 +52,6 @@ Deno.serve(async (req) => {
   try {
     const { email, residentId, residentName } = await req.json();
     const appUrl = getSafeAppUrl(req);
-    const projectCode = Deno.env.get('VIRTUOUS_SPONSORSHIP_PROJECT_CODE') || '';
 
     const price = await getOrCreateSponsorshipPrice();
 
@@ -67,7 +66,6 @@ Deno.serve(async (req) => {
         metadata: {
           base44_app_id: Deno.env.get('BASE44_APP_ID'),
           donation_type: 'student_sponsorship',
-          virtuous_project_code: projectCode,
           resident_id: residentId || '',
           resident_name: residentName || '',
         },
@@ -75,7 +73,6 @@ Deno.serve(async (req) => {
       metadata: {
         base44_app_id: Deno.env.get('BASE44_APP_ID'),
         donation_type: 'student_sponsorship',
-        virtuous_project_code: projectCode,
       },
     });
 

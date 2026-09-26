@@ -77,35 +77,40 @@ export default function MicroBusinesses() {
             {[
               {
                 title: 'SuperThrift',
-                emoji: '🏪',
+                image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/a5b4b499a_generated_6e501157.png',
+                styled: true,
                 description: 'Community thrift store offering quality secondhand goods while training residents in retail operations, customer service, and inventory management.',
                 href: 'https://superthriftdeals.org',
                 external: true
               },
               {
                 title: 'Vehicle Donation',
-                emoji: '🚗',
+                image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/af012b16b_generated_image.png',
+                styled: false,
                 description: 'Accepting vehicle donations to support our mission. Provides tax benefits to donors and funding for our programs.',
                 href: 'https://vehicledonationms.com',
                 external: true
               },
               {
                 title: 'Mercy House Auto Center',
-                emoji: '🔧',
+                image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/fe90ec0f0_generated_image.png',
+                styled: false,
                 description: 'Professional automotive training center where residents learn mechanics, body work, and automotive technology — preparing them for well-paying careers upon graduation.',
                 href: 'https://mercyhouseautocenter.com/',
                 external: true
               },
               {
                 title: 'Product With A Purpose',
-                emoji: '📦',
+                image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/748253cac_generated_image.png',
+                styled: false,
                 description: 'Specialty products crafted by residents, combining quality craftsmanship with purpose. Every purchase directly supports the Mercy House mission and resident development.',
                 href: 'https://www.productwithapurpose.org/',
                 external: true
               },
               {
                 title: 'Mercy House Elite Gutters',
-                emoji: '🏠',
+                image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/55971e93b_generated_image.png',
+                styled: false,
                 description: 'A full-service seamless gutter, downspout, and leaf guard installation company based in Brandon, MS. Residents receive hands-on job training in gutter system design, installation, cleaning, and maintenance — building real-world trade skills and work ethic. Backed by a 5-Year Craftsmanship Guarantee.',
                 href: 'https://www.myelitegutters.com/',
                 external: true
@@ -115,7 +120,24 @@ export default function MicroBusinesses() {
                 key={idx}
                 className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300"
               >
-                <div className="text-6xl mb-4">{business.emoji}</div>
+                <div className="relative mb-4 h-36 w-full overflow-hidden rounded-lg">
+                  <img
+                    src={business.image}
+                    alt={business.title}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                  {!business.styled && (
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-br from-navy/70 to-navy/50" />
+                      <div
+                        className="absolute bottom-0 right-0 h-12 w-12 bg-gold"
+                        style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }}
+                        aria-hidden="true"
+                      />
+                    </>
+                  )}
+                </div>
                 <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">
                   {business.title}
                 </h3>

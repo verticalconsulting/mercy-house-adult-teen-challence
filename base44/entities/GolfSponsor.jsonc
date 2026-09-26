@@ -28,6 +28,11 @@
       "type": "boolean",
       "default": true,
       "description": "Show this sponsor on the public Freedom Classic page"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Additional notes about this sponsor"
     }
   },
   "required": [

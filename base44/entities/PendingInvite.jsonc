@@ -27,6 +27,11 @@
     "invited_by": {
       "type": "string",
       "description": "Email of the admin who sent the invitation"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Additional notes about this invitation"
     }
   },
   "required": [

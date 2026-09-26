@@ -10,6 +10,11 @@
     "sync_token": {
       "type": "string",
       "description": "Google Calendar sync token used for incremental event sync"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Additional notes about this sync state"
     }
   },
   "required": [

@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
-import { Phone, Printer, MapPin, Clock, Mail, ArrowRight, MessageCircle } from 'lucide-react';
+import { Phone, Printer, MapPin, Clock, Mail, ArrowRight, MessageCircle, Star, ExternalLink } from 'lucide-react';
+
+const GOOGLE_BUSINESS_URL = 'https://www.google.com/maps/place/Mercy+House+Adult+%26+Teen+Challenge+-+Men%27s+Campus/@32.4647,-90.3947,17z/';
+
+const googleReviews = [
+  { text: 'The best place on earth to go. This place is a chain breaker.', author: 'Google Reviewer' },
+  { text: 'Best place in the world — it helped my pawpaw in so many different ways. Thank y\u2019all so much.', author: 'Avery Guillory' },
+  { text: 'I think it\u2019s really great what you are doing and that you are helping others get clean.', author: 'Marie Hall' },
+];
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -223,6 +231,59 @@ export default function Contact() {
                 </Link>
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        {/* Google Reviews */}
+        <section aria-labelledby="reviews-heading" className="mb-12">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden">
+            <div className="bg-navy dark:bg-slate-950 text-white px-6 py-8 text-center">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={i < 4 ? 'w-7 h-7 fill-gold text-gold' : 'w-7 h-7 fill-gold/40 text-gold/40'}
+                    aria-hidden="true"
+                  />
+                ))}
+                <span className="text-3xl font-bold ml-2">4.4</span>
+              </div>
+              <p className="text-slate-300 text-sm mb-1">Rated 4.4 out of 5 on Google</p>
+              <p className="text-slate-400 text-xs">Based on 26 Google reviews</p>
+            </div>
+            <div className="p-6 md:p-8">
+              <h2 id="reviews-heading" className="text-2xl font-bold text-navy dark:text-gold mb-6 text-center">
+                What People Are Saying on Google
+              </h2>
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                {googleReviews.map((review, i) => (
+                  <figure key={i} className="rounded-xl border border-slate-100 dark:border-slate-700 p-5 bg-slate-50 dark:bg-slate-900">
+                    <div className="flex gap-1 mb-3">
+                      {[...Array(5)].map((_, j) => (
+                        <Star key={j} className="w-4 h-4 fill-gold text-gold" aria-hidden="true" />
+                      ))}
+                    </div>
+                    <blockquote className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed italic mb-3">
+                        &ldquo;{review.text}&rdquo;
+                    </blockquote>
+                    <figcaption className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                      &mdash; {review.author}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+              <div className="text-center">
+                <a
+                  href={GOOGLE_BUSINESS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-navy dark:bg-gold text-white dark:text-navy font-bold px-6 py-3 rounded-lg hover:bg-navy/90 dark:hover:bg-gold/90 transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                  Read All Reviews on Google
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 

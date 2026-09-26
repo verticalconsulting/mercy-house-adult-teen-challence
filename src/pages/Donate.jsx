@@ -34,7 +34,7 @@ export default function Donate() {
         {/* Active Campaigns */}
         {!campaignId &&
         <div className="mb-12">
-            <h2 className="text-3xl font-bold text-navy dark:text-gold mb-6 text-center hidden">Active Campaigns</h2>
+            
             <CampaignProgress ctaPath="/WomensCampus#give-womens-center" />
           </div>
         }

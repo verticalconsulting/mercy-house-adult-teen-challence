@@ -6,9 +6,6 @@ import VirtuousGiveForm from '../components/VirtuousGiveForm';
 
 // Mercy House — Virtuous giving form (one-time + recurring, Stripe + Virtuous CRM).
 const MERCYHOUSE_VIRTUOUS_FORM_ID = 'BD48ECA9-6E77-4CBC-81F7-D8A42A7751E8';
-// Dedicated Virtuous form for the $1,000 intake-fee sponsorship gift.
-const MERCYHOUSE_INTAKE_FEE_FORM_ID = 'AE0BD86D-8C6F-43F0-87BB-E9E85FB8FCA6';
-
 export default function Donate() {
   const [campaignId, setCampaignId] = React.useState(null);
 
@@ -58,26 +55,6 @@ export default function Donate() {
             <span>·</span>
             <span>Cancel recurring gifts anytime</span>
           </div>
-        </div>
-
-        {/* Give Someone a Fresh Start — Intake Fee Sponsorship */}
-        <div className="mb-12 rounded-2xl border-2 border-gold/40 bg-gold/5 dark:bg-gold/10 p-6">
-          <div className="flex items-start gap-3 mb-4">
-            <Heart className="w-7 h-7 text-gold mt-1 shrink-0" aria-hidden="true" />
-            <div>
-              <h2 className="text-navy dark:text-gold text-xl font-bold">Give Someone a Fresh Start</h2>
-              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                Cover the <strong>$1,000 intake fee</strong> for the next person entering Mercy House. Your gift removes the last barrier standing between someone and a new beginning.
-              </p>
-            </div>
-          </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mb-4 bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700">
-            💡 <strong>How it works:</strong> Your $1,000 donation is held in a dedicated fund. When the next applicant is accepted, their intake fee is covered by your gift — and they're notified someone believed in them before they even arrived.
-          </p>
-          <VirtuousGiveForm
-            formId={MERCYHOUSE_INTAKE_FEE_FORM_ID}
-            subtitle="Sponsor an intake fee — enter $1,000 in the secure form below."
-          />
         </div>
 
         {/* How Funds Are Used */}

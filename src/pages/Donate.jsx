@@ -32,12 +32,12 @@ export default function Donate() {
         </div>
 
         {/* Active Campaigns */}
-        {!campaignId && (
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-navy dark:text-gold mb-6 text-center">Active Campaigns</h2>
+        {!campaignId &&
+        <div className="mb-12">
+            <h2 className="text-3xl font-bold text-navy dark:text-gold mb-6 text-center hidden">Active Campaigns</h2>
             <CampaignProgress ctaPath="/WomensCampus#give-womens-center" />
           </div>
-        )}
+        }
 
         {/* Secure Giving Form — Virtuous + Stripe */}
         <div className="mb-8">
@@ -45,8 +45,8 @@ export default function Donate() {
             formId={MERCYHOUSE_VIRTUOUS_FORM_ID}
             title="Make Your Gift"
             subtitle="Give once or set up monthly support — the choice is yours inside the secure form below."
-            className="mb-6"
-          />
+            className="mb-6" />
+          
           {/* Trust signals under the form */}
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400 text-center">
             <span>🔒 Secure checkout via Stripe</span>
@@ -65,17 +65,17 @@ export default function Donate() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { emoji: '🏠', label: 'Housing & Facilities', desc: 'Safe, stable residential housing for men and women in the program' },
-              { emoji: '🍽️', label: 'Meals & Nutrition', desc: 'Three daily meals provided to every resident throughout their stay' },
-              { emoji: '📖', label: 'Program & Ministry', desc: 'Biblical teaching, counseling, life skills classes, and vocational training' },
-              { emoji: '⚙️', label: 'Daily Operations', desc: 'Utilities, staff, transportation, and the infrastructure that keeps our doors open' },
-            ].map((item) => (
-              <div key={item.label} className="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-100 dark:border-slate-700 text-center">
+            { emoji: '🏠', label: 'Housing & Facilities', desc: 'Safe, stable residential housing for men and women in the program' },
+            { emoji: '🍽️', label: 'Meals & Nutrition', desc: 'Three daily meals provided to every resident throughout their stay' },
+            { emoji: '📖', label: 'Program & Ministry', desc: 'Biblical teaching, counseling, life skills classes, and vocational training' },
+            { emoji: '⚙️', label: 'Daily Operations', desc: 'Utilities, staff, transportation, and the infrastructure that keeps our doors open' }].
+            map((item) =>
+            <div key={item.label} className="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-100 dark:border-slate-700 text-center">
                 <div className="text-3xl mb-3">{item.emoji}</div>
                 <h3 className="font-bold text-navy dark:text-gold text-sm mb-1">{item.label}</h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{item.desc}</p>
               </div>
-            ))}
+            )}
           </div>
           <p className="text-center text-xs text-slate-400 dark:text-slate-500 mt-4">
             EIN and financial documentation available upon request —{' '}
@@ -104,6 +104,6 @@ export default function Donate() {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>);
+
 }

@@ -85,24 +85,24 @@ export default function MicroBusinesses() {
               },
               {
                 title: 'Vehicle Donation',
-                image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/af012b16b_generated_image.png',
-                styled: false,
+                logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/e08f3c597_MercyHouseVDP_White_Square.png',
+                logoBg: 'bg-navy',
                 description: 'Accepting vehicle donations to support our mission. Provides tax benefits to donors and funding for our programs.',
                 href: 'https://vehicledonationms.com',
                 external: true
               },
               {
                 title: 'Mercy House Auto Center',
-                image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/fe90ec0f0_generated_image.png',
-                styled: false,
+                logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/0bc3fc63c_MercyHouseAuto_Black_SquareNEW.png',
+                logoBg: 'bg-white',
                 description: 'Professional automotive training center where residents learn mechanics, body work, and automotive technology — preparing them for well-paying careers upon graduation.',
                 href: 'https://mercyhouseautocenter.com/',
                 external: true
               },
               {
                 title: 'Product With A Purpose',
-                image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/748253cac_generated_image.png',
-                styled: false,
+                logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4e1c20dbb_ProductwithaPurpose1-023.png',
+                logoBg: 'bg-white',
                 description: 'Specialty products crafted by residents, combining quality craftsmanship with purpose. Every purchase directly supports the Mercy House mission and resident development.',
                 href: 'https://www.productwithapurpose.org/',
                 external: true
@@ -120,25 +120,36 @@ export default function MicroBusinesses() {
                 key={idx}
                 className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300"
               >
-                <div className="relative mb-4 h-36 w-full overflow-hidden rounded-lg">
-                  <img
-                    src={business.image}
-                    alt={business.title}
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
-                  {!business.styled && (
-                    <>
-                      <div className="absolute inset-0 bg-gradient-to-br from-navy/70 to-navy/50" />
-                      <div
-                        className="absolute bottom-0 right-0 h-12 w-12 bg-gold"
-                        style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }}
-                        aria-hidden="true"
-                      />
-                    </>
-                  )}
-                </div>
-                <h3 className="text-2xl font-bold text-navy dark:text-gold mb-4">
+                {business.logo ? (
+                  <div className={`mb-4 h-36 w-full flex items-center justify-center rounded-lg p-6 ${business.logoBg}`}>
+                    <img
+                      src={business.logo}
+                      alt={business.title}
+                      className="max-h-full max-w-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                ) : (
+                  <div className="relative mb-4 h-36 w-full overflow-hidden rounded-lg">
+                    <img
+                      src={business.image}
+                      alt={business.title}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                    {!business.styled && (
+                      <>
+                        <div className="absolute inset-0 bg-gradient-to-br from-navy/70 to-navy/50" />
+                        <div
+                          className="absolute bottom-0 right-0 h-12 w-12 bg-gold"
+                          style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }}
+                          aria-hidden="true"
+                        />
+                      </>
+                    )}
+                  </div>
+                )}
+                <h3 className={`text-2xl font-bold text-navy dark:text-gold mb-4 ${business.logo ? 'sr-only' : ''}`}>
                   {business.title}
                 </h3>
                 <p className="text-slate-700 dark:text-slate-300 mb-6">

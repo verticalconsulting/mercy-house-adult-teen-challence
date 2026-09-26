@@ -2,10 +2,9 @@ import React, { useEffect } from 'react';
 import { Heart } from 'lucide-react';
 import CampaignProgress from '../components/CampaignProgress';
 import NonprofitLegitimacy from '../components/NonprofitLegitimacy';
-import VirtuousGiveForm from '../components/VirtuousGiveForm';
+import DonateCheckoutForm from '../components/DonateCheckoutForm';
 
-// Mercy House — Virtuous giving form (one-time + recurring, Stripe + Virtuous CRM).
-const MERCYHOUSE_VIRTUOUS_FORM_ID = 'BD48ECA9-6E77-4CBC-81F7-D8A42A7751E8';
+// Mercy House — Stripe Checkout giving (one-time + recurring), synced to Virtuous CRM.
 export default function Donate() {
   const [campaignId, setCampaignId] = React.useState(null);
 
@@ -39,22 +38,9 @@ export default function Donate() {
           </div>
         }
 
-        {/* Secure Giving Form — Virtuous + Stripe */}
+        {/* Secure Giving Form — Stripe */}
         <div className="mb-8">
-          <VirtuousGiveForm
-            formId={MERCYHOUSE_VIRTUOUS_FORM_ID}
-            title="Make Your Gift"
-            subtitle="Give once or set up monthly support — the choice is yours inside the secure form below."
-            className="mb-6" />
-          
-          {/* Trust signals under the form */}
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400 text-center">
-            <span>🔒 Secure checkout via Stripe</span>
-            <span>·</span>
-            <span>Tax-deductible · EIN 45-4670832</span>
-            <span>·</span>
-            <span>Cancel recurring gifts anytime</span>
-          </div>
+          <DonateCheckoutForm campaignId={campaignId} />
         </div>
 
         {/* How Funds Are Used */}

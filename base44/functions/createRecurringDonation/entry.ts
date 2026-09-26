@@ -37,8 +37,15 @@ Deno.serve(async (req) => {
                 },
             ],
             customer_email: email || undefined,
-            success_url: `${appUrl}/?subscription=success`,
-            cancel_url: `${appUrl}/?subscription=cancelled`,
+            success_url: `${appUrl}/?donation=success`,
+            cancel_url: `${appUrl}/?donation=cancelled`,
+            subscription_data: {
+                metadata: {
+                    base44_app_id: Deno.env.get("BASE44_APP_ID"),
+                    donation_type: 'monthly_support',
+                    campaign_id: campaignId || ''
+                }
+            },
             metadata: {
                 base44_app_id: Deno.env.get("BASE44_APP_ID"),
                 donation_type: 'monthly_support',

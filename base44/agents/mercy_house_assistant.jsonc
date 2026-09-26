@@ -29,7 +29,9 @@
     {
       "entity_name": "VehicleDonation",
       "allowed_operations": [
-        "read"
+        "read",
+        "update",
+        "create"
       ]
     },
     {

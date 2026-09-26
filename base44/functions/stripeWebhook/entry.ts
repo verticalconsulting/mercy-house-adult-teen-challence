@@ -1,5 +1,6 @@
 import Stripe from 'npm:stripe@17.5.0';
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.6';
+import { submitGiftTransaction } from '../../shared/virtuous.ts';
 
 const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY'));
 
@@ -76,6 +77,47 @@ Deno.serve(async (req) => {
       case 'invoice.paid': {
         const invoice = event.data.object;
         console.log('Invoice paid:', invoice.id);
+
+        // Sync student-sponsorship subscription payments to Virtuous CRM+.
+        const subscriptionId = invoice.subscription;
+        if (subscriptionId) {
+          try {
+            const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+            if (subscription.metadata?.donation_type === 'student_sponsorship') {
+              const apiKey = Deno.env.get('VIRTUOUS_API_KEY');
+              if (!apiKey) {
+                console.error('VIRTUOUS_API_KEY not configured — skipping Virtuous sync');
+              } else {
+                const customer = await stripe.customers.retrieve(invoice.customer as string) as Stripe.Customer;
+                const projectCode = subscription.metadata?.virtuous_project_code || '';
+                const paymentIntent = invoice.payment_intent;
+                const transactionId = typeof paymentIntent === 'string' ? paymentIntent : invoice.id;
+                const paidAt = invoice.status_transitions?.paid_at
+                  ? new Date(invoice.status_transitions.paid_at * 1000).toISOString()
+                  : new Date().toISOString();
+
+                await submitGiftTransaction({
+                  apiKey,
+                  transactionId,
+                  customer: {
+                    id: customer.id,
+                    name: customer.name || '',
+                    email: customer.email || '',
+                    phone: customer.phone || '',
+                    address: customer.address || undefined,
+                  },
+                  amount: invoice.total / 100,
+                  giftDate: paidAt,
+                  currencyCode: (invoice.currency || 'usd').toUpperCase(),
+                  projectCode,
+                });
+                console.log('Sponsorship gift synced to Virtuous:', invoice.id);
+              }
+            }
+          } catch (syncError) {
+            console.error('Virtuous sync failed for invoice', invoice.id, ':', syncError);
+          }
+        }
         break;
       }
 

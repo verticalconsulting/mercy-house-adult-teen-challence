@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Users, ArrowRight, Sun, Shield, BookOpen } from 'lucide-react';
+import { Heart, Users, ArrowRight, Sun, Shield, BookOpen, Download } from 'lucide-react';
+
+const INTAKE_APPLICATION_URL = 'https://media.base44.com/files/public/6983b4b00291b5dfd8507106/98224ec68_MASTER-APPLICATION-REVISED-110823-no-medical.pdf';
 import CTABand from '../components/CTABand';
 
 const signs = [
@@ -238,6 +240,14 @@ export default function HelpForDependency() {
             >
               Apply for the Program <ArrowRight className="w-5 h-5" />
             </Link>
+            <a
+              href={INTAKE_APPLICATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 border-2 border-navy dark:border-gold text-navy dark:text-gold font-bold px-8 py-4 rounded-lg text-lg transition-colors hover:bg-navy hover:text-white dark:hover:bg-gold dark:hover:text-navy"
+            >
+              <Download className="w-5 h-5" /> Download Intake App
+            </a>
           </div>
         </div>
       </section>

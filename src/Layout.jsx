@@ -47,7 +47,9 @@ export default function Layout({ children, currentPageName }) {
     { name: 'Information Hub', directPath: createPageUrl('Events'), submenu: [
       { name: 'Events', directPath: createPageUrl('Events') },
       { name: 'News', directPath: createPageUrl('News') },
-      { name: 'Media Resources', directPath: createPageUrl('MediaResources') } ] },
+      { name: 'Media Resources', directPath: createPageUrl('MediaResources') },
+      { name: 'Financials', directPath: createPageUrl('Financials') },
+      { name: 'Files', directPath: createPageUrl('Files') } ] },
     { name: 'Careers', directPath: createPageUrl('Careers') }]
   },
   {

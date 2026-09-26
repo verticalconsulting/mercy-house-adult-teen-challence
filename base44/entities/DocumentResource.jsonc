@@ -1,0 +1,61 @@
+{
+  "name": "DocumentResource",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Document title shown to visitors"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short description of the document"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "URL to the downloadable file (PDF, DOC, etc.)"
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0,
+      "description": "Sort order \u2014 lower numbers appear first"
+    },
+    "published": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show this document on the public Files / Doc Hub page"
+    }
+  },
+  "required": [
+    "title",
+    "file_url"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.published": true
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

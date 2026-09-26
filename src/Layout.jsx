@@ -61,7 +61,7 @@ export default function Layout({ children, currentPageName }) {
       { name: 'Vehicle Donation Program', href: 'https://vehicledonationms.com', external: true },
       { name: 'Products with a Purpose', href: 'https://www.productwithapurpose.org/', external: true },
       { name: 'Mercy House Auto Center', href: 'https://mercyhouseautocenter.com/', external: true },
-      { name: 'Elite Gutters', href: 'https://www.myelitegutters.com/', external: true } ] },
+      { name: 'Mercy House Elite Gutters', href: 'https://www.myelitegutters.com/', external: true } ] },
     { name: 'Internship Program', directPath: createPageUrl('Internship') },
     { name: 'Testimonies: Stories of Hope', path: 'Testimonials' },
     { name: 'FAQs', directPath: createPageUrl('FAQ') }]

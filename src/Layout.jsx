@@ -44,9 +44,11 @@ export default function Layout({ children, currentPageName }) {
     { name: 'The Teen Challenge Story', directPath: createPageUrl('TeenChallengeStory') },
     { name: 'Our Leadership Team & Board of Directors', path: 'MeetTheTeam' },
     { name: 'Our Mission, Culture & Values', directPath: createPageUrl('About') },
-    { name: 'News and Events', directPath: createPageUrl('Events') },
-    { name: 'Careers', directPath: createPageUrl('Careers') },
-    { name: 'Media Resources', directPath: createPageUrl('MediaResources') }]
+    { name: 'Information Hub', directPath: createPageUrl('Events'), submenu: [
+      { name: 'Events', directPath: createPageUrl('Events') },
+      { name: 'News', directPath: createPageUrl('News') },
+      { name: 'Media Resources', directPath: createPageUrl('MediaResources') } ] },
+    { name: 'Careers', directPath: createPageUrl('Careers') }]
   },
   {
     name: 'Our Approach',

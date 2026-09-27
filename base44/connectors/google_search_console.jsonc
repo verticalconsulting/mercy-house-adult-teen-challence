@@ -1,8 +1,0 @@
-{
-  "type": "google_search_console",
-  "scopes": [
-    "https://www.googleapis.com/auth/webmasters.readonly",
-    "openid",
-    "https://www.googleapis.com/auth/userinfo.email"
-  ]
-}

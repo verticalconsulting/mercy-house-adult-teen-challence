@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Store, Truck } from 'lucide-react';
+import { Store, Truck, Construction } from 'lucide-react';
 import { createPageUrl } from '../utils';
 import CTABand from '../components/CTABand';
 import FeaturedTestimonials from '../components/FeaturedTestimonials';
@@ -159,6 +159,16 @@ const faqs = [
 export default function Home() {
   return (
     <div className="w-full">
+      {/* TEMPORARY BANNER — remove once construction is complete */}
+      <div className="bg-navy text-white" role="status" aria-live="polite">
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 py-3 text-center sm:px-6 lg:px-8">
+          <Construction className="h-5 w-5 flex-shrink-0 text-gold" aria-hidden="true" />
+          <p className="text-sm font-semibold sm:text-base">
+            New website under construction today — please, no donations today. Check back soon!
+          </p>
+        </div>
+      </div>
+
       <SiteHero
         headline="Broken Families"
         headlineBreak="Restored"

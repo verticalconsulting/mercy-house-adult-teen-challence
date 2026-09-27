@@ -457,6 +457,7 @@ export default function Layout({ children, currentPageName }) {
               <Link to={createPageUrl('TermsConditions')} className="hover:text-gold transition-colors">Terms &amp; Conditions</Link>
               <Link to="/freedom-from-addiction-starts-here" className="hover:text-gold transition-colors">Help for Dependency</Link>
               <Link to={createPageUrl('About')} className="hover:text-gold transition-colors">About Us</Link>
+              <Link to="/connect" className="hover:text-gold transition-colors">Connect AI Assistant</Link>
               <Link to={createPageUrl('Programs')} className="hover:text-gold transition-colors">Programs</Link>
               <a href="https://drive.google.com/file/d/1nXKBoDu9NBTjiLXgmkfHXEZwMIurUxRb/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">2024 Annual Report</a>
             </nav>

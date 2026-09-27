@@ -26,6 +26,7 @@ import GolfSponsorManager from '../components/employee/GolfSponsorManager';
 import DonationFunnel from './DonationFunnel';
 import WomensCampusMediaManager from '../components/employee/WomensCampusMediaManager';
 import SearchPerformance from './SearchPerformance';
+import SearchConsoleSummary from '../components/employee/SearchConsoleSummary';
 import PortalLogin from '../components/employee/PortalLogin';
 import UserManagement from '../components/employee/UserManagement';
 
@@ -371,6 +372,9 @@ export default function EmployeePortal() {
           </TabsList>
 
           <TabsContent value="applications" className="mt-6">
+            <div className="mb-6">
+              <SearchConsoleSummary />
+            </div>
             <div className="grid lg:grid-cols-2 gap-6">
               <div>
                 <h2 className="text-2xl font-bold text-navy dark:text-gold mb-4">Applications</h2>

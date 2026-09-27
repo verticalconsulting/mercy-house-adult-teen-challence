@@ -1,0 +1,47 @@
+{
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "0 9 * * *",
+      "one_time_date": null,
+      "timezone": "America/Chicago",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "search_console_sync",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "sync_data": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "syncSearchConsoleData",
+            "args": {
+              "automation_secret": "1c72a3ad-96b7-405c-8166-30603b594248"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Sync Search Console data",
+            "description": "Fetch GSC metrics and store daily snapshot"
+          }
+        }
+      }
+    ]
+  },
+  "name": "Search Console Sync",
+  "description": "Daily sync of Google Search Console performance data (clicks, impressions, top queries) into dashboard snapshots"
+}

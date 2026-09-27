@@ -1,0 +1,86 @@
+{
+  "name": "SearchConsoleSnapshot",
+  "type": "object",
+  "properties": {
+    "snapshot_date": {
+      "type": "string",
+      "format": "date",
+      "description": "The end date of the data period this snapshot covers"
+    },
+    "site_url": {
+      "type": "string",
+      "description": "The Google Search Console property URL"
+    },
+    "total_clicks": {
+      "type": "number",
+      "description": "Total clicks for the 28-day period"
+    },
+    "total_impressions": {
+      "type": "number",
+      "description": "Total impressions for the 28-day period"
+    },
+    "avg_ctr": {
+      "type": "number",
+      "description": "Average click-through rate (0-1 decimal)"
+    },
+    "avg_position": {
+      "type": "number",
+      "description": "Average search result position"
+    },
+    "top_queries": {
+      "type": "array",
+      "description": "Top search queries by clicks for the period",
+      "items": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string"
+          },
+          "clicks": {
+            "type": "number"
+          },
+          "impressions": {
+            "type": "number"
+          },
+          "ctr": {
+            "type": "number"
+          },
+          "position": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "date_range_days": {
+      "type": "number",
+      "default": 28,
+      "description": "Number of days of data covered by this snapshot"
+    }
+  },
+  "required": [
+    "snapshot_date",
+    "site_url"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

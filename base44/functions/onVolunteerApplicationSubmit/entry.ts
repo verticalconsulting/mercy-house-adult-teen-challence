@@ -1,17 +1,23 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
-import { sanitizeHeader } from '../../shared/security.ts';
+import { sanitizeHeader, verifyAutomationSecret } from '../../shared/security.ts';
 
 Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
-    const { event, data } = await req.json();
+    const reqBody = await req.json();
+    const { event, data } = reqBody;
 
-    // Trust boundary: this handler writes to Google Drive and sends email via
-    // the app's OAuth connectors. The request payload is not trusted — only a
-    // genuine entity-automation "create" event for a Volunteer is honored, and
-    // the record is re-fetched from the database so an unauthenticated caller
-    // cannot inject arbitrary content into Drive files or notification emails
-    // (CWE-306).
+    // Trust boundary: verify the platform automation secret before performing
+    // any privileged side effect (Drive upload, staff emails). Prevents
+    // anonymous replay attacks that spam Drive and staff inboxes (CWE-306).
+    if (!verifyAutomationSecret(reqBody)) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Only a genuine entity-automation "create" event for a Volunteer is
+    // honored, and the record is re-fetched from the database so an
+    // unauthenticated caller cannot inject arbitrary content into Drive
+    // files or notification emails (CWE-306).
     if (!event || event.type !== 'create' || event.entity_name !== 'Volunteer' || !data?.id) {
       return Response.json({ error: 'Invalid trigger payload' }, { status: 400 });
     }

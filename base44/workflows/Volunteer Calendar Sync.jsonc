@@ -15,7 +15,8 @@
           "with": {
             "function_name": "syncVolunteerCalendar",
             "args": {
-              "data": "${ .trigger.data }"
+              "data": "${ .trigger.data }",
+              "automation_secret": "1c72a3ad-96b7-405c-8166-30603b594248"
             }
           },
           "then": "end",

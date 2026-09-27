@@ -573,6 +573,15 @@
   border-radius: 3px;
 }
 
+/* TEMPORARY — flashing construction banner on the homepage. */
+.mh-construction-banner {
+  animation: mh-flash 1.4s ease-in-out infinite;
+}
+@keyframes mh-flash {
+  0%, 100% { background-color: rgb(47 78 111); }
+  50% { background-color: rgb(160 123 58); }
+}
+
 .pb-safe {
   padding-bottom: env(safe-area-inset-bottom);
 }

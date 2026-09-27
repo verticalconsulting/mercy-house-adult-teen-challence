@@ -160,7 +160,7 @@ export default function Home() {
   return (
     <div className="w-full">
       {/* TEMPORARY BANNER — remove once construction is complete */}
-      <div className="bg-navy text-white" role="status" aria-live="polite">
+      <div className="mh-construction-banner text-white" role="status" aria-live="polite">
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 py-3 text-center sm:px-6 lg:px-8">
           <Construction className="h-5 w-5 flex-shrink-0 text-gold" aria-hidden="true" />
           <p className="text-sm font-semibold sm:text-base">

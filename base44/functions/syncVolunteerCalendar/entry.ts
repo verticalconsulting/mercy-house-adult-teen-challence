@@ -1,5 +1,6 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.40';
 import { sendTwilioSms } from '../../shared/twilioSms.ts';
+import { verifyAutomationSecret } from '../../shared/security.ts';
 
 // Triggered by the "Volunteer Calendar Sync" workflow whenever the connected
 // Google Calendar (the volunteer-activities calendar) changes. Google Calendar
@@ -12,6 +13,14 @@ Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
     const body = await req.json();
+
+    // Verify the platform automation secret before any privileged action —
+    // prevents anonymous callers from triggering SMS/email blasts and
+    // service-role entity writes (CWE-306).
+    if (!verifyAutomationSecret(body)) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const data = body.data || {};
     const meta = data._provider_meta || {};
     const resourceState = meta['x-goog-resource-state'];

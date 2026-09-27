@@ -11,6 +11,27 @@ export function sanitizeHeader(value) {
 }
 
 /**
+ * Verify that a backend-function request was invoked by the platform's
+ * automation engine (workflow / entity / connector trigger), not by an
+ * anonymous external caller hitting the public function URL directly.
+ *
+ * Workflows pass `automation_secret` in their `invoke_backend_function` args;
+ * this checks it against the AUTOMATION_SECRET env var. Without it, anyone
+ * who discovers the function URL could trigger privileged service-role
+ * actions (Facebook posts, SMS/email blasts, Drive uploads) on demand
+ * (CWE-306).
+ *
+ * Returns true only when the secret is configured AND matches.
+ */
+export function verifyAutomationSecret(body) {
+  const expected = Deno.env.get('AUTOMATION_SECRET');
+  if (!expected) {
+    return false;
+  }
+  return typeof body?.automation_secret === 'string' && body.automation_secret === expected;
+}
+
+/**
  * Resolve a safe base app URL for Stripe Checkout success/cancel redirects.
  * The request `Origin` header is attacker-controllable, so it must be validated
  * against an allowlist of trusted hosts before use; otherwise we fall back to

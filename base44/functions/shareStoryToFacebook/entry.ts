@@ -1,4 +1,5 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.31';
+import { verifyAutomationSecret } from '../../shared/security.ts';
 
 Deno.serve(async (req) => {
   try {
@@ -14,7 +15,12 @@ Deno.serve(async (req) => {
     let testimonialId;
 
     if (body?.event) {
-      // Entity-automation trigger: validate the event shape and use its id.
+      // Entity-automation trigger: verify the platform automation secret
+      // before performing any privileged action (CWE-306).
+      if (!verifyAutomationSecret(body)) {
+        return Response.json({ error: 'Unauthorized' }, { status: 401 });
+      }
+      // Validate the event shape and use its id.
       const ev = body.event;
       if ((ev.type !== 'create' && ev.type !== 'update') ||
           ev.entity_name !== 'Testimonial' || !ev.entity_id) {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Heart } from 'lucide-react';
 import CampaignProgress from '../components/CampaignProgress';
 import NonprofitLegitimacy from '../components/NonprofitLegitimacy';
-import DonateCheckoutForm from '../components/DonateCheckoutForm';
+import VirtuousGiveForm from '../components/VirtuousGiveForm';
 
 // Mercy House — Stripe Checkout giving (one-time + recurring), synced to Virtuous CRM.
 export default function Donate() {
@@ -38,9 +38,12 @@ export default function Donate() {
           </div>
         }
 
-        {/* Secure Giving Form — Stripe */}
+        {/* Secure Giving Form — Virtuous */}
         <div className="mb-8">
-          <DonateCheckoutForm campaignId={campaignId} />
+          <VirtuousGiveForm
+            formId="23F5CEDC-71BC-4B10-AFEC-E756F656C3B5"
+            orgId="5169"
+          />
         </div>
 
         {/* How Funds Are Used */}

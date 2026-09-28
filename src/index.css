@@ -422,6 +422,49 @@
 }
 
 /*
+ * Virtuous form — dark-mode readability overrides.
+ * The embed injects its own DOM (not an iframe) into .virtuous-embed-host, so
+ * we can reach its elements. In dark mode the form's default light-gray input
+ * text and labels are nearly illegible against white fields / the dark page.
+ * These rules raise input text to a dark slate (high contrast on white) and
+ * enlarge it, brighten labels and consent copy, and keep selects consistent.
+ */
+.dark .virtuous-embed-host input[type="text"],
+.dark .virtuous-embed-host input[type="email"],
+.dark .virtuous-embed-host input[type="tel"],
+.dark .virtuous-embed-host input[type="number"],
+.dark .virtuous-embed-host input[type="password"],
+.dark .virtuous-embed-host input:not([type]),
+.dark .virtuous-embed-host select,
+.dark .virtuous-embed-host textarea {
+  color: #1e293b !important;
+  font-size: 1.0625rem !important;
+  background-color: #ffffff !important;
+}
+.dark .virtuous-embed-host input::placeholder,
+.dark .virtuous-embed-host textarea::placeholder {
+  color: #475569 !important;
+  font-size: 1.0625rem !important;
+}
+.dark .virtuous-embed-host label,
+.dark .virtuous-embed-host .vform-label,
+.dark .virtuous-embed-host [class*="label"] {
+  color: #e2e8f0 !important;
+  font-size: 0.95rem !important;
+}
+.dark .virtuous-embed-host [class*="checkbox"],
+.dark .virtuous-embed-host [class*="consent"],
+.dark .virtuous-embed-host [class*="sms"],
+.dark .virtuous-embed-host [class*="opt"] {
+  color: #cbd5e1 !important;
+  font-size: 0.95rem !important;
+}
+.dark .virtuous-embed-host [class*="checkbox"] label,
+.dark .virtuous-embed-host [class*="consent"] label {
+  color: #cbd5e1 !important;
+}
+
+/*
  * Sponsor a Student — Split Spotlight section.
  * Deep navy gradient band with gold accents; scoped to this section only.
  */

@@ -9,6 +9,7 @@ import PageNotFound from './lib/PageNotFound';
 import MeetTheTeam from './pages/MeetTheTeam';
 import WomensCampusGallery from './pages/WomensCampusGallery';
 import FreedomClassic from './pages/FreedomClassic';
+import FreedomGala from './pages/FreedomGala';
 import TeenChallengeStory from './pages/TeenChallengeStory';
 import WomensCenterCalendar from './pages/WomensCenterCalendar';
 import News from './pages/News';
@@ -94,6 +95,7 @@ const AuthenticatedApp = () => {
       <Route path={createPageUrl('TermsConditions')} element={<LayoutWrapper currentPageName="TermsConditions"><TermsConditions /></LayoutWrapper>} />
       <Route path="/freedom-from-addiction-starts-here" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
       <Route path={createPageUrl('FreedomClassic')} element={<LayoutWrapper currentPageName="FreedomClassic"><FreedomClassic /></LayoutWrapper>} />
+      <Route path={createPageUrl('FreedomGala')} element={<LayoutWrapper currentPageName="FreedomGala"><FreedomGala /></LayoutWrapper>} />
       <Route path={createPageUrl('TeenChallengeStory')} element={<LayoutWrapper currentPageName="TeenChallengeStory"><TeenChallengeStory /></LayoutWrapper>} />
       <Route path={createPageUrl('News')} element={<LayoutWrapper currentPageName="News"><News /></LayoutWrapper>} />
       <Route path={createPageUrl('WomensCenterCalendar')} element={<LayoutWrapper currentPageName="WomensCenterCalendar"><WomensCenterCalendar /></LayoutWrapper>} />

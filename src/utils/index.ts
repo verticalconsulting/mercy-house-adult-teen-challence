@@ -28,6 +28,7 @@ const PATH_OVERRIDES: Record<string, string> = {
     VehicleDonation: '/vehicle-donation-program',
     VehicleDonationForm: '/vehicle-donation-program/form',
     FreedomClassic: '/golf-tournament',
+    FreedomGala: '/freedom-gala',
     MicroBusinesses: '/workforce-development',
     Volunteer: '/get-involved',
     Internship: '/get-involved/internship',

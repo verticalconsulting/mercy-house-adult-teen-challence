@@ -478,6 +478,18 @@
 .dark .virtuous-embed-host [class*="consent"] label {
   color: #cbd5e1 !important;
 }
+/* Thank-you / message copy inside the embed — raise to near-white and enlarge. */
+.dark .virtuous-embed-host p,
+.dark .virtuous-embed-host [class*="message"],
+.dark .virtuous-embed-host [class*="thank"],
+.dark .virtuous-embed-host [class*="success"],
+.dark .virtuous-embed-host [class*="description"],
+.dark .virtuous-embed-host [class*="summary"],
+.dark .virtuous-embed-host [class*="impact"] {
+  color: #f8fafc !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.6 !important;
+}
 
 /*
  * Sponsor a Student — Split Spotlight section.

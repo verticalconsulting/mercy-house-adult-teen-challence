@@ -278,3 +278,28 @@ export const pageSeo = {
     noindex: true,
   },
 };
+
+/**
+ * Look up the SEO entry for a pathname.
+ *
+ * Unmapped paths get a self-canonicalising noindex fallback rather than
+ * `null`. Returning null previously let <SeoManager> no-op, which left the
+ * *previous* route's <title> and canonical in the document during client-side
+ * navigation — so an unmapped page reported itself as whatever the visitor
+ * looked at last.
+ */
+export function resolveSeo(pathname) {
+  let path = pathname || '/';
+  if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
+
+  const entry = pageSeo[path];
+  if (entry) return entry;
+
+  return {
+    title: 'Mercy House Adult & Teen Challenge | Faith-Based Recovery in Mississippi',
+    description:
+      'Mercy House Adult & Teen Challenge is a Christ-centered residential recovery ministry for men and women in Georgetown and Learned, Mississippi.',
+    path,
+    noindex: true,
+  };
+}

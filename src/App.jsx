@@ -9,6 +9,7 @@ import PageNotFound from './lib/PageNotFound';
 import MeetTheTeam from './pages/MeetTheTeam';
 import WomensCampusGallery from './pages/WomensCampusGallery';
 import FreedomClassic from './pages/FreedomClassic';
+import FreedomGala from './pages/FreedomGala';
 import TeenChallengeStory from './pages/TeenChallengeStory';
 import WomensCenterCalendar from './pages/WomensCenterCalendar';
 import News from './pages/News';
@@ -26,6 +27,7 @@ import Internship from './pages/Internship';
 import MediaResources from './pages/MediaResources';
 import FAQ from './pages/FAQ';
 import BlogPostPage from './pages/BlogPostPage';
+import TestimonyPage from './pages/TestimonyPage';
 import EventDetailPage from './pages/EventDetailPage';
 import Files from './pages/Files';
 import Connect from './pages/Connect';
@@ -94,6 +96,7 @@ const AuthenticatedApp = () => {
       <Route path={createPageUrl('TermsConditions')} element={<LayoutWrapper currentPageName="TermsConditions"><TermsConditions /></LayoutWrapper>} />
       <Route path="/freedom-from-addiction-starts-here" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
       <Route path={createPageUrl('FreedomClassic')} element={<LayoutWrapper currentPageName="FreedomClassic"><FreedomClassic /></LayoutWrapper>} />
+      <Route path={createPageUrl('FreedomGala')} element={<LayoutWrapper currentPageName="FreedomGala"><FreedomGala /></LayoutWrapper>} />
       <Route path={createPageUrl('TeenChallengeStory')} element={<LayoutWrapper currentPageName="TeenChallengeStory"><TeenChallengeStory /></LayoutWrapper>} />
       <Route path={createPageUrl('News')} element={<LayoutWrapper currentPageName="News"><News /></LayoutWrapper>} />
       <Route path={createPageUrl('WomensCenterCalendar')} element={<LayoutWrapper currentPageName="WomensCenterCalendar"><WomensCenterCalendar /></LayoutWrapper>} />
@@ -105,6 +108,7 @@ const AuthenticatedApp = () => {
       <Route path={createPageUrl('FAQ')} element={<LayoutWrapper currentPageName="FAQ"><FAQ /></LayoutWrapper>} />
       <Route path={createPageUrl('Files')} element={<LayoutWrapper currentPageName="Files"><Files /></LayoutWrapper>} />
       <Route path="/events/event/:id" element={<LayoutWrapper currentPageName="EventDetailPage"><EventDetailPage /></LayoutWrapper>} />
+      <Route path="/testimonies/:slug" element={<LayoutWrapper currentPageName="TestimonyPage"><TestimonyPage /></LayoutWrapper>} />
       <Route path="/news/:slug" element={<LayoutWrapper currentPageName="BlogPostPage"><BlogPostPage /></LayoutWrapper>} />
       <Route path="/connect" element={<LayoutWrapper currentPageName="Connect"><Connect /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />

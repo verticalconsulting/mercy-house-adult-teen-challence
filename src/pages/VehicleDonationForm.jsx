@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { CheckCircle } from 'lucide-react';
+import { trackFormSubmit } from '@/lib/analytics';
 
 export default function VehicleDonationForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -33,6 +34,7 @@ export default function VehicleDonationForm() {
     mutationFn: (data) => base44.entities.VehicleDonation.create(data),
     onSuccess: () => {
       setSubmitted(true);
+      trackFormSubmit('vehicle_donation');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
   });

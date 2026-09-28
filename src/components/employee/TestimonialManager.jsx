@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
+import { testimonySlug } from '@/lib/testimony';
 import { Label } from '@/components/ui/label';
 import { Plus, Sparkles, Loader2, Pencil, Trash2, Star } from 'lucide-react';
 import { toast } from 'sonner';
@@ -21,7 +22,12 @@ export default function TestimonialManager() {
     program_type: 'mens',
     graduation_year: new Date().getFullYear(),
     featured: false,
-    published: true
+    published: true,
+    description: '',
+    slug: '',
+    consent_confirmed: false,
+    consent_date: '',
+    consent_notes: ''
   });
   const [keywords, setKeywords] = useState('');
   const [generatingAI, setGeneratingAI] = useState(false);
@@ -71,7 +77,12 @@ export default function TestimonialManager() {
       program_type: 'mens',
       graduation_year: new Date().getFullYear(),
       featured: false,
-      published: true
+      published: true,
+      description: '',
+      slug: '',
+      consent_confirmed: false,
+      consent_date: '',
+      consent_notes: ''
     });
     setKeywords('');
     setShowForm(false);
@@ -114,6 +125,11 @@ export default function TestimonialManager() {
       graduation_year: testimonial.graduation_year || new Date().getFullYear(),
       featured: testimonial.featured || false,
       published: testimonial.published !== false,
+      description: testimonial.description || '',
+      slug: testimonial.slug || '',
+      consent_confirmed: testimonial.consent_confirmed || false,
+      consent_date: testimonial.consent_date || '',
+      consent_notes: testimonial.consent_notes || ''
     });
     setEditingTestimonial(testimonial);
     setShowForm(true);
@@ -212,6 +228,85 @@ export default function TestimonialManager() {
                   rows={6}
                   required
                 />
+              </div>
+
+              <div>
+                <Label>Additional Context (optional)</Label>
+                <Textarea
+                  value={formData.description}
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  rows={3}
+                  placeholder="Background shown beneath the quote on the story page."
+                />
+              </div>
+
+              {/* Story page: slug + consent.
+                  TestimonyPage filters on consent_confirmed, so a story only
+                  appears at its own URL once this is ticked — and unticking it
+                  takes the page down and marks the URL noindex. */}
+              <div className="rounded-lg border border-slate-200 dark:border-slate-700 p-4 space-y-4">
+                <p className="text-sm font-semibold text-navy dark:text-gold">
+                  Story page at /testimonies/&hellip;
+                </p>
+
+                <div>
+                  <Label>URL Slug</Label>
+                  <Input
+                    value={formData.slug}
+                    onChange={(e) => setFormData({ ...formData, slug: testimonySlug(e.target.value) })}
+                    placeholder="van-pope"
+                  />
+                  <p className="text-xs text-slate-500 mt-1">
+                    Leave blank for no dedicated page.
+                    {formData.graduate_name && !formData.slug && (
+                      <button
+                        type="button"
+                        className="ml-2 underline"
+                        onClick={() =>
+                          setFormData({ ...formData, slug: testimonySlug(formData.graduate_name) })
+                        }
+                      >
+                        Use &ldquo;{testimonySlug(formData.graduate_name)}&rdquo;
+                      </button>
+                    )}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Switch
+                    checked={formData.consent_confirmed}
+                    onCheckedChange={(checked) =>
+                      setFormData({
+                        ...formData,
+                        consent_confirmed: checked,
+                        consent_date:
+                          checked && !formData.consent_date
+                            ? new Date().toISOString().slice(0, 10)
+                            : formData.consent_date,
+                      })
+                    }
+                  />
+                  <Label>Written consent obtained to publish name, photo and story</Label>
+                </div>
+
+                <div>
+                  <Label>Consent Date</Label>
+                  <Input
+                    type="date"
+                    value={formData.consent_date}
+                    onChange={(e) => setFormData({ ...formData, consent_date: e.target.value })}
+                  />
+                </div>
+
+                <div>
+                  <Label>Consent Notes</Label>
+                  <Textarea
+                    value={formData.consent_notes}
+                    onChange={(e) => setFormData({ ...formData, consent_notes: e.target.value })}
+                    rows={2}
+                    placeholder="How consent was obtained and where the signed record is filed."
+                  />
+                </div>
               </div>
 
               <div className="flex gap-6">

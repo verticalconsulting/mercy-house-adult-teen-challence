@@ -208,6 +208,57 @@ export const pageSeo = {
     path: '/programs-locations/womens-campus/gallery',
   },
 
+  '/testimonies/van-pope': {
+    title: "Van Pope's Story | Mercy House Adult & Teen Challenge",
+    description:
+      'Van Pope found freedom from addiction through the Christ-centered residential program at Mercy House Adult & Teen Challenge in Mississippi. Read his story.',
+    path: '/testimonies/van-pope',
+  },
+  '/testimonies/kaye-byrd': {
+    title: "Kaye Byrd's Story | Mercy House Adult & Teen Challenge",
+    description:
+      "Kaye Byrd's life was transformed at the Mercy House Adult & Teen Challenge women's campus in Learned, Mississippi. Read how faith and community changed her path.",
+    path: '/testimonies/kaye-byrd',
+  },
+  '/testimonies/chris-gates': {
+    title: "Chris Gates's Story | Mercy House Adult & Teen Challenge",
+    description:
+      'Chris Gates overcame a life-controlling addiction through faith, structure and community at Mercy House Adult & Teen Challenge. Read his recovery story.',
+    path: '/testimonies/chris-gates',
+  },
+  '/testimonies/josh-cook': {
+    title: "Josh Cook's Story | Mercy House Adult & Teen Challenge",
+    description:
+      'Josh Cook graduated from the residential recovery program at Mercy House Adult & Teen Challenge in Georgetown, Mississippi. Read how his life was rebuilt.',
+    path: '/testimonies/josh-cook',
+  },
+  '/testimonies/garrick-crouch': {
+    title: "Garrick Crouch's Story | Mercy House Adult & Teen Challenge",
+    description:
+      'Garrick Crouch found lasting freedom through the Christ-centered recovery program at Mercy House Adult & Teen Challenge. Read his testimony of transformation.',
+    path: '/testimonies/garrick-crouch',
+  },
+  '/news/ministry-updates': {
+    title: 'Ministry Updates | Mercy House Adult & Teen Challenge',
+    description:
+      'The latest ministry updates from Mercy House Adult & Teen Challenge — graduations, campus news, and how God is moving in recovery across Mississippi.',
+    path: '/news/ministry-updates',
+  },
+  '/freedom-gala': {
+    title: 'Freedom Gala | Mercy House Adult & Teen Challenge',
+    description:
+      'Join the Freedom Gala, the annual fundraising banquet for Mercy House Adult & Teen Challenge. Reserve a table and help fund faith-based recovery in Mississippi.',
+    path: '/freedom-gala',
+  },
+
+  '/files': {
+    title: 'Files & Forms | Mercy House Adult & Teen Challenge',
+    description:
+      'Download applications, forms and documents for Mercy House Adult & Teen Challenge programs, volunteering and admissions in Mississippi.',
+    path: '/files',
+    noindex: true,
+  },
+
   // ---- Admin / internal routes: indexed off, simple titles ----
   '/employee-portal': {
     title: 'Employee Portal | Mercy House Adult & Teen Challenge',
@@ -235,3 +286,28 @@ export const pageSeo = {
     noindex: true,
   },
 };
+
+/**
+ * Look up the SEO entry for a pathname.
+ *
+ * Unmapped paths get a self-canonicalising noindex fallback rather than
+ * `null`. Returning null previously let <SeoManager> no-op, which left the
+ * *previous* route's <title> and canonical in the document during client-side
+ * navigation — so an unmapped page reported itself as whatever the visitor
+ * looked at last.
+ */
+export function resolveSeo(pathname) {
+  let path = pathname || '/';
+  if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
+
+  const entry = pageSeo[path];
+  if (entry) return entry;
+
+  return {
+    title: 'Mercy House Adult & Teen Challenge | Faith-Based Recovery in Mississippi',
+    description:
+      'Mercy House Adult & Teen Challenge is a Christ-centered residential recovery ministry for men and women in Georgetown and Learned, Mississippi.',
+    path,
+    noindex: true,
+  };
+}

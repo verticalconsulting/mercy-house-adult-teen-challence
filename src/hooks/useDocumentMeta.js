@@ -7,9 +7,9 @@ import { useEffect } from 'react';
  * client-side. Modern crawlers (Google, Bing) execute JS and pick them up.
  * The index.html defaults act as the initial-paint fallback before this runs.
  */
-// Set VITE_SITE_URL at deploy time to flip this at DNS cutover without a code
-// change (defaults to the current pre-cutover .org domain when unset).
-const SITE_ORIGIN = import.meta.env.VITE_SITE_URL || 'https://mercyhouseatc.org';
+// Set VITE_SITE_URL to override the canonical origin without a code change
+// (defaults to the live .com domain when unset).
+const SITE_ORIGIN = import.meta.env.VITE_SITE_URL || 'https://mercyhouseatc.com';
 
 function upsertMeta(name, content, attr = 'name') {
   if (!content) return;

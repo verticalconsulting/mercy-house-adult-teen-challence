@@ -38,9 +38,14 @@ export function verifyAutomationSecret(body) {
  * the production domain. Prevents open-redirect / post-payment phishing
  * (CWE-601).
  */
-// .org is the live domain pre-cutover; .com stays allowed for the DNS cutover to mercyhouseatc.com.
-const ALLOWED_ORIGIN_HOSTS = ['mercyhouseatc.org', 'www.mercyhouseatc.org', 'mercyhouseatc.com', 'www.mercyhouseatc.com'];
-const PRODUCTION_URL = 'https://mercyhouseatc.org';
+// mercyhouseatc.com is the live domain. The legacy .org 301-redirects here, so a
+// browser never presents a .org Origin; keeping it allowlisted would only widen
+// the redirect surface. Crucially, PRODUCTION_URL must stay on .com: Stripe
+// returns to `${appUrl}/?donation=success`, and bouncing that through a
+// cross-domain 301 can drop the query string (losing the conversion signal) and
+// makes GA4 attribute the session to a self-referral.
+const ALLOWED_ORIGIN_HOSTS = ['mercyhouseatc.com', 'www.mercyhouseatc.com'];
+const PRODUCTION_URL = 'https://mercyhouseatc.com';
 
 export function getSafeAppUrl(req) {
   const origin = (req.headers.get('origin') || '').trim();

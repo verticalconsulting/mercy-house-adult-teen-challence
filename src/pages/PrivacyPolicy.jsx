@@ -88,7 +88,10 @@ export default function PrivacyPolicy() {
             <p>We may use the following third-party services that have their own privacy practices:</p>
             <ul className="list-disc pl-6 mt-3 space-y-2">
               <li><strong>Stripe</strong> — Payment processing for donations. See <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className="text-navy dark:text-gold hover:underline">stripe.com/privacy</a>.</li>
-              <li><strong>Google Analytics</strong> — Anonymous website usage analytics. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-navy dark:text-gold hover:underline">policies.google.com/privacy</a>.</li>
+              <li><strong>Google Tag Manager</strong> — Loads and manages the measurement tags listed below. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-navy dark:text-gold hover:underline">policies.google.com/privacy</a>.</li>
+              <li><strong>Google Analytics</strong> — Website usage analytics, including pages visited and completed donations. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-navy dark:text-gold hover:underline">policies.google.com/privacy</a>.</li>
+              <li><strong>Google Ads</strong> — Measures which advertisements lead to donations and supports remarketing audiences. See <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-navy dark:text-gold hover:underline">policies.google.com/technologies/ads</a>.</li>
+              <li><strong>Meta (Facebook) Pixel</strong> — Measures advertisement performance and supports remarketing audiences on Facebook and Instagram. See <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener noreferrer" className="text-navy dark:text-gold hover:underline">facebook.com/privacy/policy</a>.</li>
             </ul>
           </section>
 

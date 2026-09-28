@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-// Same origin as useDocumentMeta — flip both together at DNS cutover via VITE_SITE_URL.
-const SITE_ORIGIN = import.meta.env.VITE_SITE_URL || 'https://mercyhouseatc.org';
+// Same origin as useDocumentMeta — override both together via VITE_SITE_URL.
+const SITE_ORIGIN = import.meta.env.VITE_SITE_URL || 'https://mercyhouseatc.com';
 
 /**
  * Site-wide NonprofitOrganization JSON-LD (name, address, phone, sameAs),

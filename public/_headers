@@ -1,2 +1,21 @@
-/*
-  X-Robots-Tag: noindex, nofollow, noarchive
+# Indexing is allowed by default. Pages that must not be indexed are listed
+# individually below, and are deliberately NOT disallowed in robots.txt: a
+# disallowed URL can never be crawled, so its noindex would never be seen.
+
+/get-help-now
+  X-Robots-Tag: noindex, nofollow
+
+/vehicle-donation-program/form
+  X-Robots-Tag: noindex, nofollow
+
+/employee-portal
+  X-Robots-Tag: noindex, nofollow
+
+/donation-funnel
+  X-Robots-Tag: noindex, nofollow
+
+/search-performance
+  X-Robots-Tag: noindex, nofollow
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prebuild": "node scripts/generate-sitemap.mjs"
+    "prebuild": "node scripts/generate-sitemap.mjs",
+    "verify:seo": "node scripts/verify-rendered-seo.mjs"
   },
   "dependencies": {
     "@base44/sdk": "^0.8.51",

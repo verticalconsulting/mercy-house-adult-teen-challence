@@ -9,6 +9,7 @@ export default function FloatingAIChat() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [sending, setSending] = useState(false);
+  const [error, setError] = useState(null);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -17,6 +18,23 @@ export default function FloatingAIChat() {
       initConversation();
     }
   }, [open]);
+
+  // Subscribe to conversation updates with proper lifecycle management.
+  // The previous code set up the subscription inside initConversation and
+  // never cleaned it up, which could cause missed updates and stale callbacks.
+  useEffect(() => {
+    if (!conversation?.id) return;
+    const unsubscribe = base44.agents.subscribeToConversation(conversation.id, (data) => {
+      const filtered = (data.messages || []).filter(m => m.role !== 'system');
+      setMessages(filtered);
+      // Stop the "thinking" spinner once the assistant has replied with content
+      const lastMsg = filtered[filtered.length - 1];
+      if (lastMsg?.role === 'assistant' && lastMsg.content) {
+        setSending(false);
+      }
+    });
+    return () => unsubscribe();
+  }, [conversation?.id]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -29,23 +47,24 @@ export default function FloatingAIChat() {
   }, [open]);
 
   const initConversation = async () => {
-    base44.analytics.track({
-      eventName: 'ai_chat_initiated',
-      properties: { source: 'floating_chat_button', page: window.location.pathname }
-    });
-    const conv = await base44.agents.createConversation({
-      agent_name: 'mercy_house_assistant',
-      metadata: { name: 'Mercy House Chat' }
-    });
-    setConversation(conv);
-    setMessages([{
-      role: 'assistant',
-      content: "Hi! I'm here to answer any questions you have about Mercy House Adult Teen Challenge. Whether you're seeking help, looking to volunteer, or just want to learn more — ask away! 💙"
-    }]);
-
-    base44.agents.subscribeToConversation(conv.id, (data) => {
-      setMessages(data.messages.filter(m => m.role !== 'system'));
-    });
+    try {
+      base44.analytics.track({
+        eventName: 'ai_chat_initiated',
+        properties: { source: 'floating_chat_button', page: window.location.pathname }
+      });
+      const conv = await base44.agents.createConversation({
+        agent_name: 'mercy_house_assistant',
+        metadata: { name: 'Mercy House Chat' }
+      });
+      setConversation(conv);
+      setMessages([{
+        role: 'assistant',
+        content: "Hi! I'm here to answer any questions you have about Mercy House Adult Teen Challenge. Whether you're seeking help, looking to volunteer, or just want to learn more — ask away! 💙"
+      }]);
+    } catch (err) {
+      console.error('Failed to initialize AI chat:', err);
+      setError('Could not start the chat. Please try again.');
+    }
   };
 
   const sendMessage = async (e) => {
@@ -54,12 +73,19 @@ export default function FloatingAIChat() {
     const text = input.trim();
     setInput('');
     setSending(true);
+    setError(null);
     setMessages(prev => [...prev, { role: 'user', content: text }]);
     try {
       await base44.agents.addMessage(conversation, { role: 'user', content: text });
-    } finally {
+      // Don't clear `sending` here — the subscription callback clears it when
+      // the assistant's reply arrives. This keeps the spinner visible while
+      // the agent is thinking.
+      // Safety fallback: if no reply arrives within 45s, stop the spinner.
+      setTimeout(() => setSending(false), 45000);
+    } catch (err) {
+      console.error('Failed to send message to agent:', err);
+      setError('Could not send your message. Please try again.');
       setSending(false);
-      setTimeout(() => inputRef.current?.focus(), 100);
     }
   };
 
@@ -132,6 +158,11 @@ export default function FloatingAIChat() {
                   <div className="bg-slate-100 dark:bg-slate-700 rounded-2xl rounded-bl-sm px-3 py-2">
                     <Loader2 className="w-4 h-4 animate-spin text-navy dark:text-gold" aria-label="Assistant is typing" />
                   </div>
+                </div>
+              )}
+              {error && (
+                <div className="text-xs text-red-600 dark:text-red-400 text-center px-2 py-1">
+                  {error}
                 </div>
               )}
               <div ref={messagesEndRef} />

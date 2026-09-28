@@ -438,8 +438,23 @@
 .dark .virtuous-embed-host select,
 .dark .virtuous-embed-host textarea {
   color: #1e293b !important;
-  font-size: 1.0625rem !important;
+  font-size: 1rem !important;
   background-color: #ffffff !important;
+  height: 48px !important;
+  max-height: 48px !important;
+  padding: 8px 12px !important;
+  box-sizing: border-box !important;
+  line-height: 1.4 !important;
+}
+/* Constrain the wrapper divs around payment fields (card number, exp, CVC)
+   that the Virtuous/Stripe embed stretches to fill available height. */
+.dark .virtuous-embed-host [class*="card"] > div,
+.dark .virtuous-embed-host [class*="payment"] > div,
+.dark .virtuous-embed-host [class*="stripe"] > div,
+.dark .virtuous-embed-host [class*="input-wrapper"],
+.dark .virtuous-embed-host [class*="field-wrapper"] {
+  height: auto !important;
+  max-height: 70px !important;
 }
 .dark .virtuous-embed-host input::placeholder,
 .dark .virtuous-embed-host textarea::placeholder {

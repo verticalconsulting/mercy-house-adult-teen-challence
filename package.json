@@ -16,8 +16,8 @@
     "verify:seo": "node scripts/verify-rendered-seo.mjs"
   },
   "dependencies": {
-    "@base44/sdk": "^0.8.51",
-    "@base44/vite-plugin": "^1.0.42",
+    "@base44/sdk": "^0.8.52",
+    "@base44/vite-plugin": "^1.0.44",
     "@formspree/react": "^2.5.5",
     "@hello-pangea/dnd": "^17.0.0",
     "@hookform/resolvers": "^4.1.2",

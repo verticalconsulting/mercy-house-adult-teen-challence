@@ -28,18 +28,21 @@ export function loadVirtuousEmbed() {
   if (window.VirtuousForms && window.VirtuousForms.IsLoaded) return Promise.resolve();
   if (embedPromise) return embedPromise;
 
-  embedPromise = new Promise((resolve) => {
+  embedPromise = new Promise((resolve, reject) => {
     const finish = () => resolve();
+    const fail = () => reject(new Error('Virtuous embed script failed to load'));
     const existing = document.querySelector(`script[src="${VIRTUOUS_EMBED_SRC}"]`);
     if (existing) {
       if (window.VirtuousForms && window.VirtuousForms.IsLoaded) return finish();
       existing.addEventListener('load', finish);
+      existing.addEventListener('error', fail);
       return;
     }
     const s = document.createElement('script');
     s.src = VIRTUOUS_EMBED_SRC;
     s.async = true;
     s.addEventListener('load', finish);
+    s.addEventListener('error', fail);
     document.head.appendChild(s);
   });
   return embedPromise;

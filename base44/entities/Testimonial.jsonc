@@ -41,6 +41,25 @@
       "maxLength": 1000,
       "description": "Additional context or background about the testimonial"
     },
+    "slug": {
+      "type": "string",
+      "description": "URL slug for this graduate's story page, e.g. van-pope. Must be unique."
+    },
+    "consent_confirmed": {
+      "type": "boolean",
+      "default": false,
+      "description": "The graduate has given written consent for their name, photo and story to be published publicly. Required before the story page will render."
+    },
+    "consent_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date written consent was obtained."
+    },
+    "consent_notes": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "How consent was obtained and where the signed record is filed."
+    },
     "shared_to_facebook": {
       "type": "boolean",
       "default": false,

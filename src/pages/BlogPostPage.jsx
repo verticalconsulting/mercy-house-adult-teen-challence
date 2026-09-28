@@ -40,7 +40,10 @@ export default function BlogPostPage() {
     title: post?.title,
     description: post?.excerpt,
     image: post?.featured_image,
-    url: typeof window !== 'undefined' ? window.location.href : '',
+    // Build the canonical from the configured origin plus the post's own
+    // slug, never from window.location.href — that would bake utm/gclid
+    // parameters into the canonical and point preview deploys at themselves.
+    path: `/news/${post?.slug || slug}`,
   });
 
   if (isLoading) {

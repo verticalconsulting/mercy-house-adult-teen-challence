@@ -26,6 +26,7 @@ import Internship from './pages/Internship';
 import MediaResources from './pages/MediaResources';
 import FAQ from './pages/FAQ';
 import BlogPostPage from './pages/BlogPostPage';
+import TestimonyPage from './pages/TestimonyPage';
 import EventDetailPage from './pages/EventDetailPage';
 import Files from './pages/Files';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
@@ -104,6 +105,7 @@ const AuthenticatedApp = () => {
       <Route path={createPageUrl('FAQ')} element={<LayoutWrapper currentPageName="FAQ"><FAQ /></LayoutWrapper>} />
       <Route path={createPageUrl('Files')} element={<LayoutWrapper currentPageName="Files"><Files /></LayoutWrapper>} />
       <Route path="/events/event/:id" element={<LayoutWrapper currentPageName="EventDetailPage"><EventDetailPage /></LayoutWrapper>} />
+      <Route path="/testimonies/:slug" element={<LayoutWrapper currentPageName="TestimonyPage"><TestimonyPage /></LayoutWrapper>} />
       <Route path="/news/:slug" element={<LayoutWrapper currentPageName="BlogPostPage"><BlogPostPage /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>

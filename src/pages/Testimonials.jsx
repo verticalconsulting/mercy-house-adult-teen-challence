@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Quote } from 'lucide-react';
@@ -155,6 +156,18 @@ export default function Testimonials() {
                   </p>
                 </div>
               </div>
+
+              {/* Stories with a slug have their own page. Linking them here is
+                  what makes those URLs discoverable — without an internal link
+                  they are orphans that only the sitemap knows about. */}
+              {testimonial.slug && (
+                <Link
+                  to={`/testimonies/${testimonial.slug}`}
+                  className="inline-block mt-6 text-navy dark:text-gold font-semibold hover:underline"
+                >
+                  Read {testimonial.graduate_name}&rsquo;s full story
+                </Link>
+              )}
             </div>
           ))}
         </div>

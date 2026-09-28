@@ -35,7 +35,8 @@ export default function EventDetailPage() {
     title: event?.title,
     description: event?.description,
     image: event?.image_url,
-    url: typeof window !== 'undefined' ? window.location.href : '',
+    // Origin + path, not window.location.href — see resolveShareUrl.
+    path: `/events/event/${id}`,
   });
 
   if (isLoading) {

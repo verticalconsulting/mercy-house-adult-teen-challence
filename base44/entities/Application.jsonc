@@ -179,6 +179,10 @@
       "type": "string",
       "format": "date"
     },
+    "drive_file_id": {
+      "type": "string",
+      "description": "Google Drive file ID for the uploaded intake form in the shared team Drive"
+    },
     "description": {
       "type": "string",
       "maxLength": 1000,

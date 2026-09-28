@@ -1,0 +1,36 @@
+{
+  "name": "Intake Application Drive Sync",
+  "description": "Automatically files new intake applications into the shared MHATC Staff Drive, organized by program type and month.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "Application"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "intake_application_drive_sync",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "syncApplicationToDrive",
+            "args": {
+              "automation_secret": "1c72a3ad-96b7-405c-8166-30603b594248"
+            }
+          },
+          "then": "end"
+        }
+      }
+    ]
+  }
+}

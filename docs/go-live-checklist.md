@@ -65,7 +65,14 @@ genuinely unknown, not merely unticked.
 - [ ] Baseline `npm run verify:seo` captured **before** the DNS change
 - [ ] Hado configured with **network-idle** render wait, not a fixed delay
 - [ ] `docs/hado-redirects.csv` imported (30 × 301)
-- [ ] robots.txt and sitemap.xml pass through from the origin
+- [ ] robots.txt and sitemap.xml **pasted into Hado's Domain Settings** —
+      passthrough is not offered for Base44 origins, so Hado holds a copy
+      that must be re-pasted whenever `canonical-map.js` changes
+- [ ] Hado **"Override noindex on origin" is ON** — Base44 stamps noindex on
+      app origins, and without this nothing indexes however good the markup
+- [ ] Hado **Blocked paths** set to `/home`, `/files`, `/employee-portal`,
+      `/donation-funnel`, `/search-performance` — and *not* the two form
+      pages, which must stay prerendered for `verify:seo` to check them
 - [ ] DNS change live
 - [ ] `npm run verify:seo` passes clean **(unverified by implementation)**
 - [ ] `curl` as a human returns the SPA shell, not the snapshot
@@ -84,12 +91,20 @@ genuinely unknown, not merely unticked.
 - [ ] Every expected email received, with recipient and delay recorded
 - [ ] Stripe returned to live mode, test charges refunded, test records purged
 
-## Known open questions
+## Resolved: the live site is running a stale build
 
-- [ ] **`main.mercyhouseworks.org` and the storage-bucket logo do not exist
-      anywhere in this repo.** The audit reports them in today's schema, but
-      this codebase's schema points at `imagedelivery.net`. Either the audit
-      crawled a different build (likely the old `.org` WordPress site), or
-      `mercyhouseatc.com` is not yet pointed at this Base44 app. Resolve this
-      first — if the domain does not serve this code, none of the above
-      reaches a live visitor.
+A `verify:seo` run against `https://mercyhouseatc.com` on 2026-09-28 answered
+the open question about `main.mercyhouseworks.org`. Hado **is** live and
+prerendering correctly — every route returns 200 with its own `<title>` and a
+rendered `<h1>`, no JavaScript executed. But all 38 routes report
+`canonical is null`, no meta description, and still reference
+`mercyhouseworks.org`. Nothing on this branch can produce that:
+`useDocumentMeta` writes both tags and the `mercyhouseworks.org` references
+were removed. **The deployed build predates this branch.**
+
+So the ordering is:
+
+- [ ] **Deploy this branch first.** Most of the 209 reported failures should
+      clear on their own; what remains is genuinely Hado configuration.
+- [ ] Re-run `npm run verify:seo` after the deploy and work the remainder.
+      The pre-deploy output is kept for the before/after comparison.

@@ -59,7 +59,17 @@ Deno.serve(async (req) => {
       };
     }).filter(e => e.start);
 
-    // Attach volunteer commitments by google_event_id
+    // Attach volunteer commitments by google_event_id.
+    // VolunteerShift has admin-only RLS; volunteer names are personal data
+    // that must not be disclosed to anonymous callers. Return counts to
+    // everyone, but include names only when an admin session is present
+    // (CWE-200).
+    let isAdmin = false;
+    try {
+      const me = await base44.auth.me();
+      isAdmin = me?.role === 'admin';
+    } catch (_) { /* not authenticated — counts only */ }
+
     const shifts = await base44.asServiceRole.entities.VolunteerShift.list('-event_date', 500);
     const byEvent = {};
     for (const s of shifts) {
@@ -70,17 +80,19 @@ Deno.serve(async (req) => {
 
     const result = events.map(e => {
       const evShifts = byEvent[e.id] || [];
-      const firstNames = evShifts.map(s => {
-        const parts = (s.volunteer_name || '').split(' ').filter(Boolean);
-        const first = parts[0] || '';
-        const lastInitial = parts[1] ? parts[1][0] + '.' : '';
-        return `${first} ${lastInitial}`.trim();
-      });
-      return {
+      const entry = {
         ...e,
-        volunteer_count: evShifts.length,
-        volunteer_first_names: firstNames
+        volunteer_count: evShifts.length
       };
+      if (isAdmin) {
+        entry.volunteer_first_names = evShifts.map(s => {
+          const parts = (s.volunteer_name || '').split(' ').filter(Boolean);
+          const first = parts[0] || '';
+          const lastInitial = parts[1] ? parts[1][0] + '.' : '';
+          return `${first} ${lastInitial}`.trim();
+        });
+      }
+      return entry;
     });
 
     return Response.json({ events: result });

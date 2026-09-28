@@ -131,7 +131,7 @@ export default function WomensCenterCalendar() {
                             <Users className="w-3.5 h-3.5" />
                             {e.volunteer_count} volunteer{e.volunteer_count !== 1 ? 's' : ''}
                           </span>
-                          {e.volunteer_count > 0 && (
+                          {e.volunteer_count > 0 && e.volunteer_first_names?.length > 0 && (
                             <span className="text-xs text-slate-500 dark:text-slate-400">
                               {e.volunteer_first_names.join(', ')}
                             </span>

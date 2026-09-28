@@ -44,7 +44,7 @@ export function verifyAutomationSecret(body) {
 // returns to `${appUrl}/?donation=success`, and bouncing that through a
 // cross-domain 301 can drop the query string (losing the conversion signal) and
 // makes GA4 attribute the session to a self-referral.
-const ALLOWED_ORIGIN_HOSTS = ['mercyhouseatc.com', 'www.mercyhouseatc.com'];
+const ALLOWED_ORIGIN_HOSTS = ['mercyhouseatc.com', 'www.mercyhouseatc.com', 'mercy-house-hope.base44.app'];
 const PRODUCTION_URL = 'https://mercyhouseatc.com';
 
 export function getSafeAppUrl(req) {
@@ -52,7 +52,7 @@ export function getSafeAppUrl(req) {
   if (origin) {
     try {
       const host = new URL(origin).hostname;
-      if (ALLOWED_ORIGIN_HOSTS.includes(host) || host.endsWith('.base44.app')) {
+      if (ALLOWED_ORIGIN_HOSTS.includes(host)) {
         return origin;
       }
     } catch {

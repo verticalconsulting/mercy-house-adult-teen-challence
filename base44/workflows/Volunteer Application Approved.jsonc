@@ -24,7 +24,9 @@
           "call": "invoke_backend_function",
           "with": {
             "function_name": "onVolunteerApplicationApproved",
-            "args": {}
+            "args": {
+              "automation_secret": "1c72a3ad-96b7-405c-8166-30603b594248"
+            }
           },
           "then": "end"
         }

@@ -1,16 +1,23 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
+import { verifyAutomationSecret } from '../../shared/security.ts';
 
 Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
-    const { event, data, old_data } = await req.json();
+    const reqBody = await req.json();
+    const { event, data, old_data } = reqBody;
 
-    // Trust boundary: this handler moves Google Drive files and sends email
-    // using the app's OAuth connectors. Only a genuine entity-automation
-    // "update" event is honored, and the Drive file ID + recipient email are
-    // read from the stored record (not the payload) so an unauthenticated
-    // caller cannot move arbitrary Drive files or redirect the approval email
-    // (CWE-306).
+    // Trust boundary: verify the platform automation secret before performing
+    // any privileged side effect (Drive file move, approval email). Prevents
+    // anonymous replay attacks that spam Drive and applicant inboxes (CWE-306).
+    if (!verifyAutomationSecret(reqBody)) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Only a genuine entity-automation "update" event for a Volunteer is
+    // honored, and the Drive file ID + recipient email are read from the
+    // stored record (not the payload) so an unauthenticated caller cannot
+    // move arbitrary Drive files or redirect the approval email (CWE-306).
     if (!event || event.type !== 'update' || event.entity_name !== 'Volunteer' || !data?.id) {
       return Response.json({ error: 'Invalid trigger payload' }, { status: 400 });
     }

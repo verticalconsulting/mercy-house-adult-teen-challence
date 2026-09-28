@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
@@ -8,9 +8,16 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Heart, Users, Clock, CheckCircle, ArrowRight, Wrench, BookOpen, Home, Truck } from 'lucide-react';
+import { trackFormSubmit } from '@/lib/analytics';
 
 export default function Volunteer() {
   const [state, handleFormspreeSubmit] = useForm('meedjkqo');
+  // Fire from an effect keyed on the success flag, not from the submit
+  // handler: state.succeeded flips once, so a re-render cannot double-count.
+  useEffect(() => {
+    if (state.succeeded) trackFormSubmit('volunteer');
+  }, [state.succeeded]);
+
   const [availability, setAvailability] = useState([]);
   const [areasOfInterest, setAreasOfInterest] = useState([]);
   const [backgroundConsent, setBackgroundConsent] = useState(false);

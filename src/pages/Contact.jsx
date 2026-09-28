@@ -12,6 +12,7 @@ const googleReviews = [
 ];
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { trackContactClick } from '@/lib/analytics';
 
 export default function Contact() {
   return (
@@ -29,7 +30,7 @@ export default function Contact() {
             href="tel:6017203718"
             className="inline-flex items-center gap-2 bg-gold hover:bg-gold/90 text-navy font-bold px-8 py-4 rounded-lg text-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white shadow-xl"
             aria-label="Call our intake coordinator at (601) 720-3718"
-          >
+           onClick={() => trackContactClick('phone')}>
             <Phone className="w-5 h-5" aria-hidden="true" />
             Call Intake: (601) 720-3718
           </a>
@@ -90,7 +91,7 @@ export default function Contact() {
                     <Phone className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white">Office Phone</p>
-                      <a href="tel:8558937333" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
+                      <a href="tel:8558937333" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors" onClick={() => trackContactClick('phone')}>
                         855-89-FREEDOM (855-893-7333)
                       </a>
                     </div>
@@ -100,7 +101,7 @@ export default function Contact() {
                     <Phone className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white">Intake Coordinator</p>
-                      <a href="tel:6017203718" className="text-gold font-bold hover:text-gold/80 transition-colors">
+                      <a href="tel:6017203718" className="text-gold font-bold hover:text-gold/80 transition-colors" onClick={() => trackContactClick('phone')}>
                         (601) 720-3718
                       </a>
                     </div>
@@ -118,7 +119,7 @@ export default function Contact() {
                     <Mail className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white">General Email</p>
-                      <a href="mailto:info@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
+                      <a href="mailto:info@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors" onClick={() => trackContactClick('email')}>
                         info@mercyhouseatc.com
                       </a>
                     </div>
@@ -128,7 +129,7 @@ export default function Contact() {
                     <Mail className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white">Intake Email</p>
-                      <a href="mailto:intake@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
+                      <a href="mailto:intake@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors" onClick={() => trackContactClick('email')}>
                         intake@mercyhouseatc.com
                       </a>
                     </div>
@@ -178,7 +179,7 @@ export default function Contact() {
                     <Phone className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white">Office Phone</p>
-                      <a href="tel:8558937333" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
+                      <a href="tel:8558937333" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors" onClick={() => trackContactClick('phone')}>
                         855-89-FREEDOM (855-893-7333)
                       </a>
                     </div>
@@ -188,7 +189,7 @@ export default function Contact() {
                     <Phone className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white">Intake Coordinator</p>
-                      <a href="tel:6017203718" className="text-gold font-bold hover:text-gold/80 transition-colors">
+                      <a href="tel:6017203718" className="text-gold font-bold hover:text-gold/80 transition-colors" onClick={() => trackContactClick('phone')}>
                         (601) 720-3718
                       </a>
                     </div>
@@ -206,7 +207,7 @@ export default function Contact() {
                     <Mail className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white">General Email</p>
-                      <a href="mailto:info@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
+                      <a href="mailto:info@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors" onClick={() => trackContactClick('email')}>
                         info@mercyhouseatc.com
                       </a>
                     </div>
@@ -216,7 +217,7 @@ export default function Contact() {
                     <Mail className="w-5 h-5 text-gold mt-1 flex-shrink-0" aria-hidden="true" />
                     <div>
                       <p className="font-semibold text-slate-900 dark:text-white">Intake Email</p>
-                      <a href="mailto:intake@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors">
+                      <a href="mailto:intake@mercyhouseatc.com" className="text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-gold transition-colors" onClick={() => trackContactClick('email')}>
                         intake@mercyhouseatc.com
                       </a>
                     </div>
@@ -309,7 +310,7 @@ export default function Contact() {
               </dl>
               <div className="mt-5 bg-gold/10 border border-gold/30 rounded-lg p-4">
                 <p className="text-sm text-slate-700 dark:text-slate-300 font-medium">
-                  💡 In a crisis outside office hours? Call <a href="tel:988" className="text-gold font-bold">988</a> (Suicide & Crisis Lifeline) or text HOME to 741741.
+                  💡 In a crisis outside office hours? Call <a href="tel:988" className="text-gold font-bold" onClick={() => trackContactClick('phone')}>988</a> (Suicide & Crisis Lifeline) or text HOME to 741741.
                 </p>
               </div>
             </CardContent>
@@ -329,7 +330,7 @@ export default function Contact() {
                   <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
                 </Button>
               </Link>
-              <a href="tel:6017203718">
+              <a href="tel:6017203718" onClick={() => trackContactClick('phone')}>
                 <Button variant="outline" className="w-full border-2 border-gold/50 text-gold hover:bg-gold/10 py-5 font-semibold">
                   <Phone className="w-4 h-4 mr-2" aria-hidden="true" />
                   Call (601) 720-3718 Instead

@@ -117,3 +117,25 @@ export function trackCheckoutReturn(search) {
     trackEvent(eventName, { checkout_type: param });
   }
 }
+
+/**
+ * A completed form submission.
+ *
+ * Fired from each form's success branch rather than its submit handler, so a
+ * validation failure or a network error never counts as a lead.
+ */
+export function trackFormSubmit(formName, params = {}) {
+  trackEvent(`${formName}_submit`, { form_name: formName, ...params });
+}
+
+/**
+ * A contact intent on /contact.
+ *
+ * That page has no form — it lists tel: and mailto: links — so the click on
+ * the link is the only conversion signal available. It measures intent, not a
+ * completed conversation; do not import it into Ads as a primary conversion
+ * without knowing that.
+ */
+export function trackContactClick(method) {
+  trackEvent('contact_click', { method });
+}

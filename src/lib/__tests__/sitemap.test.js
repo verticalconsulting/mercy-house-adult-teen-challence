@@ -41,3 +41,41 @@ describe('buildSitemap', () => {
     expect(buildSitemap(ORIGIN, ['/a&b'])).toContain('<loc>https://mercyhouseatc.com/a&amp;b</loc>');
   });
 });
+
+// --- Review fix #2: data-backed URLs must not be advertised before records exist ---
+describe('pendingContent routes', () => {
+  it('keeps every data-backed route out of the sitemap until its record exists', () => {
+    const pending = CANONICAL_ROUTES.filter((r) => r.pendingContent).map((r) => r.path);
+    expect(pending).toEqual(
+      expect.arrayContaining([
+        '/testimonies/van-pope',
+        '/testimonies/kaye-byrd',
+        '/testimonies/chris-gates',
+        '/testimonies/josh-cook',
+        '/testimonies/garrick-crouch',
+        '/news/ministry-updates',
+      ])
+    );
+    for (const path of pending) {
+      expect(xml, `${path} must not be advertised`).not.toContain(`<loc>${ORIGIN}${path}</loc>`);
+    }
+  });
+
+  it('still keeps them in the canonical map so they get titles and self-canonicals', () => {
+    const paths = CANONICAL_ROUTES.map((r) => r.path);
+    expect(paths).toContain('/testimonies/van-pope');
+    expect(paths).toContain('/news/ministry-updates');
+  });
+});
+
+// --- Review fix #5: /files is a routed public page and needs its own entry ---
+describe('/files', () => {
+  it('is in the canonical map', () => {
+    expect(CANONICAL_ROUTES.map((r) => r.path)).toContain('/files');
+  });
+
+  it('is noindex, so it stays out of the sitemap', () => {
+    expect(CANONICAL_ROUTES.find((r) => r.path === '/files')?.noindex).toBe(true);
+    expect(xml).not.toContain(`<loc>${ORIGIN}/files</loc>`);
+  });
+});

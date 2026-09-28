@@ -251,6 +251,14 @@ export const pageSeo = {
     path: '/freedom-gala',
   },
 
+  '/files': {
+    title: 'Files & Forms | Mercy House Adult & Teen Challenge',
+    description:
+      'Download applications, forms and documents for Mercy House Adult & Teen Challenge programs, volunteering and admissions in Mississippi.',
+    path: '/files',
+    noindex: true,
+  },
+
   // ---- Admin / internal routes: indexed off, simple titles ----
   '/employee-portal': {
     title: 'Employee Portal | Mercy House Adult & Teen Challenge',

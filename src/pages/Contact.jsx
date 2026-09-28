@@ -310,7 +310,11 @@ export default function Contact() {
               </dl>
               <div className="mt-5 bg-gold/10 border border-gold/30 rounded-lg p-4">
                 <p className="text-sm text-slate-700 dark:text-slate-300 font-medium">
-                  💡 In a crisis outside office hours? Call <a href="tel:988" className="text-gold font-bold" onClick={() => trackContactClick('phone')}>988</a> (Suicide & Crisis Lifeline) or text HOME to 741741.
+                  {/* Deliberately untracked. A tap on 988 is someone in crisis,
+                      not a lead: firing contact_click here would count it as an
+                      intake call in Ads and make that person eligible for a
+                      remarketing audience built on the event. */}
+                  💡 In a crisis outside office hours? Call <a href="tel:988" className="text-gold font-bold">988</a> (Suicide & Crisis Lifeline) or text HOME to 741741.
                 </p>
               </div>
             </CardContent>

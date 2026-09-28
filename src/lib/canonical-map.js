@@ -30,11 +30,11 @@ export const CANONICAL_ROUTES = [
   },
   { path: '/teen-challenge-story', legacy: [] },
   { path: '/testimonies', legacy: ['/testimonials'] },
-  { path: '/testimonies/van-pope', legacy: [] },
-  { path: '/testimonies/kaye-byrd', legacy: [] },
-  { path: '/testimonies/chris-gates', legacy: [] },
-  { path: '/testimonies/josh-cook', legacy: [] },
-  { path: '/testimonies/garrick-crouch', legacy: [] },
+  { path: '/testimonies/van-pope', pendingContent: true, legacy: [] },
+  { path: '/testimonies/kaye-byrd', pendingContent: true, legacy: [] },
+  { path: '/testimonies/chris-gates', pendingContent: true, legacy: [] },
+  { path: '/testimonies/josh-cook', pendingContent: true, legacy: [] },
+  { path: '/testimonies/garrick-crouch', pendingContent: true, legacy: [] },
   { path: '/donate', legacy: [] },
   { path: '/donate/monthly', legacy: ['/recurring-donation'] },
   { path: '/donate-sponsor-student', legacy: ['/sponsor-student'] },
@@ -44,7 +44,7 @@ export const CANONICAL_ROUTES = [
   { path: '/golf-tournament', legacy: ['/freedom-classic'] },
   { path: '/freedom-gala', legacy: [] },
   { path: '/news', legacy: [] },
-  { path: '/news/ministry-updates', legacy: [] },
+  { path: '/news/ministry-updates', pendingContent: true, legacy: [] },
   { path: '/workforce-development', legacy: ['/WorkforceDevelopment', '/micro-businesses'] },
   { path: '/get-involved', legacy: ['/volunteer'] },
   { path: '/get-involved/internship', legacy: ['/internship'] },
@@ -62,10 +62,26 @@ export const CANONICAL_ROUTES = [
   // to the site owner to confirm against the original CSV.
   { path: '/thrift-store', legacy: ['/superthrift'] },
   { path: '/womens-center-calendar', legacy: [] },
+
+  // Routed and linked from the main nav, but a staff-facing document hub
+  // rather than a page worth ranking. Listed here so it gets a real title
+  // instead of the generic unmapped fallback, and noindex so it stays out of
+  // the sitemap.
+  { path: '/files', noindex: true, legacy: [] },
 ];
 
-/** Paths eligible for the sitemap and for indexing. */
-export const INDEXABLE_PATHS = CANONICAL_ROUTES.filter((r) => !r.noindex).map((r) => r.path);
+/**
+ * Paths eligible for the sitemap.
+ *
+ * `pendingContent` routes are excluded. They are real canonical URLs and get
+ * titles, self-canonicals and routes — but each one renders from a Base44
+ * record that does not exist yet, so advertising them would submit soft-404s
+ * to Search Console at exactly the moment the migration needs the sitemap
+ * trusted. Drop the flag as each record is published with consent recorded.
+ */
+export const INDEXABLE_PATHS = CANONICAL_ROUTES
+  .filter((r) => !r.noindex && !r.pendingContent)
+  .map((r) => r.path);
 
 const PATH_SET = new Set(CANONICAL_ROUTES.map((r) => r.path));
 

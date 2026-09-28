@@ -52,15 +52,26 @@ describe('App.jsx routing', () => {
     // and literal path="/..." routes. Build the actual served set rather than
     // grepping for path strings, which never appear literally for Pages entries.
     const pagesSource = readFileSync('src/pages.config.js', 'utf8');
-    const pagesBlock = pagesSource.slice(pagesSource.indexOf('export const PAGES'));
+    // lastIndexOf, not indexOf: the file opens with a JSDoc block containing
+    // two worked examples that also say "export const PAGES", and slicing from
+    // the first match harvests HomePage/Dashboard/Settings as if they were
+    // real pages — inflating the served set with routes that do not exist.
+    const pagesBlock = pagesSource.slice(pagesSource.lastIndexOf('export const PAGES'));
     const pageKeys = [...pagesBlock.matchAll(/"([A-Za-z]+)":/g)].map((m) => m[1]);
+
+    // App.jsx filters some Pages entries out of the generated routes and
+    // re-declares them by hand. Honour that filter, or a page removed from
+    // routing still looks served and this assertion silently stops working.
+    const excluded = new Set(
+      [...appSource.matchAll(/path !== '([A-Za-z]+)'/g)].map((m) => m[1])
+    );
 
     const handDeclared = [...appSource.matchAll(/createPageUrl\('([A-Za-z]+)'\)/g)].map((m) => m[1]);
     const literals = [...appSource.matchAll(/path="(\/[^":*]*)"/g)].map((m) => m[1]);
 
     const served = new Set([
       '/',
-      ...pageKeys.map(createPageUrl),
+      ...pageKeys.filter((k) => !excluded.has(k)).map(createPageUrl),
       ...handDeclared.map(createPageUrl),
       ...literals,
     ]);

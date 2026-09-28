@@ -26,9 +26,13 @@ export default function BlogPostPage() {
     queryFn: async () => {
       const results = await base44.entities.BlogPost.filter({ slug, published: true }, '-publish_date', 1);
       if (results[0]) return results[0];
-      // Fallback: param may be an id for posts without a slug
+      // Fallback: param may be an id for posts without a slug. Re-check
+      // `published` here — .get() bypasses the filter above, so without this
+      // an unpublished draft is reachable by id and, once useShareMeta runs,
+      // publishes itself as index,follow.
       try {
-        return await base44.entities.BlogPost.get(slug);
+        const byId = await base44.entities.BlogPost.get(slug);
+        return byId?.published ? byId : null;
       } catch {
         return null;
       }

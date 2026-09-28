@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analytics reconnection worksheet — Mercy House</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15273A;
+    --structure:#2F4E6F;
+    --muted:#6B665E;
+    --rule:#E7E4DF;
+    --inset:#F4F2EF;
+    --gold:#CFA869;
+    --gold-tint:#F4E9D6;
+    --stop:#A33A32;
+    --stop-tint:#F8ECEB;
+    --hand-tint:#EEF3F8;
+    --measure:68ch;
+    --sans:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --mono:'Roboto Mono',ui-monospace,'Cascadia Mono','Consolas',monospace;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--inset);
+    color:var(--ink);
+    font:400 16px/1.6 var(--sans);
+  }
+  .sheet{
+    max-width:52rem;
+    margin:0 auto;
+    background:#fff;
+    box-shadow:0 10px 15px -3px rgba(15,39,58,.12),0 4px 6px -4px rgba(15,39,58,.08);
+  }
+
+  /* ---------- masthead ---------- */
+  .mast{background:var(--ink);color:#fff;padding:2.5rem 2.25rem 2rem}
+  .mast h1{
+    margin:0 0 .5rem;
+    font-size:clamp(1.65rem,4.2vw,2.3rem);
+    font-weight:900;
+    letter-spacing:-.021em;
+    line-height:1.12;
+  }
+  .mast .who{margin:0;color:#C6D3E0;font-size:1.0625rem;max-width:46ch}
+  .mast .who b{color:#fff;font-weight:500}
+  .facts{
+    display:flex;flex-wrap:wrap;gap:0 2.25rem;
+    margin:1.5rem 0 0;padding:1.125rem 0 0;
+    border-top:1px solid rgba(255,255,255,.18);
+  }
+  .facts div{padding:.2rem 0}
+  .facts dt{font-size:.8125rem;color:#93A9BF;font-weight:400}
+  .facts dd{margin:.15rem 0 0;font-weight:700;font-size:1rem}
+
+  /* ---------- generic blocks ---------- */
+  .body{padding:2.25rem}
+  h2.phase-title{margin:0;font-size:1.3125rem;font-weight:700;letter-spacing:-.014em;line-height:1.25}
+  h3{
+    margin:1.75rem 0 .5rem;
+    font-size:1rem;font-weight:700;line-height:1.35;
+    max-width:var(--measure);
+  }
+  p{margin:.65rem 0;max-width:var(--measure)}
+  a{color:var(--structure)}
+  code{
+    font:500 .9375em/1.4 var(--mono);
+    background:var(--inset);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:.08em .3em;
+    word-break:break-word;
+  }
+  .lede{font-size:1.0625rem;color:var(--muted)}
+
+  /* ---------- the one rule ---------- */
+  .prime{
+    border:2px solid var(--gold);
+    background:var(--gold-tint);
+    padding:1.375rem 1.5rem;
+    margin:0 0 2.5rem;
+  }
+  .prime h2{
+    margin:0 0 .5rem;font-size:1.1875rem;font-weight:900;
+    letter-spacing:-.012em;color:var(--ink);
+  }
+  .prime p{margin:.5rem 0;color:#4A4034}
+  .prime p:last-child{margin-bottom:0}
+  .prime strong{color:var(--ink)}
+
+  /* ---------- phase spine ---------- */
+  .phase{position:relative;padding:0 0 .5rem 4.25rem}
+  .phase::before{
+    content:"";position:absolute;left:1.28rem;top:3.1rem;bottom:-1.75rem;
+    width:2px;background:var(--rule);
+  }
+  .phase:last-of-type::before{display:none}
+  .phase + .phase{margin-top:2.75rem}
+  .num{
+    position:absolute;left:0;top:0;
+    width:2.75rem;height:2.75rem;
+    display:grid;place-items:center;
+    background:var(--gold);color:var(--ink);
+    font-weight:900;font-size:1.25rem;
+    font-variant-numeric:tabular-nums;
+  }
+  .phase-head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:1rem;flex-wrap:wrap;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:.6rem;margin-bottom:1rem;min-height:2.75rem;
+  }
+  .mins{
+    font-size:.875rem;color:var(--muted);font-weight:500;
+    white-space:nowrap;font-variant-numeric:tabular-nums;
+  }
+
+  /* ---------- steps ---------- */
+  ol.steps{list-style:none;margin:.75rem 0;padding:0}
+  ol.steps > li{
+    position:relative;padding:.1rem 0 .1rem 2.1rem;
+    margin:.55rem 0;max-width:var(--measure);
+  }
+  ol.steps input[type=checkbox]{
+    position:absolute;left:0;top:.36em;
+    width:1.1rem;height:1.1rem;margin:0;
+    accent-color:var(--structure);cursor:pointer;
+  }
+  ol.steps input:focus-visible{outline:2px solid var(--structure);outline-offset:2px}
+  ol.steps label{cursor:pointer;display:block}
+  ol.steps input:checked + label{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--rule)}
+  .path{
+    display:block;font:500 .875rem/1.5 var(--mono);
+    color:var(--structure);margin-top:.2rem;
+  }
+
+  /* ---------- record fields ---------- */
+  .record{
+    background:var(--inset);border-left:3px solid var(--structure);
+    padding:1rem 1.125rem;margin:1rem 0 1.25rem;max-width:var(--measure);
+  }
+  .record h4{margin:0 0 .75rem;font-size:.9375rem;font-weight:700}
+  .field{display:flex;align-items:baseline;gap:.6rem;margin:.55rem 0;flex-wrap:wrap}
+  .field .lab{font-size:.9375rem;min-width:13rem}
+  .field .slot{
+    flex:1 1 9rem;border-bottom:1.5px solid var(--structure);
+    min-height:1.6rem;font:500 .9375rem/1.6 var(--mono);
+    padding:0 .25rem;
+  }
+  .field .slot:focus{outline:2px solid var(--structure);outline-offset:2px;background:#fff}
+  /* Fixed width so the G- and GTM- prefixes don't stagger the ruled lines. */
+  .field .pre{font:500 .9375rem/1.6 var(--mono);color:var(--muted);min-width:3.1rem}
+
+  /* ---------- callouts ---------- */
+  .call{padding:1rem 1.125rem;margin:1.125rem 0;max-width:var(--measure);border-left:3px solid}
+  .call p{margin:.4rem 0}
+  .call p:first-child{margin-top:0}
+  .call p:last-child{margin-bottom:0}
+  .call .tag{display:block;font-weight:700;font-size:.9375rem;margin-bottom:.35rem}
+  .stop{border-color:var(--stop);background:var(--stop-tint)}
+  .stop .tag{color:var(--stop)}
+  .hand{border-color:var(--structure);background:var(--hand-tint)}
+  .hand .tag{color:var(--structure)}
+
+  /* ---------- tables ---------- */
+  table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.9375rem}
+  caption{text-align:left;font-weight:700;font-size:.9375rem;margin-bottom:.5rem}
+  th,td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top}
+  thead th{background:var(--ink);color:#fff;font-weight:500;font-size:.875rem;border-bottom:none}
+  tbody tr:nth-child(even){background:var(--inset)}
+  td code{background:#fff}
+  td[contenteditable]:focus{outline:2px solid var(--structure);outline-offset:-2px;background:#fff}
+  /* Blank rows must read as ruled lines you can write on, not one grey band. */
+  table.fill tbody tr{background:#fff}
+  table.fill td{height:2.5rem;border-bottom:1.5px solid var(--structure)}
+
+  /* ---------- code block ---------- */
+  pre{
+    background:var(--ink);color:#E8EEF4;
+    padding:1rem 1.125rem;margin:.9rem 0;max-width:var(--measure);
+    overflow-x:auto;font:500 .8125rem/1.6 var(--mono);
+  }
+  pre b{color:var(--gold);font-weight:500}
+
+  /* ---------- handback ---------- */
+  .handback{margin-top:3rem;border-top:2px solid var(--ink);padding-top:1.75rem}
+  .never{margin:1.25rem 0 0;padding:0;list-style:none;max-width:var(--measure)}
+  .never li{
+    position:relative;padding:.35rem 0 .35rem 1.6rem;
+    border-bottom:1px solid var(--rule);
+  }
+  .never li::before{
+    content:"\00D7";position:absolute;left:.15rem;top:.3rem;
+    color:var(--stop);font-weight:900;font-size:1.1rem;line-height:1.3;
+  }
+  footer.sig{
+    background:var(--inset);border-top:1px solid var(--rule);
+    padding:1.25rem 2.25rem;font-size:.875rem;color:var(--muted);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:600px){
+    .body{padding:1.5rem 1.15rem}
+    .mast{padding:1.75rem 1.15rem 1.5rem}
+    .phase{padding-left:0}
+    .phase::before{display:none}
+    .num{position:static;margin-bottom:.6rem}
+    .phase-head{min-height:0}
+    .field .lab{min-width:0;flex:1 1 100%}
+    footer.sig{padding:1.25rem 1.15rem}
+  }
+
+  /* ---------- print ---------- */
+  @media print{
+    body{background:#fff;font-size:10.5pt}
+    .sheet{box-shadow:none;max-width:none}
+    .mast{background:#fff;color:var(--ink);border-bottom:3px solid var(--ink);padding:0 0 1rem}
+    .mast .who{color:#3D3A35}
+    .mast .who b{color:var(--ink)}
+    .facts{border-top-color:var(--rule)}
+    .facts dt{color:#6B665E}
+    .body{padding:1rem 0}
+    .phase{break-inside:avoid}
+    .num{border:1.5pt solid var(--ink)}
+    thead th{background:#fff;color:var(--ink);border-bottom:1.5pt solid var(--ink)}
+    pre{background:#fff;color:var(--ink);border:1pt solid var(--rule)}
+    pre b{color:var(--ink);font-weight:700}
+    .call,.record,.prime{break-inside:avoid}
+    footer.sig{padding:1rem 0}
+    a{color:var(--ink)}
+    .noprint{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main class="sheet">
+
+  <header class="mast">
+    <h1>Reconnecting our analytics after the website rebuild</h1>
+    <p class="who">A step-by-step worksheet. Work through it in order and write down every ID you find — <b>the person after you needs them.</b></p>
+    <dl class="facts">
+      <div><dt>Set aside</dt><dd>About 3 hours</dd></div>
+      <div><dt>Website</dt><dd>mercyhouseatc.com</dd></div>
+      <div><dt>Covers</dt><dd>9 phases, 5 logins</dd></div>
+    </dl>
+  </header>
+
+  <div class="body">
+
+    <section class="prime">
+      <h2>Read this before you open anything</h2>
+      <p>Our website was rebuilt on a new platform. The measurement accounts — Google Analytics, Google Ads, Meta — <strong>all still exist and hold years of history.</strong> They just aren't connected to the new site yet.</p>
+      <p>Your job is to <strong>find those accounts and reconnect them.</strong> It is not to set up new ones.</p>
+      <p>If at any point a screen offers to create a new Analytics property, a new Ads conversion, or a new Meta pixel — <strong>that is the wrong button.</strong> Creating a new one starts our history back at zero, and it cannot be undone. When in doubt, stop and ask.</p>
+    </section>
+
+    <p class="lede">Before you begin, confirm you can sign in to all five: Google Analytics, Google Tag Manager, Google Ads, Google Search Console, and Meta Business Manager. If any login is missing, get it sorted first — you'll be switching between them constantly.</p>
+
+    <!-- ============ 1 ============ -->
+    <section class="phase">
+      <div class="num">1</div>
+      <div class="phase-head">
+        <h2 class="phase-title">Find what we already have</h2>
+        <span class="mins">~30 min</span>
+      </div>
+
+      <p>Nothing gets changed in this phase. You are only collecting ID numbers and writing them down. Everything later depends on getting these right, so copy and paste rather than retyping — one wrong character and nothing works.</p>
+
+      <h3>Google Analytics</h3>
+      <ol class="steps">
+        <li><input type="checkbox" id="s101"><label for="s101">Go to Google Analytics and open the admin area.<span class="path">analytics.google.com → gear icon, bottom left</span></label></li>
+        <li><input type="checkbox" id="s102"><label for="s102">Under the Property column, click <b>Data streams</b>. Find the stream whose URL is <code>mercyhouseatc.com</code> and open it.</label></li>
+        <li><input type="checkbox" id="s103"><label for="s103">Copy its <b>Measurement ID</b> — it looks like <code>G-ABC123XYZ4</code> — into the box below.</label></li>
+        <li><input type="checkbox" id="s104"><label for="s104">Go back to admin, open <b>Property settings</b>, and copy the <b>Property ID</b>. That's a 9-digit number, not a G- code. A developer needs it later.</label></li>
+      </ol>
+
+      <div class="record">
+        <h4>Write it down</h4>
+        <div class="field"><span class="lab">Measurement ID</span><span class="pre">G-</span><span class="slot" contenteditable="true"></span></div>
+        <div class="field"><span class="lab">Property ID (9 digits)</span><span class="pre"></span><span class="slot" contenteditable="true"></span></div>
+        <div class="field"><span class="lab">Property name as shown</span><span class="pre"></span><span class="slot" contenteditable="true"></span></div>
+      </div>
+
+      <h3>Check for a leftover test property</h3>
+      <p>While the new site was being built it lived temporarily at <code>mercyhouseatc.org</code>. That test site may have created a second Analytics property full of meaningless data.</p>
+      <ol class="steps">
+        <li><input type="checkbox" id="s105"><label for="s105">Click the property name at the top of the screen to see the full list. Look for anything mentioning <code>.org</code>, "dev", "test", or "staging".</label></li>
+        <li><input type="checkbox" id="s106"><label for="s106">If you find one, write its name down below. <b>Do not delete it.</b></label></li>
+      </ol>
+
+      <div class="call stop">
+        <span class="tag">Don't delete this yourself</span>
+        <p>A deleted property cannot be recovered, and our internal donation dashboard currently reads whichever property it finds first — so this one may be feeding a live report. Hand the name to a developer and let them confirm before anything is removed.</p>
+      </div>
+
+      <div class="record">
+        <h4>Write it down</h4>
+        <div class="field"><span class="lab">Leftover test property</span><span class="pre"></span><span class="slot" contenteditable="true"></span></div>
+        <div class="field"><span class="lab">Or write "none found"</span><span class="pre"></span><span class="slot" contenteditable="true"></span></div>
+      </div>
+
+      <h3>How far back does our history go?</h3>
+      <ol class="steps">
+        <li><input type="checkbox" id="s107"><label for="s107">Open <b>Reports → Acquisition → Traffic acquisition</b> and set the date range to the last 3 years.</label></li>
+        <li><input type="checkbox" id="s108"><label for="s108">Note the earliest month that actually shows data. Analytics changed systems in mid-2023, so data may start there even if the website is far older. Good to know before anyone promises a five-year comparison.</label></li>
+      </ol>
+      <div class="record">
+        <h4>Write it down</h4>
+        <div class="field"><span class="lab">Earliest month with data</span><span class="pre"></span><span class="slot" contenteditable="true"></span></div>
+      </div>
+
+      <h3>Google Ads</h3>
+      <ol class="steps">
+        <li><input type="checkbox" id="s109"><label for="s109">Open the conversions list in Google Ads.<span class="path">ads.google.com → Goals → Conversions → Summary</span></label></li>
+        <li><input type="checkbox" id="s110"><label for="s110">Open each conversion action in turn. For each one, note its <b>name</b>, its <b>Conversion ID</b> (looks like <code>AW-123456789</code>) and its <b>conversion label</b> (a short jumble of letters). Both sit under the tag setup or instructions section.</label></li>
+        <li><input type="checkbox" id="s111"><label for="s111">Write them in the table below. Use the back of the page if there are more than three.</label></li>
+      </ol>
+
+      <table class="fill">
+        <caption>Existing Google Ads conversion actions</caption>
+        <thead><tr><th>Action name</th><th>Conversion ID</th><th>Label</th></tr></thead>
+        <tbody>
+          <tr><td contenteditable="true">&nbsp;</td><td contenteditable="true">&nbsp;</td><td contenteditable="true">&nbsp;</td></tr>
+          <tr><td contenteditable="true">&nbsp;</td><td contenteditable="true">&nbsp;</td><td contenteditable="true">&nbsp;</td></tr>
+          <tr><td contenteditable="true">&nbsp;</td><td contenteditable="true">&nbsp;</td><td contenteditable="true">&nbsp;</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Meta and Search Console</h3>
+      <ol class="steps">
+        <li><input type="checkbox" id="s112"><label for="s112">In Meta, open <b>Events Manager → Data sources</b>, select our pixel, and copy its ID — a long run of digits shown under the name.<span class="path">business.facebook.com</span></label></li>
+        <li><input type="checkbox" id="s113"><label for="s113">In Search Console, open the property dropdown and confirm a <code>mercyhouseatc.com</code> property already exists. Note whether it's labelled <b>Domain</b> or <b>URL prefix</b>.<span class="path">search.google.com/search-console</span></label></li>
+      </ol>
+
+      <div class="record">
+        <h4>Write it down</h4>
+        <div class="field"><span class="lab">Meta pixel ID</span><span class="pre"></span><span class="slot" contenteditable="true"></span></div>
+        <div class="field"><span class="lab">Search Console type</span><span class="pre"></span><span class="slot" contenteditable="true"></span></div>
+      </div>
+    </section>
+
+    <!-- ============ 2 ============ -->
+    <section class="phase">
+      <div class="num">2</div>
+      <div class="phase-head">
+        <h2 class="phase-title">Create the Tag Manager container</h2>
+        <span class="mins">~15 min</span>
+      </div>
+
+      <p>Tag Manager is the control panel that holds all our tracking in one place. From now on, tags get added there instead of in the website's code — which means you can make changes yourself without waiting on a developer.</p>
+      <p>This is the one thing you <em>do</em> create new. A container stores no history of its own, so a fresh one costs us nothing.</p>
+
+      <ol class="steps">
+        <li><input type="checkbox" id="s201"><label for="s201">Go to Tag Manager and create a container.<span class="path">tagmanager.google.com → Admin → Create Container</span></label></li>
+        <li><input type="checkbox" id="s202"><label for="s202">Name it <code>mercyhouseatc.com</code> and choose <b>Web</b> as the target platform.</label></li>
+        <li><input type="checkbox" id="s203"><label for="s203">Copy the container ID it gives you — it looks like <code>GTM-AB12CD3</code>.</label></li>
+        <li><input type="checkbox" id="s204"><label for="s204">Tag Manager will now show a box of code and tell you to paste it into the website. <b>Close that box and skip it.</b> Our site already handles this in its own code.</label></li>
+      </ol>
+
+      <div class="record">
+        <h4>Write it down</h4>
+        <div class="field"><span class="lab">Container ID</span><span class="pre">GTM-</span><span class="slot" contenteditable="true"></span></div>
+      </div>
+
+      <div class="call hand">
+        <span class="tag">Hand off to a developer now — then wait</span>
+        <p>Send the developer two things: the <b>container ID</b> from this phase and the <b>9-digit Property ID</b> from phase 1.</p>
+        <p>Nothing will track until they deploy that container ID to the website. Keep building tags in phases 3 and 4 while you wait, but <b>do not start phase 5</b> until they confirm it's live — the tests cannot pass before then, and you'll waste an hour thinking you've made a mistake.</p>
+      </div>
+    </section>
+
+    <!-- ============ 3 ============ -->
+    <section class="phase">
+      <div class="num">3</div>
+      <div class="phase-head">
+        <h2 class="phase-title">Teach Tag Manager what to listen for</h2>
+        <span class="mins">~25 min</span>
+      </div>
+
+      <p>The website announces things as they happen, by name. A donation finishing has a name; a visitor moving to a new page has a name. Tag Manager can't react until you tell it which names to listen for. Those listeners are called triggers.</p>
+
+      <table>
+        <caption>The five names the website uses</caption>
+        <thead><tr><th>Name</th><th>What just happened</th></tr></thead>
+        <tbody>
+          <tr><td><code>spa_page_view</code></td><td>A visitor opened or moved to a page</td></tr>
+          <tr><td><code>donation_complete</code></td><td>A donation finished paying</td></tr>
+          <tr><td><code>sponsorship_complete</code></td><td>A student sponsorship finished paying</td></tr>
+          <tr><td><code>intake_payment_complete</code></td><td>Someone paid their own intake fee</td></tr>
+          <tr><td><code>intake_sponsored_complete</code></td><td>Someone paid an intake fee for another person</td></tr>
+        </tbody>
+      </table>
+
+      <ol class="steps">
+        <li><input type="checkbox" id="s301"><label for="s301">In Tag Manager, go to <b>Triggers → New → Custom Event</b>.</label></li>
+        <li><input type="checkbox" id="s302"><label for="s302">Type the first name from the table into the Event name box, exactly as written. Name the trigger something readable like <code>Event – donation complete</code>, then save.</label></li>
+        <li><input type="checkbox" id="s303"><label for="s303">Repeat until all five exist.</label></li>
+      </ol>
+
+      <div class="call stop">
+        <span class="tag">Exact spelling matters</span>
+        <p>These names are case-sensitive and contain underscores, never spaces. <code>Donation_Complete</code> and <code>donation complete</code> will both silently fail — no error message, just a tag that never fires. Copy and paste them.</p>
+      </div>
+    </section>
+
+    <!-- ============ 4 ============ -->
+    <section class="phase">
+      <div class="num">4</div>
+      <div class="phase-head">
+        <h2 class="phase-title">Add the tags</h2>
+        <span class="mins">~40 min</span>
+      </div>
+
+      <p>Now you connect each listener to the account it should report to. Work top to bottom — the first tag has to exist before the others will work.</p>
+
+      <h3>The Analytics base tag</h3>
+      <ol class="steps">
+        <li><input type="checkbox" id="s401"><label for="s401">Go to <b>Tags → New</b> and choose the <b>Google Tag</b> type.</label></li>
+        <li><input type="checkbox" id="s402"><label for="s402">For Tag ID, paste the <code>G-</code> Measurement ID from phase 1.</label></li>
+        <li><input type="checkbox" id="s403"><label for="s403">Open <b>Configuration settings</b> and add a setting named <code>send_page_view</code> with the value <code>false</code>.</label></li>
+        <li><input type="checkbox" id="s404"><label for="s404">Set the trigger to <b>Initialization – All Pages</b>, then save.</label></li>
+      </ol>
+
+      <div class="call stop">
+        <span class="tag">Don't skip the send_page_view setting</span>
+        <p>Without it, the first page of every visit gets counted twice — once automatically by this tag, once by the tag you build next. Every traffic number we report would be inflated, and it's very hard to spot after the fact.</p>
+      </div>
+
+      <h3>Page views</h3>
+      <ol class="steps">
+        <li><input type="checkbox" id="s405"><label for="s405">Create a new tag of type <b>Google Analytics: GA4 Event</b>.</label></li>
+        <li><input type="checkbox" id="s406"><label for="s406">Point it at the base tag you just made, set the Event Name to <code>page_view</code>, and give it the <code>spa_page_view</code> trigger.</label></li>
+      </ol>
+
+      <h3>The four payment events</h3>
+      <ol class="steps">
+        <li><input type="checkbox" id="s407"><label for="s407">Create one <b>GA4 Event</b> tag for each of the four payment names. Set each Event Name to match its trigger exactly — the tag for <code>donation_complete</code> uses the <code>donation_complete</code> trigger.</label></li>
+      </ol>
+
+      <h3>Google Ads</h3>
+      <ol class="steps">
+        <li><input type="checkbox" id="s408"><label for="s408">Create a tag of type <b>Google Ads Conversion Tracking</b>.</label></li>
+        <li><input type="checkbox" id="s409"><label for="s409">Fill in the Conversion ID and label from your phase 1 table, and give it the <code>donation_complete</code> trigger.</label></li>
+        <li><input type="checkbox" id="s410"><label for="s410">If phase 1 turned up more than one conversion action, repeat for each, matching it to whichever event fits.</label></li>
+      </ol>
+
+      <h3>Meta pixel</h3>
+      <p>Tag Manager has no built-in Meta tag, so these two go in as Custom HTML. Paste the code below and replace the highlighted part with your pixel ID.</p>
+      <ol class="steps">
+        <li><input type="checkbox" id="s411"><label for="s411">Create a <b>Custom HTML</b> tag with the base code, trigger <b>Initialization – All Pages</b>.</label></li>
+      </ol>
+<pre>&lt;script&gt;
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){
+n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','<b>YOUR-PIXEL-ID</b>');
+fbq('track','PageView');
+&lt;/script&gt;</pre>
+      <ol class="steps">
+        <li><input type="checkbox" id="s412"><label for="s412">Create a second <b>Custom HTML</b> tag with the code below and the <code>donation_complete</code> trigger. In its Advanced Settings, set the firing priority so the base tag above always loads first.</label></li>
+      </ol>
+<pre>&lt;script&gt;
+  fbq('track','Purchase',{currency:'USD'});
+&lt;/script&gt;</pre>
+
+      <div class="call hand">
+        <span class="tag">Do not publish yet</span>
+        <p>Everything you've built is still a draft, which is exactly right. Phase 5 tests it before it goes live. Publishing an untested container is how bad data gets into a report that someone then makes decisions from.</p>
+      </div>
+    </section>
+
+    <!-- ============ 5 ============ -->
+    <section class="phase">
+      <div class="num">5</div>
+      <div class="phase-head">
+        <h2 class="phase-title">Test it, then publish</h2>
+        <span class="mins">~30 min</span>
+      </div>
+
+      <p>This is the phase worth slowing down for. Only start once the developer has confirmed the container is live on the website.</p>
+
+      <h3>Watch the tags fire</h3>
+      <ol class="steps">
+        <li><input type="checkbox" id="s501"><label for="s501">In Tag Manager, click <b>Preview</b> and enter <code>https://mercyhouseatc.com</code>. A debug panel opens alongside the site.</label></li>
+        <li><input type="checkbox" id="s502"><label for="s502">Click through several pages. Each time, confirm <code>spa_page_view</code> appears in the debug panel and your page view tag is listed as fired.</label></li>
+        <li><input type="checkbox" id="s503"><label for="s503">In Analytics, open <b>Reports → Realtime</b> and confirm your own visit shows up within a minute or two.</label></li>
+      </ol>
+
+      <h3>Test a real donation</h3>
+      <div class="call stop">
+        <span class="tag">This step can charge a real card</span>
+        <p>Donations run through live payment processing. Ask the developer to put the site in test mode first, or to refund you straight afterwards. Use the smallest amount the form allows, and never a personal card for a large sum.</p>
+      </div>
+      <ol class="steps">
+        <li><input type="checkbox" id="s504"><label for="s504">With Preview still running, complete one donation end to end.</label></li>
+        <li><input type="checkbox" id="s505"><label for="s505">On the thank-you page, confirm <code>donation_complete</code> fired, and that the Analytics and Ads tags fired with it.</label></li>
+        <li><input type="checkbox" id="s506"><label for="s506">Now press refresh on that thank-you page. Confirm <code>donation_complete</code> does <b>not</b> fire a second time. This is a deliberate safeguard — if it does fire again, stop and tell the developer.</label></li>
+      </ol>
+
+      <h3>Publish</h3>
+      <ol class="steps">
+        <li><input type="checkbox" id="s507"><label for="s507">Once every check above passes, click <b>Submit → Publish</b>. Write a short version note saying what you set up, and today's date.</label></li>
+      </ol>
+    </section>
+
+    <!-- ============ 6 ============ -->
+    <section class="phase">
+      <div class="num">6</div>
+      <div class="phase-head">
+        <h2 class="phase-title">Point the Ads conversions at the new tags</h2>
+        <span class="mins">~20 min</span>
+      </div>
+
+      <p>Our Ads conversion actions used to be set off by the old website, which no longer exists. The actions themselves are still valuable — they carry years of history that Google's automatic bidding has learned from. You're changing what sets them off, not replacing them.</p>
+
+      <ol class="steps">
+        <li><input type="checkbox" id="s601"><label for="s601">In Google Ads, reopen <b>Goals → Conversions → Summary</b>.</label></li>
+        <li><input type="checkbox" id="s602"><label for="s602">Check each action now shows the new tag as its source.</label></li>
+        <li><input type="checkbox" id="s603"><label for="s603">Expect the status to read "No recent conversions" until the first genuine donation arrives after publishing. That's normal, not a fault.</label></li>
+        <li><input type="checkbox" id="s604"><label for="s604">Update the landing page URLs in any live ads if they still point somewhere that no longer exists.</label></li>
+      </ol>
+
+      <div class="call stop">
+        <span class="tag">Never delete and recreate a conversion action</span>
+        <p>It looks like the tidy fix when an action shows as inactive. It isn't — it throws away the conversion history and resets the bidding model, which typically pushes our cost per donation up for weeks. Always repair the existing action.</p>
+      </div>
+    </section>
+
+    <!-- ============ 7 ============ -->
+    <section class="phase">
+      <div class="num">7</div>
+      <div class="phase-head">
+        <h2 class="phase-title">Leave Search Console alone</h2>
+        <span class="mins">~10 min</span>
+      </div>
+
+      <p>Almost nothing to do here, and that's the point. Our <code>mercyhouseatc.com</code> property has been collecting search history for years. It keeps working through a website rebuild because the address never changed.</p>
+
+      <ol class="steps">
+        <li><input type="checkbox" id="s701"><label for="s701">Confirm the existing <code>mercyhouseatc.com</code> property still reports data.</label></li>
+        <li><input type="checkbox" id="s702"><label for="s702">If the new site has a sitemap, resubmit it under <b>Sitemaps</b> so the new page addresses get picked up.</label></li>
+      </ol>
+
+      <div class="call stop">
+        <span class="tag">Two buttons to stay away from</span>
+        <p><b>Don't add a new property</b> for the site — the one we have is the one with the history.</p>
+        <p><b>Don't use the Change of Address tool.</b> It's meant for a genuine move between addresses. The <code>.org</code> address was only ever a temporary test site, so pointing it at our real property gains us nothing while risking the records we already have.</p>
+      </div>
+    </section>
+
+    <!-- ============ 8 ============ -->
+    <section class="phase">
+      <div class="num">8</div>
+      <div class="phase-head">
+        <h2 class="phase-title">Verify the domain with Meta</h2>
+        <span class="mins">~10 min</span>
+      </div>
+
+      <ol class="steps">
+        <li><input type="checkbox" id="s801"><label for="s801">Open <b>Business settings → Brand safety → Domains</b> in Meta Business Manager.</label></li>
+        <li><input type="checkbox" id="s802"><label for="s802">Check whether <code>mercyhouseatc.com</code> is listed and verified. If it is, you're done here.</label></li>
+        <li><input type="checkbox" id="s803"><label for="s803">If it isn't, add it. Meta will offer a verification method — choose the meta tag option and pass the code to a developer, as it has to go in the website's own files.</label></li>
+        <li><input type="checkbox" id="s804"><label for="s804">In <b>Events Manager</b>, check that Purchase sits near the top of the event priority list. Without verification, Meta limits which events it will measure.</label></li>
+      </ol>
+    </section>
+
+    <!-- ============ 9 ============ -->
+    <section class="phase">
+      <div class="num">9</div>
+      <div class="phase-head">
+        <h2 class="phase-title">Explain the gap in the data</h2>
+        <span class="mins">~10 min</span>
+      </div>
+
+      <p>Between the old site coming down and today, nothing was being recorded. Anyone opening a report later will see traffic fall off a cliff and may reasonably panic. Leave them a note.</p>
+
+      <ol class="steps">
+        <li><input type="checkbox" id="s901"><label for="s901">In Analytics, go to <b>Admin → Annotations</b> and add one covering the gap.</label></li>
+        <li><input type="checkbox" id="s902"><label for="s902">Write something plain, such as: <em>Website rebuilt on a new platform. No data collected between these dates. Page addresses also changed, so older page-by-page comparisons won't line up.</em></label></li>
+      </ol>
+
+      <div class="call hand">
+        <span class="tag">Worth saying out loud in your handover</span>
+        <p>Our page addresses changed with the rebuild — a page that used to be <code>/about-us/</code> may now be <code>/About</code>. Total visits still compare fine against last year. Individual page comparisons do not, and no amount of setup can fix that. Flag it before someone builds a report on it.</p>
+      </div>
+    </section>
+
+    <!-- ============ handback ============ -->
+    <section class="handback">
+      <h2 class="phase-title">Before you call it done</h2>
+      <p>Hand these back to whoever asked you to do this, along with this sheet.</p>
+
+      <div class="record">
+        <h4>Summary</h4>
+        <div class="field"><span class="lab">Measurement ID</span><span class="pre">G-</span><span class="slot" contenteditable="true"></span></div>
+        <div class="field"><span class="lab">Property ID (9 digits)</span><span class="pre"></span><span class="slot" contenteditable="true"></span></div>
+        <div class="field"><span class="lab">Container ID</span><span class="pre">GTM-</span><span class="slot" contenteditable="true"></span></div>
+        <div class="field"><span class="lab">Meta pixel ID</span><span class="pre"></span><span class="slot" contenteditable="true"></span></div>
+        <div class="field"><span class="lab">Container published on</span><span class="pre"></span><span class="slot" contenteditable="true"></span></div>
+        <div class="field"><span class="lab">Still outstanding</span><span class="pre"></span><span class="slot" contenteditable="true"></span></div>
+      </div>
+
+      <h3>Things that are not yours to undo</h3>
+      <ul class="never">
+        <li>Creating a new Analytics property for the site</li>
+        <li>Deleting any Analytics property, including the leftover test one</li>
+        <li>Deleting or recreating a Google Ads conversion action</li>
+        <li>Creating a new Meta pixel</li>
+        <li>Adding a new Search Console property, or using Change of Address</li>
+        <li>Switching on any Google or Meta integration in the website's own hosting settings — it would double-count every donation</li>
+      </ul>
+      <p style="margin-top:1rem">Any of these six wipes out history we can't get back. If a screen seems to be pushing you toward one, that's the moment to stop and ask.</p>
+    </section>
+
+  </div>
+
+  <footer class="sig">
+    Mercy House Adult &amp; Teen Challenge — analytics reconnection worksheet. Your ticks and notes save automatically in this browser, so you can close the page and come back. <span class="noprint">Print or save as PDF with Ctrl&nbsp;+&nbsp;P.</span>
+  </footer>
+</main>
+
+<script>
+  // Persist ticks and typed notes so a three-hour job survives a closed tab.
+  (function () {
+    var KEY = 'mh-analytics-worksheet';
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { saved = {}; }
+
+    function save() {
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { /* storage blocked or full */ }
+    }
+
+    document.querySelectorAll('input[type=checkbox]').forEach(function (box) {
+      if (saved[box.id]) box.checked = true;
+      box.addEventListener('change', function () {
+        saved[box.id] = box.checked;
+        save();
+      });
+    });
+
+    document.querySelectorAll('[contenteditable]').forEach(function (cell, i) {
+      var id = 'f' + i;
+      if (saved[id]) cell.textContent = saved[id];
+      cell.addEventListener('blur', function () {
+        saved[id] = cell.textContent.trim();
+        save();
+      });
+    });
+  })();
+</script>
+</body>
+</html>

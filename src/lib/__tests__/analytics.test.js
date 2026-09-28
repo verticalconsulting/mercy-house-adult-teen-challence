@@ -75,3 +75,27 @@ describe('conversion events', () => {
     expect(window.dataLayer).toHaveLength(0);
   });
 });
+
+// --- Review fix #7: the crisis lifeline must never enter an ad audience ---
+import { readFileSync } from 'node:fs';
+
+describe('crisis lifeline is not a conversion', () => {
+  const contactSource = readFileSync('src/pages/Contact.jsx', 'utf8');
+
+  it('does not fire a tracking event on the 988 Suicide & Crisis Lifeline link', () => {
+    // Line-based, not a tag regex: an onClick arrow function contains ">",
+    // so [^>]* stops at the "=>" and never reaches the handler. The first
+    // version of this test used a tag regex and passed for exactly that
+    // reason, while the handler was still attached.
+    const lines = contactSource.split('\n').filter((l) => l.includes('href="tel:988"'));
+    expect(lines.length).toBeGreaterThan(0);
+    for (const line of lines) {
+      expect(line, 'a crisis call must not be tracked or remarketed against').not.toContain('track');
+    }
+  });
+
+  it('still tracks the ministry phone numbers', () => {
+    expect(contactSource).toContain("trackContactClick('phone')");
+    expect(contactSource).toContain("trackContactClick('email')");
+  });
+});

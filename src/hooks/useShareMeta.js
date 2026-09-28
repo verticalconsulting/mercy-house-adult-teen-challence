@@ -51,6 +51,35 @@ export function resolveShareUrl({ path, url } = {}) {
   return '';
 }
 
+/**
+ * The tags a dynamic detail page should emit. Pure, so the indexability
+ * decision can be asserted without a DOM — that decision is the difference
+ * between a withdrawn testimony leaving the index and staying in it.
+ */
+export function buildShareTags({ title, description, image, path, url, noindex = false }) {
+  const resolvedUrl = resolveShareUrl({ path, url });
+  return {
+    documentTitle: `${title} | Mercy House Adult Teen Challenge`,
+    canonical: resolvedUrl,
+    meta: {
+      description,
+      robots: noindex ? 'noindex, nofollow' : 'index, follow',
+      'og:title': title,
+      'og:description': description,
+      'og:image': image,
+      'og:url': resolvedUrl,
+      'og:type': 'article',
+      'twitter:card': 'summary_large_image',
+      'twitter:title': title,
+      'twitter:description': description,
+      'twitter:image': image,
+      'twitter:url': resolvedUrl,
+    },
+  };
+}
+
+const PROPERTY_TAGS = new Set(['og:title', 'og:description', 'og:image', 'og:url', 'og:type']);
+
 export function useShareMeta(options) {
   const { title, description, image, path, url, noindex = false } = options || {};
   const resolvedUrl = resolveShareUrl({ path, url });
@@ -58,26 +87,16 @@ export function useShareMeta(options) {
   useEffect(() => {
     if (!title) return;
     const previousTitle = document.title;
-    document.title = `${title} | Mercy House Adult Teen Challenge`;
+    const tags = buildShareTags({ title, description, image, path, url, noindex });
+    document.title = tags.documentTitle;
 
-    // Also populate the standard description meta + robots so dynamic
-    // blog/event/testimony detail pages are indexable and have a SERP snippet.
-    upsertMeta('description', description, 'name');
-    upsertMeta('robots', noindex ? 'noindex, nofollow' : 'index, follow', 'name');
-    upsertMeta('og:title', title);
-    upsertMeta('og:description', description);
-    upsertMeta('og:image', image);
-    upsertMeta('og:url', resolvedUrl);
-    upsertMeta('og:type', 'article');
-    upsertMeta('twitter:card', 'summary_large_image', 'name');
-    upsertMeta('twitter:title', title, 'name');
-    upsertMeta('twitter:description', description, 'name');
-    upsertMeta('twitter:image', image, 'name');
-    upsertMeta('twitter:url', resolvedUrl, 'name');
-    if (resolvedUrl) upsertLink('canonical', resolvedUrl);
+    for (const [key, value] of Object.entries(tags.meta)) {
+      upsertMeta(key, value, PROPERTY_TAGS.has(key) ? 'property' : 'name');
+    }
+    if (tags.canonical) upsertLink('canonical', tags.canonical);
 
     return () => {
       document.title = previousTitle;
     };
-  }, [title, description, image, resolvedUrl, noindex]);
+  }, [title, description, image, path, url, resolvedUrl, noindex]);
 }

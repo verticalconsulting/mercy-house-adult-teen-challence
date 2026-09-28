@@ -31,11 +31,23 @@ export default function TestimonyPage() {
 
   // useShareMeta appends the " | Mercy House Adult Teen Challenge" suffix
   // itself, so the title passed here is the bare story name.
+  //
+  // When no consented record loads we must actively publish a noindex, not
+  // simply stay quiet. These five paths have hand-written entries in
+  // `pageSeo` naming the graduate, and SeoManager has already applied them by
+  // the time this runs. Staying quiet would leave a 200 response titled
+  // "Van Pope's Story", described with his addiction history, and marked
+  // index,follow — over a body that says the story is unavailable. Revoking
+  // consent has to remove the person from the index, not just from the page.
+  const found = Boolean(story);
   useShareMeta({
-    title: story ? `${story.graduate_name}'s Story` : undefined,
-    description: (story?.description || story?.testimonial_text || '').slice(0, 160),
+    title: found ? `${story.graduate_name}'s Story` : 'Story Not Found',
+    description: found
+      ? (story.description || story.testimonial_text || '').slice(0, 160)
+      : 'This graduate story is not available.',
     path: `/testimonies/${slug}`,
-    image: story?.photo_url,
+    image: found ? story.photo_url : undefined,
+    noindex: !found,
   });
 
   if (isLoading) {

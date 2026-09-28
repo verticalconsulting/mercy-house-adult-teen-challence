@@ -36,12 +36,18 @@ genuinely unknown, not merely unticked.
 ## Content
 
 - [ ] All five testimony records exist with `slug`, `published: true`,
-      `consent_confirmed: true` and a `consent_date`
+      `consent_confirmed: true` and a `consent_date` (set them in Employee
+      Portal → Testimonials → "Story page at /testimonies/…")
+- [ ] **As each record goes live, drop its `pendingContent: true` flag in
+      `src/lib/canonical-map.js` and re-run `npm run build`.** Until then the
+      six data-backed URLs are deliberately kept out of `sitemap.xml` so the
+      migration never submits soft-404s to Search Console.
 - [ ] **Decide:** the `/testimonies` index still filters on `published` only,
       not `consent_confirmed`. It publishes graduate names and stories with
       no recorded consent. This predates the change but is not what "consent
       confirmed for each named graduate" implies. Gate it, or accept it
-      deliberately.
+      deliberately. (The detail pages *are* gated, and un-ticking consent now
+      also marks the URL `noindex` so the name leaves the search index.)
 - [ ] A published `BlogPost` exists with `slug: ministry-updates`, carrying
       the **migrated copy from the old .org post**, not a rewrite — that post
       has existing clicks and links to preserve

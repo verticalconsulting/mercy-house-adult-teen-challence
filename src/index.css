@@ -412,13 +412,27 @@
  * the iframe is always visible while letting the embed's inline height
  * override when auto-resize works correctly.
  */
-.virtuous-embed-host iframe {
-  min-height: 600px;
-  width: 100% !important;
-  border: 0;
-}
+/* The main form wrapper gets a roomy min-height so it never collapses. */
 .virtuous-embed-host > div {
   min-height: 600px;
+}
+/*
+ * Nested iframes are Stripe Element payment fields (card number, expiration,
+ * CVC). The old blanket `min-height: 600px` on every iframe stretched each
+ * one to 600px, so constrain them to a normal input height instead.
+ */
+.virtuous-embed-host iframe {
+  width: 100% !important;
+  border: 0;
+  min-height: 0 !important;
+  height: 48px !important;
+  max-height: 56px !important;
+}
+/* The outermost form iframe (if the embed uses one) still gets room to breathe. */
+.virtuous-embed-host > iframe {
+  min-height: 600px !important;
+  height: auto !important;
+  max-height: none !important;
 }
 
 /*

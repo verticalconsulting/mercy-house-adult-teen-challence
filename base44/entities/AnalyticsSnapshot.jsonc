@@ -1,0 +1,115 @@
+{
+  "name": "AnalyticsSnapshot",
+  "type": "object",
+  "properties": {
+    "snapshot_date": {
+      "type": "string",
+      "format": "date",
+      "description": "The end date of the data period this snapshot covers"
+    },
+    "property_id": {
+      "type": "string",
+      "description": "The Google Analytics 4 property ID"
+    },
+    "property_name": {
+      "type": "string",
+      "description": "Display name of the GA4 property"
+    },
+    "total_users": {
+      "type": "number",
+      "description": "Total unique users for the 28-day period"
+    },
+    "total_sessions": {
+      "type": "number",
+      "description": "Total sessions for the 28-day period"
+    },
+    "page_views": {
+      "type": "number",
+      "description": "Total page views for the 28-day period"
+    },
+    "engagement_rate": {
+      "type": "number",
+      "description": "Engagement rate (0-1 decimal) \u2014 GA4's replacement for bounce rate"
+    },
+    "avg_session_duration": {
+      "type": "number",
+      "description": "Average session duration in seconds"
+    },
+    "top_pages": {
+      "type": "array",
+      "description": "Top pages by page views for the period",
+      "items": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "string"
+          },
+          "views": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "top_sources": {
+      "type": "array",
+      "description": "Top traffic sources by sessions for the period",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "sessions": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "daily_sessions": {
+      "type": "array",
+      "description": "Daily session counts for the trend chart",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string"
+          },
+          "sessions": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "date_range_days": {
+      "type": "number",
+      "default": 28,
+      "description": "Number of days of data covered by this snapshot"
+    }
+  },
+  "required": [
+    "snapshot_date",
+    "property_id"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

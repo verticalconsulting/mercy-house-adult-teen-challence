@@ -1,0 +1,47 @@
+{
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "0 9 * * *",
+      "one_time_date": null,
+      "timezone": "America/Chicago",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "description": "Daily sync of Google Analytics 4 traffic and engagement data (users, sessions, page views, top pages, traffic sources) into dashboard snapshots",
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "analytics_sync",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "sync_data": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "syncAnalyticsData",
+            "args": {
+              "automation_secret": "1c72a3ad-96b7-405c-8166-30603b594248"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Sync Analytics data",
+            "description": "Fetch GA4 metrics and store daily snapshot"
+          }
+        }
+      }
+    ]
+  },
+  "name": "Analytics Sync"
+}

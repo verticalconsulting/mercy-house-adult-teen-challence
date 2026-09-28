@@ -27,6 +27,7 @@ import DonationFunnel from './DonationFunnel';
 import WomensCampusMediaManager from '../components/employee/WomensCampusMediaManager';
 import SearchPerformance from './SearchPerformance';
 import SearchConsoleSummary from '../components/employee/SearchConsoleSummary';
+import AnalyticsSummary from '../components/employee/AnalyticsSummary';
 import PortalLogin from '../components/employee/PortalLogin';
 import UserManagement from '../components/employee/UserManagement';
 
@@ -374,6 +375,9 @@ export default function EmployeePortal() {
           <TabsContent value="applications" className="mt-6">
             <div className="mb-6">
               <SearchConsoleSummary />
+            </div>
+            <div className="mb-6">
+              <AnalyticsSummary />
             </div>
             <div className="grid lg:grid-cols-2 gap-6">
               <div>

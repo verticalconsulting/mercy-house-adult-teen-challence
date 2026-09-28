@@ -1,0 +1,7 @@
+{
+  "type": "googleworkspace",
+  "scopes": [
+    "https://www.googleapis.com/auth/drive",
+    "email"
+  ]
+}

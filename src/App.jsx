@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
@@ -6,34 +7,34 @@ import { pagesConfig } from './pages.config'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import PageNotFound from './lib/PageNotFound';
-import MeetTheTeam from './pages/MeetTheTeam';
-import WomensCampusGallery from './pages/WomensCampusGallery';
-import FreedomClassic from './pages/FreedomClassic';
-import FreedomGala from './pages/FreedomGala';
-import TeenChallengeStory from './pages/TeenChallengeStory';
-import WomensCenterCalendar from './pages/WomensCenterCalendar';
-import News from './pages/News';
-import SearchPerformance from './pages/SearchPerformance';
-import About from './pages/About';
-import Financials from './pages/Financials';
-import Programs from './pages/Programs';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsConditions from './pages/TermsConditions';
-import HelpForDependency from './pages/HelpForDependency';
-import MicroBusinesses from './pages/MicroBusinesses';
-import ComprehensiveApproach from './pages/ComprehensiveApproach';
-import Careers from './pages/Careers';
-import Internship from './pages/Internship';
-import MediaResources from './pages/MediaResources';
-import FAQ from './pages/FAQ';
-import BlogPostPage from './pages/BlogPostPage';
-import TestimonyPage from './pages/TestimonyPage';
-import EventDetailPage from './pages/EventDetailPage';
-import Files from './pages/Files';
-import Connect from './pages/Connect';
-import ThankYou from './pages/ThankYou';
-import VehicleDonation from './pages/VehicleDonation';
-import VehicleDonationForm from './pages/VehicleDonationForm';
+const MeetTheTeam = lazy(() => import('./pages/MeetTheTeam'));
+const WomensCampusGallery = lazy(() => import('./pages/WomensCampusGallery'));
+const FreedomClassic = lazy(() => import('./pages/FreedomClassic'));
+const FreedomGala = lazy(() => import('./pages/FreedomGala'));
+const TeenChallengeStory = lazy(() => import('./pages/TeenChallengeStory'));
+const WomensCenterCalendar = lazy(() => import('./pages/WomensCenterCalendar'));
+const News = lazy(() => import('./pages/News'));
+const SearchPerformance = lazy(() => import('./pages/SearchPerformance'));
+const About = lazy(() => import('./pages/About'));
+const Financials = lazy(() => import('./pages/Financials'));
+const Programs = lazy(() => import('./pages/Programs'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsConditions = lazy(() => import('./pages/TermsConditions'));
+const HelpForDependency = lazy(() => import('./pages/HelpForDependency'));
+const MicroBusinesses = lazy(() => import('./pages/MicroBusinesses'));
+const ComprehensiveApproach = lazy(() => import('./pages/ComprehensiveApproach'));
+const Careers = lazy(() => import('./pages/Careers'));
+const Internship = lazy(() => import('./pages/Internship'));
+const MediaResources = lazy(() => import('./pages/MediaResources'));
+const FAQ = lazy(() => import('./pages/FAQ'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
+const TestimonyPage = lazy(() => import('./pages/TestimonyPage'));
+const EventDetailPage = lazy(() => import('./pages/EventDetailPage'));
+const Files = lazy(() => import('./pages/Files'));
+const Connect = lazy(() => import('./pages/Connect'));
+const ThankYou = lazy(() => import('./pages/ThankYou'));
+const VehicleDonation = lazy(() => import('./pages/VehicleDonation'));
+const VehicleDonationForm = lazy(() => import('./pages/VehicleDonationForm'));
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -44,6 +45,13 @@ const MainPage = mainPageKey ? Pages[mainPageKey] : <></>;
 const LayoutWrapper = ({ children, currentPageName }) => Layout ?
   <Layout currentPageName={currentPageName}>{children}</Layout>
   : <>{children}</>;
+
+// Fills the viewport so the footer can't jump up while a page chunk loads.
+const RouteFallback = () => (
+  <div className="flex min-h-screen items-start justify-center pt-32" role="status" aria-label="Loading page">
+    <div className="h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-slate-800" aria-hidden="true"></div>
+  </div>
+);
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -68,8 +76,11 @@ const AuthenticatedApp = () => {
     }
   }
 
-  // Render the main app
+  // Render the main app. Every page except Home is its own chunk, so a visitor
+  // only downloads the code for the page they open (the old single bundle was
+  // ~3 MB and held the whole site, the employee portal included).
   return (
+    <Suspense fallback={<RouteFallback />}>
     <Routes caseSensitive>
       <Route path="/" element={
         <LayoutWrapper currentPageName={mainPageKey}>
@@ -119,6 +130,7 @@ const AuthenticatedApp = () => {
       <Route path={createPageUrl('VehicleDonationForm')} element={<LayoutWrapper currentPageName="VehicleDonationForm"><VehicleDonationForm /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
+    </Suspense>
   );
 };
 

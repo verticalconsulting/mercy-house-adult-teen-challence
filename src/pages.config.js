@@ -47,23 +47,24 @@
  *
  * The mainPage value must match a key in the PAGES object exactly.
  */
-import Contact from './pages/Contact';
-import Donate from './pages/Donate';
-import DonationFunnel from './pages/DonationFunnel';
-import EmployeePortal from './pages/EmployeePortal';
-import Events from './pages/Events';
+import { lazy } from 'react';
+const Contact = lazy(() => import('./pages/Contact'));
+const Donate = lazy(() => import('./pages/Donate'));
+const DonationFunnel = lazy(() => import('./pages/DonationFunnel'));
+const EmployeePortal = lazy(() => import('./pages/EmployeePortal'));
+const Events = lazy(() => import('./pages/Events'));
 import Home from './pages/Home';
-import IntakeForm from './pages/IntakeForm';
-import MensCampus from './pages/MensCampus';
-import MicroBusinesses from './pages/MicroBusinesses';
-import SponsorStudent from './pages/SponsorStudent';
-import RecurringDonation from './pages/RecurringDonation';
-import Testimonials from './pages/Testimonials';
-import ThriftStore from './pages/ThriftStore';
-import VehicleDonation from './pages/VehicleDonation';
-import VehicleDonationForm from './pages/VehicleDonationForm';
-import Volunteer from './pages/Volunteer';
-import WomensCampus from './pages/WomensCampus';
+const IntakeForm = lazy(() => import('./pages/IntakeForm'));
+const MensCampus = lazy(() => import('./pages/MensCampus'));
+const MicroBusinesses = lazy(() => import('./pages/MicroBusinesses'));
+const SponsorStudent = lazy(() => import('./pages/SponsorStudent'));
+const RecurringDonation = lazy(() => import('./pages/RecurringDonation'));
+const Testimonials = lazy(() => import('./pages/Testimonials'));
+const ThriftStore = lazy(() => import('./pages/ThriftStore'));
+const VehicleDonation = lazy(() => import('./pages/VehicleDonation'));
+const VehicleDonationForm = lazy(() => import('./pages/VehicleDonationForm'));
+const Volunteer = lazy(() => import('./pages/Volunteer'));
+const WomensCampus = lazy(() => import('./pages/WomensCampus'));
 import __Layout from './Layout.jsx';
 
 

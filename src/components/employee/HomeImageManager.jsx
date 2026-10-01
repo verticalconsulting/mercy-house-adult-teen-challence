@@ -20,14 +20,14 @@ const IMAGE_SLOTS = [
   {
     key: 'womens_program',
     label: "Women's Program",
-    defaultImage: '/assets/images/women-program.png',
+    defaultImage: '/assets/images/women-program.webp',
     defaultAlt: 'Women in the Mercy House program gathered together outdoors',
     maxWidth: 1200,
   },
   {
     key: 'mens_program',
     label: "Men's Program",
-    defaultImage: '/assets/images/mens-1.jpeg',
+    defaultImage: '/assets/images/mens-1.webp',
     defaultAlt: 'Men in the Mercy House program working together on campus',
     maxWidth: 1200,
   },

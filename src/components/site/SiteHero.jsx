@@ -24,6 +24,8 @@ export default function SiteHero({
   secondaryTo = '/donate',
   reassurance,
   image,
+  imageSrcSet,
+  imageSizes = '100vw',
   imageAlt = '',
 }) {
   return (
@@ -31,10 +33,13 @@ export default function SiteHero({
       {image && (
         <img
           src={image}
+          srcSet={imageSrcSet}
+          sizes={imageSrcSet ? imageSizes : undefined}
           alt={imageAlt}
           className="absolute inset-0 h-full w-full object-cover"
           /* Above the fold — never lazy. */
           fetchPriority="high"
+          decoding="async"
           width="1792"
           height="1344"
         />

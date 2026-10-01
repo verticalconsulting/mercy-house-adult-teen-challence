@@ -1,0 +1,49 @@
+{
+  "name": "HomeImage",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "Unique slot identifier (e.g. womens_program, mens_program)"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "URL of the optimized image displayed on the home page"
+    },
+    "alt_text": {
+      "type": "string",
+      "description": "Accessibility alt text for the image"
+    },
+    "label": {
+      "type": "string",
+      "description": "Human-friendly label shown in the admin portal"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Additional notes about this image"
+    }
+  },
+  "required": [
+    "key",
+    "image_url"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

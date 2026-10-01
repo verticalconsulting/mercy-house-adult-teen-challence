@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Store, Truck } from 'lucide-react';
+import { base44 } from '@/api/base44Client';
 import { createPageUrl } from '../utils';
 import MaintenanceBanner from '../components/MaintenanceBanner';
 import CTABand from '../components/CTABand';
@@ -75,7 +76,7 @@ const stats = [
   { value: '12', label: 'Month Residential Program' },
 ];
 
-const programs = [
+const defaultPrograms = [
   {
     name: "Women's Program",
     description:
@@ -84,6 +85,7 @@ const programs = [
     image: '/assets/images/women-program.png',
     imageAlt: 'Women in the Mercy House program gathered together outdoors',
     badge: 'Now Enrolling',
+    imageKey: 'womens_program',
   },
   {
     name: "Men's Program",
@@ -93,6 +95,7 @@ const programs = [
     image: '/assets/images/mens-1.jpeg',
     imageAlt: 'Men in the Mercy House program working together on campus',
     badge: 'Now Enrolling',
+    imageKey: 'mens_program',
   },
   {
     name: 'Families & loved ones',
@@ -158,6 +161,42 @@ const faqs = [
 ];
 
 export default function Home() {
+  const [programs, setPrograms] = useState(defaultPrograms);
+
+  useEffect(() => {
+    let cancelled = false;
+    const loadImages = async () => {
+      try {
+        const { items } = await base44.entities.HomeImage.filter(
+          { key: { $in: ['womens_program', 'mens_program'] } },
+          { limit: 10 }
+        );
+        if (cancelled) return;
+        const byKey = {};
+        items.forEach((item) => {
+          byKey[item.key] = item;
+        });
+        setPrograms((prev) =>
+          prev.map((p) => {
+            const override = p.imageKey && byKey[p.imageKey];
+            if (!override || !override.image_url) return p;
+            return {
+              ...p,
+              image: override.image_url,
+              imageAlt: override.alt_text || p.imageAlt,
+            };
+          })
+        );
+      } catch {
+        // Fall back to defaults silently — the page still renders.
+      }
+    };
+    loadImages();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <div className="w-full">
       <MaintenanceBanner />

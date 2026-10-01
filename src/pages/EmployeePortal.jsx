@@ -25,6 +25,7 @@ import MediaResourceManager from '../components/employee/MediaResourceManager';
 import GolfSponsorManager from '../components/employee/GolfSponsorManager';
 import DonationFunnel from './DonationFunnel';
 import WomensCampusMediaManager from '../components/employee/WomensCampusMediaManager';
+import HomeImageManager from '../components/employee/HomeImageManager';
 import SearchPerformance from './SearchPerformance';
 import SearchConsoleSummary from '../components/employee/SearchConsoleSummary';
 import AnalyticsSummary from '../components/employee/AnalyticsSummary';
@@ -362,6 +363,9 @@ export default function EmployeePortal() {
             <TabsTrigger value="tools" className="text-sm flex-shrink-0">
               Tools
             </TabsTrigger>
+            <TabsTrigger value="homeimages" className="text-sm flex-shrink-0">
+              Home Images
+            </TabsTrigger>
             <TabsTrigger value="womensgallery" className="text-sm flex-shrink-0">
               Women's Gallery
             </TabsTrigger>
@@ -581,6 +585,10 @@ export default function EmployeePortal() {
                 <SearchPerformance />
               </TabsContent>
             </Tabs>
+          </TabsContent>
+
+          <TabsContent value="homeimages" className="mt-6">
+            <HomeImageManager />
           </TabsContent>
 
           <TabsContent value="womensgallery" className="mt-6">

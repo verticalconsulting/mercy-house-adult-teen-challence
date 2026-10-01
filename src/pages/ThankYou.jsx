@@ -37,7 +37,7 @@ export default function ThankYou() {
     try {
       const page = await base44.entities.Donor.filter(
         {},
-        { sort: '-created_date', limit: 200, fields: ['display_name', 'message', 'anonymous', 'created_date'] }
+        { sort: '-created_date', limit: 200, fields: ['display_name', 'message', 'anonymous', 'amount', 'created_date'] }
       );
       setDonors(page.items || []);
     } catch (err) {
@@ -235,16 +235,26 @@ export default function ThankYou() {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
-              {donors.map((donor) => (
+            <div className="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4">
+              {donors.map((donor) => {
+                // Scale name size linearly by gift amount — $100 is twice the
+                // font size of $50. Clamped so the smallest and largest gifts
+                // stay readable and don't break the masonry flow.
+                const fontSize = donor.amount && donor.amount > 0
+                  ? Math.max(14, Math.min(52, Math.round(donor.amount * 0.36)))
+                  : 18;
+                return (
                 <div
                   key={donor.id}
-                  className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 md:p-5 text-center shadow-sm hover:shadow-md transition-shadow"
+                  className="break-inside-avoid mb-3 md:mb-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 md:p-5 text-center shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-navy/10 dark:bg-gold/10 mb-3">
                     <Heart className="w-4 h-4 text-gold" aria-hidden="true" />
                   </div>
-                  <p className="font-bold text-navy dark:text-gold text-sm md:text-base leading-tight break-words">
+                  <p
+                    className="font-bold text-navy dark:text-gold leading-tight break-words"
+                    style={{ fontSize: `${fontSize}px` }}
+                  >
                     {donor.display_name || donor.name}
                   </p>
                   {donor.message && (
@@ -253,7 +263,8 @@ export default function ThankYou() {
                     </p>
                   )}
                 </div>
-              ))}
+                );
+              })}
             </div>
             <p className="text-center mt-10 text-sm text-slate-400 dark:text-slate-500">
               {donors.length} {donors.length === 1 ? 'name' : 'names'} of blessing on the wall

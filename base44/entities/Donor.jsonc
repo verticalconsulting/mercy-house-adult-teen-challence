@@ -19,6 +19,10 @@
     "display_name": {
       "type": "string",
       "description": "Resolved name shown on the wall \u2014 set at create time to either the donor's name or 'A Friend of Mercy House' when anonymous"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Total amount given by this donor (used to scale name size on the wall \u2014 larger gifts show larger names)"
     }
   },
   "required": [

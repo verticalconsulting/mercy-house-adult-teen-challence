@@ -30,6 +30,7 @@ import SearchConsoleSummary from '../components/employee/SearchConsoleSummary';
 import AnalyticsSummary from '../components/employee/AnalyticsSummary';
 import PortalLogin from '../components/employee/PortalLogin';
 import UserManagement from '../components/employee/UserManagement';
+import MaintenanceBannerToggle from '../components/employee/MaintenanceBannerToggle';
 
 export default function EmployeePortal() {
   const [user, setUser] = useState(null);
@@ -587,6 +588,9 @@ export default function EmployeePortal() {
           </TabsContent>
 
           <TabsContent value="settings" className="mt-6">
+            <div className="mb-6">
+              <MaintenanceBannerToggle />
+            </div>
             <Card id="settings-card">
               <CardHeader>
                 <CardTitle className="text-navy dark:text-gold">Account Settings</CardTitle>

@@ -1,0 +1,55 @@
+{
+  "name": "SiteSetting",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "Unique setting key (e.g. maintenance_banner_enabled)"
+    },
+    "value": {
+      "type": "string",
+      "description": "Setting value stored as a string; consumers parse as needed"
+    },
+    "label": {
+      "type": "string",
+      "description": "Human-friendly label shown in the admin portal"
+    },
+    "updated_by": {
+      "type": "string",
+      "description": "Email of the admin who last changed this setting"
+    }
+  },
+  "required": [
+    "key",
+    "value"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.key": "maintenance_banner_enabled"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

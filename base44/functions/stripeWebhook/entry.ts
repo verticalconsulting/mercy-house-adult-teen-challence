@@ -175,6 +175,11 @@ Deno.serve(async (req) => {
           } catch (e) {
             console.error('Virtuous one-time sync failed:', e);
           }
+          try {
+            await base44.analytics.track({ eventName: 'donation_completed' });
+          } catch (e) {
+            console.error('Failed to track donation_completed:', e);
+          }
         }
 
         if (session.customer_email) {
@@ -212,6 +217,11 @@ Deno.serve(async (req) => {
             await syncSubscriptionGift(invoice);
           } catch (syncError) {
             console.error('Virtuous sync failed for invoice', invoice.id, ':', syncError);
+          }
+          try {
+            await base44.analytics.track({ eventName: 'donation_completed' });
+          } catch (e) {
+            console.error('Failed to track donation_completed:', e);
           }
         }
         break;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
@@ -63,6 +63,15 @@ export default function IntakeForm() {
   const [step, setStep] = useState(1);
   const [condensedMode, setCondensedMode] = useState(false);
   const [errors, setErrors] = useState({});
+  const intakeStartedFired = useRef(false);
+
+  const handleFirstFocus = () => {
+    if (intakeStartedFired.current) return;
+    intakeStartedFired.current = true;
+    try {
+      base44.analytics.track({ eventName: 'intake_form_started' });
+    } catch (_) {}
+  };
 
   const [formData, setFormData] = useState({
     application_type: 'mens_program',
@@ -363,7 +372,7 @@ export default function IntakeForm() {
           </Card>
         )}
 
-        <form onSubmit={handleSubmit} noValidate aria-label="Intake application form">
+        <form onSubmit={handleSubmit} onFocusCapture={handleFirstFocus} noValidate aria-label="Intake application form">
           {/* ===== CONDENSED MODE ===== */}
           {condensedMode && step === 1 && (
             <Card>

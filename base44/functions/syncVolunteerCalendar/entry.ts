@@ -147,7 +147,7 @@ Deno.serve(async (req) => {
           if (volunteer.email) {
             // SendEmail only reaches registered app users; non-registered
             // addresses are rejected by the platform — log and continue.
-            await base44.integrations.Core.SendEmail({
+            await base44.asServiceRole.integrations.Core.SendEmail({
               to: volunteer.email,
               subject: emailSubject,
               body: emailBody

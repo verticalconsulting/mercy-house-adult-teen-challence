@@ -1,0 +1,41 @@
+{
+  "name": "Donor",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name to display on the donor wall (first name or full name)"
+    },
+    "message": {
+      "type": "string",
+      "maxLength": 280,
+      "description": "Optional short blessing or note from the donor shown on the wall"
+    },
+    "anonymous": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, the wall displays 'A Friend of Mercy House' instead of the donor's name"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Resolved name shown on the wall \u2014 set at create time to either the donor's name or 'A Friend of Mercy House' when anonymous"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": {},
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

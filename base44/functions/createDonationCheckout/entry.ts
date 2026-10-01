@@ -34,7 +34,7 @@ Deno.serve(async (req) => {
             ],
             mode: 'payment',
             customer_email: email || undefined,
-            success_url: `${appUrl}/?donation=success`,
+            success_url: `${appUrl}/thank-you`,
             cancel_url: `${appUrl}/?donation=cancelled`,
             metadata: {
                 base44_app_id: Deno.env.get("BASE44_APP_ID"),

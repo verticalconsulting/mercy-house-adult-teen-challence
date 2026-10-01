@@ -82,7 +82,7 @@ const defaultPrograms = [
     description:
       'A 12-month residential discipleship program in Learned, Mississippi for women ready to find freedom, rebuild family, and step into a new life in Christ.',
     to: createPageUrl('WomensCampus'),
-    image: '/assets/images/women-program.png',
+    image: '/assets/images/women-program.webp',
     imageAlt: 'Women in the Mercy House program gathered together outdoors',
     badge: 'Now Enrolling',
     imageKey: 'womens_program',
@@ -92,7 +92,7 @@ const defaultPrograms = [
     description:
       'A 12-month residential discipleship program in Georgetown, Mississippi where men build godly character, practical skills, and the accountability that keeps freedom from slipping away.',
     to: createPageUrl('MensCampus'),
-    image: '/assets/images/mens-1.jpeg',
+    image: '/assets/images/mens-1.webp',
     imageAlt: 'Men in the Mercy House program working together on campus',
     badge: 'Now Enrolling',
     imageKey: 'mens_program',
@@ -210,7 +210,8 @@ export default function Home() {
         secondaryLabel="Donate"
         secondaryTo={createPageUrl('Donate')}
         reassurance="Confidential · Free to call · Faith-based, never preachy"
-        image="/assets/images/family-hero.webp"
+        image="/assets/images/family-hero-1024.webp"
+        imageSrcSet="/assets/images/family-hero-640.webp 640w, /assets/images/family-hero-1024.webp 1024w, /assets/images/family-hero-1792.webp 1792w"
         imageAlt="A family standing together outdoors at sunrise"
       />
 
@@ -269,7 +270,7 @@ export default function Home() {
           <div className="mt-8 text-center">
             <Link
               to={createPageUrl('Testimonials')}
-              className="font-semibold text-navy hover:underline dark:text-gold"
+              className="inline-flex min-h-[44px] items-center font-semibold text-navy hover:underline dark:text-gold"
             >
               Read more graduate stories →
             </Link>

@@ -1,0 +1,10 @@
+{
+  "name": "Mercy House Adult & Teen Challenge",
+  "short_name": "Mercy House",
+  "description": "Faith-based residential recovery ministry for men, women, and families in Mississippi.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "theme_color": "#2F4E6F",
+  "background_color": "#FFFFFF"
+}

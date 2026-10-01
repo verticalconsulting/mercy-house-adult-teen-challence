@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import { Menu, X, ChevronDown, ChevronRight, MessageCircle, Facebook, ArrowLeft } from 'lucide-react';
@@ -10,7 +10,7 @@ import ScrollToTop from './components/ScrollToTop';
 import TrustBar from './components/TrustBar';
 import ScrollRestoration from './components/ScrollRestoration';
 import MobileBottomNav from './components/MobileBottomNav';
-import FloatingAIChat from './components/FloatingAIChat';
+const FloatingAIChat = lazy(() => import('./components/FloatingAIChat'));
 import SeoManager from './components/SeoManager';
 import { useOrganizationSchema } from './hooks/useOrganizationSchema';
 import { base44 } from '@/api/base44Client';
@@ -344,7 +344,7 @@ export default function Layout({ children, currentPageName }) {
 
       {/* Main Content */}
       <main id="main-content" className="pb-20 lg:pb-0" tabIndex={-1}>
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={currentPageName}
             initial={prefersReducedMotion ? { opacity: 0 } : { x: 300, opacity: 0 }}
@@ -363,7 +363,9 @@ export default function Layout({ children, currentPageName }) {
 
 
       {/* Floating AI Chat */}
-      <FloatingAIChat />
+      <Suspense fallback={null}>
+        <FloatingAIChat />
+      </Suspense>
 
       {/* Footer */}
       <footer className="relative overflow-hidden bg-navy-deep dark:bg-slate-950 text-white mt-20">
@@ -383,19 +385,19 @@ export default function Layout({ children, currentPageName }) {
             </div>
             <div>
               <h4 className="font-semibold text-xl md:text-base text-gold mb-4">Quick Links</h4>
-              <ul className="space-y-3 text-lg md:text-base">
-                <li><Link to={createPageUrl('WomensCampus')} className="text-slate-300 hover:text-gold transition-colors">Women's Campus</Link></li>
-                <li><Link to={createPageUrl('MensCampus')} className="text-slate-300 hover:text-gold transition-colors">Men's Campus</Link></li>
-                <li><Link to={createPageUrl('Events')} className="text-slate-300 hover:text-gold transition-colors">Events</Link></li>
-                <li><Link to={createPageUrl('MicroBusinesses')} className="text-slate-300 hover:text-gold transition-colors">Workforce Development</Link></li>
-                <li><Link to={createPageUrl('News')} className="text-slate-300 hover:text-gold transition-colors">News</Link></li>
-                <li><Link to={createPageUrl('Volunteer')} className="text-slate-300 hover:text-gold transition-colors">Volunteer</Link></li>
-                <li><Link to={createPageUrl('About')} className="text-slate-300 hover:text-gold transition-colors">About Us</Link></li>
-                <li><Link to={createPageUrl('Financials')} className="text-slate-300 hover:text-gold transition-colors">Financials</Link></li>
-                <li><Link to={createPageUrl('Careers')} className="text-slate-300 hover:text-gold transition-colors">Careers</Link></li>
-                <li><Link to={createPageUrl('Programs')} className="text-slate-300 hover:text-gold transition-colors">Programs</Link></li>
-                <li><Link to={createPageUrl('EmployeePortal')} className="text-slate-300 hover:text-gold transition-colors">Employee Portal</Link></li>
-                <li><Link to={createPageUrl('MeetTheTeam')} className="text-slate-300 hover:text-gold transition-colors">Meet the Team</Link></li>
+              <ul className="space-y-0 text-lg md:text-base">
+                <li><Link to={createPageUrl('WomensCampus')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Women's Campus</Link></li>
+                <li><Link to={createPageUrl('MensCampus')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Men's Campus</Link></li>
+                <li><Link to={createPageUrl('Events')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Events</Link></li>
+                <li><Link to={createPageUrl('MicroBusinesses')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Workforce Development</Link></li>
+                <li><Link to={createPageUrl('News')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">News</Link></li>
+                <li><Link to={createPageUrl('Volunteer')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Volunteer</Link></li>
+                <li><Link to={createPageUrl('About')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">About Us</Link></li>
+                <li><Link to={createPageUrl('Financials')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Financials</Link></li>
+                <li><Link to={createPageUrl('Careers')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Careers</Link></li>
+                <li><Link to={createPageUrl('Programs')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Programs</Link></li>
+                <li><Link to={createPageUrl('EmployeePortal')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Employee Portal</Link></li>
+                <li><Link to={createPageUrl('MeetTheTeam')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Meet the Team</Link></li>
               </ul>
             </div>
             <div>

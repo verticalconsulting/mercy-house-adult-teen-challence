@@ -9,14 +9,20 @@ import '@/index.css'
 // message as "Script error." with no stack. These are not bugs in this app and
 // are not actionable; each embed component manages its own render/failed state.
 window.addEventListener('error', (event) => {
-  if (event.message === 'Script error.' && (!event.filename || event.filename === '')) {
+  // "Script error." is the browser's generic mask for any cross-origin script
+  // failure — the real message and stack are withheld by the same-origin
+  // policy. It is never actionable from this app, so suppress it regardless of
+  // whether a filename is attached (cross-origin scripts often report their
+  // URL as filename while still hiding the detail).
+  if (event.message === 'Script error.') {
     event.preventDefault();
   }
 });
 
 window.addEventListener('unhandledrejection', (event) => {
   const reason = event.reason;
-  if (reason && typeof reason === 'object' && reason.message === 'Script error.') {
+  const msg = typeof reason === 'string' ? reason : reason?.message;
+  if (msg === 'Script error.') {
     event.preventDefault();
   }
 });

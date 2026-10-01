@@ -444,6 +444,7 @@ export default function Layout({ children, currentPageName }) {
             <p className="mt-2">
               501(c)(3) Nonprofit &middot; Georgetown &amp; Learned, Mississippi &middot; Your gifts support housing, meals, program care, and ministry operations.
             </p>
+            <address className="mt-2 not-italic">1110 Mary St, Georgetown, MS 39078</address>
             <div className="flex justify-center mt-4 mb-2">
               <a href="https://app.candid.org/profile/9237605/mercy-house-teen-challenge-45-4670832/?pkId=85b52dd6-b112-4838-af55-83779d6afa0f" target="_blank" rel="noopener">
                 <img src="https://widgets.guidestar.org/prod/v1/pdp/transparency-seal/9237605/svg" alt="Candid Seal of Transparency" className="h-16 w-auto" />

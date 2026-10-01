@@ -38,8 +38,9 @@ Method notes (be upfront with the client):
 | 3 | Program card photos converted to WebP: men's 996 KB to 113 KB, women's 328 KB to 30 KB | Page weight | `Home.jsx`, `HomeImageManager.jsx` |
 | 4 | Roboto self-hosted (same family, weights 400/500/700/900, Latin subset) instead of Google Fonts | Removes a render-blocking third-party request chain | `src/main.jsx`, `index.html`, `package.json` |
 | 5 | Virtuous tracker loads after page load and when the browser is idle (same script, same org ID) | Keeps tracking from competing with first paint and taps | `index.html` |
-| 6 | Added missing `/manifest.json` (it was linked but did not exist, a 404 on every page); added `theme-color` (#2F4E6F) | Broken link / Best Practices | `public/manifest.json`, `index.html` |
+| 6 | Added missing `/manifest.json` (now with icons) (it was linked but did not exist, a 404 on every page); added `theme-color` (#2F4E6F) | Broken link / Best Practices | `public/manifest.json`, `index.html` |
 | 7 | Footer links and "Read more graduate stories" now 44 px tall tap targets (were 21-24 px) | Brand rule and WCAG 2.2 target size | `Layout.jsx`, `Home.jsx` |
+| 9 | Favicon, Apple touch icon and manifest icons from the approved logo; full street address added to the site footer | Brand/trust, Ad Grants address requirement | `public/assets/images/mercyhouse-mark-*.png`, `index.html`, `Layout.jsx` |
 | 8 | Skipped the first-load slide-in animation on main content (page-to-page transitions still animate) | Hero no longer waits on an off-screen animation | `Layout.jsx` |
 
 Verified in a mobile browser at 360 x 800 and 390 x 844: no horizontal scroll, hero renders, Roboto loads from the site, no tap target under 44 px, 78/78 unit tests pass, production build succeeds. Lint reports the same 44 pre-existing errors before and after (none introduced).
@@ -50,7 +51,7 @@ Verified in a mobile browser at 360 x 800 and 390 x 844: no horizontal scroll, h
 |---|---|---|
 | Domain ownership, no redirect to third party | Needs client input | .org 301-redirects to .com (fine, same org). Confirm Mercy House has admin control of mercyhouseatc.com. |
 | Substantial, unique content | Pass (replacement build) | About, Programs, Campuses, Contact, FAQ, News, Testimonials present. Mission and program content is on-page; only annual reports/financials are PDFs (fine as supplements). |
-| Clear mission, address, EIN | Needs client input | Mission is prominent. EIN 45-4670832 and 501(c)(3) appear on the live site. Footer lists Georgetown & Learned, MS but no street address was confirmed: **[CLIENT TO PROVIDE full physical address]**. |
+| Clear mission, address, EIN | Pass | Mission is prominent. EIN 45-4670832 and 501(c)(3) appear on the live site. Footer previously listed only Georgetown & Learned, MS. Client confirmed 1110 Mary St, Georgetown, MS 39078; now shown in the site-wide footer, Contact page and organization schema. |
 | Navigation and working links | Open | `manifest.json` 404 fixed. Run a full link crawl after launch (about 28 internal routes plus external business links). |
 | Fast loading | Improved, not yet passing | See scorecard. Needs Remaining #1. |
 | Mobile-friendly | Pass | Responsive, viewport correct, no horizontal scroll, tap targets fixed. |
@@ -69,9 +70,9 @@ Wording for the client: "Google reviews Ad Grants sites case by case; these fixe
 | 1 | **Every page waits for a Base44 API call (`public-settings`) before drawing anything** (`App.jsx` spinner gated on `AuthContext`). Render public pages immediately and resolve sign-in in the background. Largest remaining LCP lever; changes sign-in behavior, so test on staging with the backend. | High | M | Corey |
 | 2 | Entry bundle is still 0.95 MB (284 KB gzipped). Split vendor chunks; check framer-motion and the Base44 SDK usage on the first screen. | High | M | Corey |
 | 3 | Maintenance banner loads after an API call and pushes content down when enabled (layout shift risk). Turn it off at launch. | Medium | S | Client |
-| 4 | Favicon is the Base44 logo. A readable Mercy House square icon is needed (the approved logo is wide and unreadable at 16 px, and the brand rules forbid cropping it). | Medium | S | Client / designer |
+| 4 | ~~Favicon is the Base44 logo~~ **Done:** favicon, Apple touch icon and manifest icons now use the Star Man mark cropped from the approved colored logo (owner-authorized crop; wordmark and ® removed, artwork otherwise unaltered). | Done | n/a | n/a |
 | 5 | Header logo is hosted on imagedelivery.net with no width/height. Self-host the approved `colored-long` / `white-long` logo with dimensions. | Medium | S | Corey |
-| 6 | Above the fold on mobile there are two gold buttons ("Donate Now" in the header and "Start Your Journey" in the hero). Brand rules call for exactly one primary gold CTA. Owner decision. | Medium | S | Client |
+| 6 | Two gold buttons above the fold on mobile ("Donate Now" in header, "Start Your Journey" in hero). **Owner-approved exception** to the one-primary-CTA brand rule; no change made. | Accepted | n/a | Client |
 | 7 | `og:image` / `twitter:image` missing from `index.html` defaults (a per-page default exists in `useDocumentMeta.js`; verify it renders on social share). | Low | S | Corey |
 | 8 | Several pages hot-link images from `media.base44.com` at full size (About, Programs, etc.). Compress and add `width`/`height`. | Medium | M | Corey |
 | 9 | Add web-vitals reporting to GA4 to get real-user numbers. | Low | S | Corey |
@@ -87,5 +88,5 @@ Re-run PageSpeed Insights mobile on Home, Donate, Get Help, and top landing page
 
 - Upsell fits: monthly website care and performance retainer (monitoring, image compression on uploads, link checks); Ad Grants management (needs the site fixes above first, then campaign build, conversion tracking and the 5% CTR upkeep); GA4 web-vitals setup.
 - Worth doing first: Remaining #1 (about half of the remaining LCP gap) and turning the maintenance banner off at launch. Everything else is polish.
-- Client decisions needed: full street address, who controls the domain, favicon asset, one-gold-CTA question, confirmation that thrift store and vehicle donation pages state how proceeds support the mission.
+- Client decisions needed: who controls the domain, confirmation that thrift store and vehicle donation pages state how proceeds support the mission.
 - I did not touch: the auth flow, brand colors/fonts/logos, copy. Nothing was published to production.

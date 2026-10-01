@@ -418,15 +418,13 @@
 }
 /*
  * Nested iframes are Stripe Element payment fields (card number, expiration,
- * CVC). The old blanket `min-height: 600px` on every iframe stretched each
- * one to 600px, so constrain them to a normal input height instead.
+ * CVC). Stripe Elements sets its own iframe height via JS — forcing a fixed
+ * height prevents the card fields from injecting, so leave height alone and
+ * only normalize width and border.
  */
 .virtuous-embed-host iframe {
   width: 100% !important;
   border: 0;
-  min-height: 0 !important;
-  height: 48px !important;
-  max-height: 56px !important;
 }
 /* The outermost form iframe (if the embed uses one) still gets room to breathe. */
 .virtuous-embed-host > iframe {
@@ -460,15 +458,14 @@
   box-sizing: border-box !important;
   line-height: 1.4 !important;
 }
-/* Constrain the wrapper divs around payment fields (card number, exp, CVC)
-   that the Virtuous/Stripe embed stretches to fill available height. */
+/* Let the wrapper divs around payment fields (card number, exp, CVC) size to
+   their content — forcing a max-height clips the Stripe Element iframes. */
 .dark .virtuous-embed-host [class*="card"] > div,
 .dark .virtuous-embed-host [class*="payment"] > div,
 .dark .virtuous-embed-host [class*="stripe"] > div,
 .dark .virtuous-embed-host [class*="input-wrapper"],
 .dark .virtuous-embed-host [class*="field-wrapper"] {
   height: auto !important;
-  max-height: 70px !important;
 }
 .dark .virtuous-embed-host input::placeholder,
 .dark .virtuous-embed-host textarea::placeholder {

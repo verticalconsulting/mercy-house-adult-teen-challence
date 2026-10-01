@@ -23,6 +23,11 @@
     "amount": {
       "type": "number",
       "description": "Total amount given by this donor (used to scale name size on the wall \u2014 larger gifts show larger names)"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Additional notes about this donor"
     }
   },
   "required": [

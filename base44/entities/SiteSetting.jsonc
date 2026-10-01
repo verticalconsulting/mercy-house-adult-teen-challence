@@ -17,6 +17,11 @@
     "updated_by": {
       "type": "string",
       "description": "Email of the admin who last changed this setting"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Additional notes about this setting"
     }
   },
   "required": [

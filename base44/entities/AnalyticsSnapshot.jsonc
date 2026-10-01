@@ -84,6 +84,11 @@
       "type": "number",
       "default": 28,
       "description": "Number of days of data covered by this snapshot"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Additional notes about this snapshot"
     }
   },
   "required": [

@@ -32,6 +32,8 @@ import EventDetailPage from './pages/EventDetailPage';
 import Files from './pages/Files';
 import Connect from './pages/Connect';
 import ThankYou from './pages/ThankYou';
+import VehicleDonation from './pages/VehicleDonation';
+import VehicleDonationForm from './pages/VehicleDonationForm';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -113,6 +115,8 @@ const AuthenticatedApp = () => {
       <Route path="/news/:slug" element={<LayoutWrapper currentPageName="BlogPostPage"><BlogPostPage /></LayoutWrapper>} />
       <Route path="/connect" element={<LayoutWrapper currentPageName="Connect"><Connect /></LayoutWrapper>} />
       <Route path="/thank-you" element={<LayoutWrapper currentPageName="ThankYou"><ThankYou /></LayoutWrapper>} />
+      <Route path={createPageUrl('VehicleDonation')} element={<LayoutWrapper currentPageName="VehicleDonation"><VehicleDonation /></LayoutWrapper>} />
+      <Route path={createPageUrl('VehicleDonationForm')} element={<LayoutWrapper currentPageName="VehicleDonationForm"><VehicleDonationForm /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

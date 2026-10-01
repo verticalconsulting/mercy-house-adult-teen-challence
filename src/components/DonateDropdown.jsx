@@ -29,6 +29,7 @@ export default function DonateDropdown({ className = "", size = "default", onIte
             <span className="font-semibold text-lg md:text-sm">General Donation</span>
           </Link>
         </DropdownMenuItem>
+        {/* TEMPORARILY HIDDEN — re-enable when sponsorship/monthly support is ready
         <DropdownMenuItem asChild className="cursor-pointer py-4 md:py-2">
           <Link to={createPageUrl('RecurringDonation')} onClick={onItemClick}>
             <Heart className="w-6 h-6 md:w-4 md:h-4 mr-3 md:mr-2 text-navy dark:text-gold" />
@@ -41,6 +42,7 @@ export default function DonateDropdown({ className = "", size = "default", onIte
             <span className="font-semibold text-lg md:text-sm">Sponsor a Student</span>
           </Link>
         </DropdownMenuItem>
+        */}
       </DropdownMenuContent>
     </DropdownMenu>
   );

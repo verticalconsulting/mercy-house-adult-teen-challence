@@ -47,7 +47,7 @@ export default function Layout({ children, currentPageName }) {
     { name: 'Information Hub', directPath: createPageUrl('Events'), submenu: [
       { name: 'Events', directPath: createPageUrl('Events'), submenu: [
         { name: 'Freedom Classic Golf Tournament', directPath: createPageUrl('FreedomClassic') } ] },
-      { name: 'News', directPath: createPageUrl('News') },
+      { name: 'News', directPath: createPageUrl('NewsAndUpdates') },
       { name: 'Media Resources', directPath: createPageUrl('MediaResources') },
       { name: 'Financials', directPath: createPageUrl('Financials') },
       { name: 'Files', directPath: createPageUrl('Files') } ] },
@@ -391,7 +391,7 @@ export default function Layout({ children, currentPageName }) {
                 <li><Link to={createPageUrl('MensCampus')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Men's Campus</Link></li>
                 <li><Link to={createPageUrl('Events')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Events</Link></li>
                 <li><Link to={createPageUrl('MicroBusinesses')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Workforce Development</Link></li>
-                <li><Link to={createPageUrl('News')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">News</Link></li>
+                <li><Link to={createPageUrl('NewsAndUpdates')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">News</Link></li>
                 <li><Link to={createPageUrl('Volunteer')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Volunteer</Link></li>
                 <li><Link to={createPageUrl('About')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">About Us</Link></li>
                 <li><Link to={createPageUrl('Financials')} className="inline-flex min-h-[44px] items-center text-slate-300 hover:text-gold transition-colors">Financials</Link></li>

@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import PullToRefresh from '../components/PullToRefresh';
 import PageHero from '../components/site/PageHero';
 
-export default function News() {
+export default function NewsAndUpdates() {
   const queryClient = useQueryClient();
 
   const { data: posts, isLoading } = useQuery({

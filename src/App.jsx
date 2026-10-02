@@ -13,7 +13,7 @@ const FreedomClassic = lazy(() => import('./pages/FreedomClassic'));
 const FreedomGala = lazy(() => import('./pages/FreedomGala'));
 const TeenChallengeStory = lazy(() => import('./pages/TeenChallengeStory'));
 const WomensCenterCalendar = lazy(() => import('./pages/WomensCenterCalendar'));
-const News = lazy(() => import('./pages/News'));
+const NewsAndUpdates = lazy(() => import('./pages/NewsAndUpdates'));
 const SearchPerformance = lazy(() => import('./pages/SearchPerformance'));
 const About = lazy(() => import('./pages/About'));
 const Financials = lazy(() => import('./pages/Financials'));
@@ -112,7 +112,7 @@ const AuthenticatedApp = () => {
       <Route path={createPageUrl('FreedomClassic')} element={<LayoutWrapper currentPageName="FreedomClassic"><FreedomClassic /></LayoutWrapper>} />
       <Route path={createPageUrl('FreedomGala')} element={<LayoutWrapper currentPageName="FreedomGala"><FreedomGala /></LayoutWrapper>} />
       <Route path={createPageUrl('TeenChallengeStory')} element={<LayoutWrapper currentPageName="TeenChallengeStory"><TeenChallengeStory /></LayoutWrapper>} />
-      <Route path={createPageUrl('News')} element={<LayoutWrapper currentPageName="News"><News /></LayoutWrapper>} />
+      <Route path={createPageUrl('NewsAndUpdates')} element={<LayoutWrapper currentPageName="NewsAndUpdates"><NewsAndUpdates /></LayoutWrapper>} />
       <Route path={createPageUrl('WomensCenterCalendar')} element={<LayoutWrapper currentPageName="WomensCenterCalendar"><WomensCenterCalendar /></LayoutWrapper>} />
       <Route path={createPageUrl('MicroBusinesses')} element={<LayoutWrapper currentPageName="MicroBusinesses"><MicroBusinesses /></LayoutWrapper>} />
       <Route path={createPageUrl('ComprehensiveApproach')} element={<LayoutWrapper currentPageName="ComprehensiveApproach"><ComprehensiveApproach /></LayoutWrapper>} />

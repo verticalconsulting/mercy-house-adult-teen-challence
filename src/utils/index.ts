@@ -35,6 +35,9 @@ const PATH_OVERRIDES: Record<string, string> = {
     MediaResources: '/media',
     IntakeForm: '/get-help-now',
     TermsConditions: '/terms-of-use',
+    // Renamed page component (was `News`) — keep the canonical /news URL so the
+    // sitemap, canonical map, SEO metadata, and blog detail back-links stay valid.
+    NewsAndUpdates: '/news',
 };
 
 export function createPageUrl(pageName: string) {

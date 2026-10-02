@@ -65,6 +65,12 @@ export default function IntakeForm() {
   const [errors, setErrors] = useState({});
   const intakeStartedFired = useRef(false);
 
+  useEffect(() => {
+    try {
+      base44.analytics.track({ eventName: 'intake_form_viewed' });
+    } catch (_) {}
+  }, []);
+
   const handleFirstFocus = () => {
     if (intakeStartedFired.current) return;
     intakeStartedFired.current = true;

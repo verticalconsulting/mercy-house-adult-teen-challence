@@ -51,6 +51,7 @@ export default function Layout({ children, currentPageName }) {
       { name: 'Media Resources', directPath: createPageUrl('MediaResources') },
       { name: 'Financials', directPath: createPageUrl('Financials') },
       { name: 'Files', directPath: createPageUrl('Files') } ] },
+    { name: 'Connect AI Assistant', directPath: '/connect' },
     { name: 'Careers', directPath: createPageUrl('Careers') }]
   },
   {

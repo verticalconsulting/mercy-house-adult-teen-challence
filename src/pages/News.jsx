@@ -8,6 +8,7 @@ import { format } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import PullToRefresh from '../components/PullToRefresh';
+import PageHero from '../components/site/PageHero';
 
 export default function News() {
   const queryClient = useQueryClient();
@@ -32,17 +33,11 @@ export default function News() {
   return (
     <PullToRefresh onRefresh={handleRefresh}>
       <div className="w-full">
-      {/* Hero */}
-      <section className="bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">News
-
-            </h1>
-          <p className="text-xl text-slate-200 max-w-3xl mx-auto">
-            Stay updated with the latest news, events, and success stories from Mercy House
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Information Hub"
+        title="News"
+        subtitle="Stay updated with the latest news, events, and success stories from Mercy House"
+      />
 
       {/* Posts Grid */}
       <section className="py-20 bg-slate-50 dark:bg-slate-900">

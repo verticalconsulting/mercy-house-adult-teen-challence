@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useQuery } from '@tanstack/react-query';
 import { Image as ImageIcon, Video, X, Calendar, Tag, Eye } from 'lucide-react';
+import PageHero from '@/components/site/PageHero';
 
 const categoryLabels = {
   general: 'General',
@@ -43,14 +44,11 @@ export default function MediaResources() {
 
   return (
     <div className="w-full">
-      {/* Hero */}
-      <section className="bg-navy dark:bg-slate-950 py-20 text-center text-white">
-        <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-3">Mercy House Adult Teen Challenge</p>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Media Resources</h1>
-        <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-          A visual gallery of God's work through our community — events, outreaches, graduations, and moments of life change.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="Information Hub"
+        title="Media Resources"
+        subtitle="A visual gallery of God's work through our community — events, outreaches, graduations, and moments of life change."
+      />
 
       {/* Filters */}
       <section className="sticky top-16 z-30 bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-slate-700">

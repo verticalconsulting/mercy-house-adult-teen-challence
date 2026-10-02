@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 import { FileText, Download, Loader2 } from 'lucide-react';
+import PageHero from '@/components/site/PageHero';
 
 export default function Files() {
   const { data: documents, isLoading } = useQuery({
@@ -12,16 +13,11 @@ export default function Files() {
 
   return (
     <div className="w-full">
-      {/* Hero */}
-      <section className="bg-navy dark:bg-slate-900 py-16 md:py-20 text-white text-center">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-gold font-semibold uppercase tracking-widest text-sm mb-4">Doc Hub</p>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Files &amp; Forms</h1>
-          <p className="text-lg text-slate-300 leading-relaxed">
-            Download applications and forms published by Mercy House Adult Teen Challenge.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Information Hub"
+        title="Files & Forms"
+        subtitle="Download applications and forms published by Mercy House Adult Teen Challenge."
+      />
 
       {/* Documents list */}
       <section className="py-16 bg-slate-50 dark:bg-slate-900">

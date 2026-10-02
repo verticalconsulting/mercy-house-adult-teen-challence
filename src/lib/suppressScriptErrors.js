@@ -26,19 +26,26 @@ window.onerror = function (message) {
   if (isScriptError(message)) return true;
 };
 
+// Capture-phase listeners on window fire first in the event path, so they
+// run before any error monitor that registers on document or deeper elements.
+// stopImmediatePropagation keeps those downstream listeners from ever seeing
+// the event — the only reliable way to hide a cross-origin "Script error."
+// from a monitor that registered its own listener.
 window.addEventListener('error', (event) => {
   if (isScriptError(event.message)) {
     event.preventDefault();
+    event.stopImmediatePropagation();
   }
-});
+}, true);
 
 window.addEventListener('unhandledrejection', (event) => {
   const reason = event.reason;
   const msg = typeof reason === 'string' ? reason : reason?.message;
   if (isScriptError(msg)) {
     event.preventDefault();
+    event.stopImmediatePropagation();
   }
-});
+}, true);
 
 // Some third-party scripts log errors via console.error rather than throwing;
 // platform error monitoring may also capture console output.

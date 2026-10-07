@@ -133,7 +133,13 @@ module.exports = {
           from: { opacity: '0', transform: 'translateY(24px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
-  			'accordion-down': {
+        /* Gentle heartbeat on the Donate button's gold heart icon. */
+        'heart-beat': {
+          '0%, 82%, 100%': { transform: 'scale(1)' },
+          '88%': { transform: 'scale(1.12)' },
+          '94%': { transform: 'scale(1)' },
+        },
+        'accordion-down': {
   				from: {
   					height: '0'
   				},
@@ -152,7 +158,8 @@ module.exports = {
   		},
   		animation: {
         'mh-fade-up': 'mh-fade-up 0.7s cubic-bezier(0.4, 0, 0.2, 1) both',
-  			'accordion-down': 'accordion-down 0.2s ease-out',
+        'heart-beat': 'heart-beat 2.8s ease-in-out infinite',
+        'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
   		}
   	}

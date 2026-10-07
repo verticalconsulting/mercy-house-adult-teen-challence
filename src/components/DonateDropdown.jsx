@@ -13,11 +13,10 @@ export default function DonateDropdown({ className = "", size = "default", onIte
   return (
     <Button
       asChild
-      className={`bg-gold hover:bg-gold/90 text-navy font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${className}`}
-      size={size}>
-      
-      <Link to={createPageUrl('Donate')} onClick={onItemClick} className="opacity-65">
-        <Heart className="w-5 h-5 md:w-4 md:h-4 mr-2" />
+      size={size}
+      className={`border border-[#263f5b] bg-navy text-white rounded-md shadow-[0_4px_10px_rgba(21,39,58,0.22),inset_0_1px_0_rgba(255,255,255,0.12)] hover:bg-navy-900 hover:shadow-[0_5px_13px_rgba(21,39,58,0.28),inset_0_1px_0_rgba(255,255,255,0.12)] active:bg-navy-950 active:shadow-[0_2px_5px_rgba(21,39,58,0.24)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-gold focus-visible:ring-0 transition-[background-color,box-shadow,color] duration-[180ms] ease-out ${className}`}>
+      <Link to={createPageUrl('Donate')} onClick={onItemClick}>
+        <Heart className="text-gold fill-current animate-heart-beat" />
         Donate Now
       </Link>
     </Button>);

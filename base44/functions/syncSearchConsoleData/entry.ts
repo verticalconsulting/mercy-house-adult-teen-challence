@@ -1,5 +1,6 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
 import { verifyAutomationSecret } from '../../shared/security.ts';
+import { pickMercyHouseSite } from '../../shared/searchConsoleSite.ts';
 
 Deno.serve(async (req) => {
   try {
@@ -27,7 +28,7 @@ Deno.serve(async (req) => {
     if (sites.length === 0) {
       return Response.json({ error: 'No Search Console properties found' }, { status: 404 });
     }
-    const siteUrl = sites[0].siteUrl;
+    const siteUrl = reqBody.siteUrl || pickMercyHouseSite(sites);
     const encodedSiteUrl = encodeURIComponent(siteUrl);
 
     // 2. Date range: last 28 days ending yesterday (GSC data has 1-2 day delay)

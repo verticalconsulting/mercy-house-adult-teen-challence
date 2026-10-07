@@ -1,4 +1,5 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
+import { pickMercyHouseSite } from '../../shared/searchConsoleSite.ts';
 
 Deno.serve(async (req) => {
   try {
@@ -10,6 +11,8 @@ Deno.serve(async (req) => {
     }
     const { accessToken } = await base44.asServiceRole.connectors.getConnection('google_search_console');
 
+    const body = await req.json().catch(() => ({}));
+
     // Get list of properties
     const propertiesResponse = await fetch('https://www.googleapis.com/webmasters/v3/sites', {
       headers: { 'Authorization': `Bearer ${accessToken}` }
@@ -20,8 +23,9 @@ Deno.serve(async (req) => {
       return Response.json({ error: 'No GSC properties found' }, { status: 404 });
     }
 
-    // Use the first property
-    const siteUrl = propertiesData.siteEntry[0].siteUrl;
+    // Use the caller-supplied site if provided, otherwise prefer the Mercy House
+    // property over whichever property happens to sort first.
+    const siteUrl = body.siteUrl || pickMercyHouseSite(propertiesData.siteEntry);
     const encodedSiteUrl = encodeURIComponent(siteUrl);
 
     // Fetch top queries for the last 3 months

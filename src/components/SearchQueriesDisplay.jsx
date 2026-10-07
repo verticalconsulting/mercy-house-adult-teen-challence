@@ -3,7 +3,7 @@ import { base44 } from '@/api/base44Client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, TrendingUp, AlertCircle } from 'lucide-react';
 
-export default function SearchQueriesDisplay() {
+export default function SearchQueriesDisplay({ siteUrl: selectedSiteUrl }) {
   const [queries, setQueries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +12,9 @@ export default function SearchQueriesDisplay() {
   useEffect(() => {
     const fetchQueries = async () => {
       try {
-        const response = await base44.functions.invoke('getSearchConsoleQueries', {});
+        const response = await base44.functions.invoke('getSearchConsoleQueries', {
+          siteUrl: selectedSiteUrl || undefined,
+        });
         setQueries(response.data.queries || []);
         setSiteUrl(response.data.siteUrl || '');
         setError(null);
@@ -24,7 +26,7 @@ export default function SearchQueriesDisplay() {
     };
 
     fetchQueries();
-  }, []);
+  }, [selectedSiteUrl]);
 
   if (loading) {
     return (

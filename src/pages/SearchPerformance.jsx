@@ -233,7 +233,7 @@ export default function SearchPerformance() {
 
         {/* Top Queries Section */}
         <div className="mt-12">
-          <SearchQueriesDisplay />
+          <SearchQueriesDisplay siteUrl={selectedSite} />
         </div>
       </div>
     </div>

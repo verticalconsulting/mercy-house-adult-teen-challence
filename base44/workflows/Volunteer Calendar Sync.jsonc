@@ -16,7 +16,7 @@
             "function_name": "syncVolunteerCalendar",
             "args": {
               "data": "${ .trigger.data }",
-              "automation_secret": "1c72a3ad-96b7-405c-8166-30603b594248"
+              "automation_secret": "Thisisasecret01!"
             }
           },
           "then": "end",

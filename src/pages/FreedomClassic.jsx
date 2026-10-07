@@ -125,7 +125,7 @@ export default function FreedomClassic() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
               <a href="#register" onClick={(e) => {e.preventDefault();document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' });}}>
-                <Button className="hover:bg-navy/90 font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105 text-[hsl(var(--foreground))] bg-[#537ea7]">
+                <Button className="hover:bg-navy/90 font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105 text-[hsl(var(--foreground))] bg-[#32639a]">
                   <Users className="w-4 h-4" />
                   Register Your Team
                 </Button>
@@ -137,7 +137,7 @@ export default function FreedomClassic() {
                 </Button>
               </a>
               <a href="#sponsors" onClick={(e) => {e.preventDefault();document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' });}}>
-                <Button className="hover:bg-gold/90 text-navy font-bold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 bg-gold">
+                <Button className="hover:bg-gold/90 font-bold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 bg-gold text-neutral-950">
                   <Award className="w-4 h-4" />
                   See Our Sponsors
                 </Button>

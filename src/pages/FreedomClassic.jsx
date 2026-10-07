@@ -131,7 +131,7 @@ export default function FreedomClassic() {
                 </Button>
               </a>
               <a href={SPONSORSHIP_EMAIL}>
-                <Button className="hover:bg-white/30 backdrop-blur-sm border-2 border-white font-semibold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 text-[hsl(var(--foreground))] bg-[hsl(var(--secondary))]">
+                <Button className="hover:bg-white/30 backdrop-blur-sm border-2 border-white font-semibold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 text-[hsl(var(--foreground))] bg-[hsl(var(--card))]">
                   <Mail className="w-4 h-4" />
                   Sponsorship Inquiry
                 </Button>

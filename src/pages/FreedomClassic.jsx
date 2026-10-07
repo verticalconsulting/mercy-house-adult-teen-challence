@@ -125,13 +125,13 @@ export default function FreedomClassic() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
               <a href="#register" onClick={(e) => {e.preventDefault();document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' });}}>
-                <Button className="hover:bg-navy/90 font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105 text-[hsl(var(--foreground))] bg-[hsl(var(--muted-foreground))]">
+                <Button className="hover:bg-navy/90 font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105 text-[hsl(var(--foreground))] bg-[#32639a]">
                   <Users className="w-4 h-4" />
                   Register Your Team
                 </Button>
               </a>
               <a href={SPONSORSHIP_EMAIL}>
-                <Button className="hover:bg-white/30 backdrop-blur-sm border-2 border-white font-semibold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 text-[hsl(var(--foreground))] bg-[hsl(var(--card))]">
+                <Button className="hover:bg-white/30 backdrop-blur-sm border-2 border-white font-semibold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 text-[hsl(var(--foreground))] bg-[#32639a]">
                   <Mail className="w-4 h-4" />
                   Sponsorship Inquiry
                 </Button>

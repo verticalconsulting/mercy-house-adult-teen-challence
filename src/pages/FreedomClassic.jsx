@@ -55,11 +55,11 @@ export default function FreedomClassic() {
 
   useEffect(() => {
     let cancelled = false;
-    base44.entities.GolfSponsor.list('display_order')
-      .then((data) => { if (!cancelled) setSponsors(data); })
-      .catch((err) => console.error('Failed to load sponsors:', err))
-      .finally(() => { if (!cancelled) setSponsorsLoading(false); });
-    return () => { cancelled = true; };
+    base44.entities.GolfSponsor.list('display_order').
+    then((data) => {if (!cancelled) setSponsors(data);}).
+    catch((err) => console.error('Failed to load sponsors:', err)).
+    finally(() => {if (!cancelled) setSponsorsLoading(false);});
+    return () => {cancelled = true;};
   }, []);
 
   return (
@@ -124,19 +124,19 @@ export default function FreedomClassic() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
-              <a href="#register" onClick={(e) => { e.preventDefault(); document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' }); }}>
-                <Button className="hover:bg-navy/90 font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105 bg-[hsl(var(--card))] text-gray-800">
+              <a href="#register" onClick={(e) => {e.preventDefault();document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' });}}>
+                <Button className="hover:bg-navy/90 font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105 text-[hsl(var(--foreground))] bg-[hsl(var(--muted-foreground))]">
                   <Users className="w-4 h-4" />
                   Register Your Team
                 </Button>
               </a>
               <a href={SPONSORSHIP_EMAIL}>
-                <Button className="hover:bg-white/30 backdrop-blur-sm border-2 border-white font-semibold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 bg-[hsl(var(--primary-foreground))] text-gray-800">
+                <Button className="hover:bg-white/30 backdrop-blur-sm border-2 border-white font-semibold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 bg-[hsl(var(--primary-foreground))] text-[hsl(var(--background))]">
                   <Mail className="w-4 h-4" />
                   Sponsorship Inquiry
                 </Button>
               </a>
-              <a href="#sponsors" onClick={(e) => { e.preventDefault(); document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' }); }}>
+              <a href="#sponsors" onClick={(e) => {e.preventDefault();document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' });}}>
                 <Button className="hover:bg-gold/90 text-navy font-bold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 bg-gold">
                   <Award className="w-4 h-4" />
                   See Our Sponsors
@@ -236,7 +236,7 @@ export default function FreedomClassic() {
                 By participating in the Golf Classic, you are supporting the Mercy House ministry and giving hope to men and women who are seeking freedom from life controlling issues.
               </p>
               <p className="text-slate-700 font-semibold text-sm mb-4">Help us change lives by reaching our goal of $200,000.</p>
-              <a href="#register" onClick={(e) => { e.preventDefault(); document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' }); }}>
+              <a href="#register" onClick={(e) => {e.preventDefault();document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' });}}>
                 <Button className="w-full hover:bg-gold/90 text-navy font-bold rounded-full flex items-center justify-center gap-2 py-5 bg-[hsl(var(--card))]">
                   <Users className="w-4 h-4" />
                   Register Now
@@ -528,7 +528,7 @@ export default function FreedomClassic() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#register" onClick={(e) => { e.preventDefault(); document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' }); }}>
+            <a href="#register" onClick={(e) => {e.preventDefault();document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' });}}>
               <Button className="hover:bg-gold/90 text-navy font-bold px-12 py-5 text-lg rounded-full flex items-center gap-2 shadow-lg bg-[hsl(var(--background))]">
                 <Users className="w-5 h-5" />
                 Register Now
@@ -554,48 +554,48 @@ export default function FreedomClassic() {
             </p>
           </div>
 
-          {sponsorsLoading ? (
-            <div className="flex items-center justify-center py-16 text-slate-400">
+          {sponsorsLoading ?
+          <div className="flex items-center justify-center py-16 text-slate-400">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
-            </div>
-          ) : sponsors.length === 0 ? (
-            <div className="mh-card text-center py-12 text-slate-500 italic">
+            </div> :
+          sponsors.length === 0 ?
+          <div className="mh-card text-center py-12 text-slate-500 italic">
               Sponsor logos coming soon.
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+            </div> :
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
               {sponsors.map((sponsor) => {
-                const tile = (
-                  <span
-                    className={`flex h-full min-h-[140px] items-center justify-center p-6 rounded-xl ${
-                      sponsor.dark_background ? 'bg-navy-deep' : 'bg-white'
-                    }`}>
+              const tile =
+              <span
+                className={`flex h-full min-h-[140px] items-center justify-center p-6 rounded-xl ${
+                sponsor.dark_background ? 'bg-navy-deep' : 'bg-white'}`
+                }>
                     <img
-                      src={sponsor.logo_url}
-                      alt={sponsor.name}
-                      loading="lazy"
-                      className="max-h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </span>
-                );
-                const cardClass =
-                  'group mh-card mh-card-interactive flex items-stretch justify-center focus-visible:ring-gold/60';
-                return sponsor.website_url ? (
-                  <a
-                    key={sponsor.id}
-                    href={sponsor.website_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit ${sponsor.name}`}
-                    className={cardClass}>
+                  src={sponsor.logo_url}
+                  alt={sponsor.name}
+                  loading="lazy"
+                  className="max-h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+                
+                  </span>;
+
+              const cardClass =
+              'group mh-card mh-card-interactive flex items-stretch justify-center focus-visible:ring-gold/60';
+              return sponsor.website_url ?
+              <a
+                key={sponsor.id}
+                href={sponsor.website_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit ${sponsor.name}`}
+                className={cardClass}>
                     {tile}
-                  </a>
-                ) : (
-                  <div key={sponsor.id} className={cardClass}>{tile}</div>
-                );
-              })}
+                  </a> :
+
+              <div key={sponsor.id} className={cardClass}>{tile}</div>;
+
+            })}
             </div>
-          )}
+          }
 
           <p className="text-center text-slate-600 text-sm mt-8 italic">
             More sponsors to be announced —{' '}

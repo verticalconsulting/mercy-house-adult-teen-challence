@@ -137,7 +137,7 @@ export default function FreedomClassic() {
                 </Button>
               </a>
               <a href="#sponsors" onClick={(e) => {e.preventDefault();document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' });}}>
-                <Button className="hover:bg-gold/90 font-bold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 bg-gold text-[hsl(var(--background))]">
+                <Button className="hover:bg-gold/90 font-bold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 text-[hsl(var(--background))] bg-[#9abfe8]">
                   <Award className="w-4 h-4" />
                   See Our Sponsors
                 </Button>

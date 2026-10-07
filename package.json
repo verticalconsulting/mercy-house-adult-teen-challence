@@ -16,7 +16,7 @@
     "verify:seo": "node scripts/verify-rendered-seo.mjs"
   },
   "dependencies": {
-    "@base44/sdk": "^0.8.52",
+    "@base44/sdk": "^0.8.53",
     "@base44/vite-plugin": "^1.0.44",
     "@fontsource/roboto": "^5.3.0",
     "@formspree/react": "^2.5.5",

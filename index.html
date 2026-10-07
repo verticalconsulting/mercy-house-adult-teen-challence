@@ -1,6 +1,41 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      // Cross-origin "Script error." suppression — must run before any other
+      // script (including the platform's preview error monitor) so our handlers
+      // register first. Third-party embeds (Virtuous, Stripe, GTM) throw inside
+      // their own minified cross-origin scripts and the browser masks the real
+      // message as "Script error." with no stack — never actionable from here.
+      (function () {
+        var isScriptError = function (msg) {
+          if (!msg) return false;
+          return String(msg).trim().toLowerCase().replace(/\.$/, '') === 'script error';
+        };
+        window.onerror = function (message) {
+          if (isScriptError(message)) return true;
+        };
+        window.addEventListener('error', function (event) {
+          if (isScriptError(event.message)) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }, true);
+        window.addEventListener('unhandledrejection', function (event) {
+          var reason = event.reason;
+          var msg = typeof reason === 'string' ? reason : (reason && reason.message);
+          if (isScriptError(msg)) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }, true);
+        var originalConsoleError = console.error;
+        console.error = function () {
+          if (arguments.length === 1 && isScriptError(arguments[0])) return;
+          return originalConsoleError.apply(console, arguments);
+        };
+      })();
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/mercyhouse-mark-32.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/mercyhouse-mark-48.png" />

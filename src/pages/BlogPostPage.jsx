@@ -9,6 +9,7 @@ import { format } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import SocialShareButtons from '@/components/SocialShareButtons';
 import { useShareMeta } from '@/hooks/useShareMeta';
+import { useJsonLd } from '@/hooks/useJsonLd';
 
 const blogCategoryColors = {
   news: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
@@ -49,6 +50,25 @@ export default function BlogPostPage() {
     // parameters into the canonical and point preview deploys at themselves.
     path: `/news/${post?.slug || slug}`,
   });
+
+  const SITE_ORIGIN = import.meta.env.VITE_SITE_URL || 'https://mercyhouseatc.com';
+  useJsonLd('blogposting-schema', post ? {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${SITE_ORIGIN}/news/${post.slug || slug}/#blogposting`,
+    headline: post.title,
+    description: post.excerpt || post.title,
+    image: post.featured_image ? [post.featured_image] : undefined,
+    datePublished: post.publish_date || post.created_date,
+    dateModified: post.updated_date || post.publish_date || post.created_date,
+    author: { '@type': 'Organization', name: 'Mercy House Adult & Teen Challenge' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Mercy House Adult & Teen Challenge',
+      logo: { '@type': 'ImageObject', url: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/f6308df5-e751-45c6-6b95-9631b3eb7800/menulogo' },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_ORIGIN}/news/${post.slug || slug}` },
+  } : null);
 
   if (isLoading) {
     return (

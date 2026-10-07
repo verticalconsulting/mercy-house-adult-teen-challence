@@ -10,6 +10,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import CTABand from '../components/CTABand';
+import { useJsonLd } from '@/hooks/useJsonLd';
+import { buildFaqPageSchema } from '@/lib/faqSchemaData';
 
 const INTAKE_PHONE = '(601) 720-3718';
 
@@ -345,6 +347,7 @@ const FAQ_SECTIONS = [
 
 export default function FAQ() {
   const [query, setQuery] = useState('');
+  useJsonLd('faqpage-schema', buildFaqPageSchema());
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

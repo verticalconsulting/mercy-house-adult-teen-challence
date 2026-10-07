@@ -9,6 +9,7 @@ import { format } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import SocialShareButtons from '@/components/SocialShareButtons';
 import { useShareMeta } from '@/hooks/useShareMeta';
+import { useJsonLd } from '@/hooks/useJsonLd';
 
 const categoryLabels = {
   workshop: 'Workshop', outreach: 'Outreach', community_event: 'Community Event',
@@ -38,6 +39,30 @@ export default function EventDetailPage() {
     // Origin + path, not window.location.href — see resolveShareUrl.
     path: `/events/event/${id}`,
   });
+
+  const SITE_ORIGIN = import.meta.env.VITE_SITE_URL || 'https://mercyhouseatc.com';
+  useJsonLd('event-schema', event ? {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    '@id': `${SITE_ORIGIN}/events/event/${id}/#event`,
+    name: event.title,
+    description: event.description || event.title,
+    image: event.image_url ? [event.image_url] : undefined,
+    startDate: event.event_date,
+    endDate: event.end_date || undefined,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: event.location || 'Mercy House Adult & Teen Challenge',
+      address: { '@type': 'PostalAddress', addressRegion: 'MS', addressCountry: 'US' },
+    },
+    organizer: {
+      '@type': 'Organization',
+      name: 'Mercy House Adult & Teen Challenge',
+      url: SITE_ORIGIN,
+    },
+  } : null);
 
   if (isLoading) {
     return (

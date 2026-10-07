@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { base44 } from '@/api/base44Client';
+import { agentChatClient } from '@/api/agentChatClient';
 import { MessageCircle, X, Send, Loader2, Bot } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -30,7 +31,7 @@ export default function FloatingAIChat({ open: controlledOpen, onOpenChange }) {
   // never cleaned it up, which could cause missed updates and stale callbacks.
   useEffect(() => {
     if (!conversation?.id) return;
-    const unsubscribe = base44.agents.subscribeToConversation(conversation.id, (data) => {
+    const unsubscribe = agentChatClient.agents.subscribeToConversation(conversation.id, (data) => {
       const filtered = (data.messages || []).filter(m => m.role !== 'system');
       setMessages(filtered);
       // Stop the "thinking" spinner once the assistant has replied with content
@@ -58,7 +59,7 @@ export default function FloatingAIChat({ open: controlledOpen, onOpenChange }) {
         eventName: 'ai_chat_initiated',
         properties: { source: 'floating_chat_button', page: window.location.pathname }
       });
-      const conv = await base44.agents.createConversation({
+      const conv = await agentChatClient.agents.createConversation({
         agent_name: 'mercy_house_assistant',
         metadata: { name: 'Mercy House Chat' }
       });
@@ -83,7 +84,7 @@ export default function FloatingAIChat({ open: controlledOpen, onOpenChange }) {
     setError(null);
     setMessages(prev => [...prev, { role: 'user', content: text }]);
     try {
-      await base44.agents.addMessage(conversation, { role: 'user', content: text });
+      await agentChatClient.agents.addMessage(conversation, { role: 'user', content: text });
       // Don't clear `sending` here — the subscription callback clears it when
       // the assistant's reply arrives. This keeps the spinner visible while
       // the agent is thinking.

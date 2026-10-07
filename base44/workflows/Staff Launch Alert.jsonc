@@ -1,0 +1,41 @@
+{
+  "name": "Staff Launch Alert",
+  "description": "Sends the new website launch announcement email to staff through Gmail when they sign up for the first time.",
+  "trigger": {
+    "condition": "${ .trigger.event_type == \"signup\" }",
+    "config": {
+      "trigger_type": "app_user_auth",
+      "events": [
+        "signup"
+      ]
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "staff_launch_alert",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "send_alert": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sendLaunchAlertViaGmail",
+            "args": {
+              "email": "${ .trigger.email }",
+              "full_name": "${ .trigger.full_name }",
+              "automation_secret": "Thisisasecret01!"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Send launch alert via Gmail",
+            "description": "Emails the new staff member about the website launch"
+          }
+        }
+      }
+    ]
+  }
+}

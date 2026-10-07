@@ -69,7 +69,8 @@ export default function FloatingAIChat({ open: controlledOpen, onOpenChange }) {
       }]);
     } catch (err) {
       console.error('Failed to initialize AI chat:', err);
-      setError('Could not start the chat. Please try again.');
+      const detail = err?.message || err?.error || (typeof err === 'string' ? err : 'Unknown error');
+      setError(`Could not start the chat. ${detail}`);
     }
   };
 
@@ -167,8 +168,15 @@ export default function FloatingAIChat({ open: controlledOpen, onOpenChange }) {
                 </div>
               )}
               {error && (
-                <div className="text-xs text-red-600 dark:text-red-400 text-center px-2 py-1">
-                  {error}
+                <div className="text-xs text-red-600 dark:text-red-400 text-center px-2 py-1 space-y-2">
+                  <p>{error}</p>
+                  <button
+                    type="button"
+                    onClick={() => { setError(null); setConversation(null); initConversation(); }}
+                    className="px-3 py-1 rounded-md bg-navy text-white text-xs font-medium hover:bg-navy/90 transition-colors"
+                  >
+                    Try again
+                  </button>
                 </div>
               )}
               <div ref={messagesEndRef} />

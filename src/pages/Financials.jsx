@@ -6,11 +6,20 @@ import PageHero from '../components/site/PageHero';
 
 const annualReports = [
   {
+    year: '2025',
+    label: '2025 Annual Report',
+    url: 'https://drive.google.com/file/d/1LoiXMaJOJ-9DVF_gMp2GBWIUMVtzd7ce/view?usp=drive_link',
+  },
+  {
     year: '2024',
     label: '2024 Annual Report',
     url: 'https://drive.google.com/file/d/1nXKBoDu9NBTjiLXgmkfHXEZwMIurUxRb/view?usp=drive_link',
   },
-  // Add more years here as they become available
+  {
+    year: '2023',
+    label: '2023 Annual Report',
+    url: 'https://drive.google.com/file/d/1xiwC1w57YfrQ_pvEkeyAoBK5faa_IvYZ/view?usp=drive_link',
+  },
 ];
 
 export default function Financials() {

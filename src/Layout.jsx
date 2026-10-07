@@ -463,7 +463,9 @@ export default function Layout({ children, currentPageName }) {
               <Link to={createPageUrl('About')} className="hover:text-gold transition-colors">About Us</Link>
               <Link to="/connect" className="hover:text-gold transition-colors">Connect AI Assistant</Link>
               <Link to={createPageUrl('Programs')} className="hover:text-gold transition-colors">Programs</Link>
+              <a href="https://drive.google.com/file/d/1LoiXMaJOJ-9DVF_gMp2GBWIUMVtzd7ce/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">2025 Annual Report</a>
               <a href="https://drive.google.com/file/d/1nXKBoDu9NBTjiLXgmkfHXEZwMIurUxRb/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">2024 Annual Report</a>
+              <a href="https://drive.google.com/file/d/1xiwC1w57YfrQ_pvEkeyAoBK5faa_IvYZ/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">2023 Annual Report</a>
             </nav>
           </div>
         </div>

@@ -98,7 +98,13 @@ export default function Events() {
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredEvents.map((event) => (
-              <Card key={event.id} className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer" onClick={() => navigate(`/events/event/${event.id}`)}>
+              <Card key={event.id} className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer" onClick={() => {
+                if (/freedom classic/i.test(event.title || '')) {
+                  navigate('/golf-tournament');
+                } else {
+                  navigate(`/events/event/${event.id}`);
+                }
+              }}>
                 {event.image_url && (
                   <div className="h-48 overflow-hidden">
                     <img src={event.image_url} alt={event.title} className="w-full h-full object-cover" />

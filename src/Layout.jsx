@@ -339,8 +339,8 @@ export default function Layout({ children, currentPageName }) {
       </header>
 
       {/* Floating Donate Button - Mobile Only */}
-      <div className="lg:hidden fixed top-24 right-4 z-40" style={{ top: 'calc(6rem + env(safe-area-inset-top))' }}>
-        <DonateDropdown onItemClick={() => setMobileMenuOpen(false)} />
+      <div className="lg:hidden fixed top-20 right-4 z-40" style={{ top: 'calc(5rem + env(safe-area-inset-top))' }}>
+        <DonateDropdown size="sm" onItemClick={() => setMobileMenuOpen(false)} />
       </div>
 
       {/* Main Content */}

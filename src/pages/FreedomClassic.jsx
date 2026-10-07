@@ -500,7 +500,7 @@ export default function FreedomClassic() {
                 rel="noopener noreferrer"
                 aria-label="Sponsor a Single Hole — $150"
                 className={`${CARD_MOTION} group block text-center bg-white rounded-xl p-5 shadow-sm border border-slate-100`}>
-                <p className="text-3xl font-black text-secondary">$150</p>
+                <p className="text-3xl font-black text-[hsl(var(--foreground))]">$150</p>
                 <p className="text-slate-600 font-semibold mt-1">Single Hole</p>
                 <p className="mt-2 flex items-center justify-center gap-1.5 text-xs font-bold text-navy group-hover:gap-2.5 transition-all">
                   Select <ExternalLink className="w-3.5 h-3.5" />
@@ -512,7 +512,7 @@ export default function FreedomClassic() {
                 rel="noopener noreferrer"
                 aria-label="Sponsor a Dual Hole — $300"
                 className={`${CARD_MOTION} group block text-center bg-white rounded-xl p-5 shadow-sm border border-slate-100`}>
-                <p className="text-3xl font-black text-secondary">$300</p>
+                <p className="text-3xl font-black text-[hsl(var(--foreground))]">$300</p>
                 <p className="text-slate-600 font-semibold mt-1">Dual Hole</p>
                 <p className="mt-2 flex items-center justify-center gap-1.5 text-xs font-bold text-navy group-hover:gap-2.5 transition-all">
                   Select <ExternalLink className="w-3.5 h-3.5" />

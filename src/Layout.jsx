@@ -20,6 +20,7 @@ export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const [openNested, setOpenNested] = useState(null);
+  const [aiChatOpen, setAiChatOpen] = useState(false);
   const toggleSubmenu = (name) => setOpenSubmenu((prev) => prev === name ? null : name);
   const toggleNested = (name) => setOpenNested((prev) => prev === name ? null : name);
   const navigate = useNavigate();
@@ -365,7 +366,7 @@ export default function Layout({ children, currentPageName }) {
 
       {/* Floating AI Chat */}
       <Suspense fallback={null}>
-        <FloatingAIChat />
+        <FloatingAIChat open={aiChatOpen} onOpenChange={setAiChatOpen} />
       </Suspense>
 
       {/* Footer */}
@@ -423,14 +424,14 @@ export default function Layout({ children, currentPageName }) {
                     <Facebook className="w-8 h-8 md:w-6 md:h-6" />
                   </a>
                 </div>
-                <a
-                  href="#main-content"
-                  onClick={(e) => {e.preventDefault();window.scrollTo({ top: 0 });}}
+                <button
+                  type="button"
+                  onClick={() => setAiChatOpen(true)}
                   className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-navy-light hover:bg-navy-light/90 text-navy-deep rounded-md transition-colors font-semibold text-lg md:text-base">
                   
                   <MessageCircle className="w-5 h-5 md:w-4 md:h-4" />
                   Ask Our AI Assistant
-                </a>
+                </button>
                 <DonateDropdown className="w-full" />
               </div>
             </div>

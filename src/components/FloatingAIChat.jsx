@@ -3,8 +3,14 @@ import { base44 } from '@/api/base44Client';
 import { MessageCircle, X, Send, Loader2, Bot } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function FloatingAIChat() {
-  const [open, setOpen] = useState(false);
+export default function FloatingAIChat({ open: controlledOpen, onOpenChange }) {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const open = controlledOpen !== undefined ? controlledOpen : internalOpen;
+  const setOpen = (next) => {
+    const value = typeof next === 'function' ? next(open) : next;
+    if (onOpenChange) onOpenChange(value);
+    else setInternalOpen(value);
+  };
   const [conversation, setConversation] = useState(null);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');

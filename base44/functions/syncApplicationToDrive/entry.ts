@@ -241,6 +241,7 @@ function buildDocx(app: any): Document {
   for (const o of feeOpts) {
     children.push(new Paragraph({ children: [new TextRun({ text: `${CK(app.intake_fee_option === o.value)} ${o.label}`, size: 22 })], spacing: { after: 30 } }));
   }
+  children.push(field("Acknowledged", app.intake_fee_acknowledged ? "Yes" : "No"));
   if (app.intake_fee_hardship_explanation) children.push(field("Hardship Explanation", app.intake_fee_hardship_explanation));
   children.push(field("Signature", app.intake_fee_signature));
   children.push(field("Date", app.intake_fee_date));

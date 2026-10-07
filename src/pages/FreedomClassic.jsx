@@ -125,13 +125,13 @@ export default function FreedomClassic() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
               <a href="#register" onClick={(e) => {e.preventDefault();document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' });}}>
-                <Button className="hover:bg-navy/90 font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105 text-[hsl(var(--foreground))] bg-[#32639a]">
+                <Button className="hover:bg-navy/90 font-bold px-8 py-5 text-base rounded-full shadow-2xl flex items-center gap-2 transition-transform hover:scale-105 bg-[#32639a] text-[hsl(var(--background))]">
                   <Users className="w-4 h-4" />
                   Register Your Team
                 </Button>
               </a>
               <a href={SPONSORSHIP_EMAIL}>
-                <Button className="hover:bg-white/30 backdrop-blur-sm border-2 border-white font-semibold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 text-[hsl(var(--foreground))] bg-[#32639a]">
+                <Button className="hover:bg-white/30 backdrop-blur-sm border-2 border-white font-semibold px-8 py-5 text-base rounded-full flex items-center gap-2 transition-transform hover:scale-105 bg-[#32639a] text-[hsl(var(--background))]">
                   <Mail className="w-4 h-4" />
                   Sponsorship Inquiry
                 </Button>
@@ -167,7 +167,7 @@ export default function FreedomClassic() {
             <Calendar className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 text-accent" />
             <div>
               <p className="text-xs uppercase tracking-widest font-bold text-slate-800">DATE</p>
-              <p className="text-2xl md:text-3xl font-black text-slate-800">Monday, October 19, 2026</p>
+              <p className="text-2xl md:text-3xl font-black text-[hsl(var(--background))]">Monday, October 19, 2026</p>
             </div>
           </div>
           <div className="hidden md:block w-px h-16 bg-white/20" />
@@ -175,7 +175,7 @@ export default function FreedomClassic() {
             <Flag className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 text-secondary" />
             <div>
               <p className="text-xs uppercase tracking-widest font-bold text-slate-800">FORMAT</p>
-              <p className="text-2xl md:text-3xl font-black text-slate-800">Four Person Scramble</p>
+              <p className="text-2xl md:text-3xl font-black text-[hsl(var(--background))]">Four Person Scramble</p>
             </div>
           </div>
           <div className="hidden md:block w-px h-16 bg-white/20" />
@@ -183,7 +183,7 @@ export default function FreedomClassic() {
             <MapPin className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 text-destructive" />
             <div>
               <p className="text-xs uppercase tracking-widest font-bold text-slate-800">LOCATION</p>
-              <p className="text-2xl md:text-3xl font-black text-slate-800">Annandale & Reunion</p>
+              <p className="text-2xl md:text-3xl font-black text-[hsl(var(--background))]">Annandale & Reunion</p>
             </div>
           </div>
         </div>

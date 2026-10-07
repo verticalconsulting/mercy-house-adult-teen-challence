@@ -25,7 +25,14 @@
           "with": {
             "function_name": "syncApplicationToDrive",
             "args": {
-              "automation_secret": "Thisisasecret01!"
+              "automation_secret": "Thisisasecret01!",
+              "event": {
+                "type": "${ .trigger.event_type }",
+                "entity_name": "${ .trigger.entity_name }"
+              },
+              "data": {
+                "id": "${ .trigger.entity_id }"
+              }
             }
           },
           "then": "end"

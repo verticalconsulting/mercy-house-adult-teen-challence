@@ -32,12 +32,17 @@
       "type": "string",
       "format": "date"
     },
+    "age": {
+      "type": "number",
+      "description": "Applicant's age"
+    },
     "biological_sex": {
       "type": "string",
       "enum": [
         "male",
         "female"
-      ]
+      ],
+      "description": "M/F Gender at Birth"
     },
     "ssn": {
       "type": "string",
@@ -56,7 +61,8 @@
       "type": "string"
     },
     "home_phone": {
-      "type": "string"
+      "type": "string",
+      "description": "Residence telephone"
     },
     "cell_phone": {
       "type": "string"
@@ -71,10 +77,36 @@
         "no",
         "expired",
         "suspended"
-      ]
+      ],
+      "description": "Do you have a valid driver's license?"
+    },
+    "drivers_license_number": {
+      "type": "string",
+      "description": "Driver's license number"
+    },
+    "drivers_license_state": {
+      "type": "string",
+      "description": "State that issued the license"
+    },
+    "drivers_license_explanation": {
+      "type": "string",
+      "description": "If no license, explanation"
     },
     "referral_source": {
-      "type": "string"
+      "type": "string",
+      "description": "Legacy free-text referral source"
+    },
+    "referral_name": {
+      "type": "string",
+      "description": "Who referred you to Teen Challenge \u2014 name"
+    },
+    "referral_relationship": {
+      "type": "string",
+      "description": "Relationship to the referrer"
+    },
+    "referral_address": {
+      "type": "string",
+      "description": "Address of the referrer"
     },
     "contact_person_1_name": {
       "type": "string"
@@ -128,13 +160,55 @@
       "type": "boolean"
     },
     "emergency_contact_name": {
-      "type": "string"
+      "type": "string",
+      "description": "Legacy first emergency contact name"
     },
     "emergency_contact_phone": {
       "type": "string"
     },
     "emergency_contact_relationship": {
       "type": "string"
+    },
+    "emergency_contact_1_address": {
+      "type": "string"
+    },
+    "emergency_contact_1_city": {
+      "type": "string"
+    },
+    "emergency_contact_1_state": {
+      "type": "string"
+    },
+    "emergency_contact_1_zip": {
+      "type": "string"
+    },
+    "emergency_contact_2_name": {
+      "type": "string"
+    },
+    "emergency_contact_2_phone": {
+      "type": "string"
+    },
+    "emergency_contact_2_relationship": {
+      "type": "string"
+    },
+    "emergency_contact_2_address": {
+      "type": "string"
+    },
+    "emergency_contact_2_city": {
+      "type": "string"
+    },
+    "emergency_contact_2_state": {
+      "type": "string"
+    },
+    "emergency_contact_2_zip": {
+      "type": "string"
+    },
+    "emergency_consent_signature": {
+      "type": "string",
+      "description": "Signature on emergency medical care consent"
+    },
+    "emergency_consent_date": {
+      "type": "string",
+      "format": "date"
     },
     "currently_treated_by_physician": {
       "type": "boolean"
@@ -152,7 +226,8 @@
       "type": "boolean"
     },
     "allergies": {
-      "type": "string"
+      "type": "string",
+      "description": "Drug/Food/Environmental allergies"
     },
     "mental_health_diagnosis": {
       "type": "string"
@@ -166,6 +241,185 @@
     "eating_disorder": {
       "type": "boolean"
     },
+    "medical_history_conditions": {
+      "type": "array",
+      "description": "Diagnosed medical conditions (mark all that apply)",
+      "items": {
+        "type": "string",
+        "enum": [
+          "asthma",
+          "back_problems",
+          "celiac_disease",
+          "colitis",
+          "crohns_disease",
+          "diabetes_type1",
+          "diabetes_type2",
+          "fetal_alcohol_syndrome",
+          "gastric_bypass_surgery",
+          "head_trauma_tbi",
+          "heart_attack_stroke",
+          "hepatitis",
+          "high_blood_pressure",
+          "hiv_aids",
+          "pancreatitis",
+          "respiratory_problems",
+          "seizure_disorder",
+          "sti_std",
+          "tuberculosis"
+        ]
+      }
+    },
+    "mental_health_conditions": {
+      "type": "array",
+      "description": "Diagnosed mental health conditions (mark all that apply)",
+      "items": {
+        "type": "string",
+        "enum": [
+          "add_adhd",
+          "anorexia",
+          "anti_social_personality",
+          "anxiety_panic",
+          "autism_aspergers",
+          "bipolar",
+          "borderline_personality",
+          "bulimia",
+          "depression",
+          "dissociative_identity",
+          "narcissistic_personality",
+          "personality_disorder",
+          "ptsd_trauma",
+          "rape",
+          "schizoaffective",
+          "schizophrenia",
+          "sexual_abuse",
+          "suicide_thoughts",
+          "hallucinations"
+        ]
+      }
+    },
+    "anorexia_active": {
+      "type": "boolean",
+      "description": "Anorexia currently active"
+    },
+    "bulimia_active": {
+      "type": "boolean",
+      "description": "Bulimia currently active"
+    },
+    "medical_history_signature": {
+      "type": "string",
+      "description": "Signature on medical history form"
+    },
+    "medical_history_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "correspondence_auth": {
+      "type": "array",
+      "description": "Correspondence, Phone & Visitation Authorization \u2014 up to 5 people",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "relationship": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "approved": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "medical_dental_acknowledged": {
+      "type": "boolean",
+      "description": "Acknowledged medical & dental agreement"
+    },
+    "medical_dental_signature": {
+      "type": "string"
+    },
+    "medical_dental_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "intake_fee_option": {
+      "type": "string",
+      "enum": [
+        "paid_full",
+        "250_down_75_monthly",
+        "10_payments_100",
+        "financial_hardship"
+      ],
+      "description": "Intake fee payment option selected"
+    },
+    "intake_fee_acknowledged": {
+      "type": "boolean",
+      "description": "Acknowledged the intake fee agreement"
+    },
+    "intake_fee_hardship_explanation": {
+      "type": "string"
+    },
+    "intake_fee_signature": {
+      "type": "string"
+    },
+    "intake_fee_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "student_rights_acknowledged": {
+      "type": "boolean"
+    },
+    "student_rights_signature": {
+      "type": "string"
+    },
+    "student_rights_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "civil_rights_acknowledged": {
+      "type": "boolean"
+    },
+    "civil_rights_signature": {
+      "type": "string"
+    },
+    "civil_rights_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "marketing_authorized": {
+      "type": "boolean",
+      "description": "Authorization to use story/image for marketing"
+    },
+    "marketing_signature": {
+      "type": "string"
+    },
+    "marketing_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "drug_testing_acknowledged": {
+      "type": "boolean"
+    },
+    "drug_testing_signature": {
+      "type": "string"
+    },
+    "drug_testing_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "vocational_training_acknowledged": {
+      "type": "boolean"
+    },
+    "vocational_training_signature": {
+      "type": "string"
+    },
+    "vocational_training_date": {
+      "type": "string",
+      "format": "date"
+    },
     "previous_treatment_programs": {
       "type": "string"
     },
@@ -173,11 +427,17 @@
       "type": "string"
     },
     "signature": {
-      "type": "string"
+      "type": "string",
+      "description": "Main application signature"
     },
     "submission_date": {
       "type": "string",
       "format": "date"
+    },
+    "condensed_mode": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this was a condensed (shorter) submission"
     },
     "drive_file_id": {
       "type": "string",

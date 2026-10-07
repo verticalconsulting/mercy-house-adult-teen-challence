@@ -11,9 +11,11 @@ Deno.serve(async (req) => {
         // create() sink — prevents mass assignment of administrative fields like
         // status / assigned_to, and blocks prototype-pollution keys (__proto__).
         const ALLOWED_FIELDS = [
-            'application_type', 'full_legal_name', 'date_of_birth', 'biological_sex',
+            'application_type', 'full_legal_name', 'date_of_birth', 'age', 'biological_sex',
             'ssn', 'address', 'city', 'state', 'zip', 'home_phone', 'cell_phone',
-            'email', 'drivers_license', 'referral_source',
+            'email', 'drivers_license', 'drivers_license_number', 'drivers_license_state',
+            'drivers_license_explanation', 'referral_source',
+            'referral_name', 'referral_relationship', 'referral_address',
             'contact_person_1_name', 'contact_person_1_relationship',
             'contact_person_1_phone', 'contact_person_1_email',
             'under_legal_supervision', 'legally_mandated_treatment',
@@ -21,10 +23,28 @@ Deno.serve(async (req) => {
             'sexual_offense_charges', 'arson_charges', 'violent_offense_charges',
             'has_health_insurance', 'blood_type', 'legally_married',
             'emergency_contact_name', 'emergency_contact_phone',
-            'emergency_contact_relationship', 'currently_treated_by_physician',
-            'physician_details', 'manual_work_limitations', 'exercise_limitations',
-            'recreational_limitations', 'allergies', 'mental_health_diagnosis',
-            'current_medications', 'possibly_pregnant', 'eating_disorder',
+            'emergency_contact_relationship',
+            'emergency_contact_1_address', 'emergency_contact_1_city',
+            'emergency_contact_1_state', 'emergency_contact_1_zip',
+            'emergency_contact_2_name', 'emergency_contact_2_phone',
+            'emergency_contact_2_relationship', 'emergency_contact_2_address',
+            'emergency_contact_2_city', 'emergency_contact_2_state', 'emergency_contact_2_zip',
+            'emergency_consent_signature', 'emergency_consent_date',
+            'currently_treated_by_physician', 'physician_details',
+            'manual_work_limitations', 'exercise_limitations', 'recreational_limitations',
+            'allergies', 'mental_health_diagnosis', 'current_medications',
+            'possibly_pregnant', 'eating_disorder',
+            'medical_history_conditions', 'mental_health_conditions',
+            'anorexia_active', 'bulimia_active',
+            'medical_history_signature', 'medical_history_date',
+            'correspondence_auth',
+            'medical_dental_acknowledged', 'medical_dental_signature', 'medical_dental_date',
+            'intake_fee_option', 'intake_fee_acknowledged', 'intake_fee_hardship_explanation', 'intake_fee_signature', 'intake_fee_date',
+            'student_rights_acknowledged', 'student_rights_signature', 'student_rights_date',
+            'civil_rights_acknowledged', 'civil_rights_signature', 'civil_rights_date',
+            'marketing_authorized', 'marketing_signature', 'marketing_date',
+            'drug_testing_acknowledged', 'drug_testing_signature', 'drug_testing_date',
+            'vocational_training_acknowledged', 'vocational_training_signature', 'vocational_training_date',
             'previous_treatment_programs', 'addiction_details', 'signature',
             'submission_date', 'description', 'condensed_mode'
         ];
@@ -76,27 +96,10 @@ Deno.serve(async (req) => {
             console.error('Gmail error:', emailErr.message);
         }
 
-        // --- Google Drive upload ---
-        try {
-            const { accessToken: driveToken } = await base44.asServiceRole.connectors.getConnection('googledrive');
-            const content = buildDriveContent(formData, application.id);
-            const fileName = `Application_${formData.full_legal_name.replace(/\s+/g, '_')}_${application.id}.txt`;
-            const fileMetadata = { name: fileName, mimeType: 'text/plain' };
-            const form = new FormData();
-            form.append('metadata', new Blob([JSON.stringify(fileMetadata)], { type: 'application/json' }));
-            form.append('file', new Blob([content], { type: 'text/plain' }));
-            const driveRes = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
-                method: 'POST',
-                headers: { 'Authorization': `Bearer ${driveToken}` },
-                body: form
-            });
-            if (!driveRes.ok) {
-                const err = await driveRes.text();
-                console.error('Drive upload error:', err);
-            }
-        } catch (driveErr) {
-            console.error('Drive error:', driveErr.message);
-        }
+        // Google Drive .docx sync is handled by the "Intake Application Drive Sync"
+        // workflow, which fires on Application create and calls syncApplicationToDrive.
+        // That function generates a .docx mirroring the master application form and
+        // files it in the shared team Drive (Intake Applications > Program > Month).
 
         return Response.json({ success: true, id: application.id });
     } catch (error) {
@@ -104,78 +107,6 @@ Deno.serve(async (req) => {
         return Response.json({ error: error.message }, { status: 500 });
     }
 });
-
-function buildDriveContent(app, id) {
-    return `MERCY HOUSE INTAKE APPLICATION
-================================
-Application ID: ${id}
-Program: ${app.application_type === 'mens_program' ? "Men's Program" : "Women's Program"}
-Condensed Submission: ${app.condensed_mode ? 'Yes' : 'No'}
-Submitted: ${new Date().toLocaleString()}
-
-PERSONAL INFORMATION
---------------------
-Name: ${app.full_legal_name}
-Date of Birth: ${app.date_of_birth || 'Not provided'}
-Biological Sex: ${app.biological_sex || 'Not provided'}
-SSN: ${app.ssn || 'Not provided'}
-Address: ${app.address || ''}, ${app.city || ''}, ${app.state || ''} ${app.zip || ''}
-Cell Phone: ${app.cell_phone}
-Home Phone: ${app.home_phone || '—'}
-Email: ${app.email || '—'}
-Driver's License: ${app.drivers_license || '—'}
-Referral Source: ${app.referral_source || '—'}
-
-EMERGENCY CONTACT
------------------
-Name: ${app.emergency_contact_name || '—'}
-Relationship: ${app.emergency_contact_relationship || '—'}
-Phone: ${app.emergency_contact_phone || '—'}
-
-CONTACT PERSON
---------------
-Name: ${app.contact_person_1_name || '—'}
-Relationship: ${app.contact_person_1_relationship || '—'}
-Phone: ${app.contact_person_1_phone || '—'}
-Email: ${app.contact_person_1_email || '—'}
-
-LEGAL INFORMATION
------------------
-Under Legal Supervision: ${app.under_legal_supervision ? 'Yes' : 'No'}
-Legally Mandated Treatment: ${app.legally_mandated_treatment ? 'Yes' : 'No'}
-Pending Legal Matters: ${app.pending_legal_matters?.join(', ') || 'None'}
-Sexual Offender Registry: ${app.sexual_offender_registry ? 'Yes' : 'No'}
-Sexual Offense Charges: ${app.sexual_offense_charges ? 'Yes' : 'No'}
-Arson Charges: ${app.arson_charges ? 'Yes' : 'No'}
-Violent Offense Charges: ${app.violent_offense_charges ? 'Yes' : 'No'}
-
-MEDICAL INFORMATION
--------------------
-Health Insurance: ${app.has_health_insurance ? 'Yes' : 'No'}
-Blood Type: ${app.blood_type || '—'}
-Legally Married: ${app.legally_married ? 'Yes' : 'No'}
-Treated by Physician: ${app.currently_treated_by_physician ? 'Yes' : 'No'}
-Physician Details: ${app.physician_details || '—'}
-Manual Work Limitations: ${app.manual_work_limitations ? 'Yes' : 'No'}
-Exercise Limitations: ${app.exercise_limitations ? 'Yes' : 'No'}
-Recreational Limitations: ${app.recreational_limitations ? 'Yes' : 'No'}
-Allergies: ${app.allergies || 'None'}
-Mental Health Diagnosis: ${app.mental_health_diagnosis || 'None'}
-Current Medications: ${app.current_medications || 'None'}
-Possibly Pregnant: ${app.possibly_pregnant ? 'Yes' : 'No'}
-Eating Disorder: ${app.eating_disorder ? 'Yes' : 'No'}
-
-SUBSTANCE ABUSE & TREATMENT HISTORY
-------------------------------------
-Previous Treatment Programs: ${app.previous_treatment_programs || 'Not provided'}
-Addiction Details: ${app.addiction_details || 'Not provided'}
-
-SIGNATURE
----------
-Signature: ${app.signature}
-Date: ${app.submission_date}
-`;
-}
 
 function buildMimeMessage(to, subject, htmlBody) {
     const message = [

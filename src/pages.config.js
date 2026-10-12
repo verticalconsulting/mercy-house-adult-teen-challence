@@ -58,7 +58,6 @@ const IntakeForm = lazy(() => import('./pages/IntakeForm'));
 const MensCampus = lazy(() => import('./pages/MensCampus'));
 const MicroBusinesses = lazy(() => import('./pages/MicroBusinesses'));
 const SponsorStudent = lazy(() => import('./pages/SponsorStudent'));
-const RecurringDonation = lazy(() => import('./pages/RecurringDonation'));
 const Testimonials = lazy(() => import('./pages/Testimonials'));
 const ThriftStore = lazy(() => import('./pages/ThriftStore'));
 const VehicleDonation = lazy(() => import('./pages/VehicleDonation'));
@@ -79,7 +78,6 @@ export const PAGES = {
     "MensCampus": MensCampus,
     "MicroBusinesses": MicroBusinesses,
     "SponsorStudent": SponsorStudent,
-    "RecurringDonation": RecurringDonation,
     "Testimonials": Testimonials,
     "ThriftStore": ThriftStore,
     "VehicleDonation": VehicleDonation,

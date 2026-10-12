@@ -14,7 +14,7 @@ describe('createPageUrl agrees with the canonical map', () => {
     const overrides = [
       'About', 'MeetTheTeam', 'Programs', 'MensCampus', 'WomensCampus',
       'WomensCampusGallery', 'ComprehensiveApproach', 'Testimonials',
-      'RecurringDonation', 'SponsorStudent', 'VehicleDonation',
+      'SponsorStudent', 'VehicleDonation',
       'VehicleDonationForm', 'FreedomClassic', 'FreedomGala', 'MicroBusinesses',
       'Volunteer', 'Internship', 'MediaResources', 'IntakeForm', 'TermsConditions',
     ];

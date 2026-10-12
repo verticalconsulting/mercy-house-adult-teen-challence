@@ -14,7 +14,8 @@ source,destination,type
 /dependancy-help,/freedom-from-addiction-starts-here,301
 /help-for-dependency-abuse,/freedom-from-addiction-starts-here,301
 /testimonials,/testimonies,301
-/recurring-donation,/donate/monthly,301
+/recurring-donation,/donate,301
+/donate/monthly,/donate,301
 /sponsor-student,/donate-sponsor-student,301
 /vehicle-donation,/vehicle-donation-program,301
 /donate-a-car,/vehicle-donation-program,301

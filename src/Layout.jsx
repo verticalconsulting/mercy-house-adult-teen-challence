@@ -78,8 +78,7 @@ export default function Layout({ children, currentPageName }) {
     submenu: [
     { name: 'Volunteer', path: 'Volunteer' },
     { name: 'Sponsor a Student', path: 'SponsorStudent' },
-    { name: 'Intake Application Fee', directPath: createPageUrl('Donate') },
-    { name: 'Make a Recurring Donation', path: 'RecurringDonation' }]
+    { name: 'Intake Application Fee', directPath: createPageUrl('Donate') }]
   },
   {
     name: 'Locations',

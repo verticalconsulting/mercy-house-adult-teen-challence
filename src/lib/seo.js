@@ -92,12 +92,6 @@ export const pageSeo = {
       "Sponsor a student through Mercy House Adult & Teen Challenge and directly fund a man or woman's Christ-centered residential recovery. Change a life today.",
     path: '/donate-sponsor-student',
   },
-  '/donate/monthly': {
-    title: 'Recurring Giving | Mercy House Adult & Teen Challenge',
-    description:
-      'Become a monthly giver to Mercy House Adult & Teen Challenge and provide steady support for faith-based addiction recovery. Set up your recurring gift today.',
-    path: '/donate/monthly',
-  },
   '/golf-tournament': {
     title: 'Freedom Classic Golf Tournament | Mercy House Adult & Teen Challenge',
     description:

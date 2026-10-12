@@ -23,7 +23,6 @@ const PATH_OVERRIDES: Record<string, string> = {
     WomensCampusGallery: '/programs-locations/womens-campus/gallery',
     ComprehensiveApproach: '/faith-based-program',
     Testimonials: '/testimonies',
-    RecurringDonation: '/donate/monthly',
     SponsorStudent: '/donate-sponsor-student',
     VehicleDonation: '/vehicle-donation-program',
     VehicleDonationForm: '/vehicle-donation-program/form',

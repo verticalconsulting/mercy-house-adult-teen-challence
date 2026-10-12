@@ -4,7 +4,7 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import NavigationTracker from '@/lib/NavigationTracker'
 import { pagesConfig } from './pages.config'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import PageNotFound from './lib/PageNotFound';
 const MeetTheTeam = lazy(() => import('./pages/MeetTheTeam'));
@@ -128,6 +128,12 @@ const AuthenticatedApp = () => {
       <Route path="/thank-you" element={<LayoutWrapper currentPageName="ThankYou"><ThankYou /></LayoutWrapper>} />
       <Route path={createPageUrl('VehicleDonation')} element={<LayoutWrapper currentPageName="VehicleDonation"><VehicleDonation /></LayoutWrapper>} />
       <Route path={createPageUrl('VehicleDonationForm')} element={<LayoutWrapper currentPageName="VehicleDonationForm"><VehicleDonationForm /></LayoutWrapper>} />
+      {/* /donate/monthly (former RecurringDonation page) was retired 2026-10-12 —
+          the recurring giving form is not ready for production. Visitors who
+          land on the old URL are sent to the Donate page so no dead link is
+          left behind. To revive it, restore the page and the Virtuous form ID
+          (BD48ECA9-6E77-4CBC-81F7-D8A42A7751E8). */}
+      <Route path="/donate/monthly" element={<Navigate to="/donate" replace />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
     </Suspense>

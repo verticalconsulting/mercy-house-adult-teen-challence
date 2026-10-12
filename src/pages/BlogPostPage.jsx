@@ -123,10 +123,15 @@ export default function BlogPostPage() {
       {/* Featured image */}
       {post.featured_image && (
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
+          {/* Fluid rather than fixed-height: the photo keeps its own proportions
+              and scales with the viewport, so a tall upload is not cropped into
+              a short banner on a phone. max-h keeps a portrait image from
+              pushing the article off the first screen on desktop. */}
           <img
             src={post.featured_image}
             alt={post.title}
-            className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-xl"
+            className="block w-full h-auto max-h-[70vh] object-cover rounded-2xl shadow-xl"
+            decoding="async"
           />
         </div>
       )}

@@ -10,7 +10,9 @@
  *
  * Consumed by <SeoManager /> in Layout, which looks up the current pathname.
  * Dynamic routes (e.g. /news/:slug, /events/event/:id) have no entry here —
- * those pages set their own meta via useShareMeta.
+ * those pages set their own meta via useShareMeta. Blog detail pages, which
+ * staff create in the portal and so cannot be enumerated, are covered by
+ * BLOG_DETAIL_PATH below.
  */
 export const pageSeo = {
   '/': {
@@ -290,12 +292,31 @@ export const pageSeo = {
  * navigation — so an unmapped page reported itself as whatever the visitor
  * looked at last.
  */
+/**
+ * A blog post at /news/<slug>. Staff create these in the employee portal, so
+ * they cannot be enumerated here the way the five testimony slugs are. Each
+ * post still sets its own title, description and social image once it loads
+ * (BlogPostPage → useShareMeta); this entry covers the moment before that
+ * happens, and keeps the URL out of the unknown-path noindex so a prerender
+ * snapshot taken in that window cannot tell Google to drop the post.
+ */
+const BLOG_DETAIL_PATH = /^\/news\/[^/]+$/;
+
 export function resolveSeo(pathname) {
   let path = pathname || '/';
   if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
 
   const entry = pageSeo[path];
   if (entry) return entry;
+
+  if (BLOG_DETAIL_PATH.test(path)) {
+    return {
+      title: 'News & Stories | Mercy House Adult & Teen Challenge',
+      description:
+        'Read the latest news, events, and stories of hope from Mercy House Adult & Teen Challenge, a faith-based recovery ministry in Mississippi.',
+      path,
+    };
+  }
 
   return {
     title: 'Mercy House Adult & Teen Challenge | Faith-Based Recovery in Mississippi',

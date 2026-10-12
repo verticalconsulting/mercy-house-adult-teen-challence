@@ -60,10 +60,12 @@ export default function NewsAndUpdates() {
                 className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
                 
                   {post.featured_image &&
-                <div className="h-48 overflow-hidden">
+                <div className="aspect-[16/9] w-full overflow-hidden">
                       <img
                     src={post.featured_image}
                     alt={post.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover" />
                   
                     </div>

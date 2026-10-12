@@ -14,7 +14,8 @@ const SITE_ORIGIN = import.meta.env.VITE_SITE_URL || 'https://mercyhouseatc.com'
 
 // Fallback social card. Absolute URL: a relative og:image is ignored by most
 // scrapers, and the value is read off-site where a relative path is meaningless.
-const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/assets/images/family-hero.webp`;
+// Exported so detail pages (useShareMeta) can fall back to the same card.
+export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/assets/images/family-hero.webp`;
 
 export function upsertMeta(name, content, attr = 'name') {
   if (!content) return;

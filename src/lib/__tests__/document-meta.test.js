@@ -28,6 +28,22 @@ describe('resolveSeo', () => {
   it('resolves a testimony detail page', () => {
     expect(resolveSeo('/testimonies/van-pope').title).toContain('Van Pope');
   });
+
+  // Blog posts are created in the employee portal, so their URLs cannot be
+  // listed in pageSeo. They must still resolve as a real page rather than as
+  // an unknown path — the fallback noindex would tell Google to drop the post.
+  it('resolves a portal-created blog post without the unknown-path noindex', () => {
+    const seo = resolveSeo('/news/mercy-house-graduation');
+    expect(seo.path).toBe('/news/mercy-house-graduation');
+    expect(seo.title).toBeTruthy();
+    expect(seo.description).toBeTruthy();
+    expect(seo.noindex).toBeFalsy();
+  });
+
+  it('does not stretch that to deeper or unrelated paths', () => {
+    expect(resolveSeo('/news/a/b').noindex).toBe(true);
+    expect(resolveSeo('/some-unmapped-page').noindex).toBe(true);
+  });
 });
 
 describe('/news/ministry-updates', () => {

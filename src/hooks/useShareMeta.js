@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { DEFAULT_OG_IMAGE } from '@/hooks/useDocumentMeta';
 
 /**
  * Dynamically sets Open Graph + Twitter card meta tags so that when a post,
@@ -58,6 +59,10 @@ export function resolveShareUrl({ path, url } = {}) {
  */
 export function buildShareTags({ title, description, image, path, url, noindex = false }) {
   const resolvedUrl = resolveShareUrl({ path, url });
+  // A record with no image of its own falls back to the site card rather than
+  // leaving the previously visited page's photo in place — these tags outlive
+  // the component that set them.
+  const socialImage = image || DEFAULT_OG_IMAGE;
   return {
     documentTitle: `${title} | Mercy House Adult Teen Challenge`,
     canonical: resolvedUrl,
@@ -66,19 +71,21 @@ export function buildShareTags({ title, description, image, path, url, noindex =
       robots: noindex ? 'noindex, nofollow' : 'index, follow',
       'og:title': title,
       'og:description': description,
-      'og:image': image,
+      'og:image': socialImage,
+      'og:image:alt': title,
       'og:url': resolvedUrl,
       'og:type': 'article',
       'twitter:card': 'summary_large_image',
       'twitter:title': title,
       'twitter:description': description,
-      'twitter:image': image,
+      'twitter:image': socialImage,
+      'twitter:image:alt': title,
       'twitter:url': resolvedUrl,
     },
   };
 }
 
-const PROPERTY_TAGS = new Set(['og:title', 'og:description', 'og:image', 'og:url', 'og:type']);
+const PROPERTY_TAGS = new Set(['og:title', 'og:description', 'og:image', 'og:image:alt', 'og:url', 'og:type']);
 
 export function useShareMeta(options) {
   const { title, description, image, path, url, noindex = false } = options || {};

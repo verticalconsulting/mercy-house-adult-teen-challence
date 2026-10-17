@@ -199,12 +199,16 @@ export default function FreedomClassic() {
               <p className="font-bold text-lg mb-3 text-neutral-900">Monday, October 19, 2026</p>
               <div className="space-y-3 text-slate-700">
                 <div>
+                  <p className="font-semibold">Check-in</p>
+                  <p className="text-slate-600 text-sm">10:00 AM CST</p>
+                </div>
+                <div>
                   <p className="font-semibold">Lunch</p>
-                  <p className="text-slate-600 text-sm">11:00 AM</p>
+                  <p className="text-slate-600 text-sm">10:30 AM CST</p>
                 </div>
                 <div>
                   <p className="font-semibold">Tee Time</p>
-                  <p className="text-slate-600 text-sm">12:00 PM</p>
+                  <p className="text-slate-600 text-sm">11:00 AM CST</p>
                 </div>
               </div>
               <p className="text-xs mt-4 italic text-destructive">One round per course. Course selection is first come, first served.</p>

@@ -34,6 +34,20 @@
       "type": "string",
       "description": "ZIP code"
     },
+    "donation_type": {
+      "type": "string",
+      "enum": [
+        "car",
+        "suv",
+        "truck",
+        "motorcycle",
+        "rv",
+        "boat",
+        "other"
+      ],
+      "default": "car",
+      "description": "Type of vehicle being donated"
+    },
     "vehicle_make": {
       "type": "string",
       "description": "Vehicle make (e.g., Toyota, Ford)"

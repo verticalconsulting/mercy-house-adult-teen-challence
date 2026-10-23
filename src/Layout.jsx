@@ -63,7 +63,7 @@ export default function Layout({ children, currentPageName }) {
     { name: 'Our Comprehensive Approach', directPath: createPageUrl('ComprehensiveApproach') },
     { name: 'Workforce Development', directPath: createPageUrl('MicroBusinesses'), submenu: [
       { name: 'SuperThrift', href: 'https://superthriftdeals.org', external: true },
-      { name: 'Vehicle Donation Program', href: 'https://vehicledonationms.com', external: true },
+      { name: 'Vehicle Donation Program', directPath: '/vehicle-donation-program' },
       { name: 'Products with a Purpose', href: 'https://www.productwithapurpose.org/', external: true },
       { name: 'Mercy House Auto Center', href: 'https://mercyhouseautocenter.com/', external: true },
       { name: 'Mercy House Elite Gutters', href: 'https://www.myelitegutters.com/', external: true } ] },

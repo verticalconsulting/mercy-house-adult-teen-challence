@@ -124,9 +124,9 @@ export default function VehicleDonation() {
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <HeroCta href="#donation-form">Start My Donation</HeroCta>
-            <HeroCta href="tel:8558937333" outlined>
+            <HeroCta href="tel:6015727296" outlined>
               <Phone className="h-5 w-5" aria-hidden="true" />
-              Call 855-89-FREEDOM
+              Call (601) 572-7296
             </HeroCta>
           </div>
           <ul className="mx-auto mt-8 flex max-w-2xl flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-semibold text-slate-100">

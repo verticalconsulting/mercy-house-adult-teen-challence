@@ -8,8 +8,8 @@ import StepContact from './StepContact';
 import StepVehicle from './StepVehicle';
 
 const STEP_LABELS = ['Your Info', 'Your Vehicle'];
-const PHONE_DISPLAY = '855-89-FREEDOM';
-const PHONE_HREF = 'tel:8558937333';
+const PHONE_DISPLAY = '(601) 572-7296';
+const PHONE_HREF = 'tel:6015727296';
 
 const EMPTY_FORM = {
   first_name: '',

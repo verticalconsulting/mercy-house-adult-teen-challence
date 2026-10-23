@@ -10,6 +10,7 @@ import ReactMarkdown from 'react-markdown';
 import SocialShareButtons from '@/components/SocialShareButtons';
 import { useShareMeta } from '@/hooks/useShareMeta';
 import { useJsonLd } from '@/hooks/useJsonLd';
+import { useSetBreadcrumbLabel } from '@/hooks/useBreadcrumbLabel';
 
 const categoryLabels = {
   workshop: 'Workshop', outreach: 'Outreach', community_event: 'Community Event',
@@ -63,6 +64,8 @@ export default function EventDetailPage() {
       url: SITE_ORIGIN,
     },
   } : null);
+
+  useSetBreadcrumbLabel(event?.title);
 
   if (isLoading) {
     return (

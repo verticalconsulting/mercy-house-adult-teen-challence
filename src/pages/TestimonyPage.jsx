@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 import { Quote, ArrowLeft } from 'lucide-react';
 import { useShareMeta } from '@/hooks/useShareMeta';
+import { useSetBreadcrumbLabel } from '@/hooks/useBreadcrumbLabel';
 
 /**
  * A single graduate's story at /testimonies/:slug.
@@ -49,6 +50,8 @@ export default function TestimonyPage() {
     image: found ? story.photo_url : undefined,
     noindex: !found,
   });
+
+  useSetBreadcrumbLabel(found ? `${story.graduate_name}'s Story` : '');
 
   if (isLoading) {
     return (

@@ -10,6 +10,7 @@ import ReactMarkdown from 'react-markdown';
 import SocialShareButtons from '@/components/SocialShareButtons';
 import { useShareMeta } from '@/hooks/useShareMeta';
 import { useJsonLd } from '@/hooks/useJsonLd';
+import { useSetBreadcrumbLabel } from '@/hooks/useBreadcrumbLabel';
 
 const blogCategoryColors = {
   news: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
@@ -69,6 +70,8 @@ export default function BlogPostPage() {
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_ORIGIN}/news/${post.slug || slug}` },
   } : null);
+
+  useSetBreadcrumbLabel(post?.title);
 
   if (isLoading) {
     return (

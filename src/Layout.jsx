@@ -8,6 +8,7 @@ import NonprofitLegitimacy from './components/NonprofitLegitimacy';
 
 import ScrollToTop from './components/ScrollToTop';
 import TrustBar from './components/TrustBar';
+import Breadcrumbs from './components/Breadcrumbs';
 import ScrollRestoration from './components/ScrollRestoration';
 import MobileBottomNav from './components/MobileBottomNav';
 const FloatingAIChat = lazy(() => import('./components/FloatingAIChat'));
@@ -345,6 +346,7 @@ export default function Layout({ children, currentPageName }) {
 
       {/* Main Content */}
       <main id="main-content" className="pb-20 lg:pb-0" tabIndex={-1}>
+        <Breadcrumbs />
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={currentPageName}

@@ -247,9 +247,9 @@ export default function VehicleDonation() {
             Call our team and we will answer your questions and arrange the pickup for you.
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-            <a href="tel:8558937333" className="mh-cta-primary">
+            <a href="tel:6015727296" className="mh-cta-primary">
               <Phone className="h-5 w-5" aria-hidden="true" />
-              Call 855-89-FREEDOM
+              Call (601) 572-7296
             </a>
             <Link
               to={createPageUrl('Contact')}

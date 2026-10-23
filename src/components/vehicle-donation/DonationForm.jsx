@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { base44 } from '@/api/base44Client';
 import { CheckCircle } from 'lucide-react';
-import { trackFormSubmit } from '@/lib/analytics';
+import { trackEvent, trackFormSubmit } from '@/lib/analytics';
 import { submitVehicleDonation } from '@/lib/formspree';
-import { trackEvent } from '@/lib/analytics';
 import StepIndicator from './StepIndicator';
 import StepContact from './StepContact';
 import StepVehicle from './StepVehicle';

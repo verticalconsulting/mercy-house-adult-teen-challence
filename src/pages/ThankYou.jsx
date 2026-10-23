@@ -255,7 +255,7 @@ export default function ThankYou() {
                     className="font-bold text-navy dark:text-gold leading-tight break-words"
                     style={{ fontSize: `${fontSize}px` }}
                   >
-                    {donor.display_name || donor.name}
+                    {donor.display_name || 'A Friend of Mercy House'}
                   </p>
                   {donor.message && (
                     <p className="mt-2 text-xs text-slate-500 dark:text-slate-400 italic leading-snug line-clamp-3">

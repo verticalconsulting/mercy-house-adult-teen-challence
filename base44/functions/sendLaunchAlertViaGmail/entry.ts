@@ -1,4 +1,5 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.52';
+import { sanitizeHeader } from '../../shared/security.ts';
 
 const LOGO_URL = 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/8e4d016ac_logo.png';
 const HERO_URL = 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/12bfccec5_generated_image.png';
@@ -147,14 +148,24 @@ export default async function(req: Request): Promise<Response> {
       return Response.json({ error: 'Email is required' }, { status: 400 });
     }
 
+    // Request-supplied values are neutralized before they reach the MIME headers:
+    // a CRLF inside `email` or `full_name` would inject extra header lines (for
+    // example a hidden Bcc) into mail sent from the organization's Gmail account
+    // (CWE-93). Same pattern as submitIntakeApplication / onVolunteerApplicationSubmit.
+    const toAddress = sanitizeHeader(email);
+    if (!/^[^\s@,;:<>"]+@[^\s@,;:<>"]+\.[^\s@,;:<>"]+$/.test(toAddress)) {
+      console.error('sendLaunchAlertViaGmail rejected invalid recipient address');
+      return Response.json({ error: 'A valid email address is required' }, { status: 400 });
+    }
+
     const { accessToken } = await base44.asServiceRole.connectors.getConnection('gmail');
 
-    const firstName = full_name ? String(full_name).split(' ')[0] : '';
-    const subject = `Our new website is live${firstName ? ', ' + firstName : ''}`;
+    const firstName = sanitizeHeader(full_name ? String(full_name).split(' ')[0] : '');
+    const subject = sanitizeHeader(`Our new website is live${firstName ? ', ' + firstName : ''}`);
     const htmlBody = buildLaunchAlertHtml(firstName);
 
     const mimeMessage = [
-      `To: ${email}`,
+      `To: ${toAddress}`,
       `Subject: ${subject}`,
       'Content-Type: text/html; charset=UTF-8',
       'MIME-Version: 1.0',
@@ -184,7 +195,7 @@ export default async function(req: Request): Promise<Response> {
     }
 
     const result = await response.json();
-    return Response.json({ sent: true, messageId: result.id, to: email });
+    return Response.json({ sent: true, messageId: result.id, to: toAddress });
   } catch (error) {
     console.error('sendLaunchAlertViaGmail error:', error.message);
     return Response.json({ error: error.message }, { status: 500 });

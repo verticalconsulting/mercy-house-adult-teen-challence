@@ -4,7 +4,21 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "Name to display on the donor wall (first name or full name)"
+      "description": "Name to display on the donor wall (first name or full name)",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "created_by_id": "{{user.id}}"
+            },
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            }
+          ]
+        }
+      }
     },
     "message": {
       "type": "string",
@@ -27,7 +41,21 @@
     "description": {
       "type": "string",
       "maxLength": 1000,
-      "description": "Additional notes about this donor"
+      "description": "Additional notes about this donor",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "created_by_id": "{{user.id}}"
+            },
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            }
+          ]
+        }
+      }
     }
   },
   "required": [

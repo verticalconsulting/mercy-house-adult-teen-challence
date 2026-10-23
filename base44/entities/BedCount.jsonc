@@ -25,12 +25,40 @@
     },
     "last_updated_by": {
       "type": "string",
-      "description": "Staff member who last updated"
+      "description": "Staff member who last updated",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "created_by_id": "{{user.id}}"
+            },
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            }
+          ]
+        }
+      }
     },
     "description": {
       "type": "string",
       "maxLength": 1000,
-      "description": "Additional information about bed availability"
+      "description": "Additional information about bed availability",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "created_by_id": "{{user.id}}"
+            },
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            }
+          ]
+        }
+      }
     }
   },
   "required": [

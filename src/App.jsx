@@ -88,7 +88,7 @@ const AuthenticatedApp = () => {
         </LayoutWrapper>
       } />
       {Object.entries(Pages)
-        .filter(([path]) => path !== 'MicroBusinesses')
+        .filter(([path]) => path !== 'workforce-development')
         .map(([path, Page]) => (
         <Route
           key={path}

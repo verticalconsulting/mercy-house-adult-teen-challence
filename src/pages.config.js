@@ -67,23 +67,31 @@ const WomensCampus = lazy(() => import('./pages/WomensCampus'));
 import __Layout from './Layout.jsx';
 
 
+/**
+ * Keys are the SITE URLS from the canonical map (src/lib/canonical-map.js), not
+ * component names, so the page listed in the Base44 page menu reads the same as
+ * the address a visitor lands on and the sitemap advertises. Each key runs
+ * through createPageUrl, which returns "/<key>", so these are also the routes.
+ * Component names stay as they are — internal links still call
+ * createPageUrl('MensCampus') and friends, which resolve via PATH_OVERRIDES.
+ */
 export const PAGES = {
-    "Contact": Contact,
-    "Donate": Donate,
-    "DonationFunnel": DonationFunnel,
-    "EmployeePortal": EmployeePortal,
-    "Events": Events,
+    "contact": Contact,
+    "donate": Donate,
+    "donation-funnel": DonationFunnel,
+    "employee-portal": EmployeePortal,
+    "events": Events,
     "Home": Home,
-    "IntakeForm": IntakeForm,
-    "MensCampus": MensCampus,
-    "MicroBusinesses": MicroBusinesses,
-    "SponsorStudent": SponsorStudent,
-    "Testimonials": Testimonials,
-    "ThriftStore": ThriftStore,
-    "VehicleDonation": VehicleDonation,
-    "VehicleDonationForm": VehicleDonationForm,
-    "Volunteer": Volunteer,
-    "WomensCampus": WomensCampus,
+    "get-help-now": IntakeForm,
+    "programs-locations/mens-campus": MensCampus,
+    "workforce-development": MicroBusinesses,
+    "donate-sponsor-student": SponsorStudent,
+    "testimonies": Testimonials,
+    "thrift-store": ThriftStore,
+    "vehicle-donation-program": VehicleDonation,
+    "vehicle-donation-program/form": VehicleDonationForm,
+    "get-involved": Volunteer,
+    "programs-locations/womens-campus": WomensCampus,
 }
 
 export const pagesConfig = {

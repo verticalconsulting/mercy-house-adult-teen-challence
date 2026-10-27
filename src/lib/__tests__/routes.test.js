@@ -57,13 +57,15 @@ describe('App.jsx routing', () => {
     // the first match harvests HomePage/Dashboard/Settings as if they were
     // real pages — inflating the served set with routes that do not exist.
     const pagesBlock = pagesSource.slice(pagesSource.lastIndexOf('export const PAGES'));
-    const pageKeys = [...pagesBlock.matchAll(/"([A-Za-z]+)":/g)].map((m) => m[1]);
+    // Keys are site URLs (see pages.config.js), so they carry hyphens and
+    // slashes — match any quoted key, not just bare PascalCase names.
+    const pageKeys = [...pagesBlock.matchAll(/"([^"]+)":/g)].map((m) => m[1]);
 
     // App.jsx filters some Pages entries out of the generated routes and
     // re-declares them by hand. Honour that filter, or a page removed from
     // routing still looks served and this assertion silently stops working.
     const excluded = new Set(
-      [...appSource.matchAll(/path !== '([A-Za-z]+)'/g)].map((m) => m[1])
+      [...appSource.matchAll(/path !== '([^']+)'/g)].map((m) => m[1])
     );
 
     const handDeclared = [...appSource.matchAll(/createPageUrl\('([A-Za-z]+)'\)/g)].map((m) => m[1]);

@@ -74,7 +74,7 @@ export default function Layout({ children, currentPageName }) {
   },
   {
     name: 'Ways to Help',
-    path: 'Donate',
+    path: 'donate',
     directPath: createPageUrl('Donate'),
     submenu: [
     { name: 'Volunteer', path: 'Volunteer' },
@@ -83,11 +83,11 @@ export default function Layout({ children, currentPageName }) {
   },
   {
     name: 'Locations',
-    path: 'Contact',
+    path: 'contact',
     directPath: createPageUrl('Contact'),
     submenu: [
-    { name: "Men's Campus", path: 'MensCampus' },
-    { name: "Women's Campus", path: 'WomensCampus' },
+    { name: "Men's Campus", path: 'programs-locations/mens-campus' },
+    { name: "Women's Campus", path: 'programs-locations/womens-campus' },
     { name: "Women's Center Calendar", directPath: createPageUrl('WomensCenterCalendar') }]
   }];
 

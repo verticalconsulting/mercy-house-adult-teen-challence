@@ -1,67 +1,73 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { createPageUrl } from '../utils';
-import { ArrowRight, TrendingUp, Users, Heart } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { TrendingUp, Users, Heart } from 'lucide-react';
+import BusinessCard from '@/components/site/BusinessCard';
+import { workforceBusinesses, workforceStats } from '@/lib/workforceBusinesses';
+
+const icons = { TrendingUp, Users, Heart };
+
+const skills = ['Professional Skills', 'Work Ethics', 'Financial Literacy'];
 
 export default function MicroBusinesses() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=1920&q=80"
-            alt="Business operations"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 to-navy/60 dark:from-slate-900/95 dark:to-slate-900/70" />
+      <section className="relative overflow-hidden bg-navy dark:bg-slate-900">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-24 -right-16 select-none text-[220px] font-black leading-none text-white/5"
+        >
+          MH
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-center">
+          <p className="mh-eyebrow mb-4">Our Approach</p>
+          <h1 className="font-sans text-4xl md:text-5xl font-bold leading-tight text-white mb-4">
             Workforce Development
           </h1>
-          <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto">
             Training, Skills, and Sustainable Funding
           </p>
+          <span className="mt-8 block h-px w-16 bg-gold mx-auto" aria-hidden="true" />
         </div>
       </section>
 
       {/* Overview */}
       <section className="py-20 bg-white dark:bg-slate-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-navy dark:text-gold mb-6">
-            Purpose-Driven Enterprise
-          </h2>
-          <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
-            Our workforce development businesses serve a dual purpose: providing residents with valuable job training and marketable skills while generating revenue to fund our operations. This innovative model ensures that <strong className="text-navy dark:text-gold">100% of individual donor proceeds go directly to our mission</strong>—an unheard-of standard in nonprofit work.
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="mh-eyebrow mb-3">Purpose-Driven Enterprise</p>
+          <h2 className="mh-h2 mb-8">Work Is Part of the Healing</h2>
+          <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+            Our workforce development businesses serve a dual purpose: providing residents with
+            valuable job training and marketable skills while generating revenue to fund our
+            operations. This model ensures that{' '}
+            <strong className="text-navy dark:text-gold">
+              100% of individual donor proceeds go directly to our mission
+            </strong>
+            —an unheard-of standard in nonprofit work.
           </p>
           <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-            Through hands-on experience in real business environments, residents develop work ethics, professional skills, and financial literacy that prepare them for successful careers and independent living.
+            Through hands-on experience in real business environments, residents develop work
+            ethics, professional skills, and financial literacy that prepare them for successful
+            careers and independent living.
           </p>
         </div>
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-slate-50 dark:bg-slate-900">
+      <section className="py-16 bg-navy-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <TrendingUp className="w-12 h-12 text-gold mx-auto mb-4" />
-              <div className="text-4xl font-bold text-navy dark:text-gold mb-2">100%</div>
-              <div className="text-slate-600 dark:text-slate-400">Donations to Mission</div>
-            </div>
-            <div className="text-center">
-              <Users className="w-12 h-12 text-gold mx-auto mb-4" />
-              <div className="text-4xl font-bold text-navy dark:text-gold mb-2">500+</div>
-              <div className="text-slate-600 dark:text-slate-400">Residents Trained</div>
-            </div>
-            <div className="text-center">
-              <Heart className="w-12 h-12 text-gold mx-auto mb-4" />
-              <div className="text-4xl font-bold text-navy dark:text-gold mb-2">15</div>
-              <div className="text-slate-600 dark:text-slate-400">Years of Impact</div>
-            </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {workforceStats.map((stat) => {
+              const Icon = icons[stat.icon];
+              return (
+                <div key={stat.label} className="text-center">
+                  <Icon className="w-10 h-10 text-gold-accessible dark:text-gold mx-auto mb-4" aria-hidden="true" />
+                  <div className="text-4xl font-bold text-navy dark:text-gold mb-2">{stat.value}</div>
+                  <div className="text-sm font-semibold uppercase tracking-[0.12em] text-stone-700 dark:text-slate-300">
+                    {stat.label}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -69,128 +75,39 @@ export default function MicroBusinesses() {
       {/* Business Units */}
       <section className="py-20 bg-white dark:bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-navy dark:text-gold mb-12">
-            Our Workforce Development Businesses
-          </h2>
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <p className="mh-eyebrow mb-3">Micro-Businesses</p>
+            <h2 className="mh-h2 mb-4">Our Workforce Development Businesses</h2>
+            <p className="text-lg text-slate-700 dark:text-slate-300">
+              Each business trains residents in real jobs and sends its proceeds back into the
+              ministry.
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: 'SuperThrift',
-                image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/a5b4b499a_generated_6e501157.png',
-                styled: true,
-                description: 'Community thrift store offering quality secondhand goods while training residents in retail operations, customer service, and inventory management.',
-                href: 'https://superthriftdeals.org',
-                external: true
-              },
-              {
-                title: 'Vehicle Donation',
-                logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/e08f3c597_MercyHouseVDP_White_Square.png',
-                logoBg: 'bg-navy',
-                description: 'Accepting vehicle donations to support our mission. Provides tax benefits to donors and funding for our programs.',
-                href: 'https://vehicledonationms.com',
-                external: true
-              },
-              {
-                title: 'Mercy House Auto Center',
-                logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/0bc3fc63c_MercyHouseAuto_Black_SquareNEW.png',
-                logoBg: 'bg-white',
-                description: 'Professional automotive training center where residents learn mechanics, body work, and automotive technology — preparing them for well-paying careers upon graduation.',
-                href: 'https://mercyhouseautocenter.com/',
-                external: true
-              },
-              {
-                title: 'Product With A Purpose',
-                logo: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/4e1c20dbb_ProductwithaPurpose1-023.png',
-                logoBg: 'bg-white',
-                description: 'Specialty products crafted by residents, combining quality craftsmanship with purpose. Every purchase directly supports the Mercy House mission and resident development.',
-                href: 'https://www.productwithapurpose.org/',
-                external: true
-              },
-              {
-                title: 'Mercy House Elite Gutters',
-                image: 'https://media.base44.com/images/public/6983b4b00291b5dfd8507106/55971e93b_generated_image.png',
-                styled: false,
-                description: 'A full-service seamless gutter, downspout, and leaf guard installation company based in Brandon, MS. Residents receive hands-on job training in gutter system design, installation, cleaning, and maintenance — building real-world trade skills and work ethic. Backed by a 5-Year Craftsmanship Guarantee.',
-                href: 'https://www.myelitegutters.com/',
-                external: true
-              }
-            ].map((business, idx) => (
-              <div
-                key={idx}
-                className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300"
-              >
-                {business.logo ? (
-                  <div className={`mb-4 h-36 w-full flex items-center justify-center rounded-lg p-6 ${business.logoBg}`}>
-                    <img
-                      src={business.logo}
-                      alt={business.title}
-                      className="max-h-full max-w-full object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                ) : (
-                  <div className="relative mb-4 h-36 w-full overflow-hidden rounded-lg">
-                    <img
-                      src={business.image}
-                      alt={business.title}
-                      className="h-full w-full object-cover"
-                      loading="lazy"
-                    />
-                    {!business.styled && (
-                      <>
-                        <div className="absolute inset-0 bg-gradient-to-br from-navy/70 to-navy/50" />
-                        <div
-                          className="absolute bottom-0 right-0 h-12 w-12 bg-gold"
-                          style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }}
-                          aria-hidden="true"
-                        />
-                      </>
-                    )}
-                  </div>
-                )}
-                <h3 className={`text-2xl font-bold text-navy dark:text-gold mb-4 ${business.logo ? 'sr-only' : ''}`}>
-                  {business.title}
-                </h3>
-                <p className="text-slate-700 dark:text-slate-300 mb-6">
-                  {business.description}
-                </p>
-                {business.href ? (
-                  <a
-                    href={business.href}
-                    target={business.external ? '_blank' : undefined}
-                    rel={business.external ? 'noopener noreferrer' : undefined}
-                  >
-                    <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
-                      Visit Website
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </a>
-                ) : (
-                  <Link to={createPageUrl(business.path)}>
-                    <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
-                      Learn More
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </Link>
-                )}
-              </div>
+          <div className="grid gap-8 md:grid-cols-2">
+            {workforceBusinesses.map((business) => (
+              <BusinessCard key={business.title} business={business} />
             ))}
           </div>
         </div>
       </section>
 
       {/* Impact */}
-      <section className="py-20 bg-gradient-to-r from-navy to-navy/80 dark:from-slate-900 dark:to-slate-950 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Skills That Transform Lives</h2>
-          <p className="text-xl mb-8 text-slate-200">
-            Residents gain real-world experience in customer service, teamwork, time management, financial responsibility, and industry-specific skills that open doors to sustainable employment after graduation.
+      <section className="py-20 bg-navy dark:bg-slate-950 text-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="mh-eyebrow mb-3">Resident Outcomes</p>
+          <h2 className="text-3xl md:text-[38px] font-bold leading-tight text-white mb-6">
+            Skills That Transform Lives
+          </h2>
+          <p className="text-lg text-slate-200 mb-10">
+            Residents gain real-world experience in customer service, teamwork, time management,
+            financial responsibility, and industry-specific skills that open doors to sustainable
+            employment after graduation.
           </p>
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
-            {['Professional Skills', 'Work Ethics', 'Financial Literacy'].map((skill, idx) => (
-              <div key={idx} className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
-                <h3 className="text-gold font-bold text-lg">{skill}</h3>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {skills.map((skill) => (
+              <div key={skill} className="border border-white/20 px-6 py-5">
+                <h3 className="font-bold text-gold">{skill}</h3>
               </div>
             ))}
           </div>

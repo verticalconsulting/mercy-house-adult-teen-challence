@@ -15,11 +15,16 @@ const VEHICLE_DONATION_ENDPOINT = 'https://formspree.io/f/mqppqwyr';
  * from the inbox list without opening each message.
  */
 function subjectFor(payload) {
-  const kind = payload.donation_type === 'motorcycle' ? 'motorcycle' : 'vehicle';
-  const vehicle = [payload.vehicle_year, payload.vehicle_make, payload.vehicle_model]
-    .filter(Boolean)
-    .join(' ');
-  return vehicle ? `New ${kind} donation: ${vehicle}` : `New ${kind} donation`;
+  const isProperty = payload.donation_type === 'house' || payload.donation_type === 'land';
+  const kind = isProperty
+    ? 'property'
+    : payload.donation_type === 'motorcycle'
+      ? 'motorcycle'
+      : 'vehicle';
+  const subject = isProperty
+    ? ''
+    : [payload.vehicle_year, payload.vehicle_make, payload.vehicle_model].filter(Boolean).join(' ');
+  return subject ? `New ${kind} donation: ${subject}` : `New ${kind} donation`;
 }
 
 export async function submitVehicleDonation(payload) {

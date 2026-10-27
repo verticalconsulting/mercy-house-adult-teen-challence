@@ -20,7 +20,7 @@
     },
     "address": {
       "type": "string",
-      "description": "Street address where vehicle is located"
+      "description": "Street address where the donation is located"
     },
     "city": {
       "type": "string",
@@ -43,10 +43,16 @@
         "motorcycle",
         "rv",
         "boat",
+        "house",
+        "land",
         "other"
       ],
       "default": "car",
-      "description": "Type of vehicle being donated"
+      "description": "What is being donated"
+    },
+    "vehicle_year": {
+      "type": "number",
+      "description": "Vehicle model year"
     },
     "vehicle_make": {
       "type": "string",
@@ -56,9 +62,34 @@
       "type": "string",
       "description": "Vehicle model"
     },
-    "vehicle_year": {
-      "type": "number",
-      "description": "Vehicle year"
+    "vehicle_trim": {
+      "type": "string",
+      "description": "Trim level, usually filled in from the VIN"
+    },
+    "body_style": {
+      "type": "string",
+      "description": "Body style, e.g. Sedan, Coupe, SUV or Pickup"
+    },
+    "engine": {
+      "type": "string",
+      "description": "Engine size and cylinders, e.g. 3.0L 6-cyl"
+    },
+    "fuel_type": {
+      "type": "string",
+      "description": "Fuel type, e.g. Gasoline, Diesel or Electric"
+    },
+    "drive_type": {
+      "type": "string",
+      "description": "Drivetrain, e.g. FWD, RWD or AWD"
+    },
+    "vin": {
+      "type": "string",
+      "description": "17-character Vehicle Identification Number, when the donor has it"
+    },
+    "vin_decoded": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the vehicle details were filled in from a VIN lookup"
     },
     "vehicle_condition": {
       "type": "string",
@@ -82,9 +113,13 @@
       ],
       "description": "Title availability"
     },
+    "property_description": {
+      "type": "string",
+      "description": "Details for a house or land donation"
+    },
     "additional_notes": {
       "type": "string",
-      "description": "Additional information about the vehicle"
+      "description": "Additional information from the donor"
     },
     "status": {
       "type": "string",
@@ -100,12 +135,21 @@
     },
     "pickup_date": {
       "type": "string",
-      "format": "date-time",
-      "description": "Scheduled pickup date/time"
+      "format": "date",
+      "description": "Preferred pickup date"
+    },
+    "pickup_address": {
+      "type": "string",
+      "description": "Pickup address when it differs from the donation address"
+    },
+    "sms_consent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the donor agreed to receive text messages about the pickup"
     },
     "estimated_value": {
       "type": "number",
-      "description": "Estimated vehicle value"
+      "description": "Estimated value"
     },
     "pickup_notes": {
       "type": "string",
@@ -115,6 +159,23 @@
       "type": "boolean",
       "default": false,
       "description": "Has tax receipt been sent?"
+    },
+    "gclid": {
+      "type": "string",
+      "description": "Google Ads click ID from the landing URL"
+    },
+    "fbclid": {
+      "type": "string",
+      "description": "Meta click ID from the landing URL"
+    },
+    "utm_source": {
+      "type": "string"
+    },
+    "utm_medium": {
+      "type": "string"
+    },
+    "utm_campaign": {
+      "type": "string"
     },
     "description": {
       "type": "string",
@@ -126,10 +187,7 @@
     "first_name",
     "last_name",
     "email",
-    "phone",
-    "vehicle_make",
-    "vehicle_model",
-    "vehicle_condition"
+    "phone"
   ],
   "rls": {
     "create": {},

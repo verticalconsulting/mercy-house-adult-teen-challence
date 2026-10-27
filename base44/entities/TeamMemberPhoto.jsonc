@@ -1,0 +1,48 @@
+{
+  "name": "TeamMemberPhoto",
+  "type": "object",
+  "properties": {
+    "member_name": {
+      "type": "string",
+      "description": "Team member name, matching the roster on the Meet Our Team page"
+    },
+    "photo_url": {
+      "type": "string",
+      "description": "Cloudflare Images delivery URL for the compressed staff photo"
+    },
+    "cloudflare_image_id": {
+      "type": "string",
+      "description": "Cloudflare Images image ID, kept so the image can be replaced or purged later"
+    },
+    "alt_text": {
+      "type": "string",
+      "description": "Accessibility alt text for the photo"
+    },
+    "uploaded_by_email": {
+      "type": "string",
+      "description": "Email of the staff member or administrator who uploaded the photo"
+    }
+  },
+  "required": [
+    "member_name",
+    "photo_url"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

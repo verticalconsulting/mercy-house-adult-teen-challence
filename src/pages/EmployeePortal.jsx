@@ -26,6 +26,7 @@ import GolfSponsorManager from '../components/employee/GolfSponsorManager';
 import DonationFunnel from './DonationFunnel';
 import WomensCampusMediaManager from '../components/employee/WomensCampusMediaManager';
 import HomeImageManager from '../components/employee/HomeImageManager';
+import TeamPhotoManager from '../components/employee/TeamPhotoManager';
 import SearchPerformance from './SearchPerformance';
 import SearchConsoleSummary from '../components/employee/SearchConsoleSummary';
 import AnalyticsSummary from '../components/employee/AnalyticsSummary';
@@ -366,6 +367,9 @@ export default function EmployeePortal() {
             <TabsTrigger value="homeimages" className="text-sm flex-shrink-0">
               Home Images
             </TabsTrigger>
+            <TabsTrigger value="teamphotos" className="text-sm flex-shrink-0">
+              Team Photos
+            </TabsTrigger>
             <TabsTrigger value="womensgallery" className="text-sm flex-shrink-0">
               Women's Gallery
             </TabsTrigger>
@@ -593,6 +597,10 @@ export default function EmployeePortal() {
 
           <TabsContent value="womensgallery" className="mt-6">
             <WomensCampusMediaManager />
+          </TabsContent>
+
+          <TabsContent value="teamphotos" className="mt-6">
+            <TeamPhotoManager />
           </TabsContent>
 
           <TabsContent value="settings" className="mt-6">

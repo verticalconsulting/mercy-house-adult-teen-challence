@@ -156,7 +156,11 @@ export default function MicroBusinesses() {
                   {business.description}
                 </p>
                 {business.href ? (
-                  <a href={business.href}>
+                  <a
+                    href={business.href}
+                    target={business.external ? '_blank' : undefined}
+                    rel={business.external ? 'noopener noreferrer' : undefined}
+                  >
                     <Button className="bg-navy dark:bg-gold hover:bg-navy/90 dark:hover:bg-gold/90 text-white dark:text-navy">
                       Visit Website
                       <ArrowRight className="ml-2 w-4 h-4" />

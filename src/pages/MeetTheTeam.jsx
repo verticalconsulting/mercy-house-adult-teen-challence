@@ -18,11 +18,6 @@ const team = [
     bio: "I lived in darkness for 22 years of my life. I have been in over 11 rehabs 3 psych ward and multiple jails and prisons. I have overdosed countless times. But God had other plans. I walked in Mercy House on August 17, 2017 and never looked back. God has changed everything. I'm a husband, father and deacon in my church. The Lord has given back everything plus more that the enemy stole from me. I'm blessed and humble that the Lord is using me today to help others who struggle like I did for years.",
   },
   {
-    name: 'Thomas Reif',
-    title: 'Campus Director — Men',
-    bio: "I am happily married to my wife, Ashley, and we have the privilege of raising our three boys: Cayden, Zane, and Wyatt. After nearly a decade in the military and local law enforcement, my life fell apart due to addiction and PTSD. By the grace of God, I was saved and my family was restored, leading us into full-time ministry. My wife and I felt called to move our family from the Pacific Northwest, where I was pastoring a church in Oregon, to join the Mercy House Adult Teen Challenge family. I am passionate about witnessing the transformation of men's lives through the power of Jesus Christ. I firmly believe that if God can change a single man, He can begin to change entire communities.",
-  },
-  {
     name: 'Lindsay Hughes',
     title: 'Campus Director — Women',
     bio: "Lindsay Hughes is the Director of the Women's Campus in Learned, MS, where she leads a dedicated team in creating a supportive environment for women. A Board Certified Christian Counselor with a Bachelor's in Social Work and graduate studies in Clinical Chaplaincy and Christian Counseling, she specializes in trauma-informed therapy. Lindsay has served as a Medical Chaplain in multiple hospitals, providing spiritual support to patients and families. Her coordination of mission projects for Global Outreach in Exuma, Bahamas, highlights her commitment to service and community. With her extensive experience and dedication, Lindsay plays a vital role in promoting holistic well-being at the Women's Campus.",

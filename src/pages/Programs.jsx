@@ -8,7 +8,7 @@ const programs = [
   name: "Men's Program",
   location: 'Georgetown, MS',
   path: '/programs-locations/mens-campus',
-  image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/b0adcea4-39fa-4c4c-9fcd-4a85031ac400/small',
+  image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/f9498a6a-9ab3-4d7e-ca7a-c590cd196300/heroscaleddown',
   desc: "A structured 12-month residential Christian discipleship program for men struggling with life-controlling and dependency issues. Rooted in faith, accountability, and genuine community, the program takes place on our peaceful 14-acre campus.",
   features: ['12-Month Residential Program', 'Biblical Discipleship & Life-Skills Development', 'Work Therapy & Vocational Training', 'Mentorship & Accountability', 'Family Restoration', 'Re-entry & Transitional Support']
 },
@@ -16,7 +16,7 @@ const programs = [
   name: "Women's Program",
   location: 'Learned, MS',
   path: '/programs-locations/womens-campus',
-  image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/6967250f-138f-4d93-b91a-f375dfd4ab00/small',
+  image: 'https://imagedelivery.net/dXRounTcgmfhZwbsZCZLTw/cf1ebd93-f21d-4c4a-7443-017fc0c8b600/large',
   desc: "A safe, supportive residential environment for women ready to pursue freedom from life-controlling and dependency issues through a Christ-centered program designed for their unique journey.",
   features: ['12-Month Residential Program', 'Trauma-Informed Support & Biblical Counseling', 'Life-Skills Training', 'Spiritual Growth', 'Community & Mentorship']
 }];
@@ -99,7 +99,7 @@ export default function Programs() {
             {programs.map((prog) =>
             <div key={prog.name} className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg flex flex-col">
                 <div className="h-64 overflow-hidden">
-                  <img src="https://media.base44.com/images/public/6983b4b00291b5dfd8507106/054023a0b_womensministry.jpg" alt={prog.name} className="w-full h-full object-cover" />
+                  <img src={prog.image} alt={prog.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="p-8 flex flex-col flex-1">
                   <p className="text-gold text-sm font-semibold mb-1">{prog.location}</p>

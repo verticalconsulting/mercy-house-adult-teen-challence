@@ -1,5 +1,5 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.46';
-import { chatJson, buildUserMessage } from '../../shared/aiGateway.ts';
+import { chatJson, buildUserMessage, toDataUrl, VISION_MODEL } from '../../shared/aiGateway.ts';
 
 // Analyzes an already-uploaded image (by file_url) and returns a quality
 // score plus a suggested title/caption for the Women's Campus gallery.
@@ -22,8 +22,9 @@ export default async function (req: Request): Promise<Response> {
 Only describe what is actually visible in the image. Keep the response concise and appropriate for a Christian women's recovery program. Return ONLY the JSON object.`;
 
     const result = await chatJson({
+      model: VISION_MODEL,
       maxTokens: 700,
-      messages: buildUserMessage(prompt, file_url),
+      messages: buildUserMessage(prompt, await toDataUrl(file_url)),
     });
 
     return Response.json(result);

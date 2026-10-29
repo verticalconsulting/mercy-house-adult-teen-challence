@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 import { FileText, Download, Loader2 } from 'lucide-react';
 import PageHero from '@/components/site/PageHero';
+import FilesManager from '@/components/employee/FilesManager';
 
 export default function Files() {
-  const { data: documents, isLoading } = useQuery({
+  const { data: documents, isLoading, refetch } = useQuery({
     queryKey: ['documentResources'],
     queryFn: () => base44.entities.DocumentResource.filter({ published: true }, 'display_order'),
     initialData: [],
   });
+
+  // The Files page is public, so a signed-out visitor is anonymous, not an error.
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => {
+    let active = true;
+    base44.auth.me()
+      .then((currentUser) => {
+        if (active) setIsAdmin(currentUser?.role === 'admin');
+      })
+      .catch(() => {
+        if (active) setIsAdmin(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <div className="w-full">
@@ -56,6 +73,14 @@ export default function Files() {
           )}
         </div>
       </section>
+
+      {isAdmin && (
+        <section className="py-12 bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <FilesManager onUploaded={refetch} />
+          </div>
+        </section>
+      )}
     </div>
   );
 }

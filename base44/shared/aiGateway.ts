@@ -3,39 +3,47 @@ import { secrets } from 'base44:runtime';
 // Cloudflare AI Gateway for Mercy House. All model traffic goes through the
 // "mercyhouse" gateway so usage, caching and rate limits live in one place.
 //
-// Auth: a Cloudflare API token (AI Gateway: Run + Workers AI: Read) for account
-// af822065bd416045e3a0e3d07e0648fe, held in the app secrets as
-// CLOUDFLARE_API_TOKEN.
+// Auth: a Cloudflare API token for account af822065bd416045e3a0e3d07e0648fe,
+// held in the app secrets as CLOUDFLARE_API_TOKEN. Provider traffic is billed to
+// the gateway's own BYOK key, selected with the `cf-aig-byok-alias` header.
 //
-// Models: Workers AI models (`@cf/...`) run against the account's Workers AI
-// allowance. Hosted provider models (openai/..., anthropic/..., google/...) need
-// credits or a BYOK key on the gateway — swap the constants below once that is
-// set up; nothing else has to change.
+// Text + vision run on the Azure deployment `gpt-6-astra` through the gateway's
+// OpenAI-compatible endpoint. That model rejects `max_tokens` — it takes
+// `max_completion_tokens` instead (see chat()). Images are passed as URLs; it
+// does not accept SVG.
+//
+// Image generation still runs on Workers AI (`@cf/...`), which bills against the
+// account's Workers AI allowance rather than gateway credits, so it keeps using
+// the account run endpoint (still tagged with the gateway id for logging).
 const ACCOUNT_ID = 'af822065bd416045e3a0e3d07e0648fe';
 const GATEWAY_ID = 'mercyhouse';
-const CHAT_URL = `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/v1/chat/completions`;
+const BYOK_ALIAS = 'foundry';
+const CHAT_URL = `https://gateway.ai.cloudflare.com/v1/${ACCOUNT_ID}/${GATEWAY_ID}/compat/chat/completions`;
 const RUN_URL = `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/run`;
 
-export const DEFAULT_TEXT_MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast';
-export const VISION_MODEL = '@cf/meta/llama-4-scout-17b-16e-instruct';
+export const DEFAULT_TEXT_MODEL = 'azure-openai/gpt-6-astra';
+export const VISION_MODEL = 'azure-openai/gpt-6-astra';
 export const DEFAULT_IMAGE_MODEL = '@cf/black-forest-labs/flux-1-schnell';
 
-function authHeaders() {
+function authHeaders(withByok = true) {
   const token = secrets.get('CLOUDFLARE_API_TOKEN');
   if (!token) {
     throw new Error('AI gateway credentials are not configured');
   }
-  return {
+  const headers = {
     'Content-Type': 'application/json',
     'cf-aig-gateway-id': GATEWAY_ID,
     Authorization: `Bearer ${token}`,
   };
+  // Workers AI requests must not name a BYOK alias — only provider models use one.
+  if (withByok) headers['cf-aig-byok-alias'] = BYOK_ALIAS;
+  return headers;
 }
 
-async function postJson(url, body, timeoutMs) {
+async function postJson(url, body, timeoutMs, withByok = true) {
   const response = await fetch(url, {
     method: 'POST',
-    headers: authHeaders(),
+    headers: authHeaders(withByok),
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(timeoutMs),
   });
@@ -62,38 +70,21 @@ function readContent(data) {
 export async function chat({ messages, model = DEFAULT_TEXT_MODEL, maxTokens = 1500, timeoutMs = 90000 }) {
   const data = await postJson(
     CHAT_URL,
-    { model, messages, max_tokens: maxTokens },
+    { model, messages, max_completion_tokens: maxTokens },
     timeoutMs,
   );
   return readContent(data);
 }
 
-/** Fetches an image and inlines it as base64 — Workers AI vision needs raw data. */
-export async function toDataUrl(imageUrl, timeoutMs = 20000) {
-  const response = await fetch(imageUrl, { signal: AbortSignal.timeout(timeoutMs) });
-  if (!response.ok) throw new Error(`Could not load the image (${response.status})`);
-  const contentType = response.headers.get('content-type') || 'image/jpeg';
-  const bytes = new Uint8Array(await response.arrayBuffer());
-  if (bytes.byteLength > 8 * 1024 * 1024) {
-    throw new Error('That image is too large to analyze');
-  }
-  let binary = '';
-  const chunkSize = 0x8000;
-  for (let index = 0; index < bytes.length; index += chunkSize) {
-    binary += String.fromCharCode(...bytes.subarray(index, index + chunkSize));
-  }
-  return `data:${contentType};base64,${btoa(binary)}`;
-}
-
-/** Turns a prompt plus an optional base64 image into a chat message list. */
-export function buildUserMessage(text, imageDataUrl) {
-  if (!imageDataUrl) return [{ role: 'user', content: text }];
+/** Turns a prompt plus an optional public image URL into a chat message list. */
+export function buildUserMessage(text, imageUrl) {
+  if (!imageUrl) return [{ role: 'user', content: text }];
   return [
     {
       role: 'user',
       content: [
         { type: 'text', text },
-        { type: 'image_url', image_url: { url: imageDataUrl } },
+        { type: 'image_url', image_url: { url: imageUrl } },
       ],
     },
   ];
@@ -121,7 +112,7 @@ export async function chatJson(options) {
  * caller decides where the bytes get stored.
  */
 export async function generateImage({ prompt, model = DEFAULT_IMAGE_MODEL, timeoutMs = 120000 }) {
-  const data = await postJson(RUN_URL, { model, input: { prompt } }, timeoutMs);
+  const data = await postJson(RUN_URL, { model, input: { prompt } }, timeoutMs, false);
 
   const result = data?.result ?? data;
   const image = result?.image ?? result?.data?.[0]?.b64_json ?? result?.images?.[0];

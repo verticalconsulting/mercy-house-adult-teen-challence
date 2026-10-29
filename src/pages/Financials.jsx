@@ -8,17 +8,17 @@ const annualReports = [
   {
     year: '2025',
     label: '2025 Annual Report',
-    url: 'https://drive.google.com/file/d/1LoiXMaJOJ-9DVF_gMp2GBWIUMVtzd7ce/view?usp=drive_link',
+    url: 'https://files.mercyhouseatc.com/financials/MH_Annual_Report_2025_.pdf',
   },
   {
     year: '2024',
     label: '2024 Annual Report',
-    url: 'https://drive.google.com/file/d/1nXKBoDu9NBTjiLXgmkfHXEZwMIurUxRb/view?usp=drive_link',
+    url: 'https://files.mercyhouseatc.com/financials/MH_Annual_Report_2024_.pdf',
   },
   {
     year: '2023',
     label: '2023 Annual Report',
-    url: 'https://drive.google.com/file/d/1xiwC1w57YfrQ_pvEkeyAoBK5faa_IvYZ/view?usp=drive_link',
+    url: 'https://files.mercyhouseatc.com/financials/MH_Annual-Report_v2023.pdf',
   },
 ];
 

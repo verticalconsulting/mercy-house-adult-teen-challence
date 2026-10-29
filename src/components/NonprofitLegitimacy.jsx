@@ -2,9 +2,9 @@ import React from 'react';
 import { ShieldCheck, FileText, Phone, Mail, MapPin } from 'lucide-react';
 
 export default function NonprofitLegitimacy({ variant = 'full' }) {
-  const annualReport2023 = 'https://drive.google.com/file/d/1xiwC1w57YfrQ_pvEkeyAoBK5faa_IvYZ/view?usp=drive_link';
-  const annualReport2024 = 'https://drive.google.com/file/d/1nXKBoDu9NBTjiLXgmkfHXEZwMIurUxRb/view?usp=drive_link';
-  const annualReport2025 = 'https://drive.google.com/file/d/1LoiXMaJOJ-9DVF_gMp2GBWIUMVtzd7ce/view?usp=drive_link';
+  const annualReport2023 = 'https://files.mercyhouseatc.com/financials/MH_Annual-Report_v2023.pdf';
+  const annualReport2024 = 'https://files.mercyhouseatc.com/financials/MH_Annual_Report_2024_.pdf';
+  const annualReport2025 = 'https://files.mercyhouseatc.com/financials/MH_Annual_Report_2025_.pdf';
 
   if (variant === 'compact') {
     return (

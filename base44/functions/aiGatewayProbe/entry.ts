@@ -1,71 +1,66 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.54';
 import { secrets } from 'base44:runtime';
 
-// Temporary diagnostic: finds which auth scheme the AI gateway accepts.
+// Temporary diagnostic: checks whether the stored Cloudflare API token is valid
+// and whether it can reach the AI Gateway. Returns status codes only.
 export default async function (req: Request): Promise<Response> {
   try {
     const base44 = createClientFromRequest(req);
     const user = await base44.auth.me().catch((e) => (e.status === 401 ? null : Promise.reject(e)));
     if (!user || user.role !== 'admin') return Response.json({ error: 'Forbidden' }, { status: 403 });
 
+    const token = secrets.get('CLOUDFLARE_API_TOKEN') || '';
     const accountId = 'af822065bd416045e3a0e3d07e0648fe';
-    const clientId = secrets.get('AI_GATEWAY_CLIENT_ID') || '';
-    const clientSecret = secrets.get('AI_GATEWAY_CLIENT_SECRET') || '';
 
-    const urls = {
-      api: `https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/v1/chat/completions`,
-      gateway: `https://gateway.ai.cloudflare.com/v1/${accountId}/mercyhouse/openai/chat/completions`,
-    };
+    const checks = [];
 
-    const body = JSON.stringify({
-      model: 'openai/gpt-4.1',
-      messages: [{ role: 'user', content: 'Say ok' }],
-      max_tokens: 8,
+    // 1. Is the token itself valid?
+    const verify = await fetch('https://api.cloudflare.com/client/v4/user/tokens/verify', {
+      headers: { Authorization: `Bearer ${token}` },
+      signal: AbortSignal.timeout(15000),
+    });
+    const verifyBody = await verify.text();
+    checks.push({
+      step: 'token-verify',
+      status: verify.status,
+      tokenLength: token.length,
+      sample: verifyBody.slice(0, 240),
     });
 
-    const schemes = [
-      { name: 'bearer-secret', headers: { Authorization: `Bearer ${clientSecret}` } },
-      { name: 'bearer-id', headers: { Authorization: `Bearer ${clientId}` } },
-      { name: 'aig-bearer-secret', headers: { 'cf-aig-authorization': `Bearer ${clientSecret}` } },
-      { name: 'aig-bearer-id', headers: { 'cf-aig-authorization': `Bearer ${clientId}` } },
-      {
-        name: 'aig-bearer-secret+access',
-        headers: {
-          'cf-aig-authorization': `Bearer ${clientSecret}`,
-          'CF-Access-Client-Id': clientId,
-          'CF-Access-Client-Secret': clientSecret,
-        },
+    // 2. Can it see the account?
+    const acct = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+      signal: AbortSignal.timeout(15000),
+    });
+    checks.push({ step: 'account-read', status: acct.status, sample: (await acct.text()).slice(0, 200) });
+
+    // 3. Plain Workers AI run through the gateway id header
+    const run = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+        'cf-aig-gateway-id': 'mercyhouse',
       },
-    ];
+      body: JSON.stringify({ model: '@cf/meta/llama-3.1-8b-instruct', input: { messages: [{ role: 'user', content: 'Say ok' }] } }),
+      signal: AbortSignal.timeout(25000),
+    });
+    checks.push({ step: 'workers-ai-run', status: run.status, sample: (await run.text()).slice(0, 240) });
 
-    const results = [];
-    for (const [urlName, url] of Object.entries(urls)) {
-      for (const scheme of schemes) {
-        try {
-          const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'cf-aig-gateway-id': 'mercyhouse',
-              ...scheme.headers,
-            },
-            body,
-            signal: AbortSignal.timeout(20000),
-          });
-          const text = await response.text();
-          results.push({
-            url: urlName,
-            scheme: scheme.name,
-            status: response.status,
-            sample: text.slice(0, 160),
-          });
-        } catch (error) {
-          results.push({ url: urlName, scheme: scheme.name, status: 'fetch-error', sample: error.message });
-        }
-      }
-    }
+    // 4. OpenAI-compatible chat completions with a provider model
+    const chat = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/v1/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+        'cf-aig-gateway-id': 'mercyhouse',
+      },
+      body: JSON.stringify({ model: 'openai/gpt-4.1', messages: [{ role: 'user', content: 'Say ok' }], max_tokens: 8 }),
+      signal: AbortSignal.timeout(25000),
+    });
+    checks.push({ step: 'chat-completions', status: chat.status, sample: (await chat.text()).slice(0, 240) });
 
-    return Response.json({ results });
+    return Response.json({ checks });
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
   }

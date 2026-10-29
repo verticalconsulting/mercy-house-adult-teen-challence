@@ -11,16 +11,14 @@ const RUN_URL = `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/ai/
 export const DEFAULT_TEXT_MODEL = 'openai/gpt-4.1';
 
 function authHeaders() {
-  const clientId = secrets.get('AI_GATEWAY_CLIENT_ID');
-  const clientSecret = secrets.get('AI_GATEWAY_CLIENT_SECRET');
-  if (!clientId || !clientSecret) {
+  const token = secrets.get('CLOUDFLARE_API_TOKEN');
+  if (!token) {
     throw new Error('AI gateway credentials are not configured');
   }
   return {
     'Content-Type': 'application/json',
     'cf-aig-gateway-id': GATEWAY_ID,
-    'CF-Access-Client-Id': clientId,
-    'CF-Access-Client-Secret': clientSecret,
+    Authorization: `Bearer ${token}`,
   };
 }
 

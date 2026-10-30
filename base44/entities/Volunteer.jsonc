@@ -18,6 +18,10 @@
       "type": "string",
       "description": "Full address"
     },
+    "apartment": {
+      "type": "string",
+      "description": "Apartment/Unit #"
+    },
     "city": {
       "type": "string"
     },
@@ -31,6 +35,87 @@
       "type": "string",
       "format": "date",
       "description": "Volunteer's date of birth"
+    },
+    "date_available": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the volunteer is available to start"
+    },
+    "drivers_license_id": {
+      "type": "string",
+      "description": "Driver's license or ID number"
+    },
+    "us_citizen": {
+      "type": "boolean",
+      "description": "Citizen of the United States"
+    },
+    "volunteered_before": {
+      "type": "boolean",
+      "description": "Has volunteered with Mercy House before"
+    },
+    "volunteered_before_when": {
+      "type": "string",
+      "description": "When they volunteered before"
+    },
+    "felony_convicted": {
+      "type": "boolean",
+      "description": "Ever convicted of a felony"
+    },
+    "felony_explanation": {
+      "type": "string",
+      "description": "Explanation if convicted of a felony"
+    },
+    "church_name": {
+      "type": "string",
+      "description": "Church the volunteer attends"
+    },
+    "church_attendance_length": {
+      "type": "string",
+      "description": "How long they have attended"
+    },
+    "about_yourself": {
+      "type": "string",
+      "description": "Anything else the volunteer wants to tell us"
+    },
+    "reference_1_name": {
+      "type": "string"
+    },
+    "reference_1_relationship": {
+      "type": "string"
+    },
+    "reference_1_company": {
+      "type": "string"
+    },
+    "reference_1_phone": {
+      "type": "string"
+    },
+    "reference_2_name": {
+      "type": "string"
+    },
+    "reference_2_relationship": {
+      "type": "string"
+    },
+    "reference_2_company": {
+      "type": "string"
+    },
+    "reference_2_phone": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string",
+      "description": "Applicant signature on the disclaimer"
+    },
+    "signature_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "background_signature": {
+      "type": "string",
+      "description": "Signature on the background information consent"
+    },
+    "background_signature_date": {
+      "type": "string",
+      "format": "date"
     },
     "emergency_contact_name": {
       "type": "string"
@@ -136,6 +221,10 @@
     "notes": {
       "type": "string",
       "description": "Internal notes from staff"
+    },
+    "drive_file_id": {
+      "type": "string",
+      "description": "Google Drive file ID of the formatted volunteer application (.docx)"
     },
     "start_date": {
       "type": "string",

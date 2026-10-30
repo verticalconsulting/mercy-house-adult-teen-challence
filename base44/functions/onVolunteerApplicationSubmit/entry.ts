@@ -1,5 +1,8 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
 import { sanitizeHeader, verifyAutomationSecret } from '../../shared/security.ts';
+import { volunteerDocxBytes, volunteerFileName, uploadVolunteerDocx } from '../../shared/volunteerDocx.ts';
+
+const VOLUNTEER_FOLDER_ID = '1ODt9OQo1puP7y88HztmhzxpRzaAh5yXY';
 
 Deno.serve(async (req) => {
   try {
@@ -28,63 +31,16 @@ Deno.serve(async (req) => {
     }
     const { accessToken } = await base44.asServiceRole.connectors.getConnection('googledrive');
     
-    // Create a text file with volunteer application details
-    const fileContent = `VOLUNTEER APPLICATION SUBMISSION
-
-Name: ${volunteer.full_name}
-Email: ${volunteer.email}
-Phone: ${volunteer.phone}
-Date of Birth: ${volunteer.date_of_birth}
-Address: ${volunteer.address}, ${volunteer.city}, ${volunteer.state} ${volunteer.zip}
-
-Emergency Contact:
-Name: ${volunteer.emergency_contact_name}
-Phone: ${volunteer.emergency_contact_phone}
-Relationship: ${volunteer.emergency_contact_relationship}
-
-Availability: ${volunteer.availability?.join(', ') || 'Not specified'}
-Areas of Interest: ${volunteer.areas_of_interest?.join(', ') || 'Not specified'}
-Skills: ${volunteer.skills || 'None provided'}
-Previous Experience: ${volunteer.previous_volunteer_experience || 'None provided'}
-Why Volunteer: ${volunteer.why_volunteer || 'Not provided'}
-
-Background Check Consent: ${volunteer.background_check_consent ? 'Yes' : 'No'}
-Status: ${volunteer.status}
-
-Application Submitted: ${new Date().toISOString()}
-`;
-
-    // Create metadata for the file
-    const metadata = {
-      name: `${volunteer.full_name}_Volunteer_Application.txt`,
-      parents: ['1ODt9OQo1puP7y88HztmhzxpRzaAh5yXY']
+    // Build the formatted .docx (Mercy House Volunteer Application template)
+    const docxBytes = await volunteerDocxBytes(volunteer);
+    const driveFile = {
+      id: await uploadVolunteerDocx(accessToken, VOLUNTEER_FOLDER_ID, volunteerFileName(volunteer), docxBytes),
     };
-
-    // Create multipart body manually
-    const boundary = '===============1234567890==';
-    const metadataPart = `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${JSON.stringify(metadata)}\r\n`;
-    const filePart = `--${boundary}\r\nContent-Type: text/plain\r\n\r\n${fileContent}\r\n--${boundary}--`;
-    const body = metadataPart + filePart;
-
-    const uploadRes = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        'Content-Type': `multipart/related; boundary="${boundary}"`
-      },
-      body: body
-    });
-
-    if (!uploadRes.ok) {
-      console.error('Drive upload error:', uploadRes.status, await uploadRes.text());
-      return Response.json({ error: 'Failed to upload to Google Drive' }, { status: 500 });
-    }
-
-    const driveFile = await uploadRes.json();
     console.log('File uploaded to Drive:', driveFile.id);
 
     // Save the Drive file ID to the volunteer record for later reference
     await base44.asServiceRole.entities.Volunteer.update(volunteer.id, {
+      drive_file_id: driveFile.id,
       notes: (volunteer.notes || '') + `\n[Drive ID: ${driveFile.id}]`
     });
 

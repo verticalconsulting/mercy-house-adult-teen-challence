@@ -5,14 +5,24 @@ Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
     const reqBody = await req.json();
-    const { event, data, old_data } = reqBody;
 
-    // Trust boundary: verify the platform automation secret before performing
-    // any privileged side effect (Drive file move, approval email). Prevents
-    // anonymous replay attacks that spam Drive and applicant inboxes (CWE-306).
+    // Trust boundary: the workflow invokes this function as its creator (an
+    // app admin), so accept the admin user context, falling back to the
+    // legacy automation secret. Prevents anonymous callers from moving Drive
+    // files or redirecting approval emails (CWE-306).
     if (!verifyAutomationSecret(reqBody)) {
-      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+      const user = await base44.auth.me().catch(() => null);
+      if (!user || user.role !== 'admin') {
+        return Response.json({ error: 'Unauthorized' }, { status: 401 });
+      }
     }
+
+    // The platform passes the entity trigger as the request body. Support
+    // both the legacy { event, data, old_data } shape and the current
+    // { event_type, entity_name, data, old_data } trigger shape.
+    const event = reqBody.event || (reqBody.event_type ? { type: reqBody.event_type, entity_name: reqBody.entity_name } : null);
+    const data = reqBody.data;
+    const old_data = reqBody.old_data;
 
     // Only a genuine entity-automation "update" event for a Volunteer is
     // honored, and the Drive file ID + recipient email are read from the

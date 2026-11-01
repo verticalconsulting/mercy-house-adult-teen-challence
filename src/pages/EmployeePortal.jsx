@@ -28,8 +28,6 @@ import WomensCampusMediaManager from '../components/employee/WomensCampusMediaMa
 import HomeImageManager from '../components/employee/HomeImageManager';
 import TeamPhotoManager from '../components/employee/TeamPhotoManager';
 import SearchPerformance from './SearchPerformance';
-import SearchConsoleSummary from '../components/employee/SearchConsoleSummary';
-import AnalyticsSummary from '../components/employee/AnalyticsSummary';
 import PortalLogin from '../components/employee/PortalLogin';
 import UserManagement from '../components/employee/UserManagement';
 import MaintenanceBannerToggle from '../components/employee/MaintenanceBannerToggle';
@@ -382,12 +380,6 @@ export default function EmployeePortal() {
           </TabsList>
 
           <TabsContent value="applications" className="mt-6">
-            <div className="mb-6">
-              <SearchConsoleSummary />
-            </div>
-            <div className="mb-6">
-              <AnalyticsSummary />
-            </div>
             <div className="grid lg:grid-cols-2 gap-6">
               <div>
                 <h2 className="text-2xl font-bold text-navy dark:text-gold mb-4">Applications</h2>

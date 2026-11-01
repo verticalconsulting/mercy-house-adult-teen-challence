@@ -10,6 +10,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import CTABand from '../components/CTABand';
+import CommunityAnswers from '../components/site/CommunityAnswers';
 import { useJsonLd } from '@/hooks/useJsonLd';
 import { buildFaqPageSchema } from '@/lib/faqSchemaData';
 
@@ -440,6 +441,8 @@ export default function FAQ() {
           </section>
         ))
       )}
+
+      <CommunityAnswers />
 
       <CTABand
         heading="Still Have Questions?"

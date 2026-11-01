@@ -1,0 +1,42 @@
+{
+  "name": "Agent Unanswered Question Research",
+  "description": "When the Mercy House assistant starts a conversation it cannot answer, research the question on other Adult & Teen Challenge websites, store it, and email staff for approval to publish it as an FAQ.",
+  "trigger": {
+    "config": {
+      "trigger_type": "in_app_agent",
+      "agent_name": "mercy_house_assistant",
+      "events": [
+        "conversation_started"
+      ]
+    },
+    "condition": "${ (.trigger.data.message.text // \"\" | length) > 10 }"
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "agent_unanswered_question_research",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "research_question": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "researchUnansweredQuestion",
+            "args": {
+              "question": "${ .trigger.data.message.text }",
+              "conversation_id": "${ .trigger.data.event.conversation_id }",
+              "app_user_id": "${ .trigger.data.app_user.id }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Research the question",
+            "description": "Web search other Teen Challenge sites and email staff for approval"
+          }
+        }
+      }
+    ]
+  }
+}

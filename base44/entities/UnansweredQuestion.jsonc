@@ -1,0 +1,96 @@
+{
+  "name": "UnansweredQuestion",
+  "type": "object",
+  "properties": {
+    "question": {
+      "type": "string",
+      "description": "The visitor's question that the assistant could not answer"
+    },
+    "research_summary": {
+      "type": "string",
+      "description": "Summary of what the web research found on other Adult & Teen Challenge sites"
+    },
+    "proposed_answer": {
+      "type": "string",
+      "description": "The LLM-drafted answer staff review for publication"
+    },
+    "final_answer": {
+      "type": "string",
+      "description": "The approved answer shown on the FAQ page (defaults to the proposed answer on approval)"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Source URLs the research was drawn from"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "Email the visitor left in the conversation, if any, for follow-up"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending_review",
+        "published",
+        "declined"
+      ],
+      "default": "pending_review",
+      "description": "Review status of the question"
+    },
+    "approval_token": {
+      "type": "string",
+      "description": "Random token gating the one-click staff approval link"
+    },
+    "conversation_id": {
+      "type": "string",
+      "description": "The assistant conversation this question came from"
+    },
+    "app_user_id": {
+      "type": "string",
+      "description": "The app user who asked, when available"
+    },
+    "reviewed_by": {
+      "type": "string",
+      "description": "Who approved or declined the question"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Additional notes about this question"
+    }
+  },
+  "required": [
+    "question"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "data.status": "published"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

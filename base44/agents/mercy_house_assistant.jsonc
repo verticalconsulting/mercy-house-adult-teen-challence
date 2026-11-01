@@ -39,6 +39,12 @@
       "allowed_operations": [
         "read"
       ]
+    },
+    {
+      "entity_name": "UnansweredQuestion",
+      "allowed_operations": [
+        "read"
+      ]
     }
   ],
   "model": "automatic",

@@ -178,6 +178,12 @@ export const pageSeo = {
       'Find help for drug and alcohol dependency at Mercy House Adult & Teen Challenge, a Christ-centered residential recovery program in Mississippi. Get help today.',
     path: '/freedom-from-addiction-starts-here',
   },
+  '/refer': {
+    title: 'Refer Someone to Mercy House | Christian Recovery Program in Mississippi',
+    description:
+      'Refer a man or woman to Mercy House Adult & Teen Challenge, a Christ-centered residential recovery program in Mississippi. Download our referral packet and share the application.',
+    path: '/refer',
+  },
   '/thrift-store': {
     title: 'SuperThrift Store | Mercy House Adult & Teen Challenge',
     description:

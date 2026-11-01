@@ -65,6 +65,7 @@ const PARENTS = {
   // the campus programs.
   '/get-help-now': '/programs-locations',
   '/freedom-from-addiction-starts-here': '/programs-locations',
+  '/refer': '/programs-locations',
 };
 
 /** Crumb wording where the SEO title is written for search, not for a trail. */
@@ -99,6 +100,7 @@ const LABELS = {
   '/contact': 'Contact',
   '/get-help-now': 'Apply for Program',
   '/freedom-from-addiction-starts-here': 'Help for Dependency & Abuse',
+  '/refer': 'Refer Someone',
   '/privacy-policy': 'Privacy Policy',
   '/terms-of-use': 'Terms & Conditions',
   '/employee-portal': 'Employee Portal',

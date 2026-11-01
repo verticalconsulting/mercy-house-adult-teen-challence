@@ -53,6 +53,7 @@ export const CANONICAL_ROUTES = [
   { path: '/financials', legacy: [] },
   { path: '/media', legacy: ['/media-resources'] },
   { path: '/get-help-now', noindex: true, legacy: ['/intake-form', '/apply'] },
+  { path: '/refer', legacy: [] },
   { path: '/privacy-policy', legacy: [] },
   { path: '/terms-of-use', legacy: ['/terms-conditions'] },
 

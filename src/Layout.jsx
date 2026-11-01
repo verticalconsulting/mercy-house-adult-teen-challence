@@ -73,6 +73,15 @@ export default function Layout({ children, currentPageName }) {
     { name: 'FAQs', directPath: createPageUrl('FAQ') }]
   },
   {
+    name: 'Get Help',
+    path: 'get-help-now',
+    directPath: createPageUrl('IntakeForm'),
+    submenu: [
+      { name: 'Refer Someone to Mercy House', directPath: '/refer' },
+      { name: 'Apply for Program', directPath: '/get-help-now' },
+      { name: 'Help for Dependency & Abuse', directPath: '/freedom-from-addiction-starts-here' }]
+  },
+  {
     name: 'Ways to Help',
     path: 'donate',
     directPath: createPageUrl('Donate'),

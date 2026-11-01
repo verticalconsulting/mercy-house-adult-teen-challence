@@ -35,6 +35,7 @@ const Connect = lazy(() => import('./pages/Connect'));
 const ThankYou = lazy(() => import('./pages/ThankYou'));
 const VehicleDonation = lazy(() => import('./pages/VehicleDonation'));
 const VehicleDonationForm = lazy(() => import('./pages/VehicleDonationForm'));
+const Refer = lazy(() => import('./pages/Refer'));
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -109,6 +110,7 @@ const AuthenticatedApp = () => {
       <Route path={createPageUrl('PrivacyPolicy')} element={<LayoutWrapper currentPageName="PrivacyPolicy"><PrivacyPolicy /></LayoutWrapper>} />
       <Route path={createPageUrl('TermsConditions')} element={<LayoutWrapper currentPageName="TermsConditions"><TermsConditions /></LayoutWrapper>} />
       <Route path="/freedom-from-addiction-starts-here" element={<LayoutWrapper currentPageName="HelpForDependency"><HelpForDependency /></LayoutWrapper>} />
+      <Route path="/refer" element={<LayoutWrapper currentPageName="Refer"><Refer /></LayoutWrapper>} />
       <Route path={createPageUrl('FreedomClassic')} element={<LayoutWrapper currentPageName="FreedomClassic"><FreedomClassic /></LayoutWrapper>} />
       <Route path={createPageUrl('FreedomGala')} element={<LayoutWrapper currentPageName="FreedomGala"><FreedomGala /></LayoutWrapper>} />
       <Route path={createPageUrl('TeenChallengeStory')} element={<LayoutWrapper currentPageName="TeenChallengeStory"><TeenChallengeStory /></LayoutWrapper>} />

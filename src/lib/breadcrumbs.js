@@ -60,6 +60,11 @@ const PARENTS = {
   '/programs-locations/womens-campus': '/programs-locations',
   '/programs-locations/womens-campus/gallery': '/programs-locations/womens-campus',
   '/womens-center-calendar': '/programs-locations',
+  // Program entry points — nest under Programs & Locations so a visitor on
+  // the intake application or the help-for-dependency page can step back to
+  // the campus programs.
+  '/get-help-now': '/programs-locations',
+  '/freedom-from-addiction-starts-here': '/programs-locations',
 };
 
 /** Crumb wording where the SEO title is written for search, not for a trail. */

@@ -10,6 +10,11 @@ import {
 } from '@/components/ui/breadcrumb';
 import { getBreadcrumbTrail } from '@/lib/breadcrumbs';
 import { useBreadcrumbLabel } from '@/hooks/useBreadcrumbLabel';
+import { useJsonLd } from '@/hooks/useJsonLd';
+
+// Same origin as useDocumentMeta / useOrganizationSchema — override together
+// via VITE_SITE_URL so the BreadcrumbList URLs match the canonical site.
+const SITE_ORIGIN = import.meta.env.VITE_SITE_URL || 'https://mercyhouseatc.com';
 
 /**
  * The site-wide trail, rendered once in Layout above the page so every page has
@@ -20,6 +25,22 @@ export default function Breadcrumbs() {
   const { pathname } = useLocation();
   const currentLabel = useBreadcrumbLabel();
   const trail = getBreadcrumbTrail(pathname, currentLabel);
+
+  // Mirror the visible trail as BreadcrumbList structured data so search
+  // engines can show the path in results, not just on the page.
+  const schema = trail
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: trail.map((crumb, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: crumb.label,
+          item: `${SITE_ORIGIN}${crumb.path === '/' ? '' : crumb.path}`,
+        })),
+      }
+    : null;
+  useJsonLd('breadcrumb-schema', schema);
 
   if (!trail) return null;
 

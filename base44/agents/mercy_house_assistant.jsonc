@@ -61,7 +61,9 @@
   },
   "context_files": [],
   "app_user_connector_configs": [],
-  "selected_skill_names": [],
+  "selected_skill_names": [
+    "support-escalation"
+  ],
   "selected_workspace_skill_ids": [],
   "telegram_greeting": "",
   "line_greeting": "",

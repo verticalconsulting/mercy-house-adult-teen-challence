@@ -45,6 +45,10 @@
       "allowed_operations": [
         "read"
       ]
+    },
+    {
+      "function_name": "checkEmployeeDriveConnection",
+      "description": ""
     }
   ],
   "model": "automatic",

@@ -83,7 +83,7 @@ Deno.serve(async (req) => {
 </table>
 <p>Please review in the <strong>Employee Portal</strong>.</p>
 `;
-            const raw = buildMimeMessage('intake@mercyhouse.com', subject, bodyHtml);
+            const raw = buildMimeMessage('intake@mercyhouseatc.com', subject, bodyHtml);
             await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
                 method: 'POST',
                 headers: {

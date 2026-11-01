@@ -27,6 +27,9 @@ import DonationFunnel from './DonationFunnel';
 import WomensCampusMediaManager from '../components/employee/WomensCampusMediaManager';
 import HomeImageManager from '../components/employee/HomeImageManager';
 import TeamPhotoManager from '../components/employee/TeamPhotoManager';
+import SearchPerformance from './SearchPerformance';
+import SearchConsoleSummary from '../components/employee/SearchConsoleSummary';
+import AnalyticsSummary from '../components/employee/AnalyticsSummary';
 import PortalLogin from '../components/employee/PortalLogin';
 import UserManagement from '../components/employee/UserManagement';
 import MaintenanceBannerToggle from '../components/employee/MaintenanceBannerToggle';
@@ -361,6 +364,9 @@ export default function EmployeePortal() {
             <TabsTrigger value="tools" className="text-sm flex-shrink-0">
               Tools
             </TabsTrigger>
+            <TabsTrigger value="seo" className="text-sm flex-shrink-0">
+              SEO
+            </TabsTrigger>
             <TabsTrigger value="homeimages" className="text-sm flex-shrink-0">
               Home Images
             </TabsTrigger>
@@ -574,6 +580,25 @@ export default function EmployeePortal() {
               </TabsContent>
               <TabsContent value="funnel">
                 <DonationFunnel />
+              </TabsContent>
+            </Tabs>
+          </TabsContent>
+
+          <TabsContent value="seo" className="mt-6">
+            <Tabs defaultValue="search">
+              <TabsList className="mb-4">
+                <TabsTrigger value="search">Search Performance</TabsTrigger>
+                <TabsTrigger value="console">Search Console</TabsTrigger>
+                <TabsTrigger value="analytics">Analytics</TabsTrigger>
+              </TabsList>
+              <TabsContent value="search">
+                <SearchPerformance />
+              </TabsContent>
+              <TabsContent value="console">
+                <SearchConsoleSummary />
+              </TabsContent>
+              <TabsContent value="analytics">
+                <AnalyticsSummary />
               </TabsContent>
             </Tabs>
           </TabsContent>

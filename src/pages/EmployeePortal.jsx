@@ -27,7 +27,6 @@ import DonationFunnel from './DonationFunnel';
 import WomensCampusMediaManager from '../components/employee/WomensCampusMediaManager';
 import HomeImageManager from '../components/employee/HomeImageManager';
 import TeamPhotoManager from '../components/employee/TeamPhotoManager';
-import SearchPerformance from './SearchPerformance';
 import PortalLogin from '../components/employee/PortalLogin';
 import UserManagement from '../components/employee/UserManagement';
 import MaintenanceBannerToggle from '../components/employee/MaintenanceBannerToggle';
@@ -569,16 +568,12 @@ export default function EmployeePortal() {
               <TabsList className="mb-4">
                 <TabsTrigger value="integrations">Integrations</TabsTrigger>
                 <TabsTrigger value="funnel">Donation Funnel</TabsTrigger>
-                <TabsTrigger value="search">Search Performance</TabsTrigger>
               </TabsList>
               <TabsContent value="integrations">
                 <IntegrationsManager />
               </TabsContent>
               <TabsContent value="funnel">
                 <DonationFunnel />
-              </TabsContent>
-              <TabsContent value="search">
-                <SearchPerformance />
               </TabsContent>
             </Tabs>
           </TabsContent>

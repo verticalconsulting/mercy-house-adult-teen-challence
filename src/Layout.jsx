@@ -89,7 +89,9 @@ export default function Layout({ children, currentPageName }) {
     { name: "Men's Campus", path: 'programs-locations/mens-campus' },
     { name: "Women's Campus", path: 'programs-locations/womens-campus' },
     { name: "Women's Center Calendar", directPath: createPageUrl('WomensCenterCalendar') }]
-  }];
+  },
+  { name: 'Contact', path: 'contact', directPath: createPageUrl('Contact') },
+  { name: 'FAQ', path: 'FAQ', directPath: createPageUrl('FAQ') }];
 
 
   return (

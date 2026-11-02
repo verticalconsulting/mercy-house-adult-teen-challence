@@ -275,77 +275,50 @@ export default function VolunteerManager() {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid gap-6">
+        <div className="space-y-3">
           {filteredVolunteers.map((volunteer) => {
             const StatusIcon = statusConfig[volunteer.status]?.icon || Clock;
             const isSel = selectedIds.has(volunteer.id);
             return (
-              <Card key={volunteer.id} className={`hover:shadow-xl transition-shadow border-2 ${isSel ? 'border-gold' : ''}`}>
-                <CardHeader>
+              <Card
+                key={volunteer.id}
+                className={`cursor-pointer hover:shadow-lg transition-shadow ${isSel ? 'border-2 border-gold' : ''}`}
+                onClick={() => setSelectedVolunteer(volunteer)}
+              >
+                <CardContent className="p-4">
                   <div className="flex justify-between items-start gap-3">
-                    <div className="flex items-start gap-3 flex-1 min-w-0">
+                    <div className="flex items-start gap-3 flex-1 min-w-0" onClick={(e) => e.stopPropagation()}>
                       <Checkbox
                         checked={isSel}
                         onCheckedChange={() => toggleSelect(volunteer.id)}
-                        className="w-5 h-5 mt-1 shrink-0"
+                        className="mt-1 shrink-0"
                         aria-label={`Select ${volunteer.full_name}`}
                       />
-                      <button
-                        className="text-left flex-1 min-w-0"
-                        onClick={() => setSelectedVolunteer(volunteer)}
-                      >
-                        <CardTitle className="text-2xl md:text-3xl text-navy dark:text-gold mb-2 text-left">
-                          {volunteer.full_name}
-                        </CardTitle>
-                        <CardDescription className="space-y-2 text-left">
-                          <div className="flex items-center gap-2 text-lg">
-                            <Mail className="w-5 h-5 shrink-0" />
-                            <span className="truncate">{volunteer.email}</span>
+                      <div className="min-w-0">
+                        <h3 className="font-bold text-navy dark:text-gold truncate">{volunteer.full_name}</h3>
+                        <p className="text-sm text-slate-600 dark:text-slate-400 truncate">{volunteer.email}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
+                          {volunteer.phone} · Applied {format(new Date(volunteer.created_date), 'MMM d, yyyy')}
+                          {volunteer.sms_opt_in && <span className="text-green-600 dark:text-green-400"> · SMS opt-in</span>}
+                        </p>
+                        {volunteer.areas_of_interest?.length > 0 && (
+                          <div className="flex flex-wrap gap-1 mt-2">
+                            {volunteer.areas_of_interest.slice(0, 3).map((interest, idx) => (
+                              <Badge key={idx} variant="outline" className="text-xs px-2 py-0.5">
+                                {formatActivity(interest)}
+                              </Badge>
+                            ))}
+                            {volunteer.areas_of_interest.length > 3 && (
+                              <span className="text-xs text-slate-400">+{volunteer.areas_of_interest.length - 3}</span>
+                            )}
                           </div>
-                          <div className="flex items-center gap-2 text-lg">
-                            <Phone className="w-5 h-5 shrink-0" />
-                            {volunteer.phone}
-                          </div>
-                          <div className="flex items-center gap-2 text-lg">
-                            <Calendar className="w-5 h-5 shrink-0" />
-                            Applied {format(new Date(volunteer.created_date), 'MMM dd, yyyy')}
-                          </div>
-                          {volunteer.sms_opt_in && (
-                            <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400">
-                              <MessageSquare className="w-4 h-4" /> SMS opt-in
-                            </div>
-                          )}
-                        </CardDescription>
-                      </button>
-                    </div>
-                    <Badge className={`${statusConfig[volunteer.status]?.color} text-base px-4 py-2 flex items-center gap-2 shrink-0`}>
-                      <StatusIcon className="w-5 h-5" />
-                      {statusConfig[volunteer.status]?.label}
-                    </Badge>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div>
-                      <span className="font-semibold text-lg text-slate-700 dark:text-slate-200">Availability: </span>
-                      <span className="text-lg text-slate-600 dark:text-slate-300">
-                        {volunteer.availability?.map(a => availabilityLabels[a]).join(', ') || 'Not specified'}
-                      </span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-lg text-slate-700 dark:text-slate-200">Activities: </span>
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {volunteer.areas_of_interest?.length > 0 ? (
-                          volunteer.areas_of_interest.map((interest, idx) => (
-                            <Badge key={idx} variant="outline" className="text-base px-3 py-1">
-                              {formatActivity(interest)}
-                            </Badge>
-                          ))
-                        ) : (
-                          <span className="text-lg text-slate-400">None assigned</span>
                         )}
                       </div>
                     </div>
+                    <Badge className={`${statusConfig[volunteer.status]?.color} text-xs px-2 py-1 flex items-center gap-1 shrink-0`}>
+                      <StatusIcon className="w-3 h-3" />
+                      {statusConfig[volunteer.status]?.label}
+                    </Badge>
                   </div>
                 </CardContent>
               </Card>

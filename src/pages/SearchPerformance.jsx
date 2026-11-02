@@ -47,7 +47,12 @@ export default function SearchPerformance() {
   useEffect(() => {
     base44.functions.invoke('getSearchConsoleData', {})
       .then(res => {
-        const list = res.data?.sites || [];
+        // Only the Mercy House site — the connected GSC account may list
+        // several verified properties (files.mercyhouseatc.com, the base44
+        // preview host, etc.), but this section is for mercyhouseatc.com only.
+        const list = (res.data?.sites || []).filter(s =>
+          (s.siteUrl || '').toLowerCase().includes('mercyhouseatc.com')
+        );
         setSites(list);
         if (list.length > 0) setSelectedSite(list[0].siteUrl);
       })

@@ -19,7 +19,19 @@ export default function SearchConsoleSummary() {
 
   const { data: snapshots, isLoading, isError } = useQuery({
     queryKey: ['searchConsoleSnapshots'],
-    queryFn: () => base44.entities.SearchConsoleSnapshot.filter({}, { sort: '-created_date', limit: 1 }),
+    queryFn: async () => {
+      // The latest snapshot may be for a different verified property; only
+      // show the one for mercyhouseatc.com.
+      const page = await base44.entities.SearchConsoleSnapshot.filter(
+        {},
+        { sort: '-created_date', limit: 20 }
+      );
+      const items = page.items || [];
+      const mh = items.find(s =>
+        (s.site_url || '').toLowerCase().includes('mercyhouseatc.com')
+      );
+      return mh ? [mh] : [];
+    },
     initialData: [],
   });
 

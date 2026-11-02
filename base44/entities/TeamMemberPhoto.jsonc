@@ -20,7 +20,21 @@
     },
     "uploaded_by_email": {
       "type": "string",
-      "description": "Email of the staff member or administrator who uploaded the photo"
+      "description": "Email of the staff member or administrator who uploaded the photo",
+      "rls": {
+        "read": {
+          "$or": [
+            {
+              "created_by_id": "{{user.id}}"
+            },
+            {
+              "user_condition": {
+                "role": "admin"
+              }
+            }
+          ]
+        }
+      }
     }
   },
   "required": [

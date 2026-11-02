@@ -51,12 +51,14 @@ export default function ThankYou() {
   useEffect(() => {
     loadDonors();
 
-    // If the redirect carried a name, pre-fill and auto-add it once.
+    // If the redirect carried a name, pre-fill the form only. Creating a
+    // donor-wall entry requires an explicit submit — auto-creating from a URL
+    // param would let anyone post a name to the public wall with no gift or
+    // consent (CSRF / impersonation).
     const params = new URLSearchParams(window.location.search);
     const passedName = params.get('name')?.trim();
     if (passedName) {
       setName(passedName);
-      addDonor(passedName, '', false, true);
     }
   }, []);
 

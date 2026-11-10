@@ -40,6 +40,9 @@
           "data.key": "maintenance_banner_enabled"
         },
         {
+          "data.key": "bed_count_visibility_enabled"
+        },
+        {
           "user_condition": {
             "role": "admin"
           }

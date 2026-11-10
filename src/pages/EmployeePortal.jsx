@@ -33,6 +33,7 @@ import AnalyticsSummary from '../components/employee/AnalyticsSummary';
 import PortalLogin from '../components/employee/PortalLogin';
 import UserManagement from '../components/employee/UserManagement';
 import MaintenanceBannerToggle from '../components/employee/MaintenanceBannerToggle';
+import BedCountVisibilityToggle from '../components/employee/BedCountVisibilityToggle';
 
 export default function EmployeePortal() {
   const [user, setUser] = useState(null);
@@ -466,7 +467,8 @@ export default function EmployeePortal() {
           </TabsContent>
 
           <TabsContent value="beds" className="mt-6">
-            <div className="grid md:grid-cols-2 gap-8">
+            <BedCountVisibilityToggle />
+            <div className="grid md:grid-cols-2 gap-8 mt-6">
               <Card>
                 <CardHeader className="bg-navy dark:bg-slate-950 text-white">
                   <CardTitle className="flex items-center gap-3">

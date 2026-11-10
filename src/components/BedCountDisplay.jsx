@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Users, Bed, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { base44 } from '@/api/base44Client';
 
 export default function BedCountDisplay({ bedData, programName }) {
-  if (!bedData) return null;
+  const [visible, setVisible] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const { items } = await base44.entities.SiteSetting.filter(
+          { key: 'bed_count_visibility_enabled' },
+          { limit: 1 }
+        );
+        if (!cancelled) {
+          // Default to visible until an admin explicitly hides it.
+          setVisible(items[0] ? items[0].value !== 'false' : true);
+        }
+      } catch {
+        // Setting may not exist yet — default to visible.
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  if (loading || !visible || !bedData) return null;
 
   const availableBeds = bedData.total_beds - bedData.occupied_beds;
   const occupancyRate = ((bedData.occupied_beds / bedData.total_beds) * 100).toFixed(0);
